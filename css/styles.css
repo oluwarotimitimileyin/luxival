@@ -1,0 +1,474 @@
+:root {
+  --bg: #07090f;
+  --surface: #10141d;
+  --surface-strong: #1b202c;
+  --text: #f4f6fb;
+  --muted: #a5adbf;
+  --accent: #7c5cff;
+  --accent-strong: #9d7dff;
+  --border: rgba(255,255,255,0.08);
+  --radius: 24px;
+  --shadow: 0 32px 90px rgba(0,0,0,0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, rgba(124, 92, 255, 0.2), transparent 30%),
+    linear-gradient(180deg, #05060b 0%, #090c11 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background: rgba(7, 9, 15, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.brand a {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.brand span {
+  display: block;
+  color: var(--muted);
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+button.nav-toggle {
+  display: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+}
+
+button.button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  padding: 1rem 1.8rem;
+}
+
+.button-outline,
+.button-secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--text);
+  padding: 1rem 1.8rem;
+}
+
+.button:hover,
+button.button:hover {
+  transform: translateY(-1px);
+}
+
+.section {
+  padding: 5rem 2rem;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.section-dark {
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-copy {
+  max-width: 640px;
+}
+
+.hero-copy .eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+}
+
+.hero-copy h1 {
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.hero-card {
+  background: rgba(17, 21, 33, 0.9);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  width: min(100%, 420px);
+}
+
+.hero-card span {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+}
+
+.hero-card h2 {
+  margin: 1rem 0 0.8rem;
+  font-size: 1.8rem;
+}
+
+.hero-card p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.split-intro,
+.services-overview,
+.feature-panel,
+.feature-grid,
+.trust-banner,
+.featured-projects,
+.cta-section,
+.pricing-calculator,
+.faq-section,
+.contact-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 860px) {
+  .split-intro,
+  .feature-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.feature-grid,
+.services-grid,
+.project-grid,
+.faq-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.services-grid,
+.project-grid,
+.faq-grid,
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.feature-card,
+.service-cards article,
+.project-card,
+.contact-card,
+.calculator-card,
+.calculator-result {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.feature-card h3,
+.service-cards h2,
+.project-card h2,
+.contact-card h2 {
+  margin-top: 0;
+}
+
+.section-intro {
+  max-width: 720px;
+}
+
+.section-intro h2,
+.section-intro h1 {
+  margin: 0.5rem 0 1rem;
+  line-height: 1.1;
+}
+
+.trust-banner {
+  background: linear-gradient(180deg, rgba(124,92,255,0.15), rgba(7,9,15,0.88));
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+}
+
+.trust-banner div:first-child {
+  max-width: 600px;
+}
+
+.trust-stats {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-top: 1.5rem;
+}
+
+.trust-stats div {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.trust-stats strong {
+  display: block;
+  font-size: 1.8rem;
+}
+
+.project-category {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, rgba(124,92,255,0.12), rgba(7,9,15,0.95));
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+}
+
+.tourism-hero {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.season-highlights {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.season-card {
+  padding: 1.75rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  min-height: 220px;
+}
+
+.season-card h3 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.tourism-hero .hero-copy {
+  max-width: 720px;
+}
+
+.service-summary .tiles-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.tourism-detail .feature-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.tourism-detail .feature-grid article,
+.service-summary article {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.calculator-card select,
+.checkbox-label {
+  width: 100%;
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.calculator-card select {
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+}
+
+.checkbox-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.checkbox-label input {
+  margin-right: 0.75rem;
+}
+
+.result-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+.result-box p {
+  margin: 0.85rem 0;
+}
+
+.result-box .total {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 860px) {
+  .tourism-hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .pricing-calculator .calculator-grid,
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pricing-calculator .calculator-grid,
+.contact-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.calculator-card input,
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  margin-top: 0.75rem;
+}
+
+.result-line {
+  margin: 1rem 0;
+}
+
+.formula-box {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+}
+
+footer.site-footer {
+  padding: 2rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 860px) {
+  .section,
+  .site-header {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .site-nav {
+    position: fixed;
+    inset: 4.5rem 1.5rem auto 1.5rem;
+    display: none;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: rgba(7, 9, 15, 0.98);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  button.nav-toggle {
+    display: inline-flex;
+  }
+
+  .section-dark {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-calculator .calculator-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

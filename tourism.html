@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tourism & Travel | Luxival Finland</title>
+  <meta name="description" content="Luxival Tourism delivers premium Finland travel services with airport transfers, private rides, hotel sourcing and seasonal travel experiences." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><a href="index.html">Luxival</a></div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="tourism.html" aria-current="page">Tourism</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="qa.html">QA</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="button button-secondary">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section tourism-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Tourism & Transport</span>
+        <h1>Luxival Tourism is a dedicated premium travel experience for Finland.</h1>
+        <p>Secure airport transfers, private rides, hotel and house sourcing, and seasonal tour planning wrapped in a premium tourism page separate from our digital services.</p>
+        <div class="hero-actions">
+          <a href="#pricing" class="button button-primary">Estimate your fare</a>
+          <a href="#seasons" class="button button-outline">Explore Finland seasons</a>
+        </div>
+      </div>
+      <div class="season-highlights" id="seasons">
+        <article class="season-card winter">
+          <h3>Winter in Finland</h3>
+          <p>Snow-white landscapes, Northern Light escapes, and cozy airport rides into Helsinki.</p>
+        </article>
+        <article class="season-card spring">
+          <h3>Spring in Finland</h3>
+          <p>Blooming parks, city walks and fresh travel days for tourism and corporate arrival services.</p>
+        </article>
+        <article class="season-card summer">
+          <h3>Summer in Finland</h3>
+          <p>Lake trips, city festivals and long daylight journeys with premium private rides.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section feature-panel">
+      <div>
+        <h2>Dedicated tourism service</h2>
+        <p>This page is a stand-alone tourism experience page, designed to sell Finland travel, airport pickups, private rides, and hospitality coordination.</p>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <h3>Airport transfer excellence</h3>
+          <p>Seamless Helsinki-Vantaa pickups with professional drivers, premium vehicles, and a no-smoking service policy.</p>
+        </article>
+        <article>
+          <h3>Private rides & custom tours</h3>
+          <p>Local sightseeing, city-to-city travel and tourism routes tailored to your schedule and interests.</p>
+        </article>
+        <article>
+          <h3>Hotel & house sourcing</h3>
+          <p>We can help find premium stays, boutique hotels and private homes for travelers across Helsinki and nearby regions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section service-summary">
+      <div class="tiles-grid">
+        <article>
+          <h3>Private airport pickup</h3>
+          <p>Efficient, no-wait transport from Helsinki-Vantaa with flight tracking and flexible arrival support.</p>
+        </article>
+        <article>
+          <h3>City-to-city travel</h3>
+          <p>Comfortable transfers between Helsinki, Espoo, Vantaa, Lahti and other nearby destinations.</p>
+        </article>
+        <article>
+          <h3>Tourism planning</h3>
+          <p>Seasonal Finland storytelling for winter, spring and summer travel combined with bespoke route design.</p>
+        </article>
+        <article>
+          <h3>Safe and premium service</h3>
+          <p>Professional, polite drivers. Strict no-smoking and clean-car standards for every ride.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section pricing-calculator" id="pricing">
+      <div class="section-intro">
+        <span class="eyebrow">Dynamic pricing</span>
+        <h2>Interactive fare estimator for every ride.</h2>
+        <p>Use our dynamic pricing calculator to preview airport, city and tourism travel estimates with transparent fees and optional surcharges.</p>
+      </div>
+      <div class="calculator-grid">
+        <div class="calculator-card">
+          <label for="pickup">Pickup location</label>
+          <input id="pickup" type="text" placeholder="e.g. Helsinki-Vantaa Airport" />
+          <label for="destination">Destination</label>
+          <input id="destination" type="text" placeholder="e.g. Central Helsinki hotel" />
+          <label for="serviceType">Service type</label>
+          <select id="serviceType">
+            <option value="airport">Airport transfer</option>
+            <option value="city">City ride</option>
+            <option value="city-to-city">City-to-city trip</option>
+            <option value="tourism">Tourism route</option>
+          </select>
+          <label for="distance">Estimated distance (km)</label>
+          <input id="distance" type="number" min="1" value="12" />
+          <label class="checkbox-label"><input id="airportSurcharge" type="checkbox" /> Include airport surcharge</label>
+          <label class="checkbox-label"><input id="busyHour" type="checkbox" /> Busy-hour / demand pricing</label>
+          <button id="calculateFare" class="button button-primary">Calculate fare</button>
+        </div>
+        <div class="calculator-result">
+          <h3>Fare preview</h3>
+          <div class="result-box">
+            <p><strong>Starting price:</strong> €10</p>
+            <p><strong>Distance fee:</strong> €<span id="distancePrice">12.00</span></p>
+            <p><strong>Service fee:</strong> €<span id="servicePrice">0.00</span></p>
+            <p><strong>Airport surcharge:</strong> €<span id="airportPrice">0.00</span></p>
+            <p><strong>Demand surcharge:</strong> €<span id="demandPrice">0.00</span></p>
+            <p class="result-line total"><strong>Estimated total:</strong> €<span id="totalPrice">22.00</span></p>
+          </div>
+          <div class="formula-box">
+            <p>Price formula: <strong>€10 + €1/km + service fee + airport surcharge + demand surcharge</strong></p>
+            <p>Designed for future pricing logic: busy hours, traffic, demand-based pricing and airport service fees.</p>
+          </div>
+          <a href="contact.html" class="button button-outline">Submit booking inquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tourism-detail">
+      <div class="section-intro">
+        <span class="eyebrow">Why choose Luxival Tourism</span>
+        <h2>Tourism, transport and QA-tested pricing in one premium package.</h2>
+        <p>Our tourism business is under Luxival Tourism, with a separate travel page and dedicated booking experience for visitors and families.</p>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <h3>No-smoking journeys</h3>
+          <p>Every ride is smoke-free. Our drivers maintain clean, comfortable vehicles and a calm travel environment.</p>
+        </article>
+        <article>
+          <h3>Hotel & home sourcing</h3>
+          <p>We support travelers with premium hotel and private house recommendations to complete the Finland experience.</p>
+        </article>
+        <article>
+          <h3>QA-tested reliability</h3>
+          <p>Our travel technology and pricing estimator are QA-reviewed to ensure consistent, trustworthy booking guidance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="section-intro">
+        <span class="eyebrow">FAQ</span>
+        <h2>Tourism and travel questions answered</h2>
+      </div>
+      <div class="faq-grid">
+        <article>
+          <h3>How are prices calculated?</h3>
+          <p>Pricing begins at €10, plus €1 per km. Additional service and demand fees are added when needed. Airport rides may also include a surcharge.</p>
+        </article>
+        <article>
+          <h3>Do you serve Helsinki-Vantaa Airport?</h3>
+          <p>Yes. We provide reliable arrivals, departures, and flexible pickup windows for airport travel.</p>
+        </article>
+        <article>
+          <h3>Can I book a custom tour?</h3>
+          <p>Yes. We handle custom tourism routes, seasonal travel suggestions, and premium Finland experiences.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
+      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
