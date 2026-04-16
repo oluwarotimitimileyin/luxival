@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents Infrastructure | Luxival Design Services</title>
+<meta name="description" content="Custom autonomous AI agent systems built with Claude API. Agent orchestration, workflow automation, multi-agent pipelines, and Claude-powered content engines — by Luxival, Helsinki.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1200px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:6rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.4px}
+h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:2rem}
+h3{font-size:1.2rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.85rem 2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.8rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.55;transition:opacity .2s}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+.breadcrumb{display:flex;gap:.5rem;align-items:center;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;opacity:.45;margin-bottom:2rem}
+.breadcrumb span{opacity:.4}
+
+/* Hero */
+.hero{padding-top:9rem;padding-bottom:5rem}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;margin-bottom:3rem}
+.hero-meta-item{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;opacity:.5;display:flex;align-items:center;gap:.4rem}
+.hero-meta-item::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:.6}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* What's included */
+.include-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.include-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:1.8rem;transition:border-color .3s}
+.include-card:hover{border-color:var(--border)}
+.include-card h3{font-size:1rem;margin-bottom:.5rem;color:var(--text)}
+.include-card p{font-size:.88rem;opacity:.6;margin:0}
+.check{display:inline-block;width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;text-align:center;line-height:18px;font-size:.6rem;color:var(--gold);margin-bottom:.8rem}
+
+/* Process timeline */
+.timeline{position:relative;padding-left:3rem}
+.timeline::before{content:'';position:absolute;left:.75rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),transparent)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-dot{position:absolute;left:-2.25rem;top:.2rem;width:12px;height:12px;border:1px solid var(--gold);border-radius:50%;background:var(--bg)}
+.tl-item h3{color:var(--text);font-size:1.05rem;margin-bottom:.4rem}
+.tl-item p{font-size:.9rem;opacity:.65;margin:0}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
+.pricing-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2.5rem;text-align:center;transition:border-color .3s}
+.pricing-card.featured{border-color:var(--gold)}
+.pricing-card h3{color:var(--text);font-size:1.1rem;margin-bottom:.5rem}
+.price-amount{font-size:2.5rem;font-weight:300;color:var(--gold);letter-spacing:-1px;margin:1rem 0 .25rem}
+.price-note{font-size:.7rem;opacity:.45;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem}
+.pricing-card ul{list-style:none;text-align:left;margin-bottom:2rem}
+.pricing-card li{font-size:.88rem;opacity:.65;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:.5rem}
+.pricing-card li::before{content:'·';color:var(--gold);font-size:1.2rem;line-height:1}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06);padding:1.5rem 0}
+.faq-q{font-size:1rem;font-weight:400;color:var(--text);cursor:none;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';color:var(--gold);font-size:1.2rem;font-weight:300}
+.faq-a{font-size:.9rem;opacity:.65;margin-top:1rem;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+
+/* Footer */
+footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-copy{font-size:.75rem;opacity:.3;letter-spacing:1px}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.footer-links a:hover{opacity:1}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+@media(max-width:768px){.nav-links{display:none}.pricing-grid,.include-grid{grid-template-columns:1fr}.timeline{padding-left:2rem}}
+</style>
+</head>
+<body>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../design-services.html">Design</a></li>
+    <li><a href="../hub.html">Explore</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+    <li><a href="../contact.html" class="btn" style="padding:.5rem 1.2rem;font-size:.7rem">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="breadcrumb reveal">
+    <a href="../design-services.html">Design Services</a>
+    <span>/</span>
+    <span style="opacity:.7">AI Agents Infrastructure</span>
+  </div>
+  <span class="eyebrow reveal">Service 05 of 05</span>
+  <h1 class="reveal d1">AI Agents<br>Infrastructure Design</h1>
+  <p class="reveal d2" style="max-width:580px;font-size:1.15rem">Custom autonomous agent systems built with the Claude API. We design, build, and deploy AI agents that think, decide, and act — so your workflows run without you.</p>
+  <div class="hero-meta reveal d3">
+    <span class="hero-meta-item">Claude API</span>
+    <span class="hero-meta-item">Multi-agent pipelines</span>
+    <span class="hero-meta-item">Workflow automation</span>
+    <span class="hero-meta-item">Helsinki based</span>
+  </div>
+  <div class="hero-actions reveal d4">
+    <a href="../contact.html" class="btn">Book a discovery call</a>
+    <a href="#pricing" class="btn btn-outline">View pricing</a>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- WHAT'S INCLUDED -->
+<section class="container">
+  <span class="eyebrow reveal">What you get</span>
+  <h2 class="reveal d1">Everything needed to run autonomous agents in production</h2>
+  <div class="include-grid">
+    <div class="include-card reveal d1"><div class="check">✓</div><h3>Agent architecture design</h3><p>We design the full agent topology — roles, tool access, memory, decision logic, and escalation paths.</p></div>
+    <div class="include-card reveal d2"><div class="check">✓</div><h3>Claude API integration</h3><p>Prompt engineering, tool use configuration, system prompt design, and response handling built for reliability.</p></div>
+    <div class="include-card reveal d3"><div class="check">✓</div><h3>Workflow automation</h3><p>Map your manual, repetitive processes and replace them with agent-driven flows that run 24/7.</p></div>
+    <div class="include-card reveal d4"><div class="check">✓</div><h3>Multi-agent orchestration</h3><p>Build systems where specialised agents collaborate — research, write, review, and publish without human input.</p></div>
+    <div class="include-card reveal d1"><div class="check">✓</div><h3>Supabase / API integration</h3><p>Agents that read from and write to databases, call external APIs, and store structured outputs automatically.</p></div>
+    <div class="include-card reveal d2"><div class="check">✓</div><h3>Monitoring and logging</h3><p>Full observability on what your agents are doing — decision logs, error handling, and alert triggers.</p></div>
+    <div class="include-card reveal d3"><div class="check">✓</div><h3>Documentation and handover</h3><p>Complete technical documentation so you or your team can maintain, extend, or modify the system after delivery.</p></div>
+    <div class="include-card reveal d4"><div class="check">✓</div><h3>30-day post-launch support</h3><p>We stay on hand after deployment to fix issues, tune prompts, and handle edge cases in production.</p></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- USE CASES -->
+<section class="container">
+  <span class="eyebrow reveal">What we can build for you</span>
+  <h2 class="reveal d1">Real agent use cases</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+    <div class="include-card reveal d1"><h3>Content engine</h3><p>An agent that monitors Google trends, writes blog posts about trending Helsinki places, and publishes them to your site automatically.</p></div>
+    <div class="include-card reveal d2"><h3>Lead qualifier</h3><p>An agent that reads incoming inquiry emails, scores the lead, drafts a personalised reply, and logs the contact in your CRM.</p></div>
+    <div class="include-card reveal d3"><h3>QA automation agent</h3><p>An agent that runs your test suite, interprets failures, drafts bug reports, and notifies the right team member via Slack.</p></div>
+    <div class="include-card reveal d1"><h3>Proposal generator</h3><p>An agent that takes a project brief and generates a structured proposal with scope, timeline, and cost estimate for your review.</p></div>
+    <div class="include-card reveal d2"><h3>Research assistant</h3><p>An agent that researches a topic, synthesises sources, and produces a structured report — fully cited and ready for use.</p></div>
+    <div class="include-card reveal d3"><h3>Social media pipeline</h3><p>An agent that creates platform-specific posts from your latest blog content, schedules them, and tracks engagement.</p></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- PROCESS TIMELINE -->
+<section class="container">
+  <span class="eyebrow reveal">How we work</span>
+  <h2 class="reveal d1">From brief to autonomous system</h2>
+  <div class="timeline reveal d2">
+    <div class="tl-item"><div class="tl-dot"></div><h3>Week 1 — Discovery and workflow mapping</h3><p>We document every step of the process you want to automate. Inputs, decisions, outputs, edge cases, and failure modes.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h3>Week 2 — Agent design and prompt engineering</h3><p>We design the agent architecture and write the system prompts, tool definitions, and decision logic.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h3>Week 3 — Build and integration</h3><p>We code the agent pipeline, connect external APIs and databases, and build the monitoring layer.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h3>Week 4 — Testing and hardening</h3><p>We run the agent against real inputs, handle edge cases, tune prompts, and verify reliability before handover.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h3>Delivery — Handover and documentation</h3><p>Full source code, technical documentation, and a live walkthrough so your team can own and extend the system.</p></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="container">
+  <span class="eyebrow reveal">Pricing</span>
+  <h2 class="reveal d1">Transparent from the start</h2>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal d1">
+      <h3>Starter Agent</h3>
+      <div class="price-amount">€800</div>
+      <div class="price-note">single agent · fixed scope</div>
+      <ul>
+        <li>One autonomous agent</li>
+        <li>Up to 3 tool integrations</li>
+        <li>Claude API prompt engineering</li>
+        <li>Basic error handling and logging</li>
+        <li>Deployment to Vercel serverless</li>
+        <li>14-day support window</li>
+      </ul>
+      <a href="../contact.html" class="btn" style="width:100%;text-align:center">Book this</a>
+    </div>
+    <div class="pricing-card featured reveal d2">
+      <span class="eyebrow" style="margin-bottom:.5rem">Most popular</span>
+      <h3>Multi-Agent Pipeline</h3>
+      <div class="price-amount">€2,200</div>
+      <div class="price-note">2 to 4 agents · orchestrated</div>
+      <ul>
+        <li>Up to 4 specialised agents</li>
+        <li>Orchestrator agent for coordination</li>
+        <li>Unlimited tool integrations</li>
+        <li>Supabase database integration</li>
+        <li>Full monitoring and alert system</li>
+        <li>30-day support window</li>
+        <li>Complete technical documentation</li>
+      </ul>
+      <a href="../contact.html" class="btn" style="width:100%;text-align:center">Book this</a>
+    </div>
+    <div class="pricing-card reveal d3">
+      <h3>Enterprise System</h3>
+      <div class="price-amount">Custom</div>
+      <div class="price-note">complex systems · retainer available</div>
+      <ul>
+        <li>Unlimited agent count</li>
+        <li>Custom architecture design</li>
+        <li>Legacy system integration</li>
+        <li>Ongoing optimisation retainer</li>
+        <li>Dedicated Slack channel</li>
+        <li>SLA-backed support</li>
+      </ul>
+      <a href="../contact.html" class="btn btn-outline" style="width:100%;text-align:center">Get a quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="container">
+  <span class="eyebrow reveal">Common questions</span>
+  <h2 class="reveal d1">What you might be wondering</h2>
+  <div id="faqList" class="reveal d2">
+    <div class="faq-item"><div class="faq-q">Do I need technical knowledge to use an AI agent system?</div><div class="faq-a">No. We design the system so that you interact with it through a simple interface — usually a form, a dashboard, or a messaging channel. The technical complexity lives inside the agent, not in your daily workflow.</div></div>
+    <div class="faq-item"><div class="faq-q">How much does it cost to run an agent after it is built?</div><div class="faq-a">The main ongoing cost is Claude API usage, which scales with how much the agent runs. For a typical content or lead agent running daily, costs are usually between €10 and €50 per month depending on volume.</div></div>
+    <div class="faq-item"><div class="faq-q">Can the agent connect to tools I already use?</div><div class="faq-a">Yes. We can integrate with Supabase, Google APIs, Slack, email, Notion, Airtable, REST APIs, and most services that have a public API or webhook.</div></div>
+    <div class="faq-item"><div class="faq-q">What if the agent makes a mistake?</div><div class="faq-a">All agents are built with error handling, confidence thresholds, and human-in-the-loop checkpoints for high-stakes decisions. You define what the agent does autonomously and what it escalates to you.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does a build take?</div><div class="faq-a">A Starter Agent takes roughly one to two weeks. A Multi-Agent Pipeline takes three to five weeks. Enterprise systems are scoped individually.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="background:var(--card2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:5rem 0;text-align:center">
+  <div class="container">
+    <span class="eyebrow reveal">Ready to automate?</span>
+    <h2 class="reveal d1">Tell us the process you want to hand to an agent.</h2>
+    <p class="reveal d2" style="max-width:500px;margin:0 auto 2.5rem">We will map it, design it, and deliver a system that runs without you — permanently.</p>
+    <div class="reveal d3" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../contact.html" class="btn">Book a discovery call</a>
+      <a href="../design-services.html" class="btn btn-outline">Back to all services</a>
+    </div>
+  </div>
+</div>
+
+<footer class="container">
+  <div class="footer-inner">
+    <span class="footer-copy">Luxival © 2026 · AI Agents Infrastructure · Helsinki</span>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../design-services.html">Design</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+window.addEventListener('scroll',()=>{
+  document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('mainNav').style.background=window.scrollY>60?'rgba(10,11,15,.96)':'rgba(10,11,15,.7)';
+},{passive:true});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});
+    item.classList.toggle('open');
+  });
+});
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)*.2,y=(e.clientY-r.top-r.height/2)*.2;btn.style.transform=`translate(${x}px,${y}px)`;});
+  btn.addEventListener('pointerleave',()=>{btn.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';btn.style.transform='';setTimeout(()=>btn.style.transition='',500);});
+});
+})();
+</script>
+</body>
+</html>

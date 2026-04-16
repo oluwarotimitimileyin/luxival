@@ -61,7 +61,36 @@ CREATE TABLE IF NOT EXISTS uploaded_assets (
   metadata jsonb
 );
 
--- Optional: recommended indexes for query performance
+-- Indexes for query performance
 CREATE INDEX IF NOT EXISTS idx_contact_inquiries_status ON contact_inquiries (status);
 CREATE INDEX IF NOT EXISTS idx_ride_requests_status ON ride_requests (status);
 CREATE INDEX IF NOT EXISTS idx_newsletter_subscribers_status ON newsletter_subscribers (status);
+
+-- ─────────────────────────────────────────────
+-- RLS Policies
+-- Public visitors need INSERT only (to submit forms).
+-- SELECT is blocked for anon — admin reads data via the service-role key
+-- which bypasses RLS entirely, so no SELECT policy is needed here.
+-- ─────────────────────────────────────────────
+
+-- contact_inquiries
+ALTER TABLE contact_inquiries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anon can submit contact inquiries"
+  ON contact_inquiries FOR INSERT
+  WITH CHECK (true);
+
+-- ride_requests
+ALTER TABLE ride_requests ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anon can submit ride requests"
+  ON ride_requests FOR INSERT
+  WITH CHECK (true);
+
+-- newsletter_subscribers
+ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anon can subscribe to newsletter"
+  ON newsletter_subscribers FOR INSERT
+  WITH CHECK (true);
+
+-- uploaded_assets: no public access — service role only
+ALTER TABLE uploaded_assets ENABLE ROW LEVEL SECURITY;
+-- (no policies = zero access for anon; service role bypasses RLS)

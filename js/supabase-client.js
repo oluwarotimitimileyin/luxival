@@ -3,12 +3,12 @@
 
 const config = window.LuxivalConfig || {};
 const SUPABASE_URL = config.SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = config.SUPABASE_ANON_KEY || config.SUPABASE_PUBLISHABLE_KEY || '';
+const SUPABASE_PUBLISHABLE_KEY = config.SUPABASE_PUBLISHABLE_KEY || '';
 const PROJECT_IMAGES_BUCKET = 'project-images';
 const CUSTOMER_DOCUMENTS_BUCKET = 'customer-documents';
 const RIDE_UPLOADS_BUCKET = 'ride-uploads';
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 async function submitContactInquiry(payload) {
   return supabase.from('contact_inquiries').insert([payload]);
