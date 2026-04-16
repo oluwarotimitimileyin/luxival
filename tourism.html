@@ -91,6 +91,114 @@
       </div>
     </section>
 
+    <section class="section interactive-gallery">
+      <div class="section-intro">
+        <span class="eyebrow">Interactive Finland travel</span>
+        <h2>Experience Finnish destinations with a 3D travel preview.</h2>
+        <p>Not a generic landing page — this section blends immersive motion, curated hotels and cultural hotspots for Helsinki, sauna culture, galleries and Lapland.</p>
+      </div>
+      <div class="scene-grid">
+        <div class="three-scene" id="threeScene" aria-label="3D travel experience scene">
+          <div class="scene-note">Rotate the scene with your pointer and explore locations.</div>
+        </div>
+        <div class="scene-copy">
+          <article class="scene-card">
+            <span>Destination story</span>
+            <h3>Helsinki gallery route</h3>
+            <p>Oodi, Ateneum, Kiasma and Nordic restaurant culture framed as a premium travel itinerary.</p>
+          </article>
+          <article class="scene-card">
+            <span>Luxury stay</span>
+            <h3>Hotel and dining curation</h3>
+            <p>Handpicked boutique hotels, design-forward restaurants and riverfront dining for modern travelers.</p>
+          </article>
+          <article class="scene-card">
+            <span>Hidden hotspots</span>
+            <h3>Map-inspired route</h3>
+            <p>Choose fast access to city, nature or aurora experiences, with ride-ready logistics built in.</p>
+          </article>
+          <div class="scene-actions">
+            <button class="button button-primary" data-hotspot="helsinki">Helsinki</button>
+            <button class="button button-outline" data-hotspot="lakes">Lakes</button>
+            <button class="button button-outline" data-hotspot="aurora">Aurora</button>
+          </div>
+          <div class="travel-map">
+            <div class="map-visual">
+              <span class="map-hotspot active" data-hotspot="helsinki">Helsinki</span>
+              <span class="map-hotspot" data-hotspot="lakes">Lakes</span>
+              <span class="map-hotspot" data-hotspot="aurora">Lapland</span>
+            </div>
+            <div class="map-description" id="mapDescription">
+              <h4>Helsinki route</h4>
+              <p>Design-led city stops, gallery visits, and boutique concierge transport from Helsinki-Vantaa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section travel-guide">
+      <div class="section-intro">
+        <span class="eyebrow">Finland highlights</span>
+        <h2>Explore Finnish cities, lakeside retreats and design-led cultural destinations.</h2>
+        <p>More than transport — this is a curated travel workflow that introduces guests to Helsinki nightlife, boutique hotels, museums and rural escapes.</p>
+      </div>
+      <div class="destination-filter">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="city">City</button>
+        <button class="filter-button" data-filter="nature">Nature</button>
+        <button class="filter-button" data-filter="culture">Culture</button>
+      </div>
+      <div class="destination-gallery">
+        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?helsinki,hotel');">
+          <span>Hotel</span>
+          <h3>Hotel St. George</h3>
+          <p>Design-focused luxury stay steps from Ateneum and the Helsinki market square.</p>
+        </article>
+        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?helsinki,restaurant');">
+          <span>Restaurant</span>
+          <h3>Löyly & dining</h3>
+          <p>Sea-facing sauna and restaurant experiences with modern Finnish hospitality.</p>
+        </article>
+        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?museum,finland');">
+          <span>Museum</span>
+          <h3>Ateneum museum</h3>
+          <p>Classic Finnish art collections in the heart of Helsinki’s cultural quarter.</p>
+        </article>
+        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?lapland,aurora');">
+          <span>Destination</span>
+          <h3>Lapland aurora route</h3>
+          <p>Premium northern light adventures with tailored transport and luxury winter stays.</p>
+        </article>
+      </div>
+      <div class="travel-grid">
+        <article class="destination-card" data-category="city">
+          <h3>Helsinki Design District</h3>
+          <p>Iconic galleries, boutique hotels and modern restaurants that shape the city’s creative pulse.</p>
+        </article>
+        <article class="destination-card" data-category="culture">
+          <h3>Ateneum & art galleries</h3>
+          <p>Classic Finnish art, modern exhibits and cultural destinations for discerning travelers.</p>
+        </article>
+        <article class="destination-card" data-category="nature">
+          <h3>Lakeside retreats</h3>
+          <p>Quiet private villas and summer cottages near sauna lakes, just a short premium ride from Helsinki.</p>
+        </article>
+        <article class="destination-card" data-category="city">
+          <h3>Helsinki jazz clubs</h3>
+          <p>Evening music venues and intimate cultural spaces for guests seeking refined nightlife.</p>
+        </article>
+        <article class="destination-card" data-category="culture">
+          <h3>Sauna & lifestyle</h3>
+          <p>Premium sauna experiences, wellness stays and hospitality that honors Finnish ritual.</p>
+        </article>
+        <article class="destination-card" data-category="nature">
+          <h3>Lapland Aurora trips</h3>
+          <p>Seasonal northern light journeys, premium winter transport and remote light-chasing tours.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section pricing-calculator" id="pricing">
       <div class="section-intro">
         <span class="eyebrow">Dynamic pricing</span>
@@ -112,8 +220,7 @@
           </select>
           <label for="distance">Estimated distance (km)</label>
           <input id="distance" type="number" min="1" value="12" />
-          <label class="checkbox-label"><input id="airportSurcharge" type="checkbox" /> Include airport surcharge</label>
-          <label class="checkbox-label"><input id="busyHour" type="checkbox" /> Busy-hour / demand pricing</label>
+          <p class="form-note">Airport and busy-hour fees are detected automatically from the route and time.</p>
           <button id="calculateFare" class="button button-primary">Calculate fare</button>
         </div>
         <div class="calculator-result">
@@ -131,6 +238,60 @@
             <p>Designed for future pricing logic: busy hours, traffic, demand-based pricing and airport service fees.</p>
           </div>
           <a href="contact.html" class="button button-outline">Submit booking inquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro">
+        <span class="eyebrow">Ride request</span>
+        <h2>Submit your booking details</h2>
+        <p>Send us a quick ride request and we will follow up with availability, pricing, and next steps.</p>
+      </div>
+      <div class="calculator-grid">
+        <div class="calculator-card">
+          <form id="rideRequestForm">
+            <label for="rideName">Name</label>
+            <input id="rideName" type="text" placeholder="Your name" required />
+            <label for="rideEmail">Email</label>
+            <input id="rideEmail" type="email" placeholder="you@example.com" required />
+            <label for="ridePhone">Phone</label>
+            <input id="ridePhone" type="tel" placeholder="Contact phone" />
+            <label for="ridePickup">Pickup location</label>
+            <input id="ridePickup" type="text" placeholder="Helsinki-Vantaa Airport or hotel" required />
+            <label for="rideDestination">Destination</label>
+            <input id="rideDestination" type="text" placeholder="Central Helsinki, spa, city, etc." required />
+            <label for="rideTime">Ride time</label>
+            <input id="rideTime" type="time" placeholder="09:30" required />
+            <label for="rideServiceType">Service type</label>
+            <select id="rideServiceType">
+              <option value="airport">Airport transfer</option>
+              <option value="city">City ride</option>
+              <option value="city-to-city">City-to-city trip</option>
+              <option value="tourism">Tourism route</option>
+            </select>
+            <label for="rideDate">Preferred date</label>
+            <input id="rideDate" type="date" />
+            <label for="rideDistance">Estimated distance (km)</label>
+            <input id="rideDistance" type="number" min="1" placeholder="e.g. 12" />
+            <div class="estimate-preview">
+              <p><strong>Estimated distance:</strong> <span id="rideEstimateDistance">—</span> km</p>
+              <p><strong>Estimated price:</strong> €<span id="rideEstimatePrice">—</span></p>
+              <p class="estimate-note" id="rideEstimateNote">Airport service and rush-hour pricing will be calculated automatically.</p>
+            </div>
+            <label for="rideAirline">Airline (optional)</label>
+            <input id="rideAirline" type="text" placeholder="Finnair, SAS, Norwegian" />
+            <label for="rideFlightNumber">Flight number</label>
+            <input id="rideFlightNumber" type="text" placeholder="e.g. AY123" />
+            <div class="flight-track-row">
+              <button type="button" id="rideFlightTrack" class="button button-outline">Track flight</button>
+              <span class="form-note">Enter your flight number to generate a Google flight status search.</span>
+            </div>
+            <label for="rideNotes">Notes</label>
+            <textarea id="rideNotes" rows="4" placeholder="Tell us about timing, luggage, or rider needs"></textarea>
+            <button type="submit" class="button button-primary">Send ride request</button>
+            <p id="rideStatus" class="form-status"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -186,5 +347,12 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+  <script src="js/interactive-travel.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/chat-widget.js"></script>
 </body>
 </html>

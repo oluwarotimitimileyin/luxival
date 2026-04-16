@@ -1,184 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxival | Premium Digital Services & Helsinki Airport Transfer</title>
-  <meta name="description" content="Luxival delivers premium web design, SEO, UX funnels, QA credibility and Helsinki airport transfer services. Modern, conversion-focused digital experiences for business and travel." />
-  <meta property="og:title" content="Luxival | Premium Digital Services & Helsinki Airport Transfer" />
-  <meta property="og:description" content="Modern web design, SEO, QA, 3D UX, lead generation and Helsinki tour/airport transfer services from Luxival." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://luxival.com/" />
-  <meta property="og:image" content="/assets/og-home.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Luxival",
-    "url": "https://luxival.com",
-    "logo": "https://luxival.com/assets/logo.svg",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "email": "support@luxival.com",
-      "areaServed": "FI"
-    }],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Varikkokaarre 7A",
-      "addressLocality": "Vantaa",
-      "postalCode": "01700",
-      "addressCountry": "FI"
-    }
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxival – Where Arrival Meets Architecture</title>
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+
+/* --- Cursor --- */
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+
+/* --- Scroll bar --- */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0;transition:width .08s linear}
+
+/* --- Layout --- */
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:8rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+
+/* --- Type --- */
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:3rem;text-align:center}
+h3{font-size:1.4rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:1;margin-bottom:1.5rem;display:block}
+
+/* --- Button --- */
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:1rem 2.5rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;position:relative;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+
+/* --- Nav --- */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+
+/* --- Hero --- */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:5%;padding-top:6rem}
+.hero-left .subhead{font-size:1.2rem;margin-bottom:3rem;max-width:480px}
+.hero-right{position:relative;height:88vh;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);will-change:transform}
+.hero-right video,.hero-right img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-right video{z-index:1}
+.hero-right img.bg{z-index:0}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.06),transparent 55%);z-index:2;pointer-events:none}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.35;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;animation:bob 2.2s ease-in-out infinite;z-index:3}
+.scroll-hint::before{content:'';width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold))}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* --- Travel cards --- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;perspective:1400px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.05);will-change:transform;transition:border-color .3s,box-shadow .3s;position:relative}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.05),transparent);opacity:0;transition:opacity .3s;z-index:1;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:var(--border);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 40px rgba(201,169,106,.05)}
+.card-media{aspect-ratio:16/9;background:#000;position:relative;overflow:hidden}
+.card-media video,.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-media video{z-index:1}
+.card-media img{z-index:0;transition:transform .6s ease}
+.card:hover .card-media img{transform:scale(1.05)}
+.card-body{padding:2rem;position:relative;z-index:2}
+.card-body p{font-size:.98rem;margin-bottom:1.5rem}
+.learn-more{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);display:inline-flex;align-items:center;gap:.35rem;transition:gap .25s}
+.learn-more:hover{gap:.75rem}
+
+/* --- Tracking --- */
+.tracking{background:var(--card2);text-align:center}
+.tracking-vid{max-width:900px;margin:2.5rem auto 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;position:relative}
+.tracking-vid video,.tracking-vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tracking-vid video{z-index:1}
+
+/* --- Digital services --- */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.svc-media{aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);margin-bottom:2rem;position:relative;will-change:transform}
+.svc-media video,.svc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.svc-media video{z-index:1}
+.hover-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.hover-card{position:relative;aspect-ratio:1;overflow:hidden;border-radius:var(--r);background:var(--card);border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;will-change:transform;transition:border-color .3s;cursor:none}
+.hover-card:hover{border-color:var(--border)}
+.hover-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.15;transition:opacity .3s}
+.hover-card:hover img{opacity:.3}
+.hover-card span{color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;position:relative;z-index:1}
+
+/* --- Stats --- */
+.stats-strip{background:var(--card2);padding:5rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--gold);display:block;letter-spacing:-1px}
+.stat-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.45}
+
+/* --- Portfolio --- */
+.port-header{aspect-ratio:21/9;margin-bottom:4rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);position:relative}
+.port-header video,.port-header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.port-header video{z-index:1}
+.port-header::after{content:'Portfolio';position:absolute;bottom:1.8rem;left:2rem;z-index:2;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.55}
+.grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;perspective:1400px}
+.proj{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.05);will-change:transform;transition:border-color .3s}
+.proj:hover{border-color:var(--border)}
+.proj-thumb{aspect-ratio:4/3;position:relative;overflow:hidden;background:#080a10}
+.proj-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;transition:opacity .4s,transform .6s}
+.proj:hover .proj-thumb img{opacity:.6;transform:scale(1.05)}
+.proj-thumb span{position:relative;z-index:1;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.5}
+.proj-body{padding:1.4rem}
+.proj-body h3{font-size:1.05rem;margin-bottom:.5rem}
+.proj-body a{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+.proj-body a:hover{gap:.7rem}
+
+/* --- Founder --- */
+.founder-sec{background:var(--card2)}
+.founder-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center}
+.founder-img{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:3/4;position:relative;will-change:transform}
+.founder-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.founder-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,15,.65),transparent 45%)}
+.founder-tag{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.9}
+.founder-quote{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;line-height:1.7;margin-bottom:2rem;padding-left:1.5rem;border-left:2px solid var(--gold)}
+
+/* --- Footer --- */
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-bottom:3rem}
+input,textarea{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,.1);padding:1rem;margin-bottom:1rem;color:var(--text);border-radius:var(--r);font-family:inherit;font-size:.95rem;cursor:none;transition:border-color .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.socials{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.socials a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.45;transition:opacity .2s}
+.socials a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+
+/* --- Scroll reveal --- */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}
+
+/* --- Responsive --- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}
+  .hero-right{height:55vh;order:-1}
+  .grid-3,.grid-2,.grid-6,.footer-grid,.founder-grid{grid-template-columns:1fr;gap:2rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  section{padding:5rem 0}
+  .nav-links{display:none}
+}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html">Luxival</a>
-      <span>Premium digital & transport experiences</span>
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <span class="nav-brand">LUXIVAL</span>
+  <ul class="nav-links">
+    <li><a href="#travel">Travel</a></li>
+    <li><a href="#tracking">Tracking</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#founder">About</a></li>
+    <li><a href="#contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero-left">
+    <span class="eyebrow reveal">Premium Airport Transfer · Helsinki</span>
+    <h1 class="reveal d1">Luxival – Where Arrival Meets Architecture</h1>
+    <p class="subhead reveal d2">Premium airport transfer meets intelligent digital services. From tarmac to doorstep, every detail is orchestrated.</p>
+    <a href="#contact" class="btn reveal d3">Book Transfer</a>
+  </div>
+  <div class="hero-right" id="heroPanel">
+    <img class="bg" src="assets/images/IMG_1040.JPG" alt="Private jet at Helsinki terminal at night">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1040.JPG">
+      <source src="assets/video/hero-airport.mp4" type="video/mp4">
+    </video>
+    <div class="scroll-hint">Scroll</div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- TRAVEL & TOURISM -->
+<section class="container" id="travel">
+  <h2 class="reveal">Travel & Tourism</h2>
+  <div class="grid-3">
+
+    <div class="card reveal d1" data-tilt>
+      <div class="card-media">
+        <img src="assets/images/IMG_1041.JPG" alt="Private jet on reflective tarmac at night">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1041.JPG">
+          <source src="assets/video/hero-airport-1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="card-body">
+        <h3>Private Jet</h3>
+        <p>Cinematic arrival — private charter with runway-side greeting and priority clearance from Helsinki-Vantaa.</p>
+        <a href="#contact" class="learn-more">Book Now →</a>
+      </div>
     </div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="tourism.html">Tourism</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="button button-secondary">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero section-dark">
-      <div class="hero-copy">
-        <p class="eyebrow">Luxival</p>
-        <h1>Premium digital services and Helsinki airport transfer with confidence.</h1>
-        <p>We build elegant websites, high-converting UX funnels, technical QA credibility and reliable transport services for businesses and travelers in Finland.</p>
-        <div class="hero-actions">
-          <a href="contact.html" class="button button-primary">Book a consultation</a>
-          <a href="tourism.html" class="button button-outline">Request a ride</a>
-        </div>
+    <div class="card reveal d2" data-tilt>
+      <div class="card-media">
+        <img src="assets/images/IMG_1027.JPG" alt="Luxival branded luxury luggage set in dark gold lighting">
       </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <span>Featured</span>
-          <h2>Web + Transport</h2>
-          <p>Digital services and premium airport transfer built for modern businesses and demanding travellers.</p>
-        </div>
+      <div class="card-body">
+        <h3>Luggage</h3>
+        <p>White-glove baggage handling — from aircraft hold to your suite door, managed with precision and care.</p>
+        <a href="#contact" class="learn-more">Learn More →</a>
       </div>
-    </section>
+    </div>
 
-    <section class="section split-intro">
-      <div>
-        <h2>One brand. Two premium offerings.</h2>
-        <p>Luxival combines digital excellence with seamless Helsinki transportation services so your company can grow and your guests travel in comfort.</p>
+    <div class="card reveal d3" data-tilt>
+      <div class="card-media">
+        <img src="assets/images/IMG_1030.JPG" alt="Premium dark leather suitcases with gold hardware">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1030.JPG">
+          <source src="assets/video/animate-1.mp4" type="video/mp4">
+        </video>
       </div>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>Digital Services</h3>
-          <p>Web design, development, SEO, lead generation, UX funnels, 3D experiences, QA and social media strategy.</p>
-        </article>
-        <article class="feature-card">
-          <h3>Transport Services</h3>
-          <p>Helsinki-Vantaa airport transfers, private rides, city-to-city trips, tourism transport and custom booking solutions.</p>
-        </article>
+      <div class="card-body">
+        <h3>Arrival</h3>
+        <p>Chauffeured transfer with live GPS tracking, ETA updates, and chauffeur details from wheels-down to doorstep.</p>
+        <a href="#contact" class="learn-more">Request Ride →</a>
       </div>
-    </section>
+    </div>
 
-    <section class="section services-overview">
-      <div class="section-intro">
-        <span class="eyebrow">What we do</span>
-        <h2>Services designed for brands that demand premium clarity and performance.</h2>
-      </div>
-      <div class="services-grid">
-        <article>
-          <h3>Website Design</h3>
-          <p>Premium visual systems and conversion-focused landing pages that communicate trust.</p>
-        </article>
-        <article>
-          <h3>SEO Analysis</h3>
-          <p>Search-first optimization with local Helsinki and international visibility in mind.</p>
-        </article>
-        <article>
-          <h3>Lead Generation</h3>
-          <p>Funnel design, CTA optimization, and follow-up flows that turn visitors into clients.</p>
-        </article>
-        <article>
-          <h3>3D UX & Web Design</h3>
-          <p>Immersive interface concepts, motion-led experiences and modern 3D storytelling.
-          </p>
-        </article>
-      </div>
-      <div class="services-cta">
-        <a href="services.html" class="button button-primary">Explore all services</a>
-      </div>
-    </section>
+  </div>
+</section>
 
-    <section class="section trust-banner">
-      <div>
-        <span class="eyebrow">Trusted by modern businesses</span>
-        <p>Luxival supports digital product launches, SEO campaigns, QA projects, and premium transport experiences across Helsinki.</p>
-      </div>
-      <div class="trust-stats">
-        <div><strong>9/10</strong><span>Client satisfaction index</span></div>
-        <div><strong>100+</strong><span>Website tests & audits</span></div>
-        <div><strong>24/7</strong><span>Support for bookings and inquiries</span></div>
-      </div>
-    </section>
+<!-- TRACKING -->
+<section class="tracking" id="tracking">
+  <div class="container">
+    <h2 class="reveal">Track Your Ride in Real Time</h2>
+    <p class="reveal d1" style="max-width:560px;margin:0 auto">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
+    <div class="tracking-vid reveal d2">
+      <img src="assets/images/IMG_1041.JPG" alt="Tracking visual">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/video/founder-wide.mp4" type="video/mp4">
+        <source src="assets/video/animate-2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
 
-    <section class="section featured-projects">
-      <div class="section-intro">
-        <span class="eyebrow">Featured work</span>
-        <h2>Projects that show Luxival’s multidisciplinary strength.</h2>
-      </div>
-      <div class="project-grid">
-        <article>
-          <span class="project-category">Web QA</span>
-          <h3>Quality assurance for digital launch</h3>
-          <p>Detailed audits and test planning for high-stakes product launches.</p>
-        </article>
-        <article>
-          <span class="project-category">UX Funnel</span>
-          <h3>Conversion-driven service funnel</h3>
-          <p>Design and optimize the path from visitor to booking inquiry.</p>
-        </article>
-        <article>
-          <span class="project-category">Airport Transfer</span>
-          <h3>Premium travel booking experience</h3>
-          <p>Custom pricing and ride request UX created for Helsinki travelers.</p>
-        </article>
-      </div>
-      <div class="services-cta">
-        <a href="portfolio.html" class="button button-outline">View portfolio</a>
-      </div>
-    </section>
-
-    <section class="section cta-section section-gradient">
-      <div>
-        <h2>Start your Luxival experience today</h2>
-        <p>Whether you need a premium website, SEO strategy, or a reliable airport transfer, Luxival makes it easy for your customers to choose quality.</p>
-      </div>
-      <a href="contact.html" class="button button-primary">Send an inquiry</a>
-    </section>
-  </main>
-
-  <footer class="site-footer">
+<!-- DIGITAL SERVICES -->
+<section class="container" id="services">
+  <h2 class="reveal">Digital Services & Web Design</h2>
+  <div class="grid-2">
+    <div class="reveal">
+      <p>Luxival's digital arm delivers conversion-focused web design, local SEO, technical QA, and immersive 3D UX experiences — all under one roof.</p>
+      <p>We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
+      <p>From Helsinki to global reach — if it has a digital presence, we architect it.</p>
+      <br>
+      <a href="services.html" class="btn">Explore Services</a>
+    </div>
     <div>
-      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
-      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+      <div class="svc-media reveal d1" data-tilt>
+        <img src="assets/images/IMG_1069.JPG" alt="Luxival founder Olakunle Shopeju">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1069.JPG">
+          <source src="assets/video/founder-animated.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hover-cards reveal d2">
+        <div class="hover-card" data-tilt>
+          <img src="assets/images/IMG_1067.JPG" alt="Web Design">
+          <span>Web Design</span>
+        </div>
+        <div class="hover-card" data-tilt>
+          <img src="assets/images/IMG_1075.JPG" alt="SEO">
+          <span>SEO</span>
+        </div>
+        <div class="hover-card" data-tilt>
+          <img src="assets/images/IMG_1077.JPG" alt="QA">
+          <span>QA</span>
+        </div>
+      </div>
     </div>
-    <nav class="footer-nav">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-  </footer>
+  </div>
+</section>
 
-  <script src="js/main.js"></script>
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label">Transfers completed</span></div>
+      <div class="reveal d1"><span class="stat-num" data-target="9" data-suffix="/10">0</span><span class="stat-label">Client satisfaction</span></div>
+      <div class="reveal d2"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label">Website audits done</span></div>
+      <div class="reveal d3"><span class="stat-num" data-target="24" data-suffix="/7">0</span><span class="stat-label">Hour support</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- PORTFOLIO -->
+<section class="container" id="portfolio">
+  <h2 class="reveal">Portfolio & Projects</h2>
+  <div class="port-header reveal">
+    <img src="assets/images/IMG_1040.JPG" alt="Portfolio header">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1040.JPG">
+      <source src="assets/video/hero-airport-2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="grid-6">
+    <div class="proj reveal d1" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1041.JPG" alt="Terminal Alpha"><span>Transfer</span></div>
+      <div class="proj-body"><h3>Terminal Alpha</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+    <div class="proj reveal d2" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1029.JPG" alt="Villa Orbis"><span>Luggage</span></div>
+      <div class="proj-body"><h3>Villa Orbis</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+    <div class="proj reveal d3" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1030.JPG" alt="Tower Meridian"><span>Digital</span></div>
+      <div class="proj-body"><h3>Tower Meridian</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+    <div class="proj reveal d1" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1027.JPG" alt="Resort Aurora"><span>Premium</span></div>
+      <div class="proj-body"><h3>Resort Aurora</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+    <div class="proj reveal d2" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1040.JPG" alt="Hangar Luxe"><span>Airport</span></div>
+      <div class="proj-body"><h3>Hangar Luxe</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+    <div class="proj reveal d3" data-tilt>
+      <div class="proj-thumb"><img src="assets/images/IMG_1069.JPG" alt="HQ Nexus"><span>Digital</span></div>
+      <div class="proj-body"><h3>HQ Nexus</h3><a href="#contact">View Case Study →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-sec" id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-img reveal" id="founderPanel">
+        <img src="assets/images/IMG_1069.JPG" alt="Olakunle Shopeju — Founder of Luxival">
+        <span class="founder-tag">Founder & Director</span>
+      </div>
+      <div class="reveal d1">
+        <span class="eyebrow">About Luxival</span>
+        <h2 style="text-align:left;margin-bottom:1.5rem">Built on precision.<br>Driven by excellence.</h2>
+        <blockquote class="founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
+        <p>Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
+        <br>
+        <a href="about.html" class="btn">Read Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>Contact Luxival</h3><br>
+        <form id="footerForm">
+          <input type="text" id="fName" placeholder="Your name">
+          <input type="email" id="fEmail" placeholder="Email address">
+          <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project"></textarea>
+          <button class="btn" type="submit">Send Inquiry</button>
+          <p id="fStatus" style="margin-top:1rem;font-size:.88rem"></p>
+        </form>
+      </div>
+      <div class="reveal d1">
+        <h3>Connect</h3><br>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">X / Twitter</a>
+          <a href="https://wa.me/+358503518366">WhatsApp</a>
+        </div>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <p style="margin-top:2rem;font-size:.85rem;line-height:2">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <br>
+        <p style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.5">Airport Transfer · Web Design · SEO · QA</p>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ---- Cursor ---- */
+const dot = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function loopCursor(){
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(loopCursor);
+})();
+document.querySelectorAll('a,button,.hover-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='var(--gold)';ring.style.transition='width .25s,height .25s,border-color .25s'});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(201,169,106,.5)'});
+});
+
+/* ---- Scroll progress ---- */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+},{passive:true});
+
+/* ---- Nav on scroll ---- */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  nav.style.background=window.scrollY>60?'rgba(10,11,15,.96)':'rgba(10,11,15,.7)';
+},{passive:true});
+
+/* ---- Scroll reveal ---- */
+const reveals=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:0.1});
+reveals.forEach(el=>ro.observe(el));
+
+/* ---- Video play/pause on scroll ---- */
+document.querySelectorAll('video').forEach(v=>{
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) v.play().catch(()=>{}); else v.pause(); });
+  },{threshold:0.25}).observe(v);
+});
+
+/* ---- 3D card tilt ---- */
+document.querySelectorAll('[data-tilt]').forEach(el=>{
+  const strength=el.classList.contains('hover-card')?12:7;
+  el.addEventListener('pointermove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateX(${-y*strength}deg) rotateY(${x*strength}deg) scale(1.02)`;
+    el.style.boxShadow=`${-x*18}px ${-y*18}px 40px rgba(201,169,106,.07)`;
+  });
+  el.addEventListener('pointerleave',()=>{
+    el.style.transition='transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s';
+    el.style.transform='perspective(900px) rotateX(0) rotateY(0) scale(1)';
+    el.style.boxShadow='';
+    setTimeout(()=>el.style.transition='',700);
+  });
+});
+
+/* ---- Hero panel — global mouse tilt ---- */
+const heroPanel=document.getElementById('heroPanel');
+if(heroPanel){
+  document.addEventListener('mousemove',e=>{
+    const r=heroPanel.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)/r.width;
+    const y=(e.clientY-r.top-r.height/2)/r.height;
+    heroPanel.style.transform=`perspective(1200px) rotateX(${-y*6}deg) rotateY(${x*9}deg)`;
+    heroPanel.style.transition='transform .08s linear';
+  });
+}
+
+/* ---- Founder panel tilt ---- */
+const fp=document.getElementById('founderPanel');
+if(fp){
+  fp.addEventListener('pointermove',e=>{
+    const r=fp.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    fp.style.transform=`perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+  });
+  fp.addEventListener('pointerleave',()=>{
+    fp.style.transition='transform .8s cubic-bezier(.16,1,.3,1)';
+    fp.style.transform='perspective(1000px) rotateX(0) rotateY(0)';
+    setTimeout(()=>fp.style.transition='',800);
+  });
+}
+
+/* ---- Hero parallax ---- */
+const heroLeft=document.querySelector('.hero-left');
+window.addEventListener('scroll',()=>{
+  if(heroLeft) heroLeft.style.transform=`translateY(${window.scrollY*.14}px)`;
+},{passive:true});
+
+/* ---- Magnetic buttons ---- */
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('pointermove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.22;
+    const y=(e.clientY-r.top-r.height/2)*.22;
+    btn.style.transform=`translate(${x}px,${y}px)`;
+  });
+  btn.addEventListener('pointerleave',()=>{
+    btn.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
+    btn.style.transform='';
+    setTimeout(()=>btn.style.transition='',500);
+  });
+});
+
+/* ---- Stat counters ---- */
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+  const target=parseInt(el.dataset.target,10);
+  const suffix=el.dataset.suffix||'';
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      let n=0;
+      const step=Math.max(1,Math.ceil(target/55));
+      const t=setInterval(()=>{
+        n=Math.min(n+step,target);
+        el.textContent=n+suffix;
+        if(n>=target) clearInterval(t);
+      },18);
+      e.target._io&&e.target._io.disconnect();
+    });
+  },{threshold:0.5}).observe(el);
+});
+
+/* ---- Footer form ---- */
+const form=document.getElementById('footerForm');
+const fStatus=document.getElementById('fStatus');
+if(form){
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    fStatus.style.color='var(--gold)';
+    fStatus.textContent='Sending…';
+    const payload={
+      name:document.getElementById('fName').value.trim(),
+      email:document.getElementById('fEmail').value.trim(),
+      message:document.getElementById('fMsg').value.trim(),
+      source:'luxival-3d',status:'new'
+    };
+    if(window.LuxivalSupabase){
+      const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
+      if(error){fStatus.style.color='#f77';fStatus.textContent='Unable to send. Email us directly.';}
+      else{form.reset();fStatus.textContent='Inquiry sent. We will reply shortly.';}
+    } else {
+      setTimeout(()=>{form.reset();fStatus.textContent='Inquiry received. We will reply shortly.';},700);
+    }
+  });
+}
+
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
 </body>
 </html>

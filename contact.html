@@ -39,14 +39,40 @@
         </div>
         <div class="contact-card">
           <h2>Inquiry form</h2>
-          <form>
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your name" />
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@example.com" />
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Tell us about your project or booking request"></textarea>
+          <form id="contactForm">
+            <label for="contactName">Name</label>
+            <input id="contactName" type="text" placeholder="Your name" required />
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" type="email" placeholder="you@example.com" required />
+            <label for="contactPhone">Phone</label>
+            <input id="contactPhone" type="tel" placeholder="Optional phone" />
+            <label for="contactCompany">Company</label>
+            <input id="contactCompany" type="text" placeholder="Optional company" />
+            <label for="contactService">Service interest</label>
+            <select id="contactService">
+              <option>Website design</option>
+              <option>SEO analysis</option>
+              <option>Lead generation</option>
+              <option>3D UX / web design</option>
+              <option>Web QA / testing</option>
+              <option>Transport / tourism</option>
+            </select>
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" rows="5" placeholder="Tell us about your project or booking request"></textarea>
             <button type="submit" class="button button-primary">Send inquiry</button>
+            <p id="contactStatus" class="form-status"></p>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h2>Newsletter signup</h2>
+          <p>Get updates on premium launches, SEO strategy, and transport service offers.</p>
+          <form id="newsletterForm">
+            <label for="newsletterName">Name</label>
+            <input id="newsletterName" type="text" placeholder="Your name" />
+            <label for="newsletterEmail">Email</label>
+            <input id="newsletterEmail" type="email" placeholder="you@example.com" required />
+            <button type="submit" class="button button-primary">Subscribe</button>
+            <p id="newsletterStatus" class="form-status"></p>
           </form>
         </div>
       </div>
@@ -60,5 +86,10 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/chat-widget.js"></script>
 </body>
 </html>

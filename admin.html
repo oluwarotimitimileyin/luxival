@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxival Admin Dashboard</title>
+  <meta name="description" content="Luxival admin dashboard for reviewing leads, ride requests, and newsletter subscribers." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">Luxival</a>
+      <span>Admin dashboard</span>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="tourism.html">Tourism</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html" class="button button-secondary">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section admin-hero">
+      <div class="section-intro">
+        <span class="eyebrow">Admin dashboard</span>
+        <h1>Lead management and booking review for Luxival.</h1>
+        <p>View new ride requests, contact inquiries and newsletter subscriptions from a single dashboard.</p>
+      </div>
+      <div class="dashboard-summary" id="dashboardSummary">
+        <div class="dashboard-card">
+          <h3 id="contactCount">0</h3>
+          <p>Contact inquiries</p>
+        </div>
+        <div class="dashboard-card">
+          <h3 id="rideCount">0</h3>
+          <p>Ride requests</p>
+        </div>
+        <div class="dashboard-card">
+          <h3 id="newsletterCount">0</h3>
+          <p>Newsletter subscribers</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-intro">
+        <span class="eyebrow">Recent ride requests</span>
+        <h2>Review new bookings and flight details.</h2>
+      </div>
+      <div id="rideRequestsTable" class="data-table-wrapper"></div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-intro">
+        <span class="eyebrow">Recent contact leads</span>
+        <h2>Quick view of inquiry submissions.</h2>
+      </div>
+      <div id="contactInquiriesTable" class="data-table-wrapper"></div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-intro">
+        <span class="eyebrow">Newsletter list</span>
+        <h2>Recent subscriptions and email captures.</h2>
+      </div>
+      <div id="newsletterTable" class="data-table-wrapper"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
+      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
