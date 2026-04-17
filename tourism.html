@@ -1,358 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tourism & Travel | Luxival Finland</title>
-  <meta name="description" content="Luxival Tourism delivers premium Finland travel services with airport transfers, private rides, hotel sourcing and seasonal travel experiences." />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tourism & Airport Transfers | Luxival Finland</title>
+<meta name="description" content="Luxival Tourism: premium Helsinki-Vantaa airport transfers, private rides, Finland travel planning, and seasonal experiences. Book your ride online.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}
+h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.hero{min-height:90vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:5%;padding-top:7rem}
+.hero-left .subhead{font-size:1.15rem;margin-bottom:3rem;max-width:480px}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.season-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2rem;transition:border-color .3s}
+.season-card:hover{border-color:var(--border)}
+.season-card h3{color:var(--text);font-size:1.05rem;margin-bottom:.5rem}
+.season-card p{font-size:.9rem;opacity:.6;margin:0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.feature{background:var(--card);border-radius:var(--r);padding:2rem;border:1px solid rgba(255,255,255,.05);transition:border-color .3s}
+.feature:hover{border-color:var(--border)}
+.feature h3{color:var(--text);font-size:1rem;margin-bottom:.5rem}
+.feature p{font-size:.88rem;opacity:.6;margin:0}
+.check{display:inline-block;width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;text-align:center;line-height:18px;font-size:.6rem;color:var(--gold);margin-bottom:.8rem}
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.dest-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2rem;transition:border-color .3s}
+.dest-card:hover{border-color:var(--border)}
+.dest-cat{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:.5rem;display:block}
+.dest-card h3{color:var(--text);font-size:1.05rem;margin-bottom:.5rem}
+.dest-card p{font-size:.88rem;opacity:.6;margin:0}
+.filter-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter{padding:.5rem 1.4rem;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:transparent;color:var(--text);cursor:none;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;transition:border-color .25s,background .25s}
+.filter:hover,.filter.active{border-color:var(--gold);background:rgba(201,169,106,.06);color:var(--gold)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.calc-card,.result-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2.5rem}
+label{display:block;font-size:.73rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;margin-bottom:.4rem}
+input,select,textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);padding:.85rem 1rem;margin-bottom:1.2rem;color:var(--text);border-radius:var(--r);font-family:inherit;font-size:.95rem;cursor:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+select option{background:var(--card)}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.95rem}
+.result-row:last-of-type{border-bottom:none}
+.result-total{font-size:1.1rem;font-weight:500;color:var(--gold);margin-top:1rem}
+.formula{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:1rem 1.2rem;margin:1.5rem 0;font-size:.88rem;opacity:.6}
+.form-status{margin-top:1rem;font-size:.88rem;min-height:1.2rem}
+.estimate-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1rem}
+.estimate-box p{font-size:.9rem;opacity:.7;margin:.3rem 0}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.faq{background:var(--card);border-radius:var(--r);padding:1.8rem;border:1px solid rgba(255,255,255,.05)}
+.faq h3{color:var(--text);font-size:1rem;margin-bottom:.5rem}
+.faq p{font-size:.9rem;opacity:.6;margin:0}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.why{background:var(--card2);border:1px solid rgba(255,255,255,.04);border-radius:var(--r);padding:2rem}
+.why h3{color:var(--text);font-size:1rem;margin-bottom:.4rem}
+.why p{font-size:.88rem;opacity:.55;margin:0}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
+.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
+.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}.season-grid,.grid-2,.grid-3,.calc-grid,.faq-grid,.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand"><a href="index.html">Luxival</a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="tourism.html" aria-current="page">Tourism</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="button button-secondary">Contact</a>
-    </nav>
-  </header>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
 
-  <main>
-    <section class="section tourism-hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Tourism & Transport</span>
-        <h1>Luxival Tourism is a dedicated premium travel experience for Finland.</h1>
-        <p>Secure airport transfers, private rides, hotel and house sourcing, and seasonal tour planning wrapped in a premium tourism page separate from our digital services.</p>
-        <div class="hero-actions">
-          <a href="#pricing" class="button button-primary">Estimate your fare</a>
-          <a href="#seasons" class="button button-outline">Explore Finland seasons</a>
-        </div>
-      </div>
-      <div class="season-highlights" id="seasons">
-        <article class="season-card winter">
-          <h3>Winter in Finland</h3>
-          <p>Snow-white landscapes, Northern Light escapes, and cozy airport rides into Helsinki.</p>
-        </article>
-        <article class="season-card spring">
-          <h3>Spring in Finland</h3>
-          <p>Blooming parks, city walks and fresh travel days for tourism and corporate arrival services.</p>
-        </article>
-        <article class="season-card summer">
-          <h3>Summer in Finland</h3>
-          <p>Lake trips, city festivals and long daylight journeys with premium private rides.</p>
-        </article>
-      </div>
-    </section>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="tourism.html" class="active">Travel</a></li>
+    <li><a href="design-services.html">Design</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
 
-    <section class="section feature-panel">
-      <div>
-        <h2>Dedicated tourism service</h2>
-        <p>This page is a stand-alone tourism experience page, designed to sell Finland travel, airport pickups, private rides, and hospitality coordination.</p>
-      </div>
-      <div class="feature-grid">
-        <article>
-          <h3>Airport transfer excellence</h3>
-          <p>Seamless Helsinki-Vantaa pickups with professional drivers, premium vehicles, and a no-smoking service policy.</p>
-        </article>
-        <article>
-          <h3>Private rides & custom tours</h3>
-          <p>Local sightseeing, city-to-city travel and tourism routes tailored to your schedule and interests.</p>
-        </article>
-        <article>
-          <h3>Hotel & house sourcing</h3>
-          <p>We can help find premium stays, boutique hotels and private homes for travelers across Helsinki and nearby regions.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section service-summary">
-      <div class="tiles-grid">
-        <article>
-          <h3>Private airport pickup</h3>
-          <p>Efficient, no-wait transport from Helsinki-Vantaa with flight tracking and flexible arrival support.</p>
-        </article>
-        <article>
-          <h3>City-to-city travel</h3>
-          <p>Comfortable transfers between Helsinki, Espoo, Vantaa, Lahti and other nearby destinations.</p>
-        </article>
-        <article>
-          <h3>Tourism planning</h3>
-          <p>Seasonal Finland storytelling for winter, spring and summer travel combined with bespoke route design.</p>
-        </article>
-        <article>
-          <h3>Safe and premium service</h3>
-          <p>Professional, polite drivers. Strict no-smoking and clean-car standards for every ride.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section interactive-gallery">
-      <div class="section-intro">
-        <span class="eyebrow">Interactive Finland travel</span>
-        <h2>Experience Finnish destinations with a 3D travel preview.</h2>
-        <p>Not a generic landing page — this section blends immersive motion, curated hotels and cultural hotspots for Helsinki, sauna culture, galleries and Lapland.</p>
-      </div>
-      <div class="scene-grid">
-        <div class="three-scene" id="threeScene" aria-label="3D travel experience scene">
-          <div class="scene-note">Rotate the scene with your pointer and explore locations.</div>
-        </div>
-        <div class="scene-copy">
-          <article class="scene-card">
-            <span>Destination story</span>
-            <h3>Helsinki gallery route</h3>
-            <p>Oodi, Ateneum, Kiasma and Nordic restaurant culture framed as a premium travel itinerary.</p>
-          </article>
-          <article class="scene-card">
-            <span>Luxury stay</span>
-            <h3>Hotel and dining curation</h3>
-            <p>Handpicked boutique hotels, design-forward restaurants and riverfront dining for modern travelers.</p>
-          </article>
-          <article class="scene-card">
-            <span>Hidden hotspots</span>
-            <h3>Map-inspired route</h3>
-            <p>Choose fast access to city, nature or aurora experiences, with ride-ready logistics built in.</p>
-          </article>
-          <div class="scene-actions">
-            <button class="button button-primary" data-hotspot="helsinki">Helsinki</button>
-            <button class="button button-outline" data-hotspot="lakes">Lakes</button>
-            <button class="button button-outline" data-hotspot="aurora">Aurora</button>
-          </div>
-          <div class="travel-map">
-            <div class="map-visual">
-              <span class="map-hotspot active" data-hotspot="helsinki">Helsinki</span>
-              <span class="map-hotspot" data-hotspot="lakes">Lakes</span>
-              <span class="map-hotspot" data-hotspot="aurora">Lapland</span>
-            </div>
-            <div class="map-description" id="mapDescription">
-              <h4>Helsinki route</h4>
-              <p>Design-led city stops, gallery visits, and boutique concierge transport from Helsinki-Vantaa.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section travel-guide">
-      <div class="section-intro">
-        <span class="eyebrow">Finland highlights</span>
-        <h2>Explore Finnish cities, lakeside retreats and design-led cultural destinations.</h2>
-        <p>More than transport — this is a curated travel workflow that introduces guests to Helsinki nightlife, boutique hotels, museums and rural escapes.</p>
-      </div>
-      <div class="destination-filter">
-        <button class="filter-button active" data-filter="all">All</button>
-        <button class="filter-button" data-filter="city">City</button>
-        <button class="filter-button" data-filter="nature">Nature</button>
-        <button class="filter-button" data-filter="culture">Culture</button>
-      </div>
-      <div class="destination-gallery">
-        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?helsinki,hotel');">
-          <span>Hotel</span>
-          <h3>Hotel St. George</h3>
-          <p>Design-focused luxury stay steps from Ateneum and the Helsinki market square.</p>
-        </article>
-        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?helsinki,restaurant');">
-          <span>Restaurant</span>
-          <h3>Löyly & dining</h3>
-          <p>Sea-facing sauna and restaurant experiences with modern Finnish hospitality.</p>
-        </article>
-        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?museum,finland');">
-          <span>Museum</span>
-          <h3>Ateneum museum</h3>
-          <p>Classic Finnish art collections in the heart of Helsinki’s cultural quarter.</p>
-        </article>
-        <article class="destination-media-card" style="background-image: url('https://source.unsplash.com/featured/800x600/?lapland,aurora');">
-          <span>Destination</span>
-          <h3>Lapland aurora route</h3>
-          <p>Premium northern light adventures with tailored transport and luxury winter stays.</p>
-        </article>
-      </div>
-      <div class="travel-grid">
-        <article class="destination-card" data-category="city">
-          <h3>Helsinki Design District</h3>
-          <p>Iconic galleries, boutique hotels and modern restaurants that shape the city’s creative pulse.</p>
-        </article>
-        <article class="destination-card" data-category="culture">
-          <h3>Ateneum & art galleries</h3>
-          <p>Classic Finnish art, modern exhibits and cultural destinations for discerning travelers.</p>
-        </article>
-        <article class="destination-card" data-category="nature">
-          <h3>Lakeside retreats</h3>
-          <p>Quiet private villas and summer cottages near sauna lakes, just a short premium ride from Helsinki.</p>
-        </article>
-        <article class="destination-card" data-category="city">
-          <h3>Helsinki jazz clubs</h3>
-          <p>Evening music venues and intimate cultural spaces for guests seeking refined nightlife.</p>
-        </article>
-        <article class="destination-card" data-category="culture">
-          <h3>Sauna & lifestyle</h3>
-          <p>Premium sauna experiences, wellness stays and hospitality that honors Finnish ritual.</p>
-        </article>
-        <article class="destination-card" data-category="nature">
-          <h3>Lapland Aurora trips</h3>
-          <p>Seasonal northern light journeys, premium winter transport and remote light-chasing tours.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section pricing-calculator" id="pricing">
-      <div class="section-intro">
-        <span class="eyebrow">Dynamic pricing</span>
-        <h2>Interactive fare estimator for every ride.</h2>
-        <p>Use our dynamic pricing calculator to preview airport, city and tourism travel estimates with transparent fees and optional surcharges.</p>
-      </div>
-      <div class="calculator-grid">
-        <div class="calculator-card">
-          <label for="pickup">Pickup location</label>
-          <input id="pickup" type="text" placeholder="e.g. Helsinki-Vantaa Airport" />
-          <label for="destination">Destination</label>
-          <input id="destination" type="text" placeholder="e.g. Central Helsinki hotel" />
-          <label for="serviceType">Service type</label>
-          <select id="serviceType">
-            <option value="airport">Airport transfer</option>
-            <option value="city">City ride</option>
-            <option value="city-to-city">City-to-city trip</option>
-            <option value="tourism">Tourism route</option>
-          </select>
-          <label for="distance">Estimated distance (km)</label>
-          <input id="distance" type="number" min="1" value="12" />
-          <p class="form-note">Airport and busy-hour fees are detected automatically from the route and time.</p>
-          <button id="calculateFare" class="button button-primary">Calculate fare</button>
-        </div>
-        <div class="calculator-result">
-          <h3>Fare preview</h3>
-          <div class="result-box">
-            <p><strong>Starting price:</strong> €10</p>
-            <p><strong>Distance fee:</strong> €<span id="distancePrice">12.00</span></p>
-            <p><strong>Service fee:</strong> €<span id="servicePrice">0.00</span></p>
-            <p><strong>Airport surcharge:</strong> €<span id="airportPrice">0.00</span></p>
-            <p><strong>Demand surcharge:</strong> €<span id="demandPrice">0.00</span></p>
-            <p class="result-line total"><strong>Estimated total:</strong> €<span id="totalPrice">22.00</span></p>
-          </div>
-          <div class="formula-box">
-            <p>Price formula: <strong>€10 + €1/km + service fee + airport surcharge + demand surcharge</strong></p>
-            <p>Designed for future pricing logic: busy hours, traffic, demand-based pricing and airport service fees.</p>
-          </div>
-          <a href="contact.html" class="button button-outline">Submit booking inquiry</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-intro">
-        <span class="eyebrow">Ride request</span>
-        <h2>Submit your booking details</h2>
-        <p>Send us a quick ride request and we will follow up with availability, pricing, and next steps.</p>
-      </div>
-      <div class="calculator-grid">
-        <div class="calculator-card">
-          <form id="rideRequestForm">
-            <label for="rideName">Name</label>
-            <input id="rideName" type="text" placeholder="Your name" required />
-            <label for="rideEmail">Email</label>
-            <input id="rideEmail" type="email" placeholder="you@example.com" required />
-            <label for="ridePhone">Phone</label>
-            <input id="ridePhone" type="tel" placeholder="Contact phone" />
-            <label for="ridePickup">Pickup location</label>
-            <input id="ridePickup" type="text" placeholder="Helsinki-Vantaa Airport or hotel" required />
-            <label for="rideDestination">Destination</label>
-            <input id="rideDestination" type="text" placeholder="Central Helsinki, spa, city, etc." required />
-            <label for="rideTime">Ride time</label>
-            <input id="rideTime" type="time" placeholder="09:30" required />
-            <label for="rideServiceType">Service type</label>
-            <select id="rideServiceType">
-              <option value="airport">Airport transfer</option>
-              <option value="city">City ride</option>
-              <option value="city-to-city">City-to-city trip</option>
-              <option value="tourism">Tourism route</option>
-            </select>
-            <label for="rideDate">Preferred date</label>
-            <input id="rideDate" type="date" />
-            <label for="rideDistance">Estimated distance (km)</label>
-            <input id="rideDistance" type="number" min="1" placeholder="e.g. 12" />
-            <div class="estimate-preview">
-              <p><strong>Estimated distance:</strong> <span id="rideEstimateDistance">—</span> km</p>
-              <p><strong>Estimated price:</strong> €<span id="rideEstimatePrice">—</span></p>
-              <p class="estimate-note" id="rideEstimateNote">Airport service and rush-hour pricing will be calculated automatically.</p>
-            </div>
-            <label for="rideAirline">Airline (optional)</label>
-            <input id="rideAirline" type="text" placeholder="Finnair, SAS, Norwegian" />
-            <label for="rideFlightNumber">Flight number</label>
-            <input id="rideFlightNumber" type="text" placeholder="e.g. AY123" />
-            <div class="flight-track-row">
-              <button type="button" id="rideFlightTrack" class="button button-outline">Track flight</button>
-              <span class="form-note">Enter your flight number to generate a Google flight status search.</span>
-            </div>
-            <label for="rideNotes">Notes</label>
-            <textarea id="rideNotes" rows="4" placeholder="Tell us about timing, luggage, or rider needs"></textarea>
-            <button type="submit" class="button button-primary">Send ride request</button>
-            <p id="rideStatus" class="form-status"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="section tourism-detail">
-      <div class="section-intro">
-        <span class="eyebrow">Why choose Luxival Tourism</span>
-        <h2>Tourism, transport and QA-tested pricing in one premium package.</h2>
-        <p>Our tourism business is under Luxival Tourism, with a separate travel page and dedicated booking experience for visitors and families.</p>
-      </div>
-      <div class="feature-grid">
-        <article>
-          <h3>No-smoking journeys</h3>
-          <p>Every ride is smoke-free. Our drivers maintain clean, comfortable vehicles and a calm travel environment.</p>
-        </article>
-        <article>
-          <h3>Hotel & home sourcing</h3>
-          <p>We support travelers with premium hotel and private house recommendations to complete the Finland experience.</p>
-        </article>
-        <article>
-          <h3>QA-tested reliability</h3>
-          <p>Our travel technology and pricing estimator are QA-reviewed to ensure consistent, trustworthy booking guidance.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section faq-section">
-      <div class="section-intro">
-        <span class="eyebrow">FAQ</span>
-        <h2>Tourism and travel questions answered</h2>
-      </div>
-      <div class="faq-grid">
-        <article>
-          <h3>How are prices calculated?</h3>
-          <p>Pricing begins at €10, plus €1 per km. Additional service and demand fees are added when needed. Airport rides may also include a surcharge.</p>
-        </article>
-        <article>
-          <h3>Do you serve Helsinki-Vantaa Airport?</h3>
-          <p>Yes. We provide reliable arrivals, departures, and flexible pickup windows for airport travel.</p>
-        </article>
-        <article>
-          <h3>Can I book a custom tour?</h3>
-          <p>Yes. We handle custom tourism routes, seasonal travel suggestions, and premium Finland experiences.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
-      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero-left">
+    <span class="eyebrow reveal">Tourism & Transport · Helsinki</span>
+    <h1 class="reveal d1">Premium airport<br>transfer & Finland<br>travel experience.</h1>
+    <p class="subhead reveal d2">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one premium transport experience.</p>
+    <div class="hero-actions reveal d3">
+      <a href="#pricing" class="btn">Estimate your fare</a>
+      <a href="#seasons" class="btn btn-outline">Explore Finland</a>
     </div>
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-  <script src="js/interactive-travel.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/chat-widget.js"></script>
+  </div>
+  <div class="reveal d2" id="seasons">
+    <span class="eyebrow" style="margin-bottom:1.2rem">Finland by season</span>
+    <div class="season-grid">
+      <div class="season-card">
+        <h3>Winter</h3>
+        <p>Northern lights, snow-white landscapes, and warm airport rides into Helsinki.</p>
+      </div>
+      <div class="season-card">
+        <h3>Spring</h3>
+        <p>Blooming parks, city walks, and fresh travel days for tourism and corporate arrivals.</p>
+      </div>
+      <div class="season-card">
+        <h3>Summer</h3>
+        <p>Lake trips, city festivals, and long daylight journeys with premium private rides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- SERVICES OVERVIEW -->
+<section class="container">
+  <span class="eyebrow reveal">What we offer</span>
+  <h2 class="reveal d1" style="text-align:left">Dedicated transport services</h2>
+  <div class="grid-3">
+    <div class="feature reveal d1"><div class="check">✓</div><h3>Airport transfer excellence</h3><p>Seamless Helsinki-Vantaa pickups with professional drivers, premium vehicles, and a strict no-smoking policy.</p></div>
+    <div class="feature reveal d2"><div class="check">✓</div><h3>Private rides & custom tours</h3><p>Local sightseeing, city-to-city travel, and tourism routes tailored to your schedule and interests.</p></div>
+    <div class="feature reveal d3"><div class="check">✓</div><h3>Hotel & house sourcing</h3><p>We help find premium stays, boutique hotels, and private homes for travellers across Helsinki and nearby regions.</p></div>
+    <div class="feature reveal d1"><div class="check">✓</div><h3>Private airport pickup</h3><p>Efficient no-wait transport from Helsinki-Vantaa with flight tracking and flexible arrival support.</p></div>
+    <div class="feature reveal d2"><div class="check">✓</div><h3>City-to-city travel</h3><p>Comfortable transfers between Helsinki, Espoo, Vantaa, Lahti, and other nearby destinations.</p></div>
+    <div class="feature reveal d3"><div class="check">✓</div><h3>Tourism planning</h3><p>Seasonal Finland storytelling for winter, spring, and summer combined with bespoke route design.</p></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- FINLAND DESTINATIONS -->
+<section class="container">
+  <span class="eyebrow reveal">Finland highlights</span>
+  <h2 class="reveal d1" style="text-align:left">Curated destinations & experiences</h2>
+  <div class="filter-row reveal">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="city">City</button>
+    <button class="filter" data-filter="nature">Nature</button>
+    <button class="filter" data-filter="culture">Culture</button>
+  </div>
+  <div class="dest-grid" id="destGrid">
+    <div class="dest-card reveal d1" data-category="city"><span class="dest-cat">City</span><h3>Helsinki Design District</h3><p>Iconic galleries, boutique hotels, and modern restaurants that shape the city's creative pulse.</p></div>
+    <div class="dest-card reveal d2" data-category="culture"><span class="dest-cat">Culture</span><h3>Ateneum & Art Galleries</h3><p>Classic Finnish art, modern exhibits, and cultural destinations for discerning travellers.</p></div>
+    <div class="dest-card reveal d3" data-category="nature"><span class="dest-cat">Nature</span><h3>Lakeside Retreats</h3><p>Quiet private villas and summer cottages near sauna lakes, just a short premium ride from Helsinki.</p></div>
+    <div class="dest-card reveal d1" data-category="city"><span class="dest-cat">City</span><h3>Helsinki Jazz Clubs</h3><p>Evening music venues and intimate cultural spaces for guests seeking refined nightlife.</p></div>
+    <div class="dest-card reveal d2" data-category="culture"><span class="dest-cat">Culture</span><h3>Sauna & Wellness</h3><p>Premium sauna experiences, wellness stays, and hospitality that honours Finnish ritual.</p></div>
+    <div class="dest-card reveal d3" data-category="nature"><span class="dest-cat">Nature</span><h3>Lapland Aurora Trips</h3><p>Seasonal northern light journeys, premium winter transport, and remote light-chasing tours.</p></div>
+    <div class="dest-card reveal d1" data-category="culture"><span class="dest-cat">Dining</span><h3>Löyly & Waterfront Dining</h3><p>Sea-facing sauna and restaurant experiences with modern Finnish hospitality on Helsinki's waterfront.</p></div>
+    <div class="dest-card reveal d2" data-category="city"><span class="dest-cat">Stay</span><h3>Hotel St. George</h3><p>Design-focused luxury stay steps from Ateneum and the Helsinki market square.</p></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- FARE CALCULATOR -->
+<section class="container" id="pricing">
+  <span class="eyebrow reveal">Dynamic pricing</span>
+  <h2 class="reveal d1" style="text-align:left">Estimate your fare</h2>
+  <p class="reveal d2" style="max-width:560px;margin-bottom:3rem">Preview your trip cost instantly. Airport surcharges and busy-hour pricing are calculated automatically.</p>
+  <div class="calc-grid">
+    <div class="calc-card reveal d1">
+      <label for="pickup">Pickup location</label>
+      <input id="pickup" type="text" placeholder="Helsinki-Vantaa Airport">
+      <label for="destination">Destination</label>
+      <input id="destination" type="text" placeholder="Central Helsinki hotel">
+      <label for="serviceType">Service type</label>
+      <select id="serviceType">
+        <option value="airport">Airport transfer</option>
+        <option value="city">City ride</option>
+        <option value="city-to-city">City-to-city trip</option>
+        <option value="tourism">Tourism route</option>
+      </select>
+      <label for="distance">Estimated distance (km)</label>
+      <input id="distance" type="number" min="1" value="12">
+      <p style="font-size:.82rem;opacity:.5;margin-bottom:1.5rem">Airport and busy-hour fees detected automatically from route and time.</p>
+      <button id="calculateFare" class="btn" style="width:100%">Calculate fare</button>
+    </div>
+    <div class="result-card reveal d2">
+      <h3 style="color:var(--text);margin-bottom:1.5rem">Fare preview</h3>
+      <div class="result-row"><span>Starting price</span><span>€10.00</span></div>
+      <div class="result-row"><span>Distance fee</span><span>€<span id="distancePrice">12.00</span></span></div>
+      <div class="result-row"><span>Service fee</span><span>€<span id="servicePrice">0.00</span></span></div>
+      <div class="result-row"><span>Airport surcharge</span><span>€<span id="airportPrice">0.00</span></span></div>
+      <div class="result-row"><span>Demand surcharge</span><span>€<span id="demandPrice">0.00</span></span></div>
+      <p class="result-total">Estimated total: €<span id="totalPrice">22.00</span></p>
+      <div class="formula">Price formula: €10 + €1/km + service fee + airport surcharge + demand surcharge</div>
+      <a href="contact.html" class="btn" style="width:100%;text-align:center;display:block">Submit booking inquiry</a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- RIDE REQUEST FORM -->
+<section class="container">
+  <span class="eyebrow reveal">Book a ride</span>
+  <h2 class="reveal d1" style="text-align:left">Submit your booking details</h2>
+  <p class="reveal d2" style="max-width:560px;margin-bottom:3rem">Send us your ride request and we will confirm availability, pricing, and next steps within one business day.</p>
+  <div class="calc-grid">
+    <div class="calc-card reveal">
+      <form id="rideRequestForm">
+        <label for="rideName">Name</label>
+        <input id="rideName" type="text" placeholder="Your name" required>
+        <label for="rideEmail">Email</label>
+        <input id="rideEmail" type="email" placeholder="you@example.com" required>
+        <label for="ridePhone">Phone</label>
+        <input id="ridePhone" type="tel" placeholder="+358 ...">
+        <label for="ridePickup">Pickup location</label>
+        <input id="ridePickup" type="text" placeholder="Helsinki-Vantaa Airport" required>
+        <label for="rideDestination">Destination</label>
+        <input id="rideDestination" type="text" placeholder="Central Helsinki hotel" required>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div>
+            <label for="rideDate">Preferred date</label>
+            <input id="rideDate" type="date">
+          </div>
+          <div>
+            <label for="rideTime">Ride time</label>
+            <input id="rideTime" type="time">
+          </div>
+        </div>
+        <label for="rideServiceType">Service type</label>
+        <select id="rideServiceType">
+          <option value="airport">Airport transfer</option>
+          <option value="city">City ride</option>
+          <option value="city-to-city">City-to-city trip</option>
+          <option value="tourism">Tourism route</option>
+        </select>
+        <label for="rideFlightNumber">Flight number (optional)</label>
+        <input id="rideFlightNumber" type="text" placeholder="e.g. AY123">
+        <label for="rideNotes">Notes</label>
+        <textarea id="rideNotes" rows="3" placeholder="Luggage, timing, or other requirements"></textarea>
+        <button type="submit" class="btn" style="width:100%">Send ride request</button>
+        <p id="rideStatus" class="form-status"></p>
+      </form>
+    </div>
+    <div class="reveal d1">
+      <div class="estimate-box">
+        <p><strong>Estimated distance:</strong> <span id="rideEstimateDistance">—</span> km</p>
+        <p><strong>Estimated price:</strong> €<span id="rideEstimatePrice">—</span></p>
+        <p style="font-size:.82rem;opacity:.5;margin-top:.5rem">Airport service and rush-hour pricing calculated automatically.</p>
+      </div>
+      <div style="margin-top:2rem">
+        <h3 style="color:var(--text);margin-bottom:1rem">Why choose Luxival?</h3>
+        <div class="why-grid" style="grid-template-columns:1fr">
+          <div class="why"><h3>No-smoking journeys</h3><p>Every ride is smoke-free. Clean, comfortable vehicles and a calm travel environment guaranteed.</p></div>
+          <div class="why"><h3>QA-tested reliability</h3><p>Our pricing estimator and booking flow are QA-reviewed for consistent, trustworthy guidance.</p></div>
+          <div class="why"><h3>Hotel & home sourcing</h3><p>We support travellers with premium hotel and private house recommendations to complete the Finland experience.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- FAQ -->
+<section class="container">
+  <span class="eyebrow reveal">FAQ</span>
+  <h2 class="reveal d1" style="text-align:left">Questions answered</h2>
+  <div class="faq-grid">
+    <div class="faq reveal d1"><h3>How are prices calculated?</h3><p>Starting at €10, plus €1/km. Service and demand fees are added when applicable. Airport rides include a surcharge.</p></div>
+    <div class="faq reveal d2"><h3>Do you serve Helsinki-Vantaa Airport?</h3><p>Yes. We provide reliable arrivals, departures, and flexible pickup windows for all airport travel.</p></div>
+    <div class="faq reveal d1"><h3>Can I book a custom tour?</h3><p>Yes. We handle custom tourism routes, seasonal travel suggestions, and premium Finland experiences on request.</p></div>
+    <div class="faq reveal d2"><h3>How do I track my chauffeur?</h3><p>After booking confirmation, you receive live GPS tracking and ETA updates directly to your phone.</p></div>
+    <div class="faq reveal d1"><h3>Is there a no-smoking policy?</h3><p>Strictly yes. Every Luxival vehicle is smoke-free, clean, and maintained to a premium standard.</p></div>
+    <div class="faq reveal d2"><h3>Can you help find a hotel?</h3><p>Yes. We offer hotel and private accommodation sourcing for Helsinki and nearby regions on request.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Ready to travel?</span>
+    <h2>Book your premium transfer.</h2>
+    <p>From tarmac to doorstep — every meter pre-cleared, every detail orchestrated.</p>
+    <div class="cta-actions">
+      <a href="#pricing" class="btn">Estimate fare</a>
+      <a href="contact.html" class="btn btn-outline">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>Luxival</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://instagram.com/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">Instagram</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="index.html">Home</a>
+          <a href="tourism.html">Travel</a>
+          <a href="design-services.html">Design</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="qa.html">QA</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+
+<script src="js/luxival.js"></script>
+<script>
+/* Fare calculator */
+document.getElementById('calculateFare').addEventListener('click', () => {
+  const dist = Math.max(0, Number(document.getElementById('distance').value) || 0);
+  const stype = document.getElementById('serviceType').value;
+  const pickup = document.getElementById('pickup').value.trim().toLowerCase();
+  const dest = document.getElementById('destination').value.trim().toLowerCase();
+  const routeText = pickup + ' ' + dest;
+  const airportFlag = /airport|vantaa|helsinki-vantaa|hvp|hel/.test(routeText);
+  const now = new Date();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const busyHour = (mins >= 420 && mins <= 570) || (mins >= 930 && mins <= 1110);
+  const base = 10, perKm = 1;
+  const distPrice = dist * perKm;
+  const svcPrice = stype === 'city-to-city' ? 10 : stype === 'tourism' ? 12 : 0;
+  const airPrice = airportFlag ? 15 : 0;
+  const demand = busyHour ? Math.round((base + distPrice + svcPrice + airPrice) * 0.15 * 100) / 100 : 0;
+  const total = base + distPrice + svcPrice + airPrice + demand;
+  document.getElementById('distancePrice').textContent = distPrice.toFixed(2);
+  document.getElementById('servicePrice').textContent = svcPrice.toFixed(2);
+  document.getElementById('airportPrice').textContent = airPrice.toFixed(2);
+  document.getElementById('demandPrice').textContent = demand.toFixed(2);
+  document.getElementById('totalPrice').textContent = total.toFixed(2);
+});
+
+/* Live estimate in ride form */
+document.getElementById('rideFlightNumber').addEventListener('input', function(){
+  const val = this.value.trim();
+  if(val) { const url = 'https://www.google.com/search?q=flight+status+' + encodeURIComponent(val); console.log('Track:', url); }
+});
+
+/* Destination filter */
+const filters = document.querySelectorAll('.filter');
+const cards = document.querySelectorAll('#destGrid .dest-card');
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    cards.forEach(c => { c.style.display = f === 'all' || c.dataset.category === f ? '' : 'none'; });
+  });
+});
+
+/* Ride request form */
+const rideForm = document.getElementById('rideRequestForm');
+const rideStatus = document.getElementById('rideStatus');
+if(rideForm){
+  rideForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    rideStatus.style.color = 'var(--gold)';
+    rideStatus.textContent = 'Sending request…';
+    const payload = {
+      name: document.getElementById('rideName').value.trim(),
+      email: document.getElementById('rideEmail').value.trim(),
+      message: `Ride request: ${document.getElementById('ridePickup').value} → ${document.getElementById('rideDestination').value}`,
+      source: 'ride-request', status: 'new'
+    };
+    if(window.LuxivalSupabase){
+      const{error} = await window.LuxivalSupabase.submitContactInquiry(payload);
+      if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Email us directly.';}
+      else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';}
+    } else {
+      setTimeout(()=>{rideForm.reset();rideStatus.textContent='Request received. We will reply shortly.';},700);
+    }
+  });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
 </body>
 </html>

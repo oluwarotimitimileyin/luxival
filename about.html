@@ -1,96 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Luxival</title>
-  <meta name="description" content="About Luxival: a multidisciplinary digital and transport business delivering premium web, QA, and travel services in Helsinki." />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Luxival | Built on Precision, Driven by Excellence</title>
+<meta name="description" content="Meet the founder of Luxival — Olakunle Shopeju. A multidisciplinary engineer delivering premium airport transfers, web design, QA, and AI services from Helsinki, Finland.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}
+h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.hero{min-height:92vh;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:5%;padding-top:7rem}
+.hero-left .subhead{font-size:1.15rem;margin-bottom:3rem;max-width:480px}
+.hero-right{position:relative;height:80vh;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.05),transparent 55%);pointer-events:none}
+.hero-tag{position:absolute;bottom:1.5rem;left:1.5rem;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.9}
+.quote-section{background:var(--card2)}
+.quote-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center}
+.portrait-frame{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:3/4;position:relative}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:top}
+.portrait-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,15,.5),transparent 50%)}
+blockquote{font-size:clamp(1.1rem,2vw,1.45rem);font-weight:300;line-height:1.75;margin-bottom:2rem;padding-left:1.5rem;border-left:2px solid var(--gold);font-style:italic}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.card{background:var(--card);border-radius:var(--r);padding:2rem;border:1px solid rgba(255,255,255,.05);transition:border-color .3s}
+.card:hover{border-color:var(--border)}
+.card h3{color:var(--text);font-size:1rem;margin-bottom:.5rem}
+.card p{font-size:.9rem;opacity:.6;margin:0}
+.check{display:inline-block;width:22px;height:22px;border:1px solid var(--gold);border-radius:50%;text-align:center;line-height:20px;font-size:.65rem;color:var(--gold);margin-bottom:1rem}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.exp-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.exp-item:last-child{border-bottom:none}
+.exp-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.5rem}
+.exp-role{font-size:.88rem;opacity:.7;margin:0}
+.exp-co{font-size:.78rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);opacity:.7;margin:0}
+.stats-strip{background:var(--card2);padding:5rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--gold);display:block;letter-spacing:-1px}
+.stat-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.45}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
+.cta-band h2{margin-bottom:1rem}
+.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
+.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}.hero-right{height:55vh;order:-1}.quote-grid,.exp-grid,.grid-3,.footer-grid{grid-template-columns:1fr;gap:2rem}.stats-grid{grid-template-columns:repeat(2,1fr)}section{padding:5rem 0}.nav-links{display:none}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand"><a href="index.html">Luxival</a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="tourism.html">Tourism</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="contact.html" class="button button-secondary">Contact</a>
-    </nav>
-  </header>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
 
-  <main>
-    <section class="section">
-      <div class="section-intro">
-        <span class="eyebrow">About</span>
-        <h1>Luxival unites premium digital services and trusted transportation in Helsinki.</h1>
-        <p>Founded by Olakunle Oluwarotimi Shopeju, Luxival bridges engineering-grade QA, modern web design and SEO, with seamless premium transport services for businesses and travelers.</p>
-      </div>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="tourism.html">Travel</a></li>
+    <li><a href="design-services.html">Design</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
 
-      <section class="feature-panel">
-        <div>
-          <h2>Founder profile</h2>
-          <p>Oladunle is a Senior QA Automation Engineer with over 9 years of experience delivering test automation, CI/CD-driven quality, and reliable digital launch support across automotive, mobile and API-driven environments.</p>
-        </div>
-        <div>
-          <h2>Technical and human-led</h2>
-          <p>He combines a BEng in Mechanical Engineering, ongoing IT studies, ISTQB certification, and modern automation practices with a practical, people-first approach to client delivery.</p>
-        </div>
-      </section>
-
-      <section class="feature-panel">
-        <div>
-          <h2>Experience</h2>
-          <ul>
-            <li>Senior QA Engineer at TIER Mobility, Finland</li>
-            <li>Freelance QA Specialist on Upwork</li>
-            <li>Software QA Analyst at Dana Group</li>
-            <li>QA Analyst at Iron Products Industries</li>
-            <li>QA Engineer at ADEBENZ Automotive</li>
-          </ul>
-        </div>
-        <div>
-          <h2>What makes Luxival different</h2>
-          <p>Luxival is built around technical precision and premium experience. We do not separate quality assurance from design, development and transport service — we make them work together.</p>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Mission & vision</h2>
-        <p>Our mission is to help ambitious businesses and travelers feel confident with beautiful digital products and seamless mobility solutions. Our vision is a modern service brand known for strong technical delivery, elegant design, and trusted Helsinki transport.</p>
-      </section>
-
-      <section class="feature-grid">
-        <article>
-          <h3>Skills & tools</h3>
-          <p>Python, Selenium, Playwright, Appium, Cypress, Jenkins, GitLab CI, API testing, CI/CD, test automation, autonomous AI agents, and vibe coding with Claude and Cursor.</p>
-        </article>
-        <article>
-          <h3>Services aligned</h3>
-          <p>QA, web design, SEO, UX funnel optimization, 3D UI experiences, lead generation, social media marketing and premium transport services.</p>
-        </article>
-      </section>
-
-      <div class="services-cta">
-        <a href="contact.html" class="button button-primary">Connect with Luxival</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
-      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero-left">
+    <span class="eyebrow reveal">About Luxival · Helsinki, Finland</span>
+    <h1 class="reveal d1">Built on precision.<br>Driven by excellence.</h1>
+    <p class="subhead reveal d2">Luxival is a multidisciplinary premium brand uniting airport transfer, web design, QA engineering, and AI services — all under one obsessive standard of quality.</p>
+    <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="contact.html" class="btn">Work with us</a>
+      <a href="design-services.html" class="btn btn-outline">Our services</a>
     </div>
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/chat-widget.js"></script>
+  </div>
+  <div class="hero-right reveal d2" id="aboutPanel">
+    <img src="assets/images/founder-portrait-1.jpeg" alt="Olakunle Shopeju — Founder of Luxival">
+    <span class="hero-tag">Founder & Director · Luxival</span>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- FOUNDER QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-grid">
+      <div class="portrait-frame reveal">
+        <img src="assets/images/founder-portrait-2.jpeg" alt="Olakunle Shopeju portrait">
+      </div>
+      <div class="reveal d1">
+        <span class="eyebrow">The founder</span>
+        <h2 style="text-align:left;margin-bottom:1.5rem">Olakunle Shopeju</h2>
+        <blockquote>"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
+        <p>A Senior QA Automation Engineer with 9+ years of experience across automotive, mobile, embedded, and API-driven environments. ISTQB certified. BEng in Mechanical Engineering. Currently completing IT studies in Helsinki.</p>
+        <p>Based in Vantaa, Finland — serving international travellers, businesses, and digital brands that refuse to compromise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal"><span class="stat-num" data-target="9" data-suffix="+">0</span><span class="stat-label">Years of engineering</span></div>
+      <div class="reveal d1"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label">Transfers completed</span></div>
+      <div class="reveal d2"><span class="stat-num" data-target="5" data-suffix="">0</span><span class="stat-label">Disciplines mastered</span></div>
+      <div class="reveal d3"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label">Audits delivered</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- EXPERIENCE -->
+<section class="container">
+  <span class="eyebrow reveal">Career history</span>
+  <h2 class="reveal d1" style="text-align:left">Experience that speaks for itself</h2>
+  <div class="exp-grid">
+    <div>
+      <div class="exp-item reveal d1">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>Senior QA Automation Engineer</h3>
+          <p class="exp-co">TIER Mobility · Helsinki, Finland</p>
+          <p class="exp-role">E2E test automation, CI/CD integration, mobile QA for electric mobility platform.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal d2">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>Freelance QA Specialist</h3>
+          <p class="exp-co">Upwork · Remote</p>
+          <p class="exp-role">Website audits, automated testing, SEO QA, and release validation for global clients.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal d3">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>Software QA Analyst</h3>
+          <p class="exp-co">Dana Group · Nigeria</p>
+          <p class="exp-role">Test strategy, functional and regression testing for enterprise software products.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="exp-item reveal d1">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>QA Analyst</h3>
+          <p class="exp-co">Iron Products Industries · Nigeria</p>
+          <p class="exp-role">Quality assurance and systems reliability in industrial manufacturing operations.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal d2">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>QA Engineer</h3>
+          <p class="exp-co">ADEBENZ Automotive · Nigeria</p>
+          <p class="exp-role">Automotive quality control, inspection protocols, and mechanical system validation.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal d3">
+        <div class="exp-dot"></div>
+        <div>
+          <h3>Founder & Director</h3>
+          <p class="exp-co">Luxival · Helsinki, Finland</p>
+          <p class="exp-role">Building a premium multidisciplinary brand across transport, engineering, web, and AI services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- SKILLS -->
+<section class="container">
+  <span class="eyebrow reveal">Skills & tools</span>
+  <h2 class="reveal d1" style="text-align:left">What we bring to every engagement</h2>
+  <div class="grid-3">
+    <div class="card reveal d1">
+      <div class="check">✓</div>
+      <h3>Test Automation</h3>
+      <p>Playwright, Selenium, Appium, Cypress. API testing, CI/CD pipeline integration, ISTQB-certified test planning.</p>
+    </div>
+    <div class="card reveal d2">
+      <div class="check">✓</div>
+      <h3>Web Design & Development</h3>
+      <p>Premium responsive sites, SEO-first landing pages, 3D UX experiences, and conversion funnel architecture.</p>
+    </div>
+    <div class="card reveal d3">
+      <div class="check">✓</div>
+      <h3>AI Agent Infrastructure</h3>
+      <p>Custom autonomous AI agents built with Claude API. Multi-agent orchestration, workflow automation, and content pipelines.</p>
+    </div>
+    <div class="card reveal d1">
+      <div class="check">✓</div>
+      <h3>Mechanical & Electrical Design</h3>
+      <p>CAD modelling, circuit architecture, PCB layout planning, and technical documentation for hardware and IoT.</p>
+    </div>
+    <div class="card reveal d2">
+      <div class="check">✓</div>
+      <h3>Premium Transport</h3>
+      <p>Helsinki-Vantaa airport transfers, private rides, city-to-city travel, and bespoke tourism planning.</p>
+    </div>
+    <div class="card reveal d3">
+      <div class="check">✓</div>
+      <h3>SEO & Lead Generation</h3>
+      <p>Technical and content-level audits, competitor analysis, landing pages, and form funnels that convert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Ready to start?</span>
+    <h2>Tell us what you are building.</h2>
+    <p>Whether it is a transfer booking, a website, a QA engagement, or an AI agent system — send us a brief and we will respond within one business day.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn">Get in touch</a>
+      <a href="design-services.html" class="btn btn-outline">View all services</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>Luxival</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://instagram.com/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">Instagram</a>
+          <a href="https://linkedin.com/company/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="index.html">Home</a>
+          <a href="tourism.html">Travel</a>
+          <a href="design-services.html">Design</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="qa.html">QA</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+
+<script src="js/luxival.js"></script>
+<script>
+/* Stat counters */
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+  const target=parseInt(el.dataset.target,10),suffix=el.dataset.suffix||'';
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      let n=0;const step=Math.max(1,Math.ceil(target/55));
+      const t=setInterval(()=>{n=Math.min(n+step,target);el.textContent=n+suffix;if(n>=target)clearInterval(t);},18);
+    });
+  },{threshold:.5}).observe(el);
+});
+/* About panel tilt */
+const ap=document.getElementById('aboutPanel');
+if(ap){
+  ap.addEventListener('pointermove',e=>{const r=ap.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ap.style.transform=`perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;});
+  ap.addEventListener('pointerleave',()=>{ap.style.transition='transform .8s cubic-bezier(.16,1,.3,1)';ap.style.transform='perspective(1000px) rotateX(0) rotateY(0)';setTimeout(()=>ap.style.transition='',800);});
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
 </body>
 </html>

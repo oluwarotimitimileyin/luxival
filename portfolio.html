@@ -1,81 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Luxival</title>
-  <meta name="description" content="Luxival portfolio showcases QA, web design, SEO, UX funnels, 3D design, system design and visual media projects." />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Luxival — Case Studies & Projects</title>
+<meta name="description" content="Luxival portfolio: web design, QA automation, airport transfer systems, SEO, 3D UX, and AI agent infrastructure projects from Helsinki.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}
+h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.hero{padding:9rem 0 5rem}
+.hero p.lead{font-size:1.2rem;max-width:560px;opacity:.75;margin-bottom:3rem}
+.port-banner{aspect-ratio:21/9;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);position:relative;margin-bottom:4rem}
+.port-banner img{width:100%;height:100%;object-fit:cover;object-position:top}
+.port-banner::after{content:'Portfolio';position:absolute;bottom:1.8rem;left:2rem;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.55}
+.filter-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.filter{padding:.55rem 1.4rem;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:transparent;color:var(--text);cursor:none;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;transition:border-color .25s,background .25s}
+.filter:hover,.filter.active{border-color:var(--gold);background:rgba(201,169,106,.06);color:var(--gold)}
+.grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;perspective:1400px}
+.proj{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.05);will-change:transform;transition:border-color .3s}
+.proj:hover{border-color:var(--border)}
+.proj-thumb{aspect-ratio:4/3;background:#080a10;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.proj-thumb::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.04),transparent)}
+.proj-cat{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.55}
+.proj-body{padding:1.5rem 1.8rem}
+.proj-body h3{font-size:1.1rem;margin-bottom:.4rem;color:var(--text)}
+.proj-body p{font-size:.88rem;opacity:.55;margin-bottom:1.2rem}
+.proj-body a{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+.proj-body a:hover{gap:.7rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.tag{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(201,169,106,.2);color:var(--gold);padding:.2rem .6rem;border-radius:20px;opacity:.7}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
+.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
+.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
+@media(max-width:900px){.grid-6{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}.port-banner{aspect-ratio:16/9}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand"><a href="index.html">Luxival</a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="tourism.html">Tourism</a>
-      <a href="portfolio.html" aria-current="page">Portfolio</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="button button-secondary">Contact</a>
-    </nav>
-  </header>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
 
-  <main>
-    <section class="section">
-      <div class="section-intro">
-        <span class="eyebrow">Portfolio</span>
-        <h1>Case study structure for multidisciplinary expertise.</h1>
-        <p>Projects organized by QA, web design, SEO, UX funnels, 3D design, machine and system design, and visual media.</p>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="tourism.html">Travel</a></li>
+    <li><a href="design-services.html">Design</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="container hero">
+  <span class="eyebrow reveal">Portfolio · Helsinki</span>
+  <h1 class="reveal d1">Work that speaks<br>for itself.</h1>
+  <p class="lead reveal d2">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and AI agent infrastructure.</p>
+  <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
+    <a href="contact.html" class="btn">Start a project</a>
+    <a href="design-services.html" class="btn btn-outline">View services</a>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- PORTFOLIO -->
+<section class="container">
+  <div class="port-banner reveal">
+    <img src="assets/images/founder-portrait-3.jpeg" alt="Luxival portfolio showcase">
+  </div>
+
+  <div class="filter-row reveal">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="web">Web Design</button>
+    <button class="filter" data-filter="qa">QA</button>
+    <button class="filter" data-filter="transport">Transport</button>
+    <button class="filter" data-filter="ai">AI & Digital</button>
+    <button class="filter" data-filter="seo">SEO</button>
+  </div>
+
+  <div class="grid-6" id="portfolioGrid">
+
+    <div class="proj reveal d1" data-tilt data-category="transport">
+      <div class="proj-thumb"><span class="proj-cat">Transport</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Airport</span><span class="tag">Premium</span><span class="tag">Helsinki</span></div>
+        <h3>Terminal Alpha</h3>
+        <p>Full-service airport transfer system for Helsinki-Vantaa with real-time GPS and white-glove handling.</p>
+        <a href="contact.html">Enquire about this →</a>
       </div>
-
-      <div class="project-filters">
-        <button class="filter active">All</button>
-        <button class="filter">QA</button>
-        <button class="filter">Web Design</button>
-        <button class="filter">SEO</button>
-        <button class="filter">3D</button>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card">
-          <span class="project-category">Web Design</span>
-          <h2>Premium service landing page</h2>
-          <p>Visual design and UX for a high-end digital services brand.</p>
-          <a href="#" class="button button-outline">View case</a>
-        </article>
-        <article class="project-card">
-          <span class="project-category">QA</span>
-          <h2>Website reliability audit</h2>
-          <p>Comprehensive testing approach for performance and usability.</p>
-          <a href="#" class="button button-outline">View case</a>
-        </article>
-        <article class="project-card">
-          <span class="project-category">Tourism</span>
-          <h2>Helsinki transfer service interface</h2>
-          <p>Booking flow and pricing estimator designed for traveler confidence.</p>
-          <a href="#" class="button button-outline">View case</a>
-        </article>
-      </div>
-
-      <div class="services-cta">
-        <a href="contact.html" class="button button-primary">Share your project</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
-      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
     </div>
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/chat-widget.js"></script>
+
+    <div class="proj reveal d2" data-tilt data-category="web">
+      <div class="proj-thumb"><span class="proj-cat">Web Design</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">3D UX</span><span class="tag">Dark Mode</span><span class="tag">SEO</span></div>
+        <h3>Villa Orbis</h3>
+        <p>Immersive 3D web experience with animated hero, premium dark gold design language, and conversion-first structure.</p>
+        <a href="contact.html">Enquire about this →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d3" data-tilt data-category="ai">
+      <div class="proj-thumb"><span class="proj-cat">AI & Digital</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Claude API</span><span class="tag">Agents</span><span class="tag">Automation</span></div>
+        <h3>Tower Meridian</h3>
+        <p>Multi-agent AI pipeline for content generation, site auditing, and autonomous workflow orchestration.</p>
+        <a href="services/ai-agents.html">View service →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d1" data-tilt data-category="seo">
+      <div class="proj-thumb"><span class="proj-cat">SEO</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Technical SEO</span><span class="tag">Competitor</span><span class="tag">Local</span></div>
+        <h3>Resort Aurora</h3>
+        <p>Full technical and content SEO audit for a Finnish hospitality brand targeting international travellers.</p>
+        <a href="contact.html">Enquire about this →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d2" data-tilt data-category="qa">
+      <div class="proj-thumb"><span class="proj-cat">QA</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Playwright</span><span class="tag">CI/CD</span><span class="tag">API</span></div>
+        <h3>Hangar Luxe</h3>
+        <p>End-to-end test automation framework with Playwright, integrated into a GitLab CI/CD pipeline for a premium e-commerce brand.</p>
+        <a href="services/software-testing.html">View service →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d3" data-tilt data-category="web">
+      <div class="proj-thumb"><span class="proj-cat">Web Design</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">Dashboard</span></div>
+        <h3>HQ Nexus</h3>
+        <p>Custom client dashboard with Supabase backend, real-time data visualisation, and role-based admin access.</p>
+        <a href="contact.html">Enquire about this →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Start a project</span>
+    <h2>Have a project in mind?</h2>
+    <p>Send us a brief and we will respond within one business day with a clear scope and fixed-price proposal.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn">Send a project brief</a>
+      <a href="design-services.html" class="btn btn-outline">Browse services</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>Luxival</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://instagram.com/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">Instagram</a>
+          <a href="https://linkedin.com/company/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="index.html">Home</a>
+          <a href="tourism.html">Travel</a>
+          <a href="design-services.html">Design</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="qa.html">QA</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+
+<script src="js/luxival.js"></script>
+<script>
+/* Portfolio filter */
+const filters = document.querySelectorAll('.filter');
+const projs = document.querySelectorAll('#portfolioGrid .proj');
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    projs.forEach(p => {
+      p.style.display = f === 'all' || p.dataset.category === f ? '' : 'none';
+    });
+  });
+});
+</script>
 </body>
 </html>

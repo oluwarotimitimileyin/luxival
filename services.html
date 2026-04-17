@@ -1,95 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services | Luxival</title>
-  <meta name="description" content="Luxival offers website design, development, SEO, lead generation, 3D UX, QA, social media marketing and transport services in Helsinki." />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Luxival — Premium Digital, Engineering & Transport</title>
+<meta name="description" content="Luxival services: website design, SEO, lead generation, 3D UX, QA, mechanical engineering, electrical design, AI agents, and Helsinki airport transfers.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}
+h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.hero{padding:9rem 0 5rem}
+.hero p.lead{font-size:1.2rem;max-width:560px;opacity:.75;margin-bottom:3rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem}
+.svc{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2.5rem;position:relative;overflow:hidden;will-change:transform;transition:border-color .3s,box-shadow .3s;display:flex;flex-direction:column}
+.svc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.05),transparent);opacity:0;transition:opacity .3s;pointer-events:none}
+.svc:hover::before{opacity:1}
+.svc:hover{border-color:var(--border);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.svc-num{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.4;margin-bottom:1.5rem}
+.svc h3{font-size:1.4rem;margin-bottom:.8rem;color:var(--text)}
+.svc p{flex:1;opacity:.7;font-size:.95rem;margin-bottom:1.5rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.tag{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(201,169,106,.22);color:var(--gold);padding:.22rem .65rem;border-radius:20px;opacity:.7}
+.svc-cta{display:flex;gap:.8rem;align-items:center;margin-top:auto}
+.learn-link{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s;color:var(--gold)}
+.learn-link:hover{gap:.7rem}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;counter-reset:steps}
+.step{counter-increment:steps;padding-top:3.5rem;position:relative}
+.step::before{content:counter(steps,'0'counter(steps));position:absolute;top:0;left:0;font-size:2.5rem;font-weight:300;color:var(--gold);opacity:.2;letter-spacing:-2px}
+.step h3{font-size:1rem;color:var(--text);margin-bottom:.5rem}
+.step p{font-size:.9rem;opacity:.6}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
+.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
+.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}.d5{transition-delay:.64s}
+@media(max-width:900px){.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand"><a href="index.html">Luxival</a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html" aria-current="page">Services</a>
-      <a href="tourism.html">Tourism</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="button button-secondary">Contact</a>
-    </nav>
-  </header>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
 
-  <main>
-    <section class="section">
-      <div class="section-intro">
-        <span class="eyebrow">Services</span>
-        <h1>Premium digital, technical, and transport services for modern brands.</h1>
-        <p>Delivering high-end web strategy, creative execution, reliable QA, and Helsinki-based transport solutions in one cohesive experience.</p>
-      </div>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="tourism.html">Travel</a></li>
+    <li><a href="design-services.html">Design</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
 
-      <div class="service-cards">
-        <article>
-          <h2>Website Design</h2>
-          <p>Build premium brand experiences with modern visuals, clear messaging, and conversion-first structure.</p>
-        </article>
-        <article>
-          <h2>Website Development</h2>
-          <p>Responsive, maintainable websites built for performance, scalability, and future growth.</p>
-        </article>
-        <article>
-          <h2>SEO Analysis</h2>
-          <p>Technical and content-level audit grounded in local Helsinki search intent and digital visibility goals.</p>
-        </article>
-        <article>
-          <h2>SEO Competitor Analysis</h2>
-          <p>Actionable competitor insights that reveal content gaps, keyword opportunities, and ranking strategy.</p>
-        </article>
-        <article>
-          <h2>Lead Generation</h2>
-          <p>Landing pages, form funnels, and messaging that capture qualified leads and improve conversion rates.</p>
-        </article>
-        <article>
-          <h2>3D UX / 3D Web Design</h2>
-          <p>Immersive interface concepts, motion-led interactions, and polished 3D visuals for standout digital experiences.</p>
-        </article>
-        <article>
-          <h2>UX Funnel Optimization</h2>
-          <p>Flow design, user journey mapping, and A/B-ready recommendations to keep visitors moving toward action.</p>
-        </article>
-        <article>
-          <h2>Web QA / Website Quality Assurance</h2>
-          <p>Structured testing, performance validation, and release confidence for any website or digital product.</p>
-        </article>
-        <article>
-          <h2>Social Media Marketing</h2>
-          <p>Campaign planning, visual storytelling, and promotion strategies that support traffic and brand growth.</p>
-        </article>
-        <article>
-          <h2>Tourism & Airport Transfers</h2>
-          <p>Reliable Helsinki-Vantaa rides, private transport, city-to-city trips, and bespoke tourism travel planning.</p>
-        </article>
-      </div>
+<!-- HERO -->
+<section class="container hero">
+  <span class="eyebrow reveal">All Services · Luxival</span>
+  <h1 class="reveal d1">Premium services<br>across every dimension.</h1>
+  <p class="lead reveal d2">Delivering high-end web strategy, engineering precision, QA rigour, and Helsinki-based transport — in one cohesive brand experience.</p>
+  <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
+    <a href="contact.html" class="btn">Start a project</a>
+    <a href="design-services.html" class="btn btn-outline">Engineering disciplines</a>
+  </div>
+</section>
 
-      <div class="services-cta">
-        <a href="contact.html" class="button button-primary">Ask about services</a>
-      </div>
-    </section>
-  </main>
+<div class="gold-line container"></div>
 
-  <footer class="site-footer">
-    <div>
-      <p><strong>Luxival</strong> | Varikkokaarre 7A, 01700</p>
-      <p>Email: <a href="mailto:support@luxival.com">support@luxival.com</a></p>
+<!-- SERVICES GRID -->
+<section class="container">
+  <span class="eyebrow reveal">What we offer</span>
+  <h2 class="reveal d1" style="text-align:left">Choose your service</h2>
+  <div class="services-grid">
+
+    <div class="svc reveal d1" data-tilt>
+      <div class="svc-num">01</div>
+      <h3>Website Design</h3>
+      <p>Premium brand experiences with modern visuals, clear messaging, and conversion-first structure built for the luxury category.</p>
+      <div class="tag-row"><span class="tag">UX</span><span class="tag">Visual Design</span><span class="tag">Conversion</span></div>
+      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
     </div>
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/chat-widget.js"></script>
+
+    <div class="svc reveal d2" data-tilt>
+      <div class="svc-num">02</div>
+      <h3>Website Development</h3>
+      <p>Responsive, maintainable websites built for performance, scalability, and future growth — with clean, documented code.</p>
+      <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">Supabase</span><span class="tag">Performance</span></div>
+      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
+    </div>
+
+    <div class="svc reveal d3" data-tilt>
+      <div class="svc-num">03</div>
+      <h3>SEO Analysis & Strategy</h3>
+      <p>Technical and content-level audit grounded in local Helsinki search intent and international digital visibility goals.</p>
+      <div class="tag-row"><span class="tag">Technical SEO</span><span class="tag">Local SEO</span><span class="tag">Audit</span></div>
+      <div class="svc-cta"><a href="contact.html" class="btn">Request Audit</a><a href="qa.html" class="learn-link">QA-tested process →</a></div>
+    </div>
+
+    <div class="svc reveal d1" data-tilt>
+      <div class="svc-num">04</div>
+      <h3>SEO Competitor Analysis</h3>
+      <p>Actionable competitor insights that reveal content gaps, keyword opportunities, and ranking strategy to outpace the market.</p>
+      <div class="tag-row"><span class="tag">Competitor</span><span class="tag">Keywords</span><span class="tag">Gaps</span></div>
+      <div class="svc-cta"><a href="contact.html" class="btn">Request Analysis</a></div>
+    </div>
+
+    <div class="svc reveal d2" data-tilt>
+      <div class="svc-num">05</div>
+      <h3>Lead Generation</h3>
+      <p>Landing pages, form funnels, and messaging systems that capture qualified leads and measurably improve conversion rates.</p>
+      <div class="tag-row"><span class="tag">Landing Pages</span><span class="tag">Funnels</span><span class="tag">CRO</span></div>
+      <div class="svc-cta"><a href="contact.html" class="btn">Get Started</a></div>
+    </div>
+
+    <div class="svc reveal d3" data-tilt>
+      <div class="svc-num">06</div>
+      <h3>3D UX / 3D Web Design</h3>
+      <p>Immersive interface concepts, CSS 3D animations, motion-led interactions, and polished 3D visuals for standout digital experiences.</p>
+      <div class="tag-row"><span class="tag">CSS 3D</span><span class="tag">Motion</span><span class="tag">Immersive</span></div>
+      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
+    </div>
+
+    <div class="svc reveal d1" data-tilt>
+      <div class="svc-num">07</div>
+      <h3>UX Funnel Optimisation</h3>
+      <p>Flow design, user journey mapping, and A/B-ready recommendations to keep visitors moving toward action — measured, not guessed.</p>
+      <div class="tag-row"><span class="tag">UX Maps</span><span class="tag">A/B</span><span class="tag">Analytics</span></div>
+      <div class="svc-cta"><a href="contact.html" class="btn">Request Review</a></div>
+    </div>
+
+    <div class="svc reveal d2" data-tilt>
+      <div class="svc-num">08</div>
+      <h3>Web QA & Quality Assurance</h3>
+      <p>Structured testing, performance validation, and release confidence for any website or digital product — ISTQB-certified approach.</p>
+      <div class="tag-row"><span class="tag">Playwright</span><span class="tag">Selenium</span><span class="tag">ISTQB</span></div>
+      <div class="svc-cta"><a href="services/software-testing.html" class="btn">Learn & Book</a><a href="qa.html" class="learn-link">QA detail →</a></div>
+    </div>
+
+    <div class="svc reveal d3" data-tilt>
+      <div class="svc-num">09</div>
+      <h3>Social Media Marketing</h3>
+      <p>Campaign planning, visual storytelling, and promotion strategies that support traffic growth and brand recognition.</p>
+      <div class="tag-row"><span class="tag">Campaign</span><span class="tag">Visuals</span><span class="tag">Growth</span></div>
+      <div class="svc-cta"><a href="contact.html" class="btn">Get Started</a></div>
+    </div>
+
+    <div class="svc reveal d1" data-tilt>
+      <div class="svc-num">10</div>
+      <h3>Tourism & Airport Transfers</h3>
+      <p>Reliable Helsinki-Vantaa rides, private transport, city-to-city trips, and bespoke Finland tourism travel planning.</p>
+      <div class="tag-row"><span class="tag">Airport</span><span class="tag">Private Rides</span><span class="tag">Tourism</span></div>
+      <div class="svc-cta"><a href="tourism.html" class="btn">Book a Ride</a><a href="tourism.html" class="learn-link">Pricing →</a></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- PROCESS -->
+<section class="container">
+  <span class="eyebrow reveal">How it works</span>
+  <h2 class="reveal d1" style="text-align:left">From brief to delivery</h2>
+  <div class="process-grid">
+    <div class="step reveal d1"><h3>Discovery call</h3><p>We understand your project, constraints, and goals in a focused 30-minute call — no obligation.</p></div>
+    <div class="step reveal d2"><h3>Scoped proposal</h3><p>You receive a clear written proposal with scope, deliverables, timeline, and a fixed or capped price.</p></div>
+    <div class="step reveal d3"><h3>Design & build</h3><p>We execute with regular check-ins, transparent progress, and documented decisions throughout.</p></div>
+    <div class="step reveal d4"><h3>Delivery & support</h3><p>Final handoff with full documentation, source files, and a 30-day support window included.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Ready to start?</span>
+    <h2>Tell us what you need.</h2>
+    <p>Send a brief and we will respond within one business day with a clear scope and a transparent price.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn">Send a project brief</a>
+      <a href="design-services.html" class="btn btn-outline">Engineering disciplines</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>Luxival</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://instagram.com/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">Instagram</a>
+          <a href="https://linkedin.com/company/luxival" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.4">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="index.html">Home</a>
+          <a href="tourism.html">Travel</a>
+          <a href="design-services.html">Design</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="qa.html">QA</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+
+<script src="js/luxival.js"></script>
 </body>
 </html>
