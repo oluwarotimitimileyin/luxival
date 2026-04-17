@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
 <title>Tourism & Airport Transfers | Luxival Finland</title>
 <meta name="description" content="Luxival Tourism: premium Helsinki-Vantaa airport transfers, private rides, Finland travel planning, and seasonal experiences. Book your ride online.">
 <style>
@@ -104,6 +105,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     <li><a href="tourism.html" class="active">Travel</a></li>
     <li><a href="design-services.html">Design</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="qa.html">QA</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
@@ -348,19 +350,23 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
 <script src="js/luxival.js"></script>
 <script>
+function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
+function isAirportRoute(a,b){return /airport|vantaa|helsinki-vantaa|hvp|hel/.test((a+' '+b).toLowerCase());}
+function isBusyHour(){const m=new Date().getHours()*60+new Date().getMinutes();return(m>=420&&m<=570)||(m>=930&&m<=1110);}
+
 /* Fare calculator */
 document.getElementById('calculateFare').addEventListener('click', () => {
   const dist = Math.max(0, Number(document.getElementById('distance').value) || 0);
   const stype = document.getElementById('serviceType').value;
-  const pickup = document.getElementById('pickup').value.trim().toLowerCase();
-  const dest = document.getElementById('destination').value.trim().toLowerCase();
-  const routeText = pickup + ' ' + dest;
-  const airportFlag = /airport|vantaa|helsinki-vantaa|hvp|hel/.test(routeText);
-  const now = new Date();
-  const mins = now.getHours() * 60 + now.getMinutes();
-  const busyHour = (mins >= 420 && mins <= 570) || (mins >= 930 && mins <= 1110);
+  const pickup = document.getElementById('pickup').value.trim();
+  const dest = document.getElementById('destination').value.trim();
+  const airportFlag = isAirportRoute(pickup, dest);
+  const busyHour = isBusyHour();
   const base = 10, perKm = 1;
   const distPrice = dist * perKm;
   const svcPrice = stype === 'city-to-city' ? 10 : stype === 'tourism' ? 12 : 0;
@@ -374,21 +380,15 @@ document.getElementById('calculateFare').addEventListener('click', () => {
   document.getElementById('totalPrice').textContent = total.toFixed(2);
 });
 
-/* Live estimate in ride form */
-document.getElementById('rideFlightNumber').addEventListener('input', function(){
-  const val = this.value.trim();
-  if(val) { const url = 'https://www.google.com/search?q=flight+status+' + encodeURIComponent(val); console.log('Track:', url); }
-});
-
 /* Destination filter */
 const filters = document.querySelectorAll('.filter');
-const cards = document.querySelectorAll('#destGrid .dest-card');
+const destCards = document.querySelectorAll('#destGrid .dest-card');
 filters.forEach(btn => {
   btn.addEventListener('click', () => {
     filters.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
-    cards.forEach(c => { c.style.display = f === 'all' || c.dataset.category === f ? '' : 'none'; });
+    destCards.forEach(c => { c.style.display = f === 'all' || c.dataset.category === f ? '' : 'none'; });
   });
 });
 
@@ -398,17 +398,38 @@ const rideStatus = document.getElementById('rideStatus');
 if(rideForm){
   rideForm.addEventListener('submit', async e => {
     e.preventDefault();
+    const email = document.getElementById('rideEmail').value.trim();
+    if(!isValidEmail(email)){
+      rideStatus.style.color='#f77';
+      rideStatus.textContent='Please enter a valid email address.';
+      return;
+    }
     rideStatus.style.color = 'var(--gold)';
     rideStatus.textContent = 'Sending request…';
+    const pickup = document.getElementById('ridePickup').value.trim();
+    const dest = document.getElementById('rideDestination').value.trim();
+    const rideTime = document.getElementById('rideTime').value;
+    const mins = rideTime ? Number(rideTime.split(':')[0])*60+Number(rideTime.split(':')[1]) : -1;
+    const busyH = mins>=0 && ((mins>=420&&mins<=570)||(mins>=930&&mins<=1110));
     const payload = {
-      name: document.getElementById('rideName').value.trim(),
-      email: document.getElementById('rideEmail').value.trim(),
-      message: `Ride request: ${document.getElementById('ridePickup').value} → ${document.getElementById('rideDestination').value}`,
-      source: 'ride-request', status: 'new'
+      customer_name: document.getElementById('rideName').value.trim(),
+      email,
+      phone: document.getElementById('ridePhone').value.trim() || null,
+      pickup_location: pickup,
+      destination: dest,
+      preferred_date: document.getElementById('rideDate').value || null,
+      ride_time: rideTime || null,
+      service_type: document.getElementById('rideServiceType').value,
+      flight_number: document.getElementById('rideFlightNumber').value.trim() || null,
+      notes: document.getElementById('rideNotes').value.trim() || null,
+      airport_surcharge: isAirportRoute(pickup, dest),
+      busy_hour: busyH,
+      status: 'pending',
+      source: 'tourism-page'
     };
     if(window.LuxivalSupabase){
-      const{error} = await window.LuxivalSupabase.submitContactInquiry(payload);
-      if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Email us directly.';}
+      const{error} = await window.LuxivalSupabase.submitRideRequest(payload);
+      if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Please email support@luxival.com directly.';}
       else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';}
     } else {
       setTimeout(()=>{rideForm.reset();rideStatus.textContent='Request received. We will reply shortly.';},700);
@@ -416,8 +437,5 @@ if(rideForm){
   });
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
 </body>
 </html>

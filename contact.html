@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
 <title>Contact Luxival | Book a Transfer or Start a Project</title>
 <meta name="description" content="Contact Luxival for premium airport transfers in Helsinki, web design, QA, or digital services. We respond within one business day.">
 <style>
@@ -80,8 +81,9 @@ footer{background:#060608;padding:5rem 0 2rem}
     <li><a href="tourism.html">Travel</a></li>
     <li><a href="design-services.html">Design</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="qa.html">QA</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn active" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
 </nav>
 
@@ -199,42 +201,61 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
 <script src="js/luxival.js"></script>
 <script>
+function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
+
 const cForm = document.getElementById('contactForm');
 const cStatus = document.getElementById('contactStatus');
 if(cForm){
   cForm.addEventListener('submit', async e => {
     e.preventDefault();
+    const email = document.getElementById('cEmail').value.trim();
+    if(!isValidEmail(email)){
+      cStatus.style.color='#f77';
+      cStatus.textContent='Please enter a valid email address.';
+      return;
+    }
     cStatus.style.color = 'var(--gold)';
     cStatus.textContent = 'Sending…';
     const payload = {
       name: document.getElementById('cName').value.trim(),
-      email: document.getElementById('cEmail').value.trim(),
+      email,
+      phone: document.getElementById('cPhone').value.trim() || null,
+      service_interest: document.getElementById('cService').value,
       message: document.getElementById('cMsg').value.trim(),
-      service: document.getElementById('cService').value,
       source: 'contact-page', status: 'new'
     };
     if(window.LuxivalSupabase){
       const{error} = await window.LuxivalSupabase.submitContactInquiry(payload);
-      if(error){cStatus.style.color='#f77';cStatus.textContent='Unable to send. Email us directly.';}
-      else{cForm.reset();cStatus.textContent='Inquiry sent. We will reply shortly.';}
+      if(error){cStatus.style.color='#f77';cStatus.textContent='Unable to send. Please email us directly at support@luxival.com';}
+      else{cForm.reset();cStatus.textContent='Inquiry sent. We will reply within one business day.';}
     } else {
       setTimeout(()=>{cForm.reset();cStatus.textContent='Inquiry received. We will reply shortly.';},700);
     }
   });
 }
+
 const nlForm = document.getElementById('newsletterForm');
 const nlStatus = document.getElementById('nlStatus');
 if(nlForm){
   nlForm.addEventListener('submit', async e => {
     e.preventDefault();
+    const email = document.getElementById('nlEmail').value.trim();
+    if(!isValidEmail(email)){
+      nlStatus.style.color='#f77';
+      nlStatus.textContent='Please enter a valid email address.';
+      return;
+    }
     nlStatus.style.color = 'var(--gold)';
     nlStatus.textContent = 'Subscribing…';
-    const payload = { email: document.getElementById('nlEmail').value.trim(), source: 'newsletter', status: 'new' };
+    const payload = { email, source: 'contact-newsletter', status: 'subscribed', consent: true };
     if(window.LuxivalSupabase){
-      const{error} = await window.LuxivalSupabase.submitContactInquiry(payload);
-      if(error){nlStatus.style.color='#f77';nlStatus.textContent='Error. Try again or email us.';}
+      const{error} = await window.LuxivalSupabase.subscribeNewsletter(payload);
+      if(error){nlStatus.style.color='#f77';nlStatus.textContent='Unable to subscribe. Please try again.';}
       else{nlForm.reset();nlStatus.textContent='Subscribed. Thank you!';}
     } else {
       setTimeout(()=>{nlForm.reset();nlStatus.textContent='Subscribed. Thank you!';},500);
@@ -242,8 +263,5 @@ if(nlForm){
   });
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
 </body>
 </html>
