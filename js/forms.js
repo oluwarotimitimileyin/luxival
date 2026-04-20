@@ -53,16 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function isAirportRoute(pickup, destination) {
+    if (window.LuxivalPricing) return window.LuxivalPricing.isAirportRoute(pickup, destination);
     const routeText = `${pickup} ${destination}`.toLowerCase();
-    return /airport|vantaa|helsinki-vantaa|hvp|hel/.test(routeText);
+    return /airport|vantaa|helsinki-vantaa|hvp|\bhel\b/.test(routeText);
   }
 
   function isBusyHour(rideTime) {
+    if (window.LuxivalPricing) return window.LuxivalPricing.isBusyHour(rideTime);
     if (!rideTime) return false;
     const [hour, minute] = rideTime.split(':').map(Number);
     const totalMinutes = hour * 60 + minute;
-    const morningRush = totalMinutes >= 420 && totalMinutes <= 570; // 07:00-09:30
-    const eveningRush = totalMinutes >= 930 && totalMinutes <= 1110; // 15:30-18:30
+    const morningRush = totalMinutes >= 420 && totalMinutes <= 570;
+    const eveningRush = totalMinutes >= 930 && totalMinutes <= 1110;
     return morningRush || eveningRush;
   }
 
@@ -78,7 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const basePrice = 10;
     const perKm = 1;
     const distancePrice = distanceValue * perKm;
-    const servicePrice = serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : serviceType === 'airport' ? 8 : 6;
+    const servicePrice = window.LuxivalPricing
+      ? (window.LuxivalPricing.PRICING.SERVICE[serviceType] ?? window.LuxivalPricing.PRICING.SERVICE.standard)
+      : (serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : serviceType === 'airport' ? 8 : 6);
     const airportPrice = airportSurcharge ? 15 : 0;
     const demandPrice = busyHour ? Math.round((basePrice + distancePrice + servicePrice + airportPrice) * 0.15 * 100) / 100 : 0;
     const estimatedTotal = basePrice + distancePrice + servicePrice + airportPrice + demandPrice;

@@ -21,15 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
       const destinationValue = destinationInput ? destinationInput.value.trim() : '';
 
       const routeText = `${pickupValue} ${destinationValue}`.toLowerCase();
-      const airportSurcharge = /airport|vantaa|helsinki-vantaa|hvp|hel/.test(routeText);
+      const airportSurcharge = window.LuxivalPricing
+        ? window.LuxivalPricing.isAirportRoute(pickupValue, destinationValue)
+        : /airport|vantaa|helsinki-vantaa|hvp|\bhel\b/.test(routeText);
       const now = new Date();
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      const busyHour = (currentMinutes >= 420 && currentMinutes <= 570) || (currentMinutes >= 930 && currentMinutes <= 1110);
+      const busyHour = window.LuxivalPricing
+        ? window.LuxivalPricing.isBusyMinutes(currentMinutes)
+        : (currentMinutes >= 420 && currentMinutes <= 570) || (currentMinutes >= 930 && currentMinutes <= 1110);
 
       const basePrice = 10;
       const perKm = 1;
       const distancePrice = distanceValue * perKm;
-      const servicePrice = serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : 0;
+      const servicePrice = window.LuxivalPricing
+        ? (window.LuxivalPricing.PRICING.SERVICE[serviceType] ?? window.LuxivalPricing.PRICING.SERVICE.standard)
+        : (serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : serviceType === 'airport' ? 8 : 6);
       const airportPrice = airportSurcharge ? 15 : 0;
       const demandPrice = busyHour ? Math.round((basePrice + distancePrice + servicePrice + airportPrice) * 0.15 * 100) / 100 : 0;
       const totalPrice = basePrice + distancePrice + servicePrice + airportPrice + demandPrice;

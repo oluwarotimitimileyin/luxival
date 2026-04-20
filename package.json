@@ -1,0 +1,29 @@
+{
+  "name": "luxival",
+  "version": "1.0.0",
+  "description": "Luxival is designed to facilitate [brief overview of the project functionality or purpose].",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oluwarotimitimileyin/luxival.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/oluwarotimitimileyin/luxival/issues"
+  },
+  "homepage": "https://github.com/oluwarotimitimileyin/luxival#readme",
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}
