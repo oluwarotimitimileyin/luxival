@@ -48,25 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rideFlightTrackButton = document.getElementById('rideFlightTrack');
   const rideFlightNumberInput = document.getElementById('rideFlightNumber');
 
-  function formatPrice(value) {
-    return Number(value).toFixed(2);
-  }
-
-  function isAirportRoute(pickup, destination) {
-    if (window.LuxivalPricing) return window.LuxivalPricing.isAirportRoute(pickup, destination);
-    const routeText = `${pickup} ${destination}`.toLowerCase();
-    return /airport|vantaa|helsinki-vantaa|hvp|\bhel\b/.test(routeText);
-  }
-
-  function isBusyHour(rideTime) {
-    if (window.LuxivalPricing) return window.LuxivalPricing.isBusyHour(rideTime);
-    if (!rideTime) return false;
-    const [hour, minute] = rideTime.split(':').map(Number);
-    const totalMinutes = hour * 60 + minute;
-    const morningRush = totalMinutes >= 420 && totalMinutes <= 570;
-    const eveningRush = totalMinutes >= 930 && totalMinutes <= 1110;
-    return morningRush || eveningRush;
-  }
+  const { isAirportRoute, isBusyHour, formatPrice, PRICING } = window.LuxivalPricing;
 
   function updateRideEstimates() {
     const distanceValue = Math.max(0, Number(rideDistanceInput.value) || 0);
@@ -77,15 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const airportSurcharge = isAirportRoute(pickupValue, destinationValue);
     const busyHour = isBusyHour(rideTimeValue);
 
-    const basePrice = 10;
-    const perKm = 1;
-    const distancePrice = distanceValue * perKm;
-    const servicePrice = window.LuxivalPricing
-      ? (window.LuxivalPricing.PRICING.SERVICE[serviceType] ?? window.LuxivalPricing.PRICING.SERVICE.standard)
-      : (serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : serviceType === 'airport' ? 8 : 6);
-    const airportPrice = airportSurcharge ? 15 : 0;
-    const demandPrice = busyHour ? Math.round((basePrice + distancePrice + servicePrice + airportPrice) * 0.15 * 100) / 100 : 0;
-    const estimatedTotal = basePrice + distancePrice + servicePrice + airportPrice + demandPrice;
+    const distancePrice = distanceValue * PRICING.PER_KM;
+    const servicePrice = PRICING.SERVICE[serviceType] ?? PRICING.SERVICE.standard;
+    const airportPrice = airportSurcharge ? PRICING.AIRPORT_SURCHARGE : 0;
+    const demandPrice = busyHour ? Math.round((PRICING.BASE + distancePrice + servicePrice + airportPrice) * PRICING.BUSY_HOUR_RATE * 100) / 100 : 0;
+    const estimatedTotal = PRICING.BASE + distancePrice + servicePrice + airportPrice + demandPrice;
 
     if (rideEstimateDistance) {
       rideEstimateDistance.textContent = distanceValue > 0 ? String(distanceValue) : '—';

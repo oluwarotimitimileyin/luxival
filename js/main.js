@@ -20,25 +20,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const pickupValue = pickupInput ? pickupInput.value.trim() : '';
       const destinationValue = destinationInput ? destinationInput.value.trim() : '';
 
-      const routeText = `${pickupValue} ${destinationValue}`.toLowerCase();
-      const airportSurcharge = window.LuxivalPricing
-        ? window.LuxivalPricing.isAirportRoute(pickupValue, destinationValue)
-        : /airport|vantaa|helsinki-vantaa|hvp|\bhel\b/.test(routeText);
+      const { isAirportRoute, isBusyMinutes, PRICING } = window.LuxivalPricing;
+      const airportSurcharge = isAirportRoute(pickupValue, destinationValue);
       const now = new Date();
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      const busyHour = window.LuxivalPricing
-        ? window.LuxivalPricing.isBusyMinutes(currentMinutes)
-        : (currentMinutes >= 420 && currentMinutes <= 570) || (currentMinutes >= 930 && currentMinutes <= 1110);
+      const busyHour = isBusyMinutes(currentMinutes);
 
-      const basePrice = 10;
-      const perKm = 1;
-      const distancePrice = distanceValue * perKm;
-      const servicePrice = window.LuxivalPricing
-        ? (window.LuxivalPricing.PRICING.SERVICE[serviceType] ?? window.LuxivalPricing.PRICING.SERVICE.standard)
-        : (serviceType === 'city-to-city' ? 10 : serviceType === 'tourism' ? 12 : serviceType === 'airport' ? 8 : 6);
-      const airportPrice = airportSurcharge ? 15 : 0;
-      const demandPrice = busyHour ? Math.round((basePrice + distancePrice + servicePrice + airportPrice) * 0.15 * 100) / 100 : 0;
-      const totalPrice = basePrice + distancePrice + servicePrice + airportPrice + demandPrice;
+      const distancePrice = distanceValue * PRICING.PER_KM;
+      const servicePrice = PRICING.SERVICE[serviceType] ?? PRICING.SERVICE.standard;
+      const airportPrice = airportSurcharge ? PRICING.AIRPORT_SURCHARGE : 0;
+      const demandPrice = busyHour ? Math.round((PRICING.BASE + distancePrice + servicePrice + airportPrice) * PRICING.BUSY_HOUR_RATE * 100) / 100 : 0;
+      const totalPrice = PRICING.BASE + distancePrice + servicePrice + airportPrice + demandPrice;
 
       document.getElementById('distancePrice').textContent = distancePrice.toFixed(2);
       document.getElementById('servicePrice').textContent = servicePrice.toFixed(2);
