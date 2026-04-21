@@ -100,6 +100,7 @@ Before finishing any task:
 
 ### What exists and is complete
 - All 7 main HTML pages: index, about, services, tourism, portfolio, qa, contact
+- Legal pages: `privacy.html`, `terms.html` (footer-linked sitewide; in `sitemap.xml`)
 - admin.html and js/admin.js for lead management
 - Global CSS design system in css/styles.css (dark theme, responsive, animated)
 - js/main.js — navigation toggle, pricing calculator, 3D card interaction, showcase tabs
@@ -117,7 +118,7 @@ Before finishing any task:
 - Supabase tables and buckets have not been created in the dashboard yet
 - RLS policies have not been applied
 - No robots.txt file
-- No privacy.html or terms.html pages
+- `privacy.html` and `terms.html` exist with GDPR-oriented copy; linked from site footers and listed in `sitemap.xml`
 - No real visual assets in assets/ (placeholder references only)
 - Portfolio page has no real case studies
 - About page uses placeholder founder copy
@@ -133,6 +134,8 @@ Before finishing any task:
 ```
 /luxival
 ├── index.html              Homepage — hero, services overview, trust signals
+├── privacy.html            Privacy policy (GDPR / Finnish law)
+├── terms.html              Terms of service
 ├── about.html              Founder story and company identity
 ├── services.html           Full digital and transport service catalog
 ├── tourism.html            Airport transfer, ride request form, pricing calculator

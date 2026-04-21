@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
+<title>Airport Transfer Excellence | Luxival Finland</title>
+<meta name="description" content="Premium Helsinki-Vantaa airport transfers by Luxival. Professional drivers, no-wait pickups, flight tracking, and smoke-free vehicles.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}
+h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06)}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+.hero{padding:10rem 0 5rem}
+.hero p.lead{font-size:1.2rem;max-width:560px;opacity:.75;margin-bottom:2.5rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.spec-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--card-r);padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,.3),0 10px 20px rgba(0,0,0,.2)}
+.spec-card h3{color:var(--text);font-size:1rem;margin-bottom:.5rem}
+.spec-card p{font-size:.88rem;opacity:.6;margin:0}
+.spec-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:.3rem;display:block}
+.offering-row{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.offering-row:last-child{border-bottom:none}
+.offering-name{font-weight:400;color:var(--text);font-size:.95rem}
+.offering-price{color:var(--gold);font-size:.9rem;white-space:nowrap;margin-left:2rem}
+.info-block{background:var(--card2);border:1px solid rgba(255,255,255,.04);border-radius:var(--card-r);padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,.25),0 10px 20px rgba(0,0,0,.15)}
+.img-placeholder{background:#1a1c24;border:1px dashed rgba(201,169,106,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(201,169,106,.32);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:1rem;border-radius:var(--card-r);min-height:320px}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
+.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+footer{background:#060608;padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
+.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
+<nav id="mainNav">
+  <a href="../index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="../tourism.html" class="active">Travel</a></li>
+    <li><a href="../design-services.html">Design</a></li>
+    <li><a href="../portfolio.html">Portfolio</a></li>
+    <li><a href="../qa.html">QA</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
+
+<section class="container hero">
+  <span class="eyebrow reveal">Transport · Helsinki-Vantaa</span>
+  <h1 class="reveal d1">Airport transfer<br>excellence.</h1>
+  <p class="lead reveal d2">Professional, no-wait pickups from Helsinki-Vantaa Airport (HEL) — with flight tracking, clean vehicles, and a guaranteed smoke-free journey from tarmac to destination.</p>
+  <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
+    <a href="../tourism.html#book-ride" class="btn">Book this service</a>
+    <a href="../tourism.html#pricing" class="btn btn-outline">Estimate fare</a>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- STORY -->
+<section class="container">
+  <div class="grid-2">
+    <div>
+      <span class="eyebrow reveal">The service</span>
+      <h2 class="reveal d1" style="text-align:left">What makes it premium</h2>
+      <p class="reveal d2">We meet you at Arrivals — no app, no surge pricing, no guessing. Your driver monitors your flight in real time and adjusts for delays automatically. From the moment you land, your transfer is under control.</p>
+      <p class="reveal d2">Every vehicle is clean, smoke-free, and maintained to a high standard. We do not rush you. No radio noise. No phone calls. Just a calm, direct drive to your destination.</p>
+      <p class="reveal d3">This is not a taxi. It is a premium private service built for travellers who value reliability and discretion above all else.</p>
+    </div>
+    <div class="img-placeholder reveal d1">IMAGE · Airport Transfer<br><span style="opacity:.5;font-size:.55rem;margin-top:.5rem;display:block">Premium vehicle at Helsinki-Vantaa HEL</span></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- SPECS -->
+<section class="container">
+  <span class="eyebrow reveal">Service details</span>
+  <h2 class="reveal d1" style="text-align:left">Routes, vehicles & pricing</h2>
+  <div class="grid-3">
+    <div class="spec-card reveal d1">
+      <span class="spec-label">Primary route</span>
+      <h3>HEL → Helsinki City</h3>
+      <p>Helsinki-Vantaa Airport to central Helsinki — approximately 19 km, 25–35 min depending on traffic.</p>
+    </div>
+    <div class="spec-card reveal d2">
+      <span class="spec-label">Extended routes</span>
+      <h3>Airport → Region</h3>
+      <p>Espoo, Vantaa, Lahti, Tampere, and other Finnish cities available on request. Price by distance.</p>
+    </div>
+    <div class="spec-card reveal d3">
+      <span class="spec-label">Vehicles</span>
+      <h3>Premium class</h3>
+      <p>Comfortable, smoke-free saloons and estates. Climate-controlled, clean, and suitable for business and leisure.</p>
+    </div>
+    <div class="spec-card reveal d1">
+      <span class="spec-label">Flight tracking</span>
+      <h3>Delay-adjusted</h3>
+      <p>Your driver monitors your flight status and adjusts pickup timing automatically — no extra charge for delays.</p>
+    </div>
+    <div class="spec-card reveal d2">
+      <span class="spec-label">Availability</span>
+      <h3>7 days a week</h3>
+      <p>Available every day including public holidays. Early morning and late night arrivals welcome.</p>
+    </div>
+    <div class="spec-card reveal d3">
+      <span class="spec-label">Luggage</span>
+      <h3>Ample capacity</h3>
+      <p>Standard and large luggage accommodated. Inform us of oversized or sporting equipment at booking.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- ACTIVE OFFERINGS -->
+<section class="container">
+  <span class="eyebrow reveal">Current offerings</span>
+  <h2 class="reveal d1" style="text-align:left">Active services & pricing</h2>
+  <div class="grid-2">
+    <div class="info-block reveal d1">
+      <div class="offering-row"><span class="offering-name">HEL Airport → Central Helsinki</span><span class="offering-price">From €35</span></div>
+      <div class="offering-row"><span class="offering-name">HEL Airport → Espoo</span><span class="offering-price">From €42</span></div>
+      <div class="offering-row"><span class="offering-name">HEL Airport → Vantaa</span><span class="offering-price">From €28</span></div>
+      <div class="offering-row"><span class="offering-name">HEL Airport → Lahti</span><span class="offering-price">From €90</span></div>
+      <div class="offering-row"><span class="offering-name">Night / early morning surcharge</span><span class="offering-price">+€10</span></div>
+      <div class="offering-row"><span class="offering-name">Busy-hour surcharge (08:30–10:30, 15:30–18:30)</span><span class="offering-price">+15%</span></div>
+    </div>
+    <div class="reveal d2">
+      <p style="opacity:.65;font-size:.92rem">Prices above are estimates based on distance and standard conditions. Your exact fare is confirmed at booking and does not change after confirmation.</p>
+      <p style="opacity:.65;font-size:.92rem">Payment by bank transfer or card accepted. No cash required.</p>
+      <a href="../tourism.html#pricing" class="btn" style="margin-top:1rem;display:inline-block">Calculate your fare</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Ready to book?</span>
+    <h2>Reserve your airport transfer.</h2>
+    <p>Submit your request and we will confirm your booking with pricing within one business day.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../tourism.html#book-ride" class="btn">Book now</a>
+      <a href="../contact.html" class="btn btn-outline">Send inquiry</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal"><h3>Luxival</h3><p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p><p>support@luxival.com</p><p>+358 50 351 8366</p></div>
+      <div class="reveal d1"><h3>Navigate</h3><div class="foot-links"><a href="../index.html">Home</a><a href="../tourism.html">Travel</a><a href="../design-services.html">Design</a><a href="../portfolio.html">Portfolio</a><a href="../about.html">About</a><a href="../qa.html">QA</a></div></div>
+      <div class="reveal d2"><h3>Legal</h3><div class="foot-links"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../contact.html">Contact</a></div></div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/luxival.js"></script>
+</body>
+</html>

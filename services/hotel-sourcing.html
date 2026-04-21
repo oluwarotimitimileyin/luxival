@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
+<title>Hotel & House Sourcing | Luxival Finland</title>
+<meta name="description" content="Premium hotel and private accommodation sourcing across Helsinki and Finland by Luxival. Boutique hotels, private homes, and curated stays.">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+section{padding:7rem 0}.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.9rem 2.2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;border:none;cursor:none;transition:box-shadow .3s}.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}.btn-outline:hover{background:rgba(201,169,106,.06)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06)}
+.nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}.nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s}.nav-links a:hover{opacity:1;color:var(--gold)}
+.hero{padding:10rem 0 5rem}.hero p.lead{font-size:1.2rem;max-width:560px;opacity:.75;margin-bottom:2.5rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.spec-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--card-r);padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,.3),0 10px 20px rgba(0,0,0,.2)}.spec-card h3{color:var(--text);font-size:1rem;margin-bottom:.5rem}.spec-card p{font-size:.88rem;opacity:.6;margin:0}
+.spec-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:.3rem;display:block}
+.offering-row{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.05)}.offering-row:last-child{border-bottom:none}
+.offering-name{font-weight:400;color:var(--text);font-size:.95rem}.offering-price{color:var(--gold);font-size:.9rem;white-space:nowrap;margin-left:2rem}
+.info-block{background:var(--card2);border:1px solid rgba(255,255,255,.04);border-radius:var(--card-r);padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,.25),0 10px 20px rgba(0,0,0,.15)}
+.img-placeholder{background:#1a1c24;border:1px dashed rgba(201,169,106,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(201,169,106,.32);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:1rem;border-radius:var(--card-r);min-height:320px}
+.cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}.cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
+footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}.foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}.foot-links a{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s}.foot-links a:hover{opacity:1}
+.copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}.reveal.on{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
+<nav id="mainNav">
+  <a href="../index.html" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="../tourism.html" class="active">Travel</a></li>
+    <li><a href="../design-services.html">Design</a></li>
+    <li><a href="../portfolio.html">Portfolio</a></li>
+    <li><a href="../qa.html">QA</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  </ul>
+</nav>
+
+<section class="container hero">
+  <span class="eyebrow reveal">Accommodation · Helsinki & Finland</span>
+  <h1 class="reveal d1">Hotel & house<br>sourcing.</h1>
+  <p class="lead reveal d2">We find the right place to stay — boutique hotels, designer apartments, private villas, or lakeside cottages. Curated for your style, budget, and travel dates.</p>
+  <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
+    <a href="../booking.html" class="btn">Request sourcing</a>
+    <a href="../tourism.html#accommodation" class="btn btn-outline">Search accommodation</a>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<section class="container">
+  <div class="grid-2">
+    <div>
+      <span class="eyebrow reveal">The service</span>
+      <h2 class="reveal d1" style="text-align:left">We do the searching for you</h2>
+      <p class="reveal d2">Finding the right hotel is time-consuming. Sorting by reviews, cross-checking locations, comparing prices across platforms — it adds up. We handle all of that and return a curated shortlist matched to your preferences.</p>
+      <p class="reveal d2">We know Helsinki's neighbourhoods — which ones are walkable, which are quiet, which are close to design destinations or the waterfront. That local knowledge saves you hours and ensures you stay somewhere that fits.</p>
+      <p class="reveal d3">For private houses and cottages, we source outside of standard booking platforms — giving you access to stays that do not appear in typical searches.</p>
+    </div>
+    <div class="img-placeholder reveal d1">IMAGE · Premium Hotel Helsinki<br><span style="opacity:.5;font-size:.55rem;margin-top:.5rem;display:block">Curated boutique stays and private homes</span></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<section class="container">
+  <span class="eyebrow reveal">What we source</span>
+  <h2 class="reveal d1" style="text-align:left">Accommodation types</h2>
+  <div class="grid-3">
+    <div class="spec-card reveal d1"><span class="spec-label">City hotels</span><h3>Helsinki boutique</h3><p>Design-forward hotels near the market square, design district, and Töölö — walkable and well-located.</p></div>
+    <div class="spec-card reveal d2"><span class="spec-label">Apartments</span><h3>Serviced stays</h3><p>Short-term apartments for longer visits, families, or guests who prefer a home-away-from-home setup.</p></div>
+    <div class="spec-card reveal d3"><span class="spec-label">Lakeside</span><h3>Cottages & villas</h3><p>Finnish summer cottage experiences — sauna, lake access, and total privacy within driving distance.</p></div>
+    <div class="spec-card reveal d1"><span class="spec-label">Lapland</span><h3>Northern retreats</h3><p>Aurora cabins, glass igloos, and winter lodges in Rovaniemi and surrounding Lapland regions.</p></div>
+    <div class="spec-card reveal d2"><span class="spec-label">Archipelago</span><h3>Island stays</h3><p>Coastal island accommodation accessible by ferry or private boat — rare, quiet, and memorable.</p></div>
+    <div class="spec-card reveal d3"><span class="spec-label">Corporate</span><h3>Business travel</h3><p>Well-located, reliable hotels near Helsinki business districts and conference venues.</p></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<section class="container">
+  <span class="eyebrow reveal">How it works</span>
+  <h2 class="reveal d1" style="text-align:left">The sourcing process</h2>
+  <div class="grid-2">
+    <div class="info-block reveal d1">
+      <div class="offering-row"><span class="offering-name">1. Submit your stay requirements</span><span class="offering-price">Free</span></div>
+      <div class="offering-row"><span class="offering-name">2. Receive a curated shortlist (within 24 hours)</span><span class="offering-price">Free</span></div>
+      <div class="offering-row"><span class="offering-name">3. We handle booking coordination</span><span class="offering-price">Included</span></div>
+      <div class="offering-row"><span class="offering-name">4. Transfer from airport to your stay</span><span class="offering-price">Bookable</span></div>
+    </div>
+    <div class="reveal d2">
+      <p style="opacity:.65;font-size:.92rem">Accommodation sourcing is free as part of a Luxival transport booking. For standalone sourcing requests, a small curation fee may apply for complex or extended searches.</p>
+      <a href="../booking.html" class="btn" style="margin-top:1rem;display:inline-block">Start a sourcing request</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container">
+    <span class="eyebrow">Find your perfect stay</span>
+    <h2>Finland, curated for you.</h2>
+    <p>Tell us your dates, preferences, and budget — we'll come back with the right options within 24 hours.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../booking.html" class="btn">Request sourcing</a>
+      <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal"><h3>Luxival</h3><p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p><p>support@luxival.com</p><p>+358 50 351 8366</p></div>
+      <div class="reveal d1"><h3>Navigate</h3><div class="foot-links"><a href="../index.html">Home</a><a href="../tourism.html">Travel</a><a href="../design-services.html">Design</a><a href="../portfolio.html">Portfolio</a><a href="../about.html">About</a><a href="../qa.html">QA</a></div></div>
+      <div class="reveal d2"><h3>Legal</h3><div class="foot-links"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../contact.html">Contact</a></div></div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/luxival.js"></script>
+</body>
+</html>

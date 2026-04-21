@@ -6,7 +6,7 @@ Source: `job-search copy/ICEYE_Senior_Test_Automation_Engineer/resume.pdf` and `
 
 Name: Olakunle Oluwarotimi Shopeju
 Location: Varikkokaarre 7A 40, 01700 Kivistö, Finland
-Email: rotimikun@gmail.com
+Email: support@luxival.com
 LinkedIn: linkedin.com/in/olakunle-shopeju-56a89b1b
 Experience: 9+ years
 
