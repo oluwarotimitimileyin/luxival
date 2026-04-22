@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Save, AlertTriangle, Building2, Calendar, CreditCard, Tag, Landmark, FileCheck, RefreshCw, MapPin, Phone, Hash } from 'lucide-react';
+import { Save, AlertTriangle, Building2, Calendar, CreditCard, Tag, Landmark, FileCheck, RefreshCw, MapPin, Phone, Hash, ShieldCheck, Fingerprint } from 'lucide-react';
 import { ExtractedExpense } from '../services/geminiService';
 import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
@@ -94,6 +94,36 @@ export default function ExpenseReview({ data, file, previewUrl, documentName, on
                 className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
                 placeholder="Street, City, Postcode"
               />
+            </div>
+
+            {/* VAT Number & Business ID */}
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-lux-black opacity-40">
+                  <ShieldCheck size={14} />
+                  <label className="lux-label">VAT / Tax Number</label>
+                </div>
+                <input
+                  type="text"
+                  value={editedData.merchantVatNumber || ''}
+                  onChange={(e) => setEditedData({ ...editedData, merchantVatNumber: e.target.value })}
+                  className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
+                  placeholder="Not found"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-lux-black opacity-40">
+                  <Fingerprint size={14} />
+                  <label className="lux-label">Business / Company ID</label>
+                </div>
+                <input
+                  type="text"
+                  value={editedData.merchantBusinessId || ''}
+                  onChange={(e) => setEditedData({ ...editedData, merchantBusinessId: e.target.value })}
+                  className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
+                  placeholder="Not found"
+                />
+              </div>
             </div>
 
             {/* Phone & Receipt Number */}
