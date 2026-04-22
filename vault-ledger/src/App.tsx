@@ -26,7 +26,14 @@ import {
   Loader2,
   Settings,
   Building2,
-  Globe
+  Globe,
+  MapPin,
+  Phone,
+  Hash,
+  ShieldCheck,
+  Fingerprint,
+  X,
+  ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
@@ -50,6 +57,11 @@ interface UserProfile {
   businessName: string;
   email: string;
   taxId?: string;
+  vatNumber?: string;
+  companyId?: string;
+  businessAddress?: string;
+  businessPhone?: string;
+  website?: string;
 }
 
 type InvoiceStatus = 'draft' | 'sent' | 'paid';
@@ -78,16 +90,23 @@ export default function App() {
   const [user, setUser] = useState<UserProfile>({
     businessName: 'Luxival Ltd',
     email: 'sarakuvam@gmail.com',
-    taxId: 'GB123456789'
+    taxId: 'GB123456789',
+    vatNumber: '',
+    companyId: '',
+    businessAddress: '',
+    businessPhone: '',
+    website: '',
   });
   const [driveConnected, setDriveConnected] = useState(false);
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
+  const [viewingExpense, setViewingExpense] = useState<Expense | null>(null);
   const [selectedExpenseIds, setSelectedExpenseIds] = useState<string[]>([]);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   
   // Advanced Filtering & Sorting State
   const [dateRange, setDateRange] = useState({ start: '', end: '' });
+  const [activeDatePreset, setActiveDatePreset] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'verified'>('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [sortBy, setSortBy] = useState<'date' | 'amount' | 'merchantName'>('date');
@@ -399,6 +418,43 @@ export default function App() {
     );
   };
 
+  const fmt = (d: Date) => d.toISOString().split('T')[0];
+
+  const applyDatePreset = (preset: string) => {
+    if (activeDatePreset === preset) {
+      setActiveDatePreset(null);
+      setDateRange({ start: '', end: '' });
+      return;
+    }
+    const now = new Date();
+    let start: Date, end: Date;
+    switch (preset) {
+      case 'today':
+        start = new Date(now); end = new Date(now); break;
+      case 'week': {
+        const day = now.getDay();
+        start = new Date(now); start.setDate(now.getDate() - day);
+        end = new Date(start); end.setDate(start.getDate() + 6);
+        break;
+      }
+      case 'month':
+        start = new Date(now.getFullYear(), now.getMonth(), 1);
+        end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        break;
+      case 'last_month':
+        start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        end = new Date(now.getFullYear(), now.getMonth(), 0);
+        break;
+      case 'year':
+        start = new Date(now.getFullYear(), 0, 1);
+        end = new Date(now.getFullYear(), 11, 31);
+        break;
+      default: return;
+    }
+    setActiveDatePreset(preset);
+    setDateRange({ start: fmt(start), end: fmt(end) });
+  };
+
   return (
     <div className="min-h-screen bg-lux-gray flex flex-col lg:flex-row">
       {/* Sidebar - Luxival Style */}
@@ -689,25 +745,55 @@ export default function App() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="bg-white border border-lux-border rounded-2xl p-6 grid grid-cols-1 md:grid-cols-4 gap-6 mb-2">
+                      <div className="bg-white border border-lux-border rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_auto] gap-6 mb-2">
                         <div className="space-y-2">
                           <label className="lux-label flex items-center gap-2">
                             <CalendarDays size={12} /> Date Range
                           </label>
+                          {/* Quick preset toggles */}
+                          <div className="flex flex-wrap gap-1.5 mb-2">
+                            {([
+                              { key: 'today', label: 'Today' },
+                              { key: 'week', label: 'This Week' },
+                              { key: 'month', label: 'This Month' },
+                              { key: 'last_month', label: 'Last Month' },
+                              { key: 'year', label: 'This Year' },
+                            ] as const).map(({ key, label }) => (
+                              <button
+                                key={key}
+                                onClick={() => applyDatePreset(key)}
+                                className={cn(
+                                  "px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest border transition-all",
+                                  activeDatePreset === key
+                                    ? "bg-lux-black text-white border-lux-black"
+                                    : "bg-white text-gray-400 border-lux-border hover:border-lux-black hover:text-lux-black"
+                                )}
+                              >
+                                {label}
+                              </button>
+                            ))}
+                          </div>
+                          {/* Manual from / to inputs */}
                           <div className="flex items-center gap-2">
-                            <input 
-                              type="date" 
-                              className="flex-1 bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
-                              value={dateRange.start}
-                              onChange={(e) => setDateRange({...dateRange, start: e.target.value})}
-                            />
-                            <span className="text-gray-300">-</span>
-                            <input 
-                              type="date" 
-                              className="flex-1 bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
-                              value={dateRange.end}
-                              onChange={(e) => setDateRange({...dateRange, end: e.target.value})}
-                            />
+                            <div className="flex-1 space-y-0.5">
+                              <span className="text-[9px] uppercase font-mono text-gray-400 tracking-widest">From</span>
+                              <input 
+                                type="date" 
+                                className="w-full bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
+                                value={dateRange.start}
+                                onChange={(e) => { setActiveDatePreset(null); setDateRange({...dateRange, start: e.target.value}); }}
+                              />
+                            </div>
+                            <span className="text-gray-300 mt-4">—</span>
+                            <div className="flex-1 space-y-0.5">
+                              <span className="text-[9px] uppercase font-mono text-gray-400 tracking-widest">To</span>
+                              <input 
+                                type="date" 
+                                className="w-full bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
+                                value={dateRange.end}
+                                onChange={(e) => { setActiveDatePreset(null); setDateRange({...dateRange, end: e.target.value}); }}
+                              />
+                            </div>
                           </div>
                         </div>
 
@@ -751,6 +837,7 @@ export default function App() {
                           <button 
                             onClick={() => {
                               setDateRange({ start: '', end: '' });
+                              setActiveDatePreset(null);
                               setStatusFilter('all');
                               setCategoryFilter('all');
                               setSearchQuery('');
@@ -819,8 +906,12 @@ export default function App() {
                 </div>
                 <div className="divide-y divide-lux-border">
                   {filteredExpenses.map(exp => (
-                    <div key={exp.id} className="grid grid-cols-[50px_1fr_1.5fr_1fr_1fr_1fr] p-6 items-center hover:bg-lux-gray/30 transition-all group">
-                      <div className="flex items-center justify-center">
+                    <div
+                      key={exp.id}
+                      className="grid grid-cols-[50px_1fr_1.5fr_1fr_1fr_1fr] p-6 items-center hover:bg-lux-gray/30 transition-all group cursor-pointer"
+                      onClick={() => setViewingExpense(exp)}
+                    >
+                      <div className="flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
                         <input 
                           type="checkbox" 
                           className="w-4 h-4 rounded-sm border-lux-border accent-lux-black"
@@ -858,7 +949,7 @@ export default function App() {
                           <p className="text-[9px] text-gray-400 font-mono">Tax: €{exp.taxAmount}</p>
                         )}
                       </div>
-                      <div className="flex justify-center">
+                      <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
                         <button 
                           onClick={() => verifyExpense(exp.id)}
                           className={cn(
@@ -872,7 +963,7 @@ export default function App() {
                           {exp.status === 'verified' ? "Verified" : "Approve"}
                         </button>
                       </div>
-                      <div className="flex justify-end pr-8 gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex justify-end pr-8 gap-4 opacity-0 group-hover:opacity-100 transition-opacity" onClick={(e) => e.stopPropagation()}>
                         <button 
                           onClick={() => setEditingExpense(exp)} 
                           className="text-gray-400 hover:text-lux-black transition-colors"
@@ -915,23 +1006,54 @@ export default function App() {
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-semibold">{user.businessName}</p>
-                    <p className="text-xs text-gray-500 uppercase tracking-widest">{user.taxId || 'No Tax ID'}</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-widest">
+                      {user.vatNumber || user.taxId || 'No VAT / Tax ID'}
+                    </p>
+                    {user.companyId && (
+                      <p className="text-xs text-gray-400 font-mono">{user.companyId}</p>
+                    )}
                   </div>
                   <div className="pt-6 border-t border-lux-border space-y-4">
                     <div className="flex items-center gap-3 text-gray-400">
                       <Mail size={16} />
                       <span className="text-xs">{user.email}</span>
                     </div>
-                    <div className="flex items-center gap-3 text-gray-400">
-                      <Globe size={16} />
-                      <span className="text-xs">helsinki-node-1.luxival.net</span>
-                    </div>
+                    {user.businessAddress && (
+                      <div className="flex items-start gap-3 text-gray-400">
+                        <MapPin size={16} className="shrink-0 mt-0.5" />
+                        <span className="text-xs">{user.businessAddress}</span>
+                      </div>
+                    )}
+                    {user.businessPhone && (
+                      <div className="flex items-center gap-3 text-gray-400">
+                        <Phone size={16} />
+                        <span className="text-xs font-mono">{user.businessPhone}</span>
+                      </div>
+                    )}
+                    {user.vatNumber && (
+                      <div className="flex items-center gap-3 text-gray-400">
+                        <ShieldCheck size={16} />
+                        <span className="text-xs font-mono">{user.vatNumber}</span>
+                      </div>
+                    )}
+                    {user.companyId && (
+                      <div className="flex items-center gap-3 text-gray-400">
+                        <Fingerprint size={16} />
+                        <span className="text-xs font-mono">{user.companyId}</span>
+                      </div>
+                    )}
+                    {user.website && (
+                      <div className="flex items-center gap-3 text-gray-400">
+                        <Globe size={16} />
+                        <span className="text-xs">{user.website}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="md:col-span-2 space-y-10">
                   <div className="bg-white border border-lux-border rounded-3xl p-10 space-y-8 shadow-sm">
-                    <div className="space-y-6">
+                  <div className="space-y-6">
                       <div className="space-y-2">
                         <label className="lux-label flex items-center gap-2">
                           <Building2 size={12} /> Legal Business Name
@@ -947,6 +1069,46 @@ export default function App() {
 
                       <div className="space-y-2">
                         <label className="lux-label flex items-center gap-2">
+                          <MapPin size={12} /> Business Address
+                        </label>
+                        <input 
+                          type="text" 
+                          className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm"
+                          value={user.businessAddress || ''}
+                          onChange={(e) => setUser({ ...user, businessAddress: e.target.value })}
+                          placeholder="Street, City, Postcode"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="lux-label flex items-center gap-2">
+                            <Phone size={12} /> Business Phone
+                          </label>
+                          <input 
+                            type="text" 
+                            className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm font-mono"
+                            value={user.businessPhone || ''}
+                            onChange={(e) => setUser({ ...user, businessPhone: e.target.value })}
+                            placeholder="+44 20 0000 0000"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="lux-label flex items-center gap-2">
+                            <Globe size={12} /> Website
+                          </label>
+                          <input 
+                            type="text" 
+                            className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm font-mono"
+                            value={user.website || ''}
+                            onChange={(e) => setUser({ ...user, website: e.target.value })}
+                            placeholder="https://yourfirm.com"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="lux-label flex items-center gap-2">
                           <Mail size={12} /> Professional Email
                         </label>
                         <input 
@@ -958,14 +1120,41 @@ export default function App() {
                         />
                       </div>
 
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="lux-label flex items-center gap-2">
+                            <ShieldCheck size={12} /> VAT Number
+                          </label>
+                          <input 
+                            type="text" 
+                            className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm font-mono"
+                            value={user.vatNumber || ''}
+                            onChange={(e) => setUser({ ...user, vatNumber: e.target.value })}
+                            placeholder="GB 123 456 789"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="lux-label flex items-center gap-2">
+                            <Fingerprint size={12} /> Company / Business ID
+                          </label>
+                          <input 
+                            type="text" 
+                            className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm font-mono"
+                            value={user.companyId || ''}
+                            onChange={(e) => setUser({ ...user, companyId: e.target.value })}
+                            placeholder="Co. Reg. 12345678"
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
                         <label className="lux-label flex items-center gap-2">
-                          <CreditCard size={12} /> Tax / Business ID
+                          <Hash size={12} /> Tax / Business ID (Legacy)
                         </label>
                         <input 
                           type="text" 
                           className="w-full bg-lux-gray border border-transparent focus:border-lux-black rounded-xl px-4 py-3 outline-none transition-all text-sm font-mono"
-                          value={user.taxId}
+                          value={user.taxId || ''}
                           onChange={(e) => setUser({ ...user, taxId: e.target.value })}
                           placeholder="VAT / GST / Registration #"
                         />
@@ -1140,6 +1329,187 @@ export default function App() {
               onFilesSelect={handleDriveFilesSelect}
               isProcessing={isUploading}
             />
+          )}
+        </AnimatePresence>
+
+        {/* Expense Detail Panel */}
+        <AnimatePresence>
+          {viewingExpense && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setViewingExpense(null)}
+                className="fixed inset-0 bg-lux-black/30 backdrop-blur-sm z-[60]"
+              />
+              {/* Slide-over panel */}
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+                className="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col overflow-hidden"
+              >
+                {/* Header */}
+                <div className="p-8 border-b border-lux-border flex items-start justify-between shrink-0">
+                  <div>
+                    <p className="lux-label mb-1">Expense Detail</p>
+                    <h3 className="text-2xl font-serif leading-tight">{viewingExpense.merchantName}</h3>
+                  </div>
+                  <button
+                    onClick={() => setViewingExpense(null)}
+                    className="text-gray-400 hover:text-lux-black transition-colors mt-1"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-8 space-y-8">
+                  {/* Receipt image */}
+                  {viewingExpense.imageUrl && (
+                    <div className="rounded-2xl overflow-hidden border border-lux-border bg-lux-gray flex items-center justify-center">
+                      <img
+                        src={viewingExpense.imageUrl}
+                        alt="Receipt"
+                        className="w-full max-h-64 object-contain"
+                      />
+                    </div>
+                  )}
+
+                  {/* Business identity block */}
+                  <div className="bg-lux-gray rounded-2xl p-6 space-y-4">
+                    <p className="lux-label flex items-center gap-2"><Building2 size={12} /> Merchant Identity</p>
+                    <div className="space-y-3 text-sm">
+                      {viewingExpense.merchantAddress && (
+                        <div className="flex items-start gap-3">
+                          <MapPin size={14} className="text-gray-400 mt-0.5 shrink-0" />
+                          <span className="font-serif">{viewingExpense.merchantAddress}</span>
+                        </div>
+                      )}
+                      {viewingExpense.merchantPhone && (
+                        <div className="flex items-center gap-3">
+                          <Phone size={14} className="text-gray-400 shrink-0" />
+                          <span className="font-mono">{viewingExpense.merchantPhone}</span>
+                        </div>
+                      )}
+                      {viewingExpense.merchantVatNumber && (
+                        <div className="flex items-center gap-3">
+                          <ShieldCheck size={14} className="text-gray-400 shrink-0" />
+                          <div>
+                            <span className="text-[9px] uppercase font-mono text-gray-400 block">VAT / Tax No.</span>
+                            <span className="font-mono font-semibold">{viewingExpense.merchantVatNumber}</span>
+                          </div>
+                        </div>
+                      )}
+                      {viewingExpense.merchantBusinessId && (
+                        <div className="flex items-center gap-3">
+                          <Fingerprint size={14} className="text-gray-400 shrink-0" />
+                          <div>
+                            <span className="text-[9px] uppercase font-mono text-gray-400 block">Business / Company ID</span>
+                            <span className="font-mono font-semibold">{viewingExpense.merchantBusinessId}</span>
+                          </div>
+                        </div>
+                      )}
+                      {viewingExpense.receiptNumber && (
+                        <div className="flex items-center gap-3">
+                          <Hash size={14} className="text-gray-400 shrink-0" />
+                          <div>
+                            <span className="text-[9px] uppercase font-mono text-gray-400 block">Receipt / Invoice No.</span>
+                            <span className="font-mono">{viewingExpense.receiptNumber}</span>
+                          </div>
+                        </div>
+                      )}
+                      {viewingExpense.reference && (
+                        <div className="flex items-center gap-3">
+                          <ExternalLink size={14} className="text-gray-400 shrink-0" />
+                          <div>
+                            <span className="text-[9px] uppercase font-mono text-gray-400 block">Reference</span>
+                            <span className="font-mono">{viewingExpense.reference}</span>
+                          </div>
+                        </div>
+                      )}
+                      {!viewingExpense.merchantAddress && !viewingExpense.merchantPhone && !viewingExpense.merchantVatNumber && !viewingExpense.merchantBusinessId && !viewingExpense.receiptNumber && !viewingExpense.reference && (
+                        <p className="text-gray-400 italic text-xs">No additional merchant identifiers extracted.</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Transaction details */}
+                  <div className="space-y-4">
+                    <p className="lux-label">Transaction Details</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-lux-gray rounded-xl p-4">
+                        <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Amount</p>
+                        <p className="text-xl font-serif font-semibold">{viewingExpense.currency}{viewingExpense.amount.toLocaleString()}</p>
+                      </div>
+                      <div className="bg-lux-gray rounded-xl p-4">
+                        <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Date</p>
+                        <p className="text-sm font-serif">{new Date(viewingExpense.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                      </div>
+                      <div className="bg-lux-gray rounded-xl p-4">
+                        <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Category</p>
+                        <p className="text-sm font-mono uppercase">{viewingExpense.category.replace('_', ' ')}</p>
+                      </div>
+                      <div className="bg-lux-gray rounded-xl p-4">
+                        <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Status</p>
+                        <span className={cn(
+                          "px-2 py-0.5 rounded-full text-[10px] uppercase font-mono",
+                          viewingExpense.status === 'verified' ? "bg-green-100 text-green-700" : "bg-orange-100 text-orange-700"
+                        )}>{viewingExpense.status}</span>
+                      </div>
+                      {viewingExpense.taxAmount !== undefined && (
+                        <div className="bg-lux-gray rounded-xl p-4">
+                          <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Tax Amount</p>
+                          <p className="text-sm font-mono">{viewingExpense.currency}{viewingExpense.taxAmount.toFixed(2)}</p>
+                        </div>
+                      )}
+                      {viewingExpense.taxRate !== undefined && (
+                        <div className="bg-lux-gray rounded-xl p-4">
+                          <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">Tax Rate</p>
+                          <p className="text-sm font-mono">{viewingExpense.taxRate}%</p>
+                        </div>
+                      )}
+                    </div>
+                    {viewingExpense.isRecurring && (
+                      <div className="flex items-center gap-2 bg-lux-gold/10 border border-lux-gold/20 rounded-xl px-4 py-3">
+                        <RefreshCw size={13} className="text-lux-gold animate-spin-slow" />
+                        <p className="text-xs font-mono uppercase text-lux-gold font-semibold">Recurring — {viewingExpense.frequency}</p>
+                      </div>
+                    )}
+                    {viewingExpense.explanation && (
+                      <div className="bg-lux-gray rounded-xl p-4">
+                        <p className="text-[9px] uppercase font-mono text-gray-400 mb-1">AI Explanation</p>
+                        <p className="text-xs text-gray-600 italic">{viewingExpense.explanation}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Footer actions */}
+                <div className="p-8 border-t border-lux-border flex gap-3 shrink-0">
+                  <button
+                    onClick={() => { setEditingExpense(viewingExpense); setViewingExpense(null); }}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 border border-lux-border rounded-full text-xs font-mono uppercase tracking-widest hover:border-lux-black transition-all"
+                  >
+                    <Pencil size={14} /> Edit
+                  </button>
+                  <button
+                    onClick={() => { verifyExpense(viewingExpense.id); setViewingExpense(prev => prev ? { ...prev, status: 'verified' } : null); }}
+                    disabled={viewingExpense.status === 'verified'}
+                    className={cn(
+                      "flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-xs font-mono uppercase tracking-widest transition-all",
+                      viewingExpense.status === 'verified'
+                        ? "bg-green-50 text-green-700 opacity-60 pointer-events-none"
+                        : "bg-lux-black text-white hover:bg-lux-black/80"
+                    )}
+                  >
+                    <CheckCircle2 size={14} /> {viewingExpense.status === 'verified' ? 'Verified' : 'Approve'}
+                  </button>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </main>

@@ -6,6 +6,8 @@ export interface ExtractedExpense {
   merchantName: string;
   merchantAddress?: string;
   merchantPhone?: string;
+  merchantVatNumber?: string;
+  merchantBusinessId?: string;
   amount: number;
   currency: string;
   date: string;
@@ -27,7 +29,7 @@ export async function extractExpenseFromImage(fileData: string, mimeType: string
       {
         parts: [
           {
-            text: "Analyze this document (receipt, invoice, bill, or financial statement). Extract ALL available transaction details into JSON. Rules: 1. Convert any currency to its ISO symbol (e.g. €). 2. Extract the full business/merchant name. 3. Extract the merchant's address (street, city, postcode) if printed. 4. Extract the merchant's phone number if printed. 5. Extract the receipt number, invoice number, or bill number if present. 6. Extract the transaction reference or payment reference number if present. 7. Identify the VAT/tax amount and VAT/tax rate (percentage) — look for VAT, GST, TVA, MwSt, or similar labels. 8. Categorize based on business purpose. 9. If it's clearly a personal item, mark isBusiness as false. 10. Identify if this is a recurring subscription (e.g. SaaS, utility, rent) and set isRecurring accordingly. 11. If recurring, estimate the frequency (weekly, monthly, yearly). 12. Provide a brief explanation for your choices.",
+            text: "Analyze this document (receipt, invoice, bill, or financial statement). Extract ALL available transaction details into JSON. Rules: 1. Convert any currency to its ISO symbol (e.g. €). 2. Extract the full business/merchant name. 3. Extract the merchant's address (street, city, postcode) if printed. 4. Extract the merchant's phone number if printed. 5. Extract the merchant's VAT number, GST number, or tax registration number if printed (e.g. VAT No., GSTIN, ABN, TVA). 6. Extract the merchant's company registration number, business ID, or company number if printed (e.g. Co. Reg, Company No., Business ID). 7. Extract the receipt number, invoice number, or bill number if present. 8. Extract the transaction reference or payment reference number if present. 9. Identify the VAT/tax amount and VAT/tax rate (percentage) — look for VAT, GST, TVA, MwSt, or similar labels. 10. Categorize based on business purpose. 11. If it's clearly a personal item, mark isBusiness as false. 12. Identify if this is a recurring subscription (e.g. SaaS, utility, rent) and set isRecurring accordingly. 13. If recurring, estimate the frequency (weekly, monthly, yearly). 14. Provide a brief explanation for your choices.",
           },
           {
             inlineData: {
@@ -46,6 +48,8 @@ export async function extractExpenseFromImage(fileData: string, mimeType: string
           merchantName: { type: Type.STRING },
           merchantAddress: { type: Type.STRING },
           merchantPhone: { type: Type.STRING },
+          merchantVatNumber: { type: Type.STRING },
+          merchantBusinessId: { type: Type.STRING },
           amount: { type: Type.NUMBER },
           currency: { type: Type.STRING },
           date: { type: Type.STRING },
