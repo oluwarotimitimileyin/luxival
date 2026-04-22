@@ -414,7 +414,7 @@ export default function App() {
         e.merchantVatNumber || '—',
         e.merchantBusinessId || '—',
         e.receiptNumber || e.reference || '—',
-        e.category.replace('_', ' ').toUpperCase(),
+        e.category.replace(/_/g, ' ').toUpperCase(),
         e.status.toUpperCase(),
         e.taxAmount ? `${e.currency}${e.taxAmount.toFixed(2)}` : '—',
         `${e.currency}${e.amount.toFixed(2)}`
