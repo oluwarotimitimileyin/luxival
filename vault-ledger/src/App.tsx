@@ -333,44 +333,116 @@ export default function App() {
   };
 
   const generateFilteredExpenseReport = () => {
-    const doc = new jsPDF();
-    
-    // Header
+    const doc = new jsPDF({ orientation: 'landscape' });
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    // Header — Business Name
     doc.setFont("helvetica", "bold");
     doc.setFontSize(20);
-    doc.text(user.businessName, 20, 30);
-    
-    doc.setFontSize(10);
+    doc.text(user.businessName, 20, 25);
+
+    // Business details block (left column)
+    doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
-    doc.text("Filtered Expense Report", 20, 38);
-    doc.text(`Generated: ${new Date().toLocaleString()}`, 20, 44);
-    
+    let leftY = 33;
+    doc.text("Filtered Expense Report", 20, leftY);
+    leftY += 6;
+    doc.text(`Generated: ${new Date().toLocaleString()}`, 20, leftY);
+    if (user.businessAddress) {
+      leftY += 5;
+      doc.text(`Address: ${user.businessAddress}`, 20, leftY);
+    }
+    if (user.businessPhone) {
+      leftY += 5;
+      doc.text(`Phone: ${user.businessPhone}`, 20, leftY);
+    }
+    if (user.email) {
+      leftY += 5;
+      doc.text(`Email: ${user.email}`, 20, leftY);
+    }
+
+    // Business registration details block (right column)
+    let rightY = 33;
+    const rightX = pageWidth / 2 + 20;
+    if (user.vatNumber || user.taxId) {
+      doc.setFont("helvetica", "bold");
+      doc.text(`VAT / Tax No:`, rightX, rightY);
+      doc.setFont("helvetica", "normal");
+      doc.text(user.vatNumber || user.taxId || '', rightX + 35, rightY);
+      rightY += 6;
+    }
+    if (user.companyId) {
+      doc.setFont("helvetica", "bold");
+      doc.text(`Company / Business ID:`, rightX, rightY);
+      doc.setFont("helvetica", "normal");
+      doc.text(user.companyId, rightX + 50, rightY);
+      rightY += 6;
+    }
+    if (user.website) {
+      doc.setFont("helvetica", "bold");
+      doc.text(`Website:`, rightX, rightY);
+      doc.setFont("helvetica", "normal");
+      doc.text(user.website, rightX + 22, rightY);
+      rightY += 6;
+    }
+
+    // Divider line
+    const headerEndY = Math.max(leftY, rightY) + 5;
+    doc.setDrawColor(200);
+    doc.line(20, headerEndY, pageWidth - 20, headerEndY);
+
     // Active Filters Summary
     doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
     doc.setTextColor(100);
-    doc.text(`Applied Filters: Status: ${statusFilter}, Category: ${categoryFilter}, Search: ${searchQuery || 'None'}`, 20, 52);
+    doc.text(
+      `Applied Filters — Status: ${statusFilter}  |  Category: ${categoryFilter}  |  Search: ${searchQuery || 'None'}`,
+      20, headerEndY + 7
+    );
     doc.setTextColor(0);
 
     const total = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
+    const totalTax = filteredExpenses.reduce((sum, e) => sum + (e.taxAmount || 0), 0);
 
     autoTable(doc, {
-      startY: 60,
-      head: [['Date', 'Merchant', 'Category', 'Status', 'Amount']],
+      startY: headerEndY + 13,
+      head: [['Date', 'Merchant Name', 'Merchant Address', 'VAT / Tax No.', 'Company / Biz ID', 'Receipt / Ref #', 'Category', 'Status', 'Tax', 'Amount']],
       body: filteredExpenses.map(e => [
-        new Date(e.date).toLocaleDateString(), 
-        e.merchantName, 
-        e.category.toUpperCase(), 
+        new Date(e.date).toLocaleDateString(),
+        e.merchantName,
+        e.merchantAddress || '—',
+        e.merchantVatNumber || '—',
+        e.merchantBusinessId || '—',
+        e.receiptNumber || e.reference || '—',
+        e.category.replace(/_/g, ' ').toUpperCase(),
         e.status.toUpperCase(),
-        `€${e.amount.toFixed(2)}`
+        e.taxAmount ? `${e.currency}${e.taxAmount.toFixed(2)}` : '—',
+        `${e.currency}${e.amount.toFixed(2)}`
       ]),
       theme: 'striped',
-      headStyles: { fillColor: [10, 10, 10] }
+      headStyles: { fillColor: [10, 10, 10], fontSize: 7, cellPadding: 2 },
+      bodyStyles: { fontSize: 7, cellPadding: 2 },
+      columnStyles: {
+        0: { cellWidth: 20 },   // Date
+        1: { cellWidth: 35 },   // Merchant Name
+        2: { cellWidth: 45 },   // Address
+        3: { cellWidth: 28 },   // VAT No.
+        4: { cellWidth: 28 },   // Company ID
+        5: { cellWidth: 28 },   // Receipt/Ref
+        6: { cellWidth: 22 },   // Category
+        7: { cellWidth: 18 },   // Status
+        8: { cellWidth: 18 },   // Tax
+        9: { cellWidth: 18 },   // Amount
+      },
+      margin: { left: 20, right: 20 }
     });
 
-    const finalY = (doc as any).lastAutoTable.finalY + 10;
+    const finalY = (doc as any).lastAutoTable.finalY + 8;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(`Total Tax: ${filteredExpenses[0]?.currency || '€'}${totalTax.toFixed(2)}`, pageWidth - 100, finalY);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.text(`Report Total: €${total.toFixed(2)}`, 140, finalY);
+    doc.text(`Report Total: ${filteredExpenses[0]?.currency || '€'}${total.toFixed(2)}`, pageWidth - 100, finalY + 7);
 
     doc.save(`${user.businessName}_Expense_Report.pdf`);
   };
