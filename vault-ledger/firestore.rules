@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helpers ---
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Entity Specific Validations ---
+    function isValidUser(data) {
+      return data.keys().hasAll(['businessName', 'email'])
+        && data.businessName is string && data.businessName.size() <= 200
+        && data.email is string && data.email.size() <= 200
+        && (!('address' in data) || (data.address is string && data.address.size() <= 500))
+        && (!('taxId' in data) || (data.taxId is string && data.taxId.size() <= 100))
+        && (!('logoUrl' in data) || (data.logoUrl is string && data.logoUrl.size() <= 1000));
+    }
+
+    function isValidExpense(data) {
+      return data.keys().hasAll(['userId', 'merchantName', 'amount', 'date', 'status'])
+        && data.userId == request.auth.uid
+        && data.merchantName is string && data.merchantName.size() <= 255
+        && data.amount is number && data.amount >= 0
+        && data.date is string // ISO format expected
+        && data.status in ['pending', 'verified']
+        && (!('category' in data) || (data.category is string && data.category.size() <= 100))
+        && (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() <= 2000))
+        && (!('isBusiness' in data) || data.isBusiness is bool)
+        && (!('isRecurring' in data) || data.isRecurring is bool)
+        && (!('frequency' in data) || data.frequency in ['weekly', 'monthly', 'yearly']);
+    }
+
+    function isValidInvoice(data) {
+      return data.keys().hasAll(['userId', 'invoiceNumber', 'customerName', 'date', 'totalAmount'])
+        && data.userId == request.auth.uid
+        && data.invoiceNumber is string && data.invoiceNumber.size() <= 50
+        && data.customerName is string && data.customerName.size() <= 200
+        && data.totalAmount is number && data.totalAmount >= 0
+        && data.date is string
+        && (!('dueDate' in data) || data.dueDate is string)
+        && (!('status' in data) || data.status in ['draft', 'sent', 'paid']);
+    }
+
+    // --- Match Rules ---
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser(incoming());
+      allow update: if isOwner(userId) && isValidUser(incoming())
+        && incoming().diff(existing()).affectedKeys().hasOnly(['businessName', 'address', 'taxId', 'logoUrl']);
+      
+      match /expenses/{expenseId} {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(expenseId) && isValidExpense(incoming());
+        allow update: if isOwner(userId) && isValidExpense(incoming())
+          && incoming().userId == existing().userId
+          && incoming().diff(existing()).affectedKeys().hasAny(['merchantName', 'amount', 'category', 'status', 'isBusiness', 'isRecurring', 'frequency']);
+        allow delete: if isOwner(userId);
+      }
+
+      match /invoices/{invoiceId} {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(invoiceId) && isValidInvoice(incoming());
+        allow update: if isOwner(userId) && isValidInvoice(incoming())
+          && incoming().userId == existing().userId
+          && incoming().diff(existing()).affectedKeys().hasAny(['customerName', 'customerAddress', 'items', 'totalAmount', 'status', 'dueDate']);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

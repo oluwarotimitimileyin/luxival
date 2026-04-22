@@ -41,3 +41,4 @@ prompt: |
   4. Once built, have the Growth Optimizer boost on-site SEO.
   5. Finally, have the Viral Strategist generate a 30-day social media launch plan to drive traffic to these new pages.
   6. Recommend a "Bug Bounty" or "Free Website Audit" social campaign to promote QA skills and attract visitors.
+

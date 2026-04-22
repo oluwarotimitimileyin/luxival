@@ -1,0 +1,12 @@
+{
+  "name": "Vault Ledger",
+  "description": "AI-powered business expense and invoice management system using Gemini OCR.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI-powered OCR",
+    "Expense Management",
+    "Invoice Generation"
+  ]
+}

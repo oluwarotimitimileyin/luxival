@@ -273,3 +273,5 @@ Do not change this logic without being explicitly asked.
 - **Supabase project:** zvwbwbnsfhsaueqddqza.supabase.co
 - **Brand voice:** Premium, confident, minimal, Finnish-modern
 - **Target audience:** Helsinki businesses needing digital services, and international travelers needing airport transport
+ 
+ 

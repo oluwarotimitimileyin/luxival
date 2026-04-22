@@ -33,7 +33,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
-.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}.nav-burger{display:none}
 .hero{padding:10rem 0 5rem}
 .hero p.lead{font-size:1.2rem;max-width:560px;opacity:.75;margin-bottom:0}
 /* Planner form */
@@ -82,7 +82,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}
-@media(max-width:900px){.planner-grid{grid-template-columns:1fr;gap:2rem}.pref-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none}}
+@media(max-width:900px){.planner-grid{grid-template-columns:1fr;gap:2rem}.pref-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
 </style>
 </head>
 <body>
@@ -97,10 +97,13 @@ footer{background:#060608;padding:5rem 0 2rem}
     <li><a href="design-services.html">Design</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="qa.html">QA</a></li>
+    <li><a href="platform.html">Platform</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+
 
 <!-- HERO -->
 <section class="container hero">
@@ -239,6 +242,7 @@ footer{background:#060608;padding:5rem 0 2rem}
           <a href="tourism.html">Travel</a>
           <a href="design-services.html">Design</a>
           <a href="portfolio.html">Portfolio</a>
+          <a href="platform.html">Platform</a>
           <a href="about.html">About</a>
           <a href="qa.html">QA</a>
         </div>
@@ -381,6 +385,23 @@ function generateItinerary(){
   document.getElementById('itinSubtitle').textContent=`Based on your preferences and ${days} day${days>1?'s':''} in Finland. Adjust dates above to regenerate.`;
   section.scrollIntoView({behavior:'smooth',block:'start'});
 }
+</script>
+<script>
+(function(){
+  var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
+  if(!b||!l)return;
+  b.addEventListener('click',function(){
+    var o=l.classList.toggle('open');
+    b.classList.toggle('open',o);
+    b.setAttribute('aria-expanded',String(o));
+  });
+  document.addEventListener('click',function(e){
+    if(!b.contains(e.target)&&!l.contains(e.target)){
+      l.classList.remove('open');b.classList.remove('open');
+      b.setAttribute('aria-expanded','false');
+    }
+  });
+})();
 </script>
 </body>
 </html>
