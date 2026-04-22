@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/platform.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/platform.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/platform.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/platform.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/platform.html">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -163,14 +166,15 @@ footer{background:#060608;padding:5rem 0 2rem}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
     <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html" class="active">Platform</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="platform.html" class="active" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
     <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
@@ -445,7 +449,7 @@ footer{background:#060608;padding:5rem 0 2rem}
           <a href="#vault-ledger">Vault Ledger</a>
           <a href="#tiktok-agency">TikTok Agency</a>
           <a href="services.html">All Services</a>
-          <a href="portfolio.html">Portfolio</a>
+          <a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a>
         </div>
       </div>
       <div>
@@ -595,5 +599,6 @@ agencyForm.addEventListener('submit',async e=>{
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

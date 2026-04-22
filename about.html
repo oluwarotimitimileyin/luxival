@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/about.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/about.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/about.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/about.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/about.html">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -92,27 +95,28 @@ footer{background:#060608;padding:5rem 0 2rem}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" class="active" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">About Luxival · Helsinki, Finland</span>
-    <h1 class="reveal d1">Built on precision.<br>Driven by excellence.</h1>
-    <p class="subhead reveal d2">Luxival is a multidisciplinary premium brand uniting airport transfer, web design, QA engineering, and AI services — all under one obsessive standard of quality.</p>
+    <span class="eyebrow reveal" data-i18n="about-eyebrow">About Luxival · Helsinki, Finland</span>
+    <h1 class="reveal d1" data-i18n="about-h1">Built on precision.<br>Driven by excellence.</h1>
+    <p class="subhead reveal d2" data-i18n="about-subhead">Luxival is a multidisciplinary premium brand uniting airport transfer, web design, QA engineering, and AI services — all under one obsessive standard of quality.</p>
     <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="booking.html" class="btn">Work with us</a>
-      <a href="design-services.html" class="btn btn-outline">Our services</a>
+      <a href="booking.html" class="btn" data-i18n="about-cta-work">Work with us</a>
+      <a href="design-services.html" class="btn btn-outline" data-i18n="about-cta-services">Our services</a>
     </div>
   </div>
   <div class="hero-right reveal d2" id="aboutPanel">
@@ -131,11 +135,11 @@ footer{background:#060608;padding:5rem 0 2rem}
         <img src="assets/images/founder-portrait-2.jpeg" alt="Olakunle Shopeju portrait">
       </div>
       <div class="reveal d1">
-        <span class="eyebrow">The founder</span>
+        <span class="eyebrow" data-i18n="about-founder-eyebrow">The founder</span>
         <h2 style="text-align:left;margin-bottom:1.5rem">Olakunle Shopeju</h2>
-        <blockquote>"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
-        <p>A Senior QA Automation Engineer with 9+ years of experience across automotive, mobile, embedded, and API-driven environments. ISTQB certified. BEng in Mechanical Engineering. Currently completing IT studies in Helsinki.</p>
-        <p>Based in Vantaa, Finland — serving international travellers, businesses, and digital brands that refuse to compromise.</p>
+        <blockquote data-i18n="about-founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
+        <p data-i18n="about-founder-bio1">A Senior QA Automation Engineer with 9+ years of experience across automotive, mobile, embedded, and API-driven environments. ISTQB certified. BEng in Mechanical Engineering. Currently completing IT studies in Helsinki.</p>
+        <p data-i18n="about-founder-bio2">Based in Vantaa, Finland — serving international travellers, businesses, and digital brands that refuse to compromise.</p>
       </div>
     </div>
   </div>
@@ -147,10 +151,10 @@ footer{background:#060608;padding:5rem 0 2rem}
 <section class="stats-strip">
   <div class="container">
     <div class="stats-grid">
-      <div class="reveal"><span class="stat-num" data-target="9" data-suffix="+">0</span><span class="stat-label">Years of engineering</span></div>
-      <div class="reveal d1"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label">Transfers completed</span></div>
-      <div class="reveal d2"><span class="stat-num" data-target="5" data-suffix="">0</span><span class="stat-label">Disciplines mastered</span></div>
-      <div class="reveal d3"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label">Audits delivered</span></div>
+      <div class="reveal"><span class="stat-num" data-target="9" data-suffix="+">0</span><span class="stat-label" data-i18n="stat-years">Years of engineering</span></div>
+      <div class="reveal d1"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label" data-i18n="stat-transfers">Transfers completed</span></div>
+      <div class="reveal d2"><span class="stat-num" data-target="5" data-suffix="">0</span><span class="stat-label" data-i18n="stat-disciplines">Disciplines mastered</span></div>
+      <div class="reveal d3"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label" data-i18n="stat-delivered">Audits delivered</span></div>
     </div>
   </div>
 </section>
@@ -286,27 +290,27 @@ footer{background:#060608;padding:5rem 0 2rem}
         </div>
       </div>
       <div class="reveal d1">
-        <h3>Navigate</h3>
+        <h3 data-i18n="footer-nav-h3">Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="index.html" data-i18n="footer-nav-home">Home</a>
+          <a href="tourism.html" data-i18n="footer-nav-travel">Travel</a>
+          <a href="design-services.html" data-i18n="footer-nav-design">Design</a>
+          <a href="portfolio.html" data-i18n="footer-nav-port">Portfolio</a>
+          <a href="platform.html" data-i18n="footer-nav-platform">Platform</a>
+          <a href="about.html" data-i18n="footer-nav-about">About</a>
+          <a href="qa.html" data-i18n="footer-nav-qa">QA</a>
         </div>
       </div>
       <div class="reveal d2">
-        <h3>Legal</h3>
+        <h3 data-i18n="footer-legal-h3">Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="privacy.html" data-i18n="footer-legal-priv">Privacy Policy</a>
+          <a href="terms.html" data-i18n="footer-legal-terms">Terms of Service</a>
+          <a href="contact.html" data-i18n="footer-legal-contact">Contact</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer-copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
@@ -350,5 +354,6 @@ if(ap){
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/booking.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/booking.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/booking.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/booking.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/booking.html">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -70,66 +73,67 @@ footer{background:#060608;padding:5rem 0 2rem}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn active" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn active" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
 <!-- HERO -->
 <section class="container hero">
-  <span class="eyebrow reveal">Booking · Luxival Helsinki</span>
-  <h1 class="reveal d1">How can we<br>help you today?</h1>
-  <p class="lead reveal d2">Choose a service below — each path is tailored to your specific need and connects you to the right team.</p>
+  <span class="eyebrow reveal" data-i18n="booking-eyebrow">Booking · Luxival Helsinki</span>
+  <h1 class="reveal d1" data-i18n="booking-h1">How can we<br>help you today?</h1>
+  <p class="lead reveal d2" data-i18n="booking-lead">Choose a service below — each path is tailored to your specific need and connects you to the right team.</p>
 </section>
 
 <div class="gold-line container"></div>
 
 <!-- SERVICE SELECTION -->
 <section class="container" style="padding-top:3rem">
-  <span class="eyebrow reveal">Choose a service</span>
-  <h2 class="reveal d1" style="text-align:left">Select your booking type</h2>
+  <span class="eyebrow reveal" data-i18n="booking-choose-eyebrow">Choose a service</span>
+  <h2 class="reveal d1" style="text-align:left" data-i18n="booking-choose-h2">Select your booking type</h2>
   <div class="booking-grid">
 
     <a href="tourism.html#book-ride" class="book-card reveal d1">
       <div class="book-card-icon">🚗</div>
-      <h3>Book a Ride</h3>
-      <p>Instant airport transfer or private city ride. Helsinki-Vantaa pickups, city routes, and custom transport — confirmed within one business day.</p>
-      <span class="book-card-cta">Book transfer →</span>
+      <h3 data-i18n="booking-ride-h3">Book a Ride</h3>
+      <p data-i18n="booking-ride-p">Instant airport transfer or private city ride. Helsinki-Vantaa pickups, city routes, and custom transport — confirmed within one business day.</p>
+      <span class="book-card-cta" data-i18n="booking-ride-cta">Book transfer →</span>
     </a>
 
     <a href="tourism-planning.html" class="book-card reveal d2">
       <div class="book-card-icon">🗺️</div>
-      <h3>Book Tourism Planning</h3>
-      <p>Custom day-by-day Finland itinerary built around your arrival and departure dates, with city, nature, and cultural highlights.</p>
-      <span class="book-card-cta">Plan journey →</span>
+      <h3 data-i18n="booking-tour-h3">Book Tourism Planning</h3>
+      <p data-i18n="booking-tour-p">Custom day-by-day Finland itinerary built around your arrival and departure dates, with city, nature, and cultural highlights.</p>
+      <span class="book-card-cta" data-i18n="booking-tour-cta">Plan journey →</span>
     </a>
 
     <a href="design-services.html" class="book-card reveal d3">
       <div class="book-card-icon">🎨</div>
-      <h3>Book Design Services</h3>
-      <p>Web design, SEO, 3D UX, AI agents, and full digital product development. Submit your project brief to get started.</p>
-      <span class="book-card-cta">Start project →</span>
+      <h3 data-i18n="booking-design-h3">Book Design Services</h3>
+      <p data-i18n="booking-design-p">Web design, SEO, 3D UX, AI agents, and full digital product development. Submit your project brief to get started.</p>
+      <span class="book-card-cta" data-i18n="booking-design-cta">Start project →</span>
     </a>
 
     <a href="qa.html" class="book-card reveal d4">
       <div class="book-card-icon">🔍</div>
-      <h3>Book QA Services</h3>
-      <p>Software testing, QA automation, and free website audit requests. Improve your product's reliability with expert QA.</p>
-      <span class="book-card-cta">Request audit →</span>
+      <h3 data-i18n="booking-qa-h3">Book QA Services</h3>
+      <p data-i18n="booking-qa-p">Software testing, QA automation, and free website audit requests. Improve your product's reliability with expert QA.</p>
+      <span class="book-card-cta" data-i18n="booking-qa-cta">Request audit →</span>
     </a>
 
     <a href="tourism.html#accommodation" class="book-card reveal d5">
       <div class="book-card-icon">🏨</div>
-      <h3>Find Accommodation</h3>
-      <p>Hotel and private house sourcing across Helsinki and Finland. We find premium stays that perfectly match your trip.</p>
-      <span class="book-card-cta">Find a stay →</span>
+      <h3 data-i18n="booking-accom-h3">Find Accommodation</h3>
+      <p data-i18n="booking-accom-p">Hotel and private house sourcing across Helsinki and Finland. We find premium stays that perfectly match your trip.</p>
+      <span class="book-card-cta" data-i18n="booking-accom-cta">Find a stay →</span>
     </a>
 
   </div>
@@ -139,12 +143,12 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- DIRECT CONTACT -->
 <section class="container" style="text-align:center;padding-bottom:9rem">
-  <span class="eyebrow reveal">Not sure where to start?</span>
-  <h2 class="reveal d1">Speak to us directly</h2>
-  <p class="reveal d2" style="max-width:500px;margin:0 auto 2.5rem">For a custom multi-service request or a general question, send us a message and we will route you to the right team within one business day.</p>
+  <span class="eyebrow reveal" data-i18n="booking-direct-eyebrow">Not sure where to start?</span>
+  <h2 class="reveal d1" data-i18n="booking-direct-h2">Speak to us directly</h2>
+  <p class="reveal d2" style="max-width:500px;margin:0 auto 2.5rem" data-i18n="booking-direct-p">For a custom multi-service request or a general question, send us a message and we will route you to the right team within one business day.</p>
   <div class="direct-row reveal d3">
-    <a href="contact.html" class="btn">Send inquiry</a>
-    <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a>
+    <a href="contact.html" class="btn" data-i18n="booking-inquiry-cta">Send inquiry</a>
+    <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="booking-whatsapp-cta">WhatsApp us</a>
   </div>
 </section>
 
@@ -159,27 +163,27 @@ footer{background:#060608;padding:5rem 0 2rem}
         <p>+358 50 351 8366</p>
       </div>
       <div class="reveal d1">
-        <h3>Navigate</h3>
+        <h3 data-i18n="footer-nav-h3">Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="index.html" data-i18n="footer-nav-home">Home</a>
+          <a href="tourism.html" data-i18n="footer-nav-travel">Travel</a>
+          <a href="design-services.html" data-i18n="footer-nav-design">Design</a>
+          <a href="portfolio.html" data-i18n="footer-nav-port">Portfolio</a>
+          <a href="platform.html" data-i18n="footer-nav-platform">Platform</a>
+          <a href="about.html" data-i18n="footer-nav-about">About</a>
+          <a href="qa.html" data-i18n="footer-nav-qa">QA</a>
         </div>
       </div>
       <div class="reveal d2">
-        <h3>Legal</h3>
+        <h3 data-i18n="footer-legal-h3">Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="privacy.html" data-i18n="footer-legal-priv">Privacy Policy</a>
+          <a href="terms.html" data-i18n="footer-legal-terms">Terms of Service</a>
+          <a href="contact.html" data-i18n="footer-legal-contact">Contact</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer-copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
@@ -187,5 +191,6 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script src="js/config.js"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/luxival.js"></script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

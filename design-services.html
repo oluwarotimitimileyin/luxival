@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/design-services.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/design-services.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/design-services.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/design-services.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/design-services.html">
 <meta property="og:title" content="Design & Engineering Services | Luxival">
 <meta property="og:description" content="Five specialist design disciplines. Mechanical, electrical, software QA, web design, and AI agents — all from one multidisciplinary team in Helsinki.">
 <meta property="og:url" content="https://luxival.com/design-services">
@@ -125,22 +128,23 @@ footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html" class="active">Design</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" class="active" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
 <!-- HERO -->
 <section class="hero container">
-  <div class="hero-badge reveal">Multidisciplinary Design Studio · Helsinki</div>
-  <h1 class="reveal d1">Five disciplines.<br>One standard of excellence.</h1>
+  <div class="hero-badge reveal" data-i18n="design-eyebrow">Multidisciplinary Design Studio · Helsinki</div>
+  <h1 class="reveal d1" data-i18n="design-h1">Five disciplines.<br>One standard of excellence.</h1>
   <p class="lead reveal d2">From mechanical prototypes to autonomous AI agents — Luxival brings the same obsessive precision to every engineering and design challenge.</p>
   <div class="hero-actions reveal d3">
     <a href="booking.html" class="btn">Start a project</a>
@@ -318,12 +322,12 @@ footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
     <span class="footer-copy">Luxival © 2026 · Design & Engineering · Helsinki, Finland</span>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="tourism.html">Travel</a>
-      <a href="design-services.html">Design</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="platform.html">Platform</a>
-      <a href="qa.html">QA</a>
-      <a href="about.html">About</a>
+      <a href="tourism.html" data-i18n="nav-travel">Travel</a>
+      <a href="design-services.html" data-i18n="nav-design">Design</a>
+      <a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a>
+      <a href="platform.html" data-i18n="nav-platform">Platform</a>
+      <a href="qa.html" data-i18n="nav-qa">QA</a>
+      <a href="about.html" data-i18n="nav-about">About</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
@@ -382,5 +386,6 @@ document.querySelectorAll('.btn').forEach(btn=>{
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

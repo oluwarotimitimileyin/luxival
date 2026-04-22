@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/tourism.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/tourism.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/tourism.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/tourism.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/tourism.html">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -132,27 +135,28 @@ footer{background:#060608;padding:5rem 0 2rem}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html" class="active">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" class="active" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">Tourism & Transport · Helsinki</span>
-    <h1 class="reveal d1">Premium airport<br>transfer & Finland<br>travel experience.</h1>
-    <p class="subhead reveal d2">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one premium transport experience.</p>
+    <span class="eyebrow reveal" data-i18n="tourism-eyebrow">Tourism &amp; Transport · Helsinki</span>
+    <h1 class="reveal d1" data-i18n="tourism-h1">Premium airport<br>transfer & Finland<br>travel experience.</h1>
+    <p class="subhead reveal d2" data-i18n="tourism-subhead">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one premium transport experience.</p>
     <div class="hero-actions reveal d3">
-      <a href="#pricing" class="btn">Estimate your fare</a>
-      <a href="#seasons" class="btn btn-outline">Explore Finland</a>
+      <a href="#pricing" class="btn" data-i18n="tourism-cta-fare">Estimate your fare</a>
+      <a href="#seasons" class="btn btn-outline" data-i18n="tourism-cta-explore">Explore Finland</a>
     </div>
   </div>
   <div class="reveal d2">
@@ -168,35 +172,35 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- FINLAND BY SEASON -->
 <section class="container" id="seasons">
-  <span class="eyebrow reveal">Finland by season</span>
-  <h2 class="reveal d1" style="text-align:left">Travel the calendar</h2>
+  <span class="eyebrow reveal" data-i18n="tourism-seasons-eyebrow">Finland by season</span>
+  <h2 class="reveal d1" style="text-align:left" data-i18n="tourism-seasons-h2">Travel the calendar</h2>
   <div class="season-grid">
     <div class="season-card reveal d1">
       <div class="img-placeholder card-img">IMAGE · Winter Finland<br><span style="opacity:.5;font-size:.55rem">Northern lights, snow landscapes</span></div>
       <div class="season-card-body">
-        <h3>Winter</h3>
-        <p>Northern lights, snow-white landscapes, and warm airport rides into Helsinki.</p>
+        <h3 data-i18n="winter">Winter</h3>
+        <p data-i18n="winter-p">Northern lights, snow-white landscapes, and warm airport rides into Helsinki.</p>
       </div>
     </div>
     <div class="season-card reveal d2">
       <div class="img-placeholder card-img">IMAGE · Spring Finland<br><span style="opacity:.5;font-size:.55rem">Blooming parks, city walks</span></div>
       <div class="season-card-body">
-        <h3>Spring</h3>
-        <p>Blooming parks, city walks, and fresh travel days for tourism and corporate arrivals.</p>
+        <h3 data-i18n="spring">Spring</h3>
+        <p data-i18n="spring-p">Blooming parks, city walks, and fresh travel days for tourism and corporate arrivals.</p>
       </div>
     </div>
     <div class="season-card reveal d3">
       <div class="img-placeholder card-img">IMAGE · Summer Finland<br><span style="opacity:.5;font-size:.55rem">Lake trips, long daylight</span></div>
       <div class="season-card-body">
-        <h3>Summer</h3>
-        <p>Lake trips, city festivals, and long daylight journeys with premium private rides.</p>
+        <h3 data-i18n="summer">Summer</h3>
+        <p data-i18n="summer-p">Lake trips, city festivals, and long daylight journeys with premium private rides.</p>
       </div>
     </div>
     <div class="season-card reveal d4">
       <div class="img-placeholder card-img">IMAGE · Autumn Finland<br><span style="opacity:.5;font-size:.55rem">Golden forests, harvest season</span></div>
       <div class="season-card-body">
-        <h3>Autumn</h3>
-        <p>Golden forests, harvest season, and crisp drives through Finland's colourful countryside.</p>
+        <h3 data-i18n="autumn">Autumn</h3>
+        <p data-i18n="autumn-p">Golden forests, harvest season, and crisp drives through Finland's colourful countryside.</p>
       </div>
     </div>
   </div>
@@ -745,5 +749,6 @@ if(rideForm){
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

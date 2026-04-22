@@ -18,15 +18,16 @@
 <nav id="mainNav">
   <a href="../index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="../tourism.html">Travel</a></li>
-    <li><a href="../design-services.html">Design</a></li>
-    <li><a href="../portfolio.html">Portfolio</a></li>
-    <li><a href="../qa.html">QA</a></li>
-    <li><a href="../platform.html">Platform</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="../tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="../design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="../portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="../qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="../platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="../about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="../booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 <section class="hero container">
@@ -58,7 +59,7 @@
     <div class="reveal d3" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="../booking.html" class="btn">Send a project brief</a><a href="../design-services.html" class="btn btn-outline">All services</a></div>
   </div>
 </div>
-<footer class="container"><div class="footer-inner"><span class="footer-copy">Luxival © 2026 · electrical design · Helsinki</span><div class="footer-links"><a href="../index.html">Home</a><a href="../tourism.html">Travel</a><a href="../design-services.html">Design</a><a href="../portfolio.html">Portfolio</a><a href="../platform.html">Platform</a><a href="../qa.html">QA</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div></div></footer>
+<footer class="container"><div class="footer-inner"><span class="footer-copy">Luxival © 2026 · electrical design · Helsinki</span><div class="footer-links"><a href="../index.html">Home</a><a href="../tourism.html" data-i18n="nav-travel">Travel</a><a href="../design-services.html" data-i18n="nav-design">Design</a><a href="../portfolio.html" data-i18n="nav-portfolio">Portfolio</a><a href="../platform.html" data-i18n="nav-platform">Platform</a><a href="../qa.html" data-i18n="nav-qa">QA</a><a href="../about.html" data-i18n="nav-about">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div></div></footer>
 <script>(function(){const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';document.getElementById('mainNav').style.background=window.scrollY>60?'rgba(10,11,15,.96)':'rgba(10,11,15,.7)';},{passive:true});const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));})();</script>
 <script>
 (function(){
@@ -77,4 +78,5 @@
   });
 })();
 </script>
+<script src="../js/i18n.js"></script>
 </body></html>

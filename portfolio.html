@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/portfolio.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/portfolio.html">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/portfolio.html">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/portfolio.html">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/portfolio.html">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -84,23 +87,24 @@ footer{background:#060608;padding:5rem 0 2rem}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
-    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" class="active" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
 
 
 <!-- HERO -->
 <section class="container hero">
-  <span class="eyebrow reveal">Portfolio · Helsinki</span>
-  <h1 class="reveal d1">Work that speaks<br>for itself.</h1>
-  <p class="lead reveal d2">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and AI agent infrastructure.</p>
+  <span class="eyebrow reveal" data-i18n="portfolio-eyebrow">Portfolio · Helsinki</span>
+  <h1 class="reveal d1" data-i18n="portfolio-h1">Work that speaks<br>for itself.</h1>
+  <p class="lead reveal d2" data-i18n="portfolio-lead">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and AI agent infrastructure.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
     <a href="booking.html" class="btn">Start a project</a>
     <a href="design-services.html" class="btn btn-outline">View services</a>
@@ -221,12 +225,12 @@ footer{background:#060608;padding:5rem 0 2rem}
         <h3>Navigate</h3>
         <div class="foot-links">
           <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="tourism.html" data-i18n="nav-travel">Travel</a>
+          <a href="design-services.html" data-i18n="nav-design">Design</a>
+          <a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a>
+          <a href="platform.html" data-i18n="nav-platform">Platform</a>
+          <a href="about.html" data-i18n="nav-about">About</a>
+          <a href="qa.html" data-i18n="nav-qa">QA</a>
         </div>
       </div>
       <div class="reveal d2">
@@ -275,5 +279,6 @@ filters.forEach(btn => {
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

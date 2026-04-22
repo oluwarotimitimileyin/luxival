@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxivalvercelapp.com/">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxivalvercelapp.com/">
+<link rel="alternate" hreflang="en" href="https://luxivalvercelapp.com/">
+<link rel="alternate" hreflang="fi" href="https://luxivalvercelapp.com/">
+<link rel="alternate" hreflang="x-default" href="https://luxivalvercelapp.com/">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -167,32 +170,30 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="tourism.html" data-i18n="nav-travel">Travel</a></li>
+    <li><a href="design-services.html" data-i18n="nav-design">Design</a></li>
+    <li><a href="portfolio.html" data-i18n="nav-portfolio">Portfolio</a></li>
+    <li><a href="qa.html" data-i18n="nav-qa">QA</a></li>
+    <li><a href="platform.html" data-i18n="nav-platform">Platform</a></li>
+    <li><a href="about.html" data-i18n="nav-about">About</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem" data-i18n="nav-book">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button id="lang-toggle" class="lang-btn" aria-label="Switch language">FI</button>
 </nav>
-
-
-<!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">Premium Airport Transfer · Helsinki</span>
-    <h1 class="reveal d1">Luxival | Where Arrival Meets Architecture</h1>
-    <p class="subhead reveal d2">Premium airport transfer meets intelligent digital services. From tarmac to doorstep, every detail is orchestrated.</p>
-    <a href="#contact" class="btn reveal d3">Book Transfer</a>
+    <span class="eyebrow reveal" data-i18n="index-eyebrow">Premium Airport Transfer · Helsinki</span>
+    <h1 class="reveal d1" data-i18n="index-h1">Luxival | Where Arrival Meets Architecture</h1>
+    <p class="subhead reveal d2" data-i18n="index-subhead">Premium airport transfer meets intelligent digital services. From tarmac to doorstep, every detail is orchestrated.</p>
+    <a href="#contact" class="btn reveal d3" data-i18n="index-hero-cta">Book Transfer</a>
   </div>
   <div class="hero-right" id="heroPanel">
     <img class="bg" src="assets/images/IMG_1040.JPG" alt="Private jet at Helsinki terminal at night">
     <video autoplay muted loop playsinline preload="metadata" poster="assets/images/IMG_1040.JPG">
       <source src="assets/video/hero-airport.mp4" type="video/mp4">
     </video>
-    <div class="scroll-hint">Scroll</div>
+    <div class="scroll-hint" data-i18n="index-scroll">Scroll</div>
   </div>
 </section>
 
@@ -200,7 +201,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- TRAVEL & TOURISM -->
 <section class="container" id="travel">
-  <h2 class="reveal">Travel & Tourism</h2>
+  <h2 class="reveal" data-i18n="index-travel-h2">Travel & Tourism</h2>
   <div class="grid-3">
 
     <div class="card reveal d1" data-tilt>
@@ -211,9 +212,9 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         </video>
       </div>
       <div class="card-body">
-        <h3>Private Jet</h3>
-        <p>Cinematic arrival — private charter with runway-side greeting and priority clearance from Helsinki-Vantaa.</p>
-        <a href="#contact" class="learn-more">Book Now →</a>
+        <h3 data-i18n="index-jet-h3">Private Jet</h3>
+        <p data-i18n="index-jet-p">Cinematic arrival — private charter with runway-side greeting and priority clearance from Helsinki-Vantaa.</p>
+        <a href="#contact" class="learn-more" data-i18n="index-jet-cta">Book Now →</a>
       </div>
     </div>
 
@@ -222,9 +223,9 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <img src="assets/images/IMG_1027.JPG" alt="Luxival branded luxury luggage set in dark gold lighting">
       </div>
       <div class="card-body">
-        <h3>Luggage</h3>
-        <p>White-glove baggage handling — from aircraft hold to your suite door, managed with precision and care.</p>
-        <a href="#contact" class="learn-more">Learn More →</a>
+        <h3 data-i18n="index-luggage-h3">Luggage</h3>
+        <p data-i18n="index-luggage-p">White-glove baggage handling — from aircraft hold to your suite door, managed with precision and care.</p>
+        <a href="#contact" class="learn-more" data-i18n="index-luggage-cta">Learn More →</a>
       </div>
     </div>
 
@@ -236,9 +237,9 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         </video>
       </div>
       <div class="card-body">
-        <h3>Arrival</h3>
-        <p>Chauffeured transfer with live GPS tracking, ETA updates, and chauffeur details from wheels-down to doorstep.</p>
-        <a href="#contact" class="learn-more">Request Ride →</a>
+        <h3 data-i18n="index-arrival-h3">Arrival</h3>
+        <p data-i18n="index-arrival-p">Chauffeured transfer with live GPS tracking, ETA updates, and chauffeur details from wheels-down to doorstep.</p>
+        <a href="#contact" class="learn-more" data-i18n="index-arrival-cta">Request Ride →</a>
       </div>
     </div>
 
@@ -248,8 +249,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <!-- TRACKING -->
 <section class="tracking" id="tracking">
   <div class="container">
-    <h2 class="reveal">Track Your Ride in Real Time</h2>
-    <p class="reveal d1" style="max-width:560px;margin:0 auto">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
+    <h2 class="reveal" data-i18n="index-tracking-h2">Track Your Ride in Real Time</h2>
+    <p class="reveal d1" style="max-width:560px;margin:0 auto" data-i18n="index-tracking-p">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
     <div class="tracking-vid reveal d2">
       <video autoplay muted loop playsinline preload="metadata">
         <source src="assets/video/founder-wide.mp4" type="video/mp4">
@@ -261,14 +262,14 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- DIGITAL SERVICES -->
 <section class="container" id="services">
-  <h2 class="reveal">Digital Services & Web Design</h2>
+  <h2 class="reveal" data-i18n="index-svc-h2">Digital Services & Web Design</h2>
   <div class="grid-2">
     <div class="reveal">
-      <p>Luxival's digital arm delivers conversion-focused web design, local SEO, technical QA, and immersive 3D UX experiences — all under one roof.</p>
-      <p>We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
-      <p>From Helsinki to global reach — if it has a digital presence, we architect it.</p>
+      <p data-i18n="index-svc-p1">Luxival's digital arm delivers conversion-focused web design, local SEO, technical QA, and immersive 3D UX experiences — all under one roof.</p>
+      <p data-i18n="index-svc-p2">We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
+      <p data-i18n="index-svc-p3">From Helsinki to global reach — if it has a digital presence, we architect it.</p>
       <br>
-      <a href="design-services.html" class="btn">Explore Services</a>
+      <a href="design-services.html" class="btn" data-i18n="index-svc-cta">Explore Services</a>
     </div>
     <div>
       <div class="svc-media reveal d1" data-tilt>
@@ -299,10 +300,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <section class="stats-strip">
   <div class="container">
     <div class="stats-grid">
-      <div class="reveal"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label">Transfers completed</span></div>
-      <div class="reveal d1"><span class="stat-num" data-target="9" data-suffix="/10">0</span><span class="stat-label">Client satisfaction</span></div>
-      <div class="reveal d2"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label">Website audits done</span></div>
-      <div class="reveal d3"><span class="stat-num" data-target="24" data-suffix="/7">0</span><span class="stat-label">Hour support</span></div>
+      <div class="reveal"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label" data-i18n="stat-transfers">Transfers completed</span></div>
+      <div class="reveal d1"><span class="stat-num" data-target="9" data-suffix="/10">0</span><span class="stat-label" data-i18n="stat-satisfaction">Client satisfaction</span></div>
+      <div class="reveal d2"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label" data-i18n="stat-audits">Website audits done</span></div>
+      <div class="reveal d3"><span class="stat-num" data-target="24" data-suffix="/7">0</span><span class="stat-label" data-i18n="stat-support">Hour support</span></div>
     </div>
   </div>
 </section>
@@ -311,7 +312,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- PORTFOLIO -->
 <section class="container" id="portfolio">
-  <h2 class="reveal">Portfolio & Projects</h2>
+  <h2 class="reveal" data-i18n="index-portfolio-h2">Portfolio & Projects</h2>
   <div class="port-header reveal">
     <video autoplay muted loop playsinline preload="metadata">
       <source src="assets/video/hero-airport-2.mp4" type="video/mp4">
@@ -320,27 +321,27 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="grid-6">
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>Transfer</span></div>
-      <div class="proj-body"><h3>Terminal Alpha</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Terminal Alpha</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>Luggage</span></div>
-      <div class="proj-body"><h3>Villa Orbis</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Villa Orbis</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>Digital</span></div>
-      <div class="proj-body"><h3>Tower Meridian</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Tower Meridian</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>Premium</span></div>
-      <div class="proj-body"><h3>Resort Aurora</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Resort Aurora</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>Airport</span></div>
-      <div class="proj-body"><h3>Hangar Luxe</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Hangar Luxe</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>Design</span></div>
-      <div class="proj-body"><h3>HQ Nexus</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>HQ Nexus</h3><a href="portfolio.html" data-i18n="proj-view-case">View Case Study →</a></div>
     </div>
   </div>
 </section>
@@ -354,12 +355,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <span class="founder-tag">Founder & Director</span>
       </div>
       <div class="reveal d1">
-        <span class="eyebrow">About Luxival</span>
-        <h2 style="text-align:left;margin-bottom:1.5rem">Built on precision.<br>Driven by excellence.</h2>
-        <blockquote class="founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
-        <p>Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
+        <span class="eyebrow" data-i18n="index-founder-eyebrow">About Luxival</span>
+        <h2 style="text-align:left;margin-bottom:1.5rem" data-i18n="index-founder-h2">Built on precision.<br>Driven by excellence.</h2>
+        <blockquote class="founder-quote" data-i18n="index-founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
+        <p data-i18n="index-founder-p">Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
         <br>
-        <a href="about.html" class="btn">Read Our Story</a>
+        <a href="about.html" class="btn" data-i18n="index-founder-cta">Read Our Story</a>
       </div>
     </div>
   </div>
@@ -370,17 +371,17 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="container">
     <div class="footer-grid">
       <div class="reveal">
-        <h3>Contact Luxival</h3><br>
+        <h3 data-i18n="footer-contact-h3">Contact Luxival</h3><br>
         <form id="footerForm">
-          <input type="text" id="fName" placeholder="Your name">
-          <input type="email" id="fEmail" placeholder="Email address">
-          <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project"></textarea>
-          <button class="btn" type="submit">Send Inquiry</button>
+          <input type="text" id="fName" placeholder="Your name" data-i18n-ph="ph-name">
+          <input type="email" id="fEmail" placeholder="Email address" data-i18n-ph="ph-email">
+          <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project" data-i18n-ph="ph-msg"></textarea>
+          <button class="btn" type="submit" data-i18n="footer-send">Send Inquiry</button>
           <p id="fStatus" style="margin-top:1rem;font-size:.88rem"></p>
         </form>
       </div>
       <div class="reveal d1">
-        <h3>Connect</h3><br>
+        <h3 data-i18n="footer-connect-h3">Connect</h3><br>
         <div class="socials">
           <a href="https://instagram.com/luxival" target="_blank" rel="noopener">Instagram</a>
           <a href="https://linkedin.com/company/luxival" target="_blank" rel="noopener">LinkedIn</a>
@@ -395,10 +396,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
       </div>
     </div>
     <div class="footer-legal">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
+      <a href="terms.html" data-i18n="footer-terms">Terms of Service</a>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer-copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
@@ -583,5 +584,6 @@ if(form){
   });
 })();
 </script>
+<script src="js/i18n.js"></script>
 </body>
 </html>
