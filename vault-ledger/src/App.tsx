@@ -88,6 +88,7 @@ export default function App() {
   
   // Advanced Filtering & Sorting State
   const [dateRange, setDateRange] = useState({ start: '', end: '' });
+  const [activeDatePreset, setActiveDatePreset] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'verified'>('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [sortBy, setSortBy] = useState<'date' | 'amount' | 'merchantName'>('date');
@@ -399,6 +400,43 @@ export default function App() {
     );
   };
 
+  const fmt = (d: Date) => d.toISOString().split('T')[0];
+
+  const applyDatePreset = (preset: string) => {
+    if (activeDatePreset === preset) {
+      setActiveDatePreset(null);
+      setDateRange({ start: '', end: '' });
+      return;
+    }
+    const now = new Date();
+    let start: Date, end: Date;
+    switch (preset) {
+      case 'today':
+        start = new Date(now); end = new Date(now); break;
+      case 'week': {
+        const day = now.getDay();
+        start = new Date(now); start.setDate(now.getDate() - day);
+        end = new Date(start); end.setDate(start.getDate() + 6);
+        break;
+      }
+      case 'month':
+        start = new Date(now.getFullYear(), now.getMonth(), 1);
+        end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        break;
+      case 'last_month':
+        start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        end = new Date(now.getFullYear(), now.getMonth(), 0);
+        break;
+      case 'year':
+        start = new Date(now.getFullYear(), 0, 1);
+        end = new Date(now.getFullYear(), 11, 31);
+        break;
+      default: return;
+    }
+    setActiveDatePreset(preset);
+    setDateRange({ start: fmt(start), end: fmt(end) });
+  };
+
   return (
     <div className="min-h-screen bg-lux-gray flex flex-col lg:flex-row">
       {/* Sidebar - Luxival Style */}
@@ -689,25 +727,55 @@ export default function App() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="bg-white border border-lux-border rounded-2xl p-6 grid grid-cols-1 md:grid-cols-4 gap-6 mb-2">
+                      <div className="bg-white border border-lux-border rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_auto] gap-6 mb-2">
                         <div className="space-y-2">
                           <label className="lux-label flex items-center gap-2">
                             <CalendarDays size={12} /> Date Range
                           </label>
+                          {/* Quick preset toggles */}
+                          <div className="flex flex-wrap gap-1.5 mb-2">
+                            {([
+                              { key: 'today', label: 'Today' },
+                              { key: 'week', label: 'This Week' },
+                              { key: 'month', label: 'This Month' },
+                              { key: 'last_month', label: 'Last Month' },
+                              { key: 'year', label: 'This Year' },
+                            ] as const).map(({ key, label }) => (
+                              <button
+                                key={key}
+                                onClick={() => applyDatePreset(key)}
+                                className={cn(
+                                  "px-3 py-1 rounded-full text-[10px] uppercase font-mono tracking-widest border transition-all",
+                                  activeDatePreset === key
+                                    ? "bg-lux-black text-white border-lux-black"
+                                    : "bg-white text-gray-400 border-lux-border hover:border-lux-black hover:text-lux-black"
+                                )}
+                              >
+                                {label}
+                              </button>
+                            ))}
+                          </div>
+                          {/* Manual from / to inputs */}
                           <div className="flex items-center gap-2">
-                            <input 
-                              type="date" 
-                              className="flex-1 bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
-                              value={dateRange.start}
-                              onChange={(e) => setDateRange({...dateRange, start: e.target.value})}
-                            />
-                            <span className="text-gray-300">-</span>
-                            <input 
-                              type="date" 
-                              className="flex-1 bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
-                              value={dateRange.end}
-                              onChange={(e) => setDateRange({...dateRange, end: e.target.value})}
-                            />
+                            <div className="flex-1 space-y-0.5">
+                              <span className="text-[9px] uppercase font-mono text-gray-400 tracking-widest">From</span>
+                              <input 
+                                type="date" 
+                                className="w-full bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
+                                value={dateRange.start}
+                                onChange={(e) => { setActiveDatePreset(null); setDateRange({...dateRange, start: e.target.value}); }}
+                              />
+                            </div>
+                            <span className="text-gray-300 mt-4">—</span>
+                            <div className="flex-1 space-y-0.5">
+                              <span className="text-[9px] uppercase font-mono text-gray-400 tracking-widest">To</span>
+                              <input 
+                                type="date" 
+                                className="w-full bg-lux-gray rounded-lg px-3 py-2 text-xs border border-transparent focus:border-lux-gold outline-none"
+                                value={dateRange.end}
+                                onChange={(e) => { setActiveDatePreset(null); setDateRange({...dateRange, end: e.target.value}); }}
+                              />
+                            </div>
                           </div>
                         </div>
 
@@ -751,6 +819,7 @@ export default function App() {
                           <button 
                             onClick={() => {
                               setDateRange({ start: '', end: '' });
+                              setActiveDatePreset(null);
                               setStatusFilter('all');
                               setCategoryFilter('all');
                               setSearchQuery('');
