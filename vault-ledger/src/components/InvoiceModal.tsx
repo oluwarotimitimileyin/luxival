@@ -14,6 +14,7 @@ interface Expense {
   date: string;
   category: string;
   currency: string;
+  imageUrl?: string;
 }
 
 type InvoiceStatus = 'draft' | 'sent' | 'paid';
@@ -148,6 +149,50 @@ export default function InvoiceModal({ selectedExpenses, onClose, onSave, userPr
     doc.text(`Tax (${customer.taxRate}%): ${selectedExpenses[0]?.currency || '€'}${taxAmount.toFixed(2)}`, 140, finalY + 6);
     doc.setFont("helvetica", "bold");
     doc.text(`Total Due: ${selectedExpenses[0]?.currency || '€'}${totalAmount.toFixed(2)}`, 140, finalY + 14);
+
+    // Receipt Screenshots
+    const expensesWithImages = selectedExpenses.filter(e => e.imageUrl && e.imageUrl.startsWith('data:'));
+    if (expensesWithImages.length > 0) {
+      doc.addPage();
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text("Receipt Evidence", 20, 20);
+      doc.setDrawColor(200);
+      doc.line(20, 23, 190, 23);
+
+      const imgW = 80;
+      const imgH = 60;
+      const colGap = 10;
+      let imgX = 20;
+      let imgY = 30;
+      let col = 0;
+
+      for (const exp of expensesWithImages) {
+        if (imgY + imgH + 10 > 280) {
+          doc.addPage();
+          imgY = 20;
+          col = 0;
+          imgX = 20;
+        }
+        try {
+          const format = exp.imageUrl!.includes('image/png') ? 'PNG' : 'JPEG';
+          doc.addImage(exp.imageUrl!, format, imgX, imgY, imgW, imgH);
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(7);
+          doc.text(exp.merchantName, imgX, imgY + imgH + 4, { maxWidth: imgW });
+          doc.text(new Date(exp.date).toLocaleDateString(), imgX, imgY + imgH + 9);
+        } catch (_) {}
+
+        col++;
+        if (col >= 2) {
+          col = 0;
+          imgX = 20;
+          imgY += imgH + 18;
+        } else {
+          imgX += imgW + colGap;
+        }
+      }
+    }
 
     return doc;
   };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Save, AlertTriangle, Building2, Calendar, CreditCard, Tag, Landmark, FileCheck, RefreshCw } from 'lucide-react';
+import { Save, AlertTriangle, Building2, Calendar, CreditCard, Tag, Landmark, FileCheck, RefreshCw, MapPin, Phone, Hash } from 'lucide-react';
 import { ExtractedExpense } from '../services/geminiService';
 import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
@@ -73,12 +73,57 @@ export default function ExpenseReview({ data, file, previewUrl, documentName, on
                 <Building2 size={14} />
                 <label className="lux-label">Merchant Name</label>
               </div>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={editedData.merchantName}
                 onChange={(e) => setEditedData({ ...editedData, merchantName: e.target.value })}
                 className="text-xl font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all"
               />
+            </div>
+
+            {/* Address */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-lux-black opacity-40">
+                <MapPin size={14} />
+                <label className="lux-label">Merchant Address</label>
+              </div>
+              <input
+                type="text"
+                value={editedData.merchantAddress || ''}
+                onChange={(e) => setEditedData({ ...editedData, merchantAddress: e.target.value })}
+                className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
+                placeholder="Street, City, Postcode"
+              />
+            </div>
+
+            {/* Phone & Receipt Number */}
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-lux-black opacity-40">
+                  <Phone size={14} />
+                  <label className="lux-label">Merchant Phone</label>
+                </div>
+                <input
+                  type="text"
+                  value={editedData.merchantPhone || ''}
+                  onChange={(e) => setEditedData({ ...editedData, merchantPhone: e.target.value })}
+                  className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
+                  placeholder="Not found"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-lux-black opacity-40">
+                  <Hash size={14} />
+                  <label className="lux-label">Receipt Number</label>
+                </div>
+                <input
+                  type="text"
+                  value={editedData.receiptNumber || ''}
+                  onChange={(e) => setEditedData({ ...editedData, receiptNumber: e.target.value })}
+                  className="text-lg font-serif w-full border-b border-lux-border py-1 focus:border-lux-black outline-none transition-all placeholder:text-gray-200"
+                  placeholder="Not found"
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-8">
