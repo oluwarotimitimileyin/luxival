@@ -185,6 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const { error } = await window.LuxivalSupabase.subscribeNewsletter(payload);
       if (error) {
+        if (error.code === '23505') {
+          newsletterForm.reset();
+          showStatus(status, 'You are already subscribed.');
+          return;
+        }
         showStatus(status, 'Unable to subscribe. Please try again later.', true);
         console.error('Newsletter subscription error:', error);
       } else {

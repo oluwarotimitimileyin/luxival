@@ -371,7 +371,7 @@ footer{background:#060608;padding:5rem 0 2rem}
               </div>
               <div class="field">
                 <label for="tiktokHandle">TikTok handle *</label>
-                <input type="text" id="tiktokHandle" placeholder="@username">
+                <input type="text" id="tiktokHandle" placeholder="@username" required>
               </div>
             </div>
 
@@ -516,6 +516,7 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
 /* TikTok agency form */
 const agencyForm=document.getElementById('agencyForm');
 const agencyStatus=document.getElementById('agencyStatus');
+const agencySubmitButton=agencyForm?agencyForm.querySelector('button[type="submit"]'):null;
 
 function setStatus(msg,error=false){
   agencyStatus.textContent=msg;
@@ -535,40 +536,66 @@ agencyForm.addEventListener('submit',async e=>{
   if(!name){setStatus('Please enter your creator name.',true);return;}
   if(!email||!email.includes('@')){setStatus('Please enter a valid email address.',true);return;}
   if(!phone){setStatus('Please enter your phone number.',true);return;}
+  if(!handle){setStatus('Please enter your TikTok handle.',true);return;}
 
   setStatus('Submitting your application…');
+  if(agencySubmitButton){agencySubmitButton.disabled=true;agencySubmitButton.setAttribute('aria-busy','true');}
 
   const payload={
-    name,
+    creator_name:name,
+    tiktok_handle:handle,
     email,
     phone,
-    company: handle||null,
-    service_interest:'TikTok Live Agency',
-    message:`TikTok handle: ${handle||'not provided'} | Niche: ${niche||'not specified'} | Followers: ${followers||'not specified'} | Note: ${message||'none'}`,
-    source:'tiktok-agency-form',
+    niche:niche||null,
+    follower_range:followers||null,
+    message:message||null,
+    source:'platform tiktok-agency-form',
     status:'new',
+    notify_emails:['support@luxival.com','olakunleshopeju@luxival.com'],
     metadata:{
-      tiktok_handle:handle,
-      niche,
-      follower_range:followers,
+      page:'platform',
       origin:window.location.pathname,
+      notify_to:['support@luxival.com','olakunleshopeju@luxival.com'],
     },
   };
 
-  if(window.LuxivalSupabase){
-    const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
-    if(error){
-      setStatus('Unable to submit right now. Please email support@luxival.com directly.',true);
-      console.error('Agency form error:',error);
-    } else {
-      agencyForm.reset();
-      setStatus('Application received! We will review it and contact you within 48 hours.');
+  try {
+    if(!window.LuxivalSupabase||!window.LuxivalSupabase.submitTikTokAgencyApplication){
+      throw new Error('Supabase client is unavailable for TikTok applications.');
     }
-  } else {
-    setTimeout(()=>{
-      agencyForm.reset();
-      setStatus('Application received! We will review it and contact you within 48 hours.');
-    },700);
+
+    const { error } = await window.LuxivalSupabase.submitTikTokAgencyApplication(payload);
+    if(error){
+      throw error;
+    }
+
+    const contactPayload={
+      name,
+      email,
+      phone,
+      company:handle,
+      service_interest:'TikTok Live Agency Application',
+      message:`TikTok handle: ${handle} | Niche: ${niche||'not specified'} | Followers: ${followers||'not specified'} | Note: ${message||'none'}`,
+      source:'platform tiktok-agency-form',
+      status:'new',
+      metadata:{
+        tiktok_application_id:null,
+        notify_to:['support@luxival.com','olakunleshopeju@luxival.com'],
+      },
+    };
+
+    const contactResult=await window.LuxivalSupabase.submitContactInquiry(contactPayload);
+    if(contactResult&&contactResult.error){
+      console.warn('Agency notification mirror insert failed:',contactResult.error);
+    }
+
+    agencyForm.reset();
+    setStatus('Application received! We will review it and contact you within 48 hours.');
+  } catch (error) {
+    setStatus('Unable to submit right now. Please email support@luxival.com directly.',true);
+    console.error('Agency form error:',error);
+  } finally {
+    if(agencySubmitButton){agencySubmitButton.disabled=false;agencySubmitButton.removeAttribute('aria-busy');}
   }
 });
 

@@ -270,7 +270,10 @@ if(nlForm){
     const payload = { email, source: 'contact-newsletter', status: 'subscribed', consent: true };
     if(window.LuxivalSupabase){
       const{error} = await window.LuxivalSupabase.subscribeNewsletter(payload);
-      if(error){nlStatus.style.color='#f77';nlStatus.textContent='Unable to subscribe. Please try again.';}
+      if(error){
+        if(error.code==='23505'){nlForm.reset();nlStatus.style.color='var(--gold)';nlStatus.textContent='You are already subscribed.';return;}
+        nlStatus.style.color='#f77';nlStatus.textContent='Unable to subscribe. Please try again.';
+      }
       else{nlForm.reset();nlStatus.textContent='Subscribed. Thank you!';}
     } else {
       setTimeout(()=>{nlForm.reset();nlStatus.textContent='Subscribed. Thank you!';},500);
