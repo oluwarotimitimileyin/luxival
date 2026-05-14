@@ -1,0 +1,417 @@
+{
+  "base": {
+    "surcharges": [],
+    "total": 15,
+    "breakdown": {
+      "base": 15
+    }
+  },
+  "night": {
+    "surcharges": [
+      "night"
+    ],
+    "total": 25,
+    "breakdown": {
+      "base": 15,
+      "night": 10
+    }
+  },
+  "private_cruise": {
+    "surcharges": [
+      "private_cruise"
+    ],
+    "total": 45,
+    "breakdown": {
+      "base": 15,
+      "private_cruise": 30
+    }
+  },
+  "night,private_cruise": {
+    "surcharges": [
+      "private_cruise",
+      "night"
+    ],
+    "total": 55,
+    "breakdown": {
+      "base": 15,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "city": {
+    "surcharges": [
+      "city"
+    ],
+    "total": 25,
+    "breakdown": {
+      "base": 15,
+      "city": 10
+    }
+  },
+  "city,night": {
+    "surcharges": [
+      "city",
+      "night"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "city": 10,
+      "night": 10
+    }
+  },
+  "city,private_cruise": {
+    "surcharges": [
+      "city",
+      "private_cruise"
+    ],
+    "total": 55,
+    "breakdown": {
+      "base": 15,
+      "city": 10,
+      "private_cruise": 30
+    }
+  },
+  "city,night,private_cruise": {
+    "surcharges": [
+      "city",
+      "private_cruise",
+      "night"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "city": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "effort": {
+    "surcharges": [
+      "effort"
+    ],
+    "total": 25,
+    "breakdown": {
+      "base": 15,
+      "effort": 10
+    }
+  },
+  "effort,night": {
+    "surcharges": [
+      "effort",
+      "night"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "night": 10
+    }
+  },
+  "effort,private_cruise": {
+    "surcharges": [
+      "effort",
+      "private_cruise"
+    ],
+    "total": 55,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "private_cruise": 30
+    }
+  },
+  "effort,night,private_cruise": {
+    "surcharges": [
+      "effort",
+      "private_cruise",
+      "night"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "city,effort": {
+    "surcharges": [
+      "effort",
+      "city"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "city": 10
+    }
+  },
+  "city,effort,night": {
+    "surcharges": [
+      "effort",
+      "city",
+      "night"
+    ],
+    "total": 45,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "city": 10,
+      "night": 10
+    }
+  },
+  "city,effort,private_cruise": {
+    "surcharges": [
+      "effort",
+      "city",
+      "private_cruise"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "city": 10,
+      "private_cruise": 30
+    }
+  },
+  "city,effort,night,private_cruise": {
+    "surcharges": [
+      "effort",
+      "city",
+      "private_cruise",
+      "night"
+    ],
+    "total": 75,
+    "breakdown": {
+      "base": 15,
+      "effort": 10,
+      "city": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "airport": {
+    "surcharges": [
+      "airport"
+    ],
+    "total": 25,
+    "breakdown": {
+      "base": 15,
+      "airport": 10
+    }
+  },
+  "airport,night": {
+    "surcharges": [
+      "airport",
+      "night"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "night": 10
+    }
+  },
+  "airport,private_cruise": {
+    "surcharges": [
+      "airport",
+      "private_cruise"
+    ],
+    "total": 55,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "private_cruise": 30
+    }
+  },
+  "airport,night,private_cruise": {
+    "surcharges": [
+      "airport",
+      "private_cruise",
+      "night"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "airport,city": {
+    "surcharges": [
+      "airport",
+      "city"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "city": 10
+    }
+  },
+  "airport,city,night": {
+    "surcharges": [
+      "airport",
+      "city",
+      "night"
+    ],
+    "total": 45,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "city": 10,
+      "night": 10
+    }
+  },
+  "airport,city,private_cruise": {
+    "surcharges": [
+      "airport",
+      "city",
+      "private_cruise"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "city": 10,
+      "private_cruise": 30
+    }
+  },
+  "airport,city,night,private_cruise": {
+    "surcharges": [
+      "airport",
+      "city",
+      "private_cruise",
+      "night"
+    ],
+    "total": 75,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "city": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "airport,effort": {
+    "surcharges": [
+      "airport",
+      "effort"
+    ],
+    "total": 35,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10
+    }
+  },
+  "airport,effort,night": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "night"
+    ],
+    "total": 45,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "night": 10
+    }
+  },
+  "airport,effort,private_cruise": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "private_cruise"
+    ],
+    "total": 65,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "private_cruise": 30
+    }
+  },
+  "airport,effort,night,private_cruise": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "private_cruise",
+      "night"
+    ],
+    "total": 75,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  },
+  "airport,city,effort": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "city"
+    ],
+    "total": 45,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "city": 10
+    }
+  },
+  "airport,city,effort,night": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "city",
+      "night"
+    ],
+    "total": 55,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "city": 10,
+      "night": 10
+    }
+  },
+  "airport,city,effort,private_cruise": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "city",
+      "private_cruise"
+    ],
+    "total": 75,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "city": 10,
+      "private_cruise": 30
+    }
+  },
+  "airport,city,effort,night,private_cruise": {
+    "surcharges": [
+      "airport",
+      "effort",
+      "city",
+      "private_cruise",
+      "night"
+    ],
+    "total": 85,
+    "breakdown": {
+      "base": 15,
+      "airport": 10,
+      "effort": 10,
+      "city": 10,
+      "private_cruise": 30,
+      "night": 10
+    }
+  }
+}
