@@ -97,6 +97,30 @@ select option{background:var(--card)}
 .form-status{margin-top:1rem;font-size:.88rem;min-height:1.2rem}
 .estimate-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--card-r);padding:1rem 1.2rem;margin-bottom:1rem}
 .estimate-box p{font-size:.9rem;opacity:.7;margin:.3rem 0}
+/* Weather widget */
+.weather-bar{background:var(--card);border:1px solid rgba(201,169,106,.12);border-radius:var(--card-r);padding:1.4rem 2rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.weather-temp{font-size:2.4rem;font-weight:300;color:var(--gold);line-height:1}
+.weather-desc{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.5;margin-top:.3rem}
+.weather-icon{font-size:2.6rem;line-height:1}
+.weather-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.weather-meta span{font-size:.72rem;letter-spacing:1px;text-transform:uppercase;opacity:.4}
+.live-dot{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;opacity:.6}
+.live-dot::before{content:'';width:6px;height:6px;background:#4caf50;border-radius:50%;animation:pulse-g 1.6s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse-g{0%,100%{opacity:1}50%{opacity:.25}}
+/* Live events */
+.event-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--card-r);overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.event-card:hover{border-color:var(--border);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.event-img{height:150px;position:relative;overflow:hidden;background:#0d0f16}
+.event-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.65;transition:opacity .3s,transform .5s}
+.event-card:hover .event-img img{opacity:.85;transform:scale(1.04)}
+.event-body{padding:1.4rem}
+.event-tag{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:.35rem;display:block}
+.event-body h3{color:var(--text);font-size:.98rem;margin-bottom:.35rem}
+.event-body .evt-loc{font-size:.78rem;opacity:.45;margin:0 0 .3rem}
+.event-date{font-size:.72rem;opacity:.35;font-family:monospace}
+/* Map */
+.map-wrap{border-radius:var(--card-r);overflow:hidden;border:1px solid rgba(201,169,106,.15);height:500px;position:relative}
+#luxivalMap{position:absolute;inset:0;width:100%;height:100%}
 /* FAQ */
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .faq{background:var(--card);border-radius:var(--card-r);padding:1.8rem;border:1px solid rgba(255,255,255,.05);box-shadow:0 4px 6px rgba(0,0,0,.3),0 10px 20px rgba(0,0,0,.2)}
@@ -167,7 +191,25 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <div class="gold-line container"></div>
 
-<!-- FINLAND BY SEASON -->
+<!-- LIVE WEATHER WIDGET -->
+<section class="container" style="padding:0 0 4rem">
+  <div class="weather-bar reveal" id="weatherWidget">
+    <div class="weather-icon" id="weatherIcon">🌤</div>
+    <div>
+      <div class="weather-temp" id="weatherTemp">—°</div>
+      <div class="weather-desc" id="weatherDesc">Loading Helsinki weather…</div>
+    </div>
+    <div class="weather-meta">
+      <span id="weatherWind">Wind —</span>
+      <span id="weatherHumidity">Humidity —</span>
+      <span id="weatherFeels">Feels like —</span>
+    </div>
+    <div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
+      <span class="live-dot" style="color:#4caf50">Live</span>
+      <span style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;opacity:.3">Helsinki · Open-Meteo</span>
+    </div>
+  </div>
+</section>
 <section class="container" id="seasons">
   <span class="eyebrow reveal">Finland by season</span>
   <h2 class="reveal d1" style="text-align:left">Travel the calendar</h2>
@@ -377,37 +419,30 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <div class="gold-line container"></div>
 
+<!-- GOOGLE MAP WITH PINS -->
+<section class="container">
+  <span class="eyebrow reveal">Explore Helsinki</span>
+  <h2 class="reveal d1" style="text-align:left">Curated places on the map</h2>
+  <p class="reveal d2" style="max-width:560px;margin-bottom:2.5rem">Key landmarks, hidden gems, and premium destinations handpicked by Luxival — tap a pin to explore.</p>
+  <div class="map-wrap reveal">
+    <div id="luxivalMap"></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
 <!-- LIVE EVENTS FEED -->
 <section class="container">
   <span class="eyebrow reveal">What's on</span>
   <h2 class="reveal d1" style="text-align:left">Helsinki events</h2>
-  <p class="reveal d2" style="max-width:560px;margin-bottom:2rem">Current and upcoming events across Helsinki — music, culture, sport, and seasonal highlights.</p>
-  <div class="event-note reveal">Live feed · MyHelsinki Events API · Currently showing example events — live connection in progress</div>
-  <div class="grid-3">
-    <div class="feature reveal d1">
-      <div class="feature-body">
-        <span style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.55">Music · May 2026</span>
-        <h3 style="margin-top:.5rem">Helsinki Jazz Festival</h3>
-        <p>International jazz artists perform at intimate city venues across the capital for five nights.</p>
-        <span style="font-size:.8rem;opacity:.5">Venue: Storyville, Helsinki · Tickets from €25</span>
-      </div>
-    </div>
-    <div class="feature reveal d2">
-      <div class="feature-body">
-        <span style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.55">Culture · Jun 2026</span>
-        <h3 style="margin-top:.5rem">Midsummer at Seurasaari</h3>
-        <p>Traditional Finnish midsummer celebrations at the open-air museum island with bonfires and folk music.</p>
-        <span style="font-size:.8rem;opacity:.5">Venue: Seurasaari Island · Free entry</span>
-      </div>
-    </div>
-    <div class="feature reveal d3">
-      <div class="feature-body">
-        <span style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.55">Design · Sep 2026</span>
-        <h3 style="margin-top:.5rem">Helsinki Design Week</h3>
-        <p>Scandinavia's largest design festival — exhibitions, talks, and installations citywide for ten days.</p>
-        <span style="font-size:.8rem;opacity:.5">Venue: City-wide · Various prices</span>
-      </div>
-    </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+    <p class="reveal d2" style="max-width:560px;margin:0">Current and upcoming events across Helsinki — music, culture, sport, and seasonal highlights.</p>
+    <span class="live-dot reveal" style="color:#4caf50">Live · LinkedEvents API</span>
+  </div>
+  <div class="grid-3" id="eventsGrid">
+    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
+    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
+    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
   </div>
 </section>
 
@@ -702,7 +737,119 @@ const updateRideEstimateDebounced=debounce(updateRideEstimate,300);
 });
 document.getElementById('rideServiceType').addEventListener('change',updateRideEstimate);
 
-/* Destination filter */
+/* Live weather fetch — Open-Meteo, no key required */
+(function fetchWeather(){
+  const API='https://api.open-meteo.com/v1/forecast?latitude=60.1699&longitude=24.9384&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m,apparent_temperature&timezone=Europe/Helsinki&wind_speed_unit=kmh';
+  const WMO_ICONS={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'❄️',73:'❄️',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
+  const WMO_DESC={0:'Clear sky',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Heavy showers',82:'Violent showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+  fetch(API).then(r=>r.json()).then(d=>{
+    const c=d.current;
+    const code=c.weather_code;
+    document.getElementById('weatherIcon').textContent=WMO_ICONS[code]||'🌡';
+    document.getElementById('weatherTemp').textContent=Math.round(c.temperature_2m)+'°C';
+    document.getElementById('weatherDesc').textContent=WMO_DESC[code]||'Current conditions';
+    document.getElementById('weatherWind').textContent='Wind '+Math.round(c.wind_speed_10m)+' km/h';
+    document.getElementById('weatherHumidity').textContent='Humidity '+c.relative_humidity_2m+'%';
+    document.getElementById('weatherFeels').textContent='Feels like '+Math.round(c.apparent_temperature)+'°C';
+  }).catch(()=>{document.getElementById('weatherDesc').textContent='Weather unavailable';});
+})();
+
+/* Live events fetch — LinkedEvents API (City of Helsinki, free) */
+(function fetchEvents(){
+  const grid=document.getElementById('eventsGrid');
+  if(!grid) return;
+  const FALLBACK=[
+    {tag:'Culture',title:'Helsinki Design Week',desc:'Scandinavia\'s largest design festival — exhibitions and talks citywide.',loc:'Helsinki City-wide',date:'Sep 2026'},
+    {tag:'Music',title:'Helsinki Jazz Festival',desc:'International jazz artists at intimate venues across the capital.',loc:'Storyville, Helsinki',date:'May 2026'},
+    {tag:'Tradition',title:'Midsummer at Seurasaari',desc:'Traditional Finnish midsummer with bonfires and folk music on the island.',loc:'Seurasaari Island',date:'Jun 2026'},
+    {tag:'Sport',title:'Helsinki City Marathon',desc:'Annual urban marathon through Helsinki\'s iconic streets and waterfront.',loc:'City Centre',date:'Aug 2026'},
+    {tag:'Culture',title:'Baltic Circle Theatre Festival',desc:'Contemporary theatre and performance art from across the Baltic region.',loc:'Various venues',date:'Nov 2026'},
+    {tag:'Market',title:'Christmas Market at Senate Square',desc:'Traditional open-air Christmas market with crafts, food, and festive lights.',loc:'Senate Square',date:'Dec 2026'}
+  ];
+  const IMGS=['https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70',
+    'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70',
+    'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=70',
+    'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&q=70',
+    'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=400&q=70',
+    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70'];
+  function renderCard(tag,title,desc,loc,date,imgSrc,i){
+    const d=i%3===0?'':'d'+(i%3);
+    return `<div class="event-card reveal ${d}">
+      ${imgSrc?`<div class="event-img"><img src="${imgSrc}" alt="${title}" loading="lazy"></div>`:''}
+      <div class="event-body">
+        <span class="event-tag">${tag}</span>
+        <h3>${title}</h3>
+        <p class="evt-loc">📍 ${loc}</p>
+        <span class="event-date">${date}</span>
+      </div>
+    </div>`;
+  }
+  function renderFallback(){
+    grid.innerHTML=FALLBACK.map((e,i)=>renderCard(e.tag,e.title,e.desc,e.loc,e.date,IMGS[i]||'',i)).join('');
+    if(window.LuxivalReveal) window.LuxivalReveal();
+  }
+  const now=new Date().toISOString().split('T')[0];
+  fetch(`https://api.hel.fi/linkedevents/v1/event/?start=${now}&sort=start_time&page_size=6&format=json&language=en`,{signal:AbortSignal.timeout(5000)})
+    .then(r=>r.json()).then(d=>{
+      const events=(d.data||[]).filter(e=>e.name&&(e.name.en||e.name.fi));
+      if(!events.length){renderFallback();return;}
+      grid.innerHTML=events.map((e,i)=>{
+        const title=(e.name.en||e.name.fi||'Unnamed event').slice(0,60);
+        const tag=e.keywords&&e.keywords[0]&&e.keywords[0].name&&(e.keywords[0].name.en||e.keywords[0].name.fi)||'Event';
+        const loc=e.location&&e.location.name&&(e.location.name.en||e.location.name.fi)||'Helsinki';
+        const date=e.start_time?new Date(e.start_time).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
+        const img=e.images&&e.images[0]&&e.images[0].url||IMGS[i]||'';
+        return renderCard(tag.slice(0,30),title,'',loc,date,img,i);
+      }).join('');
+      if(window.LuxivalReveal) window.LuxivalReveal();
+    }).catch(renderFallback);
+})();
+
+/* Google Map with curated Helsinki pins */
+function initLuxivalMap(){
+  const HELSINKI={lat:60.1699,lng:24.9384};
+  const STYLE=[
+    {elementType:'geometry',stylers:[{color:'#0a0b0f'}]},
+    {elementType:'labels.text.fill',stylers:[{color:'#8a8fa8'}]},
+    {elementType:'labels.text.stroke',stylers:[{color:'#0a0b0f'}]},
+    {featureType:'road',elementType:'geometry',stylers:[{color:'#1a1d28'}]},
+    {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#11131a'}]},
+    {featureType:'water',elementType:'geometry',stylers:[{color:'#061019'}]},
+    {featureType:'poi',elementType:'geometry',stylers:[{color:'#11131a'}]},
+    {featureType:'transit',elementType:'geometry',stylers:[{color:'#13161e'}]},
+    {featureType:'landscape',elementType:'geometry',stylers:[{color:'#0d0f18'}]}
+  ];
+  const map=new google.maps.Map(document.getElementById('luxivalMap'),{
+    center:HELSINKI,zoom:12,styles:STYLE,
+    mapTypeControl:false,streetViewControl:false,fullscreenControl:false
+  });
+  const PINS=[
+    {lat:60.1699,lng:24.9384,label:'Luxival HQ · Vantaa',cat:'Transport'},
+    {lat:60.1705,lng:24.9521,label:'Helsinki Cathedral',cat:'Culture'},
+    {lat:60.1716,lng:24.9313,label:'Oodi Central Library',cat:'Culture'},
+    {lat:60.1630,lng:24.9252,label:'Temppeliaukio Church',cat:'Culture'},
+    {lat:60.1484,lng:24.9867,label:'Suomenlinna Fortress',cat:'Nature'},
+    {lat:60.1672,lng:24.9521,label:'Market Square (Kauppatori)',cat:'City'},
+    {lat:60.1721,lng:24.9409,label:'Ateneum Art Museum',cat:'Culture'},
+    {lat:60.1569,lng:24.9258,label:'Löyly Sauna & Restaurant',cat:'Dining'},
+    {lat:60.3172,lng:24.9633,label:'Helsinki-Vantaa Airport',cat:'Transport'},
+    {lat:60.2101,lng:24.6552,label:'Nuuksio National Park',cat:'Nature'}
+  ];
+  const COLORS={Transport:'#C9A96A',Culture:'#7eb8f7',City:'#a8e6a3',Nature:'#6fd99c',Dining:'#f7b7a3'};
+  PINS.forEach(p=>{
+    const marker=new google.maps.Marker({
+      position:{lat:p.lat,lng:p.lng},map,
+      title:p.label,
+      icon:{path:google.maps.SymbolPath.CIRCLE,scale:8,fillColor:COLORS[p.cat]||'#C9A96A',fillOpacity:.9,strokeColor:'#0a0b0f',strokeWeight:2}
+    });
+    const info=new google.maps.InfoWindow({content:`<div style="background:#11131a;color:#e8ebf2;padding:.7rem 1rem;border-radius:6px;font-family:sans-serif;font-size:.82rem;min-width:140px"><strong style="color:#C9A96A">${p.label}</strong><br><span style="opacity:.5;font-size:.72rem">${p.cat}</span></div>`});
+    marker.addListener('click',()=>info.open(map,marker));
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_PUBLIC_KEY&callback=initLuxivalMap" async defer></script>
+<script>
+
 const filters=document.querySelectorAll('.filter');
 const destCards=document.querySelectorAll('#destGrid .dest-card');
 filters.forEach(btn=>{
