@@ -2,7 +2,7 @@
   "name": "luxival-site",
   "private": true,
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && node scripts/inject-env.js",
     "dev": "eleventy --serve",
     "clean": "rm -rf _site"
   },
