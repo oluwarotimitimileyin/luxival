@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
+  <title>{{ title }} | Luxival Journal</title>
+  <meta name="description" content="{{ description }}">
+  <meta property="og:title" content="{{ title }} | Luxival Journal">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ ogImage or 'https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg' }}">
+  <meta property="og:url" content="https://luxivalvercelapp.com{{ page.url }}">
+  <meta property="og:type" content="{% if isPost %}article{% else %}website{% endif %}">
+  <link rel="canonical" href="https://luxivalvercelapp.com{{ page.url }}">
+  <style>
+    :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+    a{color:var(--gold);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+    nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06)}
+    .nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+    .nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+    .nav-links a{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s}
+    .nav-links a:hover{opacity:1;color:var(--gold)}
+    .btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.6rem 1.4rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;border:none}
+    main{padding:8rem 0 5rem}
+    h1,h2,h3{font-weight:300;letter-spacing:.4px}
+    h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.1;margin-bottom:1.5rem}
+    h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:1.6rem}
+    p{opacity:.8;margin-bottom:1rem}
+    .eyebrow{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.8rem}
+    .post-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:1.6rem;transition:border-color .3s,transform .3s}
+    .post-card:hover{border-color:var(--border);transform:translateY(-3px)}
+    .post-meta{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-bottom:.6rem}
+    .post-title{font-size:1.1rem;color:var(--text);margin-bottom:.6rem}
+    .post-link{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;display:inline-flex;align-items:center;gap:.3rem}
+    .post-link:hover{gap:.6rem}
+    .post-body{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2.4rem}
+    .post-body h2,.post-body h3{margin-top:2rem}
+    .post-body ul{padding-left:1.2rem;margin-bottom:1.2rem}
+    .post-body li{margin-bottom:.5rem;opacity:.8}
+    footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+    .footer-copy{font-size:.75rem;opacity:.3;letter-spacing:1px}
+    .footer-links{display:flex;gap:1.6rem;flex-wrap:wrap}
+    .footer-links a{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+    .footer-links a:hover{opacity:1}
+    @media(max-width:900px){
+      .nav-links{display:none}
+    }
+  </style>
+  {% if isPost %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ title }}",
+    "description": "{{ description }}",
+    "image": "{{ ogImage or 'https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg' }}",
+    "datePublished": "{{ date | date('yyyy-MM-dd') }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Luxival"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Luxival",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg"
+      }
+    },
+    "mainEntityOfPage": "https://luxivalvercelapp.com{{ page.url }}"
+  }
+  </script>
+  {% endif %}
+</head>
+<body>
+  <nav>
+    <a href="/index.html" class="nav-brand">LUXIVAL</a>
+    <ul class="nav-links">
+      <li><a href="/tourism.html">Travel</a></li>
+      <li><a href="/design-services.html">Design</a></li>
+      <li><a href="/portfolio.html">Portfolio</a></li>
+      <li><a href="/qa.html">QA</a></li>
+      <li><a href="/platform.html">Platform</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/booking.html" class="btn">Book a consultation</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      {{ content | safe }}
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span class="footer-copy">Luxival © 2026 · Journal · Helsinki</span>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/tourism.html">Travel</a>
+        <a href="/design-services.html">Design</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/platform.html">Platform</a>
+        <a href="/qa.html">QA</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

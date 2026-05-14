@@ -4,3 +4,6 @@ image for luxival/
 *.tmp.MP4
 *.tmp.mp4
 .vercel
+node_modules/
+_site/
+.cache/
