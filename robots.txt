@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luxivalvercelapp.com/sitemap.xml
+Sitemap: https://luxival.com/sitemap.xml

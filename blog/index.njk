@@ -1,0 +1,27 @@
+---
+layout: blog
+title: "Luxival Journal"
+description: "Insights on software testing, agentic workflow design, and premium digital experiences from Helsinki."
+permalink: "blog/index.html"
+---
+<span class="eyebrow">Blog</span>
+<h1>Ideas for modern luxury, QA, and digital build-outs.</h1>
+<p>Short, focused articles on software testing, agentic workflow strategy, and the craftsmanship behind Luxival's digital and travel services.</p>
+
+<div class="gold-line" style="margin:3rem 0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+
+{% set posts = collections.blog | reverse %}
+{% if posts.length %}
+  <div class="blog-grid">
+    {% for post in posts %}
+      <article class="post-card">
+        <div class="post-meta">{{ post.date | date("yyyy-MM-dd") }}</div>
+        <h3 class="post-title">{{ post.data.title }}</h3>
+        <p>{{ post.data.description }}</p>
+        <a class="post-link" href="{{ post.url }}">Read post →</a>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>New posts are being prepared. Check back soon for updates.</p>
+{% endif %}
