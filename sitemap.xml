@@ -283,6 +283,62 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- ── New Service Blog Posts ───────────────────────────── -->
+  <url>
+    <loc>https://luxival.com/blog/tiktok-agency-live-selling-ugc</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/sewing-pattern-custom-suit-measurements</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/ugc-ai-video-creation-brand-campaigns</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/helsinki-airport-transfer-questions-answered</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/web-design-finland-small-business-questions</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/website-audit-what-it-is-why-you-need-it</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/ai-agents-business-automation-questions</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/software-testing-qa-business-questions</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/finland-tourism-planning-questions</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
   <!-- ── Legal ─────────────────────────────────────────────── -->
   <url>
     <loc>https://luxival.com/privacy</loc>
