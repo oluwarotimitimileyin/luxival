@@ -499,35 +499,8 @@ footer{background:#060608;padding:5rem 0 2rem}
   <span class="eyebrow reveal">Dynamic pricing</span>
   <h2 class="reveal d1" style="text-align:left">Estimate your fare</h2>
   <p class="reveal d2" style="max-width:560px;margin-bottom:3rem">Preview your trip cost instantly. Airport surcharges and busy-hour pricing are calculated automatically as you type.</p>
-  <div class="calc-grid">
-    <div class="calc-card reveal d1">
-      <label for="pickup">Pickup location</label>
-      <input id="pickup" type="text" placeholder="Helsinki-Vantaa Airport">
-      <label for="destination">Destination</label>
-      <input id="destination" type="text" placeholder="Central Helsinki hotel">
-      <label for="serviceType">Service type</label>
-      <select id="serviceType">
-        <option value="airport">Airport transfer</option>
-        <option value="city">City ride</option>
-        <option value="city-to-city">City to city trip</option>
-        <option value="tourism">Tourism route</option>
-      </select>
-      <label for="distance">Estimated distance (km)</label>
-      <input id="distance" type="number" min="1" value="12">
-      <p style="font-size:.82rem;opacity:.5;margin-bottom:1.5rem">Airport and busy-hour fees detected automatically from route and time.</p>
-      <button id="calculateFare" class="btn" style="width:100%">Calculate fare</button>
-    </div>
-    <div class="result-card reveal d2">
-      <h3 style="color:var(--text);margin-bottom:1.5rem">Fare preview</h3>
-      <div class="result-row"><span>Starting price</span><span>€10.00</span></div>
-      <div class="result-row"><span>Distance fee</span><span>€<span id="distancePrice">12.00</span></span></div>
-      <div class="result-row"><span>Service fee</span><span>€<span id="servicePrice">0.00</span></span></div>
-      <div class="result-row"><span>Airport surcharge</span><span>€<span id="airportPrice">0.00</span></span></div>
-      <div class="result-row"><span>Demand surcharge</span><span>€<span id="demandPrice">0.00</span></span></div>
-      <p class="result-total">Estimated total: €<span id="totalPrice">22.00</span></p>
-      <div class="formula">Price formula: €10 + €1/km + service fee + airport surcharge + demand surcharge</div>
-      <a href="booking.html" class="btn" style="width:100%;text-align:center;display:block">Submit booking inquiry</a>
-    </div>
+  <div style="max-width:720px">
+    <div id="fare-calculator-tourism"></div>
   </div>
 </section>
 
@@ -669,6 +642,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script src="js/luxival.js"></script>
 <script>
 function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
+/* Shared fare calculation helpers (used by ride form) */
 function isAirportRoute(a,b){return /airport|vantaa|helsinki-vantaa|hvp|hel/.test((a+' '+b).toLowerCase());}
 function isBusyHour(){const m=new Date().getHours()*60+new Date().getMinutes();return(m>=420&&m<=570)||(m>=930&&m<=1110);}
 
@@ -681,40 +655,8 @@ function updateClock(){
 setInterval(updateClock,1000);
 updateClock();
 
-/* Shared fare calculation */
-function calcFare(){
-  const dist=Math.max(0,Number(document.getElementById('distance').value)||0);
-  const stype=document.getElementById('serviceType').value;
-  const pickup=document.getElementById('pickup').value.trim();
-  const dest=document.getElementById('destination').value.trim();
-  const airportFlag=isAirportRoute(pickup,dest);
-  const busyHour=isBusyHour();
-  const base=10,perKm=1;
-  const distPrice=dist*perKm;
-  const svcPrice=stype==='city-to-city'?10:stype==='tourism'?12:0;
-  const airPrice=airportFlag?15:0;
-  const demand=busyHour?Math.round((base+distPrice+svcPrice+airPrice)*0.15*100)/100:0;
-  const total=base+distPrice+svcPrice+airPrice+demand;
-  document.getElementById('distancePrice').textContent=distPrice.toFixed(2);
-  document.getElementById('servicePrice').textContent=svcPrice.toFixed(2);
-  document.getElementById('airportPrice').textContent=airPrice.toFixed(2);
-  document.getElementById('demandPrice').textContent=demand.toFixed(2);
-  document.getElementById('totalPrice').textContent=total.toFixed(2);
-  return{dist,total};
-}
-
-/* Debounced auto-recalc */
+/* Debounced helper */
 function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};}
-const calcFareDebounced=debounce(calcFare,300);
-['pickup','destination'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el){el.addEventListener('input',calcFareDebounced);el.addEventListener('change',calcFare);}
-});
-['serviceType','distance'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) el.addEventListener('change',calcFare);
-});
-document.getElementById('calculateFare').addEventListener('click',calcFare);
 
 /* Ride form estimate */
 function updateRideEstimate(){
@@ -850,7 +792,20 @@ function initLuxivalMap(){
   });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_PUBLIC_KEY&callback=initLuxivalMap" async defer></script>
+<script src="js/fare-calculator.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas&libraries=places&callback=initLuxivalMap" async defer></script>
+<script>
+// Init fare calculator after Maps loads (initLuxivalMap already ran as the Maps callback)
+document.addEventListener('DOMContentLoaded', function() {
+  function tryInitFare() {
+    if (window.initFareCalculator) {
+      initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
+    } else {
+      setTimeout(tryInitFare, 200);
+    }
+  }
+  tryInitFare();
+});
 <script>
 
 const filters=document.querySelectorAll('.filter');

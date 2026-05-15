@@ -193,6 +193,18 @@ footer a:hover{opacity:1}
 
 <div class="gold-line container"></div>
 
+<!-- FARE CALCULATOR -->
+<section class="container" id="estimate" style="padding:4rem 0">
+  <div style="max-width:720px;margin:0 auto">
+    <span class="eyebrow">Instant estimate</span>
+    <h2 style="margin-bottom:.5rem">Calculate Your Fare</h2>
+    <p style="opacity:.6;margin-bottom:2rem">Enter pickup and drop-off — get a real fare estimate in seconds.</p>
+    <div id="fare-calculator-transfers"></div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
 <!-- BOOKING FORM -->
 <section class="container" id="book">
   <div class="book-form">
@@ -280,6 +292,16 @@ footer a:hover{opacity:1}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/fare-calculator.js"></script>
+<script>
+  window._fareCalculatorConfig = { containerId: 'fare-calculator-transfers', preselect: [] };
+  function _initFareWhenReady() {
+    if (window.initFareCalculator && window._fareCalculatorConfig) {
+      initFareCalculator(window._fareCalculatorConfig);
+    }
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas&libraries=places&callback=_initFareWhenReady" async defer></script>
 <script>
 document.getElementById('bSubmit').addEventListener('click',async()=>{
   const name=document.getElementById('bName').value.trim();
