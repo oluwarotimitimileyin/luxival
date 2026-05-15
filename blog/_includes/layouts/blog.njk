@@ -8,10 +8,10 @@
   <meta name="description" content="{{ description }}">
   <meta property="og:title" content="{{ title }} | Luxival Journal">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:image" content="{{ ogImage or 'https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg' }}">
-  <meta property="og:url" content="https://luxivalvercelapp.com{{ page.url }}">
+  <meta property="og:image" content="{{ ogImage or 'https://luxival.com/assets/images/finland/architecture/oodi-library.jpg' }}">
+  <meta property="og:url" content="https://luxival.com{{ page.url }}">
   <meta property="og:type" content="{% if isPost %}article{% else %}website{% endif %}">
-  <link rel="canonical" href="https://luxivalvercelapp.com{{ page.url }}">
+  <link rel="canonical" href="https://luxival.com{{ page.url }}">
   <style>
     :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -61,7 +61,7 @@
     "@type": "BlogPosting",
     "headline": "{{ title }}",
     "description": "{{ description }}",
-    "image": "{{ ogImage or 'https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg' }}",
+    "image": "{{ ogImage or 'https://luxival.com/assets/images/finland/architecture/oodi-library.jpg' }}",
     "datePublished": "{{ date | date('yyyy-MM-dd') }}",
     "author": {
       "@type": "Organization",
@@ -72,10 +72,10 @@
       "name": "Luxival",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg"
+        "url": "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
       }
     },
-    "mainEntityOfPage": "https://luxivalvercelapp.com{{ page.url }}"
+    "mainEntityOfPage": "https://luxival.com{{ page.url }}"
   }
   </script>
   {% endif %}
