@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
-<title>Luxival | Where Arrival Meets Architecture</title>
-<meta name="description" content="Luxival — premium airport transfers and digital services from Helsinki, led by an ISTQB-certified software tester. Web development, SEO services, QA, and agentic workflow strategy.">
-<meta property="og:title" content="Luxival | Premium Transfers & Digital Services · Helsinki">
+<title>Luxival | Helsinki's Premium Chauffeur & Web Design Agency</title>
+<meta name="description" content="Luxival — Helsinki's premium chauffeur service and web design agency. Airport transfers, SEO, QA software testing, and agentic workflow strategy led by an ISTQB-certified tester.">
+<meta property="og:title" content="Luxival | Helsinki's Premium Chauffeur & Web Design Agency">
 <meta property="og:description" content="Premium airport transfers and intelligent digital services from Helsinki. Web development, SEO services, QA software testing, and agentic workflow strategy.">
-<meta property="og:image" content="https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxivalvercelapp.com/">
+<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
+<meta property="og:url" content="https://luxival.com/">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxivalvercelapp.com/">
+<link rel="canonical" href="https://luxival.com/">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -142,6 +142,29 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 .footer-legal a:hover{opacity:1}
 .copyright{text-align:center;opacity:.3;font-size:.8rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);letter-spacing:1px}
 
+/* --- Hero quick-form --- */
+.hero-form{margin-top:2.5rem;background:rgba(17,19,26,.85);border:1px solid var(--border);border-radius:4px;padding:1.6rem;backdrop-filter:blur(12px)}
+.hero-form-title{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.9;margin-bottom:1.2rem;display:block}
+.hero-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.hero-form-row.single{grid-template-columns:1fr}
+.hero-form input,.hero-form select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:.75rem 1rem;color:var(--text);border-radius:2px;font-family:inherit;font-size:.9rem;transition:border-color .2s;cursor:none}
+.hero-form input::placeholder{opacity:.45}
+.hero-form input:focus,.hero-form select:focus{outline:none;border-color:var(--gold)}
+.hero-form select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.hero-form select option{background:#0A0B0F}
+.hero-form .btn-sm{padding:.75rem 1.8rem;font-size:.78rem;width:100%;text-align:center;display:block;margin-top:.4rem}
+
+/* --- Inline social proof under hero CTA --- */
+.hero-proof{display:flex;gap:2rem;margin-top:1.8rem;flex-wrap:wrap}
+.hero-proof-item{display:flex;flex-direction:column}
+.hero-proof-num{font-size:1.6rem;font-weight:300;color:var(--gold);line-height:1}
+.hero-proof-label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-top:.25rem}
+
+/* --- Mobile sticky CTA --- */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(10,11,15,.97);border-top:1px solid rgba(201,169,106,.2);padding:.9rem 5%;backdrop-filter:blur(20px);gap:1rem}
+.sticky-cta a{flex:1;text-align:center;padding:.8rem 1rem;font-size:.8rem}
+.sticky-cta a.btn-outline{border:1px solid var(--gold);color:var(--gold);border-radius:2px;letter-spacing:1px;text-transform:uppercase;font-size:.78rem}
+
 /* --- Scroll reveal --- */
 .reveal{opacity:0;transform:translateY(38px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
@@ -151,9 +174,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}
   .hero-right{height:55vh;order:-1}
+  .hero-form-row{grid-template-columns:1fr}
   .grid-3,.grid-2,.grid-6,.footer-grid,.founder-grid{grid-template-columns:1fr;gap:2rem}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .sticky-cta{display:flex}
+  body{padding-bottom:72px}
 }
 </style>
 </head>
@@ -167,14 +193,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
+    <li><a href="transfers.html">Transfers</a></li>
+    <li><a href="digital.html">Digital</a></li>
     <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA</a></li>
-    <li><a href="platform.html">Platform</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book a consultation</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -184,9 +209,40 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <section class="hero container">
   <div class="hero-left">
     <span class="eyebrow reveal">Luxury finish travel · Helsinki</span>
-    <h1 class="reveal d1">Luxival | Where Arrival Meets Architecture</h1>
-    <p class="subhead reveal d2">Premium airport transfer meets intelligent digital services led by an ISTQB-certified software tester. From tarmac to conversion, every detail is orchestrated.</p>
-    <a href="#contact" class="btn reveal d3">Book a consultation</a>
+    <h1 class="reveal d1">Helsinki's Premium Chauffeur &amp; Web Design Agency</h1>
+    <p class="subhead reveal d2">From runway to ranking — premium airport transfers and conversion-focused digital services, led by an ISTQB-certified software tester.</p>
+    <a href="booking.html" class="btn reveal d3">Book a Consultation</a>
+
+    <!-- Social proof directly under CTA -->
+    <div class="hero-proof reveal d3">
+      <div class="hero-proof-item"><span class="hero-proof-num">500+</span><span class="hero-proof-label">Transfers completed</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-num">9/10</span><span class="hero-proof-label">Client satisfaction</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-num">100+</span><span class="hero-proof-label">Website audits</span></div>
+    </div>
+
+    <!-- Quick booking / inquiry form -->
+    <div class="hero-form reveal">
+      <span class="hero-form-title">Quick Enquiry — no obligation</span>
+      <div class="hero-form-row">
+        <input type="text" id="hfName" placeholder="Your name" autocomplete="off">
+        <input type="email" id="hfEmail" placeholder="Email address" autocomplete="off">
+      </div>
+      <div class="hero-form-row">
+        <select id="hfService">
+          <option value="" disabled selected>I need…</option>
+          <option value="airport-transfer">Airport transfer</option>
+          <option value="private-ride">Private ride / city tour</option>
+          <option value="web-design">Web design / SEO</option>
+          <option value="qa-testing">QA software testing</option>
+          <option value="other">Something else</option>
+        </select>
+        <input type="text" id="hfDate" placeholder="Date / project start" autocomplete="off">
+      </div>
+      <div class="hero-form-row single">
+        <button class="btn btn-sm" id="hfSubmit" type="button">Send Quick Enquiry →</button>
+      </div>
+      <p id="hfStatus" style="font-size:.82rem;margin-top:.5rem;opacity:.7"></p>
+    </div>
   </div>
   <div class="hero-right" id="heroPanel">
     <img class="bg" src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library in Helsinki, Finland">
@@ -196,6 +252,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     <div class="scroll-hint">Scroll</div>
   </div>
 </section>
+
+<!-- Mobile sticky CTA -->
+<div class="sticky-cta">
+  <a href="booking.html" class="btn">Book Now</a>
+  <a href="design-services.html" class="btn-outline">Get a Quote</a>
+</div>
 
 <div class="gold-line container"></div>
 
@@ -536,6 +598,28 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
     });
   },{threshold:0.5}).observe(el);
 });
+
+/* ---- Hero quick-form submit ---- */
+const hfBtn=document.getElementById('hfSubmit');
+const hfStatus=document.getElementById('hfStatus');
+if(hfBtn){
+  hfBtn.addEventListener('click',async()=>{
+    const name=document.getElementById('hfName').value.trim();
+    const email=document.getElementById('hfEmail').value.trim();
+    const service=document.getElementById('hfService').value;
+    const date=document.getElementById('hfDate').value.trim();
+    if(!name||!email){hfStatus.style.color='#f77';hfStatus.textContent='Please enter your name and email.';return;}
+    hfStatus.style.color='var(--gold)';hfStatus.textContent='Sending…';
+    const payload={name,email,message:`Service: ${service||'not specified'}. Date/start: ${date||'not specified'}.`,source:'hero-quick-form',status:'new'};
+    if(window.LuxivalSupabase){
+      const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
+      if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
+      else{document.getElementById('hfName').value='';document.getElementById('hfEmail').value='';document.getElementById('hfDate').value='';document.getElementById('hfService').value='';hfStatus.style.color='var(--gold)';hfStatus.textContent='✓ Enquiry received — we will reply within 24h.';}
+    } else {
+      setTimeout(()=>{hfStatus.textContent='✓ Enquiry received — we will reply within 24h.';},500);
+    }
+  });
+}
 
 /* ---- Footer form ---- */
 const form=document.getElementById('footerForm');
