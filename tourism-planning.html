@@ -238,12 +238,31 @@ footer{background:#060608;padding:5rem 0 2rem}
       </div>
     </div>
     <!-- Premium upsell -->
-    <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(201,169,106,.04);border:1px solid rgba(201,169,106,.2);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-      <div>
-        <span style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold)">Premium Upgrade — €4.40</span>
-        <p style="font-size:.88rem;opacity:.7;margin:.3rem 0 0">Get a 20-stop multi-day premium itinerary with restaurant bookings, private transport, and accommodation suggestions.</p>
+    <div id="premiumUpsell" style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(201,169,106,.07),rgba(201,169,106,.02));border:1px solid rgba(201,169,106,.3);border-radius:var(--card-r)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div style="flex:1;min-width:220px">
+          <span style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.5rem">⭐ Premium Upgrade — €4.40</span>
+          <p style="font-size:.92rem;font-weight:500;color:var(--text);opacity:1;margin-bottom:.5rem">20-Stop, 5-Day Curated Itinerary</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem .8rem;margin-top:.6rem">
+            <span style="font-size:.78rem;opacity:.65">✓ 20 hand-picked stops</span>
+            <span style="font-size:.78rem;opacity:.65">✓ Opening hours</span>
+            <span style="font-size:.78rem;opacity:.65">✓ Restaurant picks</span>
+            <span style="font-size:.78rem;opacity:.65">✓ Insider tips</span>
+            <span style="font-size:.78rem;opacity:.65">✓ Booking info</span>
+            <span style="font-size:.78rem;opacity:.65">✓ Hidden gems</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <button class="btn" onclick="openSumUp()" id="sumupBtn">Pay €4.40 — Unlock Premium</button>
+          <span style="font-size:.7rem;opacity:.4;text-align:center">Secure payment via SumUp</span>
+        </div>
       </div>
-      <a href="contact.html?service=premium-itinerary" class="btn btn-outline">Upgrade Now</a>
+      <!-- Post-payment unlock (shown after clicking Pay) -->
+      <div id="premiumUnlock" style="display:none;margin-top:1.2rem;padding:1.2rem;background:rgba(201,169,106,.05);border:1px solid rgba(201,169,106,.25);border-radius:var(--r)">
+        <p style="font-size:.85rem;color:var(--gold);margin-bottom:.8rem;opacity:1">✓ Payment complete? Generate your premium itinerary PDF below.</p>
+        <button class="btn" onclick="downloadPremiumPDF()" style="background:var(--gold);color:#0A0B0F">⬇ Generate Premium PDF</button>
+        <span style="font-size:.72rem;opacity:.45;display:block;margin-top:.5rem">Your 20-stop, 5-day plan — ready to download instantly.</span>
+      </div>
     </div>
   </div>
 
@@ -307,8 +326,130 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script src="js/supabase-client.js"></script>
 <script src="js/luxival.js"></script>
 <script>
-/* Store generated plan for PDF use */
-let generatedPlan = null;
+function openSumUp(){
+  window.open('https://pay.sumup.com/b2c/QVLW9NTQ','_blank');
+  setTimeout(()=>{
+    const unlock=document.getElementById('premiumUnlock');
+    const btn=document.getElementById('sumupBtn');
+    if(unlock){unlock.style.display='block';}
+    if(btn){btn.textContent='Payment initiated ✓';btn.style.opacity='.6';btn.disabled=true;}
+  },1500);
+}
+
+const premiumItinerary=[
+  {day:1,title:'Helsinki Arrival & First Impressions',stops:[
+    {time:'13:00',title:'Helsinki-Vantaa Airport Arrival',desc:'Your Luxival private transfer meets you at arrivals. Champagne welcome, wifi in car, direct to hotel.',tip:'Request meet-and-greet service for luggage assistance.',hours:'24/7',booking:'Book via luxival.com/transfers',tag:'Transport'},
+    {time:'15:30',title:'Hotel Check-In & Senate Square',desc:'Settle in, then walk to Senate Square — the neoclassical heart of Helsinki, framed by the white cathedral.',tip:'Best photo angle: stand on the cathedral steps at 4 PM for golden light on the square.',hours:'Senate Square open always',booking:'Free entry',tag:'City'},
+    {time:'17:00',title:'Hakaniemi Market Hall',desc:'The red-brick indoor market is Helsinki\'s culinary soul. Sample smoked salmon, reindeer, Karelian pies, and local cheeses.',tip:'Upstairs floor has the best textile and craft vendors — often overlooked by tourists.',hours:'Mon–Fri 8–18, Sat 8–16',booking:'Free entry',tag:'Food'},
+    {time:'19:30',title:'Dinner at Savotta Restaurant',desc:'Classic Finnish dining in a rustic setting near Senate Square. Wild game, cloudberry desserts, and Finnish craft beer.',tip:'Book the window table overlooking Senate Square for the best atmosphere.',hours:'Daily 11–22',booking:'savotta.fi · +358 9 742 2160',tag:'Dining'},
+  ]},
+  {day:2,title:'Culture, Art & Architecture',stops:[
+    {time:'09:30',title:'Oodi Central Library',desc:'Helsinki\'s architectural marvel — 3 floors of design, technology, recording studios, 3D printers, and rooftop views.',tip:'Top floor terrace has the best panoramic view of Töölönlahti bay. Go before 10 AM to avoid crowds.',hours:'Mon–Fri 8–22, Sat–Sun 10–20',booking:'Free entry',tag:'Architecture'},
+    {time:'11:00',title:'Ateneum National Art Museum',desc:'Finland\'s premier art collection — Akseli Gallen-Kallela\'s Kalevala works, Edelfelt portraits, and rotating international shows.',tip:'The Kalevala gallery on floor 2 is unmissable — these are Finland\'s cultural soul.',hours:'Tue/Fri 10–18, Wed–Thu 10–20, Sat–Sun 10–17',booking:'€18 adults · ateneum.fi',tag:'Culture'},
+    {time:'14:00',title:'Temppeliaukio Rock Church',desc:'Carved directly into a granite outcrop — the copper dome, raw rock walls, and natural acoustics create an extraordinary space.',tip:'Check event listings — live organ and choir concerts happen regularly in this acoustic gem.',hours:'Mon–Sat 10–17:45, Sun 11:45–17:45',booking:'€5 entry · temppeliaukiokirkko.fi',tag:'Architecture'},
+    {time:'18:00',title:'Löyly Sauna & Waterfront Dining',desc:'The iconic waterfront sauna complex on Hernesaari — Finnish sauna, cold Baltic plunge, panoramic terrace, and Nordic restaurant.',tip:'Book the outdoor terrace table with the sea view. Sunset hits around 21:00 in summer.',hours:'Mon–Thu 16–22, Fri–Sun 13–22',booking:'loylyhelsinki.fi · pre-booking required',tag:'Wellness'},
+  ]},
+  {day:3,title:'Island Life & Nordic Nature',stops:[
+    {time:'08:00',title:'Sunrise at Lauttasaari Coastline',desc:'The rocky western shoreline of Lauttasaari island catches the Baltic sunrise perfectly — sea-smoothed granite, birch trees, silence.',tip:'Bring a flask of coffee. The stretch south of Vattuniemi is the least-visited section.',hours:'Always accessible',booking:'Free · Tram 20 to Lauttasaari',tag:'Nature'},
+    {time:'10:30',title:'Suomenlinna Island Fortress',desc:'A UNESCO World Heritage sea fortress spread across 6 islands — 18th-century fortifications, museums, breweries, and cafe terraces.',tip:'Walk to the south side of Suomenlinna 6 for the empty lighthouse meadows that most tourists miss.',hours:'Ferries every 15–40 min from Market Square',booking:'Ferry €3.50 (HSL ticket) · suomenlinna.fi',tag:'History'},
+    {time:'14:30',title:'Seurasaari Open-Air Museum',desc:'A forested island connected by footbridge with 80+ relocated historic buildings — farmhouses, a nobleman\'s manor, a church from 1685.',tip:'June–August only — the midsummer bonfire here is one of Finland\'s most atmospheric events.',hours:'June–Aug: Tue–Sun 11–17',booking:'€12 adults · seurasaari.fi',tag:'Culture'},
+    {time:'17:00',title:'Cafe Regatta & Sunset Waterfront',desc:'Helsinki\'s most charming cafe — a tiny wooden cottage beside the sea, selling cinnamon rolls and hot drinks through a window.',tip:'The firepit on the rocks is for public use. Collect a log and sit with locals watching the evening sea.',hours:'Mon–Sun 09–20 (seasonal)',booking:'No booking needed',tag:'Food'},
+  ]},
+  {day:4,title:'Food, Markets & Local Life',stops:[
+    {time:'09:00',title:'Hietalahti Flea Market',desc:'Helsinki\'s most authentic flea market — hundreds of vendors selling vintage clothing, Soviet-era curiosities, and Finnish design.',tip:'Arrive by 9 AM for the best finds before dealers buy up the good pieces. Haggling is acceptable.',hours:'Sat–Sun 08–16 (Apr–Oct)',booking:'Free entry',tag:'Shopping'},
+    {time:'11:30',title:'Kauppahalli — Old Market Hall',desc:'The 1889 red-brick market hall beside the harbour — artisan food stalls, Finnish delicacies, and some of the best salmon soup in the city.',tip:'Stall 14 (Meritori) serves the definitive Helsinki salmon soup — locals queue for it on weekdays.',hours:'Mon–Sat 08–18',booking:'Free entry · stalls vary',tag:'Food'},
+    {time:'14:00',title:'Kallio Neighbourhood Walk',desc:'Helsinki\'s most characterful district — art nouveau facades, independent coffee shops, vinyl record shops, and a working-class soul.',tip:'Cafe Pit Stop on Fleminginkatu has the best cortado in the city. The backstreet murals are excellent.',hours:'Neighbourhood always open',booking:'Free',tag:'City'},
+    {time:'19:00',title:'Dinner at Olo Restaurant',desc:'One of Finland\'s most awarded restaurants — a refined tasting menu showcasing hyperlocal Finnish ingredients in a converted warehouse.',tip:'Order the wine pairing — their sommelier sources bottles from small Nordic producers unavailable elsewhere.',hours:'Tue–Sat from 17:00',booking:'olo-ravintola.fi · advance booking essential',tag:'Dining'},
+  ]},
+  {day:5,title:'Hidden Gems & Departure',stops:[
+    {time:'09:00',title:'Kiasma & Kamppi Morning',desc:'Start the final morning at Kiasma contemporary art museum, then walk to Kamppi Chapel of Silence for a moment of stillness.',tip:'Kiasma\'s ground floor cafe has great coffee. The chapel is only 15 seats — visit on the hour when it clears.',hours:'Kiasma: Tue 10–17, Wed–Fri 10–20, Sat–Sun 10–17',booking:'Kiasma €17 · chapel free',tag:'Culture'},
+    {time:'11:30',title:'Design District Final Shopping',desc:'The stretch of Uudenmaankatu has Helsinki\'s best design boutiques — Marimekko ceramics, Iittala glass, Artek furniture, and Aalto designs.',tip:'The Marimekko outlet on Pohjoisesplanadi has last-season pieces at 40% off. Cash is preferred at smaller studios.',hours:'Most shops Mon–Sat 10–18',booking:'Marimekko.com, iittala.com for online backup',tag:'Shopping'},
+    {time:'13:00',title:'Final Lunch at Story Restaurant',desc:'A hidden gem in a 1920s bank vault near the cathedral — Nordic sharing plates, excellent Finnish wine list, atmospheric setting.',tip:'The vault room in the basement requires a reservation but is unforgettable for a farewell lunch.',hours:'Mon–Sat 11:30–22',booking:'storyhelsinki.fi · +358 9 6128 5800',tag:'Dining'},
+    {time:'15:30',title:'Luxival Transfer to Airport',desc:'Your private Luxival chauffeur collects you from the hotel. Refreshments, newspapers, and wifi en route to HEL.',tip:'Allow 45 min from city centre to airport. Your driver will track your flight for real-time adjustment.',hours:'On demand · pre-booked',booking:'luxival.com/transfers · +358 50 351 8366',tag:'Transport'},
+  ]},
+];
+
+function downloadPremiumPDF(){
+  const plan=generatedPlan;
+  const name=plan?plan.name:'Guest';
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const gold=[201,169,106],dark=[10,11,15],light=[232,235,242],mid=[150,140,120],dim=[90,85,75];
+  const W=210,M=16;
+
+  /* Cover */
+  doc.setFillColor(...dark);doc.rect(0,0,W,297,'F');
+  doc.setFillColor(20,16,8);doc.rect(0,0,W,50,'F');
+  doc.setDrawColor(...gold);doc.setLineWidth(0.3);doc.line(M,50,W-M,50);
+  doc.setTextColor(...gold);doc.setFontSize(7);doc.setFont('helvetica','normal');
+  doc.text('LUXIVAL · PREMIUM FINLAND ITINERARY',W/2,22,{align:'center'});
+  doc.setFontSize(7);doc.setTextColor(...mid);
+  doc.text('⭐ PREMIUM — 5 DAYS · 20 CURATED STOPS',W/2,32,{align:'center'});
+  doc.setFontSize(30);doc.setFont('helvetica','thin');doc.setTextColor(...light);
+  doc.text('Premium Finland',W/2,68,{align:'center'});
+  doc.text('Experience',W/2,82,{align:'center'});
+  doc.setFontSize(10);doc.setTextColor(...gold);
+  doc.text('5 Days · 20 Hand-Picked Stops · Helsinki & Beyond',W/2,95,{align:'center'});
+  doc.setFontSize(9);doc.setTextColor(...mid);
+  doc.text(`Prepared exclusively for: ${name}`,W/2,107,{align:'center'});
+  doc.setFontSize(8);doc.setTextColor(...dim);
+  doc.text('Restaurants · Opening Hours · Insider Tips · Booking Info · Hidden Gems',W/2,118,{align:'center'});
+  doc.setDrawColor(...gold);doc.setLineWidth(0.3);doc.line(M,128,W-M,128);
+  doc.setFontSize(7.5);doc.setTextColor(...dim);
+  doc.text('luxival.com · support@luxival.com · +358 50 351 8366',W/2,138,{align:'center'});
+
+  premiumItinerary.forEach((dayData)=>{
+    doc.addPage();
+    doc.setFillColor(...dark);doc.rect(0,0,W,297,'F');
+    doc.setFillColor(20,15,6);doc.rect(0,0,W,26,'F');
+    doc.setTextColor(...gold);doc.setFontSize(7);doc.setFont('helvetica','bold');
+    doc.text(`DAY ${dayData.day}`,M,14);
+    doc.setFont('helvetica','normal');doc.setTextColor(...mid);
+    doc.text(dayData.title.toUpperCase(),W-M,14,{align:'right'});
+    doc.setDrawColor(...gold);doc.setLineWidth(0.3);doc.line(M,26,W-M,26);
+
+    let y=38;
+    dayData.stops.forEach((stop)=>{
+      if(y>258){doc.addPage();doc.setFillColor(...dark);doc.rect(0,0,W,297,'F');y=18;}
+      /* Time pill */
+      doc.setFillColor(30,22,10);doc.roundedRect(M,y-3,22,7,1,1,'F');
+      doc.setFontSize(6.5);doc.setTextColor(...gold);doc.text(stop.time,M+11,y+1.5,{align:'center'});
+      /* Tag */
+      doc.setFillColor(25,20,10);doc.roundedRect(W-M-24,y-3,24,7,1,1,'F');
+      doc.setFontSize(6);doc.setTextColor(...gold);doc.text(stop.tag.toUpperCase(),W-M-12,y+1.5,{align:'center'});
+      /* Title */
+      doc.setFontSize(10.5);doc.setFont('helvetica','bold');doc.setTextColor(...light);
+      doc.text(stop.title,M+26,y+1.5);
+      y+=9;
+      /* Desc */
+      doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(170,162,148);
+      const descLines=doc.splitTextToSize(stop.desc,W-M*2-4);
+      doc.text(descLines,M+4,y);
+      y+=descLines.length*4.5+3;
+      /* Insider tip */
+      doc.setFillColor(22,18,8);doc.roundedRect(M,y-2,W-M*2,12+Math.max(0,doc.splitTextToSize('X',W-M*2-22).length-1)*4,'F','F');
+      doc.setFontSize(6.5);doc.setTextColor(...gold);doc.text('💡 TIP',M+3,y+3.5);
+      doc.setTextColor(190,175,145);
+      const tipLines=doc.splitTextToSize(stop.tip,W-M*2-22);
+      doc.text(tipLines,M+20,y+3.5);
+      y+=14;
+      /* Hours + booking on same row */
+      doc.setFontSize(6.5);doc.setTextColor(...dim);
+      doc.text(`🕐 ${stop.hours}`,M+4,y);
+      doc.text(`📍 ${stop.booking}`,W/2,y);
+      y+=5;
+      /* Divider */
+      doc.setDrawColor(28,24,16);doc.setLineWidth(0.2);doc.line(M,y,W-M,y);
+      y+=6;
+    });
+    doc.setFontSize(6.5);doc.setTextColor(...dim);
+    doc.text('LUXIVAL PREMIUM ITINERARY · luxival.com · ⭐ Premium',W/2,291,{align:'center'});
+  });
+
+  doc.save(`Luxival-Premium-Finland-5Day-${name.replace(/\s+/g,'-')}.pdf`);
+}
+
+
 
 function generateItinerary(){
   const arrival=document.getElementById('arrivalDate').value;
