@@ -614,9 +614,10 @@ if(hfBtn){
     if(window.LuxivalSupabase){
       const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
       if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
-      else{document.getElementById('hfName').value='';document.getElementById('hfEmail').value='';document.getElementById('hfDate').value='';document.getElementById('hfService').value='';hfStatus.style.color='var(--gold)';hfStatus.textContent='✓ Enquiry received — we will reply within 24h.';}
+      else{const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';window.location.href=dest;}
     } else {
-      setTimeout(()=>{hfStatus.textContent='✓ Enquiry received — we will reply within 24h.';},500);
+      const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';
+      setTimeout(()=>{window.location.href=dest;},500);
     }
   });
 }

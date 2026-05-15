@@ -265,9 +265,9 @@ document.getElementById('aSubmit').addEventListener('click',async()=>{
   if(window.LuxivalSupabase){
     const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error. Email us at support@luxival.com';}
-    else{st.textContent='✓ Audit request received — you will get your report within 48 hours.';document.getElementById('aUrl').value='';document.getElementById('aEmail').value='';document.getElementById('aName').value='';}
+    else{window.location.href='thank-you-digital.html';}
   } else {
-    setTimeout(()=>{st.textContent='✓ Audit request received — you will get your report within 48 hours.';},500);
+    setTimeout(()=>{window.location.href='thank-you-digital.html';},500);
   }
 });
 </script>

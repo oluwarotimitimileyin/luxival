@@ -264,9 +264,9 @@ document.getElementById('bSubmit').addEventListener('click',async()=>{
   if(window.LuxivalSupabase){
     const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error sending. Email support@luxival.com';}
-    else{st.textContent='✓ Booking received — we will confirm within 2 hours.';document.querySelectorAll('#bName,#bEmail,#bPhone,#bDate,#bPickup,#bDropoff').forEach(i=>i.value='');}
+    else{window.location.href='thank-you-transfer.html';}
   } else {
-    setTimeout(()=>{st.textContent='✓ Booking received — we will confirm within 2 hours.';},500);
+    setTimeout(()=>{window.location.href='thank-you-transfer.html';},500);
   }
 });
 </script>
