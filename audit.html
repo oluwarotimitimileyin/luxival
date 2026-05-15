@@ -352,6 +352,13 @@ footer a:hover{opacity:1}
 
 <script>
 // ─────────────────────────────────────────────
+// BACKEND CONFIG
+// Set BACKEND_API_URL to your Fly.io app URL to use the real Playwright backend.
+// Leave empty to use frontend-only mode (allorigins proxy).
+// ─────────────────────────────────────────────
+const BACKEND_API_URL = 'https://luxival-audit-api.fly.dev';
+
+// ─────────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────────
 let auditData = {
@@ -363,7 +370,10 @@ let auditData = {
   pageSpeedMobile: null,
   rawHtml: '',
   doc: null,
-  premiumChecks: []
+  premiumChecks: [],
+  backendScanId: null,
+  backendPdfB64: null,
+  premiumPdfB64: null
 };
 
 // ─────────────────────────────────────────────
@@ -428,52 +438,77 @@ async function startFreeScan() {
   setProgress(5, 'ps1');
 
   try {
-    // Step 1: Fetch HTML via allorigins proxy
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(urlInput)}`;
-    const resp = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
-    const json = await resp.json();
-    const html = json.contents || '';
-    auditData.rawHtml = html;
+    if (BACKEND_API_URL) {
+      // ── BACKEND MODE: real Playwright scan ──
+      setProgress(15, 'ps1');
+      const resp = await fetch(`${BACKEND_API_URL}/scan/free`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: urlInput, email, tier: 'free' }),
+        signal: AbortSignal.timeout(60000)
+      });
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(err.detail || `Backend error ${resp.status}`);
+      }
+      setProgress(60, 'ps3');
+      const data = await resp.json();
+      auditData.backendScanId = data.scan_id;
+      auditData.backendPdfB64 = data.pdf_base64;
 
-    const parser = new DOMParser();
-    auditData.doc = parser.parseFromString(html, 'text/html');
-    setProgress(28, 'ps2');
+      // Map backend CheckResult format → UI format
+      auditData.freeChecks = data.checks.map(c => ({
+        pass: c.status === 'pass' ? true : c.status === 'fail' ? false : null,
+        warn: c.status === 'warn',
+        title: c.label,
+        detail: c.detail
+      }));
+      auditData.seoScore = Math.round((data.score / data.max_score) * 10);
+      setProgress(90, 'ps5');
 
-    // Step 2: SEO checks
-    auditData.freeChecks = runSeoChecks(auditData.doc, urlInput);
+      // Also fetch PageSpeed for the score badges
+      try { await fetchPageSpeed(urlInput); } catch(e) {}
 
-    setProgress(50, 'ps3');
+      await new Promise(r => setTimeout(r, 300));
+      finalizeSteps();
+      setProgress(100);
+      displayFreeResults();
 
-    // Step 3: PageSpeed
-    try {
-      await fetchPageSpeed(urlInput);
-    } catch(e) {
-      auditData.pageSpeedDesktop = null;
+    } else {
+      // ── FRONTEND FALLBACK MODE: allorigins proxy ──
+      setProgress(5, 'ps1');
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(urlInput)}`;
+      const resp2 = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
+      const json2 = await resp2.json();
+      const html = json2.contents || '';
+      auditData.rawHtml = html;
+
+      const parser = new DOMParser();
+      auditData.doc = parser.parseFromString(html, 'text/html');
+      setProgress(28, 'ps2');
+
+      auditData.freeChecks = runSeoChecks(auditData.doc, urlInput);
+      setProgress(50, 'ps3');
+
+      try { await fetchPageSpeed(urlInput); } catch(e) { auditData.pageSpeedDesktop = null; }
+      setProgress(78, 'ps4');
+
+      runAccessibilityChecks(auditData.doc, auditData.freeChecks);
+      setProgress(95, 'ps5');
+
+      const passing = auditData.freeChecks.filter(c => c.pass === true).length;
+      const total   = auditData.freeChecks.filter(c => c.pass !== null).length;
+      auditData.seoScore = total > 0 ? Math.round((passing / total) * 10) : 5;
+
+      await new Promise(r => setTimeout(r, 400));
+      finalizeSteps();
+      setProgress(100);
+      displayFreeResults();
+      saveToSupabase('free');
     }
-
-    setProgress(78, 'ps4');
-
-    // Step 4: Accessibility quick checks (add to freeChecks)
-    runAccessibilityChecks(auditData.doc, auditData.freeChecks);
-
-    setProgress(95, 'ps5');
-
-    // Step 5: Compile score
-    const passing = auditData.freeChecks.filter(c => c.pass === true).length;
-    const total   = auditData.freeChecks.filter(c => c.pass !== null).length;
-    auditData.seoScore = total > 0 ? Math.round((passing / total) * 10) : 5;
-
-    await new Promise(r => setTimeout(r, 400));
-    finalizeSteps();
-    setProgress(100);
-
-    displayFreeResults();
-    saveToSupabase('free');
 
     btn.disabled = false;
     btn.textContent = 'Run New Audit →';
-
-  } catch(err) {
     msg.textContent = 'Could not reach that URL. Check the address and try again. (' + (err.message || 'network error') + ')';
     btn.disabled = false;
     btn.textContent = 'Run Free Audit →';
@@ -647,6 +682,19 @@ async function saveToSupabase(tier) {
 // FREE PDF
 // ─────────────────────────────────────────────
 function downloadFreePDF() {
+  // If backend generated a PDF, use it directly
+  if (auditData.backendPdfB64) {
+    const bytes = atob(auditData.backendPdfB64);
+    const arr = new Uint8Array(bytes.length);
+    for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+    const blob = new Blob([arr], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `luxival-audit-${Date.now()}.pdf`;
+    link.click();
+    return;
+  }
+  // Fallback: generate PDF client-side with jsPDF
   if (!window.jspdf) { alert('PDF library still loading, please try again in a moment.'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
@@ -743,6 +791,9 @@ function downloadFreePDF() {
 // ─────────────────────────────────────────────
 // SUMUP PAYMENT
 // ─────────────────────────────────────────────
+// Stores the SumUp checkout ID entered by user after payment
+let _premiumPaymentToken = '';
+
 function openSumUpAudit() {
   window.open('https://pay.sumup.com/b2c/QVLW9NTQ', '_blank');
   document.getElementById('payBtn').disabled = true;
@@ -762,10 +813,176 @@ async function runPremiumScan() {
 
   document.getElementById('premiumEmailDisplay').textContent = auditData.email;
 
+  // If backend is available, use it (real Playwright scan + verified payment)
+  if (BACKEND_API_URL) {
+    try {
+      // The payment_token field accepts the SumUp checkout reference.
+      // For the honour-system flow we pass 'sumup-honour' — the backend
+      // accepts this as a whitelisted bypass until real webhook fires.
+      const resp = await fetch(`${BACKEND_API_URL}/scan/premium`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: auditData.url,
+          email: auditData.email,
+          tier: 'premium',
+          payment_token: _premiumPaymentToken || 'sumup-honour'
+        }),
+        signal: AbortSignal.timeout(120000)
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ detail: 'Backend error' }));
+        // If payment not verified, fall through to frontend mode
+        if (resp.status === 402) {
+          console.warn('Backend payment not verified — running frontend premium scan');
+        } else {
+          throw new Error(err.detail);
+        }
+      } else {
+        const data = await resp.json();
+        auditData.premiumPdfB64 = data.pdf_base64;
+
+        // Map backend FlowResult → UI flows format
+        const flows = data.premium_flows.map(f => ({
+          title: f.flow_name,
+          checks: f.checks.map(c => ({
+            pass: c.status === 'pass' ? true : c.status === 'fail' ? false : null,
+            warn: c.status === 'warn',
+            title: c.label,
+            detail: c.detail
+          }))
+        }));
+        auditData.premiumChecks = flows;
+        displayPremiumResults(flows);
+        btn.disabled = false;
+        btn.textContent = 'Regenerate Premium Report →';
+        return;
+      }
+    } catch(e) {
+      console.warn('Backend premium scan failed, falling back to frontend mode:', e.message);
+    }
+  }
+
+  // ── FRONTEND FALLBACK (allorigins DOM analysis) ──
   const doc = auditData.doc;
   const flows = [];
 
   // Flow 1: SEO Deep Dive
+  const seoDeep = [];
+  const robots = doc.querySelector('meta[name="robots"]');
+  seoDeep.push({pass:!!robots, title: robots ? `Robots Meta ✓ (${robots.getAttribute('content')})` : 'Missing Robots Meta', detail: robots ? 'Search engine crawl directives set.' : 'Consider adding <meta name="robots"> to control indexing.'});
+  const allH = ['h1','h2','h3','h4'].map(t => doc.querySelectorAll(t).length);
+  seoDeep.push({pass:allH[0]===1, title:`Heading Hierarchy`, detail:`H1:${allH[0]}, H2:${allH[1]}, H3:${allH[2]}, H4:${allH[3]} — ${allH[0]===1?'correct structure':'check heading nesting'}`});
+  const links = doc.querySelectorAll('a[href]');
+  const extLinks = Array.from(links).filter(l => { try { return new URL(l.getAttribute('href')).host !== new URL(auditData.url).host; } catch(e){ return false; } });
+  seoDeep.push({pass:links.length > 0, title:`Internal Links (${links.length - extLinks.length})`, detail:`${links.length} total links, ${extLinks.length} external, ${links.length - extLinks.length} internal.`});
+  const wordCount = (doc.body ? doc.body.innerText || doc.body.textContent : '').split(/\s+/).filter(Boolean).length;
+  seoDeep.push({pass:wordCount>300, title:`Word Count (~${wordCount})`, detail: wordCount > 300 ? 'Good content depth.' : 'Under 300 words — thin content may affect rankings.'});
+  flows.push({ title: '01 — SEO Deep Dive', checks: seoDeep });
+
+  // Flow 2: Performance (PageSpeed data we already have)
+  const perfChecks = [];
+  if (auditData.pageSpeedDesktop !== null) {
+    const d = Math.round(auditData.pageSpeedDesktop*100);
+    perfChecks.push({pass:d>=90, title:`Desktop Performance: ${d}/100`, detail: d>=90?'Excellent desktop speed.': d>=50?'Moderate — optimise images and scripts.':'Poor — significant improvements needed.'});
+  } else { perfChecks.push({pass:null, warn:true, title:'Desktop Speed N/A', detail:'Could not fetch PageSpeed data for desktop.'}); }
+  if (auditData.pageSpeedMobile !== null) {
+    const m = Math.round(auditData.pageSpeedMobile*100);
+    perfChecks.push({pass:m>=90, title:`Mobile Performance: ${m}/100`, detail: m>=90?'Excellent mobile speed.': m>=50?'Moderate — critical for mobile-first indexing.':'Poor — mobile SEO at risk.'});
+    if (auditData.pageSpeedMobileData) {
+      const audits = auditData.pageSpeedMobileData.audits || {};
+      if (audits['largest-contentful-paint']) {
+        const lcp = audits['largest-contentful-paint'].displayValue || '–';
+        const lcpPass = audits['largest-contentful-paint'].score >= 0.9;
+        perfChecks.push({pass:lcpPass, title:`LCP (Largest Contentful Paint): ${lcp}`, detail: lcpPass?'LCP within good range (<2.5s).':'LCP too slow — optimise hero images and server response time.'});
+      }
+      if (audits['total-blocking-time']) {
+        const tbt = audits['total-blocking-time'].displayValue || '–';
+        const tbtPass = audits['total-blocking-time'].score >= 0.9;
+        perfChecks.push({pass:tbtPass, title:`Total Blocking Time: ${tbt}`, detail: tbtPass?'TBT is minimal — good interactivity.':'High TBT — reduce JavaScript execution time.'});
+      }
+    }
+  } else { perfChecks.push({pass:null, warn:true, title:'Mobile Speed N/A', detail:'Could not fetch PageSpeed data for mobile.'}); }
+  flows.push({ title: '02 — Performance Analysis', checks: perfChecks });
+
+  // Flow 3: Mobile Friendliness
+  const mobileChecks = [];
+  const viewport = doc.querySelector('meta[name="viewport"]');
+  mobileChecks.push({pass:!!viewport, title:viewport?'Viewport Meta ✓':'Missing Viewport Meta', detail:viewport?viewport.getAttribute('content'):'Add <meta name="viewport" content="width=device-width,initial-scale=1">'});
+  const touchIcons = doc.querySelectorAll('link[rel*="apple-touch"], link[rel*="icon"]');
+  mobileChecks.push({pass:touchIcons.length>0, title:touchIcons.length>0?`Touch Icons ✓ (${touchIcons.length})`:'Missing Touch Icons', detail:touchIcons.length>0?'Mobile home screen icons configured.':'Add apple-touch-icon for iOS home screen.'});
+  if (auditData.pageSpeedMobile !== null) {
+    const m = Math.round(auditData.pageSpeedMobile*100);
+    mobileChecks.push({pass:m>=50, title:`Mobile PageSpeed: ${m}`, detail: m>=90?'Excellent mobile performance.': m>=50?'Acceptable — improvements possible.':'Poor mobile speed affecting user experience.'});
+  }
+  flows.push({ title: '03 — Mobile Friendliness', checks: mobileChecks });
+
+  // Flow 4: Accessibility Compliance
+  const a11y = [];
+  const imgs = Array.from(doc.querySelectorAll('img'));
+  const missingAlt = imgs.filter(i => !i.getAttribute('alt'));
+  a11y.push({pass:missingAlt.length===0, title:missingAlt.length===0?`Alt Text ✓ (${imgs.length} images)`:`Missing Alt (${missingAlt.length}/${imgs.length})`, detail:missingAlt.length===0?'All images have alt attributes.':`${missingAlt.length} images lack alt text.`});
+  const lang = doc.querySelector('html') && doc.querySelector('html').getAttribute('lang');
+  a11y.push({pass:!!lang, title:lang?`Language Attribute ✓ (${lang})`:'Missing lang Attribute', detail:lang?'Screen readers can identify page language.':'Add lang attribute to <html> tag.'});
+  const inputs = Array.from(doc.querySelectorAll('input,textarea,select'));
+  const unlabelled = inputs.filter(i => { const id = i.id; return id ? !doc.querySelector(`label[for="${id}"]`) : true; });
+  if (inputs.length > 0) a11y.push({pass:unlabelled.length===0, title:unlabelled.length===0?`Form Labels ✓ (${inputs.length} inputs)`:`Missing Labels (${unlabelled.length}/${inputs.length})`, detail:unlabelled.length===0?'All form inputs have associated labels.':'Some inputs lack labels — affects screen reader users.'});
+  const ariaRoles = doc.querySelectorAll('[role]');
+  a11y.push({pass:ariaRoles.length>0, title:ariaRoles.length>0?`ARIA Roles ✓ (${ariaRoles.length})`:'No ARIA Roles Found', detail:ariaRoles.length>0?`${ariaRoles.length} ARIA role attributes detected.`:'Consider adding ARIA roles for better accessibility.'});
+  const skipLinks = doc.querySelectorAll('a[href="#main"],a[href="#content"],a[href="#skip"]');
+  a11y.push({pass:skipLinks.length>0, title:skipLinks.length>0?'Skip Navigation ✓':'No Skip Navigation', detail:skipLinks.length>0?'Skip links present for keyboard users.':'Add a skip-to-main-content link for keyboard and screen reader users.'});
+  flows.push({ title: '04 — Accessibility Compliance', checks: a11y });
+
+  // Flow 5: Security Check
+  const sec = [];
+  sec.push({pass:auditData.url.startsWith('https://'), title:auditData.url.startsWith('https://')?'HTTPS ✓':'Not HTTPS', detail:auditData.url.startsWith('https://')?'Secure connection confirmed.':'Move to HTTPS immediately — required for SEO and trust.'});
+  const mixedContent = (auditData.rawHtml.match(/src="http:\/\//g)||[]).length + (auditData.rawHtml.match(/href="http:\/\//g)||[]).length;
+  sec.push({pass:mixedContent===0, title:mixedContent===0?'No Mixed Content ✓':`Mixed Content (${mixedContent} refs)`, detail:mixedContent===0?'All resources load over HTTPS.':'Some resources load over HTTP — causes browser security warnings.'});
+  const iframes = doc.querySelectorAll('iframe');
+  sec.push({pass:null, warn:true, title:`Iframes: ${iframes.length}`, detail:iframes.length===0?'No iframes found.': `${iframes.length} iframe(s) — verify each has sandbox attributes.`});
+  const extScripts = Array.from(doc.querySelectorAll('script[src]')).filter(s => { try { return new URL(s.getAttribute('src')).host !== new URL(auditData.url).host; } catch(e) { return false; } });
+  sec.push({pass:null, warn:true, title:`External Scripts: ${extScripts.length}`, detail:extScripts.length===0?'No external scripts detected.': `${extScripts.length} external script(s) — consider Subresource Integrity (SRI).`});
+  flows.push({ title: '05 — Security Check', checks: sec });
+
+  // Flow 6: Social Media Tags
+  const social = [];
+  const ogFields = ['og:title','og:description','og:image','og:url','og:type'];
+  ogFields.forEach(f => {
+    const tag = doc.querySelector(`meta[property="${f}"]`);
+    social.push({pass:!!tag, title:tag?`${f} ✓`:`Missing ${f}`, detail:tag?`"${(tag.getAttribute('content')||'').slice(0,60)}"` :`Add <meta property="${f}"> for rich social previews.`});
+  });
+  const twCard = doc.querySelector('meta[name="twitter:card"]');
+  const twTitle = doc.querySelector('meta[name="twitter:title"]');
+  social.push({pass:!!twCard, title:twCard?`Twitter Card ✓ (${twCard.getAttribute('content')||'summary'})`:'Missing Twitter Card', detail:twCard?'Twitter sharing is configured.':'Add <meta name="twitter:card" content="summary_large_image">'});
+  social.push({pass:!!twTitle, title:twTitle?'Twitter Title ✓':'Missing Twitter Title', detail:twTitle?`"${(twTitle.getAttribute('content')||'').slice(0,55)}"`:'Add <meta name="twitter:title"> for Twitter sharing.'});
+  flows.push({ title: '06 — Social Media Tags', checks: social });
+
+  // Flow 7: Schema & Structured Data
+  const schema = [];
+  const jsonLds = Array.from(doc.querySelectorAll('script[type="application/ld+json"]'));
+  if (jsonLds.length === 0) {
+    schema.push({pass:false, title:'No JSON-LD Structured Data', detail:'Add Schema.org JSON-LD markup for rich snippets in search results.'});
+    schema.push({pass:false, title:'No Organisation Schema', detail:'Add Organization or LocalBusiness schema — boosts knowledge panel visibility.'});
+    schema.push({pass:null, warn:true, title:'No Breadcrumb Schema', detail:'BreadcrumbList schema helps search engines understand site hierarchy.'});
+  } else {
+    const types = [];
+    jsonLds.forEach(el => { try { const o = JSON.parse(el.textContent); types.push(o['@type'] || 'Unknown'); } catch(e) {} });
+    schema.push({pass:true, title:`JSON-LD Found (${jsonLds.length})`, detail:`Schema types: ${types.join(', ')}`});
+    schema.push({pass:types.some(t=>['Organization','LocalBusiness','WebSite'].includes(t)), title:types.some(t=>['Organization','LocalBusiness','WebSite'].includes(t))?'Organisation Schema ✓':'No Organisation Schema', detail:'Organisation/LocalBusiness schema boosts knowledge graph presence.'});
+    schema.push({pass:types.includes('BreadcrumbList'), title:types.includes('BreadcrumbList')?'Breadcrumb Schema ✓':'No Breadcrumb Schema', detail:types.includes('BreadcrumbList')?'Breadcrumb trails enabled in SERPs.':'Add BreadcrumbList for better navigation in search results.'});
+  }
+  const microdata = doc.querySelectorAll('[itemscope]');
+  schema.push({pass:null, warn:true, title:`Microdata Elements: ${microdata.length}`, detail:microdata.length>0?`${microdata.length} microdata items found.`:'No microdata detected — JSON-LD is the recommended format.'});
+  flows.push({ title: '07 — Schema & Structured Data', checks: schema });
+
+  auditData.premiumChecks = flows;
+  displayPremiumResults(flows);
+  saveToSupabase('premium');
+
+  btn.disabled = false;
+  btn.textContent = 'Regenerate Premium Report →';
+}
   const seoDeep = [];
   const robots = doc.querySelector('meta[name="robots"]');
   seoDeep.push({pass:!!robots, title: robots ? `Robots Meta ✓ (${robots.getAttribute('content')})` : 'Missing Robots Meta', detail: robots ? 'Search engine crawl directives set.' : 'Consider adding <meta name="robots"> to control indexing.'});
@@ -914,6 +1131,19 @@ function displayPremiumResults(flows) {
 // PREMIUM PDF
 // ─────────────────────────────────────────────
 function downloadPremiumPDF() {
+  // Use backend-generated WeasyPrint PDF if available
+  if (auditData.premiumPdfB64) {
+    const bytes = atob(auditData.premiumPdfB64);
+    const arr = new Uint8Array(bytes.length);
+    for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+    const blob = new Blob([arr], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `luxival-premium-audit-${Date.now()}.pdf`;
+    link.click();
+    return;
+  }
+  // Fallback: generate PDF client-side with jsPDF
   if (!window.jspdf) { alert('PDF library still loading, please try again in a moment.'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
