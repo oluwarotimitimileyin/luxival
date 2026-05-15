@@ -33,8 +33,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s}
 .nav-links a:hover{opacity:1;color:var(--gold)}
-
-/* Hero */
+.nav-burger{display:none}
 .hero-lp{min-height:88vh;display:flex;align-items:center;padding-top:7rem;background:linear-gradient(135deg,rgba(201,169,106,.04) 0%,transparent 60%)}
 .hero-lp-inner{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:center}
 .hero-lp-img{aspect-ratio:4/3;border-radius:4px;overflow:hidden;border:1px solid var(--border);position:relative}
@@ -89,19 +88,24 @@ footer a:hover{opacity:1}
   .proof-grid{grid-template-columns:repeat(2,1fr)}
   .sticky-cta{display:flex}
   body{padding-bottom:72px}
+  .nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 }
 </style>
 </head>
 <body>
-<nav>
+<nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
     <li><a href="transfers.html">Transfers</a></li>
+    <li><a href="tourism.html">Travel</a></li>
+    <li><a href="design-services.html" class="active">Design</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="audit.html" class="btn" style="padding:.5rem 1.2rem;font-size:.72rem">Free Audit</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="audit.html">Free Audit</a></li>
+    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -240,13 +244,40 @@ footer a:hover{opacity:1}
 
 <footer>
   <div class="container">
-    <a href="index.html">Home</a>
-    <a href="transfers.html">Transfers</a>
-    <a href="blog/index.html">Blog</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-    <br><br>
-    <p>Luxival © 2026 · Web design & digital services · Helsinki, Finland</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:3rem;padding:4rem 0 2rem">
+      <div>
+        <h3 style="color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:1rem">LUXIVAL</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:1.8;margin-bottom:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p style="opacity:.6;font-size:.88rem">support@luxival.com</p>
+        <p style="opacity:.6;font-size:.88rem">+358 50 351 8366</p>
+      </div>
+      <div>
+        <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Services</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
+          <li><a href="transfers.html" style="opacity:.6;font-size:.9rem">Transfers</a></li>
+          <li><a href="tourism.html" style="opacity:.6;font-size:.9rem">Travel & Tourism</a></li>
+          <li><a href="design-services.html" style="opacity:.6;font-size:.9rem">Digital Design</a></li>
+          <li><a href="audit.html" style="opacity:.6;font-size:.9rem">Free Website Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
+          <li><a href="about.html" style="opacity:.6;font-size:.9rem">About</a></li>
+          <li><a href="portfolio.html" style="opacity:.6;font-size:.9rem">Portfolio</a></li>
+          <li><a href="blog/index.html" style="opacity:.6;font-size:.9rem">Blog</a></li>
+          <li><a href="contact.html" style="opacity:.6;font-size:.9rem">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Legal</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
+          <li><a href="privacy.html" style="opacity:.6;font-size:.9rem">Privacy Policy</a></li>
+          <li><a href="terms.html" style="opacity:.6;font-size:.9rem">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <p style="opacity:.35;font-size:.78rem;border-top:1px solid rgba(255,255,255,.06);padding-top:2rem">© 2026 Luxival · Premium Chauffeur & Digital Services · Helsinki, Finland</p>
   </div>
 </footer>
 
@@ -270,6 +301,10 @@ document.getElementById('aSubmit').addEventListener('click',async()=>{
     setTimeout(()=>{window.location.href='thank-you-digital.html';},500);
   }
 });
+</script>
+<script>
+var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
+if(b&&l){b.addEventListener('click',function(){var o=l.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o)})}
 </script>
 </body>
 </html>

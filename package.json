@@ -9,6 +9,7 @@
     "deploy-and-index": "git push origin main && node scripts/auto-index.js"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "@playwright/test": "^1.60.0"
   }
 }
