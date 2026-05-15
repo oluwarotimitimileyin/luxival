@@ -107,7 +107,9 @@
         <div class="post-hero-overlay"></div>
       </div>
       {% endif %}
-      {{ content | safe }}
+      <div class="post-body">
+        {{ content | safe }}
+      </div>
     </div>
   </main>
 

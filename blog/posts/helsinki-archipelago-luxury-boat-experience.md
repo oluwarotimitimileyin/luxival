@@ -4,6 +4,7 @@ title: "Helsinki Archipelago Luxury Boat Experience: What You Need to Know"
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
+ogImage: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1200&q=80"
 permalink: /blog/helsinki-archipelago-luxury-boat-experience/
 description: "A complete guide to luxury boat experiences in the Helsinki archipelago — what's available, what it costs, and how to combine it with a private chauffeur service."
 ---

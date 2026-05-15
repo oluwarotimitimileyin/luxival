@@ -4,6 +4,7 @@ title: "Helsinki Private City Tour: Is It Worth It? (Honest Guide)"
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
+ogImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 permalink: /blog/helsinki-private-city-tour-worth-it/
 description: "An honest breakdown of Helsinki private city tours — what you actually get, what it costs, and whether it's better than a group tour or doing it yourself."
 ---

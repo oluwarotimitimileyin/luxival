@@ -159,6 +159,9 @@
             .join("")}
         </div>
 
+        <div style="margin-bottom:1rem">
+          <button class="fare-calc-btn" type="button" style="background:#C9A96A;color:#0A0B0F;border:none;padding:.7rem 2rem;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-radius:2px;cursor:pointer;width:100%">Calculate Fare</button>
+        </div>
         <div class="fare-status fare-status-info">Enter addresses above to calculate your route fare.</div>
 
         <div class="fare-result">
@@ -185,6 +188,20 @@
     container.querySelectorAll('input[name="surcharge"]').forEach((cb) => {
       cb.addEventListener("change", () => scheduleFetch(container));
     });
+
+    // Manual calculate button
+    const calcBtn = container.querySelector('.fare-calc-btn');
+    if (calcBtn) {
+      calcBtn.addEventListener('click', () => {
+        const origin = originInput ? originInput.value.trim() : '';
+        const destination = destInput ? destInput.value.trim() : '';
+        if (origin.length > 3 && destination.length > 3) {
+          fetchFare(container, origin, destination);
+        } else {
+          setStatus(container, 'Please enter both pickup and drop-off addresses.', true);
+        }
+      });
+    }
   }
 
   window.initFareCalculator = function (options) {

@@ -4,6 +4,7 @@ title: "Private Northern Lights Tour Finland: Everything People Ask"
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
+ogImage: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=80"
 permalink: /blog/private-northern-lights-tour-finland/
 description: "Everything you need to know about booking a private Northern Lights tour in Finland — from the best locations to what a private chauffeur experience actually costs."
 ---
