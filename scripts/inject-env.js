@@ -7,10 +7,6 @@ const path = require('path');
 
 const MAPS_KEY = process.env.GOOGLE_MAPS_PUBLIC_KEY || '';
 
-if (!MAPS_KEY) {
-  console.warn('[inject-env] WARNING: GOOGLE_MAPS_PUBLIC_KEY not set — fare calculator will not work.');
-}
-
 function walkDir(dir, callback) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
@@ -37,3 +33,7 @@ walkDir(siteDir, (file) => {
 });
 
 console.log(`[inject-env] Done. ${replaced} file(s) updated.`);
+
+if (!MAPS_KEY && replaced > 0) {
+  console.warn('[inject-env] WARNING: GOOGLE_MAPS_PUBLIC_KEY not set — fare calculator placeholders were NOT replaced.');
+}

@@ -170,7 +170,7 @@ async function saveToSupabase(post, place) {
 
 // ─── Vercel handler ───────────────────────────────────────────────────────
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Guard: allow Vercel Cron (sends CRON_SECRET as Bearer token) or skip if not set
   if (CRON_SECRET) {
     const auth = req.headers['authorization'] || '';
