@@ -4,7 +4,9 @@
   "scripts": {
     "build": "eleventy && node scripts/inject-env.js",
     "dev": "eleventy --serve",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "index": "node scripts/auto-index.js",
+    "deploy-and-index": "git push origin main && node scripts/auto-index.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
