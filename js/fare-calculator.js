@@ -93,16 +93,36 @@
   }
 
   function initAutocomplete(input) {
-    if (window.google && window.google.maps && window.google.maps.places) {
-      const ac = new window.google.maps.places.Autocomplete(input, {
-        types: ["geocode"],
-        componentRestrictions: { country: "fi" }, // restrict to Finland
-      });
-      // Trigger fare recalculation when a place is selected from the dropdown
-      ac.addListener("place_changed", () => {
-        input.dispatchEvent(new Event("change", { bubbles: true }));
-      });
+    function attach() {
+      if (window.google && window.google.maps && window.google.maps.places) {
+        const ac = new window.google.maps.places.Autocomplete(input, {
+          types: ["geocode"],
+          componentRestrictions: { country: "fi" },
+        });
+        ac.addListener("place_changed", () => {
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+      } else {
+        // Retry up to 20 times (10 seconds total) waiting for Google Maps to load
+        let attempts = 0;
+        const retry = setInterval(() => {
+          attempts++;
+          if (window.google && window.google.maps && window.google.maps.places) {
+            clearInterval(retry);
+            const ac = new window.google.maps.places.Autocomplete(input, {
+              types: ["geocode"],
+              componentRestrictions: { country: "fi" },
+            });
+            ac.addListener("place_changed", () => {
+              input.dispatchEvent(new Event("change", { bubbles: true }));
+            });
+          } else if (attempts >= 20) {
+            clearInterval(retry);
+          }
+        }, 500);
+      }
     }
+    attach();
   }
 
   function renderWidget(container, preselect) {
