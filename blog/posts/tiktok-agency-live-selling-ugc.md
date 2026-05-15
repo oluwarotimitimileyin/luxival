@@ -5,7 +5,7 @@ description: "People ask a lot of questions about TikTok Live selling, UGC conte
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80"
 permalink: "blog/tiktok-agency-live-selling-ugc/index.html"
 ---
 

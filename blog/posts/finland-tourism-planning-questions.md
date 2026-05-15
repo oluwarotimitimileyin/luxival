@@ -5,7 +5,7 @@ description: "From the best time to visit to what you should never miss — the 
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1200&q=80"
 permalink: "blog/finland-tourism-planning-questions/index.html"
 ---
 

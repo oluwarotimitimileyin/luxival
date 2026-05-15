@@ -5,7 +5,7 @@ description: "A practical guide to visiting Finland in winter — what to pack, 
 date: 2026-01-22
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/climate/northern-lights-lapland.jpg"
+ogImage: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=80"
 permalink: "blog/finland-winter-trip-guide/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "People want to know how to make their own suit pattern or get a cu
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=80"
 permalink: "blog/sewing-pattern-custom-suit-measurements/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "A practical guide to arriving at Helsinki-Vantaa Airport — your 
 date: 2026-02-05
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80"
 permalink: "blog/helsinki-airport-transfer-guide/index.html"
 ---
 

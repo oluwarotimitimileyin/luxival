@@ -5,7 +5,7 @@ description: "Helsinki is efficient, well-connected, multilingual, and genuinely
 date: 2026-04-09
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/landmarks/helsinki-cathedral.jpg"
+ogImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 permalink: "blog/helsinki-business-travel-destination/index.html"
 ---
 

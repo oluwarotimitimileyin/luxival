@@ -5,7 +5,7 @@ description: "Midnight sun, clear lakes, and endless forest. Here's how to plan 
 date: 2026-01-29
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/nature/koli-national-park.jpg"
+ogImage: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1200&q=80"
 permalink: "blog/summer-finland-lakeland-guide/index.html"
 ---
 

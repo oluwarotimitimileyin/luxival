@@ -5,7 +5,7 @@ description: "Time, reliability, and first impressions. Here's why business trav
 date: 2026-02-12
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/temppeliaukio-church.jpg"
+ogImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80"
 permalink: "blog/private-chauffeur-helsinki-business/index.html"
 ---
 

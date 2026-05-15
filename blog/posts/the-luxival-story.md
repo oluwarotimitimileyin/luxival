@@ -5,7 +5,7 @@ description: "From airport transfers to digital strategy — the story behind Lu
 date: 2026-04-16
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-1.jpeg"
+ogImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80"
 permalink: "blog/the-luxival-story/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "From cost to booking, from flight delays to luggage — every real
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80"
 permalink: "blog/helsinki-airport-transfer-questions-answered/index.html"
 ---
 

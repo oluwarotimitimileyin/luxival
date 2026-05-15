@@ -5,7 +5,7 @@ description: "UGC videos are the highest-converting content format for brands. H
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&q=80"
 permalink: "blog/ugc-ai-video-creation-brand-campaigns/index.html"
 ---
 

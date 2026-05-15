@@ -5,7 +5,7 @@ description: "Late nights in Helsinki deserve a reliable, comfortable ride home.
 date: 2026-02-19
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/landmarks/helsinki-cathedral.jpg"
+ogImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 permalink: "blog/helsinki-night-transfers/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "A practical guide to local SEO for businesses operating in Finland
 date: 2026-03-05
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1200&q=80"
 permalink: "blog/seo-for-finnish-businesses/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "New to agentic workflows? Here's a clear, jargon-free explanation 
 date: 2026-04-02
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/landmarks/suomenlinna-fortress.jpg"
+ogImage: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"
 permalink: "blog/agentic-workflow-beginners-guide/index.html"
 ---
 

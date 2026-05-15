@@ -5,7 +5,7 @@ description: "ISTQB is the global standard for software testing certification. H
 date: 2026-03-19
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/temppeliaukio-church.jpg"
+ogImage: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80"
 permalink: "blog/what-is-istqb-certification/index.html"
 ---
 

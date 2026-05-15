@@ -5,7 +5,7 @@ description: "Common design decisions that look fine on screen but quietly destr
 date: 2026-03-12
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80"
 permalink: "blog/web-design-mistakes-conversion/index.html"
 ---
 

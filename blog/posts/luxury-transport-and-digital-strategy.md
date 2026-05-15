@@ -5,7 +5,7 @@ description: "A premium chauffeur service and a digital strategy consultancy mig
 date: 2026-04-23
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-4.jpeg"
+ogImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80"
 permalink: "blog/luxury-transport-and-digital-strategy/index.html"
 ---
 

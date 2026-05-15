@@ -5,7 +5,7 @@ description: "What is QA testing, why does software fail, and how do you know if
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80"
 permalink: "blog/software-testing-qa-business-questions/index.html"
 ---
 

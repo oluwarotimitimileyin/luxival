@@ -5,7 +5,7 @@ description: "Agentic QA uses automated agents to gather test signals and surfac
 date: 2026-03-26
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80"
 permalink: "blog/agentic-qa-release-confidence/index.html"
 ---
 

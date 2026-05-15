@@ -5,7 +5,7 @@ description: "AI agents are the most talked-about technology in business right n
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"
 permalink: "blog/ai-agents-business-automation-questions/index.html"
 ---
 

@@ -5,7 +5,7 @@ description: "A practical framework for blending agentic workflow design with hu
 date: 2026-05-14
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxivalvercelapp.com/assets/images/finland/architecture/oodi-library.jpg"
+ogImage: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"
 permalink: "blog/agentic-workflow-playbooks/index.html"
 ---
 

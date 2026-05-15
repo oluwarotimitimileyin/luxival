@@ -5,7 +5,7 @@ description: "The most common questions people ask about website audits — what
 date: 2026-05-15
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-3.jpeg"
+ogImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
 permalink: "blog/website-audit-what-it-is-why-you-need-it/index.html"
 ---
 

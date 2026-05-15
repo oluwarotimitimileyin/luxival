@@ -5,7 +5,7 @@ description: "Most small business websites lose visitors in the first 10 seconds
 date: 2026-02-26
 tags: ["blog"]
 isPost: true
-ogImage: "https://luxival.com/assets/images/founder-portrait-2.jpeg"
+ogImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
 permalink: "blog/website-losing-customers-how-to-fix/index.html"
 ---
 
