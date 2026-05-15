@@ -339,6 +339,58 @@
     <priority>0.65</priority>
   </url>
 
+  <!-- ── New Service Pages ─────────────────────────────────── -->
+  <url>
+    <loc>https://luxival.com/services/tiktok-agency.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/services/sewing-pattern.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ── Viator-Inspired Blog Posts (Batch 3) ─────────────── -->
+  <url>
+    <loc>https://luxival.com/blog/helsinki-food-tour-restaurants-guide</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/helsinki-to-tallinn-ferry-day-trip</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/rovaniemi-santa-claus-village-transfer</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/helsinki-design-district-luxury-shopping</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/finnish-lapland-luxury-winter-experiences</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://luxival.com/blog/helsinki-spa-wellness-luxury-day</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
   <!-- ── Legal ─────────────────────────────────────────────── -->
   <url>
     <loc>https://luxival.com/privacy</loc>
