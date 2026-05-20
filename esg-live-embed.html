@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxival ESG Live Agent</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            apple: {
+              gray: '#fbfbfd',
+              text: '#1d1d1f',
+              border: '#d2d2d7',
+              blue: '#0071e3',
+              green: '#2e8b57'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-[#fbfbfd] text-[#1d1d1f] antialiased;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" crossorigin src="/portfolio/esg-compliance-auditor/frontend/dist/assets/index-D9dyNgT5.js"></script>
+</body>
+</html>
