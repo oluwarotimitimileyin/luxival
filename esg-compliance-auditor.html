@@ -66,6 +66,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .demo-dot:nth-child(3){background:#4CAF73}
 .demo-url{font-size:.7rem;opacity:.45;letter-spacing:1px;margin-left:1rem}
 .demo-iframe{width:100%;height:700px;border:none;display:block;background:#fbfbfd}
+.agent-loading{min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:#0f1219;color:#e8ebf2;padding:2rem;text-align:center}
+.agent-loading a{color:var(--gold);text-decoration:underline}
 
 /* PRICING BOX */
 .pricing-box{background:linear-gradient(135deg,rgba(201,169,106,.07),transparent);border:1px solid var(--border);border-radius:4px;padding:3rem;text-align:center;max-width:600px;margin:0 auto}
@@ -224,12 +226,18 @@ footer a:hover{opacity:1}
       <div class="demo-dot"></div>
       <span class="demo-url">esg-compliance-auditor.luxival.com</span>
     </div>
+    <div class="agent-loading" id="agent-loading-main">
+      <strong>Loading live agent...</strong>
+      <span>If it takes too long, open it directly: <a href="/portfolio/esg-compliance-auditor/frontend/dist" target="_blank" rel="noopener">Open Live Agent</a></span>
+    </div>
     <iframe 
-      src="/portfolio/esg-compliance-auditor/frontend/dist/" 
+      src="/portfolio/esg-compliance-auditor/frontend/dist" 
       title="ESG Compliance Auditor Live Agent"
       class="demo-iframe"
+      id="esg-live-agent-frame"
+      style="opacity:0;transition:opacity .25s"
       loading="eager"
-      sandbox="allow-scripts allow-same-origin allow-forms">
+      onload="this.style.opacity='1';var el=document.getElementById('agent-loading-main');if(el)el.style.display='none';">
     </iframe>
   </div>
   
