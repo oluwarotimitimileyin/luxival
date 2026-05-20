@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
+<title>AI ESG Compliance Auditor | Luxival Digital</title>
+<meta name="description" content="AI-powered ESG reporting and compliance auditor. Automated environmental, social, and governance analysis with Gemini AI. Try the interactive demo.">
+<meta property="og:title" content="AI ESG Compliance Auditor — Luxival Digital">
+<meta property="og:description" content="AI-powered ESG reporting and compliance audit tool. Automated analysis, compliance tracking, and governance recommendations.">
+<meta property="og:url" content="https://luxival.com/esg-compliance-auditor">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://luxival.com/esg-compliance-auditor">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--green:#4CAF73;--red:#E05555;--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 5%}
+section{padding:5rem 0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.5px}
+h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;margin-bottom:1.2rem}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:2rem}
+h3{font-size:1.15rem;margin-bottom:.4rem;color:var(--gold)}
+p{opacity:.8;margin-bottom:.8rem;font-size:.97rem}
+a{color:var(--gold);text-decoration:none}
+.eyebrow{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.85rem 2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.8rem;border:none;cursor:pointer;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 16px 40px rgba(201,169,106,.25)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);background:transparent;padding:.85rem 2rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.8rem;cursor:pointer;transition:all .3s}
+.btn-outline:hover{background:rgba(201,169,106,.1)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,11,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.07)}
+.nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s;color:var(--text)}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+
+/* HERO */
+.hero{min-height:72vh;display:flex;align-items:center;padding-top:7rem;background:linear-gradient(135deg,rgba(201,169,106,.05) 0%,transparent 60%)}
+.hero-inner{max-width:720px}
+.hero-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:2px;padding:.45rem .9rem;font-size:.73rem;letter-spacing:1px;text-transform:uppercase;opacity:.7}
+
+/* FEATURES GRID */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.feature-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem;display:flex;flex-direction:column}
+.feature-icon{font-size:2.2rem;margin-bottom:1rem;opacity:.8}
+.feature-card h3{color:var(--gold);font-size:1.1rem;margin-bottom:.6rem;font-weight:400}
+.feature-card p{font-size:.88rem;opacity:.7;margin:0}
+
+/* USE CASES */
+.use-cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.use-case{background:var(--card);border-left:3px solid var(--gold);padding:1.8rem;border-radius:2px}
+.use-case h3{font-size:1rem;color:var(--text);font-weight:500;margin-bottom:.6rem}
+.use-case p{font-size:.85rem;opacity:.65;margin:0;line-height:1.5}
+
+/* DEMO IFRAME */
+.demo-wrapper{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:2rem 0}
+.demo-chrome{background:var(--card2);border-bottom:1px solid var(--border);padding:1rem;display:flex;gap:.6rem;align-items:center}
+.demo-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1)}
+.demo-dot:nth-child(1){background:#E05555}
+.demo-dot:nth-child(2){background:#E0A855}
+.demo-dot:nth-child(3){background:#4CAF73}
+.demo-url{font-size:.7rem;opacity:.45;letter-spacing:1px;margin-left:1rem}
+.demo-iframe{width:100%;height:700px;border:none;display:block;background:#fbfbfd}
+
+/* PRICING BOX */
+.pricing-box{background:linear-gradient(135deg,rgba(201,169,106,.07),transparent);border:1px solid var(--border);border-radius:4px;padding:3rem;text-align:center;max-width:600px;margin:0 auto}
+.pricing-box h2{margin-bottom:.8rem;font-size:2rem}
+.pricing-tag{font-size:3rem;font-weight:200;color:var(--gold);display:block;margin:1.5rem 0;letter-spacing:-1px}
+.pricing-sub{font-size:.8rem;opacity:.5;display:block;margin-bottom:2rem}
+.pricing-features{text-align:left;max-width:400px;margin:2rem auto;display:flex;flex-direction:column;gap:.8rem}
+.pricing-feature{display:flex;gap:.8rem;align-items:flex-start;font-size:.9rem;opacity:.75}
+.pricing-feature::before{content:"✓";color:var(--green);font-weight:600;flex-shrink:0;margin-top:.15rem}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(90deg,rgba(201,169,106,.08),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem;text-align:center}
+.cta-band h2{margin-bottom:1rem;font-size:1.8rem}
+.cta-band p{max-width:600px;margin:0 auto 1.5rem;opacity:.7}
+
+/* MOBILE STICKY */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;display:flex;gap:.5rem;padding:.8rem 5%;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(201,169,106,.1);z-index:190;display:none}
+.sticky-cta.show{display:flex}
+@media(max-width:720px){
+  .sticky-cta.show{display:flex}
+  body{padding-bottom:4.5rem}
+}
+
+footer{margin-top:3rem;padding:2rem 0;opacity:.6;font-size:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+footer p{margin-bottom:.5rem}
+footer a{margin-right:1rem;opacity:.7;transition:opacity .2s}
+footer a:hover{opacity:1}
+
+@media(max-width:720px){
+  section{padding:3rem 0}
+  .use-cases-grid{grid-template-columns:1fr}
+  .demo-iframe{height:500px}
+  h2{font-size:1.5rem}
+  .pricing-box{padding:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">LUXIVAL</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="digital.html">Services</a></li>
+    <li><a href="audit.html">Audit</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow">AI-Powered Platform</span>
+      <h1>Automated ESG Compliance & Reporting</h1>
+      <p style="font-size:1.1rem;opacity:.85;max-width:640px;line-height:1.6;margin-bottom:2rem">
+        AI-powered environmental, social, and governance analysis. Streamline compliance tracking, automate audit workflows, and generate intelligent governance recommendations — powered by Google Gemini AI.
+      </p>
+      <div class="hero-badges">
+        <div class="badge">🤖 Gemini AI</div>
+        <div class="badge">📊 Real-Time Reporting</div>
+        <div class="badge">✅ Compliance Tracking</div>
+        <div class="badge">🔐 Enterprise Ready</div>
+      </div>
+      <div style="margin-top:2.5rem">
+        <a href="#demo" class="btn">View Interactive Demo →</a>
+        <a href="contact.html" class="btn-outline" style="margin-left:1rem">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- WHAT IS ESG -->
+<section class="container">
+  <span class="eyebrow">What You Get</span>
+  <h2>ESG Compliance Made Simple</h2>
+  <p style="max-width:760px;margin-bottom:2.5rem;opacity:.8">
+    ESG (Environmental, Social, Governance) frameworks are complex. Our AI auditor automates compliance checks, tracks governance structures, analyzes social impact, and generates actionable recommendations — all in minutes.
+  </p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Environmental Analysis</h3>
+      <p>Carbon footprint tracking, emissions reporting, sustainability metrics, and environmental policy compliance.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3>Social Impact Audit</h3>
+      <p>Workforce diversity, community engagement, supply chain ethics, and social responsibility scoring.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚖️</div>
+      <h3>Governance Framework</h3>
+      <p>Board structure analysis, risk management assessment, policy review, and compliance gap identification.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <h3>AI-Powered Insights</h3>
+      <p>Gemini AI provides intelligent recommendations prioritized by regulatory impact and business risk.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Real-Time Reporting</h3>
+      <p>Export compliance reports, generate audit trails, track metrics over time with historical data comparison.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>Enterprise Security</h3>
+      <p>SOC 2 ready, GDPR compliant, role-based access, audit logging, and secure data handling.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- USE CASES -->
+<section class="container">
+  <span class="eyebrow">Designed For</span>
+  <h2>Perfect For Your Team</h2>
+  <div class="use-cases-grid">
+    <div class="use-case">
+      <h3>🏢 Compliance Officers</h3>
+      <p>Automate audit workflows, track regulatory requirements, and generate compliance documentation in minutes instead of weeks.</p>
+    </div>
+    <div class="use-case">
+      <h3>📋 ESG Consultants</h3>
+      <p>Accelerate client audits with AI-powered analysis. Deliver faster, higher-quality ESG reports with actionable insights.</p>
+    </div>
+    <div class="use-case">
+      <h3>👔 Board Members & Executives</h3>
+      <p>Get governance insights and ESG performance dashboards. Make data-driven decisions on sustainability initiatives.</p>
+    </div>
+    <div class="use-case">
+      <h3>🌱 Sustainability Teams</h3>
+      <p>Measure environmental impact, track carbon metrics, and benchmark against industry standards with AI-driven analysis.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- INTERACTIVE DEMO -->
+<section class="container" id="demo">
+  <span class="eyebrow">Try It Now</span>
+  <h2>Interactive Demo</h2>
+  <p style="margin-bottom:1.5rem;opacity:.8">Explore the ESG Auditor interface. This is a live demo — you can interact with the AI analysis tool in real-time.</p>
+  
+  <div class="demo-wrapper">
+    <div class="demo-chrome">
+      <div class="demo-dot"></div>
+      <div class="demo-dot"></div>
+      <div class="demo-dot"></div>
+      <span class="demo-url">esg-compliance-auditor.luxival.com</span>
+    </div>
+    <iframe 
+      src="/portfolio/esg-compliance-auditor/frontend/dist/" 
+      title="ESG Compliance Auditor Interactive Demo"
+      class="demo-iframe"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms">
+    </iframe>
+  </div>
+  
+  <p style="font-size:.85rem;opacity:.5;text-align:center;margin-top:1rem">
+    💡 <strong>Note:</strong> The demo shows the UI. Full AI analysis requires running the backend locally with Google Cloud credentials. <a href="contact.html">Contact us</a> for enterprise deployment.
+  </p>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- PRICING & CTA -->
+<section class="container">
+  <div class="pricing-box">
+    <span class="eyebrow">Deployment Options</span>
+    <h2>Custom Implementation</h2>
+    <p style="margin-bottom:1.5rem;opacity:.75">The ESG Compliance Auditor is available as a custom enterprise solution. Pricing depends on your deployment requirements and feature customization.</p>
+    
+    <div class="pricing-features">
+      <div class="pricing-feature">White-label deployment on your domain</div>
+      <div class="pricing-feature">Custom ESG framework configuration</div>
+      <div class="pricing-feature">Your Google Cloud or Azure integration</div>
+      <div class="pricing-feature">API access for third-party systems</div>
+      <div class="pricing-feature">Priority support & maintenance</div>
+      <div class="pricing-feature">On-premises or cloud deployment</div>
+    </div>
+
+    <div style="margin:2rem 0">
+      <a href="contact.html" class="btn" style="min-width:260px">Request a Quote →</a>
+    </div>
+    <p style="font-size:.8rem;opacity:.4">Custom pricing from €499/month. Let's discuss your ESG needs.</p>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ready to Simplify ESG Compliance?</h2>
+  <p>Schedule a consultation with our team to discuss your ESG audit needs and custom implementation options.</p>
+  <div>
+    <a href="contact.html" class="btn">Schedule Consultation →</a>
+    <a href="portfolio.html" class="btn-outline" style="margin-left:1rem">View More Projects</a>
+  </div>
+</section>
+
+<!-- CROSS-SELL -->
+<section class="container" style="padding:3rem 0">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+    <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem">
+      <span class="eyebrow">Website Audits</span>
+      <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Free SEO Audit Tool</h3>
+      <p>Check your website's SEO fundamentals, PageSpeed, accessibility, and security in minutes.</p>
+      <a href="audit.html" class="btn" style="margin-top:1rem;display:inline-block">Run Free Audit →</a>
+    </div>
+    <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem">
+      <span class="eyebrow">Digital Services</span>
+      <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Web Design & Agentic Workflows</h3>
+      <p>Custom web development, SEO optimization, and AI agent implementation for business automation.</p>
+      <a href="digital.html" class="btn" style="margin-top:1rem;display:inline-block">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:1rem">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="digital.html">Digital</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </p>
+    <p>© 2025 LUXIVAL · Helsinki · All rights reserved</p>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="sticky-cta">
+  <a href="#demo" class="btn" style="flex:1;text-align:center">View Demo</a>
+  <a href="contact.html" class="btn-outline" style="flex:1;text-align:center;display:flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:.8rem">Get Started</a>
+</div>
+
+<script>
+// Show sticky CTA on scroll
+window.addEventListener('scroll', () => {
+  const sticky = document.querySelector('.sticky-cta');
+  if (window.scrollY > 500) {
+    sticky.classList.add('show');
+  } else {
+    sticky.classList.remove('show');
+  }
+});
+</script>
+
+</body>
+</html>
