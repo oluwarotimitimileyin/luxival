@@ -12,9 +12,10 @@ git push origin main<!DOCTYPE html>
 <meta property="og:title" content="Portfolio | Luxival — Case Studies & Projects">
 <meta property="og:description" content="Luxival portfolio: web design, QA automation, airport transfer systems, SEO, 3D UX, and AI agent infrastructure projects from Helsinki.">
 <meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/portfolio.html">
+<meta property="og:url" content="https://luxival.com/portfolio">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/portfolio.html">
+<link rel="canonical" href="https://luxival.com/portfolio">
+<link rel="stylesheet" href="css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -92,19 +93,16 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a href="transfers.html">Transfers</a></li>
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="pattern.html">Pattern</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Digital Services</a></li>
+    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
     <li><a href="portfolio.html" class="active">Portfolio</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="esg-compliance-auditor.html">ESG AI</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
+    <li><a href="qa.html">QA &amp; Audit</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="audit.html">Free Audit</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
-  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
@@ -124,7 +122,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- PORTFOLIO -->
 <section class="container">
   <div class="port-banner reveal">
-    <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki">
+    <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki" width="1600" height="900" decoding="async" fetchpriority="high">
   </div>
 
   <div class="filter-row reveal">
@@ -215,6 +213,16 @@ footer{background:#060608;padding:5rem 0 2rem}
         <h3>ESG Compliance Auditor</h3>
         <p>AI-powered ESG reporting and compliance audit tool built on Google Vertex AI — analyses corporate documents and surfaces regulatory gaps.</p>
         <a href="esg-compliance-auditor.html">View full product →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d3" data-tilt data-category="ai" id="growth-architect">
+      <div class="proj-thumb" style="background:#10161f"><span class="proj-cat">AI · Growth Intelligence</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">SEO</span><span class="tag">Performance</span><span class="tag">Automation</span><span class="tag">AI Agent</span></div>
+        <h3>GROWTH_ARCHITECT</h3>
+        <p>Strategic AI tool that audits growth bottlenecks, prioritizes technical fixes, and generates implementation-ready action plans for measurable SEO and conversion gains.</p>
+        <a href="contact.html">Request a demo →</a>
       </div>
     </div>
 
