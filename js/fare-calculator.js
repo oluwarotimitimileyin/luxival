@@ -5,7 +5,7 @@
  * Usage: initFareCalculator({ containerId, preselect: ['airport'] })
  *
  * Requires Google Maps JS API loaded with ?libraries=places
- * Formula: €15 base + (km × €3.50) + surcharges
+ * Formula: €100 base + (km × €3.50) + surcharges
  */
 
 (function () {
@@ -171,7 +171,7 @@
             <span class="fare-total-amount">—</span>
           </div>
         </div>
-        <p class="fare-note">* €15 base + €3.50/km + selected services. Final fare confirmed at booking. Night service applies 22:00–06:00.</p>
+        <p class="fare-note">* €100 base + €3.50/km + selected services. Final fare confirmed at booking. Night service applies 22:00–06:00.</p>
       </div>`;
 
     // Wire up address inputs

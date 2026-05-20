@@ -30,7 +30,7 @@ Received: false
           - /url: /tourism.html
       - listitem [ref=e7]:
         - link "Design" [ref=e8] [cursor=pointer]:
-          - /url: /design-services.html
+          - /url: /pattern.html
       - listitem [ref=e9]:
         - link "Portfolio" [ref=e10] [cursor=pointer]:
           - /url: /portfolio.html
@@ -191,7 +191,7 @@ Received: false
         - link "Travel" [ref=e133] [cursor=pointer]:
           - /url: /tourism.html
         - link "Design" [ref=e134] [cursor=pointer]:
-          - /url: /design-services.html
+          - /url: /pattern.html
         - link "Portfolio" [ref=e135] [cursor=pointer]:
           - /url: /portfolio.html
         - link "Platform" [ref=e136] [cursor=pointer]:

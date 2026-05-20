@@ -1,37 +1,80 @@
-# AGENTS.md
+# AGENTS.md — Luxival Codebase Guide
 
-## Roles and Responsibilities
+## Project Overview
+Luxival is a premium multi-service platform (Helsinki-based) offering:
+- **Digital services** – web design, SEO, agentic workflows
+- **Tourism & transport** – airport transfers, city rides, booking
+- **Audit platform** – paid website audits with PDF reports
 
-### 1. Agent A
-- **Role**: Project Lead  
-- **Responsibilities**:  
-  - Coordinate project activities  
-  - Ensure timely delivery of milestones  
-  - Facilitate communication between teams  
+## Tech Stack
+| Layer | Technology |
+|---|---|
+| Static site | [Eleventy (11ty)](https://www.11ty.dev/) — outputs to `_site/` |
+| Frontend | Vanilla HTML + CSS (`css/styles.css`) + JS (`js/`) |
+| Blog | Nunjucks templates in `blog/` (11ty collections) |
+| Database | Supabase (PostgreSQL) |
+| Backend API | FastAPI (Python) — `backend/` |
+| Deployment (frontend) | Vercel — see [vercel.json](vercel.json) |
+| Deployment (backend) | Fly.io `luxival-audit-api` — see [backend/fly.toml](backend/fly.toml) |
+| Testing | Playwright — `tests/site-audit.spec.js` |
 
-### 2. Agent B
-- **Role**: Developer  
-- **Responsibilities**:  
-  - Write and maintain code  
-  - Review pull requests  
-  - Collaborate with other developers  
+## Build & Dev Commands
+```bash
+npm run dev          # Eleventy dev server with live reload
+npm run build        # Eleventy build + inject Google Maps key into _site/
+npm run clean        # Remove _site/ output directory
+npm run index        # Regenerate search index (scripts/auto-index.js)
+npx playwright test  # Run Playwright tests (requires built _site or live URL)
+```
 
-### 3. Agent C
-- **Role**: QA Specialist  
-- **Responsibilities**:  
-  - Perform testing on new features  
-  - Report bugs and issues  
-  - Ensure product quality
+Backend (Python):
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8080
+```
 
-### 4. Agent D
-- **Role**: UX Designer  
-- **Responsibilities**:  
-  - Design user interface  
-  - Conduct user research  
-  - Create wireframes and mocks
+## Key Architecture Decisions
 
-## Task Scope
-- **Agent A**: Overall project management and direction  
-- **Agent B**: Code development, implementation, and documentation  
-- **Agent C**: Quality assurance processes and feedback collection  
-- **Agent D**: User experience design and usability testing
+### Environment & Config
+- **Public runtime config** lives in `js/config.js` as `window.LuxivalConfig` (Supabase URL, anon key, WhatsApp URL). Safe to ship — anon key only.
+- **Build-time injection**: `scripts/inject-env.js` replaces `YOUR_GOOGLE_MAPS_PUBLIC_KEY` placeholders in `_site/` HTML after Eleventy runs. Set `GOOGLE_MAPS_PUBLIC_KEY` in Vercel env vars.
+- `.env.local` holds secrets for local dev only — never commit real keys.
+
+### Frontend Patterns
+- All pages are static `.html` files at the root; Vercel `cleanUrls: true` strips `.html` from URLs.
+- Shared styles: `css/styles.css`. Shared JS modules: `js/main.js`, `js/luxival.js`, `js/forms.js`.
+- Supabase calls go through `js/supabase-client.js` using `window.LuxivalConfig`.
+- Fare calculator logic: `js/fare-calculator.js` + `api/get-fare.js` + `api/fare_calculator.py`.
+
+### Backend API (`backend/`)
+- FastAPI with rate limiting via `slowapi`. CORS origins read from `ALLOWED_ORIGINS` env var.
+- In-memory payment/scan state — **replace with Redis before production scaling**.
+- Endpoints: `POST /scan/free`, `POST /scan/premium`, `POST /webhook/sumup`, `GET /health`.
+- See [backend/DEPLOY.md](backend/DEPLOY.md) for deployment notes.
+
+### Supabase Schema
+Key tables: `contact_inquiries`, `ride_requests`, `newsletter_subscribers`.
+Full schema: [supabase-architecture.md](supabase-architecture.md) | SQL: [supabase-setup.sql](supabase-setup.sql).
+
+### Blog
+- Posts live in `blog/posts/` as Nunjucks/Markdown with `blog` collection tag.
+- Layout: `blog/_includes/`. Index: `blog/index.njk`.
+
+## Testing
+- `npx playwright test` runs `tests/site-audit.spec.js`.
+- Config: [playwright.config.js](playwright.config.js) (headless, 1280×720, 2 workers, 60s timeout).
+- Results saved to `tests/results.json`.
+
+## Project Docs
+- [website-architecture.md](website-architecture.md) — page-by-page structure
+- [supabase-architecture.md](supabase-architecture.md) — DB schema & storage buckets
+- [site-map.md](site-map.md) — full site map
+- [project-backlog.md](project-backlog.md) — outstanding tasks
+- [workflow-process.md](workflow-process.md) — development workflow
+
+## Pitfalls
+- Do **not** use the Supabase service-role key on the frontend — only the anon/publishable key.
+- Google Maps key is injected at **build time** — changes to HTML templates in `_site/` are overwritten on every build.
+- The `_site/` directory is build output — edit source files, not `_site/` directly.
+- Backend in-memory stores (`verified_payments`, `scan_results`) are reset on process restart; use persistent storage for production.

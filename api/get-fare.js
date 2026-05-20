@@ -8,7 +8,7 @@
  */
 
 const RATE_PER_KM = 3.50;
-const BASE_FARE = 15;
+const BASE_FARE = 100;
 
 const SURCHARGES = {
   airport: 10,
@@ -19,8 +19,14 @@ const SURCHARGES = {
 };
 
 module.exports = async (req, res) => {
-  // CORS headers — allow the Luxival frontend only
-  res.setHeader("Access-Control-Allow-Origin", "https://luxival.com");
+  // CORS headers
+  const allowedOrigins = ["https://luxival.com", "https://www.luxival.com"];
+  const requestOrigin = req.headers.origin || "";
+  if (allowedOrigins.includes(requestOrigin) || requestOrigin.startsWith("http://localhost")) {
+    res.setHeader("Access-Control-Allow-Origin", requestOrigin);
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "https://luxival.com");
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 

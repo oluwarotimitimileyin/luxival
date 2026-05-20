@@ -59,7 +59,7 @@ Received: 404
   17  |     { url: '/audit.html', title: 'Audit' },
   18  |     { url: '/transfers.html', title: 'Transfer' },
   19  |     { url: '/digital.html', title: 'Digital' },
-  20  |     { url: '/design-services.html', title: 'Design' },
+  20  |     { url: '/pattern.html', title: 'Design' },
   21  |     { url: '/portfolio.html', title: 'Portfolio' },
   22  |     { url: '/qa.html', title: 'QA' },
   23  |   ];

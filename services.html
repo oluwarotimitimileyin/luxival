@@ -75,7 +75,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 @media(max-width:900px){.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
 </style>
 </head>
-<body>
+<body data-page-key="services">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div>
@@ -84,9 +84,10 @@ footer{background:#060608;padding:5rem 0 2rem}
   <a href="index.html" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
     <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
+    <li><a href="pattern.html">Pattern</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="qa.html">QA</a></li>
+    <li><a href="platform.html">Platform</a></li>
     <li><a href="platform.html">Platform</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="about.html">About</a></li>
@@ -98,12 +99,12 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- HERO -->
 <section class="container hero">
-  <span class="eyebrow reveal">All Services · Luxival</span>
-  <h1 class="reveal d1">Premium services<br>across every dimension.</h1>
-  <p class="lead reveal d2">Luxury finish traveling experience, web development, SEO services, UGC character content, QA software testing, and offline installation processes — all under one cohesive brand.</p>
+  <span class="eyebrow reveal" data-content-key="hero_eyebrow">All Services · Luxival</span>
+  <h1 class="reveal d1" data-content-key="hero_title">Premium services<br>across every dimension.</h1>
+  <p class="lead reveal d2" data-content-key="hero_subtitle">Luxury finish traveling experience, web development, SEO services, UGC character content, QA software testing, and offline installation processes — all under one cohesive brand.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
     <a href="booking.html" class="btn">Book a consultation</a>
-    <a href="design-services.html" class="btn btn-outline">Engineering disciplines</a>
+    <a href="pattern.html" class="btn btn-outline">Engineering disciplines</a>
   </div>
 </section>
 
@@ -112,7 +113,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- SERVICES GRID -->
 <section class="container">
   <span class="eyebrow reveal">What we offer</span>
-  <h2 class="reveal d1" style="text-align:left">Choose your service</h2>
+  <h2 class="reveal d1" style="text-align:left" data-content-key="services_title">Choose your service</h2>
   <div class="services-grid">
 
     <div class="svc reveal d1" data-tilt>
@@ -216,11 +217,11 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div class="cta-band">
   <div class="container">
     <span class="eyebrow">Ready to start?</span>
-    <h2>Tell us what you need.</h2>
-    <p>Send a brief and we will respond within one business day with a clear scope and a transparent price.</p>
+    <h2 data-content-key="cta_title">Tell us what you need.</h2>
+    <p data-content-key="cta_text">Send a brief and we will respond within one business day with a clear scope and a transparent price.</p>
     <div class="cta-actions">
       <a href="booking.html" class="btn">Book a consultation</a>
-      <a href="design-services.html" class="btn btn-outline">Engineering disciplines</a>
+      <a href="pattern.html" class="btn btn-outline">Engineering disciplines</a>
     </div>
   </div>
 </div>
@@ -245,7 +246,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="foot-links">
           <a href="index.html">Home</a>
           <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
+          <a href="pattern.html">Pattern</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="platform.html">Platform</a>
           <a href="blog/index.html">Blog</a>
@@ -266,6 +267,9 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
 </footer>
 
-<script src="js/luxival.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/site-content.js"></script>
+<script src="/js/luxival.js"></script>
 </body>
 </html>

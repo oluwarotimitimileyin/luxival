@@ -3,7 +3,10 @@
 image for luxival/
 *.tmp.MP4
 *.tmp.mp4
+*.mov
+assets/video/31fd8486317343e19e43d8e8a06afe9f.mp4
 .vercel
 node_modules/
 _site/
 .cache/
+.playwright-gsc-profile/

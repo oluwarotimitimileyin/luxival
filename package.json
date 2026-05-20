@@ -5,8 +5,12 @@
     "build": "eleventy && node scripts/inject-env.js",
     "dev": "eleventy --serve",
     "clean": "rm -rf _site",
-    "index": "node scripts/auto-index.js",
-    "deploy-and-index": "git push origin main && node scripts/auto-index.js"
+    "index": "node scripts/auto-index.js --from-sitemap",
+    "index:all": "node scripts/auto-index.js --all-from-sitemap --batch-size 20 --retry-failures 1",
+    "index:url": "node scripts/auto-index.js --url",
+    "index:sitemap": "node scripts/auto-index.js --notify-sitemap",
+    "gsc:playwright": "node scripts/gsc-playwright.js",
+    "deploy-and-index": "git push origin main && node scripts/auto-index.js --notify-sitemap"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

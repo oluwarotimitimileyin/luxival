@@ -30,7 +30,7 @@ Expected: not "—"
           - /url: ../tourism.html
       - listitem [ref=e8]:
         - link "Design" [ref=e9]:
-          - /url: ../design-services.html
+          - /url: ../pattern.html
       - listitem [ref=e10]:
         - link "Portfolio" [ref=e11]:
           - /url: ../portfolio.html
@@ -193,7 +193,7 @@ Expected: not "—"
             - link "Travel" [ref=e159]:
               - /url: ../tourism.html
             - link "Design" [ref=e160]:
-              - /url: ../design-services.html
+              - /url: ../pattern.html
             - link "Portfolio" [ref=e161]:
               - /url: ../portfolio.html
             - link "Platform" [ref=e162]:
@@ -236,7 +236,7 @@ Expected: not "—"
   17  |     { url: '/audit.html', title: 'Audit' },
   18  |     { url: '/transfers.html', title: 'Transfer' },
   19  |     { url: '/digital.html', title: 'Digital' },
-  20  |     { url: '/design-services.html', title: 'Design' },
+  20  |     { url: '/pattern.html', title: 'Design' },
   21  |     { url: '/portfolio.html', title: 'Portfolio' },
   22  |     { url: '/qa.html', title: 'QA' },
   23  |   ];

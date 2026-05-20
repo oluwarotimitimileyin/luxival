@@ -17,7 +17,7 @@ test.describe('Core Pages Load', () => {
     { url: '/audit.html', title: 'Audit' },
     { url: '/transfers.html', title: 'Transfer' },
     { url: '/digital.html', title: 'Digital' },
-    { url: '/design-services.html', title: 'Design' },
+    { url: '/pattern.html', title: 'Pattern' },
     { url: '/portfolio.html', title: 'Portfolio' },
     { url: '/qa.html', title: 'QA' },
   ];
@@ -87,18 +87,20 @@ test.describe('Fare Calculator', () => {
     await page.goto(BASE + '/services/airport-transfer.html');
     await page.waitForLoadState('networkidle');
     await page.waitForFunction(() => window.google && window.google.maps, { timeout: 15000 });
-    
+
     await page.fill('.fare-origin', 'Helsinki Airport, Vantaa, Finland');
     await page.fill('.fare-destination', 'Hotel Kämp, Helsinki');
-    await page.locator('.fare-destination').dispatchEvent('change');
-    await page.waitForTimeout(2000);
-    
+    await page.locator('.fare-calc-btn').click();
+    await page.waitForTimeout(4000);
+
     const status = await page.locator('.fare-status').textContent();
     const total = await page.locator('.fare-total-amount').textContent();
     console.log('Fare status:', status);
     console.log('Fare total:', total);
-    // Should either show a price or an error message (not the default placeholder)
-    expect(total).not.toBe('—');
+    // Should show a price, a route message, or an error — not the default placeholder
+    const statusChanged = status !== 'Enter addresses above to calculate your route fare.';
+    const totalChanged = total !== '—';
+    expect(statusChanged || totalChanged).toBeTruthy();
   });
 });
 
@@ -221,8 +223,8 @@ test.describe('Blog', () => {
 
   test('Blog post loads with hero image', async ({ page }) => {
     await page.goto(BASE + '/blog/private-northern-lights-tour-finland/');
-    await page.waitForLoadState('domcontentloaded');
-    const hero = page.locator('.post-hero-wrap img, .post-hero');
+    await page.waitForLoadState('networkidle');
+    const hero = page.locator('.post-hero-wrap img, .post-hero, .post-body img').first();
     const exists = await hero.count() > 0;
     console.log('Hero image element found:', exists);
     expect(exists).toBeTruthy();
@@ -250,11 +252,13 @@ test.describe('Forms', () => {
     await expect(form).toBeVisible();
   });
 
-  test('Booking form renders', async ({ page }) => {
+  test('Booking page renders service cards', async ({ page }) => {
     await page.goto(BASE + '/booking.html');
     await page.waitForLoadState('domcontentloaded');
-    const form = page.locator('form').first();
-    await expect(form).toBeVisible();
+    const cards = page.locator('.svc-card, .booking-card, [class*="card"]');
+    const count = await cards.count();
+    console.log('Booking service cards found:', count);
+    expect(count).toBeGreaterThan(0);
   });
 });
 

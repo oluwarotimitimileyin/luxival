@@ -76,7 +76,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 @media(max-width:900px){.grid-6{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.port-banner{aspect-ratio:16/9}}
 </style>
 </head>
-<body>
+<body data-page-key="portfolio">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div>
@@ -86,8 +86,9 @@ footer{background:#060608;padding:5rem 0 2rem}
   <ul class="nav-links">
     <li><a href="transfers.html">Transfers</a></li>
     <li><a href="tourism.html">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
+    <li><a href="pattern.html">Pattern</a></li>
     <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="platform.html">Platform</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="audit.html">Free Audit</a></li>
@@ -99,12 +100,12 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- HERO -->
 <section class="container hero">
-  <span class="eyebrow reveal">Portfolio · Helsinki</span>
-  <h1 class="reveal d1">Work that speaks<br>for itself.</h1>
-  <p class="lead reveal d2">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and agentic workflow infrastructure.</p>
+  <span class="eyebrow reveal" data-content-key="hero_eyebrow">Portfolio · Helsinki</span>
+  <h1 class="reveal d1" data-content-key="hero_title">Work that speaks<br>for itself.</h1>
+  <p class="lead reveal d2" data-content-key="hero_subtitle">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and agentic workflow infrastructure.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
     <a href="booking.html" class="btn">Book a consultation</a>
-    <a href="design-services.html" class="btn btn-outline">View services</a>
+    <a href="pattern.html" class="btn btn-outline">View services</a>
   </div>
 </section>
 
@@ -187,6 +188,26 @@ footer{background:#060608;padding:5rem 0 2rem}
       </div>
     </div>
 
+    <div class="proj reveal d3" data-tilt data-category="web">
+      <div class="proj-thumb"><span class="proj-cat">Pattern Studio</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Sewing Pattern</span><span class="tag">Bespoke</span><span class="tag">PDF Download</span></div>
+        <h3>Luxival Pattern Studio</h3>
+        <p>Bespoke navy three-piece suit pattern generated to exact body measurements. Pay once, receive a printable tailor-ready PDF instantly.</p>
+        <a href="pattern.html">View project →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d1" data-tilt data-category="ai">
+      <div class="proj-thumb"><span class="proj-cat">Finance Platform</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Accounting</span><span class="tag">Dashboard</span><span class="tag">Luxival</span></div>
+        <h3>Vault Ledger</h3>
+        <p>Helps businesses calculate accounting, track updates, and manage Luxival project features.</p>
+        <a href="platform.html">View project →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -194,11 +215,11 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div class="cta-band">
   <div class="container">
     <span class="eyebrow">Start a project</span>
-    <h2>Have a project in mind?</h2>
-    <p>Send us a brief and we will respond within one business day with a clear scope and fixed-price proposal.</p>
+    <h2 data-content-key="cta_title">Have a project in mind?</h2>
+    <p data-content-key="cta_text">Send us a brief and we will respond within one business day with a clear scope and fixed-price proposal.</p>
     <div class="cta-actions">
       <a href="booking.html" class="btn">Book a consultation</a>
-      <a href="design-services.html" class="btn btn-outline">Browse services</a>
+      <a href="pattern.html" class="btn btn-outline">Browse services</a>
     </div>
   </div>
 </div>
@@ -223,7 +244,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="foot-links">
           <a href="index.html">Home</a>
           <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
+          <a href="pattern.html">Pattern</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="platform.html">Platform</a>
           <a href="blog/index.html">Blog</a>
@@ -244,7 +265,10 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
 </footer>
 
-<script src="js/luxival.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/site-content.js"></script>
+<script src="/js/luxival.js"></script>
 <script>
 /* Portfolio filter */
 const filters = document.querySelectorAll('.filter');

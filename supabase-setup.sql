@@ -116,6 +116,48 @@ create table if not exists uploaded_assets (
   public_url   text
 );
 
+create table if not exists blog_posts (
+  id             uuid primary key default gen_random_uuid(),
+  created_at     timestamptz default now(),
+  updated_at     timestamptz default now(),
+  title          text not null,
+  slug           text not null unique,
+  excerpt        text,
+  content        text,
+  category       text default 'blog',
+  tags           text[] default '{}',
+  featured_image text,
+  published      boolean default false,
+  published_at   timestamptz,
+  author         text
+);
+
+create table if not exists site_reviews (
+  id            uuid primary key default gen_random_uuid(),
+  created_at    timestamptz default now(),
+  updated_at    timestamptz default now(),
+  reviewer_name text not null,
+  review_text   text not null,
+  source        text,
+  service_area  text,
+  avatar_url    text,
+  rating        integer not null default 5,
+  published     boolean default false,
+  published_at  timestamptz
+);
+
+create table if not exists site_content (
+  id           uuid primary key default gen_random_uuid(),
+  created_at   timestamptz default now(),
+  updated_at   timestamptz default now(),
+  page_key     text not null,
+  content_key  text not null,
+  label        text,
+  content_value text not null,
+  updated_by   text,
+  unique (page_key, content_key)
+);
+
 -- ============================================================
 -- ROW LEVEL SECURITY
 -- ============================================================
@@ -125,6 +167,9 @@ alter table ride_requests         enable row level security;
 alter table newsletter_subscribers enable row level security;
 alter table tiktok_agency_applications enable row level security;
 alter table uploaded_assets        enable row level security;
+alter table blog_posts             enable row level security;
+alter table site_reviews           enable row level security;
+alter table site_content           enable row level security;
 
 -- Public INSERT (anonymous website visitors can submit)
 drop policy if exists "allow anon insert contact_inquiries" on contact_inquiries;
@@ -171,6 +216,66 @@ create policy "auth_select_assets" on uploaded_assets
 drop policy if exists "auth_insert_assets" on uploaded_assets;
 create policy "auth_insert_assets" on uploaded_assets
   for insert to authenticated with check (true);
+
+drop policy if exists "auth_select_blog_posts" on blog_posts;
+create policy "auth_select_blog_posts" on blog_posts
+  for select to authenticated using (true);
+
+drop policy if exists "auth_insert_blog_posts" on blog_posts;
+create policy "auth_insert_blog_posts" on blog_posts
+  for insert to authenticated with check (true);
+
+drop policy if exists "auth_update_blog_posts" on blog_posts;
+create policy "auth_update_blog_posts" on blog_posts
+  for update to authenticated using (true) with check (true);
+
+drop policy if exists "auth_delete_blog_posts" on blog_posts;
+create policy "auth_delete_blog_posts" on blog_posts
+  for delete to authenticated using (true);
+
+drop policy if exists "public_select_blog_posts" on blog_posts;
+create policy "public_select_blog_posts" on blog_posts
+  for select to anon using (published = true);
+
+drop policy if exists "auth_select_site_reviews" on site_reviews;
+create policy "auth_select_site_reviews" on site_reviews
+  for select to authenticated using (true);
+
+drop policy if exists "auth_insert_site_reviews" on site_reviews;
+create policy "auth_insert_site_reviews" on site_reviews
+  for insert to authenticated with check (true);
+
+drop policy if exists "auth_update_site_reviews" on site_reviews;
+create policy "auth_update_site_reviews" on site_reviews
+  for update to authenticated using (true) with check (true);
+
+drop policy if exists "auth_delete_site_reviews" on site_reviews;
+create policy "auth_delete_site_reviews" on site_reviews
+  for delete to authenticated using (true);
+
+drop policy if exists "public_select_site_reviews" on site_reviews;
+create policy "public_select_site_reviews" on site_reviews
+  for select to anon using (published = true);
+
+drop policy if exists "auth_select_site_content" on site_content;
+create policy "auth_select_site_content" on site_content
+  for select to authenticated using (true);
+
+drop policy if exists "auth_insert_site_content" on site_content;
+create policy "auth_insert_site_content" on site_content
+  for insert to authenticated with check (true);
+
+drop policy if exists "auth_update_site_content" on site_content;
+create policy "auth_update_site_content" on site_content
+  for update to authenticated using (true) with check (true);
+
+drop policy if exists "auth_delete_site_content" on site_content;
+create policy "auth_delete_site_content" on site_content
+  for delete to authenticated using (true);
+
+drop policy if exists "public_select_site_content" on site_content;
+create policy "public_select_site_content" on site_content
+  for select to anon using (true);
 
 -- ============================================================
 -- STORAGE BUCKETS
@@ -230,3 +335,7 @@ create index if not exists idx_rides_status     on ride_requests (status);
 create index if not exists idx_nl_email         on newsletter_subscribers (email);
 create index if not exists idx_tiktok_agency_email on tiktok_agency_applications (email);
 create index if not exists idx_tiktok_agency_status on tiktok_agency_applications (status);
+create index if not exists idx_blog_posts_slug on blog_posts (slug);
+create index if not exists idx_blog_posts_published on blog_posts (published);
+create index if not exists idx_site_reviews_published on site_reviews (published);
+create index if not exists idx_site_content_page_key on site_content (page_key);

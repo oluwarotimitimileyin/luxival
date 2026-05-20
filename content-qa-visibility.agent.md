@@ -52,7 +52,7 @@ index.html              — Homepage (3D hero, transfer pitch, services overview
 about.html              — Founder story, timeline, skills
 portfolio.html          — Case studies grid with filter
 services.html           — Full 10-service overview
-design-services.html    — Design & digital services detail
+pattern.html    — Design & digital services detail
 qa.html                 — QA & testing landing
 tourism.html            — Transfer booking, fare calculator, Finland destinations
 contact.html            — Inquiry form + newsletter
@@ -86,7 +86,7 @@ All pages must load scripts in this order:
 5. Inline page-specific scripts (last)
 
 ### Nav standard (all pages)
-Travel → `tourism.html` | Design → `design-services.html` | Portfolio → `portfolio.html`
+Travel → `tourism.html` | Design → `pattern.html` | Portfolio → `portfolio.html`
 QA → `qa.html` | About → `about.html` | Book Now → `contact.html`
 Nav brand `LUXIVAL` must be an `<a>` tag linking to `index.html`.
 

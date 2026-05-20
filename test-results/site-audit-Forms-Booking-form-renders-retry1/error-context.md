@@ -35,7 +35,7 @@ Call log:
         - /url: tourism.html
     - listitem:
       - link "Design":
-        - /url: design-services.html
+        - /url: pattern.html
     - listitem:
       - link "Portfolio":
         - /url: portfolio.html
@@ -72,7 +72,7 @@ Call log:
   - paragraph: Custom day-by-day Finland itinerary built around your arrival and departure dates, with city, nature, and cultural highlights.
   - text: Plan journey →
 - link "🎨 Book Design Services Web design, SEO, 3D UX, AI agents, and full digital product development. Submit your project brief to get started. Start project →":
-  - /url: design-services.html
+  - /url: pattern.html
   - text: 🎨
   - heading "Book Design Services" [level=3]
   - paragraph: Web design, SEO, 3D UX, AI agents, and full digital product development. Submit your project brief to get started.
@@ -107,7 +107,7 @@ Call log:
   - link "Travel":
     - /url: tourism.html
   - link "Design":
-    - /url: design-services.html
+    - /url: pattern.html
   - link "Portfolio":
     - /url: portfolio.html
   - link "Platform":

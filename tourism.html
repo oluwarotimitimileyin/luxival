@@ -149,7 +149,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}.season-grid,.grid-2,.grid-3,.calc-grid,.faq-grid,.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
 </style>
 </head>
-<body>
+<body data-page-key="tourism">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div>
@@ -159,8 +159,9 @@ footer{background:#060608;padding:5rem 0 2rem}
   <ul class="nav-links">
     <li><a href="transfers.html">Transfers</a></li>
     <li><a href="tourism.html" class="active">Travel</a></li>
-    <li><a href="design-services.html">Design</a></li>
+    <li><a href="pattern.html">Pattern</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="platform.html">Platform</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="audit.html">Free Audit</a></li>
@@ -173,9 +174,9 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">Tourism & Transport · Helsinki</span>
-    <h1 class="reveal d1">Premium airport<br>transfer & Finland<br>travel experience.</h1>
-    <p class="subhead reveal d2">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one luxury finish travel experience.</p>
+    <span class="eyebrow reveal" data-content-key="hero_eyebrow">Tourism & Transport · Helsinki</span>
+    <h1 class="reveal d1" data-content-key="hero_title">Premium airport<br>transfer & Finland<br>travel experience.</h1>
+    <p class="subhead reveal d2" data-content-key="hero_subtitle">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one luxury finish travel experience.</p>
     <div class="hero-actions reveal d3">
       <a href="#pricing" class="btn">Estimate your fare</a>
       <a href="#seasons" class="btn btn-outline">Explore Finland</a>
@@ -212,7 +213,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 </section>
 <section class="container" id="seasons">
   <span class="eyebrow reveal">Finland by season</span>
-  <h2 class="reveal d1" style="text-align:left">Travel the calendar</h2>
+  <h2 class="reveal d1" style="text-align:left" data-content-key="seasons_title">Travel the calendar</h2>
   <div class="season-grid">
     <div class="season-card reveal d1">
       <div class="img-frame card-img">
@@ -258,7 +259,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- DEDICATED TRANSPORT SERVICES -->
 <section class="container">
   <span class="eyebrow reveal">What we offer</span>
-  <h2 class="reveal d1" style="text-align:left">Dedicated transport services</h2>
+  <h2 class="reveal d1" style="text-align:left" data-content-key="services_title">Dedicated transport services</h2>
   <div class="grid-3">
     <div class="feature reveal d1">
       <div class="img-frame card-img">
@@ -478,7 +479,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <label for="accomGuests">Guests</label>
       <input id="accomGuests" type="number" min="1" max="20" value="2">
       <button class="btn" style="width:100%" onclick="handleAccomSearch()">Search accommodation</button>
-      <p style="font-size:.78rem;opacity:.4;margin-top:.8rem">Live results via Booking.com affiliate API · Integration in progress — contact us for immediate sourcing</p>
+      <p style="font-size:.78rem;opacity:.4;margin-top:.8rem">Search powered by Google Hotels · Results open in a new tab</p>
     </div>
     <div class="reveal d2">
       <div id="accomResults">
@@ -574,7 +575,7 @@ footer{background:#060608;padding:5rem 0 2rem}
   <span class="eyebrow reveal">FAQ</span>
   <h2 class="reveal d1" style="text-align:left">Questions answered</h2>
   <div class="faq-grid">
-    <div class="faq reveal d1"><h3>How are prices calculated?</h3><p>Starting at €10, plus €1/km. Service and demand fees are added when applicable. Airport rides include a surcharge.</p></div>
+    <div class="faq reveal d1"><h3>How are prices calculated?</h3><p>Starting at €100, plus €3.50/km. Service surcharges are added when applicable. Airport rides include a €10 surcharge.</p></div>
     <div class="faq reveal d2"><h3>Do you serve Helsinki-Vantaa Airport?</h3><p>Yes. We provide reliable arrivals, departures, and flexible pickup windows for all airport travel.</p></div>
     <div class="faq reveal d1"><h3>Can I book a custom tour?</h3><p>Yes. We handle custom tourism routes, seasonal travel suggestions, and premium Finland experiences on request.</p></div>
     <div class="faq reveal d2"><h3>How do I track my chauffeur?</h3><p>After booking confirmation, you receive live GPS tracking and ETA updates directly to your phone.</p></div>
@@ -615,7 +616,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="foot-links">
           <a href="index.html">Home</a>
           <a href="tourism.html">Travel</a>
-          <a href="design-services.html">Design</a>
+          <a href="pattern.html">Pattern</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="platform.html">Platform</a>
           <a href="blog/index.html">Blog</a>
@@ -637,9 +638,10 @@ footer{background:#060608;padding:5rem 0 2rem}
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
-<script src="js/luxival.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/site-content.js"></script>
+<script src="/js/luxival.js"></script>
 <script>
 function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
 /* Shared fare calculation helpers (used by ride form) */
@@ -667,8 +669,8 @@ function updateRideEstimate(){
   const stype=document.getElementById('rideServiceType').value;
   const dist=airportFlag?19:12;
   const svcPrice=stype==='city-to-city'?10:stype==='tourism'?12:0;
-  const airPrice=airportFlag?15:0;
-  const total=10+(dist*1)+svcPrice+airPrice;
+  const airPrice=airportFlag?10:0;
+  const total=100+(dist*3.50)+svcPrice+airPrice;
   document.getElementById('rideEstimateDistance').textContent='~'+dist;
   document.getElementById('rideEstimatePrice').textContent=total.toFixed(2);
 }
@@ -792,7 +794,7 @@ function initLuxivalMap(){
   });
 }
 </script>
-<script src="js/fare-calculator.js"></script>
+<script src="/js/fare-calculator.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas&libraries=places&callback=initLuxivalMap" async defer></script>
 <script>
 // Init fare calculator after Maps loads (initLuxivalMap already ran as the Maps callback)
@@ -819,18 +821,24 @@ filters.forEach(btn=>{
   });
 });
 
-/* Accommodation search stub */
+/* Accommodation search — Google Hotels */
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function handleAccomSearch(){
   const dest=document.getElementById('accomDest').value.trim();
   const inn=document.getElementById('accomIn').value;
   const out=document.getElementById('accomOut').value;
-  const type=document.getElementById('accomType').value;
+  const guests=document.getElementById('accomGuests').value||'2';
   const res=document.getElementById('accomResults');
   if(!dest){res.innerHTML='<p style="color:#f77;font-size:.9rem;opacity:1">Please enter a destination.</p>';return;}
   const safeD=escHtml(dest);
-  const label=type.charAt(0).toUpperCase()+type.slice(1);
-  res.innerHTML=`<div class="estimate-box"><p style="opacity:.7;font-size:.9rem"><strong>${label} options in ${safeD}</strong></p><p style="opacity:.5;font-size:.82rem">${inn&&out?escHtml(inn)+' → '+escHtml(out)+' · ':''}Live results coming soon via Booking.com API.</p><p style="opacity:.45;font-size:.82rem;margin-top:.5rem">Contact us directly for immediate accommodation sourcing.</p></div><a href="contact.html" class="btn" style="display:block;text-align:center;margin-top:1.2rem;border-radius:var(--r)">Request sourcing for ${safeD}</a>`;
+  const query=encodeURIComponent(dest+', Finland hotels');
+  let url='https://www.google.com/travel/hotels/s/'+encodeURIComponent(dest+' Finland');
+  if(inn) url+='?checkin='+inn;
+  if(inn&&out) url+='&checkout='+out;
+  if(guests&&guests!=='2') url+=(inn?'&':'?')+'guests='+guests;
+  const dateStr=inn&&out?escHtml(inn)+' → '+escHtml(out):'Flexible dates';
+  res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s)</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a href="contact.html" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
+  window.open(url,'_blank');
 }
 document.getElementById('accomDest')&&document.querySelector('[onclick="handleAccomSearch()"]')&&(()=>{
   const btn=document.querySelector('[onclick="handleAccomSearch()"]');
