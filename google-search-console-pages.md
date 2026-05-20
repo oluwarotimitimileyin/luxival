@@ -19,7 +19,7 @@
 - https://luxival.com/
 - https://luxival.com/transfers
 - https://luxival.com/digital
-- https://luxival.com/portfolio#growth-architect
+- https://luxival.com/growth-architect
 - https://luxival.com/pattern
 - https://luxival.com/services
 - https://luxival.com/hub
