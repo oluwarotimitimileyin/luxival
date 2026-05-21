@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxival — Interactive Site Map</title>
+<style>
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0A0B0F;
+  --surface:  #111318;
+  --surface2: #161920;
+  --text:     #E8EBF2;
+  --muted:    rgba(232,235,242,0.5);
+  --gold:     #C9A96A;
+  --gold-dim: rgba(201,169,106,0.12);
+  --transport:#3B82F6;
+  --digital:  #8B5CF6;
+  --blog:     #22C55E;
+  --conv:     #F59E0B;
+  --legal:    #6B7280;
+  --internal: #EF4444;
+  --r: 8px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.hdr {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: rgba(10,11,15,0.97);
+  border-bottom: 1px solid rgba(201,169,106,0.1);
+  flex-wrap: wrap;
+  z-index: 200;
+}
+.hdr-brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  white-space: nowrap;
+}
+.hdr-logo {
+  width: 26px; height: 26px;
+  background: var(--bg);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: var(--gold); font-size: 0.85rem;
+}
+.hdr-title { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.hdr-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+
+/* search */
+.hdr-search { position: relative; flex: 0 0 200px; }
+.hdr-search input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 0.38rem 0.7rem 0.38rem 1.8rem;
+  color: var(--text); font-size: 0.8rem; outline: none;
+  transition: border-color 0.2s;
+}
+.hdr-search input:focus { border-color: rgba(201,169,106,0.35); }
+.hdr-search::before {
+  content: '⌕';
+  position: absolute; left: 0.55rem; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-size: 0.85rem; pointer-events: none;
+}
+
+/* filter pills */
+.filters { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.pill {
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: var(--muted); font-size: 0.7rem; letter-spacing: 0.3px;
+  cursor: pointer; transition: all 0.18s; white-space: nowrap;
+}
+.pill:hover { border-color: rgba(255,255,255,0.22); color: var(--text); }
+.pill.active { background: var(--gold-dim); border-color: rgba(201,169,106,0.35); color: var(--gold); }
+.pill.active[data-f="transport"] { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.35); color: var(--transport); }
+.pill.active[data-f="digital"]   { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.35); color: var(--digital); }
+.pill.active[data-f="blog"]      { background: rgba(34,197,94,0.10); border-color: rgba(34,197,94,0.35); color: var(--blog); }
+.pill.active[data-f="legal"]     { background: rgba(107,114,128,0.12); border-color: rgba(107,114,128,0.35); color: var(--legal); }
+.pill.active[data-f="internal"]  { background: rgba(239,68,68,0.10); border-color: rgba(239,68,68,0.35); color: var(--internal); }
+
+/* journey buttons */
+.journeys { display: flex; gap: 0.35rem; align-items: center; }
+.jlabel { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.jbtn {
+  padding: 0.28rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent; color: var(--muted); font-size: 0.7rem;
+  cursor: pointer; transition: all 0.18s; white-space: nowrap;
+}
+.jbtn:hover { border-color: rgba(255,255,255,0.22); color: var(--text); }
+.jbtn.active { background: var(--gold-dim); border-color: rgba(201,169,106,0.4); color: var(--gold); }
+
+.hdr-stats { margin-left: auto; font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+
+/* ── Viewport ── */
+.viewport { flex: 1; overflow: auto; position: relative; }
+.viewport::-webkit-scrollbar { width: 4px; height: 4px; }
+.viewport::-webkit-scrollbar-track { background: var(--bg); }
+.viewport::-webkit-scrollbar-thumb { background: rgba(201,169,106,0.2); border-radius: 2px; }
+
+.canvas {
+  position: relative;
+  min-width: 1280px;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* SVG overlay */
+.edge-svg {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 1; overflow: visible;
+}
+
+/* ── Layout ── */
+.home-row {
+  display: flex; justify-content: center; margin-bottom: 1.5rem;
+  position: relative; z-index: 2;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1.45fr 1fr;
+  gap: 1.5rem;
+  position: relative; z-index: 2;
+}
+
+.col { display: flex; flex-direction: column; gap: 1rem; }
+
+.col-label {
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.grp { display: flex; flex-direction: column; gap: 0.4rem; }
+.grp-title {
+  font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); opacity: 0.55; margin-bottom: 0.15rem;
+}
+
+/* gold divider */
+.gline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,106,0.18), transparent);
+}
+
+/* ── Nodes ── */
+.node {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--surface);
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s, opacity 0.25s, box-shadow 0.2s;
+  animation: fadeUp 0.3s ease both;
+  user-select: none;
+}
+.node::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--nc, var(--gold)); opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.node:hover { background: var(--surface2); border-color: rgba(255,255,255,0.13); transform: translateX(2px); }
+.node:hover::before { opacity: 1; }
+
+/* home node */
+.node.home {
+  padding: 0.85rem 2rem; font-size: 0.95rem; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  border-color: rgba(201,169,106,0.25);
+  background: linear-gradient(135deg, rgba(201,169,106,0.08), transparent);
+  --nc: var(--gold);
+  box-shadow: 0 0 40px rgba(201,169,106,0.06);
+}
+
+/* category colors */
+.node[data-cat="core"]      { --nc: var(--gold); }
+.node[data-cat="transport"] { --nc: var(--transport); }
+.node[data-cat="digital"]   { --nc: var(--digital); }
+.node[data-cat="blog"]      { --nc: var(--blog); }
+.node[data-cat="conversion"]{ --nc: var(--conv); }
+.node[data-cat="legal"]     { --nc: var(--legal); }
+.node[data-cat="internal"]  { --nc: var(--internal); }
+
+.node-ico { font-size: 0.88rem; flex-shrink: 0; }
+.node-lbl { font-size: 0.8rem; font-weight: 500; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.node-url { font-size: 0.62rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
+.node-pri { font-size: 0.58rem; color: var(--muted); margin-left: auto; flex-shrink: 0; opacity: 0.55; }
+.node-tag { font-size: 0.55rem; margin-left: auto; flex-shrink: 0; color: var(--internal); }
+
+/* states */
+.node.dimmed   { opacity: 0.12; pointer-events: none; }
+.node.lit      { border-color: rgba(255,255,255,0.18) !important; }
+.node.journey  {
+  opacity: 1 !important; pointer-events: auto !important;
+  border-color: var(--nc) !important;
+  box-shadow: 0 0 0 1.5px var(--nc), 0 0 18px rgba(201,169,106,0.1);
+}
+
+/* ── Blog categories ── */
+.blog-cat-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.42rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(34,197,94,0.14);
+  background: rgba(34,197,94,0.05);
+  cursor: pointer; font-size: 0.76rem; color: var(--blog);
+  transition: background 0.18s, border-color 0.18s;
+}
+.blog-cat-hdr:hover { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.22); }
+.blog-arrow { font-size: 0.65rem; transition: transform 0.2s; display: inline-block; }
+.blog-arrow.open { transform: rotate(180deg); }
+
+.blog-list {
+  display: flex; flex-direction: column; gap: 0.28rem;
+  padding-left: 0.85rem;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.32s ease;
+}
+.blog-list.open { max-height: 700px; }
+
+.blog-post {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.36rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid rgba(34,197,94,0.09);
+  background: rgba(34,197,94,0.04);
+  cursor: pointer; font-size: 0.73rem; color: rgba(34,197,94,0.75);
+  transition: background 0.15s, color 0.15s;
+  animation: fadeUp 0.2s ease both;
+}
+.blog-post:hover { background: rgba(34,197,94,0.1); color: var(--blog); }
+
+/* ── SVG edges ── */
+.edge {
+  fill: none; stroke-width: 1; opacity: 0.13;
+  transition: opacity 0.25s, stroke-width 0.25s;
+}
+.edge[data-cat="core"]       { stroke: var(--gold); }
+.edge[data-cat="transport"]  { stroke: var(--transport); }
+.edge[data-cat="digital"]    { stroke: var(--digital); }
+.edge[data-cat="blog"]       { stroke: var(--blog); }
+.edge[data-cat="conversion"] { stroke: var(--conv); }
+.edge[data-cat="legal"]      { stroke: var(--legal); }
+.edge[data-cat="internal"]   { stroke: var(--internal); }
+.edge.lit  { opacity: 0.7; stroke-width: 1.5; }
+.edge.journey-edge {
+  stroke-width: 2.5; opacity: 0.85;
+  stroke-dasharray: 7 4;
+  animation: dash 0.9s linear infinite;
+}
+@keyframes dash { to { stroke-dashoffset: -22; } }
+
+/* ── Tooltip ── */
+.tip {
+  position: fixed; z-index: 900;
+  background: var(--surface2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r);
+  padding: 0.9rem 1rem;
+  width: 250px;
+  pointer-events: none;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+.tip.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.tip-cat   { font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.tip-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+.tip-url   { font-size: 0.68rem; color: var(--gold); font-family: monospace; margin-bottom: 0.5rem; }
+.tip-desc  { font-size: 0.76rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.65rem; }
+.tip-row   { display: flex; align-items: center; gap: 0.5rem; font-size: 0.62rem; color: var(--muted); }
+.tip-bar   { flex: 1; height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+.tip-fill  { height: 100%; background: var(--gold); border-radius: 2px; }
+.tip-btn {
+  display: block; width: 100%; margin-top: 0.65rem;
+  padding: 0.4rem; border-radius: 5px; text-align: center;
+  background: var(--gold-dim); border: 1px solid rgba(201,169,106,0.3);
+  color: var(--gold); font-size: 0.7rem; cursor: pointer;
+  text-decoration: none; transition: background 0.18s;
+}
+.tip-btn:hover { background: rgba(201,169,106,0.18); }
+
+/* ── Legend ── */
+.legend {
+  position: fixed; bottom: 1.2rem; right: 1.2rem; z-index: 100;
+  background: rgba(10,11,15,0.92); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r); padding: 0.75rem 0.9rem;
+}
+.legend-title { font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+.legend-row { display: flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; color: var(--muted); margin-bottom: 0.28rem; }
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Journey bar ── */
+.jbar {
+  position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+  background: rgba(10,11,15,0.96); backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,169,106,0.2);
+  border-radius: 999px; padding: 0.55rem 1.4rem;
+  z-index: 100; display: none; align-items: center; gap: 1rem;
+  font-size: 0.76rem; color: var(--gold);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.jbar.show { display: flex; }
+.jbar-close {
+  background: none; border: 1px solid rgba(201,169,106,0.25);
+  border-radius: 999px; color: var(--muted); font-size: 0.68rem;
+  padding: 0.18rem 0.55rem; cursor: pointer; transition: all 0.18s;
+}
+.jbar-close:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-logo">L</div>
+    <span class="hdr-title">Site Map</span>
+  </div>
+
+  <div class="hdr-sep"></div>
+
+  <div class="hdr-search">
+    <input type="search" id="search" placeholder="Search pages…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="pill active" data-f="all">All</button>
+    <button class="pill" data-f="core">Core</button>
+    <button class="pill" data-f="transport">Transport</button>
+    <button class="pill" data-f="digital">Digital</button>
+    <button class="pill" data-f="blog">Blog</button>
+    <button class="pill" data-f="legal">Legal</button>
+    <button class="pill" data-f="internal">Internal</button>
+  </div>
+
+  <div class="hdr-sep"></div>
+
+  <div class="journeys">
+    <span class="jlabel">Journeys</span>
+    <button class="jbtn" data-j="digital">💻 Digital Buyer</button>
+    <button class="jbtn" data-j="transport">🚗 Transfer Booker</button>
+    <button class="jbtn" data-j="chat">💬 Chat Lead</button>
+  </div>
+
+  <div class="hdr-stats" id="statsBar">55 pages · 7 service sub-pages per branch · 37 blog posts</div>
+</header>
+
+<!-- ══════════ VIEWPORT ══════════ -->
+<div class="viewport" id="viewport">
+<div class="canvas" id="canvas">
+
+  <!-- SVG edge layer -->
+  <svg class="edge-svg" id="edgeSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+  <!-- HOME -->
+  <div class="home-row">
+    <div class="node home"
+         data-id="home" data-cat="core"
+         data-url="/" data-pri="1.0"
+         data-desc="Hero, dual-service intro, services overview, trust stats, featured projects, CTAs to all major sections">
+      <span class="node-ico">🏠</span>
+      <span class="node-lbl" style="font-size:0.95rem;letter-spacing:2px">HOME</span>
+      <span class="node-url">luxival.com/</span>
+      <span class="node-pri">1.0</span>
+    </div>
+  </div>
+
+  <!-- THREE COLUMNS -->
+  <div class="cols">
+
+    <!-- ═══ LEFT — TRANSPORT ═══ -->
+    <div class="col">
+      <div class="col-label" style="color:var(--transport)">🚗 Transport Branch</div>
+
+      <div class="grp">
+        <div class="grp-title">Main Pages</div>
+
+        <div class="node" data-id="transfers" data-cat="transport" data-url="/transfers" data-pri="0.95"
+             data-desc="Transport booking hub — all ride types, pricing, availability">
+          <span class="node-ico">🚗</span><span class="node-lbl">Transfers</span>
+          <span class="node-url">/transfers</span><span class="node-pri">0.95</span>
+        </div>
+
+        <div class="node" data-id="tourism" data-cat="transport" data-url="/tourism" data-pri="0.85"
+             data-desc="Tourism & Finland guide — transport options, local attractions, pricing calculator">
+          <span class="node-ico">🌍</span><span class="node-lbl">Tourism</span>
+          <span class="node-url">/tourism</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="tourism-planning" data-cat="transport" data-url="/tourism-planning" data-pri="0.85"
+             data-desc="Custom Finland trip planning service — itineraries, transfers, concierge">
+          <span class="node-ico">🗺️</span><span class="node-lbl">Tourism Planning</span>
+          <span class="node-url">/tourism-planning</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="booking" data-cat="transport" data-url="/booking" data-pri="0.80"
+             data-desc="Main vehicle booking page — submit ride request via form">
+          <span class="node-ico">📅</span><span class="node-lbl">Booking</span>
+          <span class="node-url">/booking</span><span class="node-pri">0.80</span>
+        </div>
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="grp">
+        <div class="grp-title">Service Sub-Pages</div>
+
+        <div class="node" data-id="svc-airport" data-cat="transport" data-url="/services/airport-transfer" data-pri="0.85"
+             data-desc="Helsinki-Vantaa airport transfer — private vehicle, meet & greet, fixed pricing">
+          <span class="node-ico">✈️</span><span class="node-lbl">Airport Transfer</span>
+          <span class="node-url">/services/airport-transfer</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="svc-pickup" data-cat="transport" data-url="/services/private-pickup" data-pri="0.85"
+             data-desc="Private vehicle pickup service within Helsinki and surroundings">
+          <span class="node-ico">🚙</span><span class="node-lbl">Private Pickup</span>
+          <span class="node-url">/services/private-pickup</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="svc-rides" data-cat="transport" data-url="/services/private-rides" data-pri="0.85"
+             data-desc="On-demand private city rides — flexible, hourly or fixed route">
+          <span class="node-ico">🚘</span><span class="node-lbl">Private Rides</span>
+          <span class="node-url">/services/private-rides</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="svc-city2city" data-cat="transport" data-url="/services/city-to-city" data-pri="0.85"
+             data-desc="Long-distance city-to-city transfers across Finland">
+          <span class="node-ico">🛣️</span><span class="node-lbl">City-to-City</span>
+          <span class="node-url">/services/city-to-city</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="svc-hotel" data-cat="transport" data-url="/services/hotel-sourcing" data-pri="0.80"
+             data-desc="Premium hotel sourcing and accommodation concierge service">
+          <span class="node-ico">🏨</span><span class="node-lbl">Hotel Sourcing</span>
+          <span class="node-url">/services/hotel-sourcing</span><span class="node-pri">0.80</span>
+        </div>
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="grp">
+        <div class="grp-title">Conversion</div>
+        <div class="node" data-id="ty-transfer" data-cat="conversion" data-url="/thank-you-transfer" data-pri="0.30"
+             data-desc="Post-booking confirmation page — booking received, next steps">
+          <span class="node-ico">✅</span><span class="node-lbl">Thank You (Transfer)</span>
+          <span class="node-url">/thank-you-transfer</span><span class="node-pri">0.30</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CENTER — CORE + BLOG + LEGAL ═══ -->
+    <div class="col">
+      <div class="col-label" style="color:var(--gold)">⭐ Core & Content</div>
+
+      <div class="grp">
+        <div class="grp-title">Main Navigation</div>
+
+        <div class="node" data-id="services" data-cat="core" data-url="/services" data-pri="0.85"
+             data-desc="All-services catalog — digital and transport service overview with CTAs">
+          <span class="node-ico">📋</span><span class="node-lbl">Services</span>
+          <span class="node-url">/services</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="hub" data-cat="core" data-url="/hub" data-pri="0.85"
+             data-desc="Live bookings and activity hub — real-time updates, updated daily">
+          <span class="node-ico">⚡</span><span class="node-lbl">Hub</span>
+          <span class="node-url">/hub</span><span class="node-pri">0.85</span>
+        </div>
+
+        <div class="node" data-id="platform" data-cat="core" data-url="/platform" data-pri="0.80"
+             data-desc="Platform dashboard and client portal">
+          <span class="node-ico">🖥️</span><span class="node-lbl">Platform</span>
+          <span class="node-url">/platform</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="portfolio" data-cat="core" data-url="/portfolio" data-pri="0.80"
+             data-desc="Work showcase with category filter tabs — Digital, QA, 3D, Engineering projects">
+          <span class="node-ico">🎨</span><span class="node-lbl">Portfolio</span>
+          <span class="node-url">/portfolio</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="about" data-cat="core" data-url="/about" data-pri="0.75"
+             data-desc="Founder story, mission, company identity and multidisciplinary background">
+          <span class="node-ico">👤</span><span class="node-lbl">About</span>
+          <span class="node-url">/about</span><span class="node-pri">0.75</span>
+        </div>
+
+        <div class="node" data-id="contact" data-cat="core" data-url="/contact" data-pri="0.80"
+             data-desc="Primary lead capture — inquiry form, business details, WhatsApp CTA">
+          <span class="node-ico">✉️</span><span class="node-lbl">Contact</span>
+          <span class="node-url">/contact</span><span class="node-pri">0.80</span>
+        </div>
+      </div>
+
+      <div class="gline"></div>
+
+      <!-- BLOG -->
+      <div class="grp">
+        <div class="grp-title">Blog — 37 posts</div>
+
+        <div class="node" data-id="blog" data-cat="blog" data-url="/blog" data-pri="0.75"
+             data-desc="Blog index — all posts across tourism, transport, digital, QA and brand categories">
+          <span class="node-ico">📝</span><span class="node-lbl">Blog Index</span>
+          <span class="node-url">/blog</span><span class="node-pri">0.75</span>
+        </div>
+
+        <!-- Blog categories -->
+        <div class="blog-cat-hdr" data-bc="tourism">
+          <span>🏙️ Helsinki &amp; Tourism <small style="opacity:0.6">(11 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-tourism">
+          <div class="blog-post" data-id="bp-t1" data-cat="blog" data-url="/blog/top-5-hidden-gems-helsinki" data-pri="0.65" data-desc="Top 5 hidden gems in Helsinki for curious visitors">🏛 Top 5 Hidden Gems Helsinki</div>
+          <div class="blog-post" data-id="bp-t2" data-cat="blog" data-url="/blog/summer-finland-lakeland-guide" data-pri="0.65" data-desc="Summer Finland lakeland complete guide">🌊 Summer Finland Lakeland</div>
+          <div class="blog-post" data-id="bp-t3" data-cat="blog" data-url="/blog/finland-winter-trip-guide" data-pri="0.65" data-desc="Finland winter trip planning guide">❄️ Finland Winter Trip Guide</div>
+          <div class="blog-post" data-id="bp-t4" data-cat="blog" data-url="/blog/helsinki-business-travel-destination" data-pri="0.65" data-desc="Helsinki as a top business travel destination">💼 Helsinki Business Travel</div>
+          <div class="blog-post" data-id="bp-t5" data-cat="blog" data-url="/blog/helsinki-food-tour-restaurants-guide" data-pri="0.65" data-desc="Helsinki food tour and best restaurants guide">🍽️ Helsinki Food Tour</div>
+          <div class="blog-post" data-id="bp-t6" data-cat="blog" data-url="/blog/helsinki-to-tallinn-ferry-day-trip" data-pri="0.65" data-desc="Helsinki to Tallinn ferry day trip guide">⛴️ Helsinki to Tallinn Ferry</div>
+          <div class="blog-post" data-id="bp-t7" data-cat="blog" data-url="/blog/helsinki-design-district-luxury-shopping" data-pri="0.65" data-desc="Helsinki design district luxury shopping guide">🛍️ Design District Shopping</div>
+          <div class="blog-post" data-id="bp-t8" data-cat="blog" data-url="/blog/helsinki-spa-wellness-luxury-day" data-pri="0.65" data-desc="Helsinki spa and wellness luxury day">🧖 Helsinki Spa &amp; Wellness</div>
+          <div class="blog-post" data-id="bp-t9" data-cat="blog" data-url="/blog/rovaniemi-santa-claus-village-transfer" data-pri="0.65" data-desc="Rovaniemi Santa Claus village transfer guide">🎅 Rovaniemi Transfer</div>
+          <div class="blog-post" data-id="bp-t10" data-cat="blog" data-url="/blog/finnish-lapland-luxury-winter-experiences" data-pri="0.65" data-desc="Finnish Lapland luxury winter experiences">🌌 Finnish Lapland Luxury</div>
+          <div class="blog-post" data-id="bp-t11" data-cat="blog" data-url="/blog/finland-tourism-planning-questions" data-pri="0.65" data-desc="Finland tourism planning questions answered">❓ Tourism Planning Q&amp;A</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="transfer">
+          <span>🚗 Transfers &amp; Chauffeur <small style="opacity:0.6">(5 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-transfer">
+          <div class="blog-post" data-id="bp-tr1" data-cat="blog" data-url="/blog/helsinki-airport-transfer-guide" data-pri="0.65" data-desc="Complete Helsinki airport transfer guide">✈️ Airport Transfer Guide</div>
+          <div class="blog-post" data-id="bp-tr2" data-cat="blog" data-url="/blog/private-chauffeur-helsinki-business" data-pri="0.65" data-desc="Private chauffeur for Helsinki business travel">🎩 Private Chauffeur Guide</div>
+          <div class="blog-post" data-id="bp-tr3" data-cat="blog" data-url="/blog/helsinki-night-transfers" data-pri="0.65" data-desc="Helsinki night transfers — late arrivals, events">🌙 Helsinki Night Transfers</div>
+          <div class="blog-post" data-id="bp-tr4" data-cat="blog" data-url="/blog/helsinki-airport-transfer-questions-answered" data-pri="0.65" data-desc="Common airport transfer questions answered">❓ Transfer Q&amp;A</div>
+          <div class="blog-post" data-id="bp-tr5" data-cat="blog" data-url="/blog/luxury-transport-and-digital-strategy" data-pri="0.60" data-desc="How luxury transport meets digital strategy">🔗 Transport &amp; Digital</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="webdigital">
+          <span>💻 Web Design &amp; SEO <small style="opacity:0.6">(5 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-webdigital">
+          <div class="blog-post" data-id="bp-d1" data-cat="blog" data-url="/blog/web-design-mistakes-conversion" data-pri="0.65" data-desc="Web design mistakes that kill conversions">⚠️ Web Design Mistakes</div>
+          <div class="blog-post" data-id="bp-d2" data-cat="blog" data-url="/blog/seo-for-finnish-businesses" data-pri="0.65" data-desc="SEO guide tailored for Finnish businesses">🔍 SEO for Finland</div>
+          <div class="blog-post" data-id="bp-d3" data-cat="blog" data-url="/blog/website-losing-customers-how-to-fix" data-pri="0.65" data-desc="Why your website loses customers and how to fix it">🔧 Website Losing Customers</div>
+          <div class="blog-post" data-id="bp-d4" data-cat="blog" data-url="/blog/web-design-finland-small-business-questions" data-pri="0.65" data-desc="Web design Q&amp;A for Finnish small businesses">❓ Web Design Q&amp;A</div>
+          <div class="blog-post" data-id="bp-d5" data-cat="blog" data-url="/blog/website-audit-what-it-is-why-you-need-it" data-pri="0.65" data-desc="What is a website audit and why you need one">📊 Website Audit Guide</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="qa">
+          <span>🧪 QA &amp; Testing <small style="opacity:0.6">(3 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-qa">
+          <div class="blog-post" data-id="bp-q1" data-cat="blog" data-url="/blog/what-is-istqb-certification" data-pri="0.65" data-desc="What is ISTQB certification and why it matters">🏅 ISTQB Certification</div>
+          <div class="blog-post" data-id="bp-q2" data-cat="blog" data-url="/blog/agentic-qa-release-confidence" data-pri="0.65" data-desc="Agentic QA for release confidence">🤖 Agentic QA</div>
+          <div class="blog-post" data-id="bp-q3" data-cat="blog" data-url="/blog/software-testing-qa-business-questions" data-pri="0.65" data-desc="Software testing and QA business questions answered">❓ QA Business Q&amp;A</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="ai">
+          <span>🤖 AI &amp; Agentic Workflows <small style="opacity:0.6">(3 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-ai">
+          <div class="blog-post" data-id="bp-a1" data-cat="blog" data-url="/blog/agentic-workflow-beginners-guide" data-pri="0.65" data-desc="Agentic workflow beginners guide for business">📖 Agentic Workflow Guide</div>
+          <div class="blog-post" data-id="bp-a2" data-cat="blog" data-url="/blog/agentic-workflow-playbooks" data-pri="0.65" data-desc="Agentic workflow playbooks for operations">📋 Agentic Playbooks</div>
+          <div class="blog-post" data-id="bp-a3" data-cat="blog" data-url="/blog/ai-agents-business-automation-questions" data-pri="0.65" data-desc="AI agents business automation questions answered">❓ AI Agents Q&amp;A</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="tiktok">
+          <span>📱 TikTok, UGC &amp; Sewing <small style="opacity:0.6">(3 posts)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-tiktok">
+          <div class="blog-post" data-id="bp-tk1" data-cat="blog" data-url="/blog/tiktok-agency-live-selling-ugc" data-pri="0.65" data-desc="TikTok agency live selling and UGC campaigns">📹 TikTok Agency Guide</div>
+          <div class="blog-post" data-id="bp-tk2" data-cat="blog" data-url="/blog/ugc-ai-video-creation-brand-campaigns" data-pri="0.65" data-desc="UGC AI video creation for brand campaigns">🎬 UGC AI Video Creation</div>
+          <div class="blog-post" data-id="bp-tk3" data-cat="blog" data-url="/blog/sewing-pattern-custom-suit-measurements" data-pri="0.65" data-desc="Custom sewing patterns and suit measurements">✂️ Custom Suit Patterns</div>
+        </div>
+
+        <div class="blog-cat-hdr" data-bc="brand">
+          <span>🏷️ Brand Story <small style="opacity:0.6">(1 post)</small></span>
+          <span class="blog-arrow">▾</span>
+        </div>
+        <div class="blog-list" id="bc-brand">
+          <div class="blog-post" data-id="bp-b1" data-cat="blog" data-url="/blog/the-luxival-story" data-pri="0.60" data-desc="The Luxival story — brand origin, mission and vision">✨ The Luxival Story</div>
+        </div>
+      </div>
+
+      <div class="gline"></div>
+
+      <!-- LEGAL -->
+      <div class="grp">
+        <div class="grp-title">Legal</div>
+        <div class="node" data-id="privacy" data-cat="legal" data-url="/privacy" data-pri="0.40"
+             data-desc="Privacy Policy — GDPR compliance, data collection, retention and user rights">
+          <span class="node-ico">🔒</span><span class="node-lbl">Privacy Policy</span>
+          <span class="node-url">/privacy</span><span class="node-pri">0.40</span>
+        </div>
+        <div class="node" data-id="terms" data-cat="legal" data-url="/terms" data-pri="0.40"
+             data-desc="Terms of Service — service scope, payment terms, cancellation policy">
+          <span class="node-ico">📄</span><span class="node-lbl">Terms of Service</span>
+          <span class="node-url">/terms</span><span class="node-pri">0.40</span>
+        </div>
+        <div class="node" data-id="err404" data-cat="legal" data-url="/404" data-pri="—"
+             data-desc="Branded 404 error page — Vercel auto-serves on any unmatched route">
+          <span class="node-ico">⚠️</span><span class="node-lbl">404 Not Found</span>
+          <span class="node-url">/404</span>
+        </div>
+      </div>
+
+      <div class="grp">
+        <div class="grp-title">Conversion</div>
+        <div class="node" data-id="ty-digital" data-cat="conversion" data-url="/thank-you-digital" data-pri="0.30"
+             data-desc="Post-inquiry confirmation page for digital service customers">
+          <span class="node-ico">✅</span><span class="node-lbl">Thank You (Digital)</span>
+          <span class="node-url">/thank-you-digital</span><span class="node-pri">0.30</span>
+        </div>
+      </div>
+
+      <div class="grp">
+        <div class="grp-title">Internal Tools</div>
+        <div class="node" data-id="admin" data-cat="internal" data-url="/admin" data-pri="—"
+             data-desc="Internal admin dashboard — review Supabase leads and ride requests. NOT in public nav.">
+          <span class="node-ico">⚙️</span><span class="node-lbl">Admin Dashboard</span>
+          <span class="node-url">/admin</span><span class="node-tag">⚠ Private</span>
+        </div>
+        <div class="node" data-id="growth" data-cat="internal" data-url="/growth-architect" data-pri="—"
+             data-desc="Growth Architect AI product page">
+          <span class="node-ico">📊</span><span class="node-lbl">Growth Architect</span>
+          <span class="node-url">/growth-architect</span>
+        </div>
+        <div class="node" data-id="esg" data-cat="internal" data-url="/esg-compliance-auditor" data-pri="—"
+             data-desc="ESG compliance auditor product page">
+          <span class="node-ico">🌱</span><span class="node-lbl">ESG Auditor</span>
+          <span class="node-url">/esg-compliance-auditor</span>
+        </div>
+        <div class="node" data-id="vault" data-cat="internal" data-url="/vault-ledger/" data-pri="—"
+             data-desc="Internal vault ledger tool">
+          <span class="node-ico">🏦</span><span class="node-lbl">Vault Ledger</span>
+          <span class="node-url">/vault-ledger/</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT — DIGITAL ═══ -->
+    <div class="col">
+      <div class="col-label" style="color:var(--digital)">💻 Digital Branch</div>
+
+      <div class="grp">
+        <div class="grp-title">Main Pages</div>
+
+        <div class="node" data-id="digital" data-cat="digital" data-url="/digital" data-pri="0.95"
+             data-desc="Digital services hub — web design, SEO, AI agents, agentic workflow automation">
+          <span class="node-ico">💻</span><span class="node-lbl">Digital</span>
+          <span class="node-url">/digital</span><span class="node-pri">0.95</span>
+        </div>
+
+        <div class="node" data-id="qa" data-cat="digital" data-url="/qa" data-pri="0.80"
+             data-desc="QA & software testing credibility page — ISTQB certified methodology">
+          <span class="node-ico">🧪</span><span class="node-lbl">QA &amp; Testing</span>
+          <span class="node-url">/qa</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="audit" data-cat="digital" data-url="/audit" data-pri="0.90"
+             data-desc="Paid website audit product — comprehensive site analysis with detailed PDF report">
+          <span class="node-ico">🔍</span><span class="node-lbl">Website Audit</span>
+          <span class="node-url">/audit</span><span class="node-pri">0.90</span>
+        </div>
+
+        <div class="node" data-id="pattern" data-cat="digital" data-url="/pattern" data-pri="0.90"
+             data-desc="Sewing pattern tool — custom garment measurements and printable patterns">
+          <span class="node-ico">✂️</span><span class="node-lbl">Pattern Tool</span>
+          <span class="node-url">/pattern</span><span class="node-pri">0.90</span>
+        </div>
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="grp">
+        <div class="grp-title">Service Sub-Pages</div>
+
+        <div class="node" data-id="svc-web" data-cat="digital" data-url="/services/web-design" data-pri="0.80"
+             data-desc="Web design and development — conversion-focused sites for Finnish businesses">
+          <span class="node-ico">🎨</span><span class="node-lbl">Web Design</span>
+          <span class="node-url">/services/web-design</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="svc-ai" data-cat="digital" data-url="/services/ai-agents" data-pri="0.80"
+             data-desc="AI agents and agentic workflow automation for business operations">
+          <span class="node-ico">🤖</span><span class="node-lbl">AI Agents</span>
+          <span class="node-url">/services/ai-agents</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="svc-qa" data-cat="digital" data-url="/services/software-testing" data-pri="0.80"
+             data-desc="QA and software testing service — ISTQB certified, full test lifecycle">
+          <span class="node-ico">🧪</span><span class="node-lbl">Software Testing</span>
+          <span class="node-url">/services/software-testing</span><span class="node-pri">0.80</span>
+        </div>
+
+        <div class="node" data-id="svc-tiktok" data-cat="digital" data-url="/services/tiktok-agency" data-pri="0.75"
+             data-desc="TikTok agency — live selling management, UGC creation, brand campaigns">
+          <span class="node-ico">📱</span><span class="node-lbl">TikTok Agency</span>
+          <span class="node-url">/services/tiktok-agency</span><span class="node-pri">0.75</span>
+        </div>
+
+        <div class="node" data-id="svc-sewing" data-cat="digital" data-url="/services/sewing-pattern" data-pri="0.75"
+             data-desc="Custom sewing pattern service — precise garment measurements delivered digitally">
+          <span class="node-ico">✂️</span><span class="node-lbl">Sewing Pattern</span>
+          <span class="node-url">/services/sewing-pattern</span><span class="node-pri">0.75</span>
+        </div>
+
+        <div class="node" data-id="svc-mech" data-cat="digital" data-url="/services/mechanical-design" data-pri="0.75"
+             data-desc="Mechanical design and engineering — CAD, prototyping, specifications">
+          <span class="node-ico">⚙️</span><span class="node-lbl">Mechanical Design</span>
+          <span class="node-url">/services/mechanical-design</span><span class="node-pri">0.75</span>
+        </div>
+
+        <div class="node" data-id="svc-elec" data-cat="digital" data-url="/services/electrical-design" data-pri="0.75"
+             data-desc="Electrical design and engineering — schematics, PCB, systems design">
+          <span class="node-ico">⚡</span><span class="node-lbl">Electrical Design</span>
+          <span class="node-url">/services/electrical-design</span><span class="node-pri">0.75</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .cols -->
+</div><!-- end .canvas -->
+</div><!-- end .viewport -->
+
+<!-- TOOLTIP -->
+<div class="tip" id="tip">
+  <div class="tip-cat" id="tipCat"></div>
+  <div class="tip-title" id="tipTitle"></div>
+  <div class="tip-url" id="tipUrl"></div>
+  <div class="tip-desc" id="tipDesc"></div>
+  <div class="tip-row">
+    <span>SEO Priority</span>
+    <div class="tip-bar"><div class="tip-fill" id="tipFill" style="width:0%"></div></div>
+    <span id="tipPri"></span>
+  </div>
+  <a class="tip-btn" id="tipBtn" href="#" target="_blank" rel="noopener noreferrer">Open Page ↗</a>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-title">Legend</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Core</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--transport)"></div>Transport</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--digital)"></div>Digital</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--blog)"></div>Blog</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--conv)"></div>Conversion</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--legal)"></div>Legal / Error</div>
+  <div class="legend-row"><div class="legend-dot" style="background:var(--internal)"></div>Internal</div>
+</div>
+
+<!-- JOURNEY BAR -->
+<div class="jbar" id="jbar">
+  <span id="jbarText"></span>
+  <button class="jbar-close" id="jbarClose">Clear ✕</button>
+</div>
+
+<script>
+// ── Edge definitions [fromId, toId, cat] ──────────────────────
+const EDGES = [
+  // home → transport pages
+  ['home','transfers','transport'], ['home','tourism','transport'],
+  ['home','tourism-planning','transport'], ['home','booking','transport'],
+  // home → core
+  ['home','services','core'], ['home','hub','core'],
+  ['home','platform','core'], ['home','portfolio','core'],
+  ['home','about','core'], ['home','contact','core'],
+  // home → digital pages
+  ['home','digital','digital'], ['home','qa','digital'],
+  ['home','audit','digital'], ['home','pattern','digital'],
+  // home → blog
+  ['home','blog','blog'],
+  // home → legal
+  ['home','privacy','legal'], ['home','terms','legal'],
+  // transport sub-pages
+  ['transfers','svc-airport','transport'], ['transfers','svc-pickup','transport'],
+  ['transfers','svc-rides','transport'], ['transfers','svc-city2city','transport'],
+  ['transfers','svc-hotel','transport'],
+  // conversion
+  ['booking','ty-transfer','conversion'], ['contact','ty-digital','conversion'],
+  // digital sub-pages
+  ['digital','svc-web','digital'], ['digital','svc-ai','digital'],
+  ['digital','svc-qa','digital'], ['digital','svc-tiktok','digital'],
+  ['digital','svc-sewing','digital'], ['digital','svc-mech','digital'],
+  ['digital','svc-elec','digital'],
+];
+
+const CAT_COLOR = {
+  core:'#C9A96A', transport:'#3B82F6', digital:'#8B5CF6',
+  blog:'#22C55E', conversion:'#F59E0B', legal:'#6B7280', internal:'#EF4444',
+};
+
+const JOURNEYS = {
+  digital: {
+    text: '💻 Digital Buyer: Home → Services → Portfolio → Contact → Thank You (Digital)',
+    ids: ['home','services','portfolio','contact','ty-digital'],
+    edges: [['home','services'],['services','portfolio'],['portfolio','contact'],['contact','ty-digital']],
+  },
+  transport: {
+    text: '🚗 Transfer Booker: Home → Transfers → Airport Transfer → Booking → Thank You (Transfer)',
+    ids: ['home','transfers','svc-airport','booking','ty-transfer'],
+    edges: [['home','transfers'],['transfers','svc-airport'],['svc-airport','booking'],['booking','ty-transfer']],
+  },
+  chat: {
+    text: '💬 Chat Lead: Any Page → Chat Widget → Contact → Admin Review',
+    ids: ['home','contact','admin'],
+    edges: [['home','contact'],['contact','admin']],
+  },
+};
+
+// ── State ──────────────────────────────────────────────────────
+let activeFilter = 'all';
+let activeJourney = null;
+let searchQ = '';
+let tipTarget = null;
+
+// ── Helpers ────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const $$ = sel => [...document.querySelectorAll(sel)];
+
+// All interactive nodes (main nodes + blog posts)
+function allNodes() { return $$('[data-id]'); }
+
+// Position of a node's center relative to .canvas
+function nodeCenter(el) {
+  let top = 0, left = 0, cur = el;
+  while (cur && cur !== $('canvas')) {
+    top  += cur.offsetTop  + (cur.scrollTop  || 0);
+    left += cur.offsetLeft + (cur.scrollLeft || 0);
+    cur = cur.offsetParent;
+  }
+  return { x: left + el.offsetWidth / 2, y: top + el.offsetHeight / 2 };
+}
+
+// ── SVG Edges ──────────────────────────────────────────────────
+function buildEdges() {
+  const svg = $('edgeSvg');
+  const canvas = $('canvas');
+  svg.setAttribute('viewBox', `0 0 ${canvas.scrollWidth} ${canvas.scrollHeight}`);
+  svg.setAttribute('width',  canvas.scrollWidth);
+  svg.setAttribute('height', canvas.scrollHeight);
+  svg.innerHTML = '';
+
+  for (const [fId, tId, cat] of EDGES) {
+    const fEl = document.querySelector(`[data-id="${fId}"]`);
+    const tEl = document.querySelector(`[data-id="${tId}"]`);
+    if (!fEl || !tEl) continue;
+
+    const f = nodeCenter(fEl);
+    const t = nodeCenter(tEl);
+    const my = (f.y + t.y) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M${f.x},${f.y} C${f.x},${my} ${t.x},${my} ${t.x},${t.y}`);
+    path.setAttribute('class', 'edge');
+    path.setAttribute('data-from', fId);
+    path.setAttribute('data-to', tId);
+    path.setAttribute('data-cat', cat);
+    path.setAttribute('stroke', CAT_COLOR[cat] || '#C9A96A');
+    svg.appendChild(path);
+  }
+}
+
+// ── Apply visual state ─────────────────────────────────────────
+function applyState() {
+  const nodes = allNodes();
+  const edges = $$('.edge');
+  const q = searchQ.toLowerCase().trim();
+
+  // Determine which node IDs should be visible
+  let visIds = null; // null = all visible
+
+  if (activeJourney) {
+    visIds = new Set(JOURNEYS[activeJourney].ids);
+  } else if (activeFilter !== 'all') {
+    visIds = new Set(nodes.filter(n => n.dataset.cat === activeFilter).map(n => n.dataset.id));
+  }
+
+  if (q) {
+    const matched = nodes
+      .filter(n => {
+        const haystack = (
+          (n.dataset.id || '') + ' ' +
+          (n.textContent || '') + ' ' +
+          (n.dataset.url || '') + ' ' +
+          (n.dataset.desc || '')
+        ).toLowerCase();
+        return haystack.includes(q);
+      })
+      .map(n => n.dataset.id);
+    visIds = visIds ? new Set([...visIds].filter(id => matched.includes(id))) : new Set(matched);
+  }
+
+  // Update nodes
+  nodes.forEach(n => {
+    const id = n.dataset.id;
+    const show = visIds === null || visIds.has(id);
+    n.classList.toggle('dimmed', !show);
+    n.classList.toggle('lit', show && (visIds !== null));
+    n.classList.toggle('journey', !!(activeJourney && JOURNEYS[activeJourney].ids.includes(id)));
+  });
+
+  // Update edges
+  edges.forEach(e => {
+    const fShow = visIds === null || visIds.has(e.dataset.from);
+    const tShow = visIds === null || visIds.has(e.dataset.to);
+    const show = fShow && tShow;
+
+    // Check if it's a journey edge
+    const isJourneyEdge = activeJourney &&
+      JOURNEYS[activeJourney].edges.some(([f, t]) => f === e.dataset.from && t === e.dataset.to);
+
+    e.classList.remove('lit', 'journey-edge');
+    if (isJourneyEdge) {
+      e.classList.add('journey-edge');
+      e.style.opacity = '';
+    } else if (show && visIds !== null) {
+      e.classList.add('lit');
+    } else if (!show) {
+      e.style.opacity = '0.03';
+    } else {
+      e.style.opacity = '';
+    }
+  });
+
+  // Journey bar
+  const jbar = $('jbar');
+  if (activeJourney) {
+    $('jbarText').textContent = JOURNEYS[activeJourney].text;
+    jbar.classList.add('show');
+  } else {
+    jbar.classList.remove('show');
+  }
+}
+
+// ── Tooltip ────────────────────────────────────────────────────
+const tip = $('tip');
+let tipTimeout;
+
+function showTip(el, e) {
+  const cat = el.dataset.cat || 'core';
+  const url = el.dataset.url || '/';
+  const pri = el.dataset.pri || '—';
+  const desc = el.dataset.desc || '';
+  const label = el.querySelector('.node-lbl, .blog-post')?.textContent.trim() ||
+                el.textContent.trim().slice(0, 40);
+
+  $('tipCat').textContent   = cat.toUpperCase();
+  $('tipCat').style.color   = CAT_COLOR[cat] || CAT_COLOR.core;
+  $('tipTitle').textContent = label;
+  $('tipUrl').textContent   = 'luxival.com' + url;
+  $('tipDesc').textContent  = desc;
+  $('tipPri').textContent   = pri;
+  $('tipFill').style.width  = pri !== '—' ? (parseFloat(pri) * 100) + '%' : '0%';
+  $('tipBtn').href = url;
+
+  positionTip(e);
+  tip.classList.add('show');
+  tipTarget = el;
+}
+
+function positionTip(e) {
+  const tw = 250, th = 210;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  let x = e.clientX + 14, y = e.clientY - 10;
+  if (x + tw > vw) x = e.clientX - tw - 10;
+  if (y + th > vh) y = vh - th - 10;
+  tip.style.left = x + 'px';
+  tip.style.top  = y + 'px';
+}
+
+function hideTip() {
+  tip.classList.remove('show');
+  tipTarget = null;
+}
+
+// ── Blog accordion ─────────────────────────────────────────────
+function initBlogAccordion() {
+  $$('.blog-cat-hdr').forEach(hdr => {
+    hdr.addEventListener('click', () => {
+      const bc = hdr.dataset.bc;
+      const list = $('bc-' + bc);
+      const arrow = hdr.querySelector('.blog-arrow');
+      const open = list.classList.toggle('open');
+      arrow.classList.toggle('open', open);
+      // Rebuild edges after height change (accordion expands DOM)
+      setTimeout(buildEdges, 340);
+    });
+  });
+}
+
+// ── Filter pills ───────────────────────────────────────────────
+function initFilters() {
+  $$('.pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      $$('.pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.dataset.f;
+      activeJourney = null;
+      $$('.jbtn').forEach(b => b.classList.remove('active'));
+      applyState();
+    });
+  });
+}
+
+// ── Journey buttons ────────────────────────────────────────────
+function initJourneys() {
+  $$('.jbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const j = btn.dataset.j;
+      if (activeJourney === j) {
+        // toggle off
+        activeJourney = null;
+        btn.classList.remove('active');
+      } else {
+        activeJourney = j;
+        $$('.jbtn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // reset filter
+        activeFilter = 'all';
+        $$('.pill').forEach(p => p.classList.toggle('active', p.dataset.f === 'all'));
+      }
+      applyState();
+    });
+  });
+
+  $('jbarClose').addEventListener('click', () => {
+    activeJourney = null;
+    $$('.jbtn').forEach(b => b.classList.remove('active'));
+    applyState();
+  });
+}
+
+// ── Search ─────────────────────────────────────────────────────
+function initSearch() {
+  $('search').addEventListener('input', e => {
+    searchQ = e.target.value;
+    applyState();
+  });
+}
+
+// ── Node interactions ──────────────────────────────────────────
+function initNodes() {
+  // .node hover / click
+  $$('.node, .blog-post').forEach(el => {
+    el.addEventListener('mouseenter', e => {
+      clearTimeout(tipTimeout);
+      showTip(el, e);
+      // Highlight connected edges
+      const id = el.dataset.id;
+      if (id) {
+        $$('.edge').forEach(edge => {
+          edge.classList.toggle('lit',
+            edge.dataset.from === id || edge.dataset.to === id);
+        });
+      }
+    });
+
+    el.addEventListener('mousemove', e => {
+      if (tipTarget === el) positionTip(e);
+    });
+
+    el.addEventListener('mouseleave', () => {
+      tipTimeout = setTimeout(hideTip, 120);
+      $$('.edge').forEach(edge => edge.classList.remove('lit'));
+      applyState(); // restore state-based highlighting
+    });
+
+    el.addEventListener('click', e => {
+      const url = el.dataset.url;
+      if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  });
+
+  // Keep tooltip alive when hovered
+  tip.addEventListener('mouseenter', () => clearTimeout(tipTimeout));
+  tip.addEventListener('mouseleave', () => { tipTimeout = setTimeout(hideTip, 80); });
+}
+
+// ── Init ───────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  buildEdges();
+  initBlogAccordion();
+  initFilters();
+  initJourneys();
+  initSearch();
+  initNodes();
+});
+
+// Rebuild edges on resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(buildEdges, 200);
+});
+</script>
+</body>
+</html>
