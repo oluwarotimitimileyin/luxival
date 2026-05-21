@@ -1,6 +1,7 @@
 /* Luxival shared interactions — included in all pages */
 (function () {
   'use strict';
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- Custom cursor ---- */
   const dot = document.getElementById('cur-dot');
@@ -83,18 +84,20 @@
   });
 
   /* ---- Magnetic buttons ---- */
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('pointermove', e => {
-      const r = btn.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width / 2) * 0.22;
-      const y = (e.clientY - r.top - r.height / 2) * 0.22;
-      btn.style.transform = `translate(${x}px,${y}px)`;
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('pointermove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.22;
+        const y = (e.clientY - r.top - r.height / 2) * 0.22;
+        btn.style.transform = `translate(${x}px,${y}px)`;
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
+        btn.style.transform = '';
+        setTimeout(() => btn.style.transition = '', 500);
+      });
     });
-    btn.addEventListener('pointerleave', () => {
-      btn.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
-      btn.style.transform = '';
-      setTimeout(() => btn.style.transition = '', 500);
-    });
-  });
+  }
 
 })();

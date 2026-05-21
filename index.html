@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://luxival.com/">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://luxival.com/">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" href="assets/images/finland/architecture/oodi-library.jpg" fetchpriority="high">
+<link rel="stylesheet" href="css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -228,11 +231,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     "@type": "OfferCatalog",
     "name": "Luxival Services",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Premium Chauffeur Transfer", "url": "https://luxival.com/services/airport-transfer.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://luxival.com/services/web-design.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "QA Software Testing", "url": "https://luxival.com/services/software-testing.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TikTok Agency & UGC", "url": "https://luxival.com/services/tiktok-agency.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Sewing Patterns", "url": "https://luxival.com/services/sewing-pattern.html"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Premium Chauffeur Transfer", "url": "https://luxival.com/services/airport-transfer"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://luxival.com/services/web-design"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "QA Software Testing", "url": "https://luxival.com/services/software-testing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TikTok Agency & UGC", "url": "https://luxival.com/services/tiktok-agency"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Sewing Patterns", "url": "https://luxival.com/services/sewing-pattern"}}
     ]
   }
 }
@@ -253,18 +256,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <!-- NAV -->
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a href="transfers.html">Transfers</a></li>
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="pattern.html">Pattern</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="services.html">Digital Services</a></li>
+    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
+    <li><a href="qa.html">QA &amp; Audit</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="audit.html">Free Audit</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
-  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
@@ -308,8 +309,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     </div>
   </div>
   <div class="hero-right" id="heroPanel">
-    <img class="bg" src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library in Helsinki, Finland">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/architecture/oodi-library.jpg">
+    <img class="bg" src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library in Helsinki, Finland" width="1920" height="1080" decoding="async" fetchpriority="high">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/architecture/oodi-library.jpg" width="1920" height="1080">
       <source src="assets/video/hero-airport.mp4" type="video/mp4">
     </video>
     <div class="scroll-hint">Scroll</div>
@@ -331,7 +332,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d1" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral in daylight">
+        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral in daylight" width="1280" height="720" decoding="async" loading="lazy">
         <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/landmarks/helsinki-cathedral.jpg">
           <source src="assets/video/hero-airport-1.mp4" type="video/mp4">
         </video>
@@ -345,7 +346,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d2" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town riverfront in Finland">
+        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town riverfront in Finland" width="1280" height="720" decoding="async" loading="lazy">
       </div>
       <div class="card-body">
         <h3>Luggage</h3>
@@ -356,7 +357,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d3" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna sea fortress near Helsinki">
+        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna sea fortress near Helsinki" width="1280" height="720" decoding="async" loading="lazy">
         <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/landmarks/suomenlinna-fortress.jpg">
           <source src="assets/video/animate-1.mp4" type="video/mp4">
         </video>
@@ -398,22 +399,22 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
       </div>
       <div>
         <div class="svc-media reveal d1" data-tilt>
-          <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki">
+          <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki" width="1280" height="960" decoding="async" loading="lazy">
           <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/architecture/temppeliaukio-church.jpg">
             <source src="assets/video/founder-animated.mp4" type="video/mp4">
           </video>
         </div>
         <div class="hover-cards reveal d2">
           <a href="services/web-design.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Modern Helsinki architecture for web design">
+            <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Modern Helsinki architecture for web design" width="800" height="800" decoding="async" loading="lazy">
             <span>Web Design</span>
           </a>
           <a href="services/web-design.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park landscape for SEO strategy">
+            <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park landscape for SEO strategy" width="800" height="800" decoding="async" loading="lazy">
             <span>SEO</span>
           </a>
           <a href="services/software-testing.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa for QA software testing">
+            <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa for QA software testing" width="800" height="800" decoding="async" loading="lazy">
             <span>QA</span>
           </a>
         </div>
@@ -476,7 +477,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="container">
     <div class="founder-grid">
       <div class="founder-img reveal" id="founderPanel">
-        <img src="assets/images/founder-portrait-3.jpeg" alt="Olakunle Shopeju — Founder of Luxival">
+        <img src="assets/images/founder-portrait-3.jpeg" alt="Olakunle Shopeju — Founder of Luxival" width="900" height="1200" decoding="async" loading="lazy">
         <span class="founder-tag">Founder & Director</span>
       </div>
       <div class="reveal d1">
@@ -679,7 +680,7 @@ if(hfBtn){
       if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
       else{const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';window.location.href=dest;}
     } else {
-      const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';
+      const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer':'thank-you-digital';
       setTimeout(()=>{window.location.href=dest;},500);
     }
   });

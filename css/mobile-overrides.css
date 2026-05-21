@@ -1,0 +1,204 @@
+/* Phase 1 mobile stabilization overrides for core conversion pages */
+
+/* Better touch behavior and lower GPU cost on phones/tablets */
+@media (hover: none), (pointer: coarse) {
+  #cur-dot,
+  #cur-ring {
+    display: none !important;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  a,
+  .btn,
+  input,
+  textarea,
+  select,
+  button {
+    cursor: auto !important;
+  }
+}
+
+/* Tablet and down */
+@media (max-width: 768px) {
+  section {
+    padding: 4.5rem 0 !important;
+  }
+
+  .container {
+    padding: 0 4% !important;
+  }
+
+  .hero {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+    min-height: auto !important;
+    padding-top: 7.25rem !important;
+  }
+
+  .hero-right,
+  .hero-img,
+  .port-header {
+    height: min(52vh, 460px) !important;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-6,
+  .services-grid,
+  .contact-grid,
+  .booking-grid,
+  .process-grid,
+  .stats-grid,
+  .footer-grid,
+  .founder-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .hero-actions,
+  .cta-actions,
+  .svc-cta,
+  .hero-form-row {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+    gap: 0.8rem !important;
+  }
+
+  .hero-actions .btn,
+  .cta-actions .btn,
+  .svc-cta .btn,
+  .hero-form .btn-sm {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nav-links {
+    max-height: calc(100vh - 6rem) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chat-panel {
+    width: min(92vw, 360px) !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  section {
+    padding: 3.25rem 0 !important;
+  }
+
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  h1 {
+    font-size: clamp(1.95rem, 8vw, 2.75rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.45rem, 6vw, 2.2rem) !important;
+  }
+
+  p,
+  .lead,
+  .subhead {
+    font-size: 0.98rem !important;
+  }
+
+  .hero-right,
+  .hero-img,
+  .port-header,
+  .tracking-vid,
+  .svc-media,
+  .card-media {
+    height: min(44vh, 340px) !important;
+  }
+
+  .hero-proof {
+    gap: 0.9rem !important;
+  }
+
+  .hero-proof-num {
+    font-size: 1.2rem !important;
+  }
+
+  .hero-proof-label {
+    font-size: 0.62rem !important;
+  }
+
+  .services-grid,
+  .project-grid,
+  .grid-6 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .svc,
+  .card,
+  .proj,
+  .form-card,
+  .info-block,
+  .newsletter-card,
+  .book-card {
+    padding: 1.25rem !important;
+  }
+
+  input,
+  textarea,
+  select,
+  .hero-form input,
+  .hero-form select {
+    font-size: 16px !important;
+    padding: 1rem !important;
+  }
+
+  label {
+    font-size: 0.82rem !important;
+  }
+
+  .sticky-cta {
+    padding-bottom: calc(0.8rem + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 0.8rem !important;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 7.8vw, 2.2rem) !important;
+  }
+
+  .btn,
+  .btn-outline {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .nav-links {
+    inset: 4.5rem 0.8rem auto 0.8rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .scroll-hint,
+  .card,
+  .proj,
+  .svc,
+  .hover-card {
+    transition-duration: 0.2s !important;
+    animation: none !important;
+  }
+}

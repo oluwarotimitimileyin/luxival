@@ -16,4 +16,6 @@
     "@11ty/eleventy": "^2.0.1",
     "@playwright/test": "^1.60.0"
   }
+  ,
+  "packageManager": "pnpm@7.5.1"
 }

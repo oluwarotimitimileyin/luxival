@@ -9,9 +9,10 @@
 <meta property="og:title" content="Tourism & Airport Transfers | Luxival Finland">
 <meta property="og:description" content="Premium Helsinki-Vantaa airport transfers, private rides, Finland travel planning, and seasonal experiences. Book your ride online.">
 <meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/tourism.html">
+<meta property="og:url" content="https://luxival.com/tourism">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/tourism.html">
+<link rel="canonical" href="https://luxival.com/tourism">
+<link rel="stylesheet" href="css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -162,18 +163,16 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a href="transfers.html">Transfers</a></li>
-    <li><a href="tourism.html" class="active">Travel</a></li>
-    <li><a href="pattern.html">Pattern</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Digital Services</a></li>
+    <li><a href="tourism.html" class="active">Tourism &amp; Transport</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
+    <li><a href="qa.html">QA &amp; Audit</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="audit.html">Free Audit</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
-  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
@@ -190,7 +189,7 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
   <div class="reveal d2">
     <div class="img-frame hero-img">
-      <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Northern lights over Lapland">
+      <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Northern lights over Lapland" width="1600" height="900" decoding="async" fetchpriority="high">
     </div>
     <div class="hki-clock" id="hkiClock">Helsinki 00:00:00</div>
   </div>
@@ -223,7 +222,7 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="season-grid">
     <div class="season-card reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa in winter">
+        <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa in winter" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="season-card-body">
         <h3>Winter</h3>
@@ -232,7 +231,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town in spring">
+        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town in spring" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="season-card-body">
         <h3>Spring</h3>
@@ -241,7 +240,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park in summer">
+        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park in summer" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="season-card-body">
         <h3>Summer</h3>
@@ -250,7 +249,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d4">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna fortress in autumn light">
+        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna fortress in autumn light" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="season-card-body">
         <h3>Autumn</h3>
@@ -269,7 +268,7 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="grid-3">
     <div class="feature reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral for airport transfers">
+        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral for airport transfers" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -280,7 +279,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Turku Castle for private rides">
+        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Turku Castle for private rides" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -291,7 +290,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library for hotel sourcing">
+        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library for hotel sourcing" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -302,7 +301,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church for airport pickup">
+        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church for airport pickup" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -313,7 +312,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Coastal Finland for city to city travel">
+        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Coastal Finland for city to city travel" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -324,7 +323,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo riverfront for tourism planning">
+        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo riverfront for tourism planning" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -351,73 +350,73 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="dest-grid" id="destGrid">
     <div class="dest-card reveal d1" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Helsinki Design District inspiration">
+        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Helsinki Design District inspiration" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Helsinki Design District</h3><p>Iconic galleries, boutique hotels, and modern restaurants that shape the city's creative pulse.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Ateneum Art Gallery district in Helsinki">
+        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Ateneum Art Gallery district in Helsinki" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Ateneum & Art Galleries</h3><p>Classic Finnish art, modern exhibits, and cultural destinations for discerning travellers.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Lakeside retreats in Finland">
+        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Lakeside retreats in Finland" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Lakeside Retreats</h3><p>Quiet private villas and summer cottages near sauna lakes, just a short premium ride from Helsinki.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Helsinki jazz clubs and nightlife">
+        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Helsinki jazz clubs and nightlife" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Helsinki Jazz Clubs</h3><p>Evening music venues and intimate cultural spaces for guests seeking refined nightlife.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Finnish sauna experiences">
+        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Finnish sauna experiences" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Sauna & Wellness</h3><p>Premium sauna experiences, wellness stays, and hospitality that honours Finnish ritual.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Lapland aurora experience">
+        <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Lapland aurora experience" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Lapland Aurora Trips</h3><p>Seasonal northern light journeys, premium winter transport, and remote light-chasing tours.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Waterfront experiences near Helsinki">
+        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Waterfront experiences near Helsinki" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Dining</span><h3>Löyly & Waterfront Dining</h3><p>Sea-facing sauna and restaurant experiences with modern Finnish hospitality on Helsinki's waterfront.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Hotel stays in Helsinki">
+        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Hotel stays in Helsinki" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Stay</span><h3>Hotel St. George</h3><p>Design-focused luxury stay steps from Ateneum and the Helsinki market square.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Market square and old town experiences">
+        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Market square and old town experiences" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Market Square & Harbour</h3><p>The beating heart of Helsinki — fresh produce, sea views, and ferry connections to island fortresses.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Nuuksio National Park escapes">
+        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Nuuksio National Park escapes" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Nuuksio National Park</h3><p>Ancient forests, pristine lakes, and nordic trails just 35 km from Helsinki city centre.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church landmark">
+        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church landmark" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Temppeliaukio Rock Church</h3><p>Carved into solid bedrock — a singular architectural marvel and spiritual landmark in Töölö.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Finnish archipelago coastline">
+        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Finnish archipelago coastline" width="1600" height="900" decoding="async" loading="lazy">
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Finnish Archipelago</h3><p>Over 40,000 islands — boat tours, summer cottages, and pristine Baltic coastline to explore.</p></div>
     </div>

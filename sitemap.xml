@@ -341,13 +341,13 @@
 
   <!-- ── New Service Pages ─────────────────────────────────── -->
   <url>
-    <loc>https://luxival.com/services/tiktok-agency.html</loc>
+    <loc>https://luxival.com/services/tiktok-agency</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://luxival.com/services/sewing-pattern.html</loc>
+    <loc>https://luxival.com/services/sewing-pattern</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

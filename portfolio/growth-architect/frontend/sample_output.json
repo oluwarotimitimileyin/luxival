@@ -1,0 +1,87 @@
+{
+ "target_url": "https://example.com",
+ "overall_score": 7.4,
+ "pass_status": "PARTIALLY_PASSED",
+ "dashboard_metrics": {
+  "seo": 72,
+  "performance": 45,
+  "accessibility": 90,
+  "security": 85
+ },
+ "web_builder_agent_prompt": "You are an elite Front-End Performance Engineer. I am providing you with a Next.js/React codebase that is currently failing Core Web Vitals (CLS > 0.25) and missing critical SEO canonical tags. Your objective is to:\n1. Inject `<link rel=\"canonical\" href=\"...\" />` into the global Document Head.\n2. Refactor all `<img>` and `<video>` tags to include explicit `aspect-ratio` CSS properties to eliminate layout shifts.\n3. Implement dynamic import() for all non-critical below-the-fold components.\nExecute these changes strictly adhering to WCAG 2.1 AA standards.",
+ "competitor_analysis": {
+  "market_position": "Laggard in technical performance. Competitors are capturing 40% more organic impression share due to superior Core Web Vitals and structured data implementation.",
+  "competitor_gaps": [
+   {
+    "competitor_name": "Industry Leader A",
+    "advantage_over_target": "Sub-second LCP and zero layout shifts, resulting in higher mobile conversion rates.",
+    "target_remediation_opportunity": "Implement edge-caching for media assets and pre-allocate DOM space for ad units."
+   },
+   {
+    "competitor_name": "Disruptor Brand B",
+    "advantage_over_target": "Flawless technical SEO architecture with automated canonicalization.",
+    "target_remediation_opportunity": "Deploy a programmatic SEO middleware to handle canonicals and hreflang tags dynamically."
+   }
+  ]
+ },
+ "identified_gaps": [
+  {
+   "category": "SEO",
+   "status": "CRITICAL",
+   "metric_name": "Missing Canonical Tag",
+   "clause_reference": "Google Search Central Guidelines",
+   "description": "The page lacks a valid canonical URL declaration. This causes search engines to index duplicate versions of the same content, diluting page authority and triggering cannibalization penalties.",
+   "recommended_remediation": "Inject a self-referencing canonical link element into the document <head>.",
+   "remediation_steps": [
+    {
+     "step_number": 1,
+     "action_title": "Identify Duplicate Routes",
+     "technical_instructions": "curl -I https://example.com/page?utm=test",
+     "verification_method": "Ensure parameterized URLs return 200 OK without canonical headers."
+    },
+    {
+     "step_number": 2,
+     "action_title": "Inject Canonical Meta Tag",
+     "technical_instructions": "<link rel=\"canonical\" href=\"https://example.com/page\" />",
+     "verification_method": "Inspect DOM <head> to confirm presence of exact canonical string."
+    }
+   ]
+  },
+  {
+   "category": "Performance",
+   "status": "CRITICAL",
+   "metric_name": "Large Layout Shifts",
+   "clause_reference": "Google Core Web Vitals CLS Rule",
+   "description": "Dynamic DOM injections and unconstrained media assets are causing severe layout instability (CLS > 0.25). This degrades user experience and fails Core Web Vitals thresholds.",
+   "recommended_remediation": "Reserve structural space for late-loading elements and explicitly define aspect ratios for all media.",
+   "remediation_steps": [
+    {
+     "step_number": 1,
+     "action_title": "Define Media Dimensions",
+     "technical_instructions": "img, video {\n  aspect-ratio: 16 / 9;\n  width: 100%;\n  height: auto;\n}",
+     "verification_method": "Browser allocates correct vertical space before image payload resolves."
+    },
+    {
+     "step_number": 2,
+     "action_title": "Pre-allocate Ad Slots",
+     "technical_instructions": "<div id=\"ad-slot\" style=\"min-height: 250px; width: 300px;\"></div>",
+     "verification_method": "Lighthouse CLS metric drops below 0.1."
+    }
+   ]
+  }
+ ],
+ "marketing_growth": {
+  "social_post_ideas": [
+   {
+    "platform": "LinkedIn",
+    "angle": "Technical SEO as a Revenue Driver",
+    "copy_template": "Most brands bleed 30% of their organic traffic to duplicate content issues. We just audited our stack and found missing canonical tags were cannibalizing our own keywords. By deploying a programmatic canonical middleware, we're consolidating page authority and reclaiming our SERP rankings. Stop treating SEO as an afterthought—it's your revenue engine. 🚀 #TechnicalSEO #GrowthEngineering"
+   },
+   {
+    "platform": "X",
+    "angle": "Core Web Vitals & UX",
+    "copy_template": "Layout shifts aren't just annoying; they kill conversions. We identified a CLS spike caused by unconstrained media assets. The fix? 3 lines of CSS (aspect-ratio). Small technical tweaks = massive UX wins. 🛠️📈"
+   }
+  ]
+ }
+}

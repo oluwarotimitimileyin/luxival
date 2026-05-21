@@ -5,6 +5,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "portfolio/esg-compliance-auditor/frontend/dist": "portfolio/esg-compliance-auditor/frontend/dist"
   });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/growth-architect/frontend/dist": "portfolio/growth-architect/frontend/dist"
+  });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addFilter("date", (dateObj) => {
