@@ -106,6 +106,10 @@ async function submitChatLead(payload) {
   return supabaseClient.from('contact_inquiries').insert([payload]);
 }
 
+async function submitPatternOrder(payload) {
+  return supabaseClient.from('contact_inquiries').insert([payload]);
+}
+
 async function uploadPublicProjectImage(file, destinationPath) {
   return supabaseClient.storage
     .from(PROJECT_IMAGES_BUCKET)
@@ -144,6 +148,7 @@ window.LuxivalSupabase = {
   subscribeNewsletter,
   submitTikTokAgencyApplication,
   submitChatLead,
+  submitPatternOrder,
   uploadPublicProjectImage,
   uploadPrivateAsset,
   createPrivateSignedUrl,
