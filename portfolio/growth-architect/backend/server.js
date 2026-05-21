@@ -59,6 +59,26 @@ const proxyLimiter = rateLimit({
 // Apply the rate limiter to the /api-proxy route before the main proxy logic
 app.use('/api-proxy', proxyLimiter);
 
+app.get(['/health', '/status'], (req, res) => {
+  res.json({
+    ok: true,
+    service: 'growth-architect-backend',
+    uptimeSeconds: Math.round(process.uptime()),
+    timestamp: new Date().toISOString(),
+    host: API_BACKEND_HOST,
+    port: PORT,
+    routes: {
+      apiProxy: '/api-proxy',
+      wsProxy: '/ws-proxy'
+    },
+    configuration: {
+      googleCloudProject: !!GOOGLE_CLOUD_PROJECT,
+      googleCloudLocation: !!GOOGLE_CLOUD_LOCATION,
+      proxyHeaderConfigured: !!PROXY_HEADER
+    }
+  });
+});
+
 const API_CLIENT_MAP = [
  {
     name: "VertexGenAi:generateContent",

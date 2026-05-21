@@ -2,7 +2,7 @@
   "name": "luxival-site",
   "private": true,
   "scripts": {
-    "build": "eleventy && node scripts/inject-env.js",
+    "build": "eleventy && node scripts/inject-nav.js && node scripts/inject-env.js",
     "dev": "eleventy --serve",
     "clean": "rm -rf _site",
     "index": "node scripts/auto-index.js --from-sitemap",
@@ -10,7 +10,12 @@
     "index:url": "node scripts/auto-index.js --url",
     "index:sitemap": "node scripts/auto-index.js --notify-sitemap",
     "gsc:playwright": "node scripts/gsc-playwright.js",
-    "deploy-and-index": "git push origin main && node scripts/auto-index.js --notify-sitemap"
+    "deploy-and-index": "git push origin main && node scripts/auto-index.js --notify-sitemap",
+    "test": "npx playwright test",
+    "test:nav": "npx playwright test tests/navigation.spec.js",
+    "test:links": "npx playwright test tests/broken-links.spec.js",
+    "test:portfolio": "npx playwright test tests/portfolio-apps.spec.js",
+    "test:report": "npx playwright test --reporter=html"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

@@ -55,7 +55,13 @@
     .footer-links a{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
     .footer-links a:hover{opacity:1}
     @media(max-width:900px){
-      .nav-links{display:none}
+      .nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}
+      .nav-links.open{display:flex}
+      .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}
+      .nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}
+      .nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+      .nav-burger.open span:nth-child(2){opacity:0}
+      .nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
     }
   </style>
   {% if isPost %}
@@ -85,18 +91,18 @@
   {% endif %}
 </head>
 <body>
-  <nav>
+  <nav id="mainNav">
     <a href="/index.html" class="nav-brand">LUXIVAL</a>
-    <ul class="nav-links">
-      <li><a href="/tourism.html">Travel</a></li>
-      <li><a href="/pattern.html">Design</a></li>
+    <ul class="nav-links" id="site-nav">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Digital Services</a></li>
+      <li><a href="/tourism.html">Tourism &amp; Transport</a></li>
       <li><a href="/portfolio.html">Portfolio</a></li>
-      <li><a href="/qa.html">QA</a></li>
-      <li><a href="/platform.html">Platform</a></li>
-      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/qa.html">QA &amp; Audit</a></li>
       <li><a href="/about.html">About</a></li>
-      <li><a href="/booking.html" class="btn">Book a consultation</a></li>
+      <li><a href="/contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
     </ul>
+    <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <main>
@@ -118,17 +124,24 @@
       <span class="footer-copy">Luxival © 2026 · Journal · Helsinki</span>
       <div class="footer-links">
         <a href="/index.html">Home</a>
+        <a href="/services.html">Services</a>
         <a href="/tourism.html">Travel</a>
-        <a href="/pattern.html">Design</a>
         <a href="/portfolio.html">Portfolio</a>
-        <a href="/platform.html">Platform</a>
         <a href="/qa.html">QA</a>
+        <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
       </div>
     </div>
   </footer>
+  <script>
+  (function(){
+    const burger=document.querySelector('.nav-burger');
+    const nav=document.getElementById('site-nav');
+    if(burger&&nav){burger.addEventListener('click',function(){burger.classList.toggle('open');nav.classList.toggle('open');burger.setAttribute('aria-expanded',nav.classList.contains('open'))})}
+  })();
+  </script>
   <script src="https://app.trysoro.com/api/embed/a0c12c91-b0de-4626-9d83-08271017606f" defer></script>
 </body>
 </html>

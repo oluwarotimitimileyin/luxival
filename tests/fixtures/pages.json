@@ -1,0 +1,59 @@
+{
+  "corePages": [
+    { "path": "/", "titleContains": "Luxival" },
+    { "path": "/services", "titleContains": "Services" },
+    { "path": "/tourism", "titleContains": "Tourism" },
+    { "path": "/portfolio", "titleContains": "Portfolio" },
+    { "path": "/qa", "titleContains": "QA" },
+    { "path": "/about", "titleContains": "About" },
+    { "path": "/contact", "titleContains": "Contact" },
+    { "path": "/booking", "titleContains": "Book" },
+    { "path": "/pattern", "titleContains": "Pattern" },
+    { "path": "/platform", "titleContains": "Platform" },
+    { "path": "/transfers", "titleContains": "Transfer" },
+    { "path": "/digital", "titleContains": "Digital" },
+    { "path": "/tourism-planning", "titleContains": "Tourism" },
+    { "path": "/hub", "titleContains": "Hub" },
+    { "path": "/audit", "titleContains": "Audit" },
+    { "path": "/esg-compliance-auditor", "titleContains": "ESG" },
+    { "path": "/growth-architect", "titleContains": "Growth" },
+    { "path": "/growth-architect-backend", "titleContains": "Growth" },
+    { "path": "/privacy", "titleContains": "Privacy" },
+    { "path": "/terms", "titleContains": "Terms" },
+    { "path": "/thank-you-digital", "titleContains": "Thank" },
+    { "path": "/thank-you-transfer", "titleContains": "Thank" }
+  ],
+  "servicePages": [
+    "/services/airport-transfer",
+    "/services/ai-agents",
+    "/services/city-to-city",
+    "/services/electrical-design",
+    "/services/hotel-sourcing",
+    "/services/mechanical-design",
+    "/services/private-pickup",
+    "/services/private-rides",
+    "/services/sewing-pattern",
+    "/services/software-testing",
+    "/services/tiktok-agency",
+    "/services/web-design"
+  ],
+  "blogPages": [
+    "/blog/",
+    "/blog/top-5-hidden-gems-helsinki/",
+    "/blog/helsinki-airport-transfer-guide/",
+    "/blog/finland-winter-trip-guide/"
+  ],
+  "spaPages": [
+    { "path": "/portfolio/growth-architect/frontend/dist/", "titleContains": "Nexus Auditor" },
+    { "path": "/portfolio/esg-compliance-auditor/frontend/dist/", "titleContains": "ESG Compliance" }
+  ],
+  "canonicalNavLinks": [
+    { "text": "Home", "hrefContains": "index" },
+    { "text": "Digital Services", "hrefContains": "services" },
+    { "text": "Tourism & Transport", "hrefContains": "tourism" },
+    { "text": "Portfolio", "hrefContains": "portfolio" },
+    { "text": "QA & Audit", "hrefContains": "qa" },
+    { "text": "About", "hrefContains": "about" },
+    { "text": "Get Started", "hrefContains": "contact" }
+  ]
+}

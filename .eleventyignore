@@ -22,3 +22,6 @@ website-qa.agent.md
 workflow-process.md
 workflow-tasks.agent.md
 source-data/**
+admin.html
+test-results/**
+tests/results.json

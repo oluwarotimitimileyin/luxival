@@ -8,8 +8,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "portfolio/growth-architect/frontend/dist": "portfolio/growth-architect/frontend/dist"
   });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/businesslauncher/frontend/dist": "portfolio/businesslauncher/frontend/dist"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/ugc-studio-ai/frontend/dist": "portfolio/ugc-studio-ai/frontend/dist"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/vortex-ai-platform/frontend/dist": "portfolio/vortex-ai-platform/frontend/dist"
+  });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
+  eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addFilter("date", (dateObj) => {
     const date = new Date(dateObj);
     if (Number.isNaN(date.getTime())) {

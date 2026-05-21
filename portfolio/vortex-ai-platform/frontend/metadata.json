@@ -1,0 +1,7 @@
+{
+  "name": "Vortex AI Platform",
+  "description": "Frontend dashboard and embeddable multi-modal chat widget for the Vortex AI conversational platform.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

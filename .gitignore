@@ -10,3 +10,6 @@ node_modules/
 _site/
 .cache/
 .playwright-gsc-profile/
+.eleventy-dev.log
+test-results/
+tests/results.json

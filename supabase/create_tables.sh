@@ -19,7 +19,14 @@ if [[ ! -f "$SQL_FILE" ]]; then
   exit 1
 fi
 
-echo "Applying Supabase table schema from $SQL_FILE..."
+HUB_SQL_FILE="$SCRIPT_DIR/create_hub_tables.sql"
+
+echo "Applying core table schema from $SQL_FILE..."
 supabase db query < "$SQL_FILE"
 
-echo "Done. Tables created or verified."
+if [[ -f "$HUB_SQL_FILE" ]]; then
+  echo "Applying hub table schema from $HUB_SQL_FILE..."
+  supabase db query < "$HUB_SQL_FILE"
+fi
+
+echo "Done. All tables created or verified."
