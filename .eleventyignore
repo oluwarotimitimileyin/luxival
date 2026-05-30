@@ -25,3 +25,7 @@ source-data/**
 admin.html
 test-results/**
 tests/results.json
+.agents/**
+.claude/**
+mobile-audit/**
+apps/**
