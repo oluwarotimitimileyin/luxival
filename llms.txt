@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Brand
+Brand: Luxival
+Website: https://www.luxival.com
+Type: ProfessionalService, LocalBusiness
+Location: Vantaa, Uusimaa, Finland
+
+# Core pages
+Primary: https://www.luxival.com/
+Services: https://www.luxival.com/services
+Tourism: https://www.luxival.com/tourism
+QA: https://www.luxival.com/qa
+Blog: https://www.luxival.com/blog
+Contact: https://www.luxival.com/contact
+
+# Knowledge hubs
+AI-Cheat-Sheets: https://www.luxival.com/ai-cheat-sheets/
+
+# Feeds
+Sitemap: https://www.luxival.com/sitemap.xml
+Robots: https://www.luxival.com/robots.txt

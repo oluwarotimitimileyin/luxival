@@ -18,6 +18,7 @@ module.exports = function (eleventyConfig) {
     "portfolio/vortex-ai-platform/frontend/dist": "portfolio/vortex-ai-platform/frontend/dist"
   });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "llms.txt": "llms.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addFilter("date", (dateObj) => {

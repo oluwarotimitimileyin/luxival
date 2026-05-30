@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const pages = require('./fixtures/pages.json');
 
-const BASE = 'https://luxival.com';
+const BASE = 'https://www.luxival.com';
 
 test.describe('SEO & Meta Tags', () => {
   const allPages = pages.corePages.filter(p => p.titleContains);
@@ -61,8 +61,11 @@ test.describe('SEO & Meta Tags', () => {
     const ldJson = await page.locator('script[type="application/ld+json"]').textContent();
     expect(ldJson).toBeTruthy();
     const data = JSON.parse(ldJson);
-    expect(data['@type']).toBe('BlogPosting');
-    expect(data.headline).toBeTruthy();
+    const blogPosting = data['@type'] === 'BlogPosting'
+      ? data
+      : (Array.isArray(data['@graph']) ? data['@graph'].find((item) => item['@type'] === 'BlogPosting') : null);
+    expect(blogPosting).toBeTruthy();
+    expect(blogPosting.headline).toBeTruthy();
   });
 
   test('Sitemap lists all core pages', async ({ page }) => {

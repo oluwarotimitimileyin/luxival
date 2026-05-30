@@ -195,53 +195,129 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
-  "name": "Luxival",
-  "description": "Premium chauffeur, digital design, QA software testing, and digital services in Helsinki, Finland.",
-  "url": "https://www.luxival.com",
-  "logo": "https://www.luxival.com/favicon.svg",
-  "image": "https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp",
-  "telephone": "+358503518366",
-  "email": "support@luxival.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Varikkokaarre 7A",
-    "postalCode": "01700",
-    "addressLocality": "Vantaa",
-    "addressRegion": "Uusimaa",
-    "addressCountry": "FI"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 60.1699,
-    "longitude": 24.9384
-  },
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "08:00",
-      "closes": "20:00"
+      "@type": "WebSite",
+      "@id": "https://www.luxival.com/#website",
+      "url": "https://www.luxival.com/",
+      "name": "Luxival",
+      "description": "Premium chauffeur and AI-powered digital operations services in Finland.",
+      "publisher": {
+        "@id": "https://www.luxival.com/#organization"
+      }
     },
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "18:00"
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://www.luxival.com/#organization",
+      "name": "Luxival",
+      "url": "https://www.luxival.com/",
+      "logo": "https://www.luxival.com/favicon.svg",
+      "image": "https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp",
+      "telephone": "+358503518366",
+      "email": "support@luxival.com",
+      "founder": {
+        "@id": "https://www.luxival.com/#person-founder"
+      },
+      "knowsAbout": [
+        "AI workflow systems",
+        "AI agent development",
+        "Website design and development",
+        "SEO optimization",
+        "Website QA and application testing",
+        "Website scaling",
+        "Lead generation systems",
+        "Tourism and chauffeur services in Finland"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.luxival.com/#person-founder",
+      "name": "Luxival Founder",
+      "worksFor": {
+        "@id": "https://www.luxival.com/#organization"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.luxival.com/#localbusiness",
+      "name": "Luxival",
+      "url": "https://www.luxival.com/",
+      "parentOrganization": {
+        "@id": "https://www.luxival.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Varikkokaarre 7A",
+        "postalCode": "01700",
+        "addressLocality": "Vantaa",
+        "addressRegion": "Uusimaa",
+        "addressCountry": "FI"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 60.1699,
+        "longitude": 24.9384
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "€€€"
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.luxival.com/#service-catalog",
+      "name": "Luxival Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.luxival.com/services/airport-transfer#service",
+            "name": "Premium Chauffeur Transfer",
+            "url": "https://www.luxival.com/services/airport-transfer"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.luxival.com/services/web-design#service",
+            "name": "Web Design",
+            "url": "https://www.luxival.com/services/web-design"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.luxival.com/services/software-testing#service",
+            "name": "QA Software Testing",
+            "url": "https://www.luxival.com/services/software-testing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.luxival.com/services/ai-agents#service",
+            "name": "AI Agents Infrastructure",
+            "url": "https://www.luxival.com/services/ai-agents"
+          }
+        }
+      ]
     }
-  ],
-  "priceRange": "€€€",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Luxival Services",
-    "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Premium Chauffeur Transfer", "url": "https://www.luxival.com/services/airport-transfer"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://www.luxival.com/services/web-design"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "QA Software Testing", "url": "https://www.luxival.com/services/software-testing"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TikTok Agency & UGC", "url": "https://www.luxival.com/services/tiktok-agency"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Sewing Patterns", "url": "https://www.luxival.com/services/sewing-pattern"}}
-    ]
-  }
+  ]
 }
 </script>
 <!-- Vercel Speed Insights -->

@@ -210,6 +210,38 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- ── AI Cheat Sheets Hub ─────────────────────────────────── -->
+  <url>
+    <loc>https://www.luxival.com/ai-cheat-sheets/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.luxival.com/ai-cheat-sheets/ai-automation-small-business/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.luxival.com/ai-cheat-sheets/website-qa-testing-system/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.luxival.com/ai-cheat-sheets/ai-seo-audit-framework/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.luxival.com/ai-cheat-sheets/finland-airport-transfer-playbook/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ── Blog Posts: Finland / Tourism ─────────────────────── -->
   <url>
     <loc>https://www.luxival.com/blog/top-5-hidden-gems-helsinki</loc>

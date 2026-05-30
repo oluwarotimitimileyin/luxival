@@ -1,4 +1,27 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luxival.com/sitemap.xml
+Sitemap: https://www.luxival.com/sitemap.xml
+LLMS: https://www.luxival.com/llms.txt
+
+# Optional crawler-specific guidance for major AI/LLM bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
