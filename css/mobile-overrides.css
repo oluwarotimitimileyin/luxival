@@ -111,6 +111,21 @@ iframe {
     grid-template-columns: 1fr !important;
   }
 
+  .social-video-head {
+    display: block !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .social-video-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .social-video-card {
+    min-height: auto !important;
+    padding: 1rem !important;
+  }
+
   .contact-grid {
     gap: 3rem !important;
   }
@@ -148,18 +163,23 @@ iframe {
   }
 
   .nav-links {
-    display: none;
+    display: none !important;
     flex-direction: column !important;
     position: fixed !important;
-    inset: 4.5rem 1rem auto 1rem !important;
-    background: rgba(10,11,15,.97) !important;
+    top: 4.75rem !important;
+    right: 1rem !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: min(84vw, 360px) !important;
+    background: rgba(10,11,15,.94) !important;
     border: 1px solid rgba(201,169,106,.18) !important;
-    border-radius: 16px !important;
-    padding: 1.5rem !important;
-    gap: 1.2rem !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    gap: 0.65rem !important;
     z-index: 999 !important;
-    max-height: calc(100vh - 6rem) !important;
+    max-height: min(70vh, 520px) !important;
     overflow-y: auto !important;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45) !important;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -169,12 +189,19 @@ iframe {
 
   .nav-links a {
     display: block !important;
-    padding: 0.35rem 0 !important;
+    padding: 0.55rem 0.2rem !important;
+    font-size: 0.74rem !important;
+    line-height: 1.2 !important;
   }
 
   .nav-links .btn {
     width: 100% !important;
+    margin-top: 0.25rem !important;
     text-align: center !important;
+  }
+
+  body.nav-open {
+    overflow: hidden !important;
   }
 
   .nav-burger {

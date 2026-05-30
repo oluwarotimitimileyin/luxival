@@ -1,5 +1,5 @@
 (function() {
-  var SUPPORTED_LANGS = ['en', 'fi', 'sv', 'de', 'fr', 'es', 'zh', 'ar', 'ja', 'ru'];
+  var SUPPORTED_LANGS = ['en', 'fi', 'sv', 'de', 'fr', 'it'];
   var DEFAULT_LANG = 'en';
   var TRANSLATIONS_URL = '/i18n/';
 
@@ -25,7 +25,7 @@
   function loadTranslations(lang) {
     if (lang === DEFAULT_LANG) {
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        if (el.dataset.i18nOriginal) el.textContent = el.dataset.i18nOriginal;
+        if (el.dataset.i18nOriginal) el.innerHTML = el.dataset.i18nOriginal;
       });
       return;
     }
@@ -34,11 +34,50 @@
       .then(function(translations) {
         document.querySelectorAll('[data-i18n]').forEach(function(el) {
           var key = el.dataset.i18n;
-          if (!el.dataset.i18nOriginal) el.dataset.i18nOriginal = el.textContent;
-          if (translations[key]) el.textContent = translations[key];
+          if (!el.dataset.i18nOriginal) el.dataset.i18nOriginal = el.innerHTML;
+          if (translations[key]) el.innerHTML = translations[key];
         });
       })
       .catch(function() {});
+  }
+
+  function closeMobileNav() {
+    var burger = document.querySelector('.nav-burger');
+    var links = document.querySelector('.nav-links');
+    if (!burger || !links) return;
+    links.classList.remove('open');
+    links.style.display = '';
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+
+  function enhanceMobileNav() {
+    var burger = document.querySelector('.nav-burger');
+    var links = document.querySelector('.nav-links');
+    if (!burger || !links) return;
+
+    burger.addEventListener('click', function() {
+      window.setTimeout(function() {
+        var isOpen = links.classList.contains('open') || burger.classList.contains('open') || window.getComputedStyle(links).display === 'flex';
+        document.body.classList.toggle('nav-open', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
+      }, 0);
+    });
+
+    links.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!links.classList.contains('open')) return;
+      if (burger.contains(event.target) || links.contains(event.target)) return;
+      closeMobileNav();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') closeMobileNav();
+    });
   }
 
   function createLanguageSwitcher() {
@@ -47,7 +86,7 @@
     switcher.className = 'lang-switcher';
     switcher.innerHTML = '<select id="lang-select" aria-label="Select language">' +
       SUPPORTED_LANGS.map(function(l) {
-        var names = {en:'English',fi:'Suomi',sv:'Svenska',de:'Deutsch',fr:'Francais',es:'Espanol',zh:'中文',ar:'العربية',ja:'日本語',ru:'Русский'};
+        var names = {en:'English',fi:'Suomi',sv:'Svenska',de:'Deutsch',fr:'Francais',it:'Italiano'};
         return '<option value="' + l + '">' + (names[l] || l) + '</option>';
       }).join('') + '</select>';
 
@@ -61,7 +100,10 @@
 
     var select = switcher.querySelector('select');
     select.value = getPreferredLang();
-    select.addEventListener('change', function() { setLang(this.value); });
+    select.addEventListener('change', function() {
+      setLang(this.value);
+      closeMobileNav();
+    });
   }
 
   var style = document.createElement('style');
@@ -70,8 +112,9 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     createLanguageSwitcher();
+    enhanceMobileNav();
     setLang(getPreferredLang());
   });
 
-  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang };
+  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang, closeMobileNav: closeMobileNav };
 })();

@@ -1,0 +1,19 @@
+{
+  "nav.home": "Accueil",
+  "nav.about": "A propos",
+  "nav.digital": "Digital",
+  "nav.tourism": "Voyage",
+  "nav.transfers": "Transferts",
+  "nav.portfolio": "Portfolio",
+  "nav.contact": "Contact",
+  "nav.qa": "QA",
+  "nav.booking": "Reserver",
+  "nav.pattern": "Patrons",
+  "nav.platform": "Plateforme",
+  "nav.blog": "Blog",
+  "hero.title": "L'agence premium d'Helsinki pour chauffeurs et services digitaux",
+  "hero.subtitle": "Transferts aeroport, design web, SEO et tests logiciels depuis Helsinki.",
+  "cta.book": "Reserver",
+  "cta.quote": "Demander un devis",
+  "footer.copyright": "Luxival © 2026 · Experiences premium digitales et de transport"
+}

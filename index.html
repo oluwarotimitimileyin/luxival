@@ -17,14 +17,10 @@
 <link rel="alternate" hreflang="sv" href="https://www.luxival.com/?lang=sv">
 <link rel="alternate" hreflang="de" href="https://www.luxival.com/?lang=de">
 <link rel="alternate" hreflang="fr" href="https://www.luxival.com/?lang=fr">
-<link rel="alternate" hreflang="es" href="https://www.luxival.com/?lang=es">
-<link rel="alternate" hreflang="zh" href="https://www.luxival.com/?lang=zh">
-<link rel="alternate" hreflang="ar" href="https://www.luxival.com/?lang=ar">
-<link rel="alternate" hreflang="ja" href="https://www.luxival.com/?lang=ja">
-<link rel="alternate" hreflang="ru" href="https://www.luxival.com/?lang=ru">
+<link rel="alternate" hreflang="it" href="https://www.luxival.com/?lang=it">
 <link rel="alternate" hreflang="x-default" href="https://www.luxival.com/">
 <link rel="preload" as="image" href="/assets/images/optimized/oodi-library/oodi-library-768.avif" imagesrcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" imagesizes="(max-width: 900px) 100vw, 45vw" fetchpriority="high">
-<link rel="stylesheet" href="/css/mobile-overrides.css?v=20260530-2">
+<link rel="stylesheet" href="/css/mobile-overrides.css?v=20260530-4">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -132,6 +128,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .proj-body h3{font-size:1.05rem;margin-bottom:.5rem}
 .proj-body a{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
 .proj-body a:hover{gap:.7rem}
+
+/* --- Social video links --- */
+.social-video-sec{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.social-video-head{display:flex;justify-content:space-between;gap:2rem;align-items:end;margin-bottom:2rem}
+.social-video-head p{max-width:520px;margin-bottom:0}
+.social-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.social-video-card{display:flex;flex-direction:column;gap:.55rem;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:1.25rem;min-height:116px;transition:border-color .2s,transform .2s}
+.social-video-card:hover{border-color:var(--border);transform:translateY(-2px)}
+.social-video-card strong{color:var(--gold);font-size:.82rem;letter-spacing:2px;text-transform:uppercase}
+.social-video-card span{color:var(--text);opacity:.58;font-size:.86rem;line-height:1.5}
 
 /* --- Founder --- */
 .founder-sec{background:var(--card2)}
@@ -506,6 +512,45 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   </div>
 </section>
 
+<!-- SOCIAL VIDEO LINKS -->
+<section class="social-video-sec">
+  <div class="container">
+    <div class="social-video-head reveal">
+      <div>
+        <span class="eyebrow">Social video</span>
+        <h2 style="text-align:left;margin-bottom:.8rem">Follow the story in motion</h2>
+      </div>
+      <p>Short videos, behind-the-scenes travel moments, digital launches, and brand updates live on our social channels.</p>
+    </div>
+    <div class="social-video-grid">
+      <a class="social-video-card reveal d1" href="https://www.tiktok.com/@luxival" target="_blank" rel="noopener">
+        <strong>TikTok</strong>
+        <span>Short-form video, live selling, travel moments, and creative brand experiments.</span>
+      </a>
+      <a class="social-video-card reveal d2" href="https://instagram.com/luxival" target="_blank" rel="noopener">
+        <strong>Instagram</strong>
+        <span>Reels, stories, visual updates, and everyday Luxival moments.</span>
+      </a>
+      <a class="social-video-card reveal d3" href="https://linkedin.com/company/luxival" target="_blank" rel="noopener">
+        <strong>LinkedIn</strong>
+        <span>Business updates, digital services, QA, and company news.</span>
+      </a>
+      <a class="social-video-card reveal d1" href="https://facebook.com/luxival" target="_blank" rel="noopener">
+        <strong>Facebook</strong>
+        <span>Community updates, travel posts, and service announcements.</span>
+      </a>
+      <a class="social-video-card reveal d2" href="https://pinterest.com/luxival" target="_blank" rel="noopener">
+        <strong>Pinterest</strong>
+        <span>Travel inspiration, design references, and visual collections.</span>
+      </a>
+      <a class="social-video-card reveal d3" href="https://www.youtube.com/@luxival" target="_blank" rel="noopener">
+        <strong>YouTube</strong>
+        <span>Longer videos, explainers, and evergreen brand content when published.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDER -->
 <section class="founder-sec" id="founder">
   <div class="container">
@@ -866,6 +911,6 @@ window.addEventListener('load',function(){
 </script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-<script src="/js/i18n.js" defer></script>
+<script src="/js/i18n.js?v=20260530-4" defer></script>
 </body>
 </html>
