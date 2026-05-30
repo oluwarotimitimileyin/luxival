@@ -1,0 +1,23 @@
+node_modules
+_site
+.git
+.venv
+pnpm-lock.yaml
+test-results
+playwright-report
+*.zip
+
+# Local/generated workspace material not needed for the public site build.
+image for luxival
+job-search copy
+vault-ledger
+apps
+backend
+.agents
+.claude
+mobile-audit
+
+# Oversized raw video sources exceed Vercel's single-file upload limit.
+assets/video/*.mov
+assets/video/pattern-demo.mp4
+assets/video/31fd8486317343e19e43d8e8a06afe9f.mp4
