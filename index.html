@@ -8,18 +8,17 @@
 <meta name="description" content="Luxival — Helsinki's premium chauffeur service and web design agency. Airport transfers, SEO, QA software testing, and agentic workflow strategy led by an ISTQB-certified tester.">
 <meta property="og:title" content="Luxival | Helsinki's Premium Chauffeur & Web Design Agency">
 <meta property="og:description" content="Premium airport transfers and intelligent digital services from Helsinki. Web development, SEO services, QA software testing, and agentic workflow strategy.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+<meta property="og:url" content="https://www.luxival.com/">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="image" href="assets/images/finland/architecture/oodi-library.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/mobile-overrides.css">
+<link rel="canonical" href="https://www.luxival.com/">
+<link rel="preload" as="image" href="/assets/images/optimized/oodi-library/oodi-library-768.avif" imagesrcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" imagesizes="(max-width: 900px) 100vw, 45vw" fetchpriority="high">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
 
 /* --- Cursor --- */
@@ -58,8 +57,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:5%;padding-top:6rem}
 .hero-left .subhead{font-size:1.2rem;margin-bottom:3rem;max-width:480px}
 .hero-right{position:relative;height:88vh;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);will-change:transform}
-.hero-right video,.hero-right img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-right video{z-index:1}
+.hero-right picture.bg-picture{position:absolute;inset:0;width:100%;height:100%;display:block}.hero-right video,.hero-right img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-right video{z-index:1}.hero-right video[data-lazy-video],video[data-lazy-video]{opacity:0;transition:opacity .35s ease}.hero-right video.is-ready,video.is-ready{opacity:1}
 .hero-right img.bg{z-index:0}
 .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.06),transparent 55%);z-index:2;pointer-events:none}
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.35;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;animation:bob 2.2s ease-in-out infinite;z-index:3}
@@ -127,7 +126,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .founder-sec{background:var(--card2)}
 .founder-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center}
 .founder-img{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:3/4;position:relative;will-change:transform}
-.founder-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.founder-img picture{display:block;width:100%;height:100%}.founder-img img{width:100%;height:100%;object-fit:cover;object-position:top}
 .founder-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,15,.65),transparent 45%)}
 .founder-tag{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.9}
 .founder-quote{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;line-height:1.7;margin-bottom:2rem;padding-left:1.5rem;border-left:2px solid var(--gold)}
@@ -188,17 +187,19 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["Organization", "LocalBusiness"],
   "name": "Luxival",
   "description": "Premium chauffeur, digital design, QA software testing, and digital services in Helsinki, Finland.",
-  "url": "https://luxival.com",
-  "logo": "https://luxival.com/assets/images/luxival-logo.png",
-  "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80",
-  "telephone": "+358-XX-XXXXXXX",
-  "email": "hello@luxival.com",
+  "url": "https://www.luxival.com",
+  "logo": "https://www.luxival.com/favicon.svg",
+  "image": "https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp",
+  "telephone": "+358503518366",
+  "email": "support@luxival.com",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Helsinki",
+    "streetAddress": "Varikkokaarre 7A",
+    "postalCode": "01700",
+    "addressLocality": "Vantaa",
     "addressRegion": "Uusimaa",
     "addressCountry": "FI"
   },
@@ -221,21 +222,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
       "closes": "18:00"
     }
   ],
-  "sameAs": [
-    "https://www.linkedin.com/company/luxival",
-    "https://www.instagram.com/luxival"
-  ],
   "priceRange": "€€€",
-  "servesCuisine": null,
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Luxival Services",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Premium Chauffeur Transfer", "url": "https://luxival.com/services/airport-transfer"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://luxival.com/services/web-design"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "QA Software Testing", "url": "https://luxival.com/services/software-testing"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TikTok Agency & UGC", "url": "https://luxival.com/services/tiktok-agency"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Sewing Patterns", "url": "https://luxival.com/services/sewing-pattern"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Premium Chauffeur Transfer", "url": "https://www.luxival.com/services/airport-transfer"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://www.luxival.com/services/web-design"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "QA Software Testing", "url": "https://www.luxival.com/services/software-testing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TikTok Agency & UGC", "url": "https://www.luxival.com/services/tiktok-agency"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Sewing Patterns", "url": "https://www.luxival.com/services/sewing-pattern"}}
     ]
   }
 }
@@ -244,8 +240,6 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <script>
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 </head>
 <body>
 
@@ -255,27 +249,29 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="services.html">Digital Services</a></li>
-    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA &amp; Audit</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
+    <li><a href="/" class="active">Home</a></li>
+    <li><a href="/services">Digital Services</a></li>
+    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/qa">QA &amp; Audit</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
+<main id="main">
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
     <span class="eyebrow reveal">Luxury finish travel · Helsinki</span>
     <h1 class="reveal d1">Helsinki's Premium Chauffeur &amp; Web Design Agency</h1>
     <p class="subhead reveal d2">From runway to ranking — premium airport transfers and conversion-focused digital services, led by an ISTQB-certified software tester.</p>
-    <a href="booking.html" class="btn reveal d3">Book a Consultation</a>
+    <a href="/booking" class="btn reveal d3">Book a Consultation</a>
 
     <!-- Social proof directly under CTA -->
     <div class="hero-proof reveal d3">
@@ -288,10 +284,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     <div class="hero-form reveal">
       <span class="hero-form-title">Quick Enquiry — no obligation</span>
       <div class="hero-form-row">
-        <input type="text" id="hfName" placeholder="Your name" autocomplete="off">
-        <input type="email" id="hfEmail" placeholder="Email address" autocomplete="off">
+        <label class="sr-only" for="hfName">Your name</label>
+          <input type="text" id="hfName" placeholder="Your name" autocomplete="name">
+        <label class="sr-only" for="hfEmail">Email address</label>
+          <input type="email" id="hfEmail" placeholder="Email address" autocomplete="email">
       </div>
       <div class="hero-form-row">
+        <label class="sr-only" for="hfService">Service needed</label>
         <select id="hfService">
           <option value="" disabled selected>I need…</option>
           <option value="airport-transfer">Airport transfer</option>
@@ -300,7 +299,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
           <option value="qa-testing">QA software testing</option>
           <option value="other">Something else</option>
         </select>
-        <input type="text" id="hfDate" placeholder="Date / project start" autocomplete="off">
+        <label class="sr-only" for="hfDate">Date or project start</label>
+          <input type="text" id="hfDate" placeholder="Date / project start" autocomplete="off">
       </div>
       <div class="hero-form-row single">
         <button class="btn btn-sm" id="hfSubmit" type="button">Send Quick Enquiry →</button>
@@ -309,9 +309,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     </div>
   </div>
   <div class="hero-right" id="heroPanel">
-    <img class="bg" src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library in Helsinki, Finland" width="1920" height="1080" decoding="async" fetchpriority="high">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/architecture/oodi-library.jpg" width="1920" height="1080">
-      <source src="assets/video/hero-airport.mp4" type="video/mp4">
+<picture class="bg-picture">
+          <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+          <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+          <img class="bg" src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Oodi Library in Helsinki, Finland" width="1920" height="1280" decoding="async" fetchpriority="high">
+        </picture>
+    <video autoplay muted loop playsinline preload="none" data-poster="/assets/images/optimized/oodi-library/oodi-library-768.webp" width="1920" height="1080" data-lazy-video>
+      <source data-src="/assets/video/hero-airport.mp4" type="video/mp4">
     </video>
     <div class="scroll-hint">Scroll</div>
   </div>
@@ -319,8 +323,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- Mobile sticky CTA -->
 <div class="sticky-cta">
-  <a href="booking.html" class="btn">Book Now</a>
-  <a href="pattern.html" class="btn-outline">Get a Quote</a>
+  <a href="/booking" class="btn">Book Now</a>
+  <a href="/pattern" class="btn-outline">Get a Quote</a>
 </div>
 
 <div class="gold-line container"></div>
@@ -332,9 +336,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d1" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral in daylight" width="1280" height="720" decoding="async" loading="lazy">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/landmarks/helsinki-cathedral.jpg">
-          <source src="assets/video/hero-airport-1.mp4" type="video/mp4">
+        <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.avif 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.avif 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.avif 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.avif 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 31vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.webp 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.webp 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.webp 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 31vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Helsinki Cathedral in daylight" width="1280" height="1425" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
+        <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp">
+          <source data-src="/assets/video/hero-airport-1.mp4" type="video/mp4">
         </video>
       </div>
       <div class="card-body">
@@ -346,7 +354,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d2" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town riverfront in Finland" width="1280" height="720" decoding="async" loading="lazy">
+        <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.avif 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.avif 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.avif 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.avif 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 31vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.webp 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.webp 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.webp 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 31vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Porvoo old town riverfront in Finland" width="1280" height="755" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
       </div>
       <div class="card-body">
         <h3>Luggage</h3>
@@ -357,9 +369,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
     <div class="card reveal d3" data-tilt>
       <div class="card-media">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna sea fortress near Helsinki" width="1280" height="720" decoding="async" loading="lazy">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/landmarks/suomenlinna-fortress.jpg">
-          <source src="assets/video/animate-1.mp4" type="video/mp4">
+        <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 31vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 31vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Suomenlinna sea fortress near Helsinki" width="1280" height="962" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
+        <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp">
+          <source data-src="/assets/video/animate-1.mp4" type="video/mp4">
         </video>
       </div>
       <div class="card-body">
@@ -378,9 +394,9 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     <h2 class="reveal">Track Your Ride in Real Time</h2>
     <p class="reveal d1" style="max-width:560px;margin:0 auto">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
     <div class="tracking-vid reveal d2">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="assets/video/founder-wide.mp4" type="video/mp4">
-        <source src="assets/video/animate-2.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="none" data-lazy-video>
+        <source data-src="/assets/video/founder-wide.mp4" type="video/mp4">
+        <source data-src="/assets/video/animate-2.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -395,26 +411,42 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <p>We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
         <p>From Helsinki to global reach — if it has a digital presence, we architect it.</p>
         <br>
-        <a href="pattern.html" class="btn">Explore Services</a>
+        <a href="/pattern" class="btn">Explore Services</a>
       </div>
       <div>
         <div class="svc-media reveal d1" data-tilt>
-          <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki" width="1280" height="960" decoding="async" loading="lazy">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/images/finland/architecture/temppeliaukio-church.jpg">
-            <source src="assets/video/founder-animated.mp4" type="video/mp4">
+          <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.avif 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.avif 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.avif 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.avif 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.webp 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.webp 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.webp 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Temppeliaukio Church in Helsinki" width="1280" height="720" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
+          <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp">
+            <source data-src="/assets/video/founder-animated.mp4" type="video/mp4">
           </video>
         </div>
         <div class="hover-cards reveal d2">
           <a href="services/web-design.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Modern Helsinki architecture for web design" width="800" height="800" decoding="async" loading="lazy">
+            <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/oodi-library/oodi-library-480.webp" alt="Modern Helsinki architecture for web design" width="800" height="533" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
             <span>Web Design</span>
           </a>
           <a href="services/web-design.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park landscape for SEO strategy" width="800" height="800" decoding="async" loading="lazy">
+            <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/koli-national-park/koli-national-park-480.webp" alt="Koli National Park landscape for SEO strategy" width="800" height="184" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
             <span>SEO</span>
           </a>
           <a href="services/software-testing.html" class="hover-card" data-tilt>
-            <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa for QA software testing" width="800" height="800" decoding="async" loading="lazy">
+            <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.avif 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.avif 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.avif 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.avif 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.webp 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.webp 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.webp 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp" alt="Frozen Lake Saimaa for QA software testing" width="800" height="449" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
             <span>QA</span>
           </a>
         </div>
@@ -440,34 +472,34 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <section class="container" id="portfolio">
   <h2 class="reveal">Portfolio & Projects</h2>
   <div class="port-header reveal">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="assets/video/hero-airport-2.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="none" data-lazy-video>
+      <source data-src="/assets/video/hero-airport-2.mp4" type="video/mp4">
     </video>
   </div>
   <div class="grid-6">
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>AI · ESG</span></div>
-      <div class="proj-body"><h3>ESG Compliance Auditor</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>ESG Compliance Auditor</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>AI · Growth</span></div>
-      <div class="proj-body"><h3>GROWTH_ARCHITECT</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>GROWTH_ARCHITECT</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>AI · Launch</span></div>
-      <div class="proj-body"><h3>BusinessLauncher</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>BusinessLauncher</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>AI · Content</span></div>
-      <div class="proj-body"><h3>UGC Studio AI</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>UGC Studio AI</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>AI · Chat</span></div>
-      <div class="proj-body"><h3>Vortex AI Platform</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Vortex AI Platform</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>Finance</span></div>
-      <div class="proj-body"><h3>Vault Ledger</h3><a href="portfolio.html">View Case Study →</a></div>
+      <div class="proj-body"><h3>Vault Ledger</h3><a href="/portfolio">View Case Study →</a></div>
     </div>
   </div>
 </section>
@@ -477,7 +509,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="container">
     <div class="founder-grid">
       <div class="founder-img reveal" id="founderPanel">
-        <img src="assets/images/founder-portrait-3.jpeg" alt="Olakunle Shopeju — Founder of Luxival" width="900" height="1200" decoding="async" loading="lazy">
+        <picture>
+          <source type="image/avif" data-srcset="/assets/images/optimized/founder-portrait-3/founder-portrait-3-480.avif 480w, /assets/images/optimized/founder-portrait-3/founder-portrait-3-720.avif 720w" sizes="(max-width: 900px) 100vw, 38vw">
+          <source type="image/webp" data-srcset="/assets/images/optimized/founder-portrait-3/founder-portrait-3-480.webp 480w, /assets/images/optimized/founder-portrait-3/founder-portrait-3-720.webp 720w" sizes="(max-width: 900px) 100vw, 38vw">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/founder-portrait-3/founder-portrait-3-720.webp" alt="Olakunle Shopeju — Founder of Luxival" width="720" height="1280" decoding="async" loading="lazy" fetchpriority="low">
+        </picture>
         <span class="founder-tag">Founder & Director</span>
       </div>
       <div class="reveal d1">
@@ -486,7 +522,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <blockquote class="founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
         <p>Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
         <br>
-        <a href="about.html" class="btn">Read Our Story</a>
+        <a href="/about" class="btn">Read Our Story</a>
       </div>
     </div>
   </div>
@@ -499,8 +535,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
       <div class="reveal">
         <h3>Contact Luxival</h3><br>
         <form id="footerForm">
-          <input type="text" id="fName" placeholder="Your name">
-          <input type="email" id="fEmail" placeholder="Email address">
+          <label class="sr-only" for="fName">Your name</label>
+          <input type="text" id="fName" placeholder="Your name" autocomplete="name">
+          <label class="sr-only" for="fEmail">Email address</label>
+          <input type="email" id="fEmail" placeholder="Email address" autocomplete="email">
+          <label class="sr-only" for="fMsg">Tell us about your journey or project</label>
           <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project"></textarea>
           <button class="btn" type="submit">Send Inquiry</button>
           <p id="fStatus" style="margin-top:1rem;font-size:.88rem"></p>
@@ -522,12 +561,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
       </div>
     </div>
     <div class="footer-legal">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
     </div>
     <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
+</main>
 
 <script>
 (function(){
@@ -576,6 +616,29 @@ document.querySelectorAll('video').forEach(v=>{
     entries.forEach(e=>{ if(e.isIntersecting) v.play().catch(()=>{}); else v.pause(); });
   },{threshold:0.25}).observe(v);
 });
+
+/* ---- Lazy responsive images ---- */
+const lazyImages=document.querySelectorAll('img[data-src], img[data-srcset]');
+if(lazyImages.length){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+          img.removeAttribute('data-srcset');
+        }
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        observer.unobserve(img);
+      }
+    });
+  }, { rootMargin: '200px' });
+  lazyImages.forEach(img=>observer.observe(img));
+}
+
 
 /* ---- 3D card tilt ---- */
 document.querySelectorAll('[data-tilt]').forEach(el=>{
@@ -675,8 +738,9 @@ if(hfBtn){
     if(!name||!email){hfStatus.style.color='#f77';hfStatus.textContent='Please enter your name and email.';return;}
     hfStatus.style.color='var(--gold)';hfStatus.textContent='Sending…';
     const payload={name,email,message:`Service: ${service||'not specified'}. Date/start: ${date||'not specified'}.`,source:'hero-quick-form',status:'new'};
-    if(window.LuxivalSupabase){
-      const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
+    const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
+    if(db){
+      const{error}=await db.submitContactInquiry(payload);
       if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
       else{const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';window.location.href=dest;}
     } else {
@@ -700,8 +764,9 @@ if(form){
       message:document.getElementById('fMsg').value.trim(),
       source:'luxival-3d',status:'new'
     };
-    if(window.LuxivalSupabase){
-      const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
+    const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
+    if(db){
+      const{error}=await db.submitContactInquiry(payload);
       if(error){fStatus.style.color='#f77';fStatus.textContent='Unable to send. Email us directly.';}
       else{form.reset();fStatus.textContent='Inquiry sent. We will reply shortly.';}
     } else {
@@ -713,9 +778,66 @@ if(form){
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
+<script src="/js/supabase-loader.js" defer></script>
+<script>
+window.addEventListener('load',function(){
+  var videos = Array.prototype.slice.call(document.querySelectorAll('video[data-lazy-video]'));
+  var lazyImages = Array.prototype.slice.call(document.querySelectorAll('img[data-src], source[data-srcset]'));
+  function hydratePicture(img){
+    var picture = img.closest('picture');
+    if (picture) {
+      picture.querySelectorAll('source[data-srcset]').forEach(function(source){
+        source.srcset = source.dataset.srcset;
+        source.removeAttribute('data-srcset');
+      });
+    }
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    var imageObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        imageObserver.unobserve(entry.target);
+        hydratePicture(entry.target);
+      });
+    }, { rootMargin:'0px 0px', threshold:0.01 });
+    document.querySelectorAll('img[data-src]').forEach(function(img){ imageObserver.observe(img); });
+  } else {
+    document.querySelectorAll('img[data-src]').forEach(hydratePicture);
+  }
+  function hydrateVideo(video){
+    if (video.dataset.loaded === 'true') return;
+    video.dataset.loaded = 'true';
+    if (video.dataset.poster) video.poster = video.dataset.poster;
+    video.querySelectorAll('source[data-src]').forEach(function(source){ source.src = source.dataset.src; });
+    video.addEventListener('canplay', function(){ video.classList.add('is-ready'); }, { once:true });
+    video.load();
+  }
+  var heroVideo = document.querySelector('.hero-right video[data-lazy-video]');
+  if (heroVideo) setTimeout(function(){ hydrateVideo(heroVideo); }, 2500);
+  var belowFold = videos.filter(function(video){ return video !== heroVideo; });
+  function observeBelowFoldVideos(){
+    if (observeBelowFoldVideos.started) return;
+    observeBelowFoldVideos.started = true;
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          hydrateVideo(entry.target);
+        });
+      }, { rootMargin:'0px 0px', threshold:0.25 });
+      belowFold.forEach(function(video){ observer.observe(video); });
+    } else {
+      belowFold.forEach(function(video){ hydrateVideo(video); });
+    }
+  }
+  window.addEventListener('scroll', observeBelowFoldVideos, { once:true, passive:true });
+});
+</script>
 <script>
 (function(){
   var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
@@ -733,5 +855,7 @@ if(form){
   });
 })();
 </script>
+<script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
