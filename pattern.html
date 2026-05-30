@@ -8,10 +8,22 @@
 <meta name="description" content="Luxival Pattern Studio: bespoke sewing patterns for premium suits. Enter your measurements, receive printable PDF patterns tailored to your exact body.">
 <meta property="og:title" content="Pattern Studio | Luxival">
 <meta property="og:description" content="Bespoke sewing patterns for premium suits. Enter your measurements, receive printable PDF patterns tailored to your exact body.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/pattern">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+<meta property="og:url" content="https://www.luxival.com/pattern">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/pattern">
+<link rel="canonical" href="https://www.luxival.com/pattern">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/pattern">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/pattern?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/pattern?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/pattern?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/pattern?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/pattern?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/pattern?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/pattern?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/pattern?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/pattern?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/pattern">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 /* ── SITE TOKENS (match existing luxival.com) ── */
 :root{
@@ -306,12 +318,7 @@ footer{
 #toast.show{transform:translateY(0)}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .hero-layout{grid-template-columns:1fr;gap:3rem}
-  .hero-visual{order:-1}
-  .video-section-grid{grid-template-columns:1fr}
-  .preview-sections{grid-template-columns:1fr 1fr}
-}
+
 @media(max-width:640px){
   section{padding:4rem 0}
   .form-section{padding:2rem 1.5rem}
@@ -322,11 +329,6 @@ footer{
 }
 </style>
 <!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 </head>
 <body>
 
@@ -340,21 +342,23 @@ footer{
 
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="transfers.html">Transfers</a></li>
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="pattern.html" class="active">Pattern</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="audit.html">Free Audit</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a data-i18n="nav.transfers" href="/transfers">Transfers</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism">Travel</a></li>
+    <li><a data-i18n="nav.pattern" href="/pattern" class="active">Pattern</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
+    <li><a data-i18n="nav.platform" href="/platform">Platform</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a href="/audit">Free Audit</a></li>
+    <li><a data-i18n="nav.booking" href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
+
+<main id="main">
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="container">
@@ -366,8 +370,8 @@ footer{
           Bespoke Pattern · Instant Download
         </div>
         <span class="eyebrow">Luxival Pattern Studio</span>
-        <h1>Classic Navy<br><span>Three-Piece</span><br>Suit Pattern</h1>
-        <p class="lead">
+        <h1 data-i18n="hero.title">Classic Navy<br><span>Three-Piece</span><br>Suit Pattern</h1>
+        <p data-i18n="hero.subtitle" class="lead">
           Enter your exact measurements. The page calculates every pattern piece to your body. Pay once — receive a printable PDF your tailor can use to cut and construct your suit.
         </p>
         <div class="hero-price">
@@ -385,12 +389,11 @@ footer{
 
       <div class="hero-visual">
         <!-- EDITABLE: Replace src with your real hosted image URL -->
-        <img
-          src="assets/images/pattern-hero.jpeg"
-          alt="Classic navy three-piece suit — front, side, back, and three-quarter views"
-          class="model-img"
-          onerror="this.style.display='none';document.getElementById('model-placeholder').style.display='flex'"
-        >
+        <picture>
+          <source type="image/avif" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.avif 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.avif 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.avif 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.avif 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.avif 1920w" sizes="(max-width:900px) 100vw, 45vw">
+          <source type="image/webp" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.webp 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.webp 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.webp 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.webp 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.webp 1920w" sizes="(max-width:900px) 100vw, 45vw">
+          <img src="/assets/images/optimized/pattern-hero/pattern-hero-768.webp" alt="Classic navy three-piece suit — front, side, back, and three-quarter views" class="model-img" width="1600" height="893" decoding="async" fetchpriority="high" onerror="this.style.display='none';document.getElementById('model-placeholder').style.display='flex'">
+        </picture>
         <div id="model-placeholder" style="display:none;width:100%;aspect-ratio:16/9;background:var(--card);border:1px solid var(--border);border-radius:4px;align-items:center;justify-content:center;flex-direction:column;gap:1rem">
           <div style="font-size:2rem;opacity:.3">🧥</div>
           <p style="font-size:.75rem;opacity:.4;letter-spacing:2px;text-transform:uppercase;margin:0">Replace with your model photo</p>
@@ -795,7 +798,7 @@ footer{
           </a>
           <button class="back-btn" onclick="goBackToForm()">← Edit measurements</button>
           <div class="pay-note">
-            After payment SumUp emails you a receipt. Your custom PDF arrives in your inbox within 2 hours. Questions? <a href="contact.html" style="color:var(--gold)">Contact us.</a>
+            After payment SumUp emails you a receipt. Your custom PDF arrives in your inbox within 2 hours. Questions? <a data-i18n="nav.contact" href="/contact" style="color:var(--gold)">Contact us.</a>
           </div>
         </div>
 
@@ -905,6 +908,7 @@ footer{
 
 <div class="container"><div class="gold-line"></div></div>
 
+</main>
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="container">
@@ -914,11 +918,11 @@ footer{
         <div class="footer-tagline">Engineering · Design · Patterns</div>
       </div>
       <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="terms.html">Terms</a></li>
+        <li><a data-i18n="nav.home" href="/">Home</a></li>
+        <li><a data-i18n="nav.digital" href="/services">Services</a></li>
+        <li><a data-i18n="nav.contact" href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
     <div class="footer-copy">© 2025 Luxival. All rights reserved. Helsinki, Finland.</div>
@@ -927,24 +931,26 @@ footer{
 
 <!-- ══ JAVASCRIPT ══ -->
 <script>
-/* ── Custom cursor (match existing site) ── */
-const dot = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  dot.style.left=mx+'px'; dot.style.top=my+'px';
-});
-function animRing(){
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
+/* ── Custom cursor (desktop only) ── */
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const dot = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+  });
+  function animRing(){
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,.btn').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.style.width='14px';dot.style.height='14px'});
+    el.addEventListener('mouseleave',()=>{dot.style.width='8px';dot.style.height='8px'});
+  });
 }
-animRing();
-document.querySelectorAll('a,button,.btn').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{dot.style.width='14px';dot.style.height='14px'});
-  el.addEventListener('mouseleave',()=>{dot.style.width='8px';dot.style.height='8px'});
-});
 
 /* ── Scroll progress bar ── */
 window.addEventListener('scroll',()=>{
@@ -1229,5 +1235,8 @@ document.querySelectorAll('.del-card,.step,.service-card,.faq-item').forEach(el=
 });
 </script>
 
+<script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

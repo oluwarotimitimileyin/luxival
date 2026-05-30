@@ -8,10 +8,22 @@
 <meta name="description" content="Luxival Platform: Vault Ledger — AI-powered expense and invoice management with agentic workflow design. Plus: join the Luxival TikTok Live Agency as a creator.">
 <meta property="og:title" content="Platform | Luxival — Vault Ledger & TikTok Live Agency">
 <meta property="og:description" content="Vault Ledger: AI-powered expense and invoice management built on Gemini. Join the Luxival TikTok Live Agency as a creator.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/platform">
+<meta property="og:image" content="https://www.luxival.com/assets/images/finland/architecture/oodi-library.jpg">
+<meta property="og:url" content="https://www.luxival.com/platform">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/platform">
+<link rel="canonical" href="https://www.luxival.com/platform">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/platform">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/platform?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/platform?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/platform?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/platform?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/platform?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/platform?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/platform?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/platform?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/platform?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/platform">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -141,13 +153,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
 
-@media(max-width:900px){
-  .app-grid,.tiktok-grid,.footer-grid{grid-template-columns:1fr;gap:2.5rem}
-  .app-features,.steps{grid-template-columns:1fr 1fr}
-  .field-row{grid-template-columns:1fr}
-  section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-  .stats-row{gap:1.5rem}
-}
+
 @media(max-width:560px){
   .app-features,.steps{grid-template-columns:1fr}
 }
@@ -167,16 +173,16 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html" class="active">Platform</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book a consultation</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism">Travel</a></li>
+    <li><a data-i18n="nav.digital" href="/services">Services</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
+    <li><a data-i18n="nav.platform" href="/platform" class="active">Platform</a></li>
+    <li><a data-i18n="nav.platform" href="/platform">Platform</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a data-i18n="nav.booking" href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book a consultation</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -187,8 +193,8 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="reveal">
     <div class="hero-badge"><span></span>Luxival Platform · Software Projects</div>
   </div>
-  <h1 class="reveal d1">Two tools.<br>Built to perform.</h1>
-  <p class="lead reveal d2">Vault Ledger — AI-powered expense and invoice management with agentic workflow support. Plus: join the Luxival TikTok Live Agency and turn your content into income.</p>
+  <h1 data-i18n="hero.title" class="reveal d1">Two tools.<br>Built to perform.</h1>
+  <p data-i18n="hero.subtitle" class="lead reveal d2">Vault Ledger — AI-powered expense and invoice management with agentic workflow support. Plus: join the Luxival TikTok Live Agency and turn your content into income.</p>
   <div class="hero-actions reveal d3">
     <a href="#vault-ledger" class="btn">Explore Vault Ledger</a>
     <a href="#tiktok-agency" class="btn btn-tiktok">Join TikTok Agency</a>
@@ -452,9 +458,9 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="foot-links">
           <a href="#vault-ledger">Vault Ledger</a>
           <a href="#tiktok-agency">TikTok Agency</a>
-          <a href="services.html">All Services</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="blog/index.html">Blog</a>
+          <a data-i18n="nav.digital" href="/services">All Services</a>
+          <a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a>
+          <a data-i18n="nav.blog" href="/blog">Blog</a>
         </div>
       </div>
       <div>
@@ -462,12 +468,12 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="foot-links">
           <a href="mailto:support@luxival.com">support@luxival.com</a>
           <a href="https://wa.me/+358503518366">WhatsApp</a>
-          <a href="contact.html">Contact page</a>
-          <a href="privacy.html">Privacy policy</a>
+          <a data-i18n="nav.contact" href="/contact">Contact page</a>
+          <a href="/privacy">Privacy policy</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Platform · Helsinki, Finland</div>
+    <div class="copyright" data-i18n="footer.copyright">Luxival © 2026 · Platform · Helsinki, Finland</div>
   </div>
 </footer>
 
@@ -476,14 +482,17 @@ footer{background:#060608;padding:5rem 0 2rem}
 'use strict';
 
 /* Cursor */
-const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,input,select,textarea').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='48px';ring.style.height='48px';ring.style.borderColor='var(--gold)'});
-  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(201,169,106,.5)'});
-});
+const desktopInteractive=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if(desktopInteractive){
+  const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,input,select,textarea').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ring.style.width='48px';ring.style.height='48px';ring.style.borderColor='var(--gold)'});
+    el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(201,169,106,.5)'});
+  });
+}
 
 /* Progress bar */
 const prog=document.getElementById('prog');
@@ -498,17 +507,19 @@ const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 /* 3D card tilt */
-document.querySelectorAll('[data-tilt]').forEach(el=>{
-  el.addEventListener('pointermove',e=>{
-    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-    el.style.transform=`perspective(800px) rotateX(${-y*8}deg) rotateY(${x*8}deg) scale(1.02)`;
+if(desktopInteractive){
+  document.querySelectorAll('[data-tilt]').forEach(el=>{
+    el.addEventListener('pointermove',e=>{
+      const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      el.style.transform=`perspective(800px) rotateX(${-y*8}deg) rotateY(${x*8}deg) scale(1.02)`;
+    });
+    el.addEventListener('pointerleave',()=>{
+      el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
+      el.style.transform='none';
+      setTimeout(()=>el.style.transition='',600);
+    });
   });
-  el.addEventListener('pointerleave',()=>{
-    el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';
-    el.style.transform='perspective(800px) rotateX(0) rotateY(0) scale(1)';
-    setTimeout(()=>el.style.transition='',600);
-  });
-});
+}
 
 /* Vault Ledger iframe fallback — show offline panel if frame fails to load in 8s */
 (function(){
@@ -631,5 +642,6 @@ agencyForm.addEventListener('submit',async e=>{
   });
 })();
 </script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

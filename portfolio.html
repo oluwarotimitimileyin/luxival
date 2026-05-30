@@ -11,10 +11,21 @@ git push origin main<!DOCTYPE html>
 <meta name="description" content="Luxival portfolio: web design, QA automation, airport transfer systems, SEO, 3D UX, and AI agent infrastructure projects from Helsinki.">
 <meta property="og:title" content="Portfolio | Luxival — Case Studies & Projects">
 <meta property="og:description" content="Luxival portfolio: web design, QA automation, airport transfer systems, SEO, 3D UX, and AI agent infrastructure projects from Helsinki.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/portfolio">
+<meta property="og:image" content="https://www.luxival.com/assets/images/finland/architecture/oodi-library.jpg">
+<meta property="og:url" content="https://www.luxival.com/portfolio">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/portfolio">
+<link rel="canonical" href="https://www.luxival.com/portfolio">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/portfolio">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/portfolio?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/portfolio?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/portfolio?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/portfolio?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/portfolio?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/portfolio?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/portfolio?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/portfolio?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/portfolio?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/portfolio">
 <link rel="stylesheet" href="css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
@@ -77,7 +88,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
-@media(max-width:900px){.grid-6{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.port-banner{aspect-ratio:16/9}}
+
 </style>
 <!-- Vercel Speed Insights -->
 <script>
@@ -92,15 +103,15 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div id="prog"></div>
 
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Digital Services</a></li>
-    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
-    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-    <li><a href="qa.html">QA &amp; Audit</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.digital" href="/services">Digital Services</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio" class="active">Portfolio</a></li>
+    <li><a data-i18n="nav.qa" href="/qa">QA &amp; Audit</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a data-i18n="nav.contact" href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -109,11 +120,11 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- HERO -->
 <section class="container hero">
   <span class="eyebrow reveal" data-content-key="hero_eyebrow">Portfolio · Helsinki</span>
-  <h1 class="reveal d1" data-content-key="hero_title">Work that speaks<br>for itself.</h1>
-  <p class="lead reveal d2" data-content-key="hero_subtitle">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and agentic workflow infrastructure.</p>
+  <h1 data-i18n="hero.title" class="reveal d1" data-content-key="hero_title">Work that speaks<br>for itself.</h1>
+  <p data-i18n="hero.subtitle" class="lead reveal d2" data-content-key="hero_subtitle">Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and agentic workflow infrastructure.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-    <a href="booking.html" class="btn">Book a consultation</a>
-    <a href="pattern.html" class="btn btn-outline">View services</a>
+    <a data-i18n="nav.booking" href="/booking" class="btn">Book a consultation</a>
+    <a data-i18n="nav.pattern" href="/pattern" class="btn btn-outline">View services</a>
   </div>
 </section>
 
@@ -139,7 +150,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Sewing Pattern</span><span class="tag">Bespoke</span><span class="tag">PDF Download</span></div>
         <h3>Luxival Pattern Studio</h3>
         <p>Bespoke navy three-piece suit pattern generated to exact body measurements. Pay once, receive a printable tailor-ready PDF instantly.</p>
-        <a href="pattern.html">View project →</a>
+        <a data-i18n="nav.pattern" href="/pattern">View project →</a>
       </div>
     </div>
 
@@ -149,7 +160,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">ESG</span><span class="tag">Compliance</span><span class="tag">Gemini</span><span class="tag">React</span></div>
         <h3>ESG Compliance Auditor</h3>
         <p>AI-powered ESG reporting and compliance audit tool built on Google Vertex AI — analyses corporate documents and surfaces regulatory gaps.</p>
-        <a href="esg-compliance-auditor.html">View full product →</a>
+        <a href="/esg-compliance-auditor">View full product →</a>
       </div>
     </div>
 
@@ -159,8 +170,8 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">SEO</span><span class="tag">Performance</span><span class="tag">Automation</span><span class="tag">AI Agent</span></div>
         <h3>GROWTH_ARCHITECT</h3>
         <p>Strategic AI tool that audits growth bottlenecks, prioritizes technical fixes, and generates implementation-ready action plans for measurable SEO and conversion gains.</p>
-        <a href="growth-architect.html">View project →</a>
-        <a href="growth-architect-backend.html" style="margin-left:1rem">Backend ops →</a>
+        <a href="/growth-architect">View project →</a>
+        <a href="/growth-architect-backend" style="margin-left:1rem">Backend ops →</a>
       </div>
     </div>
 
@@ -170,7 +181,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Startup</span><span class="tag">Planning</span><span class="tag">Website</span><span class="tag">Launch</span></div>
         <h3>BusinessLauncher</h3>
         <p>A self-contained business launch experience that helps turn an idea into a structured go-to-market foundation with a polished presentation layer.</p>
-        <a href="businesslauncher.html">View project →</a>
+        <a href="/businesslauncher">View project →</a>
       </div>
     </div>
 
@@ -180,7 +191,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">UGC</span><span class="tag">Video</span><span class="tag">Workflow</span><span class="tag">AI</span></div>
         <h3>UGC Studio AI</h3>
         <p>An AI production pipeline for generating user-generated content concepts, characters, and video-ready creative workflows.</p>
-        <a href="ugc-studio-ai.html">View project →</a>
+        <a href="/ugc-studio-ai">View project →</a>
       </div>
     </div>
 
@@ -190,7 +201,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Chat</span><span class="tag">Dashboard</span><span class="tag">Voice</span><span class="tag">Platform</span></div>
         <h3>Vortex AI Platform</h3>
         <p>A multi-modal conversational platform with embeddable chat, dashboard controls, and agent configuration tools.</p>
-        <a href="vortex-ai-platform.html">View project →</a>
+        <a href="/vortex-ai-platform">View project →</a>
       </div>
     </div>
 
@@ -200,7 +211,17 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Accounting</span><span class="tag">Dashboard</span><span class="tag">Luxival</span></div>
         <h3>Vault Ledger</h3>
         <p>Helps businesses calculate accounting, track updates, and manage Luxival project features.</p>
-        <a href="platform.html">View project →</a>
+        <a data-i18n="nav.platform" href="/platform">View project →</a>
+      </div>
+    </div>
+
+    <div class="proj reveal d2" data-tilt data-category="ai" id="autonomous-qa-audit-dashboard">
+      <div class="proj-thumb" style="background:#111111"><span class="proj-cat">AI · QA Automation</span></div>
+      <div class="proj-body">
+        <div class="tags"><span class="tag">Playwright</span><span class="tag">Telemetry</span><span class="tag">Audit</span><span class="tag">Dashboard</span></div>
+        <h3>Autonomous QA Audit Dashboard</h3>
+        <p>Runs UI and API telemetry-driven analysis to generate a visual QA report, blocker registry, and strategic recommendations from a single orchestration flow.</p>
+        <a href="/autonomous-qa-audit-dashboard">View project →</a>
       </div>
     </div>
 
@@ -245,8 +266,8 @@ footer{background:#060608;padding:5rem 0 2rem}
     <h2 data-content-key="cta_title">Have a project in mind?</h2>
     <p data-content-key="cta_text">Send us a brief and we will respond within one business day with a clear scope and fixed-price proposal.</p>
     <div class="cta-actions">
-      <a href="booking.html" class="btn">Book a consultation</a>
-      <a href="pattern.html" class="btn btn-outline">Browse services</a>
+      <a data-i18n="nav.booking" href="/booking" class="btn">Book a consultation</a>
+      <a data-i18n="nav.pattern" href="/pattern" class="btn btn-outline">Browse services</a>
     </div>
   </div>
 </div>
@@ -269,26 +290,31 @@ footer{background:#060608;padding:5rem 0 2rem}
       <div class="reveal d1">
         <h3>Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="pattern.html">Pattern</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/digital" data-i18n="nav.digital">Digital</a>
+          <a href="/transfers" data-i18n="nav.transfers">Transfers</a>
+          <a href="/tourism" data-i18n="nav.tourism">Travel</a>
+          <a href="/portfolio" data-i18n="nav.portfolio">Portfolio</a>
+          <a href="/qa" data-i18n="nav.qa">QA</a>
+          <a href="/pattern" data-i18n="nav.pattern">Pattern</a>
+          <a href="/platform" data-i18n="nav.platform">Platform</a>
+          <a href="/blog" data-i18n="nav.blog">Blog</a>
+          <a href="/about" data-i18n="nav.about">About</a>
+          <a href="/contact" data-i18n="nav.contact">Contact</a>
+          <a href="/booking" data-i18n="nav.booking">Book Now</a>
+        
         </div>
       </div>
       <div class="reveal d2">
         <h3>Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a data-i18n="nav.contact" href="/contact">Contact</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer.copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
@@ -328,5 +354,6 @@ filters.forEach(btn => {
   });
 })();
 </script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

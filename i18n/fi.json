@@ -1,0 +1,19 @@
+{
+  "nav.home": "Koti",
+  "nav.about": "Meista",
+  "nav.digital": "Digitaaliset",
+  "nav.tourism": "Matkailu",
+  "nav.transfers": "Kuljetukset",
+  "nav.portfolio": "Portfolio",
+  "nav.contact": "Yhteystiedot",
+  "nav.qa": "Laadunvarmistus",
+  "nav.booking": "Varaa",
+  "nav.pattern": "Kaavat",
+  "nav.platform": "Alusta",
+  "nav.blog": "Blogi",
+  "hero.title": "Helsingin ensiluokkainen kuljetus- ja digitaalitoimisto",
+  "hero.subtitle": "Lentokenttakuljetuksia, verkkosuunnittelua, hakukoneoptimointia ja ohjelmistotestausta - Helsingista globaalisti.",
+  "cta.book": "VARAA NYT",
+  "cta.quote": "PYYDA TARJOUS",
+  "footer.copyright": "Luxival © 2026 · Ensiluokkaiset digitaaliset ja kuljetuskokemukset"
+}

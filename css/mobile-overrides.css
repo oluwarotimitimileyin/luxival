@@ -62,29 +62,66 @@ iframe {
 
   .hero {
     grid-template-columns: 1fr !important;
-    gap: 1.75rem !important;
     min-height: auto !important;
-    padding-top: 7.25rem !important;
+    gap: 1.75rem !important;
+    padding-top: 8rem !important;
+  }
+
+  .hero-right {
+    order: -1 !important;
   }
 
   .hero-right,
   .hero-img,
   .port-header {
-    height: min(52vh, 460px) !important;
+    height: min(45vh, 380px) !important;
   }
 
   .grid-2,
   .grid-3,
   .grid-6,
   .services-grid,
+  .svc-grid,
   .contact-grid,
   .booking-grid,
   .process-grid,
+  .process-steps,
+  .project-grid,
+  .season-grid,
+  .calc-grid,
+  .faq-grid,
+  .planner-grid,
+  .pref-grid,
+  .app-grid,
+  .tiktok-grid,
   .stats-grid,
+  .proof-grid,
   .footer-grid,
   .founder-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
+  }
+
+  .hero-lp-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-grid {
+    gap: 3rem !important;
+  }
+
+  .quote-grid,
+  .exp-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .proof-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .hero-actions,
@@ -106,9 +143,23 @@ iframe {
   }
 
   .nav-links {
+    display: none;
+    flex-direction: column !important;
+    position: fixed !important;
+    inset: 4.5rem 1rem auto 1rem !important;
+    background: rgba(10,11,15,.97) !important;
+    border: 1px solid rgba(201,169,106,.18) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    gap: 1.2rem !important;
+    z-index: 999 !important;
     max-height: calc(100vh - 6rem) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links.open {
+    display: flex !important;
   }
 
   .nav-links a {
@@ -121,6 +172,55 @@ iframe {
     text-align: center !important;
   }
 
+  .nav-burger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .5rem;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    transition: all .3s;
+  }
+
+  .nav-burger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px,5px) !important;
+  }
+
+  .nav-burger.open span:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .nav-burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px,-5px) !important;
+  }
+
+  .sticky-cta {
+    display: flex !important;
+  }
+
+  body {
+    padding-bottom: 72px !important;
+  }
+
+  .svc,
+  .card,
+  .proj,
+  .form-card,
+  .info-block,
+  .book-card,
+  .newsletter-card {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
   .chat-panel {
     width: min(92vw, 360px) !important;
   }
@@ -129,7 +229,7 @@ iframe {
 /* Phones */
 @media (max-width: 600px) {
   section {
-    padding: 3.25rem 0 !important;
+    padding: 2.75rem 0 !important;
   }
 
   .container {
@@ -156,7 +256,7 @@ iframe {
   .tracking-vid,
   .svc-media,
   .card-media {
-    height: min(44vh, 340px) !important;
+    height: min(38vh, 280px) !important;
   }
 
   .hero-form,

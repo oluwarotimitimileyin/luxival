@@ -2,11 +2,12 @@
 (function () {
   'use strict';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const desktopInteractive = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---- Custom cursor ---- */
   const dot = document.getElementById('cur-dot');
   const ring = document.getElementById('cur-ring');
-  if (dot && ring) {
+  if (desktopInteractive && dot && ring) {
     let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
@@ -66,25 +67,27 @@
   });
 
   /* ---- 3D card tilt ---- */
-  document.querySelectorAll('[data-tilt]').forEach(el => {
-    const s = el.classList.contains('hover-card') ? 12 : 7;
-    el.addEventListener('pointermove', e => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      el.style.transform = `perspective(900px) rotateX(${-y * s}deg) rotateY(${x * s}deg) scale(1.02)`;
-      el.style.boxShadow = `${-x * 18}px ${-y * 18}px 40px rgba(201,169,106,.07)`;
+  if (desktopInteractive) {
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      const s = el.classList.contains('hover-card') ? 12 : 7;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(900px) rotateX(${-y * s}deg) rotateY(${x * s}deg) scale(1.02)`;
+        el.style.boxShadow = `${-x * 18}px ${-y * 18}px 40px rgba(201,169,106,.07)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s';
+        el.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
+        el.style.boxShadow = '';
+        setTimeout(() => el.style.transition = '', 700);
+      });
     });
-    el.addEventListener('pointerleave', () => {
-      el.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s';
-      el.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
-      el.style.boxShadow = '';
-      setTimeout(() => el.style.transition = '', 700);
-    });
-  });
+  }
 
   /* ---- Magnetic buttons ---- */
-  if (!prefersReducedMotion) {
+  if (!prefersReducedMotion && desktopInteractive) {
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('pointermove', e => {
         const r = btn.getBoundingClientRect();

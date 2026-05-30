@@ -8,14 +8,26 @@
 <meta name="description" content="Conversion-focused web design, SEO, and QA software testing from Helsinki. ISTQB-certified. We build sites that rank, convert, and scale.">
 <meta property="og:title" content="Luxival Digital | Web Design & SEO Helsinki">
 <meta property="og:description" content="Web design, SEO, QA testing, and agentic workflow services. ISTQB-certified. Free website audit available.">
-<meta property="og:url" content="https://luxival.com/digital">
+<meta property="og:url" content="https://www.luxival.com/digital">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/digital">
+<link rel="canonical" href="https://www.luxival.com/digital">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/digital">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/digital?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/digital?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/digital?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/digital?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/digital?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/digital?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/digital?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/digital?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/digital?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/digital">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .container{max-width:1200px;margin:0 auto;padding:0 5%}
 section{padding:6rem 0}
 .gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3rem 0}
@@ -37,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-lp{min-height:88vh;display:flex;align-items:center;padding-top:7rem;background:linear-gradient(135deg,rgba(201,169,106,.04) 0%,transparent 60%)}
 .hero-lp-inner{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:center}
 .hero-lp-img{aspect-ratio:4/3;border-radius:4px;overflow:hidden;border:1px solid var(--border);position:relative}
-.hero-lp-img img{width:100%;height:100%;object-fit:cover}
+.hero-lp-img picture,.hero-lp-img img{width:100%;height:100%;display:block}.hero-lp-img img{object-fit:cover}
 
 /* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
@@ -92,39 +104,36 @@ footer a:hover{opacity:1}
 }
 </style>
 <!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 </head>
 <body>
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="transfers.html">Transfers</a></li>
-    <li><a href="tourism.html">Travel</a></li>
-    <li><a href="pattern.html" class="active">Pattern</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="audit.html">Free Audit</a></li>
-    <li><a href="booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a data-i18n="nav.transfers" href="/transfers">Transfers</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism">Travel</a></li>
+    <li><a data-i18n="nav.pattern" href="/pattern" class="active">Pattern</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
+    <li><a data-i18n="nav.platform" href="/platform">Platform</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a href="/audit">Free Audit</a></li>
+    <li><a data-i18n="nav.booking" href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
+
+<main id="main">
 <!-- HERO -->
 <section class="hero-lp container">
   <div class="hero-lp-inner">
     <div>
       <span class="eyebrow">Digital services · Helsinki</span>
-      <h1>Web Design &amp; Digital Services That Convert</h1>
+      <h1 data-i18n="hero.title">Web Design &amp; Digital Services That Convert</h1>
       <p style="font-size:1.1rem;opacity:.85;max-width:480px">ISTQB-certified quality, agentic workflow strategy, SEO-first builds — from Helsinki to global reach. We make your site earn its keep.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
-        <a href="audit.html" class="btn">Get a Free Audit →</a>
-        <a href="portfolio.html" style="font-size:.82rem;letter-spacing:1px;text-transform:uppercase;opacity:.6;display:flex;align-items:center;gap:.4rem;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">See portfolio →</a>
+        <a href="/audit" class="btn">Get a Free Audit →</a>
+        <a data-i18n="nav.portfolio" href="/portfolio" style="font-size:.82rem;letter-spacing:1px;text-transform:uppercase;opacity:.6;display:flex;align-items:center;gap:.4rem;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">See portfolio →</a>
       </div>
       <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
         <div><span style="font-size:1.8rem;font-weight:300;color:var(--gold);line-height:1">100+</span><br><span style="font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.45">Audits done</span></div>
@@ -133,7 +142,11 @@ footer a:hover{opacity:1}
       </div>
     </div>
     <div class="hero-lp-img">
-      <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library Helsinki — modern web design inspiration">
+      <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 820px) 100vw, 45vw">
+        <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 820px) 100vw, 45vw">
+        <img src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Oodi Library Helsinki — modern web design inspiration" width="1600" height="1067" decoding="async" fetchpriority="high">
+      </picture>
     </div>
   </div>
 </section>
@@ -148,25 +161,25 @@ footer a:hover{opacity:1}
       <span class="svc-icon">⬡</span>
       <h3>Web Design & Dev</h3>
       <p>Conversion-focused, mobile-first websites built for speed, clarity, and brand authority. From concept to code.</p>
-      <a href="pattern.html" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
+      <a data-i18n="nav.pattern" href="/pattern" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
     </div>
     <div class="svc-card">
       <span class="svc-icon">⬡</span>
       <h3>SEO Strategy</h3>
       <p>Search-first content architecture, keyword strategy, and technical SEO so your site ranks where your customers look.</p>
-      <a href="pattern.html" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
+      <a data-i18n="nav.pattern" href="/pattern" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
     </div>
     <div class="svc-card">
       <span class="svc-icon">⬡</span>
       <h3>QA Software Testing</h3>
       <p>ISTQB-certified test planning, exploratory testing, and automated regression — ships confidence, not bugs.</p>
-      <a href="qa.html" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
+      <a data-i18n="nav.qa" href="/qa" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
     </div>
     <div class="svc-card">
       <span class="svc-icon">⬡</span>
       <h3>Agentic Workflows</h3>
       <p>AI-powered automation pipelines that cut manual work, speed delivery, and give your team leverage at scale.</p>
-      <a href="services/ai-agents.html" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
+      <a href="/services/ai-agents" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
     </div>
     <div class="svc-card">
       <span class="svc-icon">⬡</span>
@@ -178,7 +191,7 @@ footer a:hover{opacity:1}
       <span class="svc-icon">⬡</span>
       <h3>Platform & SaaS</h3>
       <p>Full-stack product development — from idea to deployable SaaS platform with auth, payments, and API architecture.</p>
-      <a href="platform.html" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
+      <a data-i18n="nav.platform" href="/platform" style="font-size:.8rem;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem">Explore →</a>
     </div>
   </div>
 </section>
@@ -228,8 +241,11 @@ footer a:hover{opacity:1}
     <span class="eyebrow">No obligation · 48h turnaround</span>
     <h2>Get Your Free Website Audit</h2>
     <p style="margin-bottom:2rem">Just your website URL and email — we'll do the rest and send your report within 48 hours.</p>
+    <label class="sr-only" for="aUrl">Your website URL</label>
     <input type="url" id="aUrl" placeholder="Your website URL (e.g. https://yoursite.com)">
+    <label class="sr-only" for="aEmail">Your email address</label>
     <input type="email" id="aEmail" placeholder="Your email address">
+    <label class="sr-only" for="aName">Your name</label>
     <input type="text" id="aName" placeholder="Your name (optional)">
     <button class="btn btn-full" id="aSubmit" type="button">Request Free Audit →</button>
     <p id="aStatus" style="margin-top:.8rem"></p>
@@ -239,16 +255,17 @@ footer a:hover{opacity:1}
   <div class="xsell">
     <h3>Visiting Helsinki for business?</h3>
     <p>Let Luxival handle your airport transfers — premium chauffeur service with live GPS tracking and white-glove luggage assist.</p>
-    <a href="transfers.html" class="btn">Book a Transfer →</a>
+    <a data-i18n="nav.transfers" href="/transfers" class="btn">Book a Transfer →</a>
   </div>
 </section>
 
 <!-- Mobile sticky CTA -->
 <div class="sticky-cta">
   <a href="#audit" class="btn">Free Audit</a>
-  <a href="transfers.html" class="btn-outline">Book Transfer</a>
+  <a data-i18n="nav.transfers" href="/transfers" class="btn-outline">Book Transfer</a>
 </div>
 
+</main>
 <footer>
   <div class="container">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:3rem;padding:4rem 0 2rem">
@@ -261,36 +278,34 @@ footer a:hover{opacity:1}
       <div>
         <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Services</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a href="transfers.html" style="opacity:.6;font-size:.9rem">Transfers</a></li>
-          <li><a href="tourism.html" style="opacity:.6;font-size:.9rem">Travel & Tourism</a></li>
-          <li><a href="pattern.html" style="opacity:.6;font-size:.9rem">Pattern</a></li>
-          <li><a href="audit.html" style="opacity:.6;font-size:.9rem">Free Website Audit</a></li>
+          <li><a data-i18n="nav.transfers" href="/transfers" style="opacity:.6;font-size:.9rem">Transfers</a></li>
+          <li><a data-i18n="nav.tourism" href="/tourism" style="opacity:.6;font-size:.9rem">Travel & Tourism</a></li>
+          <li><a data-i18n="nav.pattern" href="/pattern" style="opacity:.6;font-size:.9rem">Pattern</a></li>
+          <li><a href="/audit" style="opacity:.6;font-size:.9rem">Free Website Audit</a></li>
         </ul>
       </div>
       <div>
         <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Company</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a href="about.html" style="opacity:.6;font-size:.9rem">About</a></li>
-          <li><a href="portfolio.html" style="opacity:.6;font-size:.9rem">Portfolio</a></li>
-          <li><a href="blog/index.html" style="opacity:.6;font-size:.9rem">Blog</a></li>
-          <li><a href="contact.html" style="opacity:.6;font-size:.9rem">Contact</a></li>
+          <li><a data-i18n="nav.about" href="/about" style="opacity:.6;font-size:.9rem">About</a></li>
+          <li><a data-i18n="nav.portfolio" href="/portfolio" style="opacity:.6;font-size:.9rem">Portfolio</a></li>
+          <li><a data-i18n="nav.blog" href="/blog" style="opacity:.6;font-size:.9rem">Blog</a></li>
+          <li><a data-i18n="nav.contact" href="/contact" style="opacity:.6;font-size:.9rem">Contact</a></li>
         </ul>
       </div>
       <div>
         <h4 style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Legal</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a href="privacy.html" style="opacity:.6;font-size:.9rem">Privacy Policy</a></li>
-          <li><a href="terms.html" style="opacity:.6;font-size:.9rem">Terms of Service</a></li>
+          <li><a href="/privacy" style="opacity:.6;font-size:.9rem">Privacy Policy</a></li>
+          <li><a href="/terms" style="opacity:.6;font-size:.9rem">Terms of Service</a></li>
         </ul>
       </div>
     </div>
-    <p style="opacity:.35;font-size:.78rem;border-top:1px solid rgba(255,255,255,.06);padding-top:2rem">© 2026 Luxival · Premium Chauffeur & Digital Services · Helsinki, Finland</p>
+    <p data-i18n="footer.copyright" style="opacity:.35;font-size:.78rem;border-top:1px solid rgba(255,255,255,.06);padding-top:2rem">© 2026 Luxival · Premium Chauffeur & Digital Services · Helsinki, Finland</p>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
+<script src="/js/supabase-loader.js" defer></script>
 <script>
 document.getElementById('aSubmit').addEventListener('click',async()=>{
   const url=document.getElementById('aUrl').value.trim();
@@ -300,8 +315,9 @@ document.getElementById('aSubmit').addEventListener('click',async()=>{
   if(!url||!email){st.style.color='#f77';st.textContent='Please enter your website URL and email.';return;}
   st.style.color='var(--gold)';st.textContent='Sending…';
   const payload={name:name||'Audit request',email,message:`Website audit request for: ${url}`,source:'digital-audit-form',status:'new'};
-  if(window.LuxivalSupabase){
-    const{error}=await window.LuxivalSupabase.submitContactInquiry(payload);
+  const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
+  if(db){
+    const{error}=await db.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error. Email us at support@luxival.com';}
     else{window.location.href='thank-you-digital.html';}
   } else {
@@ -313,5 +329,8 @@ document.getElementById('aSubmit').addEventListener('click',async()=>{
 var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
 if(b&&l){b.addEventListener('click',function(){var o=l.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o)})}
 </script>
+<script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

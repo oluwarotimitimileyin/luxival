@@ -8,16 +8,16 @@
 <meta name="description" content="Luxival services: web development, SEO services, UGC character content, QA software testing, offline installation processes, and luxury finish travel experiences in Helsinki.">
 <meta property="og:title" content="Services | Luxival — Premium Digital, Engineering & Transport">
 <meta property="og:description" content="Luxival services: website design, SEO, lead generation, 3D UX, QA, mechanical engineering, electrical design, AI agents, and Helsinki airport transfers.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/services">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+<meta property="og:url" content="https://www.luxival.com/services">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/services">
-<link rel="stylesheet" href="css/mobile-overrides.css">
+<link rel="canonical" href="https://www.luxival.com/services">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
 #cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
@@ -73,14 +73,9 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}.d5{transition-delay:.64s}
-@media(max-width:900px){.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
+@media(max-width:820px){.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
 </style>
 <!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 </head>
 <body data-page-key="services">
 <div id="cur-dot"></div>
@@ -88,28 +83,30 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div id="prog"></div>
 
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html" class="active">Digital Services</a></li>
-    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA &amp; Audit</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/services" class="active">Digital Services</a></li>
+    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/qa">QA &amp; Audit</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
+
+<main id="main">
 <!-- HERO -->
 <section class="container hero">
   <span class="eyebrow reveal" data-content-key="hero_eyebrow">All Services · Luxival</span>
   <h1 class="reveal d1" data-content-key="hero_title">Premium services<br>across every dimension.</h1>
   <p class="lead reveal d2" data-content-key="hero_subtitle">Luxury finish traveling experience, web development, SEO services, UGC character content, QA software testing, and offline installation processes — all under one cohesive brand.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-    <a href="booking.html" class="btn">Book a consultation</a>
-    <a href="pattern.html" class="btn btn-outline">Engineering disciplines</a>
+    <a href="/booking" class="btn">Book a consultation</a>
+    <a href="/pattern" class="btn btn-outline">Engineering disciplines</a>
   </div>
 </section>
 
@@ -142,7 +139,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>SEO Analysis & Strategy</h3>
       <p>Technical and content-level audit grounded in local Helsinki search intent and international digital visibility goals.</p>
       <div class="tag-row"><span class="tag">Technical SEO</span><span class="tag">Local SEO</span><span class="tag">Audit</span></div>
-      <div class="svc-cta"><a href="booking.html" class="btn">Request Audit</a><a href="qa.html" class="learn-link">QA-tested process →</a></div>
+      <div class="svc-cta"><a href="/booking" class="btn">Request Audit</a><a href="/qa" class="learn-link">QA-tested process →</a></div>
     </div>
 
     <div class="svc reveal d1" data-tilt>
@@ -150,7 +147,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>SEO Competitor Analysis</h3>
       <p>Actionable competitor insights that reveal content gaps, keyword opportunities, and ranking strategy to outpace the market.</p>
       <div class="tag-row"><span class="tag">Competitor</span><span class="tag">Keywords</span><span class="tag">Gaps</span></div>
-      <div class="svc-cta"><a href="booking.html" class="btn">Request Analysis</a></div>
+      <div class="svc-cta"><a href="/booking" class="btn">Request Analysis</a></div>
     </div>
 
     <div class="svc reveal d2" data-tilt>
@@ -158,7 +155,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Offline Installation Processes</h3>
       <p>Structured on-site setup, signage deployment, and offline installation workflows for retail, hospitality, or venue launches.</p>
       <div class="tag-row"><span class="tag">On-site Setup</span><span class="tag">Install Ops</span><span class="tag">Handover</span></div>
-      <div class="svc-cta"><a href="booking.html" class="btn">Get Started</a></div>
+      <div class="svc-cta"><a href="/booking" class="btn">Get Started</a></div>
     </div>
 
     <div class="svc reveal d3" data-tilt>
@@ -174,7 +171,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>UX Funnel Optimisation</h3>
       <p>Flow design, user journey mapping, and A/B-ready recommendations to keep visitors moving toward action — measured, not guessed.</p>
       <div class="tag-row"><span class="tag">UX Maps</span><span class="tag">A/B</span><span class="tag">Analytics</span></div>
-      <div class="svc-cta"><a href="booking.html" class="btn">Request Review</a></div>
+      <div class="svc-cta"><a href="/booking" class="btn">Request Review</a></div>
     </div>
 
     <div class="svc reveal d2" data-tilt>
@@ -182,7 +179,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Web QA & Quality Assurance</h3>
       <p>Structured testing, performance validation, and release confidence for any website or digital product — ISTQB-certified approach.</p>
       <div class="tag-row"><span class="tag">Playwright</span><span class="tag">Selenium</span><span class="tag">ISTQB</span></div>
-      <div class="svc-cta"><a href="services/software-testing.html" class="btn">Learn & Book</a><a href="qa.html" class="learn-link">QA detail →</a></div>
+      <div class="svc-cta"><a href="services/software-testing.html" class="btn">Learn & Book</a><a href="/qa" class="learn-link">QA detail →</a></div>
     </div>
 
     <div class="svc reveal d3" data-tilt>
@@ -190,7 +187,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>UCG Character Content</h3>
       <p>Character-led UCG content systems, visual storytelling, and social promotion crafted to grow awareness and search visibility.</p>
       <div class="tag-row"><span class="tag">UCG</span><span class="tag">Storytelling</span><span class="tag">Growth</span></div>
-      <div class="svc-cta"><a href="booking.html" class="btn">Get Started</a></div>
+      <div class="svc-cta"><a href="/booking" class="btn">Get Started</a></div>
     </div>
 
     <div class="svc reveal d1" data-tilt>
@@ -198,7 +195,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Tourism & Airport Transfers</h3>
       <p>Luxury finish traveling experience with Helsinki-Vantaa rides, private transport, city-to-city trips, and bespoke Finland tourism planning.</p>
       <div class="tag-row"><span class="tag">Airport</span><span class="tag">Private Rides</span><span class="tag">Tourism</span></div>
-      <div class="svc-cta"><a href="tourism.html" class="btn">Book a Ride</a><a href="tourism.html" class="learn-link">Pricing →</a></div>
+      <div class="svc-cta"><a href="/tourism" class="btn">Book a Ride</a><a href="/tourism" class="learn-link">Pricing →</a></div>
     </div>
 
   </div>
@@ -225,12 +222,13 @@ footer{background:#060608;padding:5rem 0 2rem}
     <h2 data-content-key="cta_title">Tell us what you need.</h2>
     <p data-content-key="cta_text">Send a brief and we will respond within one business day with a clear scope and a transparent price.</p>
     <div class="cta-actions">
-      <a href="booking.html" class="btn">Book a consultation</a>
-      <a href="pattern.html" class="btn btn-outline">Engineering disciplines</a>
+      <a href="/booking" class="btn">Book a consultation</a>
+      <a href="/pattern" class="btn btn-outline">Engineering disciplines</a>
     </div>
   </div>
 </div>
 
+</main>
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -249,22 +247,22 @@ footer{background:#060608;padding:5rem 0 2rem}
       <div class="reveal d1">
         <h3>Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="pattern.html">Pattern</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="/">Home</a>
+          <a href="/tourism">Travel</a>
+          <a href="/pattern">Pattern</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/platform">Platform</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/qa">QA</a>
         </div>
       </div>
       <div class="reveal d2">
         <h3>Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
     </div>
@@ -272,9 +270,9 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="/js/config.js"></script>
 <script src="/js/site-content.js"></script>
 <script src="/js/luxival.js"></script>
+<script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

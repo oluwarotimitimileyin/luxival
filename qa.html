@@ -8,10 +8,21 @@
 <meta name="description" content="Luxival QA services: ISTQB-certified software tester support, test automation, website quality audits, performance validation, and CI/CD-integrated testing from Helsinki.">
 <meta property="og:title" content="QA & Software Testing | Luxival — ISTQB Certified Quality Assurance">
 <meta property="og:description" content="ISTQB-certified test automation, website quality audits, performance validation, and CI/CD-integrated testing from Helsinki.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/qa">
+<meta property="og:image" content="https://www.luxival.com/assets/images/finland/architecture/oodi-library.jpg">
+<meta property="og:url" content="https://www.luxival.com/qa">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/qa">
+<link rel="canonical" href="https://www.luxival.com/qa">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/qa">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/qa?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/qa?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/qa?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/qa?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/qa?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/qa?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/qa?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/qa?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/qa?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/qa">
 <link rel="stylesheet" href="css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
@@ -73,7 +84,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
-@media(max-width:900px){.grid-3{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
+
 </style>
 <!-- Vercel Speed Insights -->
 <script>
@@ -88,15 +99,15 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div id="prog"></div>
 
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Digital Services</a></li>
-    <li><a href="tourism.html">Tourism &amp; Transport</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html" class="active">QA &amp; Audit</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.digital" href="/services">Digital Services</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
+    <li><a data-i18n="nav.qa" href="/qa" class="active">QA &amp; Audit</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a data-i18n="nav.contact" href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -105,10 +116,10 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- HERO -->
 <section class="container hero">
   <span class="eyebrow reveal">QA & Software Testing · Luxival</span>
-  <h1 class="reveal d1">Quality assurance<br>you can count on.</h1>
-  <p class="lead reveal d2">ISTQB-certified software tester support with structured QA processes for websites, mobile apps, APIs, and digital products. Every release — confident and clean.</p>
+  <h1 data-i18n="hero.title" class="reveal d1">Quality assurance<br>you can count on.</h1>
+  <p data-i18n="hero.subtitle" class="lead reveal d2">ISTQB-certified software tester support with structured QA processes for websites, mobile apps, APIs, and digital products. Every release — confident and clean.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="booking.html" class="btn">Book a QA consultation</a>
+      <a data-i18n="nav.booking" href="/booking" class="btn">Book a QA consultation</a>
       <a href="services/software-testing.html" class="btn btn-outline">Full QA service detail</a>
   </div>
 </section>
@@ -180,7 +191,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     <h2>Ready to ship with confidence?</h2>
     <p>Send us your product brief and we will scope a QA plan that matches your stack, timeline, and risk tolerance.</p>
     <div class="cta-actions">
-      <a href="booking.html" class="btn">Book a QA consultation</a>
+      <a data-i18n="nav.booking" href="/booking" class="btn">Book a QA consultation</a>
       <a href="services/software-testing.html" class="btn btn-outline">Full service details</a>
     </div>
   </div>
@@ -199,29 +210,35 @@ footer{background:#060608;padding:5rem 0 2rem}
       <div class="reveal d1">
         <h3>Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="pattern.html">Pattern</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/digital" data-i18n="nav.digital">Digital</a>
+          <a href="/transfers" data-i18n="nav.transfers">Transfers</a>
+          <a href="/tourism" data-i18n="nav.tourism">Travel</a>
+          <a href="/portfolio" data-i18n="nav.portfolio">Portfolio</a>
+          <a href="/qa" data-i18n="nav.qa">QA</a>
+          <a href="/pattern" data-i18n="nav.pattern">Pattern</a>
+          <a href="/platform" data-i18n="nav.platform">Platform</a>
+          <a href="/blog" data-i18n="nav.blog">Blog</a>
+          <a href="/about" data-i18n="nav.about">About</a>
+          <a href="/contact" data-i18n="nav.contact">Contact</a>
+          <a href="/booking" data-i18n="nav.booking">Book Now</a>
+        
         </div>
       </div>
       <div class="reveal d2">
         <h3>Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a data-i18n="nav.contact" href="/contact">Contact</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer.copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
 <script src="js/luxival.js"></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

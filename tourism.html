@@ -8,16 +8,27 @@
 <meta name="description" content="Luxival Tourism: premium Helsinki-Vantaa airport transfers, private rides, Finland travel planning, and seasonal experiences. Book your ride online.">
 <meta property="og:title" content="Tourism & Airport Transfers | Luxival Finland">
 <meta property="og:description" content="Premium Helsinki-Vantaa airport transfers, private rides, Finland travel planning, and seasonal experiences. Book your ride online.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/tourism">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+<meta property="og:url" content="https://www.luxival.com/tourism">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/tourism">
-<link rel="stylesheet" href="css/mobile-overrides.css">
+<link rel="canonical" href="https://www.luxival.com/tourism">
+<link rel="alternate" hreflang="en" href="https://www.luxival.com/tourism">
+<link rel="alternate" hreflang="fi" href="https://www.luxival.com/tourism?lang=fi">
+<link rel="alternate" hreflang="sv" href="https://www.luxival.com/tourism?lang=sv">
+<link rel="alternate" hreflang="de" href="https://www.luxival.com/tourism?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.luxival.com/tourism?lang=fr">
+<link rel="alternate" hreflang="es" href="https://www.luxival.com/tourism?lang=es">
+<link rel="alternate" hreflang="zh" href="https://www.luxival.com/tourism?lang=zh">
+<link rel="alternate" hreflang="ar" href="https://www.luxival.com/tourism?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://www.luxival.com/tourism?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://www.luxival.com/tourism?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/tourism">
+<link rel="stylesheet" href="/css/mobile-overrides.css">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
 #cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
@@ -48,7 +59,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hki-clock{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;font-family:monospace;margin-top:.8rem;text-align:right}
 /* Image frames */
 .img-frame{background:#1a1c24;border:1px solid rgba(201,169,106,.22);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.img-frame img{width:100%;height:100%;object-fit:cover}
+.img-frame picture,.img-frame img{width:100%;height:100%;display:block}.img-frame img{object-fit:cover}
 .img-frame.hero-img{min-height:420px;border-radius:var(--card-r)}
 .img-frame.card-img{min-height:160px;border-radius:var(--card-r) var(--card-r) 0 0;border-bottom:none}
 .img-frame.dest-img{min-height:130px;border-radius:var(--card-r) var(--card-r) 0 0;border-bottom:none}
@@ -147,14 +158,9 @@ footer{background:#060608;padding:5rem 0 2rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
-@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:8rem}.season-grid,.grid-2,.grid-3,.calc-grid,.faq-grid,.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}}
+
 </style>
 <!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 </head>
 <body data-page-key="tourism">
 <div id="cur-dot"></div>
@@ -162,26 +168,28 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div id="prog"></div>
 
 <nav id="mainNav">
-  <a href="index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Digital Services</a></li>
-    <li><a href="tourism.html" class="active">Tourism &amp; Transport</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="qa.html">QA &amp; Audit</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.digital" href="/services">Digital Services</a></li>
+    <li><a data-i18n="nav.tourism" href="/tourism" class="active">Tourism &amp; Transport</a></li>
+    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
+    <li><a data-i18n="nav.qa" href="/qa">QA &amp; Audit</a></li>
+    <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li><a data-i18n="nav.contact" href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
+
+<main id="main">
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
     <span class="eyebrow reveal" data-content-key="hero_eyebrow">Tourism & Transport · Helsinki</span>
-    <h1 class="reveal d1" data-content-key="hero_title">Premium airport<br>transfer & Finland<br>travel experience.</h1>
-    <p class="subhead reveal d2" data-content-key="hero_subtitle">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one luxury finish travel experience.</p>
+    <h1 data-i18n="hero.title" class="reveal d1" data-content-key="hero_title">Premium airport<br>transfer & Finland<br>travel experience.</h1>
+    <p data-i18n="hero.subtitle" class="subhead reveal d2" data-content-key="hero_subtitle">Seamless Helsinki-Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning — wrapped in one luxury finish travel experience.</p>
     <div class="hero-actions reveal d3">
       <a href="#pricing" class="btn">Estimate your fare</a>
       <a href="#seasons" class="btn btn-outline">Explore Finland</a>
@@ -189,7 +197,11 @@ footer{background:#060608;padding:5rem 0 2rem}
   </div>
   <div class="reveal d2">
     <div class="img-frame hero-img">
-      <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Northern lights over Lapland" width="1600" height="900" decoding="async" fetchpriority="high">
+      <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.avif 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.avif 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.avif 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.avif 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+        <source type="image/webp" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.webp 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.webp 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.webp 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw">
+        <img src="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp" alt="Northern lights over Lapland" width="1600" height="900" decoding="async" fetchpriority="high">
+      </picture>
     </div>
     <div class="hki-clock" id="hkiClock">Helsinki 00:00:00</div>
   </div>
@@ -222,7 +234,11 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="season-grid">
     <div class="season-card reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/climate/lake-saimaa-frozen.jpg" alt="Frozen Lake Saimaa in winter" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.avif 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.avif 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.avif 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.avif 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.webp 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.webp 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.webp 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.webp" alt="Frozen Lake Saimaa in winter" width="1600" height="900" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="season-card-body">
         <h3>Winter</h3>
@@ -231,7 +247,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo old town in spring" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.avif 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.avif 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.avif 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.avif 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.webp 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.webp 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.webp 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Porvoo old town in spring" width="1600" height="944" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="season-card-body">
         <h3>Spring</h3>
@@ -240,7 +260,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Koli National Park in summer" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/koli-national-park/koli-national-park-768.webp" alt="Koli National Park in summer" width="1600" height="367" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="season-card-body">
         <h3>Summer</h3>
@@ -249,7 +273,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="season-card reveal d4">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Suomenlinna fortress in autumn light" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Suomenlinna fortress in autumn light" width="1600" height="1202" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="season-card-body">
         <h3>Autumn</h3>
@@ -268,7 +296,11 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="grid-3">
     <div class="feature reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Helsinki Cathedral for airport transfers" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.avif 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.avif 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.avif 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.avif 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.webp 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.webp 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.webp 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Helsinki Cathedral for airport transfers" width="1600" height="1781" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -279,7 +311,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Turku Castle for private rides" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/turku-castle/turku-castle-480.avif 480w, /assets/images/optimized/turku-castle/turku-castle-768.avif 768w, /assets/images/optimized/turku-castle/turku-castle-1024.avif 1024w, /assets/images/optimized/turku-castle/turku-castle-1440.avif 1440w, /assets/images/optimized/turku-castle/turku-castle-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/turku-castle/turku-castle-480.webp 480w, /assets/images/optimized/turku-castle/turku-castle-768.webp 768w, /assets/images/optimized/turku-castle/turku-castle-1024.webp 1024w, /assets/images/optimized/turku-castle/turku-castle-1440.webp 1440w, /assets/images/optimized/turku-castle/turku-castle-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/turku-castle/turku-castle-768.webp" alt="Turku Castle for private rides" width="1600" height="1200" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -290,7 +326,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Oodi Library for hotel sourcing" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Oodi Library for hotel sourcing" width="1600" height="1067" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -301,7 +341,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d1">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church for airport pickup" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.avif 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.avif 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.avif 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.avif 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.webp 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.webp 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.webp 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Temppeliaukio Church for airport pickup" width="1600" height="900" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -312,7 +356,11 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d2">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Coastal Finland for city to city travel" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Coastal Finland for city to city travel" width="1600" height="1202" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
@@ -323,13 +371,17 @@ footer{background:#060608;padding:5rem 0 2rem}
     </div>
     <div class="feature reveal d3">
       <div class="img-frame card-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Porvoo riverfront for tourism planning" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.avif 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.avif 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.avif 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.avif 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.webp 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.webp 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.webp 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Porvoo riverfront for tourism planning" width="1600" height="944" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="feature-body">
         <div class="check">✓</div>
         <h3>Tourism planning</h3>
         <p>Seasonal Finland storytelling for winter, spring, and summer combined with bespoke route design.</p>
-        <a href="tourism-planning.html" class="feature-link">Learn more →</a>
+        <a href="/tourism-planning" class="feature-link">Learn more →</a>
       </div>
     </div>
   </div>
@@ -350,73 +402,121 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="dest-grid" id="destGrid">
     <div class="dest-card reveal d1" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Helsinki Design District inspiration" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Helsinki Design District inspiration" width="1600" height="1067" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Helsinki Design District</h3><p>Iconic galleries, boutique hotels, and modern restaurants that shape the city's creative pulse.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/helsinki-cathedral.jpg" alt="Ateneum Art Gallery district in Helsinki" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.avif 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.avif 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.avif 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.avif 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.webp 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.webp 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.webp 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Ateneum Art Gallery district in Helsinki" width="1600" height="1781" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Ateneum & Art Galleries</h3><p>Classic Finnish art, modern exhibits, and cultural destinations for discerning travellers.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Lakeside retreats in Finland" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/koli-national-park/koli-national-park-768.webp" alt="Lakeside retreats in Finland" width="1600" height="367" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Lakeside Retreats</h3><p>Quiet private villas and summer cottages near sauna lakes, just a short premium ride from Helsinki.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/turku-castle.jpg" alt="Helsinki jazz clubs and nightlife" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/turku-castle/turku-castle-480.avif 480w, /assets/images/optimized/turku-castle/turku-castle-768.avif 768w, /assets/images/optimized/turku-castle/turku-castle-1024.avif 1024w, /assets/images/optimized/turku-castle/turku-castle-1440.avif 1440w, /assets/images/optimized/turku-castle/turku-castle-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/turku-castle/turku-castle-480.webp 480w, /assets/images/optimized/turku-castle/turku-castle-768.webp 768w, /assets/images/optimized/turku-castle/turku-castle-1024.webp 1024w, /assets/images/optimized/turku-castle/turku-castle-1440.webp 1440w, /assets/images/optimized/turku-castle/turku-castle-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/turku-castle/turku-castle-768.webp" alt="Helsinki jazz clubs and nightlife" width="1600" height="1200" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Helsinki Jazz Clubs</h3><p>Evening music venues and intimate cultural spaces for guests seeking refined nightlife.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Finnish sauna experiences" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.avif 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.avif 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.avif 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.avif 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.webp 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.webp 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.webp 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Finnish sauna experiences" width="1600" height="900" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Sauna & Wellness</h3><p>Premium sauna experiences, wellness stays, and hospitality that honours Finnish ritual.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/climate/northern-lights-lapland.jpg" alt="Lapland aurora experience" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.avif 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.avif 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.avif 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.avif 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.webp 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.webp 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.webp 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp" alt="Lapland aurora experience" width="1600" height="900" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Lapland Aurora Trips</h3><p>Seasonal northern light journeys, premium winter transport, and remote light-chasing tours.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Waterfront experiences near Helsinki" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Waterfront experiences near Helsinki" width="1600" height="1202" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Dining</span><h3>Löyly & Waterfront Dining</h3><p>Sea-facing sauna and restaurant experiences with modern Finnish hospitality on Helsinki's waterfront.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/oodi-library.jpg" alt="Hotel stays in Helsinki" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Hotel stays in Helsinki" width="1600" height="1067" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Stay</span><h3>Hotel St. George</h3><p>Design-focused luxury stay steps from Ateneum and the Helsinki market square.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="city">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/porvoo-old-town-riverside.jpg" alt="Market square and old town experiences" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.avif 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.avif 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.avif 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.avif 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.webp 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.webp 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.webp 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Market square and old town experiences" width="1600" height="944" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">City</span><h3>Market Square & Harbour</h3><p>The beating heart of Helsinki — fresh produce, sea views, and ferry connections to island fortresses.</p></div>
     </div>
     <div class="dest-card reveal d1" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/nature/koli-national-park.jpg" alt="Nuuksio National Park escapes" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/koli-national-park/koli-national-park-768.webp" alt="Nuuksio National Park escapes" width="1600" height="367" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Nuuksio National Park</h3><p>Ancient forests, pristine lakes, and nordic trails just 35 km from Helsinki city centre.</p></div>
     </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church landmark" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.avif 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.avif 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.avif 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.avif 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.webp 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.webp 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.webp 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Temppeliaukio Church landmark" width="1600" height="900" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Culture</span><h3>Temppeliaukio Rock Church</h3><p>Carved into solid bedrock — a singular architectural marvel and spiritual landmark in Töölö.</p></div>
     </div>
     <div class="dest-card reveal d3" data-category="nature">
       <div class="img-frame dest-img">
-        <img src="assets/images/finland/landmarks/suomenlinna-fortress.jpg" alt="Finnish archipelago coastline" width="1600" height="900" decoding="async" loading="lazy">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Finnish archipelago coastline" width="1600" height="1202" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Finnish Archipelago</h3><p>Over 40,000 islands — boat tours, summer cottages, and pristine Baltic coastline to explore.</p></div>
     </div>
@@ -491,7 +591,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="estimate-box" style="margin-bottom:1.5rem">
           <p style="opacity:.5;font-size:.88rem">Enter a destination and dates above to search. For immediate hotel sourcing, use our contact form or WhatsApp.</p>
         </div>
-        <a href="contact.html" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request hotel sourcing</a>
+        <a data-i18n="nav.contact" href="/contact" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request hotel sourcing</a>
         <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>
       </div>
     </div>
@@ -597,11 +697,12 @@ footer{background:#060608;padding:5rem 0 2rem}
     <p>From tarmac to doorstep — every meter pre-cleared, every detail orchestrated.</p>
     <div class="cta-actions">
       <a href="#pricing" class="btn">Estimate fare</a>
-      <a href="booking.html" class="btn btn-outline">Book now</a>
+      <a data-i18n="nav.booking" href="/booking" class="btn btn-outline">Book now</a>
     </div>
   </div>
 </div>
 
+</main>
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -619,32 +720,35 @@ footer{background:#060608;padding:5rem 0 2rem}
       <div class="reveal d1">
         <h3>Navigate</h3>
         <div class="foot-links">
-          <a href="index.html">Home</a>
-          <a href="tourism.html">Travel</a>
-          <a href="pattern.html">Pattern</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="platform.html">Platform</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="about.html">About</a>
-          <a href="qa.html">QA</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/digital" data-i18n="nav.digital">Digital</a>
+          <a href="/transfers" data-i18n="nav.transfers">Transfers</a>
+          <a href="/tourism" data-i18n="nav.tourism">Travel</a>
+          <a href="/portfolio" data-i18n="nav.portfolio">Portfolio</a>
+          <a href="/qa" data-i18n="nav.qa">QA</a>
+          <a href="/pattern" data-i18n="nav.pattern">Pattern</a>
+          <a href="/platform" data-i18n="nav.platform">Platform</a>
+          <a href="/blog" data-i18n="nav.blog">Blog</a>
+          <a href="/about" data-i18n="nav.about">About</a>
+          <a href="/contact" data-i18n="nav.contact">Contact</a>
+          <a href="/booking" data-i18n="nav.booking">Book Now</a>
+        
         </div>
       </div>
       <div class="reveal d2">
         <h3>Legal</h3>
         <div class="foot-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="contact.html">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a data-i18n="nav.contact" href="/contact">Contact</a>
         </div>
       </div>
     </div>
-    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+    <div class="copyright" data-i18n="footer.copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="/js/config.js"></script>
-<script src="/js/supabase-client.js"></script>
+<script src="/js/supabase-loader.js" defer></script>
 <script src="/js/site-content.js"></script>
 <script src="/js/luxival.js"></script>
 <script>
@@ -799,21 +903,16 @@ function initLuxivalMap(){
   });
 }
 </script>
-<script src="/js/fare-calculator.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas&libraries=places&callback=initLuxivalMap" async defer></script>
+<script src="/js/fare-calculator.js" defer></script>
+<script src="/js/google-maps-lazy.js" defer></script>
 <script>
-// Init fare calculator after Maps loads (initLuxivalMap already ran as the Maps callback)
-document.addEventListener('DOMContentLoaded', function() {
-  function tryInitFare() {
-    if (window.initFareCalculator) {
-      initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
-    } else {
-      setTimeout(tryInitFare, 200);
-    }
-  }
-  tryInitFare();
+function initLuxivalMapAndFare(){
+  initLuxivalMap();
+  if (window.initFareCalculator) initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
+}
+window.addEventListener('DOMContentLoaded', function(){
+  if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalMapAndFare', '#pricing');
 });
-<script>
 
 const filters=document.querySelectorAll('.filter');
 const destCards=document.querySelectorAll('#destGrid .dest-card');
@@ -842,7 +941,7 @@ function handleAccomSearch(){
   if(inn&&out) url+='&checkout='+out;
   if(guests&&guests!=='2') url+=(inn?'&':'?')+'guests='+guests;
   const dateStr=inn&&out?escHtml(inn)+' → '+escHtml(out):'Flexible dates';
-  res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s)</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a href="contact.html" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
+  res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s)</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a data-i18n="nav.contact" href="/contact" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
   window.open(url,'_blank');
 }
 document.getElementById('accomDest')&&document.querySelector('[onclick="handleAccomSearch()"]')&&(()=>{
@@ -882,8 +981,9 @@ if(rideForm){
       status:'pending',
       source:'tourism-page'
     };
-    if(window.LuxivalSupabase){
-      const{error}=await window.LuxivalSupabase.submitRideRequest(payload);
+    const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
+    if(db){
+      const{error}=await db.submitRideRequest(payload);
       if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Please email support@luxival.com directly.';}
       else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';}
     }else{
@@ -909,5 +1009,8 @@ if(rideForm){
   });
 })();
 </script>
+<script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>
