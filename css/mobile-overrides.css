@@ -77,6 +77,11 @@ iframe {
     height: min(45vh, 380px) !important;
   }
 
+  .svc-media,
+  .port-header {
+    display: none !important;
+  }
+
   .grid-2,
   .grid-3,
   .grid-6,
