@@ -2,6 +2,103 @@
   var SUPPORTED_LANGS = ['en', 'fi', 'sv', 'de', 'fr', 'it'];
   var DEFAULT_LANG = 'en';
   var TRANSLATIONS_URL = '/i18n/';
+  var BUNDLED_TRANSLATIONS = {
+    fi: {
+      "nav.home": "Koti",
+      "nav.about": "Meista",
+      "nav.digital": "Digitaaliset",
+      "nav.tourism": "Matkailu",
+      "nav.transfers": "Kuljetukset",
+      "nav.portfolio": "Portfolio",
+      "nav.contact": "Yhteystiedot",
+      "nav.qa": "Laadunvarmistus",
+      "nav.booking": "Varaa",
+      "nav.pattern": "Kaavat",
+      "nav.platform": "Alusta",
+      "nav.blog": "Blogi",
+      "hero.title": "Helsingin premium-kuljetus- ja digitaalitoimisto",
+      "hero.subtitle": "Lentokenttakuljetukset, verkkosuunnittelu, hakukoneoptimointi ja ohjelmistotestaus Helsingista kasin.",
+      "cta.book": "Varaa nyt",
+      "cta.quote": "Pyyda tarjous",
+      "footer.copyright": "Luxival © 2026 · Ensiluokkaiset digitaaliset ja kuljetuskokemukset"
+    },
+    sv: {
+      "nav.home": "Hem",
+      "nav.about": "Om oss",
+      "nav.digital": "Digitalt",
+      "nav.tourism": "Resor",
+      "nav.transfers": "Transfer",
+      "nav.portfolio": "Portfolio",
+      "nav.contact": "Kontakt",
+      "nav.qa": "QA",
+      "nav.booking": "Boka",
+      "nav.pattern": "Monster",
+      "nav.platform": "Plattform",
+      "nav.blog": "Blogg",
+      "hero.title": "Helsingfors premiumbyra for transfer och digitala tjanster",
+      "hero.subtitle": "Flygplatstransfer, webbdesign, SEO och programvarutestning fran Helsingfors.",
+      "cta.book": "Boka nu",
+      "cta.quote": "Begär offert",
+      "footer.copyright": "Luxival © 2026 · Premium digitala upplevelser och transportupplevelser"
+    },
+    de: {
+      "nav.home": "Start",
+      "nav.about": "Uber uns",
+      "nav.digital": "Digital",
+      "nav.tourism": "Reisen",
+      "nav.transfers": "Transfers",
+      "nav.portfolio": "Portfolio",
+      "nav.contact": "Kontakt",
+      "nav.qa": "QA",
+      "nav.booking": "Buchen",
+      "nav.pattern": "Schnittmuster",
+      "nav.platform": "Plattform",
+      "nav.blog": "Blog",
+      "hero.title": "Helsinkis Premium-Agentur fur Chauffeur- und Digitalservices",
+      "hero.subtitle": "Flughafentransfers, Webdesign, SEO und Softwaretests aus Helsinki.",
+      "cta.book": "Jetzt buchen",
+      "cta.quote": "Angebot anfragen",
+      "footer.copyright": "Luxival © 2026 · Premium-Erlebnisse fur Digitales und Transport"
+    },
+    fr: {
+      "nav.home": "Accueil",
+      "nav.about": "A propos",
+      "nav.digital": "Digital",
+      "nav.tourism": "Voyage",
+      "nav.transfers": "Transferts",
+      "nav.portfolio": "Portfolio",
+      "nav.contact": "Contact",
+      "nav.qa": "QA",
+      "nav.booking": "Reserver",
+      "nav.pattern": "Patrons",
+      "nav.platform": "Plateforme",
+      "nav.blog": "Blog",
+      "hero.title": "L'agence premium d'Helsinki pour chauffeurs et services digitaux",
+      "hero.subtitle": "Transferts aeroport, design web, SEO et tests logiciels depuis Helsinki.",
+      "cta.book": "Reserver",
+      "cta.quote": "Demander un devis",
+      "footer.copyright": "Luxival © 2026 · Experiences premium digitales et de transport"
+    },
+    it: {
+      "nav.home": "Home",
+      "nav.about": "Chi siamo",
+      "nav.digital": "Digitale",
+      "nav.tourism": "Viaggi",
+      "nav.transfers": "Transfer",
+      "nav.portfolio": "Portfolio",
+      "nav.contact": "Contatti",
+      "nav.qa": "QA",
+      "nav.booking": "Prenota",
+      "nav.pattern": "Modelli",
+      "nav.platform": "Piattaforma",
+      "nav.blog": "Blog",
+      "hero.title": "L'agenzia premium di Helsinki per chauffeur e servizi digitali",
+      "hero.subtitle": "Transfer aeroportuali, web design, SEO e test software da Helsinki.",
+      "cta.book": "Prenota ora",
+      "cta.quote": "Richiedi un preventivo",
+      "footer.copyright": "Luxival © 2026 · Esperienze premium digitali e di trasporto"
+    }
+  };
 
   function getPreferredLang() {
     var params = new URLSearchParams(window.location.search);
@@ -29,16 +126,22 @@
       });
       return;
     }
+    if (BUNDLED_TRANSLATIONS[lang]) {
+      applyTranslations(BUNDLED_TRANSLATIONS[lang]);
+      return;
+    }
     fetch(TRANSLATIONS_URL + lang + '.json')
       .then(function(r) { return r.json(); })
-      .then(function(translations) {
-        document.querySelectorAll('[data-i18n]').forEach(function(el) {
-          var key = el.dataset.i18n;
-          if (!el.dataset.i18nOriginal) el.dataset.i18nOriginal = el.innerHTML;
-          if (translations[key]) el.innerHTML = translations[key];
-        });
-      })
+      .then(applyTranslations)
       .catch(function() {});
+  }
+
+  function applyTranslations(translations) {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
+      if (!el.dataset.i18nOriginal) el.dataset.i18nOriginal = el.innerHTML;
+      if (translations[key]) el.innerHTML = translations[key];
+    });
   }
 
   function closeMobileNav() {
