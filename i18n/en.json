@@ -1,1 +1,15 @@
-{}
+{
+  "bookingDetail1": "Airport arrivals and departures",
+  "bookingDetail2": "Business meetings and events",
+  "bookingDetail3": "Hourly chauffeur arrangements",
+  "bookingDetail4": "Guest hosting in Helsinki, Espoo and Vantaa",
+  "digitalDeliveryKicker": "Delivery details",
+  "digitalDeliveryTitle": "How Luxival works across design, visibility and QA",
+  "digitalDeliveryIntro": "From first brief to final checks, we keep digital delivery polished, commercially focused and easy to manage.",
+  "digitalDeliveryPoint1Title": "Discovery and positioning",
+  "digitalDeliveryPoint1Desc": "We define the customer journey, offer structure and tone so each page feels premium and strategically clear.",
+  "digitalDeliveryPoint2Title": "Search visibility and optimisation",
+  "digitalDeliveryPoint2Desc": "We improve structure, metadata, local intent and content planning to help the right clients find you.",
+  "digitalDeliveryPoint3Title": "QA review before launch",
+  "digitalDeliveryPoint3Desc": "We test critical flows, responsive behaviour and page clarity so the launch experience feels calm and credible."
+}

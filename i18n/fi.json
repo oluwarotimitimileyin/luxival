@@ -15,5 +15,18 @@
   "hero.subtitle": "Lentokenttakuljetukset, verkkosuunnittelu, hakukoneoptimointi ja ohjelmistotestaus Helsingista kasin.",
   "cta.book": "Varaa nyt",
   "cta.quote": "Pyyda tarjous",
-  "footer.copyright": "Luxival © 2026 · Ensiluokkaiset digitaaliset ja kuljetuskokemukset"
+  "footer.copyright": "Luxival © 2026 · Ensiluokkaiset digitaaliset ja kuljetuskokemukset",
+  "bookingDetail1": "Saapuvat ja lähtevät lentokenttäkuljetukset",
+  "bookingDetail2": "Liiketapaamiset ja tapahtumat",
+  "bookingDetail3": "Tuntiperusteiset chauffeür-järjestelyt",
+  "bookingDetail4": "Vieraiden kuljetukset Helsingissä, Espoossa ja Vantaalla",
+  "digitalDeliveryKicker": "Toteutuksen yksityiskohdat",
+  "digitalDeliveryTitle": "Näin Luxival toteuttaa designin, näkyvyyden ja QA:n",
+  "digitalDeliveryIntro": "Ensimmäisestä briiffistä lopputarkistuksiin pidämme digitaalisen toteutuksen viimeisteltynä, kaupallisesti selkeänä ja helppona hallita.",
+  "digitalDeliveryPoint1Title": "Löytövaihe ja positiointi",
+  "digitalDeliveryPoint1Desc": "Määrittelemme asiakaspolun, palvelurakenteen ja äänensävyn niin, että jokainen sivu tuntuu premiumilta ja strategisesti selkeältä.",
+  "digitalDeliveryPoint2Title": "Hakukonenäkyvyys ja optimointi",
+  "digitalDeliveryPoint2Desc": "Parannamme rakennetta, metatietoja, paikallista hakuintenttiä ja sisältösuunnittelua, jotta oikeat asiakkaat löytävät sinut.",
+  "digitalDeliveryPoint3Title": "QA-arvio ennen julkaisua",
+  "digitalDeliveryPoint3Desc": "Testaamme kriittiset polut, responsiivisen toiminnan ja sivujen selkeyden, jotta julkaisu tuntuu rauhalliselta ja uskottavalta."
 }
