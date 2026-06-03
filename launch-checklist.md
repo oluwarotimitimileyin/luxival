@@ -13,7 +13,7 @@
   - `A` record for `@` to hosting provider IP or use nameservers
   - `CNAME` record for `www` to hosting provider DNS target
 - [ ] Wait for DNS propagation and domain verification
-- [ ] Confirm HTTPS is enabled and secure on both `https://luxival.com` and `https://www.luxival.com`
+- [ ] Confirm HTTPS is enabled and secure on both `https://www.luxival.com` and `https://www.luxival.com`
 
 ## 3. SEO and Search Engine Verification
 - [ ] Add `sitemap.xml` at site root

@@ -41,5 +41,5 @@ permalink: "blog/ugc-ai-video-creation-brand-campaigns/index.html"
   <h2>Let's Build Your UGC Campaign</h2>
   <p>Whether you want us to produce it for you or train your team to do it themselves — we can help your brand create content that converts.</p>
 
-  <p style="margin-top:2rem"><a href="/digital.html" class="btn">Start Your UGC Campaign →</a></p>
+  <p style="margin-top:2rem"><a href="/digital" class="btn">Start Your UGC Campaign →</a></p>
 </div>

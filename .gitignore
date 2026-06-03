@@ -13,3 +13,4 @@ _site/
 .eleventy-dev.log
 test-results/
 tests/results.json
+.env

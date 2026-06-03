@@ -3,7 +3,7 @@
  * Google indexing helper for Luxival.
  *
  * Modes:
- *  - Single URL:   node scripts/auto-index.js --url https://luxival.com/blog/my-post/
+ *  - Single URL:   node scripts/auto-index.js --url https://www.luxival.com/blog/my-post/
  *  - Sitemap batch: node scripts/auto-index.js --from-sitemap --limit 10
  *  - Full sitemap batches: node scripts/auto-index.js --all-from-sitemap --batch-size 20 --retry-failures 1
  *  - Sitemap notify: node scripts/auto-index.js --notify-sitemap
@@ -11,7 +11,7 @@
  * Env vars:
  *  - GOOGLE_SERVICE_ACCOUNT_JSON (preferred for Indexing API calls)
  *  - GOOGLE_OAUTH_CLIENT_ID / GOOGLE_OAUTH_CLIENT_SECRET / GOOGLE_OAUTH_REFRESH_TOKEN (fallback auth)
- *  - GOOGLE_INDEXING_SITEMAP_URL (optional, default: https://luxival.com/sitemap.xml)
+ *  - GOOGLE_INDEXING_SITEMAP_URL (optional, default: https://www.luxival.com/sitemap.xml)
  *  - GOOGLE_INDEXING_BATCH_SIZE (optional, default: 10)
  */
 

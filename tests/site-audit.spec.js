@@ -1,25 +1,25 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-const BASE = 'https://luxival.com';
+const BASE = 'https://www.luxival.com';
 
 // ── CORE PAGES ──────────────────────────────────────────
 test.describe('Core Pages Load', () => {
   const pages = [
     { url: '/', title: 'LUXIVAL' },
-    { url: '/services.html', title: 'Services' },
-    { url: '/about.html', title: 'About' },
-    { url: '/contact.html', title: 'Contact' },
-    { url: '/booking.html', title: 'Book' },
-    { url: '/blog/index.html', title: 'Blog' },
-    { url: '/tourism.html', title: 'Tourism' },
-    { url: '/tourism-planning.html', title: 'Tourism Planning' },
-    { url: '/audit.html', title: 'Audit' },
-    { url: '/transfers.html', title: 'Transfer' },
-    { url: '/digital.html', title: 'Digital' },
-    { url: '/pattern.html', title: 'Pattern' },
-    { url: '/portfolio.html', title: 'Portfolio' },
-    { url: '/qa.html', title: 'QA' },
+    { url: '/services', title: 'Services' },
+    { url: '/about', title: 'About' },
+    { url: '/contact', title: 'Contact' },
+    { url: '/booking', title: 'Book' },
+    { url: '/blog', title: 'Blog' },
+    { url: '/tourism', title: 'Tourism' },
+    { url: '/tourism-planning', title: 'Tourism Planning' },
+    { url: '/audit', title: 'Audit' },
+    { url: '/transfers', title: 'Transfer' },
+    { url: '/digital', title: 'Digital' },
+    { url: '/pattern', title: 'Pattern' },
+    { url: '/portfolio', title: 'Portfolio' },
+    { url: '/qa', title: 'QA' },
   ];
 
   for (const p of pages) {
@@ -179,7 +179,7 @@ test.describe('Website Audit Platform', () => {
     // Find and fill the URL input
     const urlInput = page.locator('input[type="url"], input[placeholder*="http"], input[placeholder*="URL"], input[placeholder*="website"]').first();
     if (await urlInput.count() > 0) {
-      await urlInput.fill('https://luxival.com');
+      await urlInput.fill('https://www.luxival.com');
       // Click scan button
       const scanBtn = page.locator('button').filter({ hasText: /scan|audit|check|analyse/i }).first();
       if (await scanBtn.count() > 0) {
@@ -201,7 +201,7 @@ test.describe('Tourism Planning Page', () => {
   });
 
   test('Tourism planner form elements present', async ({ page }) => {
-    await page.goto(BASE + '/tourism-planning.html');
+    await page.goto(BASE + '/tourism-planning');
     await page.waitForLoadState('domcontentloaded');
     const inputs = page.locator('input, select, textarea');
     const count = await inputs.count();
@@ -213,7 +213,7 @@ test.describe('Tourism Planning Page', () => {
 // ── BLOG ────────────────────────────────────────────────
 test.describe('Blog', () => {
   test('Blog index loads with posts', async ({ page }) => {
-    await page.goto(BASE + '/blog/index.html');
+    await page.goto(BASE + '/blog');
     await page.waitForLoadState('domcontentloaded');
     const cards = page.locator('.post-card, article, [class*="blog"]');
     const count = await cards.count();

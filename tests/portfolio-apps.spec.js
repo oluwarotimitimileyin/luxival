@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-const BASE = process.env.PLAYWRIGHT_BASE_URL || 'https://luxival.com';
+const BASE = process.env.PLAYWRIGHT_BASE_URL || 'https://www.luxival.com';
 
 test.describe('Portfolio SPA Integration', () => {
   const spaApps = [
@@ -10,6 +10,7 @@ test.describe('Portfolio SPA Integration', () => {
     { name: 'BusinessLauncher', path: '/portfolio/businesslauncher/frontend/dist/' },
     { name: 'UGC Studio AI', path: '/portfolio/ugc-studio-ai/frontend/dist/' },
     { name: 'Vortex AI Platform', path: '/portfolio/vortex-ai-platform/frontend/dist/' },
+    { name: 'Autonomous QA Audit Dashboard', path: '/portfolio/autonomous-qa-audit-dashboard/frontend/dist/' },
   ];
 
   for (const app of spaApps) {
@@ -57,6 +58,7 @@ test.describe('Portfolio SPA Integration', () => {
     { name: 'BusinessLauncher', path: '/businesslauncher', iframe: '/portfolio/businesslauncher/frontend/dist/' },
     { name: 'UGC Studio AI', path: '/ugc-studio-ai', iframe: '/portfolio/ugc-studio-ai/frontend/dist/' },
     { name: 'Vortex AI Platform', path: '/vortex-ai-platform', iframe: '/portfolio/vortex-ai-platform/frontend/dist/' },
+    { name: 'Autonomous QA Audit Dashboard', path: '/autonomous-qa-audit-dashboard', iframe: '/portfolio/autonomous-qa-audit-dashboard/frontend/dist/' },
   ];
 
   for (const project of projectPages) {
@@ -69,7 +71,7 @@ test.describe('Portfolio SPA Integration', () => {
 
     test(`${project.name} landing page links back to portfolio`, async ({ page }) => {
       await page.goto(BASE + project.path, { waitUntil: 'domcontentloaded' });
-      const portfolioLink = page.locator('a[href="portfolio.html"], a[href="/portfolio.html"]');
+      const portfolioLink = page.locator('a[href="/portfolio"], a[href="/portfolio"]');
       await expect(portfolioLink.first()).toBeVisible();
     });
   }
@@ -96,10 +98,22 @@ test.describe('Portfolio SPA Integration', () => {
     const ugcLink = page.locator('a[href*="ugc-studio-ai"]').first();
     const vortexLink = page.locator('a[href*="vortex-ai-platform"]').first();
     const esgLink = page.locator('a[href*="esg-compliance-auditor"], a[href*="esg-live-embed"]').first();
+    const qaAuditLink = page.locator('a[href*="autonomous-qa-audit-dashboard"]').first();
     expect(await growthLink.count(), 'Growth Architect not linked from portfolio').toBeGreaterThan(0);
     expect(await businessLink.count(), 'BusinessLauncher not linked from portfolio').toBeGreaterThan(0);
     expect(await ugcLink.count(), 'UGC Studio AI not linked from portfolio').toBeGreaterThan(0);
     expect(await vortexLink.count(), 'Vortex AI Platform not linked from portfolio').toBeGreaterThan(0);
     expect(await esgLink.count(), 'ESG Auditor not linked from portfolio').toBeGreaterThan(0);
+    expect(await qaAuditLink.count(), 'Autonomous QA Audit Dashboard not linked from portfolio').toBeGreaterThan(0);
+  });
+
+  test('Autonomous QA app performs orchestration task', async ({ page }) => {
+    await page.goto(BASE + '/portfolio/autonomous-qa-audit-dashboard/frontend/dist/', { waitUntil: 'domcontentloaded' });
+    await page.locator('#url').fill('https://example.com');
+    await page.locator('#email').fill('qa@luxival.com');
+    await page.getByRole('button', { name: 'Run Orchestration (1 Free Run)' }).click();
+
+    await expect(page.getByRole('heading', { name: 'Design & QA Audit Report' })).toBeVisible({ timeout: 20000 });
+    await expect(page.getByText('Blocker Registry')).toBeVisible();
   });
 });

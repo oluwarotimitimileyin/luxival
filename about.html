@@ -98,7 +98,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script defer src="/_vercel/speed-insights/script.js"></script>
 
 </head>
-<body>
+<body data-page="about">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div>
@@ -121,12 +121,12 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">About Luxival · Helsinki, Finland</span>
-    <h1 data-i18n="hero.title" class="reveal d1">Built on precision.<br>Driven by excellence.</h1>
-    <p data-i18n="hero.subtitle" class="subhead reveal d2">Luxival is a multidisciplinary premium brand uniting luxury finish travel, web development, QA software testing, and agentic workflow design — all under one obsessive standard of quality.</p>
+    <span class="eyebrow reveal" data-i18n="about.eyebrow">About Luxival · Helsinki, Finland</span>
+    <h1 data-i18n="about.title" class="reveal d1">Built on precision.<br>Driven by excellence.</h1>
+    <p data-i18n="about.subtitle" class="subhead reveal d2">Luxival is a multidisciplinary premium brand uniting luxury finish travel, web development, QA software testing, and agentic workflow design — all under one obsessive standard of quality.</p>
     <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a data-i18n="nav.booking" href="/booking" class="btn">Book a consultation</a>
-      <a data-i18n="nav.pattern" href="/pattern" class="btn btn-outline">Our services</a>
+      <a data-i18n="hero.bookConsultation" href="/booking" class="btn">Book a consultation</a>
+      <a data-i18n="cta.viewServices" href="/pattern" class="btn btn-outline">Our services</a>
     </div>
   </div>
   <div class="hero-right reveal d2" id="aboutPanel">
@@ -173,8 +173,8 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- EXPERIENCE -->
 <section class="container">
-  <span class="eyebrow reveal">Career history</span>
-  <h2 class="reveal d1" style="text-align:left">Experience that speaks for itself</h2>
+  <span class="eyebrow reveal" data-i18n="about.career">Career history</span>
+  <h2 class="reveal d1" style="text-align:left" data-i18n="about.careerSubtitle">Experience that speaks for itself</h2>
   <div class="exp-grid">
     <div>
       <div class="exp-item reveal d1">
@@ -235,8 +235,8 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <!-- SKILLS -->
 <section class="container">
-  <span class="eyebrow reveal">Skills & tools</span>
-  <h2 class="reveal d1" style="text-align:left">What we bring to every engagement</h2>
+  <span class="eyebrow reveal" data-i18n="about.skills">Skills & tools</span>
+  <h2 class="reveal d1" style="text-align:left" data-i18n="about.skillsSubtitle">What we bring to every engagement</h2>
   <div class="grid-3">
     <div class="card reveal d1">
       <div class="check">✓</div>
@@ -275,11 +275,11 @@ footer{background:#060608;padding:5rem 0 2rem}
 <div class="cta-band">
   <div class="container">
     <span class="eyebrow">Ready to start?</span>
-    <h2>Tell us what you are building.</h2>
-    <p>Whether it is a transfer booking, a website, a QA engagement, or an AI agent system — send us a brief and we will respond within one business day.</p>
+    <h2 data-i18n="about.contactCta">Tell us what you are building.</h2>
+    <p data-i18n="about.contactDesc">Whether it is a transfer booking, a website, a QA engagement, or an AI agent system — send us a brief and we will respond within one business day.</p>
     <div class="cta-actions">
-      <a data-i18n="nav.booking" href="/booking" class="btn">Get in touch</a>
-      <a data-i18n="nav.pattern" href="/pattern" class="btn btn-outline">View all services</a>
+      <a data-i18n="cta.getInTouch" href="/booking" class="btn">Get in touch</a>
+      <a data-i18n="cta.viewServices" href="/pattern" class="btn btn-outline">View all services</a>
     </div>
   </div>
 </div>
@@ -320,8 +320,8 @@ footer{background:#060608;padding:5rem 0 2rem}
       <div class="reveal d2">
         <h3>Legal</h3>
         <div class="foot-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a data-i18n="footer.privacy" href="/privacy">Privacy Policy</a>
+          <a data-i18n="footer.terms" href="/terms">Terms of Service</a>
           <a data-i18n="nav.contact" href="/contact">Contact</a>
         </div>
       </div>
@@ -370,6 +370,6 @@ if(window.matchMedia('(hover: hover) and (pointer: fine)').matches && ap){
   });
 })();
 </script>
-<script src="/js/i18n.js?v=20260530-5" defer></script>
+<script src="/js/i18n.js?v=20260603-1" defer></script>
 </body>
 </html>

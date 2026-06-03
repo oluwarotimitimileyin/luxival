@@ -103,4 +103,18 @@
     });
   }
 
+  /* ---- Image error fallback: text + icon ---- */
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error', function fallback(){
+      img.removeEventListener('error', fallback);
+      var container = img.closest('picture') || img.parentElement;
+      var fb = document.createElement('div');
+      fb.className = 'img-fallback';
+      fb.setAttribute('role','img');
+      fb.setAttribute('aria-label', img.alt || 'Image unavailable');
+      fb.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Image unavailable</span>';
+      container.replaceWith(fb);
+    }, {once:true});
+  });
+
 })();

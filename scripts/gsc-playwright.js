@@ -17,7 +17,7 @@ function toNonNegativeInt(value, fallback) {
 
 function parseArgs(argv) {
   const args = {
-    sitemapUrl: 'https://luxival.com/sitemap.xml',
+    sitemapUrl: 'https://www.luxival.com/sitemap.xml',
     resourceId: 'sc-domain:luxival.com',
     startUrl: null,
     limit: 63,

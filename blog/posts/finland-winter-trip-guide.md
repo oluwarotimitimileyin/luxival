@@ -40,5 +40,5 @@ permalink: "blog/finland-winter-trip-guide/index.html"
 
   <p>If you're planning to explore beyond the city centre — or if your itinerary includes airport arrivals and multiple locations — a Luxival private transfer makes winter travel in Finland smoother from start to finish.</p>
 
-  <p style="margin-top:2rem"><a href="/tourism.html" class="btn">Explore Finland Tourism →</a></p>
+  <p style="margin-top:2rem"><a href="/tourism" class="btn">Explore Finland Tourism →</a></p>
 </div>

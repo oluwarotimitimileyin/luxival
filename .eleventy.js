@@ -17,6 +17,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "portfolio/vortex-ai-platform/frontend/dist": "portfolio/vortex-ai-platform/frontend/dist"
   });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/autonomous-qa-audit-dashboard/frontend/dist": "portfolio/autonomous-qa-audit-dashboard/frontend/dist"
+  });
+  eleventyConfig.addPassthroughCopy({ "blog/images": "blog/images" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
@@ -26,6 +30,12 @@ module.exports = function (eleventyConfig) {
       return "";
     }
     return date.toISOString().split("T")[0];
+  });
+  eleventyConfig.addFilter("canonicalPath", (url) => {
+    if (!url || url === "/") {
+      return "/";
+    }
+    return url.replace(/\/index\.html$/, "").replace(/\/$/, "");
   });
 
   return {

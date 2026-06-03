@@ -41,5 +41,5 @@ permalink: "blog/sewing-pattern-custom-suit-measurements/index.html"
   <h2>Get Your Pattern</h2>
   <p>Use the Luxival sewing pattern tool to generate your personal pattern from your measurements, or contact us for a fully custom fabric and design specification. The tool is simple, the results are precise, and your wardrobe will never be the same.</p>
 
-  <p style="margin-top:2rem"><a href="/platform.html" class="btn">Try the Sewing Pattern Tool →</a></p>
+  <p style="margin-top:2rem"><a href="/platform" class="btn">Try the Sewing Pattern Tool →</a></p>
 </div>

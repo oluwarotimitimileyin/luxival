@@ -5,11 +5,13 @@
     "build": "eleventy && node scripts/inject-nav.js && node scripts/inject-env.js",
     "dev": "eleventy --serve",
     "clean": "rm -rf _site",
+    "images:optimize": "node scripts/optimize-images.js",
     "index": "node scripts/auto-index.js --from-sitemap",
     "index:all": "node scripts/auto-index.js --all-from-sitemap --batch-size 20 --retry-failures 1",
     "index:url": "node scripts/auto-index.js --url",
     "index:sitemap": "node scripts/auto-index.js --notify-sitemap",
     "gsc:playwright": "node scripts/gsc-playwright.js",
+    "check:redirects": "node scripts/check-redirects.js",
     "deploy-and-index": "git push origin main && node scripts/auto-index.js --notify-sitemap",
     "test": "npx playwright test",
     "test:nav": "npx playwright test tests/navigation.spec.js",
@@ -19,8 +21,11 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@playwright/test": "^1.60.0"
-  }
-  ,
-  "packageManager": "pnpm@7.5.1"
+    "@playwright/test": "^1.60.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.3.0"
+  },
+  "packageManager": "npm@11.9.0"
 }

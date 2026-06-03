@@ -37,5 +37,5 @@ permalink: "blog/top-5-hidden-gems-helsinki/index.html"
 
   <p>That's exactly what we offer at Luxival. Whether you're arriving at Helsinki-Vantaa or planning a day of local exploration, we handle the journey so you can focus on the city.</p>
 
-  <p style="margin-top:2rem"><a href="/tourism.html" class="btn">Plan Your Helsinki Visit →</a></p>
+  <p style="margin-top:2rem"><a href="/tourism" class="btn">Plan Your Helsinki Visit →</a></p>
 </div>

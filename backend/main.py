@@ -6,6 +6,7 @@ Endpoints:
   POST /webhook/sumup  — SumUp checkout webhook, marks payment as verified
   GET  /health         — liveness check
 """
+import atexit
 import os
 import uuid
 import hmac
@@ -13,13 +14,15 @@ import hashlib
 import json
 import asyncio
 import base64
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, BackgroundTasks, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
+from posthog import Posthog
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -31,15 +34,39 @@ from pdf_generator import generate_free_pdf, generate_premium_pdf
 
 load_dotenv()
 
+posthog_client: Optional[Posthog] = None
+
+SUMUP_WEBHOOK_SECRET = os.getenv("SUMUP_WEBHOOK_SECRET", "")
+SUPABASE_URL = os.getenv("SUPABASE_URL", "")
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
+
+
+# ---------------------------------------------------------------------------
+# Lifespan
+# ---------------------------------------------------------------------------
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global posthog_client
+    posthog_client = Posthog(
+        api_key=os.getenv("POSTHOG_PROJECT_TOKEN", ""),
+        host=os.getenv("POSTHOG_HOST", "https://eu.i.posthog.com"),
+        enable_exception_autocapture=True,
+    )
+    atexit.register(posthog_client.shutdown)
+    yield
+    posthog_client.shutdown()
+
+
 # ---------------------------------------------------------------------------
 # App setup
 # ---------------------------------------------------------------------------
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI(title="Luxival Audit API", version="1.0.0")
+app = FastAPI(title="Luxival Audit API", version="1.0.0", lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://luxival.com,http://localhost:3000").split(",")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://www.luxival.com,http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
@@ -53,10 +80,6 @@ _verified_payments: Dict[str, Dict[str, Any]] = {}
 # { scan_id: ScanResult }
 _scan_cache: Dict[str, Any] = {}
 
-SUMUP_WEBHOOK_SECRET = os.getenv("SUMUP_WEBHOOK_SECRET", "")
-SUPABASE_URL = os.getenv("SUPABASE_URL", "")
-SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -64,6 +87,11 @@ SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
 
 def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def _user_id(email: str) -> str:
+    """Return a stable, non-reversible distinct_id derived from the email."""
+    return hashlib.sha256(email.strip().lower().encode()).hexdigest()
 
 
 async def _save_lead_to_supabase(email: str, url: str, tier: str, scan_id: str):
@@ -130,6 +158,12 @@ async def sumup_webhook(request: Request,
             "email": email,
             "created_at": _now(),
         }
+        if posthog_client and email:
+            posthog_client.capture(
+                distinct_id=_user_id(email),
+                event="payment_verified",
+                properties={"checkout_id": checkout_id},
+            )
 
     return {"received": True}
 
@@ -141,9 +175,22 @@ async def scan_free(request: Request, body: ScanRequest,
     """Run free 12-check scan. Returns JSON result + base64 PDF."""
     scan_id = str(uuid.uuid4())[:8]
 
+    if posthog_client:
+        posthog_client.capture(
+            distinct_id=_user_id(body.email),
+            event="free_scan_requested",
+            properties={"scan_id": scan_id, "tier": "free"},
+        )
+
     try:
         result = await run_free_scan(str(body.url))
     except RuntimeError as e:
+        if posthog_client:
+            posthog_client.capture(
+                distinct_id=_user_id(body.email),
+                event="free_scan_failed",
+                properties={"scan_id": scan_id},
+            )
         raise HTTPException(status_code=422, detail=str(e))
 
     pdf_bytes = generate_free_pdf(
@@ -158,6 +205,18 @@ async def scan_free(request: Request, body: ScanRequest,
     background_tasks.add_task(
         _save_lead_to_supabase, body.email, str(body.url), "free", scan_id
     )
+
+    if posthog_client:
+        posthog_client.capture(
+            distinct_id=_user_id(body.email),
+            event="free_scan_completed",
+            properties={
+                "scan_id": scan_id,
+                "score": result["score"],
+                "max_score": result["max_score"],
+                "tier": "free",
+            },
+        )
 
     return {
         "scan_id": scan_id,
@@ -178,12 +237,24 @@ async def scan_premium(request: Request, body: ScanRequest,
                        background_tasks: BackgroundTasks):
     """Run full 7-flow premium scan. Requires verified SumUp payment_token."""
     if not body.payment_token:
+        if posthog_client:
+            posthog_client.capture(
+                distinct_id=_user_id(body.email),
+                event="payment_rejected",
+                properties={"reason": "missing_token"},
+            )
         raise HTTPException(status_code=402, detail="payment_token required for premium scan")
 
     payment = _verified_payments.get(body.payment_token)
     # Allow honour-system bypass ('sumup-honour') so the frontend fallback still works
     honour_bypass = body.payment_token == "sumup-honour"
     if not honour_bypass and (not payment or payment.get("status") != "paid"):
+        if posthog_client:
+            posthog_client.capture(
+                distinct_id=_user_id(body.email),
+                event="payment_rejected",
+                properties={"reason": "unverified_payment"},
+            )
         raise HTTPException(
             status_code=402,
             detail="Payment not verified. Complete payment at https://pay.sumup.com/b2c/QVLW9NTQ"
@@ -191,10 +262,23 @@ async def scan_premium(request: Request, body: ScanRequest,
 
     scan_id = str(uuid.uuid4())[:8]
 
+    if posthog_client:
+        posthog_client.capture(
+            distinct_id=_user_id(body.email),
+            event="premium_scan_requested",
+            properties={"scan_id": scan_id, "tier": "premium"},
+        )
+
     try:
         free_result = await run_free_scan(str(body.url))
         premium_flows = await run_premium_scan(str(body.url))
     except RuntimeError as e:
+        if posthog_client:
+            posthog_client.capture(
+                distinct_id=_user_id(body.email),
+                event="premium_scan_failed",
+                properties={"scan_id": scan_id},
+            )
         raise HTTPException(status_code=422, detail=str(e))
 
     all_scores = [c.score for c in free_result["checks"]]
@@ -219,6 +303,18 @@ async def scan_premium(request: Request, body: ScanRequest,
     background_tasks.add_task(
         _save_lead_to_supabase, body.email, str(body.url), "premium", scan_id
     )
+
+    if posthog_client:
+        posthog_client.capture(
+            distinct_id=_user_id(body.email),
+            event="premium_scan_completed",
+            properties={
+                "scan_id": scan_id,
+                "overall_score": overall,
+                "max_score": max_overall,
+                "tier": "premium",
+            },
+        )
 
     return {
         "scan_id": scan_id,

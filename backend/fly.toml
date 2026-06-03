@@ -10,7 +10,7 @@ primary_region = 'arn'
   dockerfile = 'Dockerfile'
 
 [env]
-  ALLOWED_ORIGINS = 'https://luxival.com'
+  ALLOWED_ORIGINS = 'https://www.luxival.com'
   PORT = '8080'
 
 [http_service]

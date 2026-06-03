@@ -20,12 +20,12 @@ const SURCHARGES = {
 
 module.exports = async (req, res) => {
   // CORS headers
-  const allowedOrigins = ["https://luxival.com", "https://www.luxival.com"];
+  const allowedOrigins = ["https://www.luxival.com", "https://www.luxival.com"];
   const requestOrigin = req.headers.origin || "";
   if (allowedOrigins.includes(requestOrigin) || requestOrigin.startsWith("http://localhost")) {
     res.setHeader("Access-Control-Allow-Origin", requestOrigin);
   } else {
-    res.setHeader("Access-Control-Allow-Origin", "https://luxival.com");
+    res.setHeader("Access-Control-Allow-Origin", "https://www.luxival.com");
   }
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");

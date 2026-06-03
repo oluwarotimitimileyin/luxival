@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const pages = require('./fixtures/pages.json');
 
-const BASE = 'https://luxival.com';
+const BASE = 'https://www.luxival.com';
 
 test.describe('Navigation Consistency', () => {
   const allPages = [

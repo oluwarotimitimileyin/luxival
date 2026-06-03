@@ -32,5 +32,5 @@ permalink: "blog/helsinki-business-travel-destination/index.html"
   <h2>Getting Around While You're Here</h2>
   <p>Public transport in Helsinki is reliable, but for a time-sensitive business trip — airport arrivals, client pickups, hotel-to-office transfers — a private chauffeur service removes the variables. At Luxival, we handle business transfers across Helsinki so you can focus on the meetings, not the logistics.</p>
 
-  <p style="margin-top:2rem"><a href="/contact.html" class="btn">Get in Touch with Luxival →</a></p>
+  <p style="margin-top:2rem"><a href="/contact" class="btn">Get in Touch with Luxival →</a></p>
 </div>

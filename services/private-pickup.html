@@ -8,10 +8,10 @@
 <meta name="description" content="Private airport pickup from Helsinki-Vantaa with Luxival. No waiting, flight tracking, and direct door-to-door service in Finland.">
 <meta property="og:title" content="Private Airport Pickup | Luxival Finland">
 <meta property="og:description" content="Private airport pickup from Helsinki-Vantaa with Luxival. No waiting, flight tracking, and direct door-to-door service in Finland.">
-<meta property="og:image" content="https://luxival.com/assets/images/finland/architecture/oodi-library.jpg">
-<meta property="og:url" content="https://luxival.com/services/private-pickup">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+<meta property="og:url" content="https://www.luxival.com/services/private-pickup">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://luxival.com/services/private-pickup">
+<link rel="canonical" href="https://www.luxival.com/services/private-pickup">
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -49,17 +49,17 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
 <body>
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
 <nav id="mainNav">
-  <a href="../index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links">
-    <li><a href="../transfers.html" class="active">Transfers</a></li>
-    <li><a href="../tourism.html">Travel</a></li>
-    <li><a href="../pattern.html">Pattern</a></li>
-    <li><a href="../portfolio.html">Portfolio</a></li>
-    <li><a href="../platform.html">Platform</a></li>
-    <li><a href="../blog/index.html">Blog</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../audit.html">Free Audit</a></li>
-    <li><a href="../booking.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a href="/transfers" class="active">Transfers</a></li>
+    <li><a href="/tourism">Travel</a></li>
+    <li><a href="/pattern">Pattern</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/platform">Platform</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/audit">Free Audit</a></li>
+    <li><a href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -141,7 +141,7 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
     <p>Book your pickup in advance and land with complete confidence. We handle the rest.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a href="../tourism.html#book-ride" class="btn">Book now</a>
-      <a href="../contact.html" class="btn btn-outline">Send inquiry</a>
+      <a href="/contact" class="btn btn-outline">Send inquiry</a>
     </div>
   </div>
 </div>
@@ -150,17 +150,16 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
   <div class="container">
     <div class="footer-grid">
       <div class="reveal"><h3>Luxival</h3><p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p><p>support@luxival.com</p><p>+358 50 351 8366</p></div>
-      <div class="reveal d1"><h3>Navigate</h3><div class="foot-links"><a href="../index.html">Home</a><a href="../tourism.html">Travel</a><a href="../pattern.html">Pattern</a><a href="../portfolio.html">Portfolio</a><a href="../platform.html">Platform</a><a href="../about.html">About</a><a href="../qa.html">QA</a></div></div>
-      <div class="reveal d2"><h3>Legal</h3><div class="foot-links"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../contact.html">Contact</a></div></div>
+      <div class="reveal d1"><h3>Navigate</h3><div class="foot-links"><a href="/">Home</a><a href="/tourism">Travel</a><a href="/pattern">Pattern</a><a href="/portfolio">Portfolio</a><a href="/platform">Platform</a><a href="/about">About</a><a href="/qa">QA</a></div></div>
+      <div class="reveal d2"><h3>Legal</h3><div class="foot-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div>
     </div>
     <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="../js/config.js"></script>
-<script src="../js/supabase-client.js"></script>
-<script src="../js/luxival.js"></script>
-<script src="../js/fare-calculator.js"></script>
+<script src="/js/supabase-loader.js" defer></script>
+<script src="/js/luxival.js"></script>
+<script src="/js/fare-calculator.js" defer></script>
+<script src="/js/google-maps-lazy.js" defer></script>
 <script>
   window._fareCalculatorConfig = { containerId: 'fare-calculator-pickup', preselect: [] };
   function _initFareWhenReady() {
@@ -169,6 +168,10 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
     }
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas&libraries=places&callback=_initFareWhenReady" async defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_initFareWhenReady', '#fare-calculator-pickup');
+  });
+</script>
 </body>
 </html>

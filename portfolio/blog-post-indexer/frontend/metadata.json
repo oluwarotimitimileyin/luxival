@@ -1,0 +1,7 @@
+{
+  "name": "Vertex AI Content Agent",
+  "description": "Autonomous Content Publishing Agent with Human-in-the-loop Quality Gate.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

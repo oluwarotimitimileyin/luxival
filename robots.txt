@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luxival.com/sitemap.xml
+Sitemap: https://www.luxival.com/sitemap.xml

@@ -29,5 +29,5 @@ permalink: "blog/luxury-transport-and-digital-strategy/index.html"
 
   <p>If you're looking for a reliable transfer service, a digital strategy partner, or both — we'd be glad to talk.</p>
 
-  <p style="margin-top:2rem"><a href="/contact.html" class="btn">Work with Luxival →</a></p>
+  <p style="margin-top:2rem"><a href="/contact" class="btn">Work with Luxival →</a></p>
 </div>

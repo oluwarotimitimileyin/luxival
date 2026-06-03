@@ -8,7 +8,7 @@ module.exports = defineConfig({
   workers: 3,
   reporter: [['list'], ['json', { outputFile: 'tests/results.json' }], ['html', { outputFolder: 'test-results/html-report', open: 'never' }]],
   use: {
-    baseURL: 'https://luxival.com',
+    baseURL: 'https://www.luxival.com',
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,

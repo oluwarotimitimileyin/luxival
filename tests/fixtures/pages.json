@@ -52,6 +52,7 @@
     { "text": "Digital Services", "hrefContains": "services" },
     { "text": "Tourism & Transport", "hrefContains": "tourism" },
     { "text": "Portfolio", "hrefContains": "portfolio" },
+    { "text": "Blog", "hrefContains": "blog" },
     { "text": "QA & Audit", "hrefContains": "qa" },
     { "text": "About", "hrefContains": "about" },
     { "text": "Get Started", "hrefContains": "contact" }

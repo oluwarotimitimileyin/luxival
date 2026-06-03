@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: genai-app-finnish-intel-hub
+  namespace: "62241"
+  labels:
+    cloud.googleapis.com/location: us-central1
+spec:
+  template:
+    spec:
+      containers:
+      - image: gcr.io/ikp-workspace/finnish-intel-hub:latest
+        ports:
+        - containerPort: 3004
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+        env:
+        - name: NEXT_PUBLIC_PRH_API_URL
+          value: "https://avoindata.prh.fi/opendata-ytj-api/v3"
+        - name: GOOGLE_SPREADSHEET_ID
+          value: "1EKUcrjv_8UhWNbe3uLqPbJLxHMZoo_6Jw4_bcYoVfM4"
+        - name: GOOGLE_SHEET_NAME
+          value: "Sheet1"
+          

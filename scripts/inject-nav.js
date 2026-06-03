@@ -4,18 +4,19 @@ const path = require('path');
 const SITE_DIR = path.join(__dirname, '..', '_site');
 
 const CANONICAL_NAV_LINKS = `
-    <li><a href="{{PREFIX}}index.html">Home</a></li>
-    <li><a href="{{PREFIX}}services.html">Digital Services</a></li>
-    <li><a href="{{PREFIX}}tourism.html">Tourism &amp; Transport</a></li>
-    <li><a href="{{PREFIX}}portfolio.html">Portfolio</a></li>
-    <li><a href="{{PREFIX}}qa.html">QA &amp; Audit</a></li>
-    <li><a href="{{PREFIX}}about.html">About</a></li>
-    <li><a href="{{PREFIX}}contact.html" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>`;
+    <li><a href="/">Home</a></li>
+    <li><a href="/services">Digital Services</a></li>
+    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/qa">QA &amp; Audit</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>`;
 
 function buildNav(prefix) {
-  const links = CANONICAL_NAV_LINKS.replace(/\{\{PREFIX\}\}/g, prefix);
+  const links = CANONICAL_NAV_LINKS;
   return `<nav id="mainNav">
-  <a href="${prefix}index.html" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">${links}
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -24,12 +25,13 @@ function buildNav(prefix) {
 
 const SPA_NAV = `<div id="luxival-site-nav">
   <nav style="position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 5%;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-    <a href="/index.html" style="font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;">LUXIVAL</a>
+    <a href="/" style="font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;">LUXIVAL</a>
     <div style="display:flex;gap:1.5rem;align-items:center;">
-      <a href="/portfolio.html" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;opacity:.6;text-decoration:none;">Portfolio</a>
-      <a href="/services.html" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Services</a>
-      <a href="/about.html" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">About</a>
-      <a href="/contact.html" style="display:inline-block;background:#C9A96A;color:#0A0B0F;padding:.4rem 1.2rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;font-weight:500;">Get Started</a>
+      <a href="/portfolio" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;opacity:.6;text-decoration:none;">Portfolio</a>
+      <a href="/services" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Services</a>
+      <a href="/blog" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Blog</a>
+      <a href="/about" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">About</a>
+      <a href="/contact" style="display:inline-block;background:#C9A96A;color:#0A0B0F;padding:.4rem 1.2rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;font-weight:500;">Get Started</a>
     </div>
   </nav>
 </div>`;

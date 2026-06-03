@@ -191,6 +191,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 /* --- Responsive --- */
 
+img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
+.img-fallback{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);border-radius:var(--r);color:rgba(255,255,255,.45);font-size:.85rem;padding:2rem;text-align:center}
+.img-fallback svg{width:48px;height:48px;opacity:.5;color:var(--gold)}
+.img-fallback span{font-size:.9rem;font-weight:500;color:rgba(255,255,255,.45)}
 </style>
 <script type="application/ld+json">
 {
@@ -249,7 +253,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
 </head>
-<body>
+<body data-page="home">
 
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
@@ -276,42 +280,42 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal">Luxury finish travel · Helsinki</span>
+    <span class="eyebrow reveal" data-i18n="hero.eyebrow">Luxury finish travel · Helsinki</span>
     <h1 data-i18n="hero.title" class="reveal d1">Helsinki's Premium Chauffeur &amp; Web Design Agency</h1>
     <p data-i18n="hero.subtitle" class="subhead reveal d2">From runway to ranking — premium airport transfers and conversion-focused digital services, led by an ISTQB-certified software tester.</p>
-    <a data-i18n="nav.booking" href="/booking" class="btn reveal d3">Book a Consultation</a>
+    <a data-i18n="hero.bookConsultation" href="/booking" class="btn reveal d3">Book a Consultation</a>
 
     <!-- Social proof directly under CTA -->
     <div class="hero-proof reveal d3">
-      <div class="hero-proof-item"><span class="hero-proof-num">500+</span><span class="hero-proof-label">Transfers completed</span></div>
-      <div class="hero-proof-item"><span class="hero-proof-num">9/10</span><span class="hero-proof-label">Client satisfaction</span></div>
-      <div class="hero-proof-item"><span class="hero-proof-num">100+</span><span class="hero-proof-label">Website audits</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-num">500+</span><span class="hero-proof-label" data-i18n="proof.transfers">Transfers completed</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-num">9/10</span><span class="hero-proof-label" data-i18n="proof.satisfaction">Client satisfaction</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-num">100+</span><span class="hero-proof-label" data-i18n="proof.audits">Website audits</span></div>
     </div>
 
     <!-- Quick booking / inquiry form -->
     <div class="hero-form reveal">
-      <span class="hero-form-title">Quick Enquiry — no obligation</span>
+      <span class="hero-form-title" data-i18n="form.title">Quick Enquiry — no obligation</span>
       <div class="hero-form-row">
         <label class="sr-only" for="hfName">Your name</label>
-          <input type="text" id="hfName" placeholder="Your name" autocomplete="name">
+          <input type="text" id="hfName" placeholder="Your name" data-i18n-placeholder="form.name" autocomplete="name">
         <label class="sr-only" for="hfEmail">Email address</label>
-          <input type="email" id="hfEmail" placeholder="Email address" autocomplete="email">
+          <input type="email" id="hfEmail" placeholder="Email address" data-i18n-placeholder="form.email" autocomplete="email">
       </div>
       <div class="hero-form-row">
         <label class="sr-only" for="hfService">Service needed</label>
         <select id="hfService">
-          <option value="" disabled selected>I need…</option>
-          <option value="airport-transfer">Airport transfer</option>
-          <option value="private-ride">Private ride / city tour</option>
-          <option value="web-design">Web design / SEO</option>
-          <option value="qa-testing">QA software testing</option>
-          <option value="other">Something else</option>
+          <option value="" disabled selected data-i18n="form.service">I need…</option>
+          <option value="airport-transfer" data-i18n="form.serviceAirport">Airport transfer</option>
+          <option value="private-ride" data-i18n="form.serviceRide">Private ride / city tour</option>
+          <option value="web-design" data-i18n="form.serviceWeb">Web design / SEO</option>
+          <option value="qa-testing" data-i18n="form.serviceQa">QA software testing</option>
+          <option value="other" data-i18n="form.serviceOther">Something else</option>
         </select>
         <label class="sr-only" for="hfDate">Date or project start</label>
-          <input type="text" id="hfDate" placeholder="Date / project start" autocomplete="off">
+          <input type="text" id="hfDate" placeholder="Date / project start" data-i18n-placeholder="form.date" autocomplete="off">
       </div>
       <div class="hero-form-row single">
-        <button class="btn btn-sm" id="hfSubmit" type="button">Send Quick Enquiry →</button>
+        <button class="btn btn-sm" id="hfSubmit" type="button" data-i18n="form.submit">Send Quick Enquiry →</button>
       </div>
       <p id="hfStatus" style="font-size:.82rem;margin-top:.5rem;opacity:.7"></p>
     </div>
@@ -339,7 +343,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- TRAVEL & TOURISM -->
 <section class="container" id="travel">
-  <h2 class="reveal">Travel & Tourism</h2>
+  <h2 class="reveal" data-i18n="section.travel">Travel & Tourism</h2>
   <div class="grid-3">
 
     <div class="card reveal d1" data-tilt>
@@ -347,16 +351,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.avif 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.avif 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.avif 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.avif 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 31vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-480.webp 480w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1024.webp 1024w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.webp 1440w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 31vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Helsinki Cathedral in daylight" width="1280" height="1425" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Helsinki Cathedral in daylight" width="1280" height="1425" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
         <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp">
           <source data-src="/assets/video/hero-airport-1.mp4" type="video/mp4">
         </video>
       </div>
       <div class="card-body">
-        <h3>Private Jet</h3>
-        <p>Cinematic arrival — private charter with runway-side greeting and priority clearance from Helsinki-Vantaa.</p>
-        <a href="#contact" class="learn-more">Book a ride →</a>
+        <h3 data-i18n="card.jet.title">Private Jet</h3>
+        <p data-i18n="card.jet.desc">Cinematic arrival — private charter with runway-side greeting and priority clearance from Helsinki-Vantaa.</p>
+        <a href="#contact" class="learn-more" data-i18n="cta.bookRide">Book a ride →</a>
       </div>
     </div>
 
@@ -365,13 +369,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.avif 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.avif 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.avif 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.avif 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 31vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-480.webp 480w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp 768w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1024.webp 1024w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1440.webp 1440w, /assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 31vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Porvoo old town riverfront in Finland" width="1280" height="755" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/porvoo-old-town-riverside/porvoo-old-town-riverside-768.webp" alt="Porvoo old town riverfront in Finland" width="1280" height="755" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
       </div>
       <div class="card-body">
-        <h3>Luggage</h3>
-        <p>White-glove baggage handling — from aircraft hold to your suite door, managed with precision and care.</p>
-        <a href="#contact" class="learn-more">Learn More →</a>
+        <h3 data-i18n="card.luggage.title">Luggage</h3>
+        <p data-i18n="card.luggage.desc">White-glove baggage handling — from aircraft hold to your suite door, managed with precision and care.</p>
+        <a href="#contact" class="learn-more" data-i18n="cta.learnMore">Learn More →</a>
       </div>
     </div>
 
@@ -380,16 +384,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.avif 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.avif 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.avif 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.avif 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.avif 1810w" sizes="(max-width: 900px) 100vw, 31vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-480.webp 480w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp 768w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1024.webp 1024w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1440.webp 1440w, /assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-1810.webp 1810w" sizes="(max-width: 900px) 100vw, 31vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Suomenlinna sea fortress near Helsinki" width="1280" height="962" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp" alt="Suomenlinna sea fortress near Helsinki" width="1280" height="962" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
         <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/suomenlinna-fortress/suomenlinna-fortress-768.webp">
           <source data-src="/assets/video/animate-1.mp4" type="video/mp4">
         </video>
       </div>
       <div class="card-body">
-        <h3>Arrival</h3>
-        <p>Chauffeured transfer with live GPS tracking, ETA updates, and chauffeur details from wheels-down to doorstep.</p>
-        <a href="#contact" class="learn-more">Request Ride →</a>
+        <h3 data-i18n="card.arrival.title">Arrival</h3>
+        <p data-i18n="card.arrival.desc">Chauffeured transfer with live GPS tracking, ETA updates, and chauffeur details from wheels-down to doorstep.</p>
+        <a href="#contact" class="learn-more" data-i18n="cta.requestRide">Request Ride →</a>
       </div>
     </div>
 
@@ -399,8 +403,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <!-- TRACKING -->
 <section class="tracking" id="tracking">
   <div class="container">
-    <h2 class="reveal">Track Your Ride in Real Time</h2>
-    <p class="reveal d1" style="max-width:560px;margin:0 auto">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
+    <h2 class="reveal" data-i18n="section.tracking">Track Your Ride in Real Time</h2>
+    <p class="reveal d1" style="max-width:560px;margin:0 auto" data-i18n="tracking.desc">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
     <div class="tracking-vid reveal d2">
       <video autoplay muted loop playsinline preload="none" data-lazy-video>
         <source data-src="/assets/video/founder-wide.mp4" type="video/mp4">
@@ -412,21 +416,21 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- DIGITAL SERVICES -->
 <section class="container" id="services">
-    <h2 class="reveal">Digital Services & Web Design</h2>
+    <h2 class="reveal" data-i18n="section.digital">Digital Services & Web Design</h2>
     <div class="grid-2">
       <div class="reveal">
-        <p>Luxival's digital arm delivers conversion-focused web development, SEO services, QA software testing, and UCG character experiences — guided by an agentic workflow that keeps delivery fast and accountable.</p>
-        <p>We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
-        <p>From Helsinki to global reach — if it has a digital presence, we architect it.</p>
+        <p data-i18n="digital.p1">Luxival's digital arm delivers conversion-focused web development, SEO services, QA software testing, and UCG character experiences — guided by an agentic workflow that keeps delivery fast and accountable.</p>
+        <p data-i18n="digital.p2">We combine premium visual craft with search-first strategy so your brand ranks, converts, and feels like the luxury category it belongs in.</p>
+        <p data-i18n="digital.p3">From Helsinki to global reach — if it has a digital presence, we architect it.</p>
         <br>
-        <a data-i18n="nav.pattern" href="/pattern" class="btn">Explore Services</a>
+        <a data-i18n="cta.exploreServices" href="/pattern" class="btn">Explore Services</a>
       </div>
       <div>
         <div class="svc-media reveal d1" data-tilt>
           <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.avif 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.avif 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.avif 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.avif 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-480.webp 480w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp 768w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1024.webp 1024w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1440.webp 1440w, /assets/images/optimized/temppeliaukio-church/temppeliaukio-church-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Temppeliaukio Church in Helsinki" width="1280" height="720" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp" alt="Temppeliaukio Church in Helsinki" width="1280" height="720" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
           <video autoplay muted loop playsinline preload="none" data-lazy-video data-poster="/assets/images/optimized/temppeliaukio-church/temppeliaukio-church-768.webp">
             <source data-src="/assets/video/founder-animated.mp4" type="video/mp4">
@@ -437,7 +441,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/oodi-library/oodi-library-480.webp" alt="Modern Helsinki architecture for web design" width="800" height="533" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/oodi-library/oodi-library-480.webp" alt="Modern Helsinki architecture for web design" width="800" height="533" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
             <span>Web Design</span>
           </a>
@@ -445,7 +449,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/koli-national-park/koli-national-park-480.webp" alt="Koli National Park landscape for SEO strategy" width="800" height="184" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/koli-national-park/koli-national-park-480.webp" alt="Koli National Park landscape for SEO strategy" width="800" height="184" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
             <span>SEO</span>
           </a>
@@ -453,7 +457,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.avif 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.avif 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.avif 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.avif 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.webp 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.webp 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.webp 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp" alt="Frozen Lake Saimaa for QA software testing" width="800" height="449" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp" alt="Frozen Lake Saimaa for QA software testing" width="800" height="449" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
             <span>QA</span>
           </a>
@@ -466,10 +470,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 <section class="stats-strip">
   <div class="container">
     <div class="stats-grid">
-      <div class="reveal"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label">Transfers completed</span></div>
-      <div class="reveal d1"><span class="stat-num" data-target="9" data-suffix="/10">0</span><span class="stat-label">Client satisfaction</span></div>
-      <div class="reveal d2"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label">Website audits done</span></div>
-      <div class="reveal d3"><span class="stat-num" data-target="24" data-suffix="/7">0</span><span class="stat-label">Hour support</span></div>
+      <div class="reveal"><span class="stat-num" data-target="500" data-suffix="+">0</span><span class="stat-label" data-i18n="stat.transfers">Transfers completed</span></div>
+      <div class="reveal d1"><span class="stat-num" data-target="9" data-suffix="/10">0</span><span class="stat-label" data-i18n="stat.satisfaction">Client satisfaction</span></div>
+      <div class="reveal d2"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="stat-label" data-i18n="stat.audits">Website audits done</span></div>
+      <div class="reveal d3"><span class="stat-num" data-target="24" data-suffix="/7">0</span><span class="stat-label" data-i18n="stat.support">Hour support</span></div>
     </div>
   </div>
 </section>
@@ -478,7 +482,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
 
 <!-- PORTFOLIO -->
 <section class="container" id="portfolio">
-  <h2 class="reveal">Portfolio & Projects</h2>
+  <h2 class="reveal" data-i18n="section.portfolio">Portfolio & Projects</h2>
   <div class="port-header reveal">
     <video autoplay muted loop playsinline preload="none" data-lazy-video>
       <source data-src="/assets/video/hero-airport-2.mp4" type="video/mp4">
@@ -487,27 +491,27 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="grid-6">
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>AI · ESG</span></div>
-      <div class="proj-body"><h3>ESG Compliance Auditor</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>ESG Compliance Auditor</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>AI · Growth</span></div>
-      <div class="proj-body"><h3>GROWTH_ARCHITECT</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>GROWTH_ARCHITECT</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>AI · Launch</span></div>
-      <div class="proj-body"><h3>BusinessLauncher</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>BusinessLauncher</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d1" data-tilt>
       <div class="proj-thumb"><span>AI · Content</span></div>
-      <div class="proj-body"><h3>UGC Studio AI</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>UGC Studio AI</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d2" data-tilt>
       <div class="proj-thumb"><span>AI · Chat</span></div>
-      <div class="proj-body"><h3>Vortex AI Platform</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>Vortex AI Platform</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
     <div class="proj reveal d3" data-tilt>
       <div class="proj-thumb"><span>Finance</span></div>
-      <div class="proj-body"><h3>Vault Ledger</h3><a data-i18n="nav.portfolio" href="/portfolio">View Case Study →</a></div>
+      <div class="proj-body"><h3>Vault Ledger</h3><a data-i18n="cta.viewCase" href="/portfolio">View Case Study →</a></div>
     </div>
   </div>
 </section>
@@ -518,34 +522,34 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
     <div class="social-video-head reveal">
       <div>
         <span class="eyebrow">Social video</span>
-        <h2 style="text-align:left;margin-bottom:.8rem">Follow the story in motion</h2>
+        <h2 style="text-align:left;margin-bottom:.8rem" data-i18n="section.socialVideo">Follow the story in motion</h2>
       </div>
-      <p>Short videos, behind-the-scenes travel moments, digital launches, and brand updates live on our social channels.</p>
+      <p data-i18n="social.desc">Short videos, behind-the-scenes travel moments, digital launches, and brand updates live on our social channels.</p>
     </div>
     <div class="social-video-grid">
       <a class="social-video-card reveal d1" href="https://www.tiktok.com/@luxival" target="_blank" rel="noopener">
         <strong>TikTok</strong>
-        <span>Short-form video, live selling, travel moments, and creative brand experiments.</span>
+        <span data-i18n="social.tiktok">Short-form video, live selling, travel moments, and creative brand experiments.</span>
       </a>
       <a class="social-video-card reveal d2" href="https://instagram.com/luxival" target="_blank" rel="noopener">
         <strong>Instagram</strong>
-        <span>Reels, stories, visual updates, and everyday Luxival moments.</span>
+        <span data-i18n="social.instagram">Reels, stories, visual updates, and everyday Luxival moments.</span>
       </a>
       <a class="social-video-card reveal d3" href="https://linkedin.com/company/luxival" target="_blank" rel="noopener">
         <strong>LinkedIn</strong>
-        <span>Business updates, digital services, QA, and company news.</span>
+        <span data-i18n="social.linkedin">Business updates, digital services, QA, and company news.</span>
       </a>
       <a class="social-video-card reveal d1" href="https://facebook.com/luxival" target="_blank" rel="noopener">
         <strong>Facebook</strong>
-        <span>Community updates, travel posts, and service announcements.</span>
+        <span data-i18n="social.facebook">Community updates, travel posts, and service announcements.</span>
       </a>
       <a class="social-video-card reveal d2" href="https://pinterest.com/luxival" target="_blank" rel="noopener">
         <strong>Pinterest</strong>
-        <span>Travel inspiration, design references, and visual collections.</span>
+        <span data-i18n="social.pinterest">Travel inspiration, design references, and visual collections.</span>
       </a>
       <a class="social-video-card reveal d3" href="https://www.youtube.com/@luxival" target="_blank" rel="noopener">
         <strong>YouTube</strong>
-        <span>Longer videos, explainers, and evergreen brand content when published.</span>
+        <span data-i18n="social.youtube">Longer videos, explainers, and evergreen brand content when published.</span>
       </a>
     </div>
   </div>
@@ -559,17 +563,17 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/founder-portrait-3/founder-portrait-3-480.avif 480w, /assets/images/optimized/founder-portrait-3/founder-portrait-3-720.avif 720w" sizes="(max-width: 900px) 100vw, 38vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/founder-portrait-3/founder-portrait-3-480.webp 480w, /assets/images/optimized/founder-portrait-3/founder-portrait-3-720.webp 720w" sizes="(max-width: 900px) 100vw, 38vw">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%2311131A'/%3E%3C/svg%3E" data-src="/assets/images/optimized/founder-portrait-3/founder-portrait-3-720.webp" alt="Olakunle Shopeju — Founder of Luxival" width="720" height="1280" decoding="async" loading="lazy" fetchpriority="low">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Cdefs%3E%3Cpattern id='p1' x='0' y='0' width='4' height='4' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23232A3A'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='16' height='9' fill='url(%23p1)'/%3E%3C/svg%3E" data-src="/assets/images/optimized/founder-portrait-3/founder-portrait-3-720.webp" alt="Olakunle Shopeju — Founder of Luxival" width="720" height="1280" decoding="async" loading="lazy" fetchpriority="low">
         </picture>
-        <span class="founder-tag">Founder & Director</span>
+        <span class="founder-tag" data-i18n="founder.tag">Founder & Director</span>
       </div>
       <div class="reveal d1">
-        <span class="eyebrow">About Luxival</span>
-        <h2 style="text-align:left;margin-bottom:1.5rem">Built on precision.<br>Driven by excellence.</h2>
-        <blockquote class="founder-quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
-        <p>Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
+        <span class="eyebrow" data-i18n="founder.eyebrow">About Luxival</span>
+        <h2 style="text-align:left;margin-bottom:1.5rem" data-i18n="founder.heading">Built on precision.<br>Driven by excellence.</h2>
+        <blockquote class="founder-quote" data-i18n="founder.quote">"I built Luxival to close the gap between premium airport transport and world-class digital services — because every touchpoint deserves the same obsessive attention to detail."</blockquote>
+        <p data-i18n="founder.bio">Based in Helsinki, Finland, Luxival combines 5+ years of digital expertise with deep knowledge of the Helsinki-Vantaa airport corridor — serving international travellers, businesses, and brands that refuse to compromise.</p>
         <br>
-        <a data-i18n="nav.about" href="/about" class="btn">Read Our Story</a>
+        <a data-i18n="cta.readStory" href="/about" class="btn">Read Our Story</a>
       </div>
     </div>
   </div>
@@ -580,20 +584,20 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   <div class="container">
     <div class="footer-grid">
       <div class="reveal">
-        <h3>Contact Luxival</h3><br>
+        <h3 data-i18n="footer.contactTitle">Contact Luxival</h3><br>
         <form id="footerForm">
           <label class="sr-only" for="fName">Your name</label>
-          <input type="text" id="fName" placeholder="Your name" autocomplete="name">
+          <input type="text" id="fName" placeholder="Your name" data-i18n-placeholder="form.name" autocomplete="name">
           <label class="sr-only" for="fEmail">Email address</label>
-          <input type="email" id="fEmail" placeholder="Email address" autocomplete="email">
+          <input type="email" id="fEmail" placeholder="Email address" data-i18n-placeholder="form.email" autocomplete="email">
           <label class="sr-only" for="fMsg">Tell us about your journey or project</label>
-          <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project"></textarea>
-          <button class="btn" type="submit">Send Inquiry</button>
+          <textarea rows="4" id="fMsg" placeholder="Tell us about your journey or project" data-i18n-placeholder="form.message"></textarea>
+          <button class="btn" type="submit" data-i18n="cta.sendInquiry">Send Inquiry</button>
           <p id="fStatus" style="margin-top:1rem;font-size:.88rem"></p>
         </form>
       </div>
       <div class="reveal d1">
-        <h3>Connect</h3><br>
+        <h3 data-i18n="footer.connectTitle">Connect</h3><br>
         <div class="socials">
           <a href="https://instagram.com/luxival" target="_blank" rel="noopener">Instagram</a>
           <a href="https://linkedin.com/company/luxival" target="_blank" rel="noopener">LinkedIn</a>
@@ -604,12 +608,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold)}
         <p>+358 50 351 8366</p>
         <p style="margin-top:2rem;font-size:.85rem;line-height:2">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
         <br>
-        <p style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.5">Luxury travel · Web development · SEO services · QA testing</p>
+        <p style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.5" data-i18n="footer.tagline">Luxury travel · Web development · SEO services · QA testing</p>
       </div>
     </div>
     <div class="footer-legal">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
+      <a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="/terms" data-i18n="footer.terms">Terms of Service</a>
     </div>
     <div class="copyright" data-i18n="footer.copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
@@ -667,27 +671,7 @@ document.querySelectorAll('video').forEach(v=>{
   },{threshold:0.25}).observe(v);
 });
 
-/* ---- Lazy responsive images ---- */
-const lazyImages=document.querySelectorAll('img[data-src], img[data-srcset]');
-if(lazyImages.length){
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.srcset) {
-          img.srcset = img.dataset.srcset;
-          img.removeAttribute('data-srcset');
-        }
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-        }
-        observer.unobserve(img);
-      }
-    });
-  }, { rootMargin: '200px' });
-  lazyImages.forEach(img=>observer.observe(img));
-}
+/* ---- Lazy responsive images — single observer, see load script below ---- */
 
 
 /* ---- 3D card tilt (desktop only) ---- */
@@ -857,7 +841,7 @@ window.addEventListener('load',function(){
         imageObserver.unobserve(entry.target);
         hydratePicture(entry.target);
       });
-    }, { rootMargin:'0px 0px', threshold:0.01 });
+    }, { rootMargin:'200px 0px', threshold:0.01 });
     document.querySelectorAll('img[data-src]').forEach(function(img){ imageObserver.observe(img); });
   } else {
     document.querySelectorAll('img[data-src]').forEach(hydratePicture);
@@ -890,6 +874,26 @@ window.addEventListener('load',function(){
     }
   }
   window.addEventListener('scroll', observeBelowFoldVideos, { once:true, passive:true });
+
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error', function(){
+      var picture = img.closest('picture');
+      var cardMedia = img.closest('.card-media') || img.closest('.svc-media') || img.closest('.hover-card') || img.closest('.tracking-vid');
+      var container = picture || cardMedia || img.parentElement;
+      
+      // Hide the picture/img
+      if(picture) picture.style.display = 'none';
+      else img.style.display = 'none';
+      
+      // Create and insert fallback
+      var fb = document.createElement('div');
+      fb.className = 'img-fallback';
+      fb.setAttribute('role','img');
+      fb.setAttribute('aria-label', img.alt || 'Image unavailable');
+      fb.innerHTML = '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>' + (img.alt || 'Image unavailable') + '</span>';
+      container.appendChild(fb);
+    }, {once:true});
+  });
 });
 </script>
 <script>
@@ -911,6 +915,6 @@ window.addEventListener('load',function(){
 </script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-<script src="/js/i18n.js?v=20260530-5" defer></script>
+<script src="/js/i18n.js?v=20260603-1" defer></script>
 </body>
 </html>

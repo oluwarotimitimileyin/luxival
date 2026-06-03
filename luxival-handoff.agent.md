@@ -269,7 +269,7 @@ Do not change this logic without being explicitly asked.
 - **Email:** support@luxival.com
 - **Phone:** +358503518366
 - **WhatsApp:** https://wa.me/+358503518366
-- **Site URL:** https://luxival.com
+- **Site URL:** https://www.luxival.com
 - **Supabase project:** zvwbwbnsfhsaueqddqza.supabase.co
 - **Brand voice:** Premium, confident, minimal, Finnish-modern
 - **Target audience:** Helsinki businesses needing digital services, and international travelers needing airport transport

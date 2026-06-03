@@ -63,7 +63,7 @@ luxival.com/
 ## 3. Page Inventory
 
 ### Home — `index.html`
-- **URL:** `https://luxival.com/`
+- **URL:** `https://www.luxival.com/`
 - **Template:** Hero page
 - **Purpose:** Introduce Luxival, split dual-service value proposition, drive traffic to Services and Tourism, capture email leads via chat widget
 - **Primary keyword:** `premium digital services Helsinki airport transfer`
@@ -74,7 +74,7 @@ luxival.com/
 - **Status:** Coded. Content is placeholder. Visual assets missing.
 
 ### Services — `services.html`
-- **URL:** `https://luxival.com/services.html`
+- **URL:** `https://www.luxival.com/services.html`
 - **Template:** Service catalog page
 - **Purpose:** Enumerate every digital and transport service; build credibility; convert to contact inquiry
 - **Primary keyword:** `digital services Helsinki web design SEO QA`
@@ -85,7 +85,7 @@ luxival.com/
 - **Status:** Coded. Content needs review and polish.
 
 ### Tourism & Transport — `tourism.html`
-- **URL:** `https://luxival.com/tourism.html`
+- **URL:** `https://www.luxival.com/tourism.html`
 - **Template:** Interactive booking page
 - **Purpose:** Explain transport offering, demonstrate transparent pricing via calculator, capture ride requests
 - **Primary keyword:** `Helsinki airport transfer private car Vantaa`
@@ -96,7 +96,7 @@ luxival.com/
 - **Status:** Coded. Pricing calculator implemented. Form submits to Supabase (blocked until anon key is live).
 
 ### Portfolio — `portfolio.html`
-- **URL:** `https://luxival.com/portfolio.html`
+- **URL:** `https://www.luxival.com/portfolio.html`
 - **Template:** Portfolio grid page
 - **Purpose:** Demonstrate past work quality, build credibility with technical buyers, filter by category
 - **Primary keyword:** `web design portfolio Helsinki QA UX 3D projects`
@@ -107,7 +107,7 @@ luxival.com/
 - **Status:** Coded. All portfolio content is placeholder. No real case studies.
 
 ### QA & Credibility — `qa.html`
-- **URL:** `https://luxival.com/qa.html`
+- **URL:** `https://www.luxival.com/qa.html`
 - **Template:** Credibility/specialty page
 - **Purpose:** Establish QA expertise, speak to technical decision-makers, convert to audit request
 - **Primary keyword:** `web QA testing Helsinki website quality audit`
@@ -118,7 +118,7 @@ luxival.com/
 - **Status:** Coded. Content needs review for technical depth.
 
 ### About — `about.html`
-- **URL:** `https://luxival.com/about.html`
+- **URL:** `https://www.luxival.com/about.html`
 - **Template:** About/founder page
 - **Purpose:** Build personal trust, tell founder story, explain the dual-service business model origin
 - **Primary keyword:** `about Luxival Helsinki digital agency founder`
@@ -129,7 +129,7 @@ luxival.com/
 - **Status:** Coded. All copy is placeholder. Needs real founder content.
 
 ### Contact — `contact.html`
-- **URL:** `https://luxival.com/contact.html`
+- **URL:** `https://www.luxival.com/contact.html`
 - **Template:** Form conversion page
 - **Purpose:** Primary lead capture endpoint — inquiry form, business details, conversion
 - **Primary keyword:** `contact Luxival Helsinki digital services inquiry`
@@ -140,7 +140,7 @@ luxival.com/
 - **Status:** Coded. Form submits to Supabase (blocked until anon key is live).
 
 ### Privacy Policy — `privacy.html` *(MISSING)*
-- **URL:** `https://luxival.com/privacy.html`
+- **URL:** `https://www.luxival.com/privacy.html`
 - **Template:** Legal page
 - **Purpose:** GDPR compliance; required before collecting any personal data via forms
 - **Content:** Data collected, how it is used, retention period, user rights, contact for data requests
@@ -148,7 +148,7 @@ luxival.com/
 - **Status:** Does not exist. Must be created before launch.
 
 ### Terms of Service — `terms.html` *(MISSING)*
-- **URL:** `https://luxival.com/terms.html`
+- **URL:** `https://www.luxival.com/terms.html`
 - **Template:** Legal page
 - **Purpose:** Define service terms for digital clients and transport customers
 - **Content:** Service scope, payment terms, cancellation policy, limitation of liability
@@ -163,7 +163,7 @@ luxival.com/
 - **Status:** Does not exist. Recommended before launch.
 
 ### Admin Dashboard — `admin.html` *(INTERNAL ONLY)*
-- **URL:** `https://luxival.com/admin.html`
+- **URL:** `https://www.luxival.com/admin.html`
 - **Template:** Internal dashboard
 - **Purpose:** Review and manage Supabase leads, ride requests, newsletter subscribers
 - **Navigation:** NOT in public nav, NOT in sitemap.xml, NOT in footer
@@ -184,7 +184,7 @@ Current URLs use `.html` extensions (e.g., `services.html`). This is valid for a
 }
 ```
 
-With clean URLs active, `https://luxival.com/services.html` becomes `https://luxival.com/services`. All internal links remain as `services.html` — Vercel handles the redirect automatically.
+With clean URLs active, `https://www.luxival.com/services.html` becomes `https://www.luxival.com/services`. All internal links remain as `services.html` — Vercel handles the redirect automatically.
 
 ---
 

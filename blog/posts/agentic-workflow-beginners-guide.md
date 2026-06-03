@@ -44,5 +44,5 @@ permalink: "blog/agentic-workflow-beginners-guide/index.html"
   <h2>Getting Started</h2>
   <p>The best way to start with agentic workflows is to map one existing manual process clearly, identify the steps that are repetitive and rule-based, and automate those first. At Luxival, we help businesses and development teams design agentic workflows that are practical, accountable, and built to grow.</p>
 
-  <p style="margin-top:2rem"><a href="/services.html" class="btn">Talk to Us About Workflow Design →</a></p>
+  <p style="margin-top:2rem"><a href="/services" class="btn">Talk to Us About Workflow Design →</a></p>
 </div>

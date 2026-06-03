@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-const BASE = 'https://luxival.com';
+const BASE = 'https://www.luxival.com';
 
 test.describe('Desktop Navigation', () => {
   test.use({ viewport: { width: 1280, height: 720 } });

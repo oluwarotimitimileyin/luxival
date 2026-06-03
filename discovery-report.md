@@ -12,7 +12,7 @@
 **Legal address:** Varikkokaarre 7A, 01700 Vantaa, Finland
 **Contact:** support@luxival.com | +358503518366
 **WhatsApp:** https://wa.me/+358503518366
-**Website:** https://luxival.com
+**Website:** https://www.luxival.com
 **Supabase project:** zvwbwbnsfhsaueqddqza.supabase.co
 
 ### Mission

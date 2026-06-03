@@ -113,7 +113,7 @@ Priority levels: **P0** = launch blocker | **P1** = high | **P2** = medium | **P
 | LCH-02 | Deploy to Vercel with correct environment variables | P0 | Open | Requires LCH-01 |
 | LCH-03 | Add luxival.com domain in Vercel settings | P0 | Open | DNS setup required |
 | LCH-04 | Update DNS records at domain registrar (A record, CNAME for www) | P0 | Open | Requires LCH-03 |
-| LCH-05 | Confirm HTTPS active on https://luxival.com and https://www.luxival.com | P0 | Open | Post-DNS verification |
+| LCH-05 | Confirm HTTPS active on https://www.luxival.com and https://www.luxival.com | P0 | Open | Post-DNS verification |
 | LCH-06 | Verify all pages load without errors on production URL | P0 | Open | Post-deployment smoke test |
 | LCH-07 | Test all forms on production URL | P0 | Open | End-to-end production test |
 | LCH-08 | Submit sitemap.xml to Google Search Console | P1 | Open | Requires live domain |

@@ -321,7 +321,7 @@ environment variables are set correctly in the hosting provider dashboard —
 `STRIPE_SECRET_KEY` (server-only), and `NEXT_PUBLIC_SITE_URL`. Deploy the site
 to Vercel or Netlify. After deployment, update DNS records at the domain
 registrar: an `A` record for the apex domain and a `CNAME` for `www`. Monitor
-DNS propagation and confirm HTTPS is active on both `https://luxival.com` and
+DNS propagation and confirm HTTPS is active on both `https://www.luxival.com` and
 `https://www.luxival.com`. Submit `sitemap.xml` to Google Search Console and
 Bing Webmaster Tools. Verify the property in Search Console. Test every page,
 form, and interactive component on the live production URL. Execute the full

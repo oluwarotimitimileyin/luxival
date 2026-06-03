@@ -34,5 +34,5 @@ permalink: "blog/what-is-istqb-certification/index.html"
   <h2>Luxival and QA Services</h2>
   <p>At Luxival, our QA work is led by an ISTQB-certified software tester. We offer independent QA audits, test strategy reviews, and ongoing quality support for development teams. If your software is growing faster than your quality process, we can help.</p>
 
-  <p style="margin-top:2rem"><a href="/services.html" class="btn">Learn About Our QA Services →</a></p>
+  <p style="margin-top:2rem"><a href="/services" class="btn">Learn About Our QA Services →</a></p>
 </div>

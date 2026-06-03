@@ -38,5 +38,5 @@ permalink: "blog/helsinki-design-district-luxury-shopping/index.html"
   <h2>Explore Helsinki's Design Culture</h2>
   <p>Private guided tours of the Helsinki Design District, curated for serious buyers and design enthusiasts.</p>
 
-  <p style="margin-top:2rem"><a href="../tourism.html" class="btn">Explore Helsinki Tourism Experiences →</a></p>
+  <p style="margin-top:2rem"><a href="/tourism" class="btn">Explore Helsinki Tourism Experiences →</a></p>
 </div>

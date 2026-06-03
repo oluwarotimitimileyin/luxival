@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-const BASE = 'https://luxival.com';
+const BASE = 'https://www.luxival.com';
 
 test.describe('Broken Links Audit', () => {
   test('Crawl homepage and verify all internal links return 200', async ({ page, request }) => {

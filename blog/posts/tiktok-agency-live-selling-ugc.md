@@ -44,5 +44,5 @@ permalink: "blog/tiktok-agency-live-selling-ugc/index.html"
   <h2>Ready to Start on TikTok?</h2>
   <p>At Luxival, we run TikTok Live campaigns, produce UGC content, manage paid ad accounts, and mentor business owners who want to build their own capability. Whether you want to hand it over or learn it yourself — we can help.</p>
 
-  <p style="margin-top:2rem"><a href="/digital.html" class="btn">Talk to Us About TikTok →</a></p>
+  <p style="margin-top:2rem"><a href="/digital" class="btn">Talk to Us About TikTok →</a></p>
 </div>
