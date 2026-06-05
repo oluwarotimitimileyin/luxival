@@ -331,16 +331,22 @@ footer a:hover{opacity:1}
 
 <script src="/js/supabase-loader.js" defer></script>
 <script src="/js/fare-calculator.js" defer></script>
+<script>
+  window.LuxivalPublicEnv = window.LuxivalPublicEnv || {};
+  window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY = window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY || 'YOUR_GOOGLE_MAPS_PUBLIC_KEY';
+</script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
   window._fareCalculatorConfig = { containerId: 'fare-calculator-transfers', preselect: [] };
-  function _initFareWhenReady() {
+  function _initFareNow() {
     if (window.initFareCalculator && window._fareCalculatorConfig) {
       initFareCalculator(window._fareCalculatorConfig);
     }
   }
+  function _onTransfersGoogleMapsReady() {}
   window.addEventListener('DOMContentLoaded', function(){
-    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_initFareWhenReady', '#estimate');
+    _initFareNow();
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_onTransfersGoogleMapsReady', '#estimate');
   });
 </script>
 <script>

@@ -75,7 +75,8 @@
       }
 
       renderBreakdown(container, data);
-    } catch {
+    } catch (error) {
+      console.error("Fare calculation failed", error);
       setStatus(container, "Route calculation failed. Please try again.", true);
     }
   }
@@ -92,39 +93,45 @@
     }
   }
 
-  function initAutocomplete(input, container) {
-    function attach() {
-      if (window.google && window.google.maps && window.google.maps.places) {
-        const ac = new window.google.maps.places.Autocomplete(input, {
-          types: ["geocode"],
-          componentRestrictions: { country: "fi" },
-        });
-        ac.addListener("place_changed", () => {
-          input.dispatchEvent(new Event("change", { bubbles: true }));
-        });
-      } else {
-        // Retry up to 20 times (10 seconds total) waiting for Google Maps to load
-        let attempts = 0;
-        const retry = setInterval(() => {
-          attempts++;
-          if (window.google && window.google.maps && window.google.maps.places) {
-            clearInterval(retry);
-            const ac = new window.google.maps.places.Autocomplete(input, {
-              types: ["geocode"],
-              componentRestrictions: { country: "fi" },
-            });
-            ac.addListener("place_changed", () => {
-              input.dispatchEvent(new Event("change", { bubbles: true }));
-            });
-          } else if (attempts >= 20) {
-            clearInterval(retry);
-            console.error("[Luxival Fare] Google Places Autocomplete failed to load");
-            setStatus(container, "Address autocomplete is unavailable. You can still type full addresses manually.", true);
-          }
-        }, 500);
-      }
+  function isPlacesReady() {
+    return Boolean(window.google && window.google.maps && window.google.maps.places);
+  }
+
+  function attachAutocomplete(input) {
+    if (!input || input.dataset.luxivalAutocompleteReady === "true" || !isPlacesReady()) return false;
+    try {
+      const ac = new window.google.maps.places.Autocomplete(input, {
+        types: ["geocode"],
+        componentRestrictions: { country: "fi" },
+      });
+      ac.addListener("place_changed", () => {
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+      input.dataset.luxivalAutocompleteReady = "true";
+      return true;
+    } catch (error) {
+      console.error("Places autocomplete failed", error);
+      return false;
     }
-    attach();
+  }
+
+  function initAutocomplete(input, container) {
+    if (!input) return;
+    if (attachAutocomplete(input)) return;
+
+    const onMapsLoaded = () => {
+      if (!attachAutocomplete(input)) {
+        setStatus(container, "Address autocomplete is unavailable. You can still type full addresses manually.", false);
+      }
+    };
+    const onMapsFailed = (event) => {
+      const error = event && event.detail ? event.detail.error : undefined;
+      console.error("Places autocomplete failed", error);
+      setStatus(container, "Address autocomplete is unavailable. You can still type full addresses manually.", false);
+    };
+
+    window.addEventListener("luxival:google-maps-loaded", onMapsLoaded, { once: true });
+    window.addEventListener("luxival:google-maps-failed", onMapsFailed, { once: true });
   }
 
   function renderWidget(container, preselect) {

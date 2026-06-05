@@ -5,13 +5,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const MAPS_KEY = process.env.GOOGLE_MAPS_PUBLIC_KEY || '';
+const MAPS_KEY =
+  process.env.GOOGLE_MAPS_PUBLIC_KEY ||
+  process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+  process.env.VITE_GOOGLE_MAPS_API_KEY ||
+  '';
 
 function walkDir(dir, callback) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walkDir(full, callback);
-    else if (entry.isFile() && entry.name.endsWith('.html')) callback(full);
+    else if (entry.isFile() && (entry.name.endsWith('.html') || entry.name.endsWith('.js'))) callback(full);
   }
 }
 
@@ -35,5 +39,5 @@ walkDir(siteDir, (file) => {
 console.log(`[inject-env] Done. ${replaced} file(s) updated.`);
 
 if (!MAPS_KEY && replaced > 0) {
-  console.warn('[inject-env] WARNING: GOOGLE_MAPS_PUBLIC_KEY not set — fare calculator placeholders were NOT replaced.');
+  console.warn('[inject-env] WARNING: No browser Google Maps key found. Set GOOGLE_MAPS_PUBLIC_KEY or NEXT_PUBLIC_GOOGLE_MAPS_API_KEY or VITE_GOOGLE_MAPS_API_KEY.');
 }

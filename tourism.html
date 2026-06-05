@@ -579,7 +579,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       </select>
       <label for="accomGuests">Guests</label>
       <input id="accomGuests" type="number" min="1" max="20" value="2">
-      <button class="btn" style="width:100%" onclick="handleAccomSearch()" data-i18n="cta.bookNow">Search accommodation</button>
+      <button id="accomSearchBtn" type="button" class="btn" style="width:100%" data-i18n="cta.bookNow">Search accommodation</button>
       <p style="font-size:.78rem;opacity:.4;margin-top:.8rem">Search powered by Google Hotels · Results open in a new tab</p>
     </div>
     <div class="reveal d2">
@@ -902,15 +902,18 @@ function initLuxivalMap(){
 <script>
 window.LuxivalPublicEnv=window.LuxivalPublicEnv||{};
 window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY='YOUR_GOOGLE_MAPS_PUBLIC_KEY';
+window.LuxivalPublicEnv.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY;
+window.LuxivalPublicEnv.VITE_GOOGLE_MAPS_API_KEY=window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY;
 </script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
-function initLuxivalMapAndFare(){
+function initLuxivalMapOnly(){
+  if (!(window.google && window.google.maps)) return;
   initLuxivalMap();
-  if (window.initFareCalculator) initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
 }
 window.addEventListener('DOMContentLoaded', function(){
-  if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalMapAndFare', '#pricing');
+  if (window.initFareCalculator) initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
+  if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalMapOnly', '#luxivalMap');
 });
 
 const filters=document.querySelectorAll('.filter');
@@ -926,8 +929,18 @@ filters.forEach(btn=>{
 
 /* Accommodation search — Google Hotels */
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+const accomDestInput=document.getElementById('accomDest');
+let accomDestinationState='';
+function syncAccomDestination(){
+  if(!accomDestInput) return '';
+  accomDestinationState=accomDestInput.value||'';
+  return accomDestinationState.trim();
+}
+if(accomDestInput){
+  ['input','change','blur'].forEach(evt=>accomDestInput.addEventListener(evt,syncAccomDestination));
+}
 function handleAccomSearch(){
-  const dest=document.getElementById('accomDest').value.trim();
+  const dest=(syncAccomDestination()||'').trim();
   const inn=document.getElementById('accomIn').value;
   const out=document.getElementById('accomOut').value;
   const type=document.getElementById('accomType').value||'any';
@@ -946,11 +959,8 @@ function handleAccomSearch(){
   res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s) · ${escHtml(typeLabel)}</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a data-i18n="nav.contact" href="/contact" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
   window.open(url,'_blank');
 }
-document.getElementById('accomDest')&&document.querySelector('[onclick="handleAccomSearch()"]')&&(()=>{
-  const btn=document.querySelector('[onclick="handleAccomSearch()"]');
-  btn.removeAttribute('onclick');
-  btn.addEventListener('click',handleAccomSearch);
-})();
+const accomSearchBtn=document.getElementById('accomSearchBtn');
+if(accomSearchBtn){accomSearchBtn.addEventListener('click',handleAccomSearch);}
 
 /* Ride request form */
 const rideForm=document.getElementById('rideRequestForm');

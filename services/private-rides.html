@@ -183,18 +183,24 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script src="/js/supabase-loader.js" defer></script>
 <script src="/js/luxival.js"></script>
 <script src="/js/fare-calculator.js" defer></script>
+<script>
+  window.LuxivalPublicEnv = window.LuxivalPublicEnv || {};
+  window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY = window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY || 'YOUR_GOOGLE_MAPS_PUBLIC_KEY';
+</script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
   window._fareCalculatorConfig = { containerId: 'fare-calculator-rides', preselect: ['effort'] };
-  function _initFareWhenReady() {
+  function _initFareNow() {
     if (window._fareCalculatorConfig) {
       initFareCalculator(window._fareCalculatorConfig);
     }
   }
+  function _onRidesGoogleMapsReady() {}
 </script>
 <script>
   window.addEventListener('DOMContentLoaded', function(){
-    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_initFareWhenReady', '#fare-calculator-rides');
+    _initFareNow();
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_onRidesGoogleMapsReady', '#fare-calculator-rides');
   });
 </script>
 </body>

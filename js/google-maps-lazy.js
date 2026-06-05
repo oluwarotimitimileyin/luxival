@@ -2,21 +2,36 @@
   'use strict';
 
   var loadedCallbacks = {};
+  var scriptRequested = false;
 
   function getApiKey() {
-    var fromPublicEnv = window.LuxivalPublicEnv && typeof window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY === 'string'
-      ? window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY.trim()
-      : '';
-    if (fromPublicEnv && fromPublicEnv !== 'YOUR_GOOGLE_MAPS_PUBLIC_KEY') {
-      return fromPublicEnv;
+    var keyCandidates = [];
+    if (window.LuxivalPublicEnv) {
+      keyCandidates.push(window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY);
+      keyCandidates.push(window.LuxivalPublicEnv.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+      keyCandidates.push(window.LuxivalPublicEnv.VITE_GOOGLE_MAPS_API_KEY);
     }
-    if (window.LuxivalPublicEnv && typeof window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY === 'string') {
-      return '';
+    if (window.LuxivalConfig) {
+      keyCandidates.push(window.LuxivalConfig.GOOGLE_MAPS_PUBLIC_KEY);
+      keyCandidates.push(window.LuxivalConfig.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+      keyCandidates.push(window.LuxivalConfig.VITE_GOOGLE_MAPS_API_KEY);
     }
-    if (window.LuxivalConfig && typeof window.LuxivalConfig.GOOGLE_MAPS_PUBLIC_KEY === 'string') {
-      return window.LuxivalConfig.GOOGLE_MAPS_PUBLIC_KEY.trim();
+
+    for (var i = 0; i < keyCandidates.length; i++) {
+      var candidate = typeof keyCandidates[i] === 'string' ? keyCandidates[i].trim() : '';
+      if (candidate && candidate !== 'YOUR_GOOGLE_MAPS_PUBLIC_KEY') return candidate;
     }
     return '';
+  }
+
+  function emitMapsLoaded() {
+    window.dispatchEvent(new CustomEvent('luxival:google-maps-loaded'));
+  }
+
+  function emitMapsFailed(error) {
+    window.dispatchEvent(new CustomEvent('luxival:google-maps-failed', {
+      detail: { error: error }
+    }));
   }
 
   function showMapFallback() {
@@ -30,21 +45,31 @@
     var apiKey = getApiKey();
     if (window.google && window.google.maps) {
       if (typeof window[callbackName] === 'function') window[callbackName]();
+      emitMapsLoaded();
       return;
     }
     if (!apiKey) {
-      console.error('[Luxival Maps] Missing GOOGLE_MAPS_PUBLIC_KEY');
+      var keyError = new Error('Missing Google Maps browser API key');
+      console.error("Google Maps load failed", keyError);
+      emitMapsFailed(keyError);
       showMapFallback();
       return;
     }
     if (loadedCallbacks[callbackName]) return;
     loadedCallbacks[callbackName] = true;
+    if (scriptRequested) return;
+    scriptRequested = true;
 
     var script = document.createElement('script');
     script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) + '&libraries=places&callback=' + encodeURIComponent(callbackName);
     script.async = true;
     script.defer = true;
-    script.onerror = showMapFallback;
+    script.onload = emitMapsLoaded;
+    script.onerror = function (error) {
+      console.error("Google Maps load failed", error);
+      emitMapsFailed(error);
+      showMapFallback();
+    };
     document.head.appendChild(script);
   }
 
@@ -66,5 +91,9 @@
     observer.observe(target);
   };
 
-  window.gm_authFailure = showMapFallback;
+  window.gm_authFailure = function (error) {
+    console.error("Google Maps load failed", error);
+    emitMapsFailed(error);
+    showMapFallback();
+  };
 })();
