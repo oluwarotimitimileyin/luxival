@@ -92,7 +92,7 @@
     }
   }
 
-  function initAutocomplete(input) {
+  function initAutocomplete(input, container) {
     function attach() {
       if (window.google && window.google.maps && window.google.maps.places) {
         const ac = new window.google.maps.places.Autocomplete(input, {
@@ -118,6 +118,8 @@
             });
           } else if (attempts >= 20) {
             clearInterval(retry);
+            console.error("[Luxival Fare] Google Places Autocomplete failed to load");
+            setStatus(container, "Address autocomplete is unavailable. You can still type full addresses manually.", true);
           }
         }, 500);
       }
@@ -181,7 +183,7 @@
     [originInput, destInput].forEach((input) => {
       input.addEventListener("input", () => scheduleFetch(container));
       input.addEventListener("change", () => scheduleFetch(container));
-      initAutocomplete(input);
+      initAutocomplete(input, container);
     });
 
     // Surcharge checkboxes retrigger fare fetch

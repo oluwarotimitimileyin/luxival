@@ -558,7 +558,7 @@ footer{background:#060608;padding:5rem 0 2rem}
   <div class="calc-grid">
     <div class="accom-card reveal d1">
       <label for="accomDest">Destination</label>
-      <input id="accomDest" type="text" placeholder="Helsinki, Espoo, Tampere, Rovaniemi…">
+      <input id="accomDest" type="text" placeholder="Helsinki, Espoo, Tampere, Rovaniemi…" required>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
         <div>
           <label for="accomIn">Check in</label>
@@ -803,24 +803,19 @@ document.getElementById('rideServiceType').addEventListener('change',updateRideE
   }).catch(()=>{document.getElementById('weatherDesc').textContent='Weather unavailable';});
 })();
 
-/* Live events fetch — LinkedEvents API (City of Helsinki, free) */
+/* Live events fetch — via server-side LinkedEvents proxy */
 (function fetchEvents(){
   const grid=document.getElementById('eventsGrid');
   if(!grid) return;
-  const FALLBACK=[
-    {tag:'Culture',title:'Helsinki Design Week',desc:'Scandinavia\'s largest design festival — exhibitions and talks citywide.',loc:'Helsinki City-wide',date:'Sep 2026'},
-    {tag:'Music',title:'Helsinki Jazz Festival',desc:'International jazz artists at intimate venues across the capital.',loc:'Storyville, Helsinki',date:'May 2026'},
-    {tag:'Tradition',title:'Midsummer at Seurasaari',desc:'Traditional Finnish midsummer with bonfires and folk music on the island.',loc:'Seurasaari Island',date:'Jun 2026'},
-    {tag:'Sport',title:'Helsinki City Marathon',desc:'Annual urban marathon through Helsinki\'s iconic streets and waterfront.',loc:'City Centre',date:'Aug 2026'},
-    {tag:'Culture',title:'Baltic Circle Theatre Festival',desc:'Contemporary theatre and performance art from across the Baltic region.',loc:'Various venues',date:'Nov 2026'},
-    {tag:'Market',title:'Christmas Market at Senate Square',desc:'Traditional open-air Christmas market with crafts, food, and festive lights.',loc:'Senate Square',date:'Dec 2026'}
-  ];
   const IMGS=['https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70',
     'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70',
     'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=70',
     'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&q=70',
     'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=400&q=70',
     'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70'];
+  function renderState(tag,title,desc){
+    grid.innerHTML=`<div class="event-card"><div class="event-body"><div class="event-tag">${tag}</div><h3 style="color:var(--text)">${title}</h3><p class="evt-loc">${desc}</p></div></div>`;
+  }
   function renderCard(tag,title,desc,loc,date,imgSrc,i){
     const d=i%3===0?'':'d'+(i%3);
     return `<div class="event-card reveal ${d}">
@@ -833,28 +828,32 @@ document.getElementById('rideServiceType').addEventListener('change',updateRideE
       </div>
     </div>`;
   }
-  function renderFallback(){
-    grid.innerHTML=FALLBACK.map((e,i)=>renderCard(e.tag,e.title,e.desc,e.loc,e.date,IMGS[i]||'',i)).join('');
-    if(window.LuxivalReveal) window.LuxivalReveal();
-  }
+  renderState('Loading','Fetching Helsinki events…','Please wait');
   const now=new Date().toISOString().split('T')[0];
   const controller=new AbortController();
   const tId=setTimeout(()=>controller.abort(),6000);
-  fetch(`https://api.hel.fi/linkedevents/v1/event/?start=${now}&sort=start_time&page_size=6&format=json`,{signal:controller.signal})
-    .then(r=>{clearTimeout(tId);return r.json();})
+  fetch(`/api/helsinki-events?start=${encodeURIComponent(now)}&sort=start_time&page_size=6`,{signal:controller.signal})
+    .then(r=>{clearTimeout(tId);if(!r.ok){throw new Error('events_api_http_'+r.status);}return r.json();})
     .then(d=>{
-      const events=(d.data||[]).filter(e=>e.name&&(e.name.en||e.name.fi));
-      if(!events.length){renderFallback();return;}
+      const events=Array.isArray(d.events)?d.events:[];
+      if(!events.length){
+        renderState('No events','No upcoming events found right now.','Please check again shortly.');
+        return;
+      }
       grid.innerHTML=events.map((e,i)=>{
-        const title=(e.name.en||e.name.fi||'Unnamed event').slice(0,60);
-        const tag=(e.keywords&&e.keywords[0]&&e.keywords[0].name&&(e.keywords[0].name.en||e.keywords[0].name.fi))||'Event';
-        const loc=(e.location&&e.location.name&&(e.location.name.en||e.location.name.fi))||'Helsinki';
+        const title=(e.title||'Unnamed event').slice(0,60);
+        const tag=(e.tag||'Event');
+        const loc=e.location||'Helsinki';
         const date=e.start_time?new Date(e.start_time).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
-        const img=(e.images&&e.images[0]&&e.images[0].url)||IMGS[i%IMGS.length]||'';
+        const img=e.image||IMGS[i%IMGS.length]||'';
         return renderCard(tag.slice(0,30),title,'',loc,date,img,i);
       }).join('');
       if(window.LuxivalReveal) window.LuxivalReveal();
-    }).catch(()=>{clearTimeout(tId);renderFallback();});
+    }).catch((error)=>{
+      clearTimeout(tId);
+      console.error('[Luxival events] Failed to load events:', error);
+      renderState('Error','Unable to load live Helsinki events.','Please refresh or try again in a moment.');
+    });
 })();
 
 /* Google Map with curated Helsinki pins */
@@ -900,6 +899,10 @@ function initLuxivalMap(){
 }
 </script>
 <script src="/js/fare-calculator.js" defer></script>
+<script>
+window.LuxivalPublicEnv=window.LuxivalPublicEnv||{};
+window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY='YOUR_GOOGLE_MAPS_PUBLIC_KEY';
+</script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
 function initLuxivalMapAndFare(){
@@ -927,17 +930,20 @@ function handleAccomSearch(){
   const dest=document.getElementById('accomDest').value.trim();
   const inn=document.getElementById('accomIn').value;
   const out=document.getElementById('accomOut').value;
+  const type=document.getElementById('accomType').value||'any';
   const guests=document.getElementById('accomGuests').value||'2';
   const res=document.getElementById('accomResults');
-  if(!dest){res.innerHTML='<p style="color:#f77;font-size:.9rem;opacity:1">Please enter a destination.</p>';return;}
+  if(!dest){res.innerHTML='<p style="color:#f77;font-size:.9rem;opacity:1">Please enter a destination to search for accommodation.</p>';return;}
+  if(inn&&out&&out<inn){res.innerHTML='<p style="color:#f77;font-size:.9rem;opacity:1">Check-out date must be after check-in date.</p>';return;}
   const safeD=escHtml(dest);
-  const query=encodeURIComponent(dest+', Finland hotels');
-  let url='https://www.google.com/travel/hotels/s/'+encodeURIComponent(dest+' Finland');
-  if(inn) url+='?checkin='+inn;
-  if(inn&&out) url+='&checkout='+out;
-  if(guests&&guests!=='2') url+=(inn?'&':'?')+'guests='+guests;
+  const checkInText=inn?`check in ${inn}`:'flexible check in';
+  const checkOutText=out?`check out ${out}`:'flexible check out';
+  const typeText=type==='any'?'':` ${type}`;
+  const queryText=`${dest} Finland${typeText} hotels ${checkInText} ${checkOutText} ${guests} guests`;
+  const url='https://www.google.com/travel/hotels/'+encodeURIComponent(dest)+'?q='+encodeURIComponent(queryText);
   const dateStr=inn&&out?escHtml(inn)+' → '+escHtml(out):'Flexible dates';
-  res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s)</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a data-i18n="nav.contact" href="/contact" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
+  const typeLabel=type==='any'?'Any type':type.replace('-', ' ');
+  res.innerHTML=`<div class="estimate-box" style="margin-bottom:1.5rem"><p style="opacity:.7;font-size:.9rem"><strong>Hotels in ${safeD}, Finland</strong></p><p style="opacity:.5;font-size:.82rem">${dateStr} · ${escHtml(guests)} guest(s) · ${escHtml(typeLabel)}</p><p style="opacity:.55;font-size:.82rem;margin-top:.5rem">Click below to browse live hotel results on Google Hotels.</p></div><a href="${url}" target="_blank" rel="noopener" class="btn" style="display:block;text-align:center;margin-bottom:1rem;border-radius:var(--r)">View hotels in ${safeD} on Google →</a><a data-i18n="nav.contact" href="/contact" class="btn btn-outline" style="display:block;text-align:center;margin-bottom:1rem">Request premium sourcing</a><a href="https://wa.me/+358503518366" target="_blank" rel="noopener" class="btn btn-outline" style="display:block;text-align:center">WhatsApp for instant help</a>`;
   window.open(url,'_blank');
 }
 document.getElementById('accomDest')&&document.querySelector('[onclick="handleAccomSearch()"]')&&(()=>{
@@ -977,13 +983,25 @@ if(rideForm){
       status:'pending',
       source:'tourism-page'
     };
-    const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
-    if(db){
-      const{error}=await db.submitRideRequest(payload);
-      if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Please email support@luxival.com directly.';}
-      else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';}
-    }else{
-      setTimeout(()=>{rideForm.reset();rideStatus.textContent='Request received. We will reply shortly.';},700);
+    try{
+      const response=await fetch('/api/ride-request',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok){
+        console.error('[Luxival ride request] API error',response.status,data);
+        rideStatus.style.color='#f77';
+        rideStatus.textContent=(data&&data.error)?data.error:'Unable to send. Please email support@luxival.com directly.';
+        return;
+      }
+      rideForm.reset();
+      rideStatus.textContent='Request sent. We will confirm within one business day.';
+    }catch(error){
+      console.error('[Luxival ride request] Network error',error);
+      rideStatus.style.color='#f77';
+      rideStatus.textContent='Unable to send. Please email support@luxival.com directly.';
     }
   });
 }

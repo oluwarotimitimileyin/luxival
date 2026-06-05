@@ -1,8 +1,23 @@
 (function () {
   'use strict';
 
-  var API_KEY = 'AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas';
   var loadedCallbacks = {};
+
+  function getApiKey() {
+    var fromPublicEnv = window.LuxivalPublicEnv && typeof window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY === 'string'
+      ? window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY.trim()
+      : '';
+    if (fromPublicEnv && fromPublicEnv !== 'YOUR_GOOGLE_MAPS_PUBLIC_KEY') {
+      return fromPublicEnv;
+    }
+    if (window.LuxivalPublicEnv && typeof window.LuxivalPublicEnv.GOOGLE_MAPS_PUBLIC_KEY === 'string') {
+      return '';
+    }
+    if (window.LuxivalConfig && typeof window.LuxivalConfig.GOOGLE_MAPS_PUBLIC_KEY === 'string') {
+      return window.LuxivalConfig.GOOGLE_MAPS_PUBLIC_KEY.trim();
+    }
+    return '';
+  }
 
   function showMapFallback() {
     var containers = document.querySelectorAll('[id*="Map"], [id*="map"], .map-container');
@@ -12,15 +27,21 @@
   }
 
   function inject(callbackName) {
+    var apiKey = getApiKey();
     if (window.google && window.google.maps) {
       if (typeof window[callbackName] === 'function') window[callbackName]();
+      return;
+    }
+    if (!apiKey) {
+      console.error('[Luxival Maps] Missing GOOGLE_MAPS_PUBLIC_KEY');
+      showMapFallback();
       return;
     }
     if (loadedCallbacks[callbackName]) return;
     loadedCallbacks[callbackName] = true;
 
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY + '&libraries=places&callback=' + encodeURIComponent(callbackName);
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) + '&libraries=places&callback=' + encodeURIComponent(callbackName);
     script.async = true;
     script.defer = true;
     script.onerror = showMapFallback;
