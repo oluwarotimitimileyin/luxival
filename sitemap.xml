@@ -95,24 +95,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.luxival.com/thank-you-transfer</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.luxival.com/thank-you-digital</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.luxival.com/admin</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://www.luxival.com/autonomous-qa-audit-dashboard</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>

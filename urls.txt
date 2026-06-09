@@ -23,8 +23,6 @@ https://www.luxival.com/services/ai-agents
 https://www.luxival.com/services/software-testing
 https://www.luxival.com/services/mechanical-design
 https://www.luxival.com/services/electrical-design
-https://www.luxival.com/thank-you-transfer
-https://www.luxival.com/thank-you-digital
 https://www.luxival.com/blog
 https://www.luxival.com/blog/top-5-hidden-gems-helsinki
 https://www.luxival.com/blog/summer-finland-lakeland-guide
@@ -51,8 +49,6 @@ https://www.luxival.com/blog/website-audit-what-it-is-why-you-need-it
 https://www.luxival.com/blog/ai-agents-business-automation-questions
 https://www.luxival.com/blog/software-testing-qa-business-questions
 https://www.luxival.com/blog/finland-tourism-planning-questions
-https://www.luxival.com/services/tiktok-agency.html
-https://www.luxival.com/services/sewing-pattern.html
 https://www.luxival.com/blog/helsinki-food-tour-restaurants-guide
 https://www.luxival.com/blog/helsinki-to-tallinn-ferry-day-trip
 https://www.luxival.com/blog/rovaniemi-santa-claus-village-transfer
