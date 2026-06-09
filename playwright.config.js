@@ -6,7 +6,7 @@ module.exports = defineConfig({
   timeout: 60000,
   retries: 2,
   workers: 3,
-  reporter: [['list'], ['json', { outputFile: 'tests/results.json' }], ['html', { outputFolder: 'test-results/html-report', open: 'never' }]],
+  reporter: [['list'], ['json', { outputFile: 'tests/results.json' }], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   use: {
     baseURL: 'https://www.luxival.com',
     headless: true,
