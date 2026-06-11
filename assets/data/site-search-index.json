@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11T22:40:25.139Z",
-  "total": 61,
+  "generatedAt": "2026-06-11T22:49:38.794Z",
+  "total": 62,
   "documents": [
     {
       "path": "/",
@@ -613,6 +613,53 @@
         "audit"
       ],
       "body": "LUXIVAL Home Portfolio Growth Architect Contact Backend Operations · Growth Architect The whole operation, in one live view. This page shows how the GROWTH_ARCHITECT app runs: the frontend launch surface, the proxy backend that handles AI requests, and the runtime status used in local and deployed environments. View status Open app Portfolio entry Frontend Portfolio dist build /portfolio/growth-architect/frontend/dist/ Backend Checking health... Waiting for /health response Proxy path POST /api-proxy Also supports websocket relay via /ws-proxy Runtime Google ADC + Vertex AI Requires GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION How It Operates Request flow from browser to model and back 1. Input The user enters a URL in the GROWTH_ARCHITECT interface and starts an audit. 2. Frontend The app sends the request to the proxy endpoint rather than calling Google APIs directly from the browser. 3. Backend The Node backend authenticates with Google ADC, builds the Vertex AI request, and forwards the payload. 4. Response The result comes back to the interface, where the app renders the score, recommendations, and follow-up actions. Live Preview The same app experience users launch from the portfolio The frame below points at the production-style build so you can show the app and the operational shell in one place. growth-architect.luxival.com Backend files The proxy server lives in the Growth Architect backend service and now exposes a health endpoint for the ops page. Express ws Rate limit ADC auth What this page is for Use it as the portfolio-friendly operations view: it shows the running app, the proxy route, and whether the backend responds to health checks. Portfolio Operations Live status Ready to deploy Publish the portfolio entry and keep the backend visible Once deploy"
+    },
+    {
+      "path": "/helsinki-airport-pickup",
+      "title": "Helsinki Airport Pickup | Private Transfer in Uusimaa | Luxival",
+      "description": "Book a private Helsinki Airport pickup with Luxival. Premium chauffeur transfers from Helsinki-Vantaa Airport to Helsinki, Vantaa, Espoo, Porvoo, and Uusimaa with flight tracking.",
+      "section": "Website",
+      "headings": [
+        "Private Helsinki Airport Pickup",
+        "Flight-aware pickup",
+        "Direct private transfer",
+        "Premium handoff",
+        "From Helsinki-Vantaa Airport to where you need to be",
+        "Book your airport pickup in three steps",
+        "Send arrival details",
+        "Get confirmation",
+        "Arrive smoothly",
+        "Questions before booking",
+        "Book your Helsinki Airport transfer"
+      ],
+      "keywords": [
+        "helsinki airport pickup",
+        "helsinki",
+        "airport",
+        "pickup",
+        "private",
+        "transfer",
+        "uusimaa",
+        "luxival",
+        "book",
+        "with",
+        "premium",
+        "chauffeur",
+        "transfers",
+        "from",
+        "vantaa",
+        "espoo",
+        "porvoo",
+        "and",
+        "flight",
+        "tracking",
+        "aware",
+        "direct",
+        "digital",
+        "qa",
+        "booking"
+      ],
+      "body": "LUXIVAL Home Transfers Travel Digital QA Book Now Helsinki Airport Pickup · Uusimaa Private Helsinki Airport Pickup Arrive in Finland with a calm, direct transfer from Helsinki-Vantaa Airport. Luxival handles flight-aware pickup, luggage help, and private rides to Helsinki, Vantaa, Espoo, Porvoo, and the wider Uusimaa region. Book Airport Pickup Ask on WhatsApp HEL Airport pickup 24/7 Advance requests Uusimaa Local service area Flight-aware pickup Share your flight number and pickup time. We plan around arrival details so you are not left guessing after landing. Direct private transfer Go straight from Helsinki Airport to your hotel, home, meeting, cruise terminal, or next destination in Uusimaa. Premium handoff Ideal for international guests, founders, executives, family arrivals, and visitors who want a reliable first impression. Popular airport routes From Helsinki-Vantaa Airport to where you need to be Luxival is based in Vantaa, close to Helsinki Airport. That makes airport pickup a natural first service for visitors arriving in Uusimaa. Helsinki Airport to Helsinki city centre Private transfer Helsinki Airport to Vantaa Local pickup Helsinki Airport to Espoo Business or hotel Helsinki Airport to Porvoo Day trip or stay Helsinki Airport to cruise terminal Luggage assist How it works Book your airport pickup in three steps Send arrival details Use the booking page or WhatsApp. Add pickup date, flight number, passengers, luggage, and destination. Get confirmation We review the route and confirm timing, pickup plan, and any special instructions for your arrival. Arrive smoothly Your pickup is planned around your arrival, with a direct private ride to your Uusimaa destination. Airport pickup FAQ Questions before booking Can I book a pickup from Helsinki-Vantaa Airport?"
     },
     {
       "path": "/hub",
