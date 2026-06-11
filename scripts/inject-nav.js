@@ -11,6 +11,16 @@ const CANONICAL_NAV_LINKS = `
     <li><a href="/blog">Blog</a></li>
     <li><a href="/qa">QA &amp; Audit</a></li>
     <li><a href="/about">About</a></li>
+    <li class="nav-search-item">
+      <div class="site-search" id="siteSearch" role="search">
+        <label for="siteSearchInput" class="sr-only">Search</label>
+        <div class="site-search-controls">
+          <input id="siteSearchInput" class="site-search-input" type="search" autocomplete="off" placeholder="Search services, pages, or keywords" data-i18n-placeholder="search.placeholder" aria-autocomplete="list" aria-controls="siteSearchResults" aria-expanded="false" aria-label="Website search">
+          <button type="button" class="site-search-button" id="siteSearchButton" aria-label="Search site">Search</button>
+        </div>
+        <div id="siteSearchResults" class="site-search-dropdown" role="listbox" hidden></div>
+      </div>
+    </li>
     <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>`;
 
 function buildNav(prefix) {
@@ -82,6 +92,14 @@ function injectSpaNav(html) {
   return html.replace(/<div id="root">/, SPA_NAV + '\n  <div id="root">');
 }
 
+function injectSearchScript(html) {
+  if (html.includes('/js/site-search.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/site-search.js?v=20260609-2" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/site-search.js?v=20260609-2" defer></script>\n';
+}
+
 let updated = 0;
 let skipped = 0;
 let spaInjected = 0;
@@ -105,6 +123,8 @@ for (const file of files) {
     skipped++;
     continue;
   }
+
+  result = injectSearchScript(result);
 
   fs.writeFileSync(file, result, 'utf8');
 }

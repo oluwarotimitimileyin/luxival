@@ -9,10 +9,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<title>Luxival | Helsinki's Premium Chauffeur & Web Design Agency</title>
-<meta name="description" content="Luxival — Helsinki's premium chauffeur service and web design agency. Airport transfers, SEO, QA software testing, and agentic workflow strategy led by an ISTQB-certified tester.">
-<meta property="og:title" content="Luxival | Helsinki's Premium Chauffeur & Web Design Agency">
-<meta property="og:description" content="Premium airport transfers and intelligent digital services from Helsinki. Web development, SEO services, QA software testing, and agentic workflow strategy.">
+<title>Luxival | Premium Travel, Digital & QA Services in Uusimaa</title>
+<meta name="description" content="Luxival provides premium airport transfers, Finland travel planning, web design, SEO, automation, and QA audits from Uusimaa, serving Helsinki, Vantaa, Espoo, and international clients.">
+<meta property="og:title" content="Luxival | Premium Travel, Digital & QA Services in Uusimaa">
+<meta property="og:description" content="Premium airport transfers, Finland travel planning, web design, SEO, automation, and QA audits from Uusimaa.">
 <meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
 <meta property="og:url" content="https://www.luxival.com/">
 <meta property="og:type" content="website">
@@ -65,9 +65,68 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
 .nav-links a:hover{opacity:1;color:var(--gold)}.nav-burger{display:none}
 
+/* --- Site search --- */
+.nav-search-item{position:relative;display:flex;align-items:center}
+.site-search{position:relative;min-width:240px}
+.site-search-controls{display:flex;gap:.45rem;align-items:center}
+.site-search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,106,.25);color:var(--text);padding:.56rem .8rem;border-radius:2px;font-size:.74rem;letter-spacing:.8px;text-transform:none}
+.site-search-input::placeholder{opacity:.7;color:rgba(232,235,242,.7)}
+.site-search-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,106,.15)}
+.site-search-button{background:var(--gold);border:1px solid var(--gold);color:var(--bg);padding:.56rem .72rem;border-radius:2px;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;line-height:1}
+.site-search-dropdown{position:absolute;top:calc(100% + .45rem);left:0;right:0;z-index:320;background:rgba(10,11,15,.96);border:1px solid rgba(201,169,106,.2);border-radius:2px;box-shadow:0 18px 35px rgba(0,0,0,.45);padding:.4rem;max-height:340px;overflow-y:auto}
+.site-search-result{display:block;padding:.65rem .6rem;border-radius:2px;border:1px solid transparent;transition:border-color .2s,background .2s}
+.site-search-result:hover,.site-search-result.active{background:rgba(201,169,106,.08);border-color:rgba(201,169,106,.2)}
+.site-search-result-title{display:block;color:var(--text);font-size:.76rem;letter-spacing:.7px;text-transform:uppercase;opacity:.95}
+.site-search-result-meta{display:block;color:var(--gold);font-size:.67rem;letter-spacing:1.1px;opacity:.9;margin-top:.2rem}
+.site-search-empty{padding:.6rem;color:rgba(232,235,242,.72);font-size:.73rem;letter-spacing:.6px}
+
+@media (max-width: 1200px){
+  .site-search{min-width:200px}
+}
+
+@media (max-width: 768px){
+  .nav-search-item{width:100%}
+  .site-search{width:100%;min-width:0}
+  .site-search-controls{display:grid;grid-template-columns:1fr auto}
+  .site-search-input{font-size:.78rem;padding:.66rem .75rem}
+  .site-search-dropdown{position:static;max-height:260px;margin-top:.45rem}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .service-paths{grid-template-columns:1fr}
+  .hero-search-row{grid-template-columns:1fr}
+  .assistant-panel{right:1rem;bottom:1rem}
+  .sticky-cta{display:none!important}
+}
+
 /* --- Hero --- */
 .hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:5%;padding-top:6rem}
-.hero-left .subhead{font-size:1.2rem;margin-bottom:3rem;max-width:480px}
+.hero-left .subhead{font-size:1.18rem;margin-bottom:2rem;max-width:560px}
+.location-pill{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(201,169,106,.24);background:rgba(201,169,106,.06);color:var(--gold);padding:.58rem .78rem;border-radius:999px;font-size:.68rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:1.2rem}
+.location-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(201,169,106,.8)}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.5rem 0 1.8rem}
+.hero-actions .btn,.hero-actions .btn-outline{padding:.88rem 1.35rem;font-size:.76rem}
+.btn-outline{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;background:transparent;transition:background .2s,color .2s,box-shadow .3s}
+.btn-outline:hover{background:rgba(201,169,106,.08);box-shadow:0 12px 30px rgba(201,169,106,.12)}
+.service-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.4rem 0 1.6rem;max-width:680px}
+.service-path{display:block;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,26,.72);border-radius:4px;padding:1rem;transition:border-color .2s,background .2s,transform .2s}
+.service-path:hover{border-color:var(--border);background:rgba(201,169,106,.06);transform:translateY(-2px)}
+.service-path strong{display:block;color:var(--text);font-size:.82rem;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:.35rem}
+.service-path span{display:block;color:rgba(232,235,242,.62);font-size:.82rem;line-height:1.45}
+.hero-search-panel{max-width:680px;border:1px solid rgba(201,169,106,.2);background:rgba(17,19,26,.78);border-radius:4px;padding:1rem;margin:1.2rem 0 1rem}
+.hero-search-panel label{display:block;color:var(--gold);font-size:.68rem;letter-spacing:2.4px;text-transform:uppercase;margin-bottom:.7rem}
+.hero-search-row{display:grid;grid-template-columns:1fr auto;gap:.6rem}
+.hero-search-row input{margin:0;background:rgba(255,255,255,.04)}
+.hero-search-tags{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.75rem}
+.hero-search-tags button{border:1px solid rgba(201,169,106,.24);background:rgba(201,169,106,.05);color:rgba(232,235,242,.78);border-radius:999px;padding:.42rem .62rem;font-size:.68rem;letter-spacing:.8px;cursor:pointer}
+.assistant-launch{display:inline-flex;align-items:center;gap:.55rem;color:var(--gold);font-size:.76rem;letter-spacing:1.4px;text-transform:uppercase;background:none;border:none;padding:.2rem 0;cursor:pointer}
+.assistant-launch span{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border:1px solid rgba(201,169,106,.35);border-radius:50%}
+.assistant-panel{position:fixed;right:1.2rem;bottom:1.2rem;z-index:1200;width:min(360px,calc(100vw - 2rem));background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.26);border-radius:8px;box-shadow:0 24px 70px rgba(0,0,0,.5);padding:1rem;display:none}
+.assistant-panel.open{display:block}
+.assistant-panel h3{font-size:.9rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:.4rem}
+.assistant-panel p{font-size:.86rem;opacity:.68;margin-bottom:.9rem}
+.assistant-options{display:grid;gap:.55rem}
+.assistant-options a,.assistant-options button{display:block;width:100%;text-align:left;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);border-radius:4px;padding:.72rem .78rem;font:inherit;font-size:.84rem;cursor:pointer}
+.assistant-options a:hover,.assistant-options button:hover{border-color:var(--border);background:rgba(201,169,106,.07)}
+.assistant-close{position:absolute;top:.6rem;right:.65rem;background:none;border:none;color:rgba(232,235,242,.65);font-size:1.2rem;cursor:pointer}
 .hero-right{position:relative;height:88vh;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);will-change:transform}
 .hero-right picture.bg-picture{position:absolute;inset:0;width:100%;height:100%;display:block}.hero-right video,.hero-right img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-right video{z-index:1}.hero-right video[data-lazy-video],video[data-lazy-video]{opacity:0;transition:opacity .35s ease}.hero-right video.is-ready,video.is-ready{opacity:1}
@@ -206,7 +265,7 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness"],
   "name": "Luxival",
-  "description": "Premium chauffeur, digital design, QA software testing, and digital services in Helsinki, Finland.",
+  "description": "Premium airport transfers, Finland travel planning, web design, SEO, automation, and QA software testing services based in Uusimaa, Finland.",
   "url": "https://www.luxival.com",
   "logo": "https://www.luxival.com/favicon.svg",
   "image": "https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp",
@@ -275,6 +334,16 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
     <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
     <li><a data-i18n="nav.qa" href="/qa">QA &amp; Audit</a></li>
     <li><a data-i18n="nav.about" href="/about">About</a></li>
+    <li class="nav-search-item">
+      <div class="site-search" id="siteSearch" role="search">
+        <label class="sr-only" for="siteSearchInput">Search the website</label>
+        <div class="site-search-controls">
+          <input id="siteSearchInput" class="site-search-input" type="search" autocomplete="off" placeholder="Search services, pages, or keywords" data-i18n-placeholder="search.placeholder" aria-autocomplete="list" aria-controls="siteSearchResults" aria-expanded="false" aria-label="Website search">
+          <button type="button" class="site-search-button" id="siteSearchButton" aria-label="Search site">Search</button>
+        </div>
+        <div id="siteSearchResults" class="site-search-dropdown" role="listbox" hidden></div>
+      </div>
+    </li>
     <li><a data-i18n="nav.contact" href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -285,10 +354,37 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-left">
-    <span class="eyebrow reveal" data-i18n="hero.eyebrow">Luxury finish travel · Helsinki</span>
-    <h1 data-i18n="hero.title" class="reveal d1">Helsinki's Premium Chauffeur &amp; Web Design Agency</h1>
-    <p data-i18n="hero.subtitle" class="subhead reveal d2">From runway to ranking — premium airport transfers and conversion-focused digital services, led by an ISTQB-certified software tester.</p>
-    <a data-i18n="hero.bookConsultation" href="/booking" class="btn reveal d3">Book a Consultation</a>
+    <span class="eyebrow reveal" data-i18n="hero.eyebrow">Premium operations · Uusimaa, Finland</span>
+    <div class="location-pill reveal d1">Serving Helsinki · Vantaa · Espoo · Beyond</div>
+    <h1 data-i18n="hero.title" class="reveal d1">Premium Travel, Digital &amp; QA Services in Uusimaa</h1>
+    <p data-i18n="hero.subtitle" class="subhead reveal d2">Airport transfers, Finland travel planning, conversion-focused websites, SEO, automation, and QA audits for people and brands that expect detail.</p>
+    <div class="hero-actions reveal d3">
+      <a href="/booking" class="btn">Book Travel</a>
+      <a href="/digital" class="btn-outline">Grow My Business</a>
+      <a href="/qa" class="btn-outline">Request QA / Audit</a>
+    </div>
+
+    <div class="service-paths reveal d3" aria-label="Choose a Luxival service path">
+      <a class="service-path" href="/transfers"><strong>Travel</strong><span>Airport pickup, private rides, Uusimaa and Finland planning.</span></a>
+      <a class="service-path" href="/digital"><strong>Digital</strong><span>Web design, SEO, automation, and lead generation systems.</span></a>
+      <a class="service-path" href="/qa"><strong>QA &amp; Audit</strong><span>Website audits, software testing, reports, and quality checks.</span></a>
+    </div>
+
+    <div class="hero-search-panel reveal d3" role="search">
+      <label for="heroSearchInput">Find what you need</label>
+      <div class="hero-search-row">
+        <input id="heroSearchInput" type="search" placeholder="Search airport pickup, SEO, Lapland, audit..." aria-label="Search Luxival services">
+        <button class="btn btn-sm" id="heroSearchButton" type="button">Search</button>
+      </div>
+      <div class="hero-search-tags" aria-label="Suggested searches">
+        <button type="button" data-search-term="airport pickup">Airport pickup</button>
+        <button type="button" data-search-term="web design">Web design</button>
+        <button type="button" data-search-term="QA audit">QA audit</button>
+        <button type="button" data-search-term="Finland travel">Finland travel</button>
+      </div>
+    </div>
+
+    <button class="assistant-launch reveal d3" id="assistantLaunch" type="button"><span>?</span> Ask Luxival assistant</button>
 
     <!-- Social proof directly under CTA -->
     <div class="hero-proof reveal d3">
@@ -337,6 +433,19 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
     <div class="scroll-hint">Scroll</div>
   </div>
 </section>
+
+<div class="assistant-panel" id="assistantPanel" aria-live="polite" aria-label="Luxival assistant" hidden>
+  <button class="assistant-close" id="assistantClose" type="button" aria-label="Close assistant">×</button>
+  <h3>Ask Luxival</h3>
+  <p>Choose what you want to do. Voice support can be added next, but this already routes visitors fast.</p>
+  <div class="assistant-options">
+    <a href="/booking">Book an airport transfer or private ride</a>
+    <a href="/digital">Start a website, SEO, or automation project</a>
+    <a href="/qa">Request QA testing or a website audit</a>
+    <button type="button" id="assistantSearchFocus">Search the website</button>
+    <a href="https://wa.me/358503518366" rel="noopener">Continue on WhatsApp</a>
+  </div>
+</div>
 
 <!-- Mobile sticky CTA -->
 <div class="sticky-cta">
@@ -918,9 +1027,47 @@ window.addEventListener('load',function(){
     }
   });
 })();
+(function(){
+  var heroInput=document.getElementById('heroSearchInput');
+  var heroButton=document.getElementById('heroSearchButton');
+  var navInput=document.getElementById('siteSearchInput');
+  var navButton=document.getElementById('siteSearchButton');
+  function runHeroSearch(term){
+    var value=(term || (heroInput && heroInput.value) || '').trim();
+    if(!value || !navInput)return;
+    navInput.value=value;
+    navInput.focus();
+    navInput.dispatchEvent(new Event('input',{bubbles:true}));
+    if(navButton)navButton.click();
+  }
+  if(heroButton)heroButton.addEventListener('click',function(){runHeroSearch();});
+  if(heroInput)heroInput.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runHeroSearch();}});
+  document.querySelectorAll('[data-search-term]').forEach(function(button){
+    button.addEventListener('click',function(){runHeroSearch(button.getAttribute('data-search-term'));});
+  });
+
+  var launch=document.getElementById('assistantLaunch');
+  var panel=document.getElementById('assistantPanel');
+  var close=document.getElementById('assistantClose');
+  var focusSearch=document.getElementById('assistantSearchFocus');
+  function setPanel(open){
+    if(!panel)return;
+    panel.hidden=!open;
+    panel.classList.toggle('open',open);
+  }
+  if(launch)launch.addEventListener('click',function(){setPanel(!(panel && panel.classList.contains('open')));});
+  if(close)close.addEventListener('click',function(){setPanel(false);});
+  if(focusSearch)focusSearch.addEventListener('click',function(){
+    setPanel(false);
+    if(heroInput){heroInput.focus();return;}
+    if(navInput)navInput.focus();
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setPanel(false);});
+})();
 </script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script src="/js/i18n.js?v=20260603-1" defer></script>
+<script src="/js/site-search.js?v=20260609-2" defer></script>
 </body>
 </html>
