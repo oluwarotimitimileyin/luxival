@@ -17,6 +17,8 @@ const EXCLUDED_DIRS = new Set([
   'coverage',
   'backend',
   'apps',
+  'luxival-autopost',
+  'luxival-dashboard',
   'supabase'
 ]);
 

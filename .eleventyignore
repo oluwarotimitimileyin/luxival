@@ -29,3 +29,5 @@ tests/results.json
 .claude/**
 mobile-audit/**
 apps/**
+luxival-autopost/**
+luxival-dashboard/**
