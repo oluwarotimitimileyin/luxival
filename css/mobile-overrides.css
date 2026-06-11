@@ -77,9 +77,19 @@ iframe {
     height: min(45vh, 380px) !important;
   }
 
-  .svc-media,
+  .svc-media {
+    max-height: 240px !important;
+    border-radius: 4px !important;
+    margin-bottom: 1.5rem !important;
+    aspect-ratio: 16/9 !important;
+  }
+
   .port-header {
-    display: none !important;
+    height: min(30vh, 200px) !important;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 
   .grid-2,
