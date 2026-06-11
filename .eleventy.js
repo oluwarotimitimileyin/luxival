@@ -24,6 +24,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
+  eleventyConfig.addPassthroughCopy({ "favicon-16x16.png": "favicon-16x16.png" });
+  eleventyConfig.addPassthroughCopy({ "favicon-32x32.png": "favicon-32x32.png" });
+  eleventyConfig.addPassthroughCopy({ "apple-touch-icon.png": "apple-touch-icon.png" });
+  eleventyConfig.addPassthroughCopy({ "android-chrome-192x192.png": "android-chrome-192x192.png" });
+  eleventyConfig.addPassthroughCopy({ "android-chrome-512x512.png": "android-chrome-512x512.png" });
+  eleventyConfig.addPassthroughCopy({ "site.webmanifest": "site.webmanifest" });
   eleventyConfig.addFilter("date", (dateObj) => {
     const date = new Date(dateObj);
     if (Number.isNaN(date.getTime())) {
