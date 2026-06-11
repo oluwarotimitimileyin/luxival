@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%23C9A96A'%3EL%3C/text%3E%3C/svg%3E">
+<title>User Data Deletion | Luxival</title>
+<meta name="description" content="Request deletion of personal data submitted to Luxival through contact, booking, newsletter, or creator forms.">
+<meta property="og:title" content="User Data Deletion | Luxival">
+<meta property="og:description" content="Request deletion of personal data submitted to Luxival.">
+<meta property="og:url" content="https://www.luxival.com/user-data-deletion">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.luxival.com/user-data-deletion">
+<style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998}
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
+.container{max-width:900px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3rem 0}
+h1,h2,h3{font-weight:300;letter-spacing:.4px}
+h1{font-size:clamp(2rem,4.5vw,3.5rem);line-height:1.1;margin-bottom:1.5rem}
+h2{font-size:1.4rem;color:var(--gold);margin:2.5rem 0 1rem;font-weight:400}
+h3{font-size:1.05rem;color:var(--text);margin:1.5rem 0 .5rem}
+p{opacity:.8;margin-bottom:1rem;font-size:.97rem}
+a{color:var(--gold);text-decoration:none;cursor:none}
+.eyebrow{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.policy-meta{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.35;margin-bottom:3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,11,15,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.06);transition:background .3s}
+.nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.73rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.55;transition:opacity .2s}
+.nav-links a:hover{opacity:1;color:var(--gold)}.nav-burger{display:none}
+.btn{display:inline-block;background:var(--gold);color:var(--bg);padding:.85rem 1.8rem;border-radius:var(--r);font-weight:500;letter-spacing:1px;text-transform:uppercase;font-size:.78rem;border:none;cursor:none}
+.hero{padding-top:9rem;padding-bottom:3rem}
+.deletion-body{padding-bottom:6rem}
+.section-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:2rem 2.5rem;margin-bottom:1.5rem}
+.section-card:hover{border-color:var(--border)}
+label{display:block;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.55;margin-bottom:.4rem}
+input,textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);padding:.9rem 1rem;margin-bottom:1.25rem;color:var(--text);border-radius:var(--r);font-family:inherit;font-size:.95rem;cursor:none;transition:border-color .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.form-status{margin-top:1rem;font-size:.9rem;min-height:1.2rem}
+.confirmation{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 2rem;margin-bottom:1.5rem;display:none}
+.confirmation strong{color:var(--gold)}
+footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-copy{font-size:.75rem;opacity:.3;letter-spacing:1px}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.4;transition:opacity .2s}
+.footer-links a:hover{opacity:1}
+@media(max-width:768px){body{cursor:auto}.nav-links{display:none;flex-direction:column;position:fixed;inset:4.5rem 1rem auto 1rem;background:rgba(10,11,15,.97);border:1px solid rgba(201,169,106,.18);border-radius:16px;padding:1.5rem;gap:1.2rem;z-index:999}.nav-links.open{display:flex}.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:all .3s}.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-burger.open span:nth-child(2){opacity:0}.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.section-card{padding:1.5rem}#cur-dot,#cur-ring{display:none}}
+</style>
+</head>
+<body>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
+
+<nav id="mainNav">
+  <a href="/" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links">
+    <li><a href="/services">Digital Services</a></li>
+    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/qa">QA</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Contact</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero container">
+  <span class="eyebrow">Privacy</span>
+  <h1>User Data Deletion</h1>
+  <p class="policy-meta">Applies to luxival.com and Luxival connected apps</p>
+  <p style="opacity:.65;max-width:680px">Use this page to request deletion of personal data you submitted through Luxival contact, newsletter, booking, and creator forms. We process matching records by email address immediately where deletion is allowed.</p>
+</section>
+
+<div class="gold-line container"></div>
+
+<section class="deletion-body container">
+  <div id="confirmationBox" class="confirmation">
+    <h2 style="margin-top:0">Deletion callback received</h2>
+    <p>Your app data deletion request was received. Confirmation code: <strong id="confirmationCode"></strong></p>
+  </div>
+
+  <div class="section-card">
+    <h2>Request deletion</h2>
+    <p>Enter the same email address you used with Luxival. Contact enquiries, newsletter subscriptions, and creator applications are deleted. Ride requests are anonymized so personal identifiers are removed while limited service records can be retained for legal and accounting obligations.</p>
+
+    <form id="deletionForm">
+      <label for="deleteEmail">Email address</label>
+      <input id="deleteEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+      <label for="confirmEmail">Confirm email address</label>
+      <input id="confirmEmail" name="confirmEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+      <label for="deleteReason">Optional note</label>
+      <textarea id="deleteReason" name="reason" rows="4" placeholder="Anything you want us to know"></textarea>
+
+      <button class="btn" type="submit">Delete my data</button>
+      <p id="deletionStatus" class="form-status"></p>
+    </form>
+  </div>
+
+  <div class="section-card">
+    <h2>Manual request</h2>
+    <p>You can also email <a href="mailto:support@luxival.com">support@luxival.com</a> with the subject "Data deletion request". We may ask for extra information only when needed to verify ownership of the email address or comply with Finnish legal obligations.</p>
+  </div>
+</section>
+
+<footer class="container">
+  <div class="footer-inner">
+    <span class="footer-copy">Luxival © 2026 · Helsinki, Finland</span>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(dot){dot.style.left=mx+'px';dot.style.top=my+'px';}});
+(function loop(){if(ring){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';}requestAnimationFrame(loop);})();
+window.addEventListener('scroll',()=>{
+  document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('mainNav').style.background=window.scrollY>60?'rgba(10,11,15,.96)':'rgba(10,11,15,.7)';
+},{passive:true});
+})();
+</script>
+<script>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var confirmation=params.get('confirmation');
+  if(confirmation){
+    document.getElementById('confirmationBox').style.display='block';
+    document.getElementById('confirmationCode').textContent=confirmation;
+  }
+
+  var form=document.getElementById('deletionForm');
+  var status=document.getElementById('deletionStatus');
+  function setStatus(message,isError){
+    status.textContent=message;
+    status.style.color=isError?'#f77':'var(--gold)';
+  }
+
+  form.addEventListener('submit',async function(event){
+    event.preventDefault();
+    var email=document.getElementById('deleteEmail').value.trim().toLowerCase();
+    var confirmEmail=document.getElementById('confirmEmail').value.trim().toLowerCase();
+    var reason=document.getElementById('deleteReason').value.trim();
+
+    if(email!==confirmEmail){
+      setStatus('Please make sure both email addresses match.',true);
+      return;
+    }
+
+    setStatus('Processing deletion request...',false);
+
+    try{
+      var response=await fetch('/api/user-data-deletion',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email,confirmEmail:confirmEmail,reason:reason})
+      });
+      var result=await response.json();
+      if(!response.ok){
+        setStatus(result.error||'Unable to process deletion request right now.',true);
+        return;
+      }
+      form.reset();
+      setStatus('Deletion processed. Confirmation code: '+result.confirmationCode,false);
+    }catch(error){
+      setStatus('Unable to reach the deletion service. Please email support@luxival.com.',true);
+    }
+  });
+})();
+</script>
+<script>
+(function(){
+  var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
+  if(!b||!l)return;
+  b.addEventListener('click',function(){
+    var o=l.classList.toggle('open');
+    b.classList.toggle('open',o);
+    b.setAttribute('aria-expanded',String(o));
+  });
+  document.addEventListener('click',function(e){
+    if(!b.contains(e.target)&&!l.contains(e.target)){
+      l.classList.remove('open');b.classList.remove('open');
+      b.setAttribute('aria-expanded','false');
+    }
+  });
+})();
+</script>
+</body>
+</html>
