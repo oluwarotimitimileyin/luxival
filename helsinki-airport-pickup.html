@@ -151,6 +151,13 @@ footer{background:#060608;border-top:1px solid rgba(255,255,255,.05);padding:3re
     </div>
   </section>
 
+  <section class="container" id="ride-planner">
+    <span class="eyebrow">Route preview</span>
+    <h2>Preview your airport pickup route</h2>
+    <p style="max-width:640px">Start with Helsinki Airport and add your hotel, home, harbour, office, or Uusimaa destination. We will confirm final timing after booking.</p>
+    <div id="ride-map-planner-airport" data-ride-planner data-pickup="Helsinki Airport, 01531 Vantaa, Finland" data-dropoff="Helsinki city centre, Helsinki, Finland"></div>
+  </section>
+
   <section class="band">
     <div class="container">
       <span class="eyebrow">How it works</span>
@@ -204,6 +211,13 @@ footer{background:#060608;border-top:1px solid rgba(255,255,255,.05);padding:3re
     burger.setAttribute('aria-expanded',String(open));
   });
 })();
+</script>
+<script src="/js/ride-map-planner.js" defer></script>
+<script src="/js/google-maps-lazy.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalRidePlanner', '#ride-planner');
+  });
 </script>
 <script src="/js/i18n.js?v=20260603-1" defer></script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>

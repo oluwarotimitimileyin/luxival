@@ -230,6 +230,16 @@ footer a:hover{opacity:1}
 
 <div class="gold-line container"></div>
 
+<!-- ROUTE PLANNER -->
+<section class="container" id="ride-planner" style="padding:4rem 0">
+  <span class="eyebrow">Route preview</span>
+  <h2 style="margin-bottom:.8rem">Plan your pickup route</h2>
+  <p style="opacity:.6;margin:0 auto 2rem;max-width:620px;text-align:center">Preview distance and drive time before booking. Luxival confirms the final fare, pickup timing, and route details after your request.</p>
+  <div id="ride-map-planner-transfers" data-ride-planner data-pickup="Helsinki Airport, 01531 Vantaa, Finland" data-dropoff="Helsinki city centre, Helsinki, Finland"></div>
+</section>
+
+<div class="gold-line container"></div>
+
 <!-- FARE CALCULATOR -->
 <section class="container" id="estimate" style="padding:4rem 0">
   <div style="max-width:720px;margin:0 auto">
@@ -336,6 +346,7 @@ footer a:hover{opacity:1}
 </footer>
 
 <script src="/js/supabase-loader.js" defer></script>
+<script src="/js/ride-map-planner.js" defer></script>
 <script src="/js/fare-calculator.js" defer></script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
@@ -346,6 +357,7 @@ footer a:hover{opacity:1}
     }
   }
   window.addEventListener('DOMContentLoaded', function(){
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalRidePlanner', '#ride-planner');
     if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('_initFareWhenReady', '#estimate');
   });
 </script>

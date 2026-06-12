@@ -3,6 +3,17 @@
 
   var API_KEY = 'AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas';
   var loadedCallbacks = {};
+  var pendingCallbacks = [];
+  var loading = false;
+
+  window.__luxivalGoogleMapsLoaded = function () {
+    var callbacks = pendingCallbacks.slice();
+    pendingCallbacks = [];
+    loading = false;
+    callbacks.forEach(function (callbackName) {
+      if (typeof window[callbackName] === 'function') window[callbackName]();
+    });
+  };
 
   function showMapFallback() {
     var containers = document.querySelectorAll('[id*="Map"], [id*="map"], .map-container');
@@ -18,9 +29,13 @@
     }
     if (loadedCallbacks[callbackName]) return;
     loadedCallbacks[callbackName] = true;
+    pendingCallbacks.push(callbackName);
+
+    if (loading) return;
+    loading = true;
 
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY + '&libraries=places&callback=' + encodeURIComponent(callbackName);
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY + '&libraries=places&loading=async&callback=__luxivalGoogleMapsLoaded';
     script.async = true;
     script.defer = true;
     script.onerror = showMapFallback;

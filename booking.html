@@ -153,6 +153,15 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <div class="gold-line container"></div>
 
+<!-- RIDE PLANNER -->
+<section class="container" id="ride-planner" style="padding-top:3rem">
+  <span class="eyebrow reveal">Route preview</span>
+  <h2 class="reveal d1" style="text-align:left">Plan an airport pickup or private ride</h2>
+  <div id="ride-map-planner-booking" data-ride-planner data-pickup="Helsinki Airport, 01531 Vantaa, Finland" data-dropoff="Helsinki city centre, Helsinki, Finland"></div>
+</section>
+
+<div class="gold-line container"></div>
+
 <!-- DIRECT CONTACT -->
 <section class="container" style="text-align:center;padding-bottom:9rem">
   <span class="eyebrow reveal">Not sure where to start?</span>
@@ -209,6 +218,13 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <script src="/js/supabase-loader.js" defer></script>
 <script src="/js/luxival.js"></script>
+<script src="/js/ride-map-planner.js" defer></script>
+<script src="/js/google-maps-lazy.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalRidePlanner', '#ride-planner');
+  });
+</script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script src="/js/i18n.js?v=20260603-1" defer></script>
