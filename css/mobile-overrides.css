@@ -15,6 +15,28 @@ iframe {
   max-width: 100%;
 }
 
+.address-selector-block {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.address-selector-title {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.72;
+  margin-bottom: 0.65rem;
+}
+
+.address-selector-frame {
+  width: 100%;
+  height: 520px;
+  border: 1px solid rgba(201, 169, 106, 0.2);
+  border-radius: 6px;
+  display: block;
+  background: #0a0b0f;
+}
+
 
 /* Better touch behavior and lower GPU cost on phones/tablets */
 @media (hover: none), (pointer: coarse) {
@@ -43,6 +65,10 @@ iframe {
 
 /* Tablet and down */
 @media (max-width: 768px) {
+  .address-selector-frame {
+    height: 420px;
+  }
+
   section {
     padding: 4.5rem 0 !important;
   }
@@ -270,6 +296,10 @@ iframe {
 
 /* Phones */
 @media (max-width: 600px) {
+  .address-selector-frame {
+    height: 360px;
+  }
+
   section {
     padding: 2.75rem 0 !important;
   }
