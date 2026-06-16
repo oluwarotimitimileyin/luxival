@@ -14,3 +14,5 @@ _site/
 test-results/
 tests/results.json
 .env
+luxival-autopost/
+luxival-dashboard/

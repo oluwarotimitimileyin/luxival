@@ -137,7 +137,7 @@ footer a:hover{opacity:1}
       <p data-i18n="transfers.subtitle" style="font-size:1.1rem;opacity:.85;max-width:480px">Airport pickups, private city rides, and exclusive cruise transfers — with live GPS tracking from wheels-down to your door.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
         <a data-i18n="cta.bookTransfer" href="#book" class="btn">Book a Transfer →</a>
-        <a data-i18n="cta.estimateFare" href="services/airport-transfer.html" style="font-size:.82rem;letter-spacing:1px;text-transform:uppercase;opacity:.6;display:flex;align-items:center;gap:.4rem;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">See pricing →</a>
+        <a data-i18n="cta.estimateFare" href="/services/airport-transfer" style="font-size:.82rem;letter-spacing:1px;text-transform:uppercase;opacity:.6;display:flex;align-items:center;gap:.4rem;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">See pricing →</a>
       </div>
       <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
         <div><span style="font-size:1.8rem;font-weight:300;color:var(--gold);line-height:1">500+</span><br><span data-i18n="stat.transfers" style="font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.45">Transfers done</span></div>
@@ -171,7 +171,7 @@ footer a:hover{opacity:1}
         <span class="fare-tag">From €110</span>
         <h3 data-i18n="transfers.airport">Airport Transfer</h3>
         <p>Door-to-door from Helsinki-Vantaa. Meet & greet, flight monitoring, and luggage assist included.</p>
-        <a href="services/airport-transfer.html" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
+        <a href="/services/airport-transfer" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
       </div>
     </div>
     <div class="svc-card">
@@ -184,7 +184,7 @@ footer a:hover{opacity:1}
         <span class="fare-tag">From €100</span>
         <h3 data-i18n="transfers.privatePickup">Private Pickup</h3>
         <p>Flexible private transfer anywhere in the Helsinki metropolitan area. Hotel, home, or office.</p>
-        <a href="services/private-pickup.html" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
+        <a href="/services/private-pickup" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
       </div>
     </div>
     <div class="svc-card">
@@ -197,7 +197,7 @@ footer a:hover{opacity:1}
         <span class="fare-tag">From €100</span>
         <h3 data-i18n="transfers.cityRides">City Rides & Tours</h3>
         <p>Curated Helsinki city tours or point-to-point rides with a knowledgeable local driver.</p>
-        <a href="services/private-rides.html" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
+        <a href="/services/private-rides" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
       </div>
     </div>
     <div class="svc-card">
@@ -210,7 +210,7 @@ footer a:hover{opacity:1}
         <span class="fare-tag">From €130</span>
         <h3 data-i18n="transfers.cruise">Private Cruise Transfer</h3>
         <p>Seamless transfers to Helsinki harbour cruise terminals with luggage handling and VIP boarding.</p>
-        <a href="services/city-to-city.html" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
+        <a href="/services/city-to-city" class="btn" data-i18n="cta.estimateFare" style="margin-top:.5rem;padding:.7rem 1.6rem;font-size:.78rem">Get Fare & Book →</a>
       </div>
     </div>
   </div>
@@ -357,7 +357,7 @@ footer a:hover{opacity:1}
 
 <script src="/js/supabase-loader.js" defer></script>
 <script src="/js/ride-map-planner.js" defer></script>
-<script src="/js/fare-calculator.js" defer></script>
+<script src="/js/fare-calculator.js?v=location-fallback-20260617-mapfix" defer></script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
   window._fareCalculatorConfig = { containerId: 'fare-calculator-transfers', preselect: [] };
@@ -387,9 +387,9 @@ document.getElementById('bSubmit').addEventListener('click',async()=>{
   if(db){
     const{error}=await db.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error sending. Email support@luxival.com';}
-    else{window.location.href='thank-you-transfer.html';}
+    else{window.location.href='/thank-you-transfer';}
   } else {
-    setTimeout(()=>{window.location.href='thank-you-transfer.html';},500);
+    setTimeout(()=>{window.location.href='/thank-you-transfer';},500);
   }
 });
 </script>

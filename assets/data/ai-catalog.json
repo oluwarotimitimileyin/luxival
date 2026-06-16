@@ -1,0 +1,161 @@
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Luxival service catalog",
+  "url": "https://www.luxival.com/assets/data/ai-catalog.json",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Luxival",
+    "url": "https://www.luxival.com/",
+    "logo": "https://www.luxival.com/assets/images/brand/luxival-logo-512.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Helsinki",
+      "addressCountry": "FI"
+    },
+    "areaServed": [
+      "Helsinki",
+      "Vantaa",
+      "Espoo",
+      "Uusimaa",
+      "Finland",
+      "Remote"
+    ]
+  },
+  "buyerActions": [
+    {
+      "name": "Book a service",
+      "url": "https://www.luxival.com/booking"
+    },
+    {
+      "name": "Book or estimate a ride",
+      "url": "https://www.luxival.com/tourism#book-ride"
+    },
+    {
+      "name": "Plan a Finland trip",
+      "url": "https://www.luxival.com/tourism-planning"
+    },
+    {
+      "name": "Contact Luxival",
+      "url": "https://www.luxival.com/contact"
+    }
+  ],
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "name": "Helsinki Airport Transfer",
+      "url": "https://www.luxival.com/services/airport-transfer",
+      "priceCurrency": "EUR",
+      "price": "225",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Helsinki", "Vantaa", "Espoo", "Uusimaa"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Premium Helsinki-Vantaa airport transfer",
+        "serviceType": "Private chauffeur transfer",
+        "description": "Premium no-wait Helsinki-Vantaa airport pickups with flight tracking, clean vehicles, and smoke-free private transport."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Finland Tourism Planning",
+      "url": "https://www.luxival.com/tourism-planning",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Helsinki", "Lapland", "Uusimaa"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Finland tourism and itinerary planning",
+        "serviceType": "Travel planning",
+        "description": "Custom Finland trip planning with Helsinki arrival support, private transport, accommodation help, and itinerary structure."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Website Design and Development",
+      "url": "https://www.luxival.com/services/web-design",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Premium website design and development",
+        "serviceType": "Web design",
+        "description": "Premium high-performance websites with conversion structure, SEO-ready pages, documentation, and launch support."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "QA Audit",
+      "url": "https://www.luxival.com/services/software-testing",
+      "priceCurrency": "EUR",
+      "price": "499",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Software QA audit",
+        "serviceType": "Software testing",
+        "description": "Manual testing of key flows, bug report with severity, test coverage gap analysis, recommendations, and debrief call."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Automation Framework",
+      "url": "https://www.luxival.com/services/software-testing#pricing",
+      "priceCurrency": "EUR",
+      "price": "1800",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Playwright or Selenium automation framework",
+        "serviceType": "Test automation",
+        "description": "Built-to-own Playwright or Selenium framework with automated test cases, CI/CD integration, API tests, and documentation."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "AI Agent Infrastructure",
+      "url": "https://www.luxival.com/services/ai-agents",
+      "priceCurrency": "EUR",
+      "price": "800",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "AI agent workflow design and implementation",
+        "serviceType": "AI automation",
+        "description": "Autonomous workflow design, orchestration, multi-agent pipelines, lead handling, and content automation systems."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "TikTok Agency and UGC Content",
+      "url": "https://www.luxival.com/services/tiktok-agency",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "TikTok agency and UGC content systems",
+        "serviceType": "Social content",
+        "description": "Character-led UGC, short-form content workflows, social storytelling, and TikTok growth support."
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Custom Sewing Patterns",
+      "url": "https://www.luxival.com/services/sewing-pattern",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Finland", "Remote"],
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Custom sewing pattern and measurement support",
+        "serviceType": "Sewing pattern service",
+        "description": "Support for custom garment patterns, measurements, tailoring workflows, and fashion production planning."
+      }
+    }
+  ]
+}

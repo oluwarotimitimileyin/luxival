@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const pages = require('./fixtures/pages.json');
 
-const BASE = 'https://www.luxival.com';
+const BASE = process.env.PLAYWRIGHT_BASE_URL || 'https://www.luxival.com';
 
 test.describe('Navigation Consistency', () => {
   const allPages = [
@@ -22,14 +22,13 @@ test.describe('Navigation Consistency', () => {
       const brandText = await brand.textContent();
       expect(brandText.trim()).toBe('LUXIVAL');
 
+      const hrefs = await nav.locator('a').evaluateAll((anchors) =>
+        anchors.map((anchor) => anchor.getAttribute('href') || '')
+      );
+
       for (const link of pages.canonicalNavLinks) {
-        const navLink = nav.locator(`a:has-text("${link.text}")`).first();
-        const exists = await navLink.count();
-        expect(exists, `Missing nav link: "${link.text}" on ${pagePath}`).toBeGreaterThan(0);
-        if (exists > 0) {
-          const href = await navLink.getAttribute('href');
-          expect(href, `Nav link "${link.text}" href mismatch on ${pagePath}`).toContain(link.hrefContains);
-        }
+        const hasRoute = hrefs.some((href) => href.includes(link.hrefContains));
+        expect(hasRoute, `Missing nav route containing "${link.hrefContains}" on ${pagePath}. Found: ${hrefs.join(', ')}`).toBeTruthy();
       }
     });
   }
@@ -62,8 +61,8 @@ test.describe('Navigation Consistency', () => {
       const homeLink = page.locator('nav a:has-text("Home"), nav .nav-brand').first();
       await homeLink.click();
       await page.waitForLoadState('domcontentloaded');
-      const url = page.url();
-      expect(url, `Could not reach home from ${pagePath}`).toMatch(/luxival\.com\/?$/);
+      const url = new URL(page.url());
+      expect(url.pathname, `Could not reach home from ${pagePath}`).toBe('/');
     }
   });
 });

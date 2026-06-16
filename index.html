@@ -24,6 +24,7 @@
 <link rel="alternate" hreflang="fr" href="https://www.luxival.com/?lang=fr">
 <link rel="alternate" hreflang="it" href="https://www.luxival.com/?lang=it">
 <link rel="alternate" hreflang="x-default" href="https://www.luxival.com/">
+<link rel="alternate" type="application/json" title="Luxival AI service catalog" href="/assets/data/ai-catalog.json">
 <link rel="preload" as="image" href="/assets/images/optimized/oodi-library/oodi-library-768.avif" imagesrcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" imagesizes="(max-width: 900px) 100vw, 45vw" fetchpriority="high">
 <link rel="stylesheet" href="/css/mobile-overrides.css?v=20260530-4">
 <style>
@@ -98,7 +99,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 
 /* --- Hero --- */
-.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:5%;padding-top:6rem}
+.hero{min-height:100vh;display:grid;grid-template-columns:minmax(0,860px);align-items:center;justify-content:start;gap:5%;padding-top:6rem}
 .hero-left .subhead{font-size:1.18rem;margin-bottom:2rem;max-width:560px}
 .location-pill{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(201,169,106,.24);background:rgba(201,169,106,.06);color:var(--gold);padding:.58rem .78rem;border-radius:999px;font-size:.68rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:1.2rem}
 .location-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(201,169,106,.8)}
@@ -127,15 +128,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .assistant-options a,.assistant-options button{display:block;width:100%;text-align:left;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);border-radius:4px;padding:.72rem .78rem;font:inherit;font-size:.84rem;cursor:pointer}
 .assistant-options a:hover,.assistant-options button:hover{border-color:var(--border);background:rgba(201,169,106,.07)}
 .assistant-close{position:absolute;top:.6rem;right:.65rem;background:none;border:none;color:rgba(232,235,242,.65);font-size:1.2rem;cursor:pointer}
-.hero-right{position:relative;height:88vh;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);will-change:transform}
-.hero-right picture.bg-picture{position:absolute;inset:0;width:100%;height:100%;display:block}.hero-right video,.hero-right img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-right video{z-index:1}.hero-right video[data-lazy-video],video[data-lazy-video]{opacity:0;transition:opacity .35s ease}.hero-right video.is-ready,video.is-ready{opacity:1}
-.hero-right img.bg{z-index:0}
-.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,106,.06),transparent 55%);z-index:2;pointer-events:none}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.35;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;animation:bob 2.2s ease-in-out infinite;z-index:3}
-.scroll-hint::before{content:'';width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold))}
-@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
-
+.hero video[data-lazy-video],video[data-lazy-video]{opacity:0;transition:opacity .35s ease}
+.hero video.is-ready,video.is-ready{opacity:1}
 /* --- Travel cards --- */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;perspective:1400px}
 .card{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.05);will-change:transform;transition:border-color .3s,box-shadow .3s;position:relative}
@@ -151,12 +145,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .card-body p{font-size:.98rem;margin-bottom:1.5rem}
 .learn-more{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);display:inline-flex;align-items:center;gap:.35rem;transition:gap .25s}
 .learn-more:hover{gap:.75rem}
-
-/* --- Tracking --- */
-.tracking{background:var(--card2);text-align:center}
-.tracking-vid{max-width:900px;margin:2.5rem auto 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;position:relative}
-.tracking-vid video,.tracking-vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tracking-vid video{z-index:1}
 
 /* --- Digital services --- */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
@@ -267,7 +255,12 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
   "name": "Luxival",
   "description": "Premium airport transfers, Finland travel planning, web design, SEO, automation, and QA software testing services based in Uusimaa, Finland.",
   "url": "https://www.luxival.com",
-  "logo": "https://www.luxival.com/favicon.svg",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.luxival.com/assets/images/brand/luxival-logo-512.png",
+    "width": 512,
+    "height": 512
+  },
   "image": "https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp",
   "telephone": "+358503518366",
   "email": "support@luxival.com",
@@ -361,13 +354,15 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
     <div class="hero-actions reveal d3">
       <a href="/booking" class="btn">Book Travel</a>
       <a href="/digital" class="btn-outline">Grow My Business</a>
-      <a href="/qa" class="btn-outline">Request QA / Audit</a>
+      <a href="/audit" class="btn-outline">Request QA / Audit</a>
+      <a href="/hub" class="btn-outline">Start Here</a>
     </div>
 
     <div class="service-paths reveal d3" aria-label="Choose a Luxival service path">
       <a class="service-path" href="/helsinki-airport-pickup"><strong>Travel</strong><span>Airport pickup, private rides, Uusimaa and Finland planning.</span></a>
       <a class="service-path" href="/digital"><strong>Digital</strong><span>Web design, SEO, automation, and lead generation systems.</span></a>
       <a class="service-path" href="/qa"><strong>QA &amp; Audit</strong><span>Website audits, software testing, reports, and quality checks.</span></a>
+      <a class="service-path" href="/hub"><strong>Start here</strong><span>Need direction? Use our discovery hub to choose the fastest next step.</span></a>
     </div>
 
     <div class="hero-search-panel reveal d3" role="search">
@@ -420,17 +415,6 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
       </div>
       <p id="hfStatus" style="font-size:.82rem;margin-top:.5rem;opacity:.7"></p>
     </div>
-  </div>
-  <div class="hero-right" id="heroPanel">
-<picture class="bg-picture">
-          <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw">
-          <source type="image/webp" srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw">
-          <img class="bg" src="/assets/images/optimized/oodi-library/oodi-library-768.webp" alt="Oodi Library in Helsinki, Finland" width="1920" height="1280" decoding="async" fetchpriority="high">
-        </picture>
-    <video autoplay muted loop playsinline preload="none" data-poster="/assets/images/optimized/oodi-library/oodi-library-768.webp" width="1920" height="1080" data-lazy-video>
-      <source data-src="/assets/video/hero-airport.mp4" type="video/mp4">
-    </video>
-    <div class="scroll-hint">Scroll</div>
   </div>
 </section>
 
@@ -514,20 +498,6 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
   </div>
 </section>
 
-<!-- TRACKING -->
-<section class="tracking" id="tracking">
-  <div class="container">
-    <h2 class="reveal" data-i18n="section.tracking">Track Your Ride in Real Time</h2>
-    <p class="reveal d1" style="max-width:560px;margin:0 auto" data-i18n="tracking.desc">Clients receive live GPS tracking, ETA updates, and chauffeur details — from wheels-down to doorstep in one seamless flow.</p>
-    <div class="tracking-vid reveal d2">
-      <video autoplay muted loop playsinline preload="none" data-lazy-video>
-        <source data-src="/assets/video/founder-wide.mp4" type="video/mp4">
-        <source data-src="/assets/video/animate-2.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
 <!-- DIGITAL SERVICES -->
 <section class="container" id="services">
     <h2 class="reveal" data-i18n="section.digital">Digital Services & Web Design</h2>
@@ -551,7 +521,7 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
           </video>
         </div>
         <div class="hover-cards reveal d2">
-          <a href="services/web-design.html" class="hover-card" data-tilt>
+          <a href="/services/web-design" class="hover-card" data-tilt>
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.avif 480w, /assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1024.avif 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/oodi-library/oodi-library-480.webp 480w, /assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1024.webp 1024w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w, /assets/images/optimized/oodi-library/oodi-library-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
@@ -559,7 +529,7 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
         </picture>
             <span>Web Design</span>
           </a>
-          <a href="services/web-design.html" class="hover-card" data-tilt>
+          <a href="/services/web-design" class="hover-card" data-tilt>
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
@@ -567,7 +537,7 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
         </picture>
             <span>SEO</span>
           </a>
-          <a href="services/software-testing.html" class="hover-card" data-tilt>
+          <a href="/services/software-testing" class="hover-card" data-tilt>
             <picture>
           <source type="image/avif" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.avif 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.avif 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.avif 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.avif 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.avif 1920w" sizes="(max-width: 900px) 33vw, 15vw">
           <source type="image/webp" data-srcset="/assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-480.webp 480w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-768.webp 768w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1024.webp 1024w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1440.webp 1440w, /assets/images/optimized/lake-saimaa-frozen/lake-saimaa-frozen-1920.webp 1920w" sizes="(max-width: 900px) 33vw, 15vw">
@@ -726,6 +696,7 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
       </div>
     </div>
     <div class="footer-legal">
+      <a href="/hub">Start Here</a>
       <a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a>
       <a href="/terms" data-i18n="footer.terms">Terms of Service</a>
       <a href="/user-data-deletion">Data Deletion</a>
@@ -809,18 +780,6 @@ if (desktopInteractive) {
   });
 }
 
-/* ---- Hero panel — global mouse tilt ---- */
-const heroPanel=document.getElementById('heroPanel');
-if(desktopInteractive && heroPanel){
-  document.addEventListener('mousemove',e=>{
-    const r=heroPanel.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)/r.width;
-    const y=(e.clientY-r.top-r.height/2)/r.height;
-    heroPanel.style.transform=`perspective(1200px) rotateX(${-y*6}deg) rotateY(${x*9}deg)`;
-    heroPanel.style.transition='transform .08s linear';
-  });
-}
-
 /* ---- Founder panel tilt ---- */
 const fp=document.getElementById('founderPanel');
 if(desktopInteractive && fp){
@@ -895,7 +854,7 @@ if(hfBtn){
     if(db){
       const{error}=await db.submitContactInquiry(payload);
       if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
-      else{const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer.html':'thank-you-digital.html';window.location.href=dest;}
+      else{const dest=(service&&service.toLowerCase().includes('transfer'))?'/thank-you-transfer':'/thank-you-digital';window.location.href=dest;}
     } else {
       const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer':'thank-you-digital';
       setTimeout(()=>{window.location.href=dest;},500);
@@ -972,7 +931,7 @@ window.addEventListener('load',function(){
     video.addEventListener('canplay', function(){ video.classList.add('is-ready'); }, { once:true });
     video.load();
   }
-  var heroVideo = document.querySelector('.hero-right video[data-lazy-video]');
+  var heroVideo = null;
   var isTouch = window.matchMedia('(pointer: coarse)').matches;
   if (heroVideo && !isTouch) setTimeout(function(){ hydrateVideo(heroVideo); }, 2500);
   var belowFold = videos.filter(function(video){ return video !== heroVideo; });
@@ -992,7 +951,7 @@ window.addEventListener('load',function(){
   document.querySelectorAll('img').forEach(function(img){
     img.addEventListener('error', function(){
       var picture = img.closest('picture');
-      var cardMedia = img.closest('.card-media') || img.closest('.svc-media') || img.closest('.hover-card') || img.closest('.tracking-vid');
+      var cardMedia = img.closest('.card-media') || img.closest('.svc-media') || img.closest('.hover-card');
       var container = picture || cardMedia || img.parentElement;
       
       // Hide the picture/img

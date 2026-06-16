@@ -1,10 +1,9 @@
 /**
  * Luxival Fare Calculator Widget — Distance-based
  * Calls /api/get-fare (Vercel serverless) which uses Google Distance Matrix API.
- * Supports Google Places Autocomplete on address inputs.
+ * Uses Luxival/OpenStreetMap location suggestions on address inputs.
  * Usage: initFareCalculator({ containerId, preselect: ['airport'] })
  *
- * Requires Google Maps JS API loaded with ?libraries=places
  * Formula: €100 base + (km × €3.50) + surcharges
  */
 
@@ -18,6 +17,7 @@
   };
 
   let debounceTimer = null;
+  const suggestionState = new WeakMap();
 
   function getSelectedSurcharges(container) {
     return Array.from(container.querySelectorAll('input[name="surcharge"]:checked')).map(
@@ -92,40 +92,155 @@
     }
   }
 
-  function initAutocomplete(input) {
-    function attach() {
-      if (window.google && window.google.maps && window.google.maps.places) {
-        const ac = new window.google.maps.places.Autocomplete(input, {
-          types: ["geocode"],
-          componentRestrictions: { country: "fi" },
-        });
-        ac.addListener("place_changed", () => {
-          input.dispatchEvent(new Event("change", { bubbles: true }));
-        });
-      } else {
-        // Retry up to 20 times (10 seconds total) waiting for Google Maps to load
-        let attempts = 0;
-        const retry = setInterval(() => {
-          attempts++;
-          if (window.google && window.google.maps && window.google.maps.places) {
-            clearInterval(retry);
-            const ac = new window.google.maps.places.Autocomplete(input, {
-              types: ["geocode"],
-              componentRestrictions: { country: "fi" },
-            });
-            ac.addListener("place_changed", () => {
-              input.dispatchEvent(new Event("change", { bubbles: true }));
-            });
-          } else if (attempts >= 20) {
-            clearInterval(retry);
-          }
-        }, 500);
-      }
+  function ensureSuggestionStyles() {
+    if (document.getElementById("fare-location-suggestion-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "fare-location-suggestion-styles";
+    style.textContent = `
+      .fare-address-field{position:relative}
+      .fare-suggestions{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;background:#10141c;border:1px solid rgba(201,169,106,.45);box-shadow:0 14px 30px rgba(0,0,0,.35);max-height:260px;overflow:auto}
+      .fare-suggestions.is-open{display:block}
+      .fare-suggestion-btn{display:block;width:100%;padding:.75rem .85rem;border:0;border-bottom:1px solid rgba(255,255,255,.08);background:transparent;color:#fff;text-align:left;font:inherit;cursor:pointer}
+      .fare-suggestion-btn:hover,.fare-suggestion-btn:focus{background:rgba(201,169,106,.16);outline:none}
+      .fare-suggestion-label{display:block;font-size:.88rem;line-height:1.35}
+      .fare-suggestion-meta{display:block;margin-top:.2rem;color:rgba(255,255,255,.62);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+      .fare-suggestion-empty{padding:.75rem .85rem;color:rgba(255,255,255,.68);font-size:.84rem}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function keepInputUsable(input) {
+    if (!input) return;
+
+    if (input.disabled) input.disabled = false;
+    if (input.hasAttribute("disabled")) input.removeAttribute("disabled");
+    if (input.classList.contains("gm-err-autocomplete")) {
+      input.classList.remove("gm-err-autocomplete");
     }
-    attach();
+    if (input.style.backgroundImage && input.style.backgroundImage !== "none") {
+      input.style.backgroundImage = "none";
+    }
+
+    if (input.placeholder === "Sorry! Something went wrong.") {
+      input.placeholder = input.classList.contains("fare-origin")
+        ? "e.g. Helsinki Airport (HEL)"
+        : "e.g. Hotel Kamp, Helsinki";
+    }
+  }
+
+  function watchGoogleInputState(input) {
+    keepInputUsable(input);
+
+    const observer = new MutationObserver(() => keepInputUsable(input));
+    observer.observe(input, {
+      attributes: true,
+      attributeFilter: ["disabled", "class", "placeholder", "style"],
+    });
+
+    ["focus", "input", "click"].forEach((eventName) => {
+      input.addEventListener(eventName, () => keepInputUsable(input));
+    });
+  }
+
+  function closeSuggestions(input) {
+    const list = input.parentElement ? input.parentElement.querySelector(".fare-suggestions") : null;
+    if (list) {
+      list.classList.remove("is-open");
+      list.innerHTML = "";
+    }
+  }
+
+  function renderSuggestions(input, suggestions) {
+    const list = input.parentElement ? input.parentElement.querySelector(".fare-suggestions") : null;
+    if (!list) return;
+
+    if (!suggestions.length) {
+      list.innerHTML = '<div class="fare-suggestion-empty">Keep typing the full address.</div>';
+      list.classList.add("is-open");
+      return;
+    }
+
+    list.innerHTML = suggestions
+      .map((suggestion) => {
+        const label = String(suggestion.label || "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+        const meta = [suggestion.city, suggestion.country].filter(Boolean).join(", ");
+        const safeMeta = String(meta || "Finland").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+        return `<button class="fare-suggestion-btn" type="button" data-label="${label}">
+          <span class="fare-suggestion-label">${label}</span>
+          <span class="fare-suggestion-meta">${safeMeta}</span>
+        </button>`;
+      })
+      .join("");
+
+    list.classList.add("is-open");
+    list.querySelectorAll(".fare-suggestion-btn").forEach((button) => {
+      button.addEventListener("mousedown", (event) => event.preventDefault());
+      button.addEventListener("click", () => {
+        input.value = button.dataset.label || "";
+        closeSuggestions(input);
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+  }
+
+  function initFallbackSuggestions(input) {
+    let inputTimer = null;
+
+    input.addEventListener("input", () => {
+      keepInputUsable(input);
+      clearTimeout(inputTimer);
+
+      const query = input.value.trim();
+      if (query.length < 3) {
+        closeSuggestions(input);
+        return;
+      }
+
+      inputTimer = setTimeout(async () => {
+        const previous = suggestionState.get(input);
+        if (previous && previous.abort) previous.abort.abort();
+
+        const abort = new AbortController();
+        suggestionState.set(input, { abort });
+
+        try {
+          const response = await fetch(`/api/location-suggest?q=${encodeURIComponent(query)}`, {
+            signal: abort.signal,
+          });
+          const data = await response.json();
+          renderSuggestions(input, Array.isArray(data.suggestions) ? data.suggestions : []);
+        } catch (error) {
+          if (error.name !== "AbortError") closeSuggestions(input);
+        }
+      }, 350);
+    });
+
+    input.addEventListener("blur", () => {
+      setTimeout(() => closeSuggestions(input), 180);
+    });
+  }
+
+  function repairFareInputs() {
+    document.querySelectorAll(".fare-address-input").forEach((input) => keepInputUsable(input));
   }
 
   function renderWidget(container, preselect) {
+    ensureSuggestionStyles();
+
     const id = container.id;
     container.innerHTML = `
       <div class="fare-calculator">
@@ -137,11 +252,13 @@
             <label class="fare-address-label">Pickup Address</label>
             <input type="text" class="fare-address-input fare-origin" id="fare-origin-${id}"
               placeholder="e.g. Helsinki Airport (HEL)" autocomplete="off" />
+            <div class="fare-suggestions" role="listbox" aria-label="Pickup address suggestions"></div>
           </div>
           <div class="fare-address-field">
             <label class="fare-address-label">Drop-off Address</label>
             <input type="text" class="fare-address-input fare-destination" id="fare-dest-${id}"
-              placeholder="e.g. Hotel Kämp, Helsinki" autocomplete="off" />
+              placeholder="e.g. Hotel Kamp, Helsinki" autocomplete="off" />
+            <div class="fare-suggestions" role="listbox" aria-label="Drop-off address suggestions"></div>
           </div>
         </div>
 
@@ -179,10 +296,15 @@
     const destInput = container.querySelector(".fare-destination");
 
     [originInput, destInput].forEach((input) => {
+      watchGoogleInputState(input);
+      initFallbackSuggestions(input);
       input.addEventListener("input", () => scheduleFetch(container));
       input.addEventListener("change", () => scheduleFetch(container));
-      initAutocomplete(input);
     });
+
+    repairFareInputs();
+    window.setTimeout(repairFareInputs, 250);
+    window.setTimeout(repairFareInputs, 1000);
 
     // Surcharge checkboxes retrigger fare fetch
     container.querySelectorAll('input[name="surcharge"]').forEach((cb) => {
@@ -217,4 +339,12 @@
 
     renderWidget(container, preselect);
   };
+
+  window.LuxivalRepairFareInputs = repairFareInputs;
+  window.addEventListener("DOMContentLoaded", repairFareInputs);
+  window.addEventListener("load", () => {
+    repairFareInputs();
+    window.setTimeout(repairFareInputs, 500);
+    window.setTimeout(repairFareInputs, 2000);
+  });
 })();

@@ -113,9 +113,47 @@
       "source": "/design-services",
       "destination": "/pattern",
       "permanent": true
+    },
+    {
+      "source": "/esg-compliance-auditor",
+      "destination": "/portfolio/esg-compliance-auditor",
+      "permanent": true
+    },
+    {
+      "source": "/growth-architect",
+      "destination": "/portfolio/growth-architect",
+      "permanent": true
+    },
+    {
+      "source": "/businesslauncher",
+      "destination": "/portfolio/businesslauncher",
+      "permanent": true
+    },
+    {
+      "source": "/ugc-studio-ai",
+      "destination": "/portfolio/ugc-studio-ai",
+      "permanent": true
+    },
+    {
+      "source": "/vortex-ai-platform",
+      "destination": "/portfolio/vortex-ai-platform",
+      "permanent": true
+    },
+    {
+      "source": "/autonomous-qa-audit-dashboard",
+      "destination": "/portfolio/autonomous-qa-audit-dashboard",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/portfolio/:match*",
+      "destination": "https://luxival-dashboard.vercel.app/portfolio/:match*"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "https://luxival-dashboard.vercel.app/portfolio"
+    },
     {
       "source": "/api-proxy",
       "destination": "/api/api-proxy"

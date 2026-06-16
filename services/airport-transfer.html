@@ -17,6 +17,26 @@
 <meta property="og:url" content="https://www.luxival.com/services/airport-transfer">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://www.luxival.com/services/airport-transfer">
+<link rel="alternate" type="application/json" title="Luxival AI service catalog" href="/assets/data/ai-catalog.json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Premium Helsinki-Vantaa Airport Transfer",
+  "serviceType": "Private chauffeur transfer",
+  "description": "Premium no-wait Helsinki-Vantaa airport pickups with flight tracking, clean vehicles, and smoke-free private transport.",
+  "url": "https://www.luxival.com/services/airport-transfer",
+  "provider": {"@type": "LocalBusiness", "name": "Luxival", "url": "https://www.luxival.com/"},
+  "areaServed": ["Helsinki", "Vantaa", "Espoo", "Uusimaa", "Finland"],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.luxival.com/tourism#book-ride",
+    "priceCurrency": "EUR",
+    "price": "225",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px;--card-r:8px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -99,8 +119,8 @@ footer{background:#060608;padding:5rem 0 2rem}
   <h1 class="reveal d1">Airport transfer<br>excellence.</h1>
   <p class="lead reveal d2">Professional, no-wait pickups from Helsinki-Vantaa Airport (HEL) — with flight tracking, clean vehicles, and a guaranteed smoke-free journey from tarmac to destination.</p>
   <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap">
-    <a href="../tourism.html#book-ride" class="btn">Book this service</a>
-    <a href="../tourism.html#pricing" class="btn btn-outline">Estimate fare</a>
+    <a href="/tourism#book-ride" class="btn">Book this service</a>
+    <a href="/tourism#pricing" class="btn btn-outline">Estimate fare</a>
   </div>
 </section>
 
@@ -178,7 +198,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     <div class="reveal d2">
       <p style="opacity:.65;font-size:.92rem">Prices above are estimates based on distance and standard conditions. Your exact fare is confirmed at booking and does not change after confirmation.</p>
       <p style="opacity:.65;font-size:.92rem">Payment by bank transfer or card accepted. No cash required.</p>
-      <a href="../tourism.html#pricing" class="btn" style="margin-top:1rem;display:inline-block">Calculate your fare</a>
+      <a href="/tourism#pricing" class="btn" style="margin-top:1rem;display:inline-block">Calculate your fare</a>
     </div>
   </div>
 </section>
@@ -198,7 +218,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     <h2>Reserve your airport transfer.</h2>
     <p>Submit your request and we will confirm your booking with pricing within one business day.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="../tourism.html#book-ride" class="btn">Book now</a>
+      <a href="/tourism#book-ride" class="btn">Book now</a>
       <a href="/contact" class="btn btn-outline">Send inquiry</a>
     </div>
   </div>
@@ -217,7 +237,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 </footer>
 <script src="/js/supabase-loader.js" defer></script>
 <script src="/js/luxival.js"></script>
-<script src="/js/fare-calculator.js" defer></script>
+<script src="/js/fare-calculator.js?v=location-fallback-20260617-mapfix" defer></script>
 <script src="/js/google-maps-lazy.js" defer></script>
 <script>
   window._fareCalculatorConfig = { containerId: 'fare-calculator-airport', preselect: ['airport'] };

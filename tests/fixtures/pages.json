@@ -15,8 +15,12 @@
     { "path": "/tourism-planning", "titleContains": "Tourism" },
     { "path": "/hub", "titleContains": "Hub" },
     { "path": "/audit", "titleContains": "Audit" },
-    { "path": "/esg-compliance-auditor", "titleContains": "ESG" },
-    { "path": "/growth-architect", "titleContains": "Growth" },
+    { "path": "/portfolio/esg-compliance-auditor", "titleContains": "ESG" },
+    { "path": "/portfolio/growth-architect", "titleContains": "Growth" },
+    { "path": "/portfolio/businesslauncher", "titleContains": "BusinessLauncher" },
+    { "path": "/portfolio/ugc-studio-ai", "titleContains": "UGC" },
+    { "path": "/portfolio/vortex-ai-platform", "titleContains": "Vortex" },
+    { "path": "/portfolio/autonomous-qa-audit-dashboard", "titleContains": "QA" },
     { "path": "/growth-architect-backend", "titleContains": "Growth" },
     { "path": "/privacy", "titleContains": "Privacy" },
     { "path": "/terms", "titleContains": "Terms" },
@@ -48,13 +52,13 @@
     { "path": "/portfolio/esg-compliance-auditor/frontend/dist/", "titleContains": "ESG Compliance" }
   ],
   "canonicalNavLinks": [
-    { "text": "Home", "hrefContains": "index" },
-    { "text": "Digital Services", "hrefContains": "services" },
-    { "text": "Tourism & Transport", "hrefContains": "tourism" },
+    { "text": "Home", "hrefContains": "/" },
+    { "text": "Travel", "hrefContains": "tourism" },
+    { "text": "Digital Services", "hrefContains": "digital" },
+    { "text": "Website Audit", "hrefContains": "audit" },
     { "text": "Portfolio", "hrefContains": "portfolio" },
     { "text": "Blog", "hrefContains": "blog" },
-    { "text": "QA & Audit", "hrefContains": "qa" },
-    { "text": "About", "hrefContains": "about" },
-    { "text": "Get Started", "hrefContains": "contact" }
+    { "text": "Contact", "hrefContains": "contact" },
+    { "text": "Start Here", "hrefContains": "hub" }
   ]
 }

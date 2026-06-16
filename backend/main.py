@@ -31,6 +31,7 @@ from dotenv import load_dotenv
 from models import ScanRequest, ScanTier, ScanResult
 from scanner import run_free_scan, run_premium_scan
 from pdf_generator import generate_free_pdf, generate_premium_pdf
+from location_suggestions import suggest_locations
 
 load_dotenv()
 
@@ -132,6 +133,18 @@ def _verify_sumup_signature(body: bytes, signature: str) -> bool:
 @app.get("/health")
 async def health():
     return {"status": "ok", "service": "luxival-audit-api"}
+
+
+@app.get("/locations/suggest")
+@limiter.limit("60/minute")
+async def locations_suggest(request: Request, q: str = "", limit: int = 6):
+    """Return Finnish address/location suggestions for customer-facing forms."""
+    try:
+        suggestions = await suggest_locations(q, limit)
+    except httpx.HTTPError:
+        raise HTTPException(status_code=502, detail="Location suggestion service unavailable")
+
+    return {"suggestions": suggestions}
 
 
 @app.post("/webhook/sumup")

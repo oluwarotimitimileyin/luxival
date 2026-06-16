@@ -22,6 +22,7 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy({ "blog/images": "blog/images" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "llms.txt": "llms.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });

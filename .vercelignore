@@ -16,6 +16,9 @@ backend
 .agents
 .claude
 mobile-audit
+luxival-autopost
+luxival-dashboard
+assets/AppIcon.appiconset
 
 # Oversized raw video sources exceed Vercel's single-file upload limit.
 assets/video/*.mov

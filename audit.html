@@ -9,10 +9,11 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<title>Free Website Audit | Luxival Digital Helsinki</title>
-<meta name="description" content="Get a free instant website audit covering SEO, performance, accessibility, and security. Powered by Luxival Digital, Helsinki.">
-<meta property="og:title" content="Free Website Audit — Luxival Digital">
-<meta property="og:description" content="Instant audit of any website: SEO fundamentals, PageSpeed score, accessibility checks, and more. Free report PDF included.">
+<title>Website Audit Booking | Luxival Digital Helsinki</title>
+<meta name="description" content="Book a website audit consultation or request a website build from Luxival Digital in Helsinki. Share your business details, preferred time, and goals.">
+<meta property="og:title" content="Website Audit Booking — Luxival Digital">
+<meta property="og:description" content="Book a website audit consultation or request a website build. Tell Luxival about your business, goals, timing, and website requirements.">
+<meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
 <meta property="og:url" content="https://www.luxival.com/audit">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://www.luxival.com/audit">
@@ -55,11 +56,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .scan-box{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2.5rem;max-width:700px;margin:0 auto}
 .scan-box h2{text-align:left;font-size:1.5rem;margin-bottom:.4rem}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-input,select{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,.1);padding:.82rem 1rem;color:var(--text);border-radius:2px;font-family:inherit;font-size:.9rem;transition:border-color .2s;margin-bottom:.9rem}
-input::placeholder{opacity:.45}
-input:focus,select:focus{outline:none;border-color:var(--gold)}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,.1);padding:.82rem 1rem;color:var(--text);border-radius:2px;font-family:inherit;font-size:.9rem;transition:border-color .2s;margin-bottom:.9rem}
+textarea{min-height:112px;resize:vertical}
+input::placeholder,textarea::placeholder{opacity:.45}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.85;cursor:pointer}
 .btn-full{width:100%;padding:1rem}
 #scanMsg{margin-top:1rem;font-size:.85rem;min-height:1.4rem;opacity:.75}
+
+/* BOOKING INTAKE */
+.intake-box{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2.5rem;max-width:860px;margin:0 auto}
+.intake-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.4rem 0 2rem}
+.intake-tab{background:transparent;border:1px solid rgba(201,169,106,.22);color:var(--text);border-radius:3px;padding:1rem;text-align:left;cursor:pointer}
+.intake-tab strong{display:block;color:var(--gold);font-size:.82rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:.25rem}
+.intake-tab span{font-size:.82rem;opacity:.65}
+.intake-tab.active{background:rgba(201,169,106,.08);border-color:var(--gold)}
+.intake-panel{display:none}
+.intake-panel.active{display:block}
+.intake-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.intake-grid .full{grid-column:1/-1}
+.intake-status{font-size:.85rem;min-height:1.4rem;margin-top:.6rem}
+.congrats-card{display:none;background:linear-gradient(135deg,rgba(201,169,106,.12),rgba(17,19,26,.94));border:1px solid var(--gold);border-radius:4px;padding:2rem;margin-top:1.5rem}
+.congrats-card.show{display:block}
+.congrats-card h3{color:var(--text);font-size:1.45rem;margin-bottom:.6rem}
+.congrats-card p{opacity:.75}
+.congrats-card .congrats-meta{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.2rem}
+.congrats-card .congrats-meta div{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:.85rem}
+.congrats-card .congrats-meta span{display:block;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:.25rem}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.choice-card{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,106,.14);border-radius:4px;padding:1.4rem}
+.choice-card h3{font-size:1rem;color:var(--text);margin-bottom:.5rem}
 
 /* PROGRESS */
 .progress-wrap{display:none;margin-top:1.5rem}
@@ -131,7 +158,7 @@ footer a{font-size:.7rem;opacity:.4;margin:0 .8rem;text-transform:uppercase;lett
 footer a:hover{opacity:1}
 
 @media(max-width:820px){
-  .field-row,.checks-grid,.flows-grid,.how-grid,.premium-checks-inner{grid-template-columns:1fr}
+  .field-row,.checks-grid,.flows-grid,.how-grid,.premium-checks-inner,.intake-grid,.intake-tabs,.choice-grid,.congrats-card .congrats-meta{grid-template-columns:1fr}
   .sticky-cta{display:flex}
   body{padding-bottom:72px}
 }
@@ -153,7 +180,7 @@ footer a:hover{opacity:1}
     <li><a href="/digital">Digital</a></li>
     <li><a href="/platform">Platform</a></li>
     <li><a href="/blog">Blog</a></li>
-    <li><a href="#scan" class="btn" style="padding:.5rem 1.2rem;font-size:.7rem">Free Audit</a></li>
+    <li><a href="#audit-intake" class="btn" style="padding:.5rem 1.2rem;font-size:.7rem">Book Audit</a></li>
   </ul>
 </nav>
 
@@ -162,17 +189,18 @@ footer a:hover{opacity:1}
 <!-- HERO -->
 <section class="hero container">
   <div class="hero-inner">
-    <span class="eyebrow">Website Audit · Helsinki</span>
-    <h1>Instant Website Audit — Free</h1>
-    <p style="font-size:1.1rem;opacity:.85;max-width:540px">Enter any website URL and get a scored audit covering SEO, performance, accessibility, security, and more. Free basic report included. Premium 7-flow analysis available.</p>
+    <span class="eyebrow">Website Audit & Website Build · Helsinki</span>
+    <h1>Book a Website Audit or Start a Website Build</h1>
+    <p style="font-size:1.1rem;opacity:.85;max-width:560px">Tell us about your business, your website goals, and a good time to speak. Luxival will review your request and follow up with the right next step.</p>
     <div class="hero-badges">
-      <span class="badge">⚡ Instant results</span>
-      <span class="badge">📄 Free PDF report</span>
-      <span class="badge">🔒 No data stored beyond your consent</span>
-      <span class="badge">🎯 SEO + Performance + Accessibility</span>
+      <span class="badge">Website audit booking</span>
+      <span class="badge">Business website intake</span>
+      <span class="badge">Preferred time collected</span>
+      <span class="badge">SEO + UX + conversion review</span>
     </div>
     <div style="margin-top:2.5rem">
-      <a href="#scan" class="btn">Start Free Audit →</a>
+      <a href="#audit-intake" class="btn">Start Free Audit Booking →</a>
+      <a href="#website-build-intake" class="btn-outline" style="margin-left:.8rem">I Need a Website Built →</a>
     </div>
   </div>
 </section>
@@ -182,23 +210,133 @@ footer a:hover{opacity:1}
 <!-- HOW IT WORKS -->
 <section class="container">
   <span class="eyebrow" style="text-align:center;display:block">How it works</span>
-  <h2 style="text-align:center">Four steps. Instant insights.</h2>
+  <h2 style="text-align:center">Four steps. Clear next action.</h2>
   <div class="how-grid">
     <div class="how-step">
-      <h3>Enter URL</h3>
-      <p>Paste any website URL and your email address to receive your report.</p>
+      <h3>Choose Your Goal</h3>
+      <p>Pick website audit booking or website build intake, depending on what you need right now.</p>
     </div>
     <div class="how-step">
-      <h3>We Scan</h3>
-      <p>Our engine checks SEO tags, PageSpeed, accessibility signals, and security indicators in seconds.</p>
+      <h3>Share Business Details</h3>
+      <p>Tell us your business type, current website, goals, services, audience, and timeline.</p>
     </div>
     <div class="how-step">
-      <h3>See Score</h3>
-      <p>Instant pass/fail breakdown with a score out of 10 and specific recommendations per check.</p>
+      <h3>Pick a Time</h3>
+      <p>Choose a preferred call date and time so we can follow up with context already in hand.</p>
     </div>
     <div class="how-step">
-      <h3>Download Report</h3>
-      <p>Get a branded PDF report free. Upgrade to the 7-flow premium analysis for deeper insights.</p>
+      <h3>Get Follow-up</h3>
+      <p>Your request is saved as a lead, and Luxival can contact you with the right audit or build plan.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line container"></div>
+
+<!-- AUDIT / WEBSITE BUILD INTAKE -->
+<section id="audit-intake" class="container">
+  <div class="intake-box">
+    <span class="eyebrow">Client intake</span>
+    <h2 style="text-align:left;margin-bottom:.6rem">What do you need help with?</h2>
+    <p style="opacity:.65;max-width:680px">Choose the path that matches your need. The form saves your request so Luxival can follow up with the right questions, timing, and next step.</p>
+
+    <div class="intake-tabs" role="tablist" aria-label="Website inquiry type">
+      <button class="intake-tab active" type="button" data-intake-tab="audit-booking" role="tab" aria-selected="true">
+        <strong>Book website audit</strong>
+        <span>Review my current website and book a time to talk.</span>
+      </button>
+      <button class="intake-tab" type="button" data-intake-tab="website-build" role="tab" aria-selected="false" id="website-build-intake">
+        <strong>Build my website</strong>
+        <span>I need a new website or a rebuild for my business.</span>
+      </button>
+    </div>
+
+    <div class="intake-panel active" id="audit-booking" role="tabpanel">
+      <form id="auditBookingForm" class="intake-grid">
+        <input id="auditLeadName" type="text" placeholder="Full name" required>
+        <input id="auditLeadEmail" type="email" placeholder="Email address" required>
+        <input id="auditLeadPhone" type="tel" placeholder="Phone / WhatsApp" required>
+        <input id="auditLeadCompany" type="text" placeholder="Business / company name" required>
+        <input id="auditLeadWebsite" class="full" type="url" placeholder="Current website URL" required>
+        <select id="auditLeadGoal" required>
+          <option value="">Main audit goal</option>
+          <option value="Find why my website is not converting">Find why my website is not converting</option>
+          <option value="Improve SEO and Google visibility">Improve SEO and Google visibility</option>
+          <option value="Improve speed, mobile UX, and trust">Improve speed, mobile UX, and trust</option>
+          <option value="Prepare for a redesign">Prepare for a redesign</option>
+        </select>
+        <select id="auditLeadBudget" required>
+          <option value="">Possible improvement budget</option>
+          <option value="Under 500 EUR">Under 500 EUR</option>
+          <option value="500-1500 EUR">500-1500 EUR</option>
+          <option value="1500-5000 EUR">1500-5000 EUR</option>
+          <option value="5000+ EUR">5000+ EUR</option>
+        </select>
+        <input id="auditLeadDate" type="date" required>
+        <input id="auditLeadTime" type="time" required>
+        <textarea id="auditLeadNotes" class="full" placeholder="What should we know before the call? Current problems, competitors, goals, or questions." required></textarea>
+        <button class="btn btn-full full" type="submit">Submit audit booking request →</button>
+      </form>
+      <p id="auditBookingStatus" class="intake-status" aria-live="polite"></p>
+    </div>
+
+    <div class="intake-panel" id="website-build" role="tabpanel">
+      <form id="websiteBuildForm" class="intake-grid">
+        <input id="buildLeadName" type="text" placeholder="Full name" required>
+        <input id="buildLeadEmail" type="email" placeholder="Email address" required>
+        <input id="buildLeadPhone" type="tel" placeholder="Phone / WhatsApp" required>
+        <input id="buildLeadCompany" type="text" placeholder="Business / company name" required>
+        <input id="buildLeadIndustry" type="text" placeholder="Business type / industry" required>
+        <input id="buildLeadCurrentWebsite" type="url" placeholder="Current website, if any">
+        <textarea id="buildLeadBusiness" class="full" placeholder="Tell us about your business, what you sell, who you serve, and what makes it different." required></textarea>
+        <textarea id="buildLeadRequirements" class="full" placeholder="What should the website include? Example: pages, booking, payments, WhatsApp, gallery, blog, SEO, languages, forms." required></textarea>
+        <select id="buildLeadWebsiteType" required>
+          <option value="">Website type</option>
+          <option value="New business website">New business website</option>
+          <option value="Redesign existing website">Redesign existing website</option>
+          <option value="Landing page">Landing page</option>
+          <option value="Booking or lead generation website">Booking or lead generation website</option>
+          <option value="E-commerce or payments website">E-commerce or payments website</option>
+        </select>
+        <select id="buildLeadBudget" required>
+          <option value="">Website budget range</option>
+          <option value="Under 1000 EUR">Under 1000 EUR</option>
+          <option value="1000-2500 EUR">1000-2500 EUR</option>
+          <option value="2500-5000 EUR">2500-5000 EUR</option>
+          <option value="5000+ EUR">5000+ EUR</option>
+        </select>
+        <input id="buildLeadTimeline" type="text" placeholder="Desired launch timeline" required>
+        <input id="buildLeadDate" type="date" required>
+        <input id="buildLeadTime" type="time" required>
+        <textarea id="buildLeadNotes" class="full" placeholder="Anything else we need to know before the call?"></textarea>
+        <button class="btn btn-full full" type="submit">Submit website build request →</button>
+      </form>
+      <p id="websiteBuildStatus" class="intake-status" aria-live="polite"></p>
+    </div>
+
+    <div class="choice-grid">
+      <div class="choice-card">
+        <h3>After submission</h3>
+        <p>Your request is saved with your selected time, contact details, and business context.</p>
+      </div>
+      <div class="choice-card">
+        <h3>Instant scanner still available</h3>
+        <p>Need a quick automated scan too? Use the optional scanner below after sending the booking request.</p>
+      </div>
+    </div>
+
+    <div id="intakeCongrats" class="congrats-card" aria-live="polite">
+      <span class="eyebrow">Congratulations</span>
+      <h3 id="congratsTitle">Your request has been received.</h3>
+      <p id="congratsMessage">Luxival has your details and will follow up with next steps.</p>
+      <div class="congrats-meta">
+        <div><span>Request</span><strong id="congratsType">Website request</strong></div>
+        <div><span>Preferred time</span><strong id="congratsTime">To be confirmed</strong></div>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem">
+        <a href="/contact" class="btn-outline">Contact Luxival</a>
+        <a href="/digital" class="btn">View Digital Services</a>
+      </div>
     </div>
   </div>
 </section>
@@ -208,9 +346,9 @@ footer a:hover{opacity:1}
 <!-- SCAN FORM -->
 <section id="scan" class="container">
   <div class="scan-box">
-    <span class="eyebrow">Free audit</span>
-    <h2>Scan Your Website Now</h2>
-    <p style="opacity:.55;margin-bottom:1.5rem;font-size:.88rem">We check SEO fundamentals, page speed, and accessibility signals. Takes about 15 seconds.</p>
+    <span class="eyebrow">Optional instant scan</span>
+    <h2>Run an Automated Scan</h2>
+    <p style="opacity:.55;margin-bottom:1.5rem;font-size:.88rem">This is optional. If you want a person to review your site and book a time, use the intake form above first.</p>
     <div class="field-row">
       <label class="sr-only" for="auditUrl">Website URL</label>
       <input type="url" id="auditUrl" placeholder="https://yourwebsite.com" required>
@@ -359,7 +497,7 @@ footer a:hover{opacity:1}
 
 <!-- MOBILE STICKY -->
 <div class="sticky-cta">
-  <a href="#scan" class="btn" style="flex:1;text-align:center">Free Audit</a>
+  <a href="#audit-intake" class="btn" style="flex:1;text-align:center">Book Audit</a>
   <a href="/contact" class="btn-outline" style="flex:1;text-align:center;display:flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:.8rem">Contact</a>
 </div>
 
@@ -388,6 +526,167 @@ let auditData = {
   backendPdfB64: null,
   premiumPdfB64: null
 };
+
+// ─────────────────────────────────────────────
+// INTAKE / BOOKING FORMS
+// ─────────────────────────────────────────────
+function getValue(id) {
+  return (document.getElementById(id)?.value || '').trim();
+}
+
+function setIntakeStatus(id, message, isError) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.color = isError ? '#f77' : 'var(--gold)';
+  el.textContent = message;
+}
+
+async function submitContactPayload(payload, statusId, form) {
+  setIntakeStatus(statusId, 'Submitting request...', false);
+
+  const db = window.ensureLuxivalSupabase
+    ? await window.ensureLuxivalSupabase().catch(() => null)
+    : window.LuxivalSupabase;
+
+  if (!db || !db.submitContactInquiry) {
+    setIntakeStatus(statusId, 'Unable to submit right now. Please email support@luxival.com or WhatsApp +358 50 351 8366.', true);
+    return;
+  }
+
+  const { preferred_date, preferred_time, ...dbPayload } = payload;
+  const { error } = await db.submitContactInquiry(dbPayload);
+  if (error) {
+    console.error('Intake submission error:', error);
+    setIntakeStatus(statusId, 'Submission failed. Please try again or email support@luxival.com.', true);
+    return;
+  }
+
+  const emailResult = await sendLeadNotification(payload).catch((error) => ({
+    ok: false,
+    error: error.message,
+  }));
+
+  form.reset();
+  showCongratulations(payload, emailResult);
+  setIntakeStatus(statusId, emailResult.ok
+    ? 'Request received and email notification sent.'
+    : 'Request received. Email notification needs server configuration.', !emailResult.ok);
+}
+
+async function sendLeadNotification(payload) {
+  const response = await fetch('/api/lead-notification', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: payload.service_interest,
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      company: payload.company,
+      preferredDate: payload.preferred_date,
+      preferredTime: payload.preferred_time,
+      message: payload.message,
+      source: payload.source,
+    }),
+  });
+  const data = await response.json().catch(() => ({}));
+  return { ok: response.ok, status: response.status, data };
+}
+
+function showCongratulations(payload, emailResult) {
+  const card = document.getElementById('intakeCongrats');
+  if (!card) return;
+  document.getElementById('congratsTitle').textContent = 'Congratulations, your request is in.';
+  document.getElementById('congratsMessage').textContent = emailResult.ok
+    ? 'Your details were saved and an email notification was sent to Luxival instantly.'
+    : 'Your details were saved. Email notification will work once RESEND_API_KEY is configured in Vercel.';
+  document.getElementById('congratsType').textContent = payload.service_interest || 'Website request';
+  document.getElementById('congratsTime').textContent = [payload.preferred_date, payload.preferred_time].filter(Boolean).join(' at ') || 'To be confirmed';
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function setupIntakeTabs() {
+  const tabs = document.querySelectorAll('[data-intake-tab]');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-intake-tab');
+      tabs.forEach((item) => {
+        const isActive = item === tab;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-selected', String(isActive));
+      });
+      document.querySelectorAll('.intake-panel').forEach((panel) => {
+        panel.classList.toggle('active', panel.id === target);
+      });
+    });
+  });
+}
+
+function setupIntakeForms() {
+  const auditBookingForm = document.getElementById('auditBookingForm');
+  if (auditBookingForm) {
+    auditBookingForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const payload = {
+        name: getValue('auditLeadName'),
+        email: getValue('auditLeadEmail'),
+        phone: getValue('auditLeadPhone'),
+        company: getValue('auditLeadCompany'),
+        service_interest: 'Website audit booking',
+        preferred_date: getValue('auditLeadDate'),
+        preferred_time: getValue('auditLeadTime'),
+        message: [
+          `Current website: ${getValue('auditLeadWebsite')}`,
+          `Main audit goal: ${getValue('auditLeadGoal')}`,
+          `Possible improvement budget: ${getValue('auditLeadBudget')}`,
+          `Preferred call date: ${getValue('auditLeadDate')}`,
+          `Preferred call time: ${getValue('auditLeadTime')}`,
+          `Notes: ${getValue('auditLeadNotes')}`
+        ].join('\n'),
+        source: 'audit-booking-intake',
+        status: 'new'
+      };
+      await submitContactPayload(payload, 'auditBookingStatus', auditBookingForm);
+    });
+  }
+
+  const websiteBuildForm = document.getElementById('websiteBuildForm');
+  if (websiteBuildForm) {
+    websiteBuildForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const payload = {
+        name: getValue('buildLeadName'),
+        email: getValue('buildLeadEmail'),
+        phone: getValue('buildLeadPhone'),
+        company: getValue('buildLeadCompany'),
+        service_interest: 'Website build request',
+        preferred_date: getValue('buildLeadDate'),
+        preferred_time: getValue('buildLeadTime'),
+        message: [
+          `Business type / industry: ${getValue('buildLeadIndustry')}`,
+          `Current website: ${getValue('buildLeadCurrentWebsite') || 'None provided'}`,
+          `Website type: ${getValue('buildLeadWebsiteType')}`,
+          `Budget range: ${getValue('buildLeadBudget')}`,
+          `Desired launch timeline: ${getValue('buildLeadTimeline')}`,
+          `Preferred call date: ${getValue('buildLeadDate')}`,
+          `Preferred call time: ${getValue('buildLeadTime')}`,
+          `Business description: ${getValue('buildLeadBusiness')}`,
+          `Website requirements: ${getValue('buildLeadRequirements')}`,
+          `Extra notes: ${getValue('buildLeadNotes') || 'None'}`
+        ].join('\n'),
+        source: 'website-build-intake',
+        status: 'new'
+      };
+      await submitContactPayload(payload, 'websiteBuildStatus', websiteBuildForm);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupIntakeTabs();
+  setupIntakeForms();
+});
 
 // ─────────────────────────────────────────────
 // UTILS

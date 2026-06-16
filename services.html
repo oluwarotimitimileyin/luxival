@@ -24,7 +24,43 @@
 <link rel="alternate" hreflang="fr" href="https://www.luxival.com/services?lang=fr">
 <link rel="alternate" hreflang="it" href="https://www.luxival.com/services?lang=it">
 <link rel="alternate" hreflang="x-default" href="https://www.luxival.com/services">
+<link rel="alternate" type="application/json" title="Luxival AI service catalog" href="/assets/data/ai-catalog.json">
 <link rel="stylesheet" href="/css/mobile-overrides.css?v=20260530-4">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "name": "Luxival Services",
+      "url": "https://www.luxival.com/services",
+      "description": "Premium digital, QA, AI, tourism, transport, and content services from Luxival in Helsinki.",
+      "mainEntity": {"@id": "https://www.luxival.com/services#catalog"}
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.luxival.com/services#catalog",
+      "name": "Luxival service catalog",
+      "url": "https://www.luxival.com/services",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Luxival",
+        "url": "https://www.luxival.com/",
+        "logo": "https://www.luxival.com/assets/images/brand/luxival-logo-512.png",
+        "address": {"@type": "PostalAddress", "addressLocality": "Helsinki", "addressCountry": "FI"}
+      },
+      "itemListElement": [
+        {"@type": "Offer", "name": "Helsinki Airport Transfer", "url": "https://www.luxival.com/services/airport-transfer", "priceCurrency": "EUR", "price": "225", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "Premium Helsinki-Vantaa airport transfer", "serviceType": "Private transport", "areaServed": ["Helsinki", "Vantaa", "Espoo", "Uusimaa"]}},
+        {"@type": "Offer", "name": "Website Design and Development", "url": "https://www.luxival.com/services/web-design", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "Premium website design and development", "serviceType": "Web design", "areaServed": ["Finland", "Remote"]}},
+        {"@type": "Offer", "name": "QA Audit", "url": "https://www.luxival.com/services/software-testing", "priceCurrency": "EUR", "price": "499", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "Software QA audit and test automation", "serviceType": "Software testing", "areaServed": ["Finland", "Remote"]}},
+        {"@type": "Offer", "name": "AI Agent Infrastructure", "url": "https://www.luxival.com/services/ai-agents", "priceCurrency": "EUR", "price": "800", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "AI agent workflow design and implementation", "serviceType": "AI automation", "areaServed": ["Finland", "Remote"]}},
+        {"@type": "Offer", "name": "TikTok Agency and UGC Content", "url": "https://www.luxival.com/services/tiktok-agency", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "TikTok agency and UGC content systems", "serviceType": "Social content", "areaServed": ["Finland", "Remote"]}},
+        {"@type": "Offer", "name": "Custom Sewing Patterns", "url": "https://www.luxival.com/services/sewing-pattern", "availability": "https://schema.org/InStock", "itemOffered": {"@type": "Service", "name": "Custom sewing pattern and measurement support", "serviceType": "Pattern service", "areaServed": ["Finland", "Remote"]}}
+      ]
+    }
+  ]
+}
+</script>
 <style>
 :root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -135,7 +171,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Website Design</h3>
       <p>Premium brand experiences with modern visuals, clear messaging, and conversion-first structure built for the luxury category.</p>
       <div class="tag-row"><span class="tag">UX</span><span class="tag">Visual Design</span><span class="tag">Conversion</span></div>
-      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
+      <div class="svc-cta"><a href="/services/web-design" class="btn">Learn & Book</a><a href="/services/web-design" class="learn-link">Details →</a></div>
     </div>
 
     <div class="svc reveal d2" data-tilt>
@@ -143,7 +179,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Website Development</h3>
       <p>Responsive, maintainable websites built for performance, scalability, and future growth — with clean, documented code.</p>
       <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">Supabase</span><span class="tag">Performance</span></div>
-      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
+      <div class="svc-cta"><a href="/services/web-design" class="btn">Learn & Book</a><a href="/services/web-design" class="learn-link">Details →</a></div>
     </div>
 
     <div class="svc reveal d3" data-tilt>
@@ -175,7 +211,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>3D UX / 3D Web Design</h3>
       <p>Immersive interface concepts, CSS 3D animations, motion-led interactions, and polished 3D visuals for standout digital experiences.</p>
       <div class="tag-row"><span class="tag">CSS 3D</span><span class="tag">Motion</span><span class="tag">Immersive</span></div>
-      <div class="svc-cta"><a href="services/web-design.html" class="btn">Learn & Book</a><a href="services/web-design.html" class="learn-link">Details →</a></div>
+      <div class="svc-cta"><a href="/services/web-design" class="btn">Learn & Book</a><a href="/services/web-design" class="learn-link">Details →</a></div>
     </div>
 
     <div class="svc reveal d1" data-tilt>
@@ -191,7 +227,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       <h3>Web QA & Quality Assurance</h3>
       <p>Structured testing, performance validation, and release confidence for any website or digital product — ISTQB-certified approach.</p>
       <div class="tag-row"><span class="tag">Playwright</span><span class="tag">Selenium</span><span class="tag">ISTQB</span></div>
-      <div class="svc-cta"><a href="services/software-testing.html" class="btn">Learn & Book</a><a href="/qa" class="learn-link">QA detail →</a></div>
+      <div class="svc-cta"><a href="/services/software-testing" class="btn">Learn & Book</a><a href="/qa" class="learn-link">QA detail →</a></div>
     </div>
 
     <div class="svc reveal d3" data-tilt>

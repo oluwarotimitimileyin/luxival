@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-const BASE = 'https://www.luxival.com';
+const BASE = process.env.PLAYWRIGHT_BASE_URL || 'https://www.luxival.com';
 
 // ── CORE PAGES ──────────────────────────────────────────
 test.describe('Core Pages Load', () => {
@@ -19,6 +19,12 @@ test.describe('Core Pages Load', () => {
     { url: '/digital', title: 'Digital' },
     { url: '/pattern', title: 'Pattern' },
     { url: '/portfolio', title: 'Portfolio' },
+    { url: '/portfolio/esg-compliance-auditor', title: 'ESG' },
+    { url: '/portfolio/growth-architect', title: 'Growth' },
+    { url: '/portfolio/businesslauncher', title: 'BusinessLauncher' },
+    { url: '/portfolio/ugc-studio-ai', title: 'UGC' },
+    { url: '/portfolio/vortex-ai-platform', title: 'Vortex' },
+    { url: '/portfolio/autonomous-qa-audit-dashboard', title: 'QA' },
     { url: '/qa', title: 'QA' },
   ];
 
@@ -259,6 +265,24 @@ test.describe('Forms', () => {
     const count = await cards.count();
     console.log('Booking service cards found:', count);
     expect(count).toBeGreaterThan(0);
+  });
+
+  test('Leaf pages expose data-collection funnel CTA', async ({ page }) => {
+    const leafPages = [
+      '/services/airport-transfer',
+      '/tourism-planning',
+      '/services/web-design',
+      '/services/electrical-design',
+      '/services/mechanical-design',
+    ];
+
+    for (const pagePath of leafPages) {
+      await page.goto(BASE + pagePath);
+      await page.waitForLoadState('domcontentloaded');
+      const funnel = page.locator('[data-funnel-cta]');
+      await expect(funnel, `Missing funnel CTA on ${pagePath}`).toBeVisible({ timeout: 5000 });
+      await expect(funnel.locator('form')).toBeVisible();
+    }
   });
 });
 

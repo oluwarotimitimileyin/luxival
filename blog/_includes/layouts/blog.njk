@@ -56,6 +56,13 @@
     .post-body figure{max-width:920px;margin:1.8rem auto 2.1rem}
     .post-body figure img{width:100%;height:auto;border-radius:12px;object-fit:cover}
     .post-body figcaption{margin-top:.65rem;font-size:clamp(.82rem,1.8vw,.95rem);line-height:1.45;opacity:.78;text-align:left}
+    .post-cta{margin-top:2.2rem;padding:1.3rem;border:1px solid rgba(201,169,106,.2);border-radius:6px;background:rgba(201,169,106,.04)}
+    .post-cta h3{margin:0 0 .45rem;font-size:1.05rem;color:var(--text)}
+    .post-cta p{margin:0 0 .8rem;font-size:.9rem;opacity:.7}
+    .post-cta-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+    .post-cta-actions a{display:inline-block;padding:.55rem .9rem;border-radius:4px;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase}
+    .post-cta-actions a.primary{background:var(--gold);color:var(--bg)}
+    .post-cta-actions a.secondary{border:1px solid var(--gold);color:var(--gold)}
     footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
     .footer-copy{font-size:.75rem;opacity:.3;letter-spacing:1px}
@@ -90,7 +97,9 @@
       "name": "Luxival",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.luxival.com/assets/images/finland/architecture/oodi-library.jpg"
+        "url": "https://www.luxival.com/assets/images/brand/luxival-logo-512.png",
+        "width": 512,
+        "height": 512
       }
     },
     "mainEntityOfPage": "https://www.luxival.com{{ page.url | canonicalPath }}"
@@ -123,6 +132,37 @@
       {% endif %}
       <div class="post-body">
         {{ content | safe }}
+        {% if isPost %}
+        {% set slug = page.url | lower %}
+        {% if 'helsinki' in slug or 'lapland' in slug or 'tourism' in slug or 'transfer' in slug or 'ferry' in slug or 'sauna' in slug %}
+        <aside class="post-cta">
+          <h3>Planning Finland travel?</h3>
+          <p>Get a tailored transfer or trip planning response from the Luxival travel team.</p>
+          <div class="post-cta-actions">
+            <a class="primary" href="/tourism#rideRequestForm">Plan my Finland trip</a>
+            <a class="secondary" href="/tourism#rideRequestForm">Request a ride quote</a>
+          </div>
+        </aside>
+        {% elif 'seo' in slug or 'audit' in slug or 'qa' in slug or 'website' in slug or 'testing' in slug %}
+        <aside class="post-cta">
+          <h3>Need a website quality report?</h3>
+          <p>Run a free scan now and escalate to premium audit when you need deeper diagnostics.</p>
+          <div class="post-cta-actions">
+            <a class="primary" href="/audit">Run free scan</a>
+            <a class="secondary" href="/audit">Order premium audit</a>
+          </div>
+        </aside>
+        {% else %}
+        <aside class="post-cta">
+          <h3>Need help building this for your business?</h3>
+          <p>Request a project consultation and we will map scope, timeline, and practical next steps.</p>
+          <div class="post-cta-actions">
+            <a class="primary" href="/digital#consultation">Request a project consultation</a>
+            <a class="secondary" href="/contact#newsletterForm">Join newsletter</a>
+          </div>
+        </aside>
+        {% endif %}
+        {% endif %}
       </div>
     </div>
   </main>

@@ -134,6 +134,23 @@ select option{background:var(--card)}
 /* Map */
 .map-wrap{border-radius:var(--card-r);overflow:hidden;border:1px solid rgba(201,169,106,.15);height:500px;position:relative}
 #luxivalMap{position:absolute;inset:0;width:100%;height:100%}
+.osm-map{position:absolute;inset:0;background:#0d1118}
+.osm-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.72) contrast(1.05) brightness(.72)}
+.map-shade{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,11,15,.12),rgba(10,11,15,.32));pointer-events:none}
+.map-pin{position:absolute;width:18px;height:18px;border:2px solid #0a0b0f;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(201,169,106,.2),0 10px 24px rgba(0,0,0,.35);transform:translate(-50%,-50%);cursor:pointer;z-index:3}
+.map-pin::after{content:attr(data-cat);position:absolute;left:50%;top:24px;transform:translateX(-50%);background:rgba(10,11,15,.86);border:1px solid rgba(255,255,255,.12);border-radius:999px;color:var(--text);font-size:.55rem;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;padding:.18rem .45rem;opacity:0;transition:opacity .2s}
+.map-pin:hover::after,.map-pin:focus::after{opacity:1}
+.map-pin:focus{outline:2px solid var(--text);outline-offset:4px}
+.map-panel{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:4;max-width:380px;background:rgba(10,11,15,.9);border:1px solid rgba(201,169,106,.24);border-radius:var(--card-r);padding:1rem 1.1rem;box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.map-panel h3{font-size:1rem;color:var(--text);margin-bottom:.25rem}
+.map-panel p{font-size:.82rem;opacity:.62;margin:0 0 .7rem}
+.map-panel a{font-size:.65rem;letter-spacing:2px;text-transform:uppercase}
+.map-action{position:absolute;right:1rem;top:1rem;z-index:4;background:rgba(10,11,15,.9);border:1px solid rgba(201,169,106,.35);border-radius:var(--r);padding:.65rem .9rem;font-size:.62rem;letter-spacing:2px;text-transform:uppercase}
+.map-stop-list{position:absolute;right:1rem;bottom:1rem;z-index:4;width:min(360px,calc(100% - 2rem));display:grid;gap:.55rem}
+.map-stop-btn{border:1px solid rgba(255,255,255,.12);border-radius:var(--card-r);background:rgba(10,11,15,.86);color:var(--text);padding:.7rem .85rem;text-align:left;font:inherit;cursor:pointer}
+.map-stop-btn:hover,.map-stop-btn:focus{border-color:var(--gold);outline:none}
+.map-stop-btn strong{display:block;font-size:.82rem;color:var(--text);margin-bottom:.1rem}
+.map-stop-btn span{display:block;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.8}
 /* FAQ */
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .faq{background:var(--card);border-radius:var(--card-r);padding:1.8rem;border:1px solid rgba(255,255,255,.05);box-shadow:0 4px 6px rgba(0,0,0,.3),0 10px 20px rgba(0,0,0,.2)}
@@ -307,7 +324,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="check">✓</div>
         <h3 data-i18n="tourism.airport">Airport transfer excellence</h3>
         <p>Seamless Helsinki-Vantaa pickups with professional drivers, premium vehicles, and a strict no-smoking policy.</p>
-        <a href="services/airport-transfer.html" class="feature-link">Learn more →</a>
+        <a href="/services/airport-transfer" class="feature-link">Learn more →</a>
       </div>
     </div>
     <div class="feature reveal d2">
@@ -322,7 +339,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="check">✓</div>
         <h3 data-i18n="tourism.privateRides">Private rides & custom tours</h3>
         <p>Local sightseeing, city to city travel, and tourism routes tailored to your schedule and interests.</p>
-        <a href="services/private-rides.html" class="feature-link">Learn more →</a>
+        <a href="/services/private-rides" class="feature-link">Learn more →</a>
       </div>
     </div>
     <div class="feature reveal d3">
@@ -337,7 +354,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="check">✓</div>
         <h3 data-i18n="tourism.hotel">Hotel & house sourcing</h3>
         <p>We help find premium stays, boutique hotels, and private homes for travellers across Helsinki and nearby regions.</p>
-        <a href="services/hotel-sourcing.html" class="feature-link">Learn more →</a>
+        <a href="/services/hotel-sourcing" class="feature-link">Learn more →</a>
       </div>
     </div>
     <div class="feature reveal d1">
@@ -352,7 +369,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="check">✓</div>
         <h3 data-i18n="tourism.pickup">Private airport pickup</h3>
         <p>Efficient no-wait transport from Helsinki-Vantaa with flight tracking and flexible arrival support.</p>
-        <a href="services/private-pickup.html" class="feature-link">Learn more →</a>
+        <a href="/services/private-pickup" class="feature-link">Learn more →</a>
       </div>
     </div>
     <div class="feature reveal d2">
@@ -367,7 +384,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="check">✓</div>
         <h3 data-i18n="tourism.cityToCity">City to city travel</h3>
         <p>Comfortable transfers between Helsinki, Espoo, Vantaa, Lahti, and other nearby destinations.</p>
-        <a href="services/city-to-city.html" class="feature-link">Learn more →</a>
+        <a href="/services/city-to-city" class="feature-link">Learn more →</a>
       </div>
     </div>
     <div class="feature reveal d3">
@@ -399,6 +416,7 @@ footer{background:#060608;padding:5rem 0 2rem}
     <button class="filter" data-filter="city">City</button>
     <button class="filter" data-filter="nature">Nature</button>
     <button class="filter" data-filter="culture">Culture</button>
+    <button class="filter" data-filter="sports">Sports</button>
   </div>
   <div class="dest-grid" id="destGrid">
     <div class="dest-card reveal d1" data-category="city">
@@ -501,6 +519,16 @@ footer{background:#060608;padding:5rem 0 2rem}
       </div>
       <div class="dest-card-body"><span class="dest-cat">Nature</span><h3>Nuuksio National Park</h3><p>Ancient forests, pristine lakes, and nordic trails just 35 km from Helsinki city centre.</p></div>
     </div>
+    <div class="dest-card reveal d2" data-category="sports">
+      <div class="img-frame dest-img">
+        <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.avif 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.avif 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.avif 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.avif 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <source type="image/webp" srcset="/assets/images/optimized/koli-national-park/koli-national-park-480.webp 480w, /assets/images/optimized/koli-national-park/koli-national-park-768.webp 768w, /assets/images/optimized/koli-national-park/koli-national-park-1024.webp 1024w, /assets/images/optimized/koli-national-park/koli-national-park-1440.webp 1440w, /assets/images/optimized/koli-national-park/koli-national-park-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 33vw">
+        <img src="/assets/images/optimized/koli-national-park/koli-national-park-768.webp" alt="Nurmijärvi sports and outdoor activities" width="1600" height="367" decoding="async" loading="lazy" fetchpriority="low">
+      </picture>
+      </div>
+      <div class="dest-card-body"><span class="dest-cat">Sports</span><h3>Nurmijärvi Sports Day</h3><p>Build an active day around swimming, cycling, paddling, horseback riding, football, orienteering, skiing, and Sääksi beach.</p><a href="https://www.visitnurmijarvi.fi/en-FI/topic/658c18783192353c2fe1c384?count=9&mode=listing" target="_blank" rel="noopener" class="learn-more" style="margin-top:.6rem;display:inline-block">Visit Nurmijärvi sports -></a></div>
+    </div>
     <div class="dest-card reveal d2" data-category="culture">
       <div class="img-frame dest-img">
         <picture>
@@ -530,9 +558,25 @@ footer{background:#060608;padding:5rem 0 2rem}
 <section class="container">
   <span class="eyebrow reveal">Explore Helsinki</span>
   <h2 class="reveal d1" style="text-align:left" data-i18n="tourism.map">Curated places on the map</h2>
-  <p class="reveal d2" style="max-width:560px;margin-bottom:2.5rem">Key landmarks, hidden gems, and premium destinations handpicked by Luxival — tap a pin to explore.</p>
+  <p class="reveal d2" style="max-width:560px;margin-bottom:2.5rem">Key landmarks, hidden gems, premium destinations, and tourist-friendly sports stops handpicked by Luxival — tap a pin to explore.</p>
   <div class="map-wrap reveal">
-    <div id="luxivalMap"></div>
+    <div id="luxivalMap">
+      <div class="osm-map">
+        <iframe title="Luxival curated Helsinki and Nurmijärvi map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=24.55%2C60.12%2C25.05%2C60.55&amp;layer=mapnik"></iframe>
+        <div class="map-shade"></div>
+        <a class="map-action" href="https://www.openstreetmap.org/?mlat=60.3172&mlon=24.9633#map=10/60.3172/24.9633" target="_blank" rel="noopener">Open full map</a>
+        <div class="map-stop-list" aria-label="Curated map stops">
+          <button class="map-stop-btn" type="button"><span>Sports</span><strong>Sääksi Beach</strong></button>
+          <button class="map-stop-btn" type="button"><span>Airport</span><strong>Helsinki-Vantaa Airport</strong></button>
+          <button class="map-stop-btn" type="button"><span>Nature</span><strong>Nuuksio National Park</strong></button>
+        </div>
+        <div class="map-panel" id="luxivalMapPanel">
+          <h3>Curated Luxival route map</h3>
+          <p>Explore Helsinki landmarks, premium stops, and Nurmijärvi sports destinations. Interactive pins load automatically.</p>
+          <a href="https://www.openstreetmap.org/?mlat=60.3172&mlon=24.9633#map=10/60.3172/24.9633" target="_blank" rel="noopener">Open larger map -></a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -547,9 +591,9 @@ footer{background:#060608;padding:5rem 0 2rem}
     <span class="live-dot reveal" style="color:#4caf50">Live · LinkedEvents API</span>
   </div>
   <div class="grid-3" id="eventsGrid">
-    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
-    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
-    <div class="event-card"><div class="event-body"><div class="event-tag">Loading</div><h3 style="color:var(--text)">Fetching Helsinki events…</h3><p class="evt-loc">Please wait</p></div></div>
+    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70" alt="Nurmijärvi Active Day" loading="lazy"></div><div class="event-body"><div class="event-tag">Sport</div><h3 style="color:var(--text)">Nurmijärvi Active Day</h3><p class="evt-loc">📍 Nurmijärvi</p><span class="event-date">Seasonal route</span></div></div>
+    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70" alt="Helsinki Design &amp; Gallery Walk" loading="lazy"></div><div class="event-body"><div class="event-tag">Culture</div><h3 style="color:var(--text)">Helsinki Design & Gallery Walk</h3><p class="evt-loc">📍 Helsinki</p><span class="event-date">Private route</span></div></div>
+    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=70" alt="Nuuksio Forest Escape" loading="lazy"></div><div class="event-body"><div class="event-tag">Nature</div><h3 style="color:var(--text)">Nuuksio Forest Escape</h3><p class="evt-loc">📍 Espoo / Nuuksio</p><span class="event-date">Half-day trip</span></div></div>
   </div>
 </section>
 
@@ -628,9 +672,19 @@ footer{background:#060608;padding:5rem 0 2rem}
         <label for="ridePhone">Phone</label>
         <input id="ridePhone" type="tel" placeholder="+358 ..." data-i18n-placeholder="form.phone">
         <label for="ridePickup">Pickup location</label>
-        <input id="ridePickup" type="text" placeholder="Helsinki-Vantaa Airport" data-i18n-placeholder="form.pickup" required>
+        <input id="ridePickup" type="text" placeholder="Helsinki-Vantaa Airport" data-i18n-placeholder="form.pickup" list="rideLocationSuggestions" autocomplete="off" required>
         <label for="rideDestination">Destination</label>
-        <input id="rideDestination" type="text" placeholder="Central Helsinki hotel" data-i18n-placeholder="form.dropoff" required>
+        <input id="rideDestination" type="text" placeholder="Central Helsinki hotel" data-i18n-placeholder="form.dropoff" list="rideLocationSuggestions" autocomplete="off" required>
+        <datalist id="rideLocationSuggestions">
+          <option value="Helsinki-Vantaa Airport, 01531 Vantaa, Finland"></option>
+          <option value="Helsinki city centre, Helsinki, Finland"></option>
+          <option value="Hotel Kamp, Pohjoisesplanadi 29, 00100 Helsinki, Finland"></option>
+          <option value="Port of Helsinki, Helsinki, Finland"></option>
+          <option value="Helsinki Central Railway Station, Helsinki, Finland"></option>
+          <option value="Espoo, Finland"></option>
+          <option value="Vantaa, Finland"></option>
+          <option value="Porvoo Old Town, Porvoo, Finland"></option>
+        </datalist>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
           <div>
             <label for="rideDate">Preferred date</label>
@@ -756,7 +810,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <script>
 function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
 /* Shared fare calculation helpers (used by ride form) */
-function isAirportRoute(a,b){return /airport|vantaa|helsinki-vantaa|hvp|hel/.test((a+' '+b).toLowerCase());}
+function isAirportRoute(a,b){return /\b(airport|helsinki[- ]vantaa|hel airport|hel)\b/.test((a+' '+b).toLowerCase());}
 function isBusyHour(){const m=new Date().getHours()*60+new Date().getMinutes();return(m>=420&&m<=570)||(m>=930&&m<=1110);}
 
 /* Real-time Helsinki clock */
@@ -771,19 +825,52 @@ updateClock();
 /* Debounced helper */
 function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};}
 
-/* Ride form estimate */
-function updateRideEstimate(){
-  const pickup=document.getElementById('ridePickup').value.trim();
-  const dest=document.getElementById('rideDestination').value.trim();
-  if(!pickup||!dest) return;
+let rideEstimateRequestId=0;
+
+function fallbackRideEstimate(pickup,dest,stype){
   const airportFlag=isAirportRoute(pickup,dest);
-  const stype=document.getElementById('rideServiceType').value;
   const dist=airportFlag?19:12;
   const svcPrice=stype==='city-to-city'?10:stype==='tourism'?12:0;
   const airPrice=airportFlag?10:0;
-  const total=100+(dist*3.50)+svcPrice+airPrice;
-  document.getElementById('rideEstimateDistance').textContent='~'+dist;
-  document.getElementById('rideEstimatePrice').textContent=total.toFixed(2);
+  return {distance:dist,total:100+(dist*3.50)+svcPrice+airPrice,approx:true};
+}
+
+function rideSurcharges(pickup,dest,stype){
+  const list=[];
+  if(isAirportRoute(pickup,dest)) list.push('airport');
+  if(stype==='city-to-city'||stype==='tourism') list.push('city');
+  return list;
+}
+
+function renderRideEstimate(distance,total,approx){
+  document.getElementById('rideEstimateDistance').textContent=(approx?'~':'')+distance;
+  document.getElementById('rideEstimatePrice').textContent=Number(total).toFixed(2);
+}
+
+async function updateRideEstimate(){
+  const pickup=document.getElementById('ridePickup').value.trim();
+  const dest=document.getElementById('rideDestination').value.trim();
+  if(!pickup||!dest) return;
+  const stype=document.getElementById('rideServiceType').value;
+  const requestId=++rideEstimateRequestId;
+  document.getElementById('rideEstimateDistance').textContent='...';
+  document.getElementById('rideEstimatePrice').textContent='...';
+  try{
+    const params=new URLSearchParams({
+      origin:pickup,
+      destination:dest,
+      surcharges:rideSurcharges(pickup,dest,stype).join(',')
+    });
+    const res=await fetch('/api/get-fare?'+params.toString());
+    const data=await res.json();
+    if(requestId!==rideEstimateRequestId) return;
+    if(!res.ok||data.error) throw new Error(data.error||'Fare unavailable');
+    renderRideEstimate(data.distance_km,data.total,false);
+  }catch(e){
+    if(requestId!==rideEstimateRequestId) return;
+    const estimate=fallbackRideEstimate(pickup,dest,stype);
+    renderRideEstimate(estimate.distance,estimate.total,estimate.approx);
+  }
 }
 const updateRideEstimateDebounced=debounce(updateRideEstimate,300);
 ['ridePickup','rideDestination'].forEach(id=>{
@@ -791,6 +878,28 @@ const updateRideEstimateDebounced=debounce(updateRideEstimate,300);
   if(el){el.addEventListener('input',updateRideEstimateDebounced);el.addEventListener('change',updateRideEstimate);}
 });
 document.getElementById('rideServiceType').addEventListener('change',updateRideEstimate);
+
+function attachRideAutocomplete(){
+  if(!(window.google&&window.google.maps&&window.google.maps.places)) return false;
+  ['ridePickup','rideDestination'].forEach(id=>{
+    const input=document.getElementById(id);
+    if(!input||input.dataset.autocompleteAttached) return;
+    input.dataset.autocompleteAttached='true';
+    const ac=new window.google.maps.places.Autocomplete(input,{
+      fields:['formatted_address','geometry','name'],
+      componentRestrictions:{country:'fi'}
+    });
+    ac.addListener('place_changed',()=>input.dispatchEvent(new Event('change',{bubbles:true})));
+  });
+  return true;
+}
+(function waitForRideAutocomplete(){
+  let attempts=0;
+  const timer=setInterval(()=>{
+    attempts++;
+    if(attachRideAutocomplete()||attempts>=20) clearInterval(timer);
+  },500);
+})();
 
 /* Live weather fetch — Open-Meteo, no key required */
 (function fetchWeather(){
@@ -814,12 +923,12 @@ document.getElementById('rideServiceType').addEventListener('change',updateRideE
   const grid=document.getElementById('eventsGrid');
   if(!grid) return;
   const FALLBACK=[
-    {tag:'Culture',title:'Helsinki Design Week',desc:'Scandinavia\'s largest design festival — exhibitions and talks citywide.',loc:'Helsinki City-wide',date:'Sep 2026'},
-    {tag:'Music',title:'Helsinki Jazz Festival',desc:'International jazz artists at intimate venues across the capital.',loc:'Storyville, Helsinki',date:'May 2026'},
-    {tag:'Tradition',title:'Midsummer at Seurasaari',desc:'Traditional Finnish midsummer with bonfires and folk music on the island.',loc:'Seurasaari Island',date:'Jun 2026'},
-    {tag:'Sport',title:'Helsinki City Marathon',desc:'Annual urban marathon through Helsinki\'s iconic streets and waterfront.',loc:'City Centre',date:'Aug 2026'},
-    {tag:'Culture',title:'Baltic Circle Theatre Festival',desc:'Contemporary theatre and performance art from across the Baltic region.',loc:'Various venues',date:'Nov 2026'},
-    {tag:'Market',title:'Christmas Market at Senate Square',desc:'Traditional open-air Christmas market with crafts, food, and festive lights.',loc:'Senate Square',date:'Dec 2026'}
+    {tag:'Sport',title:'Nurmijärvi Active Day',desc:'Swimming, cycling, paddling, riding, football, orienteering, skiing, and Sääksi beach.',loc:'Nurmijärvi',date:'Seasonal route'},
+    {tag:'Culture',title:'Helsinki Design & Gallery Walk',desc:'Design District, galleries, boutiques, and Ateneum-area culture stops.',loc:'Helsinki',date:'Private route'},
+    {tag:'Nature',title:'Nuuksio Forest Escape',desc:'Ancient forests, lake views, and quiet Finnish nature close to Helsinki.',loc:'Espoo / Nuuksio',date:'Half-day trip'},
+    {tag:'Waterfront',title:'Löyly Sauna & Dining',desc:'Sea-facing sauna and modern Finnish restaurant experience.',loc:'Helsinki waterfront',date:'Evening stop'},
+    {tag:'Airport',title:'Arrival Day Soft Landing',desc:'Helsinki-Vantaa pickup, hotel transfer, and one low-stress city stop.',loc:'Vantaa to Helsinki',date:'Arrival route'},
+    {tag:'Seasonal',title:'Lapland Aurora Planning',desc:'Premium transport planning for northern lights and winter journeys.',loc:'Finland',date:'Winter route'}
   ];
   const IMGS=['https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70',
     'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70',
@@ -849,7 +958,8 @@ document.getElementById('rideServiceType').addEventListener('change',updateRideE
   fetch(`https://api.hel.fi/linkedevents/v1/event/?start=${now}&sort=start_time&page_size=6&format=json`,{signal:controller.signal})
     .then(r=>{clearTimeout(tId);return r.json();})
     .then(d=>{
-      const events=(d.data||[]).filter(e=>e.name&&(e.name.en||e.name.fi));
+      const nowMs=Date.now();
+      const events=(d.data||[]).filter(e=>e.name&&(e.name.en||e.name.fi)&&e.start_time&&new Date(e.start_time).getTime()>=nowMs);
       if(!events.length){renderFallback();return;}
       grid.innerHTML=events.map((e,i)=>{
         const title=(e.name.en||e.name.fi||'Unnamed event').slice(0,60);
@@ -863,24 +973,11 @@ document.getElementById('rideServiceType').addEventListener('change',updateRideE
     }).catch(()=>{clearTimeout(tId);renderFallback();});
 })();
 
-/* Google Map with curated Helsinki pins */
+/* OpenStreetMap with curated Helsinki and Nurmijärvi pins */
 function initLuxivalMap(){
-  const HELSINKI={lat:60.1699,lng:24.9384};
-  const STYLE=[
-    {elementType:'geometry',stylers:[{color:'#0a0b0f'}]},
-    {elementType:'labels.text.fill',stylers:[{color:'#8a8fa8'}]},
-    {elementType:'labels.text.stroke',stylers:[{color:'#0a0b0f'}]},
-    {featureType:'road',elementType:'geometry',stylers:[{color:'#1a1d28'}]},
-    {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#11131a'}]},
-    {featureType:'water',elementType:'geometry',stylers:[{color:'#061019'}]},
-    {featureType:'poi',elementType:'geometry',stylers:[{color:'#11131a'}]},
-    {featureType:'transit',elementType:'geometry',stylers:[{color:'#13161e'}]},
-    {featureType:'landscape',elementType:'geometry',stylers:[{color:'#0d0f18'}]}
-  ];
-  const map=new google.maps.Map(document.getElementById('luxivalMap'),{
-    center:HELSINKI,zoom:12,styles:STYLE,
-    mapTypeControl:false,streetViewControl:false,fullscreenControl:false
-  });
+  const el=document.getElementById('luxivalMap');
+  if(!el) return;
+  const BOUNDS={minLat:60.12,maxLat:60.55,minLng:24.55,maxLng:25.05};
   const PINS=[
     {lat:60.1699,lng:24.9384,label:'Luxival HQ · Vantaa',cat:'Transport'},
     {lat:60.1705,lng:24.9521,label:'Helsinki Cathedral',cat:'Culture'},
@@ -891,29 +988,56 @@ function initLuxivalMap(){
     {lat:60.1721,lng:24.9409,label:'Ateneum Art Museum',cat:'Culture'},
     {lat:60.1569,lng:24.9258,label:'Löyly Sauna & Restaurant',cat:'Dining'},
     {lat:60.3172,lng:24.9633,label:'Helsinki-Vantaa Airport',cat:'Transport'},
-    {lat:60.2101,lng:24.6552,label:'Nuuksio National Park',cat:'Nature'}
+    {lat:60.2101,lng:24.6552,label:'Nuuksio National Park',cat:'Nature'},
+    {lat:60.4636,lng:24.8024,label:'Sääksi Beach · swimming & water park',cat:'Sports'},
+    {lat:60.3855,lng:24.7514,label:'Klaukkala sports area · football & courts',cat:'Sports'},
+    {lat:60.5337,lng:24.7577,label:'Kiljava trails · cycling, skiing & outdoor sport',cat:'Sports'}
   ];
-  const COLORS={Transport:'#C9A96A',Culture:'#7eb8f7',City:'#a8e6a3',Nature:'#6fd99c',Dining:'#f7b7a3'};
-  PINS.forEach(p=>{
-    const marker=new google.maps.Marker({
-      position:{lat:p.lat,lng:p.lng},map,
-      title:p.label,
-      icon:{path:google.maps.SymbolPath.CIRCLE,scale:8,fillColor:COLORS[p.cat]||'#C9A96A',fillOpacity:.9,strokeColor:'#0a0b0f',strokeWeight:2}
+  const COLORS={Transport:'#C9A96A',Culture:'#7eb8f7',City:'#a8e6a3',Nature:'#6fd99c',Dining:'#f7b7a3',Sports:'#f6d365'};
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const x=p=>((p.lng-BOUNDS.minLng)/(BOUNDS.maxLng-BOUNDS.minLng))*100;
+  const y=p=>((BOUNDS.maxLat-p.lat)/(BOUNDS.maxLat-BOUNDS.minLat))*100;
+  const FEATURED=[PINS[10],PINS[8],PINS[9],PINS[12]];
+  el.innerHTML=`<div class="osm-map">
+    <iframe title="Luxival curated Helsinki and Nurmijärvi map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=${BOUNDS.minLng}%2C${BOUNDS.minLat}%2C${BOUNDS.maxLng}%2C${BOUNDS.maxLat}&amp;layer=mapnik"></iframe>
+    <div class="map-shade"></div>
+    <a class="map-action" href="https://www.openstreetmap.org/?mlat=60.3172&mlon=24.9633#map=10/60.3172/24.9633" target="_blank" rel="noopener">Open full map</a>
+    ${PINS.map((p,i)=>`<button class="map-pin" type="button" data-index="${i}" data-cat="${esc(p.cat)}" aria-label="${esc(p.label)}" style="left:${x(p).toFixed(2)}%;top:${y(p).toFixed(2)}%;background:${COLORS[p.cat]||COLORS.Transport}"></button>`).join('')}
+    <div class="map-stop-list" aria-label="Curated map stops">
+      ${FEATURED.map(p=>`<button class="map-stop-btn" type="button" data-label="${esc(p.label)}"><span>${esc(p.cat)}</span><strong>${esc(p.label)}</strong></button>`).join('')}
+    </div>
+    <div class="map-panel" id="luxivalMapPanel">
+      <h3>Curated Luxival route map</h3>
+      <p>Select a visible stop or tap a pin for Helsinki landmarks, premium stops, and Nurmijärvi sports destinations.</p>
+      <a href="https://www.openstreetmap.org/?mlat=60.3172&mlon=24.9633#map=10/60.3172/24.9633" target="_blank" rel="noopener">Open larger map -></a>
+    </div>
+  </div>`;
+  const panel=el.querySelector('#luxivalMapPanel');
+  function selectStop(p){
+    panel.innerHTML=`<h3>${esc(p.label)}</h3><p>${esc(p.cat)} stop selected. Add it to your private route or ask Luxival to plan transport around it.</p><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=14/${p.lat}/${p.lng}" target="_blank" rel="noopener">Open in OpenStreetMap -></a>`;
+  }
+  el.querySelectorAll('.map-pin').forEach(btn=>{
+    btn.addEventListener('click',()=>selectStop(PINS[Number(btn.dataset.index)]));
+  });
+  el.querySelectorAll('.map-stop-btn[data-label]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const p=PINS.find(item=>item.label===btn.dataset.label);
+      if(p) selectStop(p);
     });
-    const info=new google.maps.InfoWindow({content:`<div style="background:#11131a;color:#e8ebf2;padding:.7rem 1rem;border-radius:6px;font-family:sans-serif;font-size:.82rem;min-width:140px"><strong style="color:#C9A96A">${p.label}</strong><br><span style="opacity:.5;font-size:.72rem">${p.cat}</span></div>`});
-    marker.addListener('click',()=>info.open(map,marker));
   });
 }
 </script>
-<script src="/js/fare-calculator.js" defer></script>
-<script src="/js/google-maps-lazy.js" defer></script>
+<script src="/js/fare-calculator.js?v=location-fallback-20260617-mapfix" defer></script>
 <script>
-function initLuxivalMapAndFare(){
+function initLuxivalFare(){
+  if (window.initFareCalculator) window.initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
+}
+function initLuxivalMapOnly(){
   initLuxivalMap();
-  if (window.initFareCalculator) initFareCalculator({ containerId: 'fare-calculator-tourism', preselect: [] });
 }
 window.addEventListener('DOMContentLoaded', function(){
-  if (window.loadLuxivalGoogleMaps) window.loadLuxivalGoogleMaps('initLuxivalMapAndFare', '#pricing');
+  initLuxivalFare();
+  initLuxivalMapOnly();
 });
 
 const filters=document.querySelectorAll('.filter');

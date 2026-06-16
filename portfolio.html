@@ -80,6 +80,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .cta-band{background:var(--card2);border-top:1px solid rgba(255,255,255,.04);padding:6rem 0;text-align:center}
 .cta-band p{max-width:520px;margin:0 auto 2.5rem;opacity:.7}
 .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.portfolio-lead{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem}
+.portfolio-lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.portfolio-lead-grid .full{grid-column:1/-1}
+.portfolio-lead input,.portfolio-lead textarea,.portfolio-lead select{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(201,169,106,.25);color:#fff;border-radius:6px;padding:.7rem .8rem}
+.portfolio-lead textarea{min-height:110px;resize:vertical}
+.portfolio-lead-status{font-size:.85rem;opacity:.8;margin-top:.5rem}
 footer{background:#060608;padding:5rem 0 2rem}
 .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .foot-links{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem}
@@ -134,7 +140,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <!-- PORTFOLIO -->
 <section class="container">
   <div class="port-banner reveal">
-    <img src="assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki" width="1600" height="900" decoding="async" fetchpriority="high">
+    <img src="/assets/images/finland/architecture/temppeliaukio-church.jpg" alt="Temppeliaukio Church in Helsinki" width="1600" height="900" decoding="async" fetchpriority="high">
   </div>
 
   <div class="filter-row reveal">
@@ -161,7 +167,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">ESG</span><span class="tag">Compliance</span><span class="tag">Gemini</span><span class="tag">React</span></div>
         <h3>ESG Compliance Auditor</h3>
         <p>AI-powered ESG reporting and compliance audit tool built on Google Vertex AI — analyses corporate documents and surfaces regulatory gaps.</p>
-        <a href="/esg-compliance-auditor">View full product →</a>
+        <a href="/portfolio/esg-compliance-auditor">View project →</a>
       </div>
     </div>
 
@@ -171,7 +177,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">SEO</span><span class="tag">Performance</span><span class="tag">Automation</span><span class="tag">AI Agent</span></div>
         <h3>GROWTH_ARCHITECT</h3>
         <p>Strategic AI tool that audits growth bottlenecks, prioritizes technical fixes, and generates implementation-ready action plans for measurable SEO and conversion gains.</p>
-        <a href="/growth-architect">View project →</a>
+        <a href="/portfolio/growth-architect">View project →</a>
         <a href="/growth-architect-backend" style="margin-left:1rem">Backend ops →</a>
       </div>
     </div>
@@ -182,7 +188,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Startup</span><span class="tag">Planning</span><span class="tag">Website</span><span class="tag">Launch</span></div>
         <h3>BusinessLauncher</h3>
         <p>A self-contained business launch experience that helps turn an idea into a structured go-to-market foundation with a polished presentation layer.</p>
-        <a href="/businesslauncher">View project →</a>
+        <a href="/portfolio/businesslauncher">View project →</a>
       </div>
     </div>
 
@@ -192,7 +198,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">UGC</span><span class="tag">Video</span><span class="tag">Workflow</span><span class="tag">AI</span></div>
         <h3>UGC Studio AI</h3>
         <p>An AI production pipeline for generating user-generated content concepts, characters, and video-ready creative workflows.</p>
-        <a href="/ugc-studio-ai">View project →</a>
+        <a href="/portfolio/ugc-studio-ai">View project →</a>
       </div>
     </div>
 
@@ -202,7 +208,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Chat</span><span class="tag">Dashboard</span><span class="tag">Voice</span><span class="tag">Platform</span></div>
         <h3>Vortex AI Platform</h3>
         <p>A multi-modal conversational platform with embeddable chat, dashboard controls, and agent configuration tools.</p>
-        <a href="/vortex-ai-platform">View project →</a>
+        <a href="/portfolio/vortex-ai-platform">View project →</a>
       </div>
     </div>
 
@@ -222,10 +228,38 @@ footer{background:#060608;padding:5rem 0 2rem}
         <div class="tags"><span class="tag">Playwright</span><span class="tag">Telemetry</span><span class="tag">Audit</span><span class="tag">Dashboard</span></div>
         <h3>Autonomous QA Audit Dashboard</h3>
         <p>Runs UI and API telemetry-driven analysis to generate a visual QA report, blocker registry, and strategic recommendations from a single orchestration flow.</p>
-        <a href="/autonomous-qa-audit-dashboard">View project →</a>
+        <a href="/portfolio/autonomous-qa-audit-dashboard">View project →</a>
       </div>
     </div>
 
+  </div>
+</section>
+
+<section class="container" id="portfolio-cta" style="padding-top:0">
+  <div class="portfolio-lead reveal">
+    <span class="eyebrow">Build something like this</span>
+    <h2 style="margin-bottom:.8rem">Tell us the portfolio project that inspired you</h2>
+    <p style="margin-bottom:1.3rem;opacity:.7">Share your goals and we will follow up with scope, timeline, and a practical build path.</p>
+    <form id="portfolioLeadForm" class="portfolio-lead-grid">
+      <input id="portfolioLeadName" type="text" placeholder="Name" required>
+      <input id="portfolioLeadEmail" type="email" placeholder="Email" required>
+      <input id="portfolioLeadCompany" type="text" placeholder="Company" required>
+      <select id="portfolioLeadInspiredBy" required>
+        <option value="">Inspired-by portfolio item</option>
+        <option value="ESG Compliance Auditor">ESG Compliance Auditor</option>
+        <option value="GROWTH_ARCHITECT">GROWTH_ARCHITECT</option>
+        <option value="BusinessLauncher">BusinessLauncher</option>
+        <option value="UGC Studio AI">UGC Studio AI</option>
+        <option value="Vortex AI Platform">Vortex AI Platform</option>
+        <option value="Autonomous QA Audit Dashboard">Autonomous QA Audit Dashboard</option>
+      </select>
+      <input id="portfolioLeadProjectType" type="text" placeholder="Project type" required>
+      <input id="portfolioLeadBudget" type="text" placeholder="Budget range" required>
+      <input id="portfolioLeadTimeline" type="text" placeholder="Timeline" required>
+      <textarea id="portfolioLeadMessage" class="full" placeholder="Message" required></textarea>
+      <button class="btn full" type="submit">Build something like this →</button>
+    </form>
+    <p id="portfolioLeadStatus" class="portfolio-lead-status"></p>
   </div>
 </section>
 
@@ -322,6 +356,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
 <script src="/js/site-content.js"></script>
 <script src="/js/luxival.js"></script>
 <script>
@@ -338,6 +373,44 @@ filters.forEach(btn => {
     });
   });
 });
+</script>
+<script>
+const portfolioLeadForm = document.getElementById('portfolioLeadForm');
+if (portfolioLeadForm && window.LuxivalSupabase) {
+  portfolioLeadForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const status = document.getElementById('portfolioLeadStatus');
+    status.style.color = 'var(--gold)';
+    status.textContent = 'Sending…';
+
+    const payload = {
+      name: document.getElementById('portfolioLeadName').value.trim(),
+      email: document.getElementById('portfolioLeadEmail').value.trim(),
+      company: document.getElementById('portfolioLeadCompany').value.trim(),
+      service_interest: 'Portfolio project consultation',
+      message: [
+        `Inspired by: ${document.getElementById('portfolioLeadInspiredBy').value}`,
+        `Project type: ${document.getElementById('portfolioLeadProjectType').value.trim()}`,
+        `Budget range: ${document.getElementById('portfolioLeadBudget').value.trim()}`,
+        `Timeline: ${document.getElementById('portfolioLeadTimeline').value.trim()}`,
+        `Message: ${document.getElementById('portfolioLeadMessage').value.trim()}`
+      ].join('\n'),
+      source: 'portfolio-build-something-like-this',
+      status: 'new'
+    };
+
+    const { error } = await window.LuxivalSupabase.submitContactInquiry(payload);
+    if (error) {
+      status.style.color = '#f77';
+      status.textContent = 'Unable to submit now. Please try again.';
+      return;
+    }
+
+    portfolioLeadForm.reset();
+    status.style.color = 'var(--gold)';
+    status.textContent = 'Thanks. We will send next steps shortly.';
+  });
+}
 </script>
 <script>
 (function(){

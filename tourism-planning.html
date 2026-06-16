@@ -218,7 +218,7 @@ footer{background:#060608;padding:5rem 0 2rem}
         <h3>How it works</h3>
         <p>Enter your dates and tick your interests. We build a day-by-day itinerary based on your preferences, travel pace, and the season you're visiting.</p>
         <p>Each day includes morning, afternoon, and evening suggestions with transport notes and image guides.</p>
-        <p style="margin:0">Need a private driver for your itinerary? <a href="tourism.html#book-ride" style="opacity:1">Book a ride</a> after generating your plan.</p>
+        <p style="margin:0">Need a private driver for your itinerary? <a href="/tourism#book-ride" style="opacity:1">Book a ride</a> after generating your plan.</p>
       </div>
       <div class="info-card reveal d2">
         <h3>What's included</h3>
@@ -246,7 +246,7 @@ footer{background:#060608;padding:5rem 0 2rem}
       </div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap">
         <button class="btn" onclick="downloadPDF()">⬇ Download PDF</button>
-        <a href="tourism.html#book-ride" class="btn btn-outline">Book a ride</a>
+        <a href="/tourism#book-ride" class="btn btn-outline">Book a ride</a>
       </div>
     </div>
     <!-- Premium upsell -->
@@ -290,8 +290,8 @@ footer{background:#060608;padding:5rem 0 2rem}
     <h2>Let Luxival drive your Finland story.</h2>
     <p>Premium transport, curated itineraries, and accommodation sourcing — all under one brand.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="tourism.html#book-ride" class="btn">Book a transfer</a>
-      <a href="tourism.html#accommodation" class="btn btn-outline">Find accommodation</a>
+      <a href="/tourism#book-ride" class="btn">Book a transfer</a>
+      <a href="/tourism#accommodation" class="btn btn-outline">Find accommodation</a>
     </div>
   </div>
 </div>
@@ -335,9 +335,9 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/supabase-client.js"></script>
-<script src="js/luxival.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/luxival.js"></script>
 <script>
 function openSumUp(){
   window.open('https://pay.sumup.com/b2c/QVLW9NTQ','_blank');
@@ -537,7 +537,14 @@ function generateItinerary(){
 
   /* Submit lead to Supabase if available */
   if(window.LuxivalSupabase){
-    window.LuxivalSupabase.submitContactInquiry({name,email,service:'tourism-planner',message:`Itinerary request: ${days} days in ${baseCity}`}).catch(()=>{});
+    window.LuxivalSupabase.submitContactInquiry({
+      name,
+      email,
+      service_interest:'tourism-planner',
+      message:`Itinerary request: ${days} days in ${baseCity}`,
+      source:'tourism-planning-page',
+      status:'new'
+    }).catch(()=>{});
   }
 }
 

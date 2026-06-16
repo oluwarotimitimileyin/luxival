@@ -2,10 +2,11 @@
   "name": "luxival-site",
   "private": true,
   "scripts": {
-    "build": "node scripts/generate-search-index.js && eleventy && node scripts/inject-nav.js && node scripts/inject-env.js",
+    "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && eleventy && node scripts/inject-nav.js && node scripts/inject-env.js",
     "dev": "node scripts/generate-search-index.js && eleventy --serve",
     "clean": "rm -rf _site",
     "images:optimize": "node scripts/optimize-images.js",
+    "sitemap": "node scripts/generate-sitemap.js",
     "seo:lastmod": "node scripts/update-sitemap-lastmod.js",
     "seo:check": "node scripts/seo-check.js",
     "seo:deploy-check": "npm run clean && npm run build && npm run seo:check && npm run check:redirects",

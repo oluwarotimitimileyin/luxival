@@ -55,10 +55,12 @@ test.describe('Portfolio SPA Integration', () => {
   }
 
   const projectPages = [
-    { name: 'BusinessLauncher', path: '/businesslauncher', iframe: '/portfolio/businesslauncher/frontend/dist/' },
-    { name: 'UGC Studio AI', path: '/ugc-studio-ai', iframe: '/portfolio/ugc-studio-ai/frontend/dist/' },
-    { name: 'Vortex AI Platform', path: '/vortex-ai-platform', iframe: '/portfolio/vortex-ai-platform/frontend/dist/' },
-    { name: 'Autonomous QA Audit Dashboard', path: '/autonomous-qa-audit-dashboard', iframe: '/portfolio/autonomous-qa-audit-dashboard/frontend/dist/' },
+    { name: 'ESG Compliance Auditor', path: '/portfolio/esg-compliance-auditor', launch: '/portfolio/esg-compliance-auditor/frontend/dist/' },
+    { name: 'Growth Architect', path: '/portfolio/growth-architect', launch: '/portfolio/growth-architect/frontend/dist/' },
+    { name: 'BusinessLauncher', path: '/portfolio/businesslauncher', launch: '/portfolio/businesslauncher/frontend/dist/' },
+    { name: 'UGC Studio AI', path: '/portfolio/ugc-studio-ai', launch: '/portfolio/ugc-studio-ai/frontend/dist/' },
+    { name: 'Vortex AI Platform', path: '/portfolio/vortex-ai-platform', launch: '/portfolio/vortex-ai-platform/frontend/dist/' },
+    { name: 'Autonomous QA Audit Dashboard', path: '/portfolio/autonomous-qa-audit-dashboard', launch: '/portfolio/autonomous-qa-audit-dashboard/frontend/dist/' },
   ];
 
   for (const project of projectPages) {
@@ -66,12 +68,13 @@ test.describe('Portfolio SPA Integration', () => {
       const res = await page.goto(BASE + project.path, { waitUntil: 'domcontentloaded' });
       expect(res.status()).toBe(200);
       await expect(page.locator('nav')).toBeVisible();
-      await expect(page.locator(`iframe[src="${project.iframe}"]`)).toBeVisible();
+      await expect(page.locator(`a[href="${project.launch}"]`)).toBeVisible();
+      await expect(page.locator('form[data-portfolio-lead]')).toBeVisible();
     });
 
     test(`${project.name} landing page links back to portfolio`, async ({ page }) => {
       await page.goto(BASE + project.path, { waitUntil: 'domcontentloaded' });
-      const portfolioLink = page.locator('a[href="/portfolio"], a[href="/portfolio"]');
+      const portfolioLink = page.locator('a[href="/portfolio"]');
       await expect(portfolioLink.first()).toBeVisible();
     });
   }
@@ -93,12 +96,12 @@ test.describe('Portfolio SPA Integration', () => {
 
   test('Portfolio showcase page links to SPA apps', async ({ page }) => {
     await page.goto(BASE + '/portfolio', { waitUntil: 'domcontentloaded' });
-    const growthLink = page.locator('a[href*="growth-architect"]').first();
-    const businessLink = page.locator('a[href*="businesslauncher"]').first();
-    const ugcLink = page.locator('a[href*="ugc-studio-ai"]').first();
-    const vortexLink = page.locator('a[href*="vortex-ai-platform"]').first();
-    const esgLink = page.locator('a[href*="esg-compliance-auditor"], a[href*="esg-live-embed"]').first();
-    const qaAuditLink = page.locator('a[href*="autonomous-qa-audit-dashboard"]').first();
+    const growthLink = page.locator('a[href="/portfolio/growth-architect"]').first();
+    const businessLink = page.locator('a[href="/portfolio/businesslauncher"]').first();
+    const ugcLink = page.locator('a[href="/portfolio/ugc-studio-ai"]').first();
+    const vortexLink = page.locator('a[href="/portfolio/vortex-ai-platform"]').first();
+    const esgLink = page.locator('a[href="/portfolio/esg-compliance-auditor"]').first();
+    const qaAuditLink = page.locator('a[href="/portfolio/autonomous-qa-audit-dashboard"]').first();
     expect(await growthLink.count(), 'Growth Architect not linked from portfolio').toBeGreaterThan(0);
     expect(await businessLink.count(), 'BusinessLauncher not linked from portfolio').toBeGreaterThan(0);
     expect(await ugcLink.count(), 'UGC Studio AI not linked from portfolio').toBeGreaterThan(0);

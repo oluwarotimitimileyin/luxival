@@ -5,12 +5,12 @@ const SITE_DIR = path.join(__dirname, '..', '_site');
 
 const CANONICAL_NAV_LINKS = `
     <li><a href="/">Home</a></li>
-    <li><a href="/services">Digital Services</a></li>
-    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/tourism">Travel</a></li>
+    <li><a href="/digital">Digital Services</a></li>
+    <li><a href="/audit">Website Audit</a></li>
     <li><a href="/portfolio">Portfolio</a></li>
     <li><a href="/blog">Blog</a></li>
-    <li><a href="/qa">QA &amp; Audit</a></li>
-    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
     <li class="nav-search-item">
       <div class="site-search" id="siteSearch" role="search">
         <label for="siteSearchInput" class="sr-only">Search</label>
@@ -21,7 +21,7 @@ const CANONICAL_NAV_LINKS = `
         <div id="siteSearchResults" class="site-search-dropdown" role="listbox" hidden></div>
       </div>
     </li>
-    <li><a href="/contact" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>`;
+    <li><a href="/hub" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Start Here</a></li>`;
 
 function buildNav(prefix) {
   const links = CANONICAL_NAV_LINKS;
@@ -38,9 +38,9 @@ const SPA_NAV = `<div id="luxival-site-nav">
     <a href="/" style="font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;">LUXIVAL</a>
     <div style="display:flex;gap:1.5rem;align-items:center;">
       <a href="/portfolio" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;opacity:.6;text-decoration:none;">Portfolio</a>
-      <a href="/services" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Services</a>
+      <a href="/digital" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Digital</a>
       <a href="/blog" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Blog</a>
-      <a href="/about" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">About</a>
+      <a href="/audit" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Audit</a>
       <a href="/contact" style="display:inline-block;background:#C9A96A;color:#0A0B0F;padding:.4rem 1.2rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;font-weight:500;">Get Started</a>
     </div>
   </nav>
@@ -100,6 +100,14 @@ function injectSearchScript(html) {
   return html + '\n<script src="/js/site-search.js?v=20260609-2" defer></script>\n';
 }
 
+function injectFunnelScript(html) {
+  if (html.includes('/js/funnel-ctas.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/funnel-ctas.js?v=20260616-1" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/funnel-ctas.js?v=20260616-1" defer></script>\n';
+}
+
 let updated = 0;
 let skipped = 0;
 let spaInjected = 0;
@@ -125,6 +133,7 @@ for (const file of files) {
   }
 
   result = injectSearchScript(result);
+  result = injectFunnelScript(result);
 
   fs.writeFileSync(file, result, 'utf8');
 }
