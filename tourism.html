@@ -591,9 +591,12 @@ footer{background:#060608;padding:5rem 0 2rem}
     <span class="live-dot reveal" style="color:#4caf50">Live · LinkedEvents API</span>
   </div>
   <div class="grid-3" id="eventsGrid">
-    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70" alt="Nurmijärvi Active Day" loading="lazy"></div><div class="event-body"><div class="event-tag">Sport</div><h3 style="color:var(--text)">Nurmijärvi Active Day</h3><p class="evt-loc">📍 Nurmijärvi</p><span class="event-date">Seasonal route</span></div></div>
-    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70" alt="Helsinki Design &amp; Gallery Walk" loading="lazy"></div><div class="event-body"><div class="event-tag">Culture</div><h3 style="color:var(--text)">Helsinki Design & Gallery Walk</h3><p class="evt-loc">📍 Helsinki</p><span class="event-date">Private route</span></div></div>
-    <div class="event-card"><div class="event-img"><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=70" alt="Nuuksio Forest Escape" loading="lazy"></div><div class="event-body"><div class="event-tag">Nature</div><h3 style="color:var(--text)">Nuuksio Forest Escape</h3><p class="evt-loc">📍 Espoo / Nuuksio</p><span class="event-date">Half-day trip</span></div></div>
+    <a href="/services/private-rides" class="event-card" style="text-decoration:none;color:inherit"><div class="event-img"><img src="https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?w=400&q=70" alt="Nurmijärvi Active Day" loading="lazy"></div><div class="event-body"><div class="event-tag">Sport</div><h3 style="color:var(--text)">Nurmijärvi Active Day</h3><p class="evt-loc">📍 Nurmijärvi</p><span class="event-date">Seasonal route</span><span class="feature-link" style="display:block;margin-top:.6rem">Book a ride →</span></div></a>
+    <a href="/services/private-rides" class="event-card" style="text-decoration:none;color:inherit"><div class="event-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=70" alt="Helsinki Design &amp; Gallery Walk" loading="lazy"></div><div class="event-body"><div class="event-tag">Culture</div><h3 style="color:var(--text)">Helsinki Design & Gallery Walk</h3><p class="evt-loc">📍 Helsinki</p><span class="event-date">Private route</span><span class="feature-link" style="display:block;margin-top:.6rem">Book a ride →</span></div></a>
+    <a href="/services/private-rides" class="event-card" style="text-decoration:none;color:inherit"><div class="event-img"><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=70" alt="Nuuksio Forest Escape" loading="lazy"></div><div class="event-body"><div class="event-tag">Nature</div><h3 style="color:var(--text)">Nuuksio Forest Escape</h3><p class="evt-loc">📍 Espoo / Nuuksio</p><span class="event-date">Half-day trip</span><span class="feature-link" style="display:block;margin-top:.6rem">Book a ride →</span></div></a>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="/services" class="btn reveal">View all services →</a>
   </div>
 </section>
 
@@ -938,15 +941,16 @@ function attachRideAutocomplete(){
     'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70'];
   function renderCard(tag,title,desc,loc,date,imgSrc,i){
     const d=i%3===0?'':'d'+(i%3);
-    return `<div class="event-card reveal ${d}">
+    return `<a href="/services/private-rides" class="event-card reveal ${d}" style="text-decoration:none;color:inherit">
       ${imgSrc?`<div class="event-img"><img src="${imgSrc}" alt="${title}" loading="lazy"></div>`:''}
       <div class="event-body">
         <span class="event-tag">${tag}</span>
         <h3>${title}</h3>
         <p class="evt-loc">📍 ${loc}</p>
         <span class="event-date">${date}</span>
+        <span class="feature-link" style="display:block;margin-top:.6rem">Book a ride →</span>
       </div>
-    </div>`;
+    </a>`;
   }
   function renderFallback(){
     grid.innerHTML=FALLBACK.map((e,i)=>renderCard(e.tag,e.title,e.desc,e.loc,e.date,IMGS[i]||'',i)).join('');

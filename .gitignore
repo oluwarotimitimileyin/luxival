@@ -14,5 +14,13 @@ _site/
 test-results/
 tests/results.json
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*.json
+*tokens.json
+*secrets*
+
 luxival-autopost/
 luxival-dashboard/
