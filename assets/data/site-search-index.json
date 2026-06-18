@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-16T23:19:06.588Z",
-  "total": 65,
+  "generatedAt": "2026-06-18T21:25:15.307Z",
+  "total": 69,
   "documents": [
     {
       "path": "/",
@@ -982,10 +982,10 @@
         "UGC Studio AI",
         "Vortex AI Platform",
         "Vault Ledger",
+        "AuraFrame",
+        "Finnish Business Intelligence Hub",
         "Autonomous QA Audit Dashboard",
-        "Tell us the portfolio project that inspired you",
-        "ESG Compliance Auditor",
-        "Have a project in mind?"
+        "Tell us the portfolio project that inspired you"
       ],
       "keywords": [
         "portfolio",
@@ -1026,6 +1026,56 @@
         "tourism"
       ],
       "body": "LUXIVAL Home Digital Services Tourism & Transport Portfolio QA & Audit About Get Started Portfolio · Helsinki Work that speaks for itself. Case studies across web design, QA automation, airport transfer, SEO, 3D UX, and agentic workflow infrastructure. Book a consultation View services All Web Design AI & Digital Pattern Studio Sewing Pattern Bespoke PDF Download Luxival Pattern Studio Bespoke navy three-piece suit pattern generated to exact body measurements. Pay once, receive a printable tailor-ready PDF instantly. View project → AI · Vertex AI Studio ESG Compliance Gemini React ESG Compliance Auditor AI-powered ESG reporting and compliance audit tool built on Google Vertex AI — analyses corporate documents and surfaces regulatory gaps. View project → AI · Growth Intelligence SEO Performance Automation AI Agent GROWTH_ARCHITECT Strategic AI tool that audits growth bottlenecks, prioritizes technical fixes, and generates implementation-ready action plans for measurable SEO and conversion gains. View project → Backend ops → AI · Launch System Startup Planning Website Launch BusinessLauncher A self-contained business launch experience that helps turn an idea into a structured go-to-market foundation with a polished presentation layer. View project → AI · Content Studio UGC Video Workflow AI UGC Studio AI An AI production pipeline for generating user-generated content concepts, characters, and video-ready creative workflows. View project → AI · Conversational Platform Chat Dashboard Voice Platform Vortex AI Platform A multi-modal conversational platform with embeddable chat, dashboard controls, and agent configuration tools. View project → Finance Platform Accounting Dashboard Luxival Vault Ledger Helps businesses calculate accounting, track updates, and manage Luxival pro"
+    },
+    {
+      "path": "/portfolio/auraframe/",
+      "title": "AuraFrame | Luxival Portfolio",
+      "description": "AuraFrame — a polished React content platform built by Luxival, featuring dynamic feeds, story flows, and media-rich UI components.",
+      "section": "Portfolio",
+      "headings": [
+        "AuraFrame",
+        "Request a similar build"
+      ],
+      "keywords": [
+        "portfolio",
+        "auraframe",
+        "luxival",
+        "polished",
+        "react",
+        "content",
+        "platform",
+        "built",
+        "featuring",
+        "dynamic",
+        "feeds",
+        "story",
+        "flows",
+        "and",
+        "media",
+        "rich",
+        "components",
+        "request",
+        "similar",
+        "build",
+        "digital",
+        "seo",
+        "audit"
+      ],
+      "body": "LUXIVAL Portfolio Digital Audit Start Here Portfolio landing AuraFrame A media-rich React content platform featuring dynamic post feeds, story flows, profile management, and a clean component architecture built for scalable content experiences. Launch live app Build something like this What it proves Component-based content feed architecture, media asset handling, interactive story flows, and a performant Vite/React build pipeline ready for rapid feature addition. React Vite Content Platform Media UX Canonical route This page is the SEO landing route. The live application is available at the product path above. Back to portfolio Build something like this Request a similar build Project type Content platform Social feed product Media dashboard Send project request Luxival © 2026 · Portfolio"
+    },
+    {
+      "path": "/portfolio/auraframe/frontend/dist/",
+      "title": "AuraFrame",
+      "description": "",
+      "section": "Portfolio",
+      "headings": [],
+      "keywords": [
+        "portfolio",
+        "auraframe",
+        "frontend",
+        "dist"
+      ],
+      "body": ""
     },
     {
       "path": "/portfolio/autonomous-qa-audit-dashboard/",
@@ -1217,6 +1267,71 @@
         "audit"
       ],
       "body": "LUXIVAL Portfolio Services About Get Started"
+    },
+    {
+      "path": "/portfolio/finnish-business-intelligence/",
+      "title": "Finnish Business Intelligence Hub | Luxival Portfolio",
+      "description": "Finnish Business Intelligence Hub — real-time company registration dashboard built by Luxival, querying the PRH open register API with live filters and CSV export.",
+      "section": "Portfolio",
+      "headings": [
+        "Finnish Business Intelligence Hub",
+        "Request a similar build"
+      ],
+      "keywords": [
+        "portfolio",
+        "finnish business intelligence",
+        "finnish",
+        "business",
+        "intelligence",
+        "hub",
+        "luxival",
+        "real",
+        "time",
+        "company",
+        "registration",
+        "dashboard",
+        "built",
+        "querying",
+        "the",
+        "prh",
+        "open",
+        "register",
+        "api",
+        "with",
+        "live",
+        "filters",
+        "and",
+        "csv",
+        "export",
+        "request",
+        "similar",
+        "build",
+        "digital",
+        "seo",
+        "audit"
+      ],
+      "body": "LUXIVAL Portfolio Digital Audit Start Here Portfolio landing Finnish Business Intelligence Hub Real-time company registration dashboard that queries the official Finnish PRH open API, displays newly registered companies with live filters, and supports one-click CSV export and Google Sheets sync. Launch live app Build something like this What it proves Public API integration with the Finnish Trade Register (PRH), real-time data filtering, CSV download, Google Sheets sync via API, and a clean data dashboard interface deployable as a Vercel serverless stack. Next.js PRH API Finland Data Dashboard Vercel Canonical route This page is the SEO landing route before the live app. The live product is accessible at the link above. Back to portfolio Finnish Business Intelligence Hub — Live Loading live app… Build something like this Request a similar build Project type Data dashboard Open API integration Business intelligence tool Send project request Luxival © 2026 · Portfolio"
+    },
+    {
+      "path": "/portfolio/finnish-business-intelligence/frontend/dist/",
+      "title": "Finnish Business Intelligence Hub",
+      "description": "",
+      "section": "Portfolio",
+      "headings": [
+        "Finnish Business Intelligence Hub"
+      ],
+      "keywords": [
+        "portfolio",
+        "finnish business intelligence",
+        "frontend",
+        "dist",
+        "finnish",
+        "business",
+        "intelligence",
+        "hub",
+        "audit"
+      ],
+      "body": "Finnish Business Intelligence Hub Auditing real-time historical registries and automated cloud streaming channels. Target Date: Export CSV Sync to Google Sheets 🏢 Total Registered On Date — Official registry entry items ⬛ Limited LLCs (Oy) — Osakeyhtiö category entities 📊 Filtered View Count — Matching current search configurations Advanced Add-on Toolbar Active Company Type: All Legal Structures Osakeyhtiö (Oy) Yksityinen elinkeinonharjoittaja (Tmi) Domicile City: All Cities Status: All Registration Statuses Registered In Review Company Name Business ID City / Domicile Legal Structure Data Stream Status ↻ Loading…"
     },
     {
       "path": "/portfolio/frontend/",

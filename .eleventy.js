@@ -20,6 +20,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "portfolio/autonomous-qa-audit-dashboard/frontend/dist": "portfolio/autonomous-qa-audit-dashboard/frontend/dist"
   });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/auraframe/frontend/dist": "portfolio/auraframe/frontend/dist"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "portfolio/finnish-business-intelligence/frontend/dist": "portfolio/finnish-business-intelligence/frontend/dist"
+  });
   eleventyConfig.addPassthroughCopy({ "blog/images": "blog/images" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "llms.txt": "llms.txt" });

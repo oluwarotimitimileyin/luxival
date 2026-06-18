@@ -827,6 +827,70 @@ button.button:hover {
   padding: 1rem 1.25rem 1.5rem;
 }
 
+.chat-messages {
+  display: grid;
+  gap: 0.65rem;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.chat-bubble {
+  border-radius: 14px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.chat-bubble.assistant {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+}
+
+.chat-bubble.user {
+  background: rgba(124,92,255,0.2);
+  border-color: rgba(124,92,255,0.5);
+  color: #fff;
+  justify-self: end;
+}
+
+.chat-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.chat-chip {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.chat-chip:hover {
+  border-color: rgba(124,92,255,0.45);
+}
+
+.chat-composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  align-items: end;
+}
+
+.chat-composer textarea {
+  margin-bottom: 0;
+  resize: vertical;
+  min-height: 44px;
+  max-height: 120px;
+}
+
 .chat-step {
   display: none;
 }

@@ -1,4 +1,6 @@
 (function () {
+  if (document.getElementById('chatWidget')) return;
+
   const widgetMarkup = `
     <div class="chat-widget" id="chatWidget">
       <button class="chat-toggle" id="chatToggle" aria-label="Open Luxival chat">
@@ -8,62 +10,21 @@
         <div class="chat-header">
           <div>
             <strong>Luxival assistant</strong>
-            <p>Quick questions to qualify your request and get you a fast reply.</p>
+            <p>Ask anything about services, pricing flow, or booking.</p>
           </div>
           <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
         </div>
         <div class="chat-body">
-          <div class="chat-step active" data-step="1">
-            <p>Hi! What brings you to Luxival today?</p>
-            <select id="chatServiceInterest">
-              <option value="Website design">Website design</option>
-              <option value="SEO & lead generation">SEO & lead generation</option>
-              <option value="Web QA / testing">Web QA / testing</option>
-              <option value="3D UX / portfolio">3D UX / portfolio</option>
-              <option value="Airport transfer / tourism">Airport transfer / tourism</option>
-              <option value="Other">Other</option>
-            </select>
-            <button type="button" class="chat-button chat-next" data-next="2">Next</button>
+          <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+          <div class="chat-chip-row" id="chatChipRow">
+            <button class="chat-chip" type="button" data-chip="I need a website and SEO help">Website + SEO</button>
+            <button class="chat-chip" type="button" data-chip="I need airport transfer in Helsinki">Airport transfer</button>
+            <button class="chat-chip" type="button" data-chip="I want a website QA audit">QA audit</button>
           </div>
-          <div class="chat-step" data-step="2">
-            <p>Great. What is the best way to reach you?</p>
-            <label for="chatName">Name</label>
-            <input id="chatName" type="text" placeholder="Your name" />
-            <label for="chatEmail">Email</label>
-            <input id="chatEmail" type="email" placeholder="you@example.com" />
-            <label for="chatPhone">Phone</label>
-            <input id="chatPhone" type="tel" placeholder="Optional phone" />
-            <div class="chat-actions">
-              <button type="button" class="chat-button chat-back" data-back="1">Back</button>
-              <button type="button" class="chat-button chat-next" data-next="3">Next</button>
-            </div>
-          </div>
-          <div class="chat-step" data-step="3">
-            <p>Tell us briefly what you need or your travel plan.</p>
-            <textarea id="chatMessage" rows="4" placeholder="Describe your project, ride request, or question"></textarea>
-            <div class="chat-actions">
-              <button type="button" class="chat-button chat-back" data-back="2">Back</button>
-              <button type="button" class="chat-button chat-next" data-next="4">Next</button>
-            </div>
-          </div>
-          <div class="chat-step" data-step="4">
-            <p>Would you like a follow-up by WhatsApp or email?</p>
-            <div class="chat-option-group">
-              <label><input type="radio" name="chatContactMethod" value="Email" checked /> Email</label>
-              <label><input type="radio" name="chatContactMethod" value="WhatsApp" /> WhatsApp</label>
-            </div>
-            <div class="chat-actions">
-              <button type="button" class="chat-button chat-back" data-back="3">Back</button>
-              <button type="button" class="chat-button chat-submit" id="chatSubmit">Send</button>
-            </div>
-          </div>
-          <div class="chat-step" data-step="5">
-            <p class="chat-success-title">Thanks — your request is on the way.</p>
-            <p>We will review your details and contact you soon.</p>
-            <div class="chat-actions">
-              <button type="button" class="chat-button chat-close-panel" id="chatDone">Close</button>
-            </div>
-          </div>
+          <form id="chatComposer" class="chat-composer">
+            <textarea id="chatInput" rows="2" placeholder="Type your question..." maxlength="1200"></textarea>
+            <button type="submit" class="chat-button">Send</button>
+          </form>
           <div class="chat-status" id="chatStatus"></div>
         </div>
       </div>
@@ -74,86 +35,109 @@
 
   const widget = document.getElementById('chatWidget');
   const toggle = document.getElementById('chatToggle');
-  const closeButton = document.getElementById('chatClose');
   const panel = document.getElementById('chatPanel');
-  const steps = Array.from(widget.querySelectorAll('.chat-step'));
+  const closeButton = document.getElementById('chatClose');
+  const composer = document.getElementById('chatComposer');
+  const input = document.getElementById('chatInput');
+  const messagesEl = document.getElementById('chatMessages');
   const statusEl = document.getElementById('chatStatus');
-  const submitButton = document.getElementById('chatSubmit');
-  const doneButton = document.getElementById('chatDone');
+  const chipRow = document.getElementById('chatChipRow');
 
-  function showStatus(message, isError = false) {
-    statusEl.textContent = message;
-    statusEl.style.color = isError ? '#ff6b6b' : '#9d7dff';
-  }
+  const messages = [];
+  let isSending = false;
 
-  function showStep(stepNumber) {
-    steps.forEach((step) => {
-      step.classList.toggle('active', step.dataset.step === String(stepNumber));
-    });
-    statusEl.textContent = '';
+  function showStatus(message, isError) {
+    statusEl.textContent = message || '';
+    statusEl.style.color = isError ? '#ff6b6b' : 'var(--muted)';
   }
 
   function setOpen(open) {
     panel.hidden = !open;
     widget.classList.toggle('open', open);
+    if (open) {
+      input.focus();
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
   }
 
-  toggle.addEventListener('click', () => setOpen(true));
+  function addMessage(role, content) {
+    const item = document.createElement('div');
+    item.className = `chat-bubble ${role === 'assistant' ? 'assistant' : 'user'}`;
+    item.textContent = content;
+    messagesEl.appendChild(item);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    messages.push({ role, content });
+  }
+
+  async function sendMessage(text) {
+    if (!text || isSending) return;
+
+    isSending = true;
+    addMessage('user', text);
+    showStatus('Luxival assistant is typing...', false);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages,
+          page: window.location.pathname,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Chat failed: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const reply = data && typeof data.reply === 'string' ? data.reply : null;
+
+      if (!reply) {
+        throw new Error('Chat response is empty');
+      }
+
+      addMessage('assistant', reply);
+      showStatus('', false);
+    } catch (error) {
+      console.error('Chat request failed:', error);
+      addMessage('assistant', 'I had trouble answering right now. Please try again, or use /contact for a direct response.');
+      showStatus('Connection issue. Please try again.', true);
+    } finally {
+      isSending = false;
+    }
+  }
+
+  toggle.addEventListener('click', () => {
+    setOpen(!widget.classList.contains('open'));
+  });
+
   closeButton.addEventListener('click', () => setOpen(false));
-  doneButton.addEventListener('click', () => setOpen(false));
 
-  widget.querySelectorAll('.chat-next').forEach((button) => {
-    button.addEventListener('click', () => {
-      const next = button.dataset.next;
-      showStep(next);
+  composer.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    await sendMessage(text);
+  });
+
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      composer.requestSubmit();
+    }
+  });
+
+  chipRow.querySelectorAll('.chat-chip').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const text = button.getAttribute('data-chip');
+      if (!text) return;
+      await sendMessage(text);
     });
   });
 
-  widget.querySelectorAll('.chat-back').forEach((button) => {
-    button.addEventListener('click', () => {
-      const back = button.dataset.back;
-      showStep(back);
-    });
-  });
-
-  submitButton.addEventListener('click', async () => {
-    const name = document.getElementById('chatName').value.trim();
-    const email = document.getElementById('chatEmail').value.trim();
-    const phone = document.getElementById('chatPhone').value.trim();
-    const serviceInterest = document.getElementById('chatServiceInterest').value;
-    const message = document.getElementById('chatMessage').value.trim();
-    const contactMethod = widget.querySelector('input[name="chatContactMethod"]:checked').value;
-
-    if (!name || !email || !message) {
-      showStatus('Please complete your name, email, and request details.', true);
-      return;
-    }
-
-    showStatus('Sending your chat request…');
-
-    const payload = {
-      name,
-      email,
-      phone,
-      company: null,
-      service_interest: serviceInterest,
-      message: `${message} (preferred contact: ${contactMethod})`,
-      source: 'chat-widget',
-      status: 'new',
-      metadata: {
-        contact_method: contactMethod,
-        origin: window.location.pathname,
-        browser: navigator.userAgent,
-      },
-    };
-
-    const { error } = await window.LuxivalSupabase.submitChatLead(payload);
-    if (error) {
-      showStatus('Unable to send chat request right now. Please try again later.', true);
-      console.error('Chat lead error:', error);
-      return;
-    }
-
-    showStep(5);
-  });
+  addMessage('assistant', 'Hi, I am Luxival assistant. What do you need help with today?');
 })();

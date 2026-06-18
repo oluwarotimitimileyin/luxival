@@ -6,7 +6,10 @@
       "Bash(cp \"image for luxival/photorealistic-cinematic-animation-of-a-finnair-ai \\(2\\).mp4\" assets/video/hero-airport-2.mp4)",
       "Bash(cp \"image for luxival/animate.mp4\" assets/video/animate.mp4)",
       "Bash(cp \"image for luxival/animate \\(1\\).mp4\" assets/video/animate-1.mp4)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git secrets *)",
+      "Bash(echo \"Exit: $?\")"
     ]
   }
 }
