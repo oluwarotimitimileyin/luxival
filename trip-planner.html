@@ -15,85 +15,182 @@
 <meta property="og:description" content="Plan your airport transfer or private ride with Luxival. Route preview, fare estimate, and booking.">
 <meta property="og:url" content="https://www.luxival.com/trip-planner">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Luxival">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://www.luxival.com/trip-planner">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Luxival Trip Planner",
+  "url": "https://www.luxival.com/trip-planner",
+  "description": "Plan your airport transfer or private ride with route preview and fare estimate.",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Web",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Luxival",
+    "url": "https://www.luxival.com",
+    "telephone": "+358503518366",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Varikkokaarre 7A",
+      "addressLocality": "Vantaa",
+      "postalCode": "01700",
+      "addressCountry": "FI"
+    }
+  }
+}
+</script>
 <style>
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0A0B0F;color:#E8EBF2;line-height:1.6;display:flex;flex-direction:column}
-nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:.8rem 5%;background:rgba(10,11,15,.96);border-bottom:1px solid rgba(201,169,106,.1);z-index:200}
-.nav-brand{font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none}
-.nav-back{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;text-decoration:none;opacity:.6;transition:opacity .2s}
-.nav-back:hover{opacity:1}
-.trip-layout{display:grid;grid-template-columns:360px 1fr;flex:1;overflow:hidden}
-.trip-panel{background:#11131A;border-right:1px solid rgba(201,169,106,.12);overflow-y:auto;padding:1.25rem 1.1rem;display:flex;flex-direction:column;gap:.75rem}
-.trip-panel h2{font-size:1.15rem;font-weight:300;color:#C9A96A;letter-spacing:.5px;margin:0}
-.trip-panel>p{font-size:.82rem;opacity:.62;margin:0}
-.ride-field{display:grid;gap:.25rem}
-.ride-field label{font-size:.65rem;letter-spacing:1.8px;text-transform:uppercase;color:#C9A96A;opacity:.85}
-.ride-field input{width:100%;background:#0A0B0F;border:1px solid rgba(255,255,255,.1);border-radius:4px;color:#E8EBF2;padding:.72rem .8rem;font:inherit;font-size:.9rem}
-.ride-field input:focus{outline:none;border-color:#C9A96A}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;display:flex;flex-direction:column}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* --- Nav --- */
+nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(10,11,15,.96);border-bottom:1px solid rgba(201,169,106,.1);z-index:200;backdrop-filter:blur(20px)}
+.nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);opacity:.6;transition:opacity .2s,color .2s;text-decoration:none}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links .btn{padding:.5rem 1.2rem;font-size:.68rem;background:var(--gold);color:var(--bg);border-radius:var(--r);opacity:1;font-weight:600}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--gold);transition:transform .3s}
+
+/* --- Trip layout --- */
+.trip-layout{display:grid;grid-template-columns:380px 1fr;flex:1;overflow:hidden}
+.trip-panel{background:var(--card);border-right:1px solid var(--border);overflow-y:auto;padding:1.5rem 1.25rem;display:flex;flex-direction:column;gap:.85rem}
+.trip-panel h1{font-size:1.25rem;font-weight:300;color:var(--gold);letter-spacing:.5px;margin:0}
+.trip-panel>p{font-size:.84rem;opacity:.62;margin:0}
+
+/* --- Form fields --- */
+.ride-field{display:grid;gap:.3rem}
+.ride-field label{font-size:.65rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);opacity:.85}
+.ride-field input{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);color:var(--text);padding:.75rem .85rem;font:inherit;font-size:.9rem;transition:border-color .2s,box-shadow .2s}
+.ride-field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,106,.15)}
+.ride-field input::placeholder{color:rgba(232,235,242,.4)}
+
+/* --- Quick routes --- */
 .ride-quick{display:grid;gap:.4rem}
-.ride-quick button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;color:#E8EBF2;text-align:left;padding:.6rem .8rem;font:inherit;font-size:.82rem;cursor:pointer;transition:border-color .2s}
-.ride-quick button:hover{border-color:rgba(201,169,106,.45)}
+.ride-quick button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);color:var(--text);text-align:left;padding:.65rem .85rem;font:inherit;font-size:.82rem;cursor:pointer;transition:border-color .2s,background .2s}
+.ride-quick button:hover,.ride-quick button:focus-visible{border-color:rgba(201,169,106,.45);background:rgba(201,169,106,.06);outline:none}
+
+/* --- Actions --- */
 .ride-actions{display:flex;gap:.5rem}
-.ride-actions button,.ride-actions a{border:0;border-radius:4px;background:#C9A96A;color:#0A0B0F;padding:.7rem 1rem;font-weight:600;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer;flex:1;text-align:center}
-.ride-actions .secondary{background:transparent;color:#C9A96A;border:1px solid #C9A96A}
+.ride-actions button,.ride-actions a{border:0;border-radius:var(--r);background:var(--gold);color:var(--bg);padding:.75rem 1rem;font-weight:600;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer;flex:1;text-align:center;transition:box-shadow .3s}
+.ride-actions button:hover,.ride-actions a:hover{box-shadow:0 8px 24px rgba(201,169,106,.25)}
+.ride-actions button:focus-visible,.ride-actions a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ride-actions .secondary{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.ride-actions .secondary:hover{background:rgba(201,169,106,.08)}
+
+/* --- Summary stats --- */
 .ride-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
-.ride-stat{background:rgba(10,11,15,.68);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:.65rem}
+.ride-stat{background:rgba(10,11,15,.68);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:.7rem}
 .ride-stat span{display:block;font-size:.6rem;text-transform:uppercase;letter-spacing:1.4px;opacity:.48}
-.ride-stat strong{display:block;color:#E8EBF2;font-size:1rem;font-weight:400;margin-top:.1rem}
-.ride-status{font-size:.78rem;min-height:1.2rem;color:#C9A96A}
+.ride-stat strong{display:block;color:var(--text);font-size:1rem;font-weight:400;margin-top:.15rem}
+
+/* --- Status --- */
+.ride-status{font-size:.78rem;min-height:1.2rem;color:var(--gold)}
 .ride-status.error{color:#ff8b8b}
-.trip-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,106,.25),transparent);margin:.25rem 0}
-.fare-section h3{font-size:.8rem;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#C9A96A;margin-bottom:.5rem}
+
+/* --- Divider --- */
+.trip-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,106,.25),transparent);margin:.3rem 0}
+
+/* --- Fare section --- */
+.fare-section h3{font-size:.8rem;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:.5rem}
 .fare-options{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-bottom:.5rem}
-.fare-option{display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer;padding:.3rem .4rem;border-radius:3px;transition:background .15s}
+.fare-option{display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer;padding:.35rem .45rem;border-radius:var(--r);transition:background .15s}
 .fare-option:hover{background:rgba(201,169,106,.08)}
-.fare-option input{accent-color:#C9A96A}
+.fare-option input{accent-color:var(--gold);width:16px;height:16px}
 .fare-option-label{flex:1;opacity:.75}
-.fare-option-price{color:#C9A96A;font-weight:500;font-size:.72rem}
+.fare-option-price{color:var(--gold);font-weight:500;font-size:.72rem}
 .fare-breakdown{font-size:.78rem}
-.fare-line{display:flex;justify-content:space-between;padding:.25rem 0;opacity:.7;border-bottom:1px solid rgba(255,255,255,.04)}
-.fare-total{display:flex;justify-content:space-between;padding:.5rem 0 0;font-size:.9rem;font-weight:600;border-top:1px solid rgba(201,169,106,.25);margin-top:.25rem}
-.fare-total-label{color:#C9A96A}
-.fare-total-amount{color:#E8EBF2}
+.fare-line{display:flex;justify-content:space-between;padding:.3rem 0;opacity:.7;border-bottom:1px solid rgba(255,255,255,.04)}
+.fare-total{display:flex;justify-content:space-between;padding:.55rem 0 0;font-size:.95rem;font-weight:600;border-top:1px solid rgba(201,169,106,.25);margin-top:.3rem}
+.fare-total-label{color:var(--gold)}
+.fare-total-amount{color:var(--text)}
 .fare-note{font-size:.65rem;opacity:.4;margin-top:.15rem}
+
+/* --- Map --- */
 .trip-map{flex:1;min-height:0;position:relative}
-.trip-map .ride-fallback{display:grid;place-items:center;height:100%;padding:2rem;text-align:center;background:#0A0B0F;color:#E8EBF2}
-@media(max-width:860px){.trip-layout{grid-template-columns:1fr}.trip-panel{max-height:50vh;border-right:none;border-bottom:1px solid rgba(201,169,106,.12)}}
+.trip-map .ride-fallback{display:grid;place-items:center;height:100%;padding:2rem;text-align:center;background:var(--bg);color:var(--text)}
+
+/* --- Footer (compact for trip planner) --- */
+.trip-footer{flex-shrink:0;background:var(--card);border-top:1px solid var(--border);padding:.6rem 5%;display:flex;align-items:center;justify-content:space-between;font-size:.68rem;letter-spacing:.8px;gap:1rem;z-index:100}
+.trip-footer a{color:var(--gold);text-decoration:none;opacity:.6;transition:opacity .2s}
+.trip-footer a:hover{opacity:1}
+.trip-footer-links{display:flex;gap:1.2rem}
+.trip-footer-copy{opacity:.4;color:var(--text)}
+
+/* --- Responsive --- */
+@media(max-width:860px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,11,15,.98);padding:1.5rem 5%;gap:1rem;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .nav-burger{display:flex}
+  .trip-layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(250px,1fr)}
+  .trip-panel{max-height:none;border-right:none;border-bottom:1px solid var(--border);overflow-y:auto}
+  .ride-summary{grid-template-columns:repeat(3,1fr)}
+  .fare-options{grid-template-columns:1fr}
+  .trip-footer{flex-direction:column;text-align:center;padding:.8rem 5%}
+  .trip-footer-links{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:480px){
+  .trip-panel{padding:1rem}
+  .ride-summary{grid-template-columns:1fr 1fr 1fr;gap:.35rem}
+  .ride-stat{padding:.5rem}
+  .ride-stat strong{font-size:.88rem}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-brand">LUXIVAL</a>
-  <a href="/booking" class="nav-back">&larr; Back to Booking</a>
-</nav>
+<a href="#trip-main" class="sr-only">Skip to main content</a>
 
-<main class="trip-layout">
-  <div class="trip-panel">
-    <h2>Plan Your Ride</h2>
+<header>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-brand">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav" role="list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/services">Digital Services</a></li>
+    <li><a href="/tourism">Tourism &amp; Transport</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/qa">QA &amp; Audit</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact" class="btn">Get Started</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Toggle navigation menu" aria-controls="site-nav" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+</header>
+
+<main id="trip-main" class="trip-layout">
+  <section class="trip-panel" aria-label="Route planner form">
+    <h1>Plan Your Ride</h1>
     <p>Enter pickup and drop-off to preview the route and fare.</p>
 
     <div class="ride-field">
-      <label for="tpPickup">Pickup</label>
-      <input id="tpPickup" class="tp-pickup" autocomplete="off" placeholder="e.g. Helsinki Airport (HEL)">
+      <label for="tpPickup">Pickup Location</label>
+      <input id="tpPickup" class="tp-pickup" autocomplete="off" placeholder="e.g. Helsinki Airport (HEL)" aria-describedby="tpStatus">
     </div>
     <div class="ride-field">
-      <label for="tpDropoff">Drop-off</label>
-      <input id="tpDropoff" class="tp-dropoff" autocomplete="off" placeholder="e.g. Hotel Kamp, Helsinki">
+      <label for="tpDropoff">Drop-off Location</label>
+      <input id="tpDropoff" class="tp-dropoff" autocomplete="off" placeholder="e.g. Hotel Kamp, Helsinki" aria-describedby="tpStatus">
     </div>
 
-    <div class="ride-actions">
+    <div class="ride-actions" role="group" aria-label="Route actions">
       <button type="button" class="tp-calc">Show Route</button>
       <a class="secondary tp-book" href="/transfers#book">Book This Ride</a>
     </div>
-    <div class="ride-status" id="tpStatus">Enter pickup and drop-off to preview.</div>
+    <div class="ride-status" id="tpStatus" role="status" aria-live="polite">Enter pickup and drop-off to preview.</div>
 
-    <div class="ride-summary" aria-live="polite">
-      <div class="ride-stat"><span>Distance</span><strong class="tp-distance">--</strong></div>
-      <div class="ride-stat"><span>Drive Time</span><strong class="tp-duration">--</strong></div>
-      <div class="ride-stat"><span>Estimate</span><strong class="tp-fare">--</strong></div>
+    <div class="ride-summary" aria-label="Route summary">
+      <div class="ride-stat"><span>Distance</span><strong class="tp-distance" aria-label="Distance">--</strong></div>
+      <div class="ride-stat"><span>Drive Time</span><strong class="tp-duration" aria-label="Drive time">--</strong></div>
+      <div class="ride-stat"><span>Estimate</span><strong class="tp-fare" aria-label="Fare estimate">--</strong></div>
     </div>
 
     <div class="ride-quick" aria-label="Popular routes">
@@ -102,169 +199,215 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
       <button type="button" data-pickup="Helsinki Airport, 01531 Vantaa, Finland" data-dropoff="Porvoo Old Town, Porvoo, Finland">HEL to Porvoo</button>
     </div>
 
-    <div class="trip-divider"></div>
+    <div class="trip-divider" role="separator"></div>
 
-    <div class="fare-section">
-      <h3>Fare Details</h3>
+    <fieldset class="fare-section" style="border:0;padding:0;margin:0">
+      <legend><h3>Fare Details</h3></legend>
       <div class="fare-options">
-        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="airport" checked><span class="fare-option-label">Airport</span><span class="fare-option-price">+€10</span></label>
-        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="effort"><span class="fare-option-label">Luggage</span><span class="fare-option-price">+€10</span></label>
-        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="city"><span class="fare-option-label">City Service</span><span class="fare-option-price">+€10</span></label>
-        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="night"><span class="fare-option-label">Night (22–06)</span><span class="fare-option-price">+€10</span></label>
-        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="private_cruise"><span class="fare-option-label">Private Cruise</span><span class="fare-option-price">+€30</span></label>
+        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="airport" checked><span class="fare-option-label">Airport</span><span class="fare-option-price" aria-label="plus 10 euros">+&euro;10</span></label>
+        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="effort"><span class="fare-option-label">Luggage</span><span class="fare-option-price" aria-label="plus 10 euros">+&euro;10</span></label>
+        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="city"><span class="fare-option-label">City Service</span><span class="fare-option-price" aria-label="plus 10 euros">+&euro;10</span></label>
+        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="night"><span class="fare-option-label">Night (22&ndash;06)</span><span class="fare-option-price" aria-label="plus 10 euros">+&euro;10</span></label>
+        <label class="fare-option"><input type="checkbox" class="tp-surcharge" value="private_cruise"><span class="fare-option-label">Private Cruise</span><span class="fare-option-price" aria-label="plus 30 euros">+&euro;30</span></label>
       </div>
-    </div>
+    </fieldset>
 
-    <div class="fare-breakdown" id="tpBreakdown">
-      <div class="fare-line"><span>Base fare</span><span>€100.00</span></div>
+    <div class="fare-breakdown" id="tpBreakdown" aria-label="Fare breakdown">
+      <div class="fare-line"><span>Base fare</span><span>&euro;100.00</span></div>
       <div class="fare-line"><span>Distance</span><span>--</span></div>
     </div>
-    <div class="fare-total">
+    <div class="fare-total" aria-label="Estimated total">
       <span class="fare-total-label">Estimated Total</span>
-      <span class="fare-total-amount" id="tpTotal">€100.00</span>
+      <span class="fare-total-amount" id="tpTotal">&euro;100.00</span>
     </div>
-    <p class="fare-note">* €100 base + €3.50/km + selected services. Final fare confirmed at booking.</p>
-  </div>
+    <p class="fare-note">* &euro;100 base + &euro;3.50/km + selected services. Final fare confirmed at booking.</p>
+  </section>
 
-  <div class="trip-map" id="tripMap"></div>
+  <div class="trip-map" id="tripMap" role="application" aria-label="Route map">
+    <noscript>
+      <div class="ride-fallback">
+        <div>
+          <h2 style="color:var(--gold);font-size:1.1rem;font-weight:300;margin-bottom:.5rem">JavaScript Required</h2>
+          <p style="opacity:.6;font-size:.88rem;margin:0">The trip planner requires JavaScript to display the map and calculate routes.</p>
+          <p style="margin-top:1rem"><a href="/booking" style="color:var(--gold);font-size:.78rem;letter-spacing:1px;text-transform:uppercase">Book via our standard form instead &rarr;</a></p>
+        </div>
+      </div>
+    </noscript>
+  </div>
 </main>
+
+<footer class="trip-footer">
+  <div class="trip-footer-links">
+    <a href="/booking">Booking</a>
+    <a href="/transfers">Transfers</a>
+    <a href="/tourism">Tourism</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <span class="trip-footer-copy">Luxival &copy; 2026 &middot; +358 50 351 8366</span>
+</footer>
 
 <script src="/js/google-maps-lazy.js"></script>
 <script>
 (function(){
+  'use strict';
+
   var DEFAULT_PICKUP = 'Helsinki Airport, 01531 Vantaa, Finland';
   var DEFAULT_DROPOFF = 'Hotel Kamp, Pohjoisesplanadi 29, 00100 Helsinki, Finland';
-  var WHATSAPP_BASE = 'https://wa.me/358503518366';
 
   var pickupInput = document.querySelector('.tp-pickup');
   var dropoffInput = document.querySelector('.tp-dropoff');
   var mapEl = document.getElementById('tripMap');
   var statusEl = document.getElementById('tpStatus');
 
-  function qs(name){return new URLSearchParams(window.location.search).get(name)||''}
+  // Mobile nav toggle
+  var burger = document.querySelector('.nav-burger');
+  var navLinks = document.getElementById('site-nav');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      var expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('open');
+    });
+  }
+
+  function qs(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
 
   pickupInput.value = qs('pickup') || DEFAULT_PICKUP;
   dropoffInput.value = qs('dropoff') || DEFAULT_DROPOFF;
 
-  function sel(sel){return document.querySelector(sel)}
-  function setStatus(msg,isError){statusEl.textContent=msg;statusEl.className='ride-status'+(isError?' error':'')}
-
-  function getSurcharges(){
-    return Array.from(document.querySelectorAll('.tp-surcharge:checked')).map(function(cb){return cb.value})
+  function sel(s) { return document.querySelector(s); }
+  function setStatus(msg, isError) {
+    statusEl.textContent = msg;
+    statusEl.className = 'ride-status' + (isError ? ' error' : '');
   }
 
-  async function fetchFare(origin,destination){
-    var surcharges=getSurcharges();
-    var params=new URLSearchParams({origin:origin,destination:destination,surcharges:surcharges.join(',')});
-    try{
-      var res=await fetch('/api/get-fare?'+params);
-      var data=await res.json();
-      if(res.ok&&!data.error){
-        sel('.tp-fare').textContent='€'+data.total.toFixed(2);
-        sel('#tpTotal').textContent='€'+data.total.toFixed(2);
-        var lines='<div class="fare-line"><span>Base fare</span><span>€'+data.base.toFixed(2)+'</span></div>';
-        lines+='<div class="fare-line"><span>Distance ('+data.distance_km+' km × €3.50/km)</span><span>€'+data.distance_cost.toFixed(2)+'</span></div>';
-        data.surcharges.forEach(function(s){
-          var labels={airport:'Airport',effort:'Luggage',city:'City Service',night:'Night (22–06)',private_cruise:'Private Cruise'};
-          var prices={airport:10,effort:10,city:10,night:10,private_cruise:30};
-          lines+='<div class="fare-line"><span>'+labels[s]+'</span><span>+€'+prices[s]+'</span></div>';
+  function getSurcharges() {
+    return Array.from(document.querySelectorAll('.tp-surcharge:checked')).map(function(cb) { return cb.value; });
+  }
+
+  async function fetchFare(origin, destination) {
+    var surcharges = getSurcharges();
+    var params = new URLSearchParams({ origin: origin, destination: destination, surcharges: surcharges.join(',') });
+    try {
+      var res = await fetch('/api/get-fare?' + params);
+      var data = await res.json();
+      if (res.ok && !data.error) {
+        sel('.tp-fare').textContent = '€' + data.total.toFixed(2);
+        sel('#tpTotal').textContent = '€' + data.total.toFixed(2);
+        var lines = '<div class="fare-line"><span>Base fare</span><span>€' + data.base.toFixed(2) + '</span></div>';
+        lines += '<div class="fare-line"><span>Distance (' + data.distance_km + ' km × €3.50/km)</span><span>€' + data.distance_cost.toFixed(2) + '</span></div>';
+        data.surcharges.forEach(function(s) {
+          var labels = { airport: 'Airport', effort: 'Luggage', city: 'City Service', night: 'Night (22–06)', private_cruise: 'Private Cruise' };
+          var prices = { airport: 10, effort: 10, city: 10, night: 10, private_cruise: 30 };
+          lines += '<div class="fare-line"><span>' + labels[s] + '</span><span>+€' + prices[s] + '</span></div>';
         });
-        sel('#tpBreakdown').innerHTML=lines;
-      }else{
-        sel('.tp-fare').textContent='On request';
-        sel('#tpTotal').textContent='On request';
+        sel('#tpBreakdown').innerHTML = lines;
+      } else {
+        sel('.tp-fare').textContent = 'On request';
+        sel('#tpTotal').textContent = 'On request';
       }
-    }catch(e){
-      sel('.tp-fare').textContent='On request';
-      sel('#tpTotal').textContent='On request';
+    } catch (e) {
+      sel('.tp-fare').textContent = 'On request';
+      sel('#tpTotal').textContent = 'On request';
     }
   }
 
-  function updateLinks(pickup,dropoff){
-    var type=pickup.toLowerCase().includes('airport')?'Airport transfer':'Private pickup';
-    var params=new URLSearchParams({pickup:pickup,dropoff:dropoff,type:type});
-    sel('.tp-book').href='/transfers?'+params.toString()+'#book';
+  function updateLinks(pickup, dropoff) {
+    var type = pickup.toLowerCase().includes('airport') ? 'Airport transfer' : 'Private pickup';
+    var params = new URLSearchParams({ pickup: pickup, dropoff: dropoff, type: type });
+    sel('.tp-book').href = '/transfers?' + params.toString() + '#book';
   }
 
-  var map,service,renderer;
-  function initMap(){
-    if(!window.google||!window.google.maps){
-      mapEl.innerHTML='<div class="ride-fallback"><div><h3 style="color:#C9A96A">Map temporarily unavailable</h3><p>Use the form below and Luxival will confirm the route manually.</p></div></div>';
+  var map, service, renderer;
+
+  function initMap() {
+    if (!window.google || !window.google.maps) {
+      mapEl.innerHTML = '<div class="ride-fallback"><div><h2 style="color:var(--gold);font-size:1.1rem;font-weight:300;margin-bottom:.5rem">Map temporarily unavailable</h2><p style="opacity:.6;font-size:.88rem;margin:0">Use the form and Luxival will confirm the route manually.</p></div></div>';
       return;
     }
-    map=new window.google.maps.Map(mapEl,{
-      center:{lat:60.320974,lng:24.82872},
-      zoom:11,
-      mapTypeControl:false,
-      streetViewControl:false,
-      fullscreenControl:true
-    });
-    service=new window.google.maps.DirectionsService();
-    renderer=new window.google.maps.DirectionsRenderer({
-      map:map,
-      suppressMarkers:false,
-      polylineOptions:{strokeColor:'#C9A96A',strokeWeight:5,strokeOpacity:0.9}
+
+    map = new window.google.maps.Map(mapEl, {
+      center: { lat: 60.320974, lng: 24.82872 },
+      zoom: 11,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: true
     });
 
-    function attachAutocomplete(input){
-      if(!window.google.maps.places)return;
-      new window.google.maps.places.Autocomplete(input,{
-        fields:['formatted_address','geometry','name'],
-        componentRestrictions:{country:'fi'}
+    service = new window.google.maps.DirectionsService();
+    renderer = new window.google.maps.DirectionsRenderer({
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: { strokeColor: '#C9A96A', strokeWeight: 5, strokeOpacity: 0.9 }
+    });
+
+    function attachAutocomplete(input) {
+      if (!window.google.maps.places) return;
+      new window.google.maps.places.Autocomplete(input, {
+        fields: ['formatted_address', 'geometry', 'name'],
+        componentRestrictions: { country: 'fi' }
       });
     }
     attachAutocomplete(pickupInput);
     attachAutocomplete(dropoffInput);
 
-    function calculate(){
-      var pickup=pickupInput.value.trim();
-      var dropoff=dropoffInput.value.trim();
-      if(pickup.length<4||dropoff.length<4){
-        setStatus('Please enter both pickup and drop-off.',true);
+    function calculate() {
+      var pickup = pickupInput.value.trim();
+      var dropoff = dropoffInput.value.trim();
+      if (pickup.length < 4 || dropoff.length < 4) {
+        setStatus('Please enter both pickup and drop-off.', true);
         return;
       }
-      setStatus('Calculating route…',false);
-      updateLinks(pickup,dropoff);
+      setStatus('Calculating route…', false);
+      updateLinks(pickup, dropoff);
       service.route({
-        origin:pickup,destination:dropoff,
-        travelMode:window.google.maps.TravelMode.DRIVING,
-        unitSystem:window.google.maps.UnitSystem.METRIC,
-        region:'FI'
-      }).then(function(response){
-        var leg=response.routes[0].legs[0];
+        origin: pickup,
+        destination: dropoff,
+        travelMode: window.google.maps.TravelMode.DRIVING,
+        unitSystem: window.google.maps.UnitSystem.METRIC,
+        region: 'FI'
+      }).then(function(response) {
+        var leg = response.routes[0].legs[0];
         renderer.setDirections(response);
-        sel('.tp-distance').textContent=leg.distance?leg.distance.text:'--';
-        sel('.tp-duration').textContent=leg.duration?leg.duration.text:'--';
-        setStatus('Route preview ready. Final fare confirmed at booking.',false);
-        fetchFare(pickup,dropoff);
-      }).catch(function(){
-        setStatus('Could not preview that route. Send the request and we will confirm manually.',true);
+        sel('.tp-distance').textContent = leg.distance ? leg.distance.text : '--';
+        sel('.tp-duration').textContent = leg.duration ? leg.duration.text : '--';
+        setStatus('Route preview ready. Final fare confirmed at booking.', false);
+        fetchFare(pickup, dropoff);
+      }).catch(function() {
+        setStatus('Could not preview that route. Send the request and we will confirm manually.', true);
       });
     }
 
-    sel('.tp-calc').addEventListener('click',calculate);
-    document.querySelectorAll('.ride-quick button').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        pickupInput.value=btn.dataset.pickup||DEFAULT_PICKUP;
-        dropoffInput.value=btn.dataset.dropoff;
+    sel('.tp-calc').addEventListener('click', calculate);
+
+    document.querySelectorAll('.ride-quick button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        pickupInput.value = btn.dataset.pickup || DEFAULT_PICKUP;
+        dropoffInput.value = btn.dataset.dropoff;
         calculate();
       });
     });
-    [pickupInput,dropoffInput].forEach(function(input){
-      input.addEventListener('change',calculate);
+
+    [pickupInput, dropoffInput].forEach(function(input) {
+      input.addEventListener('change', calculate);
     });
-    document.querySelectorAll('.tp-surcharge').forEach(function(cb){
-      cb.addEventListener('change',function(){
-        var p=pickupInput.value.trim(),d=dropoffInput.value.trim();
-        if(p.length>4&&d.length>4)fetchFare(p,d);
+
+    document.querySelectorAll('.tp-surcharge').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var p = pickupInput.value.trim(), d = dropoffInput.value.trim();
+        if (p.length > 4 && d.length > 4) fetchFare(p, d);
       });
     });
 
     calculate();
   }
 
-  window.initTripPlanner=initMap;
-  window.loadLuxivalGoogleMaps('initTripPlanner','#tripMap');
+  window.initTripPlanner = initMap;
+  window.loadLuxivalGoogleMaps('initTripPlanner', '#tripMap');
 })();
 </script>
 </body>
