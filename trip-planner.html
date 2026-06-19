@@ -351,6 +351,8 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
     function selectItem(index) {
       if (suggestions[index]) {
         input.value = suggestions[index].label;
+        input.dataset.lat = suggestions[index].lat;
+        input.dataset.lon = suggestions[index].lon;
         dropdown.classList.remove('open');
         input.setAttribute('aria-expanded', 'false');
         suggestions = [];
@@ -361,6 +363,8 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
     input.addEventListener('input', function() {
       var query = input.value.trim();
       var timerId = input.id;
+      delete input.dataset.lat;
+      delete input.dataset.lon;
 
       clearTimeout(debounceTimers[timerId]);
 
@@ -440,16 +444,19 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
 
   function fetchFare(origin, destination) {
     var surcharges = getSurcharges();
-    var params = new URLSearchParams({ origin: origin, destination: destination, surcharges: surcharges.join(',') });
+    var fareOrigin = pickupInput.dataset.lat ? pickupInput.dataset.lat + ',' + pickupInput.dataset.lon : origin;
+    var fareDest = dropoffInput.dataset.lat ? dropoffInput.dataset.lat + ',' + dropoffInput.dataset.lon : destination;
+    var params = new URLSearchParams({ origin: fareOrigin, destination: fareDest, surcharges: surcharges.join(',') });
 
     return fetch('/api/get-fare?' + params)
       .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
       .then(function(result) {
         if (result.ok && !result.data.error) {
           lastFareData = result.data;
-          sel('.tp-fare').textContent = '€' + result.data.total.toFixed(2);
-          sel('.tp-distance').textContent = result.data.distance_km + ' km';
-          sel('#tpTotal').textContent = '€' + result.data.total.toFixed(2);
+          var approx = result.data.distance_source === 'estimated' ? '~' : '';
+          sel('.tp-fare').textContent = approx + '€' + result.data.total.toFixed(2);
+          sel('.tp-distance').textContent = approx + result.data.distance_km + ' km';
+          sel('#tpTotal').textContent = approx + '€' + result.data.total.toFixed(2);
 
           var lines = '<div class="fare-line"><span>Base fare</span><span>€' + result.data.base.toFixed(2) + '</span></div>';
           lines += '<div class="fare-line"><span>Distance (' + result.data.distance_km + ' km × €3.50/km)</span><span>€' + result.data.distance_cost.toFixed(2) + '</span></div>';
@@ -459,7 +466,10 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
             lines += '<div class="fare-line"><span>' + labels[s] + '</span><span>+€' + prices[s] + '</span></div>';
           });
           sel('#tpBreakdown').innerHTML = lines;
-          setStatus('Route calculated. Scroll down to book this ride.', '');
+          var statusMsg = result.data.distance_source === 'estimated'
+            ? 'Estimated route calculated. Final distance confirmed at booking.'
+            : 'Route calculated. Scroll down to book this ride.';
+          setStatus(statusMsg, '');
         } else {
           sel('.tp-fare').textContent = 'On request';
           sel('#tpTotal').textContent = 'On request';
@@ -511,9 +521,11 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
 
   function showMapRoute(pickup, dropoff) {
     if (!mapService || !mapRenderer) return;
+    var mapOrigin = pickupInput.dataset.lat ? { lat: parseFloat(pickupInput.dataset.lat), lng: parseFloat(pickupInput.dataset.lon) } : pickup;
+    var mapDest = dropoffInput.dataset.lat ? { lat: parseFloat(dropoffInput.dataset.lat), lng: parseFloat(dropoffInput.dataset.lon) } : dropoff;
     mapService.route({
-      origin: pickup,
-      destination: dropoff,
+      origin: mapOrigin,
+      destination: mapDest,
       travelMode: window.google.maps.TravelMode.DRIVING,
       unitSystem: window.google.maps.UnitSystem.METRIC,
       region: 'FI'
@@ -522,7 +534,7 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
       var leg = response.routes[0].legs[0];
       if (leg.duration) sel('.tp-duration').textContent = leg.duration.text;
     }).catch(function() {
-      sel('.tp-duration').textContent = '~' + Math.round((lastFareData ? lastFareData.distance_km : 30) / 60 * 60) + ' min';
+      sel('.tp-duration').textContent = '~' + Math.max(10, Math.round((lastFareData ? lastFareData.distance_km : 30) * 1.2)) + ' min';
     });
   }
 

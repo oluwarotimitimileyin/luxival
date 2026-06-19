@@ -18,6 +18,22 @@ const SURCHARGES = {
   night: 10,
 };
 
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function parseCoord(str) {
+  const parts = str.split(',').map(Number);
+  if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) return parts;
+  return null;
+}
+
 module.exports = async (req, res) => {
   // CORS headers
   const allowedOrigins = ["https://www.luxival.com", "https://www.luxival.com"];
@@ -40,36 +56,43 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: "origin and destination are required" });
   }
 
+  let distanceKm;
+  let distanceSource = "estimate";
+
+  // Try Google Distance Matrix first
   const apiKey = process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: "Fare service not configured. Please contact us for a quote." });
+  if (apiKey) {
+    try {
+      const url = new URL("https://maps.googleapis.com/maps/api/distancematrix/json");
+      url.searchParams.set("origins", origin);
+      url.searchParams.set("destinations", destination);
+      url.searchParams.set("units", "metric");
+      url.searchParams.set("key", apiKey);
+
+      const response = await fetch(url.toString());
+      const data = await response.json();
+      const element = data.rows?.[0]?.elements?.[0];
+
+      if (data.status === "OK" && element && element.status === "OK") {
+        distanceKm = element.distance.value / 1000;
+        distanceSource = "google";
+      }
+    } catch (err) {
+      console.error("Distance Matrix error:", err);
+    }
   }
 
-  // Call Google Distance Matrix API
-  const url = new URL("https://maps.googleapis.com/maps/api/distancematrix/json");
-  url.searchParams.set("origins", origin);
-  url.searchParams.set("destinations", destination);
-  url.searchParams.set("units", "metric");
-  url.searchParams.set("key", apiKey);
-
-  let distanceKm;
-  try {
-    const response = await fetch(url.toString());
-    const data = await response.json();
-
-    if (data.status !== "OK") {
-      return res.status(400).json({ error: "Could not calculate route. Please check addresses." });
+  // Fallback: calculate from coordinates using Haversine (road distance ~ 1.3x straight line)
+  if (!distanceKm) {
+    const originCoord = parseCoord(origin);
+    const destCoord = parseCoord(destination);
+    if (originCoord && destCoord) {
+      const straightLine = haversineKm(originCoord[0], originCoord[1], destCoord[0], destCoord[1]);
+      distanceKm = straightLine * 1.3;
+      distanceSource = "estimated";
+    } else {
+      return res.status(400).json({ error: "Could not calculate route. Please select addresses from the suggestions." });
     }
-
-    const element = data.rows?.[0]?.elements?.[0];
-    if (!element || element.status !== "OK") {
-      return res.status(400).json({ error: "No route found between these locations." });
-    }
-
-    distanceKm = element.distance.value / 1000; // metres → km
-  } catch (err) {
-    console.error("Distance Matrix error:", err);
-    return res.status(500).json({ error: "Route calculation failed. Please try again." });
   }
 
   // Calculate fare
@@ -93,6 +116,7 @@ module.exports = async (req, res) => {
     origin,
     destination,
     distance_km: parseFloat(distanceKm.toFixed(1)),
+    distance_source: distanceSource,
     rate_per_km: RATE_PER_KM,
     base: BASE_FARE,
     distance_cost: parseFloat(distanceCost.toFixed(2)),
