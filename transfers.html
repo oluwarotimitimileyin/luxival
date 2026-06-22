@@ -387,7 +387,7 @@ document.getElementById('bSubmit').addEventListener('click',async()=>{
   if(db){
     const{error}=await db.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error sending. Email support@luxival.com';}
-    else{window.location.href='/thank-you-transfer';}
+    else{window.LuxivalSupabase&&window.LuxivalSupabase.notifyLead({...payload,type:'Transfer booking'});window.location.href='/thank-you-transfer';}
   } else {
     setTimeout(()=>{window.location.href='/thank-you-transfer';},500);
   }

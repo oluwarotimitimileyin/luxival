@@ -162,6 +162,18 @@ create table if not exists site_content (
 -- ROW LEVEL SECURITY
 -- ============================================================
 
+create or replace function public.luxival_is_admin()
+returns boolean
+language sql
+stable
+as $$
+  select lower(coalesce(auth.jwt() ->> 'email', '')) in (
+    'rotimikun@gmail.com',
+    'olakunleshopeju@luxival.com',
+    'support@luxival.com'
+  );
+$$;
+
 alter table contact_inquiries     enable row level security;
 alter table ride_requests         enable row level security;
 alter table newsletter_subscribers enable row level security;
@@ -195,43 +207,43 @@ create policy "public_insert_tiktok_agency" on tiktok_agency_applications
 -- Authenticated SELECT only (admin reads via dashboard or service role)
 drop policy if exists "auth_select_inquiries" on contact_inquiries;
 create policy "auth_select_inquiries" on contact_inquiries
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_select_rides" on ride_requests;
 create policy "auth_select_rides" on ride_requests
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_select_newsletter" on newsletter_subscribers;
 create policy "auth_select_newsletter" on newsletter_subscribers
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_select_tiktok_agency" on tiktok_agency_applications;
 create policy "auth_select_tiktok_agency" on tiktok_agency_applications
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_select_assets" on uploaded_assets;
 create policy "auth_select_assets" on uploaded_assets
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_insert_assets" on uploaded_assets;
 create policy "auth_insert_assets" on uploaded_assets
-  for insert to authenticated with check (true);
+  for insert to authenticated with check (public.luxival_is_admin());
 
 drop policy if exists "auth_select_blog_posts" on blog_posts;
 create policy "auth_select_blog_posts" on blog_posts
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_insert_blog_posts" on blog_posts;
 create policy "auth_insert_blog_posts" on blog_posts
-  for insert to authenticated with check (true);
+  for insert to authenticated with check (public.luxival_is_admin());
 
 drop policy if exists "auth_update_blog_posts" on blog_posts;
 create policy "auth_update_blog_posts" on blog_posts
-  for update to authenticated using (true) with check (true);
+  for update to authenticated using (public.luxival_is_admin()) with check (public.luxival_is_admin());
 
 drop policy if exists "auth_delete_blog_posts" on blog_posts;
 create policy "auth_delete_blog_posts" on blog_posts
-  for delete to authenticated using (true);
+  for delete to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "public_select_blog_posts" on blog_posts;
 create policy "public_select_blog_posts" on blog_posts
@@ -239,19 +251,19 @@ create policy "public_select_blog_posts" on blog_posts
 
 drop policy if exists "auth_select_site_reviews" on site_reviews;
 create policy "auth_select_site_reviews" on site_reviews
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_insert_site_reviews" on site_reviews;
 create policy "auth_insert_site_reviews" on site_reviews
-  for insert to authenticated with check (true);
+  for insert to authenticated with check (public.luxival_is_admin());
 
 drop policy if exists "auth_update_site_reviews" on site_reviews;
 create policy "auth_update_site_reviews" on site_reviews
-  for update to authenticated using (true) with check (true);
+  for update to authenticated using (public.luxival_is_admin()) with check (public.luxival_is_admin());
 
 drop policy if exists "auth_delete_site_reviews" on site_reviews;
 create policy "auth_delete_site_reviews" on site_reviews
-  for delete to authenticated using (true);
+  for delete to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "public_select_site_reviews" on site_reviews;
 create policy "public_select_site_reviews" on site_reviews
@@ -259,19 +271,19 @@ create policy "public_select_site_reviews" on site_reviews
 
 drop policy if exists "auth_select_site_content" on site_content;
 create policy "auth_select_site_content" on site_content
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_insert_site_content" on site_content;
 create policy "auth_insert_site_content" on site_content
-  for insert to authenticated with check (true);
+  for insert to authenticated with check (public.luxival_is_admin());
 
 drop policy if exists "auth_update_site_content" on site_content;
 create policy "auth_update_site_content" on site_content
-  for update to authenticated using (true) with check (true);
+  for update to authenticated using (public.luxival_is_admin()) with check (public.luxival_is_admin());
 
 drop policy if exists "auth_delete_site_content" on site_content;
 create policy "auth_delete_site_content" on site_content
-  for delete to authenticated using (true);
+  for delete to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "public_select_site_content" on site_content;
 create policy "public_select_site_content" on site_content
@@ -300,30 +312,30 @@ create policy "public_read_project_images" on storage.objects
 drop policy if exists "auth_upload_project_images" on storage.objects;
 create policy "auth_upload_project_images" on storage.objects
   for insert to authenticated
-  with check (bucket_id = 'project-images');
+  with check (bucket_id = 'project-images' and public.luxival_is_admin());
 
 -- Authenticated upload to customer-documents (private)
 drop policy if exists "auth_upload_customer_docs" on storage.objects;
 create policy "auth_upload_customer_docs" on storage.objects
   for insert to authenticated
-  with check (bucket_id = 'customer-documents');
+  with check (bucket_id = 'customer-documents' and public.luxival_is_admin());
 
 -- Authenticated read for customer-documents (signed URLs only)
 drop policy if exists "auth_read_customer_docs" on storage.objects;
 create policy "auth_read_customer_docs" on storage.objects
   for select to authenticated
-  using (bucket_id = 'customer-documents');
+  using (bucket_id = 'customer-documents' and public.luxival_is_admin());
 
 -- Authenticated upload/read for ride-uploads
 drop policy if exists "auth_upload_ride_uploads" on storage.objects;
 create policy "auth_upload_ride_uploads" on storage.objects
   for insert to authenticated
-  with check (bucket_id = 'ride-uploads');
+  with check (bucket_id = 'ride-uploads' and public.luxival_is_admin());
 
 drop policy if exists "auth_read_ride_uploads" on storage.objects;
 create policy "auth_read_ride_uploads" on storage.objects
   for select to authenticated
-  using (bucket_id = 'ride-uploads');
+  using (bucket_id = 'ride-uploads' and public.luxival_is_admin());
 
 -- ============================================================
 -- CHAT PERSISTENCE
@@ -359,25 +371,23 @@ create policy "anon_insert_chat_sessions" on chat_sessions
   for insert to anon with check (true);
 
 drop policy if exists "anon_select_chat_sessions" on chat_sessions;
-create policy "anon_select_chat_sessions" on chat_sessions
-  for select to anon using (true);
+drop policy if exists "public_select_chat_sessions" on chat_sessions;
 
 drop policy if exists "anon_insert_chat_messages" on chat_messages;
 create policy "anon_insert_chat_messages" on chat_messages
   for insert to anon with check (true);
 
 drop policy if exists "anon_select_chat_messages" on chat_messages;
-create policy "anon_select_chat_messages" on chat_messages
-  for select to anon using (true);
+drop policy if exists "public_select_chat_messages" on chat_messages;
 
 -- Admin (authenticated) access
 drop policy if exists "auth_select_chat_sessions" on chat_sessions;
 create policy "auth_select_chat_sessions" on chat_sessions
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 drop policy if exists "auth_select_chat_messages" on chat_messages;
 create policy "auth_select_chat_messages" on chat_messages
-  for select to authenticated using (true);
+  for select to authenticated using (public.luxival_is_admin());
 
 -- ============================================================
 -- INDEXES (performance)

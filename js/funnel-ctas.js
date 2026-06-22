@@ -237,6 +237,7 @@
     }
 
     event.currentTarget.reset();
+    window.LuxivalSupabase.notifyLead({name:value('funnelName'),email:value('funnelEmail'),phone:value('funnelPhone'),message:`Service: ${value('funnelService')||'not specified'}\nNotes: ${value('funnelDescription')||value('funnelNotes')||value('funnelInterests')||''}`,source:`funnel:${path}`,type:'Funnel CTA'});
     status.style.color = '#C9A96A';
     status.textContent = 'Thanks. Luxival will follow up shortly.';
   }

@@ -47,6 +47,7 @@
     }
 
     form.reset();
+    window.LuxivalSupabase.notifyLead({...payload,type:'Portfolio lead'});
     if (status) {
       status.style.color = '#C9A96A';
       status.textContent = 'Thanks. Luxival will follow up with next steps.';

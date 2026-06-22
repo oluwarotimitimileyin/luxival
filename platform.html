@@ -612,6 +612,7 @@ agencyForm.addEventListener('submit',async e=>{
     }
 
     agencyForm.reset();
+    window.LuxivalSupabase.notifyLead({...contactPayload,type:'TikTok Agency Application'});
     setStatus('Application received! We will review it and contact you within 48 hours.');
   } catch (error) {
     setStatus('Unable to submit right now. Please email support@luxival.com directly.',true);

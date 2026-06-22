@@ -9,10 +9,11 @@ const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 const DEFAULT_USER_AGENT = "Luxival/1.0 (support@luxival.com)";
 
 function setCors(req, res) {
-  const allowedOrigins = ["https://www.luxival.com", "https://luxival.com"];
+  const allowedOrigins = ["https://www.luxival.com"];
+  const allowLocalhost = process.env.NODE_ENV !== "production";
   const requestOrigin = req.headers.origin || "";
 
-  if (allowedOrigins.includes(requestOrigin) || requestOrigin.startsWith("http://localhost")) {
+  if (allowedOrigins.includes(requestOrigin) || (allowLocalhost && requestOrigin.startsWith("http://localhost"))) {
     res.setHeader("Access-Control-Allow-Origin", requestOrigin);
   } else {
     res.setHeader("Access-Control-Allow-Origin", "https://www.luxival.com");

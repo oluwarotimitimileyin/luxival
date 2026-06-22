@@ -637,15 +637,9 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
     });
 
     if (window.LuxivalSupabase) {
-      window.LuxivalSupabase.submitContactInquiry({
-        name: name,
-        email: email,
-        phone: bookingForm.phone.value.trim() || null,
-        service_interest: pickup.toLowerCase().includes('airport') ? 'Airport transfer booking' : 'Private ride booking',
-        message: message,
-        source: 'trip-planner',
-        status: 'new',
-      }).catch(function() {});
+      var tpPayload={name:name,email:email,phone:bookingForm.phone.value.trim()||null,service_interest:pickup.toLowerCase().includes('airport')?'Airport transfer booking':'Private ride booking',message:message,source:'trip-planner',status:'new'};
+      window.LuxivalSupabase.submitContactInquiry(tpPayload).catch(function(){});
+      window.LuxivalSupabase.notifyLead({...tpPayload,type:'Trip planner booking'});
     }
   });
 

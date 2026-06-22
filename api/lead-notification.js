@@ -1,5 +1,6 @@
-const DEFAULT_TO_EMAIL = 'sarakuvam@gmail.com';
+const DEFAULT_TO_EMAIL = 'rotimikun@gmail.com';
 const DEFAULT_FROM_EMAIL = 'Luxival Website <onboarding@resend.dev>';
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value) {
   return String(value || '')
@@ -23,6 +24,20 @@ function normalizeLead(raw) {
     message: String(lead.message || '').slice(0, 5000),
     source: String(lead.source || 'website').slice(0, 160),
   };
+}
+
+function parseRecipients(value) {
+  const recipients = String(value || DEFAULT_TO_EMAIL)
+    .split(',')
+    .map((email) => email.trim())
+    .filter(Boolean);
+
+  return recipients.length ? recipients : [DEFAULT_TO_EMAIL];
+}
+
+function validReplyTo(value) {
+  const email = String(value || '').trim();
+  return EMAIL_PATTERN.test(email) ? email : undefined;
 }
 
 function buildEmail(lead) {
@@ -74,7 +89,7 @@ module.exports = async function handler(req, res) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.LEAD_NOTIFY_EMAIL || process.env.CONTACT_NOTIFY_EMAIL || DEFAULT_TO_EMAIL;
+  const toEmail = parseRecipients(process.env.LEAD_NOTIFY_EMAIL || process.env.CONTACT_NOTIFY_EMAIL);
   const fromEmail = process.env.LEAD_FROM_EMAIL || DEFAULT_FROM_EMAIL;
 
   if (!apiKey) {
@@ -100,8 +115,8 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [toEmail],
-        reply_to: lead.email,
+        to: toEmail,
+        reply_to: validReplyTo(lead.email),
         subject: email.subject,
         text: email.text,
         html: email.html,
@@ -112,7 +127,7 @@ module.exports = async function handler(req, res) {
     if (!response.ok) {
       return res.status(response.status).json({
         error: 'Email provider rejected the notification',
-        details: data,
+        details: data && data.message ? data.message : data,
       });
     }
 

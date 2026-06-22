@@ -921,7 +921,7 @@ if(hfBtn){
     if(db){
       const{error}=await db.submitContactInquiry(payload);
       if(error){hfStatus.style.color='#f77';hfStatus.textContent='Unable to send. Email us at support@luxival.com';}
-      else{const dest=(service&&service.toLowerCase().includes('transfer'))?'/thank-you-transfer':'/thank-you-digital';window.location.href=dest;}
+      else{window.LuxivalSupabase&&window.LuxivalSupabase.notifyLead(payload);const dest=(service&&service.toLowerCase().includes('transfer'))?'/thank-you-transfer':'/thank-you-digital';window.location.href=dest;}
     } else {
       const dest=(service&&service.toLowerCase().includes('transfer'))?'thank-you-transfer':'thank-you-digital';
       setTimeout(()=>{window.location.href=dest;},500);
@@ -947,7 +947,7 @@ if(form){
     if(db){
       const{error}=await db.submitContactInquiry(payload);
       if(error){fStatus.style.color='#f77';fStatus.textContent='Unable to send. Email us directly.';}
-      else{form.reset();fStatus.textContent='Inquiry sent. We will reply shortly.';}
+      else{form.reset();fStatus.textContent='Inquiry sent. We will reply shortly.';window.LuxivalSupabase&&window.LuxivalSupabase.notifyLead(payload);}
     } else {
       setTimeout(()=>{form.reset();fStatus.textContent='Inquiry received. We will reply shortly.';},700);
     }

@@ -1115,7 +1115,7 @@ if(rideForm){
     if(db){
       const{error}=await db.submitRideRequest(payload);
       if(error){rideStatus.style.color='#f77';rideStatus.textContent='Unable to send. Please email support@luxival.com directly.';}
-      else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';}
+      else{rideForm.reset();rideStatus.textContent='Request sent. We will confirm within one business day.';window.LuxivalSupabase&&window.LuxivalSupabase.notifyLead({type:'Ride request',name:payload.customer_name,email:payload.email,phone:payload.phone,message:`Pickup: ${payload.pickup_location}\nDestination: ${payload.destination}\nDate: ${payload.preferred_date||'-'}\nTime: ${payload.ride_time||'-'}\nService: ${payload.service_type}`,source:'tourism-page'});}
     }else{
       setTimeout(()=>{rideForm.reset();rideStatus.textContent='Request received. We will reply shortly.';},700);
     }

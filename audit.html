@@ -981,13 +981,9 @@ async function saveToSupabase(tier) {
   try {
     const db = window.ensureLuxivalSupabase ? await window.ensureLuxivalSupabase().catch(()=>null) : window.LuxivalSupabase;
     if (db && db.submitContactInquiry) {
-      await db.submitContactInquiry({
-        name: 'Audit Lead',
-        email: auditData.email,
-        service: 'website-audit-' + tier,
-        message: `Audit requested for: ${auditData.url}. SEO Score: ${auditData.seoScore}/10`,
-        source: 'audit-page'
-      });
+      var auditPayload={name:'Audit Lead',email:auditData.email,service:'website-audit-'+tier,message:'Audit requested for: '+auditData.url+'. SEO Score: '+auditData.seoScore+'/10',source:'audit-page'};
+      await db.submitContactInquiry(auditPayload);
+      window.LuxivalSupabase.notifyLead({...auditPayload,type:'Website audit - '+tier});
     }
   } catch(e) { /* graceful fallback */ }
 }

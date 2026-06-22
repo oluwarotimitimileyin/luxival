@@ -106,6 +106,26 @@ async function submitChatLead(payload) {
   return supabaseClient.from('contact_inquiries').insert([payload]);
 }
 
+async function notifyLead(payload) {
+  try {
+    await fetch('/api/lead-notification', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: payload.type || 'Website inquiry',
+        name: payload.name || '',
+        email: payload.email || '',
+        phone: payload.phone || '',
+        company: payload.company || '',
+        message: payload.message || '',
+        source: payload.source || 'website',
+      }),
+    });
+  } catch (e) {
+    console.warn('notifyLead failed:', e);
+  }
+}
+
 async function uploadPublicProjectImage(file, destinationPath) {
   return supabaseClient.storage
     .from(PROJECT_IMAGES_BUCKET)
@@ -144,6 +164,7 @@ window.LuxivalSupabase = {
   subscribeNewsletter,
   submitTikTokAgencyApplication,
   submitChatLead,
+  notifyLead,
   uploadPublicProjectImage,
   uploadPrivateAsset,
   createPrivateSignedUrl,

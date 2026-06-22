@@ -537,14 +537,9 @@ function generateItinerary(){
 
   /* Submit lead to Supabase if available */
   if(window.LuxivalSupabase){
-    window.LuxivalSupabase.submitContactInquiry({
-      name,
-      email,
-      service_interest:'tourism-planner',
-      message:`Itinerary request: ${days} days in ${baseCity}`,
-      source:'tourism-planning-page',
-      status:'new'
-    }).catch(()=>{});
+    var leadPayload={name,email,service_interest:'tourism-planner',message:`Itinerary request: ${days} days in ${baseCity}`,source:'tourism-planning-page',status:'new'};
+    window.LuxivalSupabase.submitContactInquiry(leadPayload).catch(()=>{});
+    window.LuxivalSupabase.notifyLead({...leadPayload,type:'Tourism planner itinerary'});
   }
 }
 

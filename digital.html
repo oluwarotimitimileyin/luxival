@@ -385,6 +385,7 @@ if(consultForm){
     consultForm.reset();
     status.style.color='var(--gold)';
     status.textContent='Consultation request received. We will contact you shortly.';
+    window.LuxivalSupabase.notifyLead({...payload,type:'Digital consultation'});
   });
 }
 
@@ -400,7 +401,7 @@ document.getElementById('aSubmit').addEventListener('click',async()=>{
   if(db){
     const{error}=await db.submitContactInquiry(payload);
     if(error){st.style.color='#f77';st.textContent='Error. Email us at support@luxival.com';}
-    else{window.location.href='/thank-you-digital';}
+    else{window.location.href='/thank-you-digital';window.LuxivalSupabase&&window.LuxivalSupabase.notifyLead({...payload,type:'Free audit request'});}
   } else {
     setTimeout(()=>{window.location.href='/thank-you-digital';},500);
   }

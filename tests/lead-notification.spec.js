@@ -23,7 +23,7 @@ function createMockResponse() {
 }
 
 test.describe('lead notification endpoint', () => {
-  test('sends lead notification to the original email address', async () => {
+  test('sends lead notification to the Luxival owner email address by default', async () => {
     const originalApiKey = process.env.RESEND_API_KEY;
     const originalNotifyEmail = process.env.LEAD_NOTIFY_EMAIL;
     const originalFromEmail = process.env.LEAD_FROM_EMAIL;
@@ -69,7 +69,7 @@ test.describe('lead notification endpoint', () => {
       expect(res.statusCode).toBe(200);
       expect(res.body).toEqual({ ok: true, id: 'email_test_123' });
       expect(resendRequest.url).toBe('https://api.resend.com/emails');
-      expect(resendRequest.body.to).toEqual(['sarakuvam@gmail.com']);
+      expect(resendRequest.body.to).toEqual(['rotimikun@gmail.com']);
       expect(resendRequest.body.reply_to).toBe('client@example.com');
       expect(resendRequest.body.subject).toContain('Website audit booking');
       expect(resendRequest.options.headers.Authorization).toBe('Bearer test-resend-key');

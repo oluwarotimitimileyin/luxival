@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         rideRequestForm.reset();
         updateRideEstimates();
+        window.LuxivalSupabase.notifyLead({...payload,type:'Ride request'});
         showStatus(status, 'Ride request sent successfully. We will contact you soon.');
       }
     });
