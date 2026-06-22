@@ -51,7 +51,7 @@ MAX_REQUEST_BYTES = int(os.getenv("MAX_REQUEST_BYTES", "1048576"))
 async def lifespan(app: FastAPI):
     global posthog_client
     posthog_client = Posthog(
-        api_key=os.getenv("POSTHOG_PROJECT_TOKEN", ""),
+        project_api_key=os.getenv("POSTHOG_PROJECT_TOKEN", ""),
         host=os.getenv("POSTHOG_HOST", "https://eu.i.posthog.com"),
         enable_exception_autocapture=True,
     )
