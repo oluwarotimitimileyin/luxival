@@ -47,6 +47,10 @@ const images = [
     src: path.join('assets', 'images', 'founder-portrait-3.jpeg'),
   },
   {
+    key: 'founder-portrait-4',
+    src: path.join('assets', 'images', 'founder-portrait-4.jpeg'),
+  },
+  {
     key: 'pattern-hero',
     src: path.join('assets', 'images', 'pattern-hero.jpeg'),
   },

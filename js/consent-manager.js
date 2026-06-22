@@ -101,8 +101,14 @@
     if (banner) banner.remove();
   }
 
+  function removeManageButton() {
+    var button = document.getElementById('luxival-consent-manage');
+    if (button) button.remove();
+  }
+
   function applyChoice(categories) {
     removeBanner();
+    removeManageButton();
     return saveState(stateFromCategories(categories));
   }
 
@@ -158,7 +164,11 @@
   }
 
   function showBannerIfNeeded() {
-    if (readState()) return;
+    if (readState()) {
+      removeBanner();
+      removeManageButton();
+      return;
+    }
     ensureStyles();
     if (document.getElementById('luxival-consent-banner')) return;
     var banner = document.createElement('div');
@@ -211,7 +221,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     migrateLegacyTranslateConsent();
     showBannerIfNeeded();
-    ensureManageButton();
     applyConsentedScripts(readState());
   });
 })();

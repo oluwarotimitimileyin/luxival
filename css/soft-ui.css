@@ -1,18 +1,35 @@
 :where(
   .btn,
   .btn-outline,
+  .btn-full,
   .button,
   .button-primary,
   .button-secondary,
   .button-outline,
+  .filter,
+  .intake-tab,
+  .auth-btn,
+  .auth-link,
+  .cms-btn,
+  .nav-toggle,
+  [role="button"],
+  button[type="button"],
+  button[type="submit"],
   .site-search-button,
   .site-search-input,
   .site-search-result,
   .service-path,
+  .path-link,
+  .service-link,
+  .service-cta,
+  .actions a,
+  .actions button,
   .assistant-options a,
   .assistant-options button,
   .socials a,
   .socials-row a,
+  .social-grid a,
+  .social-card,
   .social-video-card,
   .hover-card,
   .card,
@@ -36,7 +53,22 @@
   border-radius: 18px !important;
 }
 
-:where(.btn, .btn-outline, .button, .button-primary, .button-secondary, .button-outline) {
+:where(
+  .btn,
+  .btn-outline,
+  .btn-full,
+  .button,
+  .button-primary,
+  .button-secondary,
+  .button-outline,
+  .filter,
+  .intake-tab,
+  .auth-btn,
+  .cms-btn,
+  [role="button"],
+  button[type="button"],
+  button[type="submit"]
+) {
   display: inline-flex;
   align-items: center;
   justify-content: center;

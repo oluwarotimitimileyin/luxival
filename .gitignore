@@ -24,3 +24,12 @@ tests/results.json
 
 luxival-autopost/
 luxival-dashboard/
+
+# Apps / archives
+apps/*.zip
+apps/dist 2/
+mobile-preview/
+setup.sh
+part
+supabase/.temp/
+opencode.json

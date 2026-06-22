@@ -15,6 +15,11 @@ iframe {
   max-width: 100%;
 }
 
+.arch-container {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 .address-selector-block {
   margin: 1.25rem 0 1.5rem;
 }
@@ -65,6 +70,10 @@ iframe {
 
 /* Tablet and down */
 @media (max-width: 768px) {
+  .arch-container {
+    padding: 1rem !important;
+  }
+
   .address-selector-frame {
     height: 420px;
   }

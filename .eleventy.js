@@ -2,7 +2,8 @@ module.exports = function (eleventyConfig) {
   function removeUngatedSpeedInsights(html) {
     return html
       .replace(/\s*<!-- Vercel Speed Insights -->\s*/gi, "\n")
-      .replace(/\s*<script[^>]*>\s*window\.si\s*=\s*window\.si[\s\S]*?<\/script>\s*/gi, "\n")
+      .replace(/\s*<script>\s*window\.si\s*=\s*window\.si\s*\|\|\s*function\s*\(\)\s*\{\s*\(window\.siq\s*=\s*window\.siq\s*\|\|\s*\[\]\)\.push\(arguments\);?\s*\};?\s*<\/script>\s*/gi, "\n")
+      .replace(/\s*<script>\s*window\.si\s*=\s*window\.si\s*\|\|\s*function\s*\(\)\s*\{\s*\(window\.siq\s*=\s*window\.siq\s*\|\|\s*\[\]\)\.push\(arguments\)\s*\};?\s*<\/script>\s*/gi, "\n")
       .replace(/\s*<script[^>]+src=["']\/_vercel\/speed-insights\/script\.js["'][^>]*><\/script>\s*/gi, "\n");
   }
 

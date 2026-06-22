@@ -53,6 +53,17 @@ uvicorn main:app --reload --port 8080
 - Endpoints: `POST /scan/free`, `POST /scan/premium`, `POST /webhook/sumup`, `GET /health`.
 - See [backend/DEPLOY.md](backend/DEPLOY.md) for deployment notes.
 
+### Chat API (`api/chat.js`)
+- Multi-model AI chat: routes each query to the best model based on task type.
+- **Supported providers** (configure via Vercel env vars):
+  - `ANTHROPIC_API_KEY` — Claude Haiku (fast) / Claude Sonnet (strong) — primary for FAQ, general, technical
+  - `OPENAI_API_KEY` — GPT-4o-mini (fast) / GPT-4o (strong) — primary for booking/order intake
+  - `GEMINI_API_KEY` — Gemini 2.0 Flash (fast) / Gemini 2.5 Pro (strong) — primary for greetings, tourism
+  - `MOONSHOT_API_KEY` — Moonshot v1 (Kimi) — available as fallback across all tasks
+- **Task routing**: Classifies user message into greeting/faq/service_recommend/technical/booking/tourism/pricing/general, then tries the preferred model chain with automatic fallback.
+- System prompt includes full service catalog and lead capture instructions (outputs `[LEAD:{...}]` blocks).
+- Zero API keys configured → falls back to rule-based replies.
+
 ### Supabase Schema
 Key tables: `contact_inquiries`, `ride_requests`, `newsletter_subscribers`.
 Full schema: [supabase-architecture.md](supabase-architecture.md) | SQL: [supabase-setup.sql](supabase-setup.sql).

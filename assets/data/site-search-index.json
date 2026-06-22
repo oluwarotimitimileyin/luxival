@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-19T10:06:41.243Z",
-  "total": 70,
+  "generatedAt": "2026-06-22T14:28:11.729Z",
+  "total": 71,
   "documents": [
     {
       "path": "/",
@@ -863,6 +863,21 @@
       "body": "LUXIVAL Home Travel Airport Pickup Transfers Digital Start Planning Luxury Lapland · Northern Lights Finland Luxury Lapland Travel Planning Build a Finland winter trip around northern lights, glass igloos, private lodges, snowy landscapes, and smooth arrival logistics from Helsinki or Uusimaa to Lapland. Plan My Lapland Trip Ask on WhatsApp Aurora Northern lights planning Winter Lodges and igloos Finland Arrival support Northern lights focus Plan around aurora-friendly locations, flexible evenings, darker skies, and realistic backup experiences when weather changes. Premium winter stays Shortlist glass igloos, design cabins, boutique lodges, private villas, and stays that fit your comfort level. Arrival-to-Lapland flow Connect Helsinki airport pickup, hotel nights, domestic flights or trains, transfers, and seasonal activities into one trip plan. Sample trip modules A luxury Lapland trip should feel calm, not complicated Luxival helps you turn a broad idea like “winter Finland” into a clear plan: where to stay, how to arrive, what to do, and how to avoid rushed logistics. Arrival Helsinki airport pickup, overnight stay, or direct onward travel to Lapland. Stay Glass igloo, aurora cabin, boutique lodge, or private winter villa shortlist. Aurora Northern lights evenings with weather-aware backup ideas and flexible pacing. Winter Snow landscapes, sauna, local dining, reindeer or husky-style seasonal activities where suitable. Return Route back through Helsinki, Uusimaa, or another Finland destination. Who it is for Designed for visitors who want Finland handled properly Couples Romantic winter stays, northern lights, dining, spa, sauna, and quiet private moments. Families Practical pacing, warm transfers, child-friendly logistics, and enough space between activities. Busin"
     },
     {
+      "path": "/mobile-preview/mobile-view",
+      "title": "Luxival Mobile Preview",
+      "description": "",
+      "section": "Website",
+      "headings": [],
+      "keywords": [
+        "mobile preview",
+        "mobile view",
+        "luxival",
+        "mobile",
+        "preview"
+      ],
+      "body": "390px mobile preview Open site"
+    },
+    {
       "path": "/pattern",
       "title": "Pattern Studio | Luxival",
       "description": "Luxival Pattern Studio: bespoke sewing patterns for premium suits. Enter your measurements, receive printable PDF patterns tailored to your exact body.",
@@ -1557,7 +1572,7 @@
         "Contact and project enquiries",
         "Airport transfer bookings",
         "Newsletter subscriptions",
-        "Website analytics",
+        "Website analytics and preferences",
         "3. Data storage and processors",
         "4. How long we keep your data",
         "5. Your rights under GDPR",
@@ -1598,7 +1613,7 @@
         "booking",
         "portfolio"
       ],
-      "body": "LUXIVAL Travel Pattern Portfolio QA Platform Platform Blog About Book a consultation Legal Privacy Policy Last updated: 11 June 2026  ·  Applies to luxival.com This policy explains what personal data Luxival collects, why, how long it is kept, and your rights under the General Data Protection Regulation (GDPR) and Finnish data protection law. 1. Data controller The data controller is: Luxival Operated by Olakunle Oluwarotimi Shopeju Varikkokaarre 7A 40, 01700 Kivistö, Finland Email: support@luxival.com 2. What data we collect and why Contact and project enquiries When you submit the contact form we collect your name, email address, optional phone number, company name, and your message. We use this data solely to respond to your enquiry and, if applicable, to fulfil a service contract. Legal basis: Legitimate interest (responding to your direct enquiry) and, where a contract follows, performance of that contract. Airport transfer bookings When you book a ride we collect your name, email, phone number, pickup address, destination, preferred date and time, and flight details. We use this to organise and deliver the transport service you requested. Legal basis: Performance of a contract. Newsletter subscriptions If you subscribe to the Luxival newsletter we collect your email address and, optionally, your name. You may unsubscribe at any time via the link in any newsletter email. Legal basis: Consent. Website analytics We do not currently use third-party analytics or advertising trackers. We may in future use a privacy-respecting analytics tool (such as Plausible or Fathom) and will update this policy if we do. 3. Data storage and processors Form submissions and booking data are stored in Supabase, a PostgreSQL-based platform operated by Supabase Inc., whose servers are loc"
+      "body": "LUXIVAL Travel Pattern Portfolio QA Platform Platform Blog About Book a consultation Legal Privacy Policy Last updated: 22 June 2026  ·  Applies to luxival.com This policy explains what personal data Luxival collects, why, how long it is kept, and your rights under the General Data Protection Regulation (GDPR) and Finnish data protection law. 1. Data controller The data controller is: Luxival Operated by Olakunle Oluwarotimi Shopeju Varikkokaarre 7A 40, 01700 Kivistö, Finland Email: support@luxival.com 2. What data we collect and why Contact and project enquiries When you submit the contact form we collect your name, email address, optional phone number, company name, and your message. We use this data solely to respond to your enquiry and, if applicable, to fulfil a service contract. Legal basis: Legitimate interest (responding to your direct enquiry) and, where a contract follows, performance of that contract. Airport transfer bookings When you book a ride we collect your name, email, phone number, pickup address, destination, preferred date and time, and flight details. We use this to organise and deliver the transport service you requested. Legal basis: Performance of a contract. Newsletter subscriptions If you subscribe to the Luxival newsletter we collect your email address and, optionally, your name. You may unsubscribe at any time via the link in any newsletter email. Legal basis: Consent. Website analytics and preferences We use a site-wide consent manager before loading optional scripts. If you accept analytics, we may load Vercel Speed Insights to understand page performance and reliability. If you accept functional scripts, we may load Google Translate or similar preference-based features. Marketing scripts are off by default unless you explicitly allow them"
     },
     {
       "path": "/qa",
@@ -2676,7 +2691,9 @@
       "headings": [
         "Plan Your Ride",
         "Fare Details",
-        "Map temporarily unavailable"
+        "Book This Ride",
+        "JavaScript Required",
+        "Map Preview"
       ],
       "keywords": [
         "trip planner",
@@ -2701,11 +2718,18 @@
         "instant",
         "booking",
         "details",
+        "book",
+        "this",
+        "javascript",
+        "required",
         "map",
-        "temporarily",
-        "unavailable"
+        "tourism",
+        "digital",
+        "qa",
+        "audit",
+        "portfolio"
       ],
-      "body": "LUXIVAL &larr; Back to Booking Plan Your Ride Enter pickup and drop-off to preview the route and fare. Pickup Drop-off Show Route Book This Ride Enter pickup and drop-off to preview. Distance -- Drive Time -- Estimate -- HEL to Helsinki city centre HEL to Helsinki harbour HEL to Porvoo Fare Details Airport +€10 Luggage +€10 City Service +€10 Night (22–06) +€10 Private Cruise +€30 Base fare €100.00 Distance -- Estimated Total €100.00 * €100 base + €3.50/km + selected services. Final fare confirmed at booking."
+      "body": "Skip to main content LUXIVAL Home Digital Services Tourism & Transport Portfolio Blog QA & Audit About Get Started Plan Your Ride Type a pickup and drop-off address to preview the route and fare. Pickup Location Drop-off Location Show Route & Fare Type addresses above to get started. Distance -- Drive Time -- Estimate -- HEL Airport &rarr; Helsinki city centre HEL Airport &rarr; Helsinki harbour HEL Airport &rarr; Porvoo Fare Details Airport +&euro;10 Luggage +&euro;10 City Service +&euro;10 Night (22&ndash;06) +&euro;10 Private Cruise +&euro;30 Base fare &euro;100.00 Distance -- Estimated Total &euro;100.00 * &euro;100 base + &euro;3.50/km + selected services. Final fare confirmed at booking. Book This Ride Send Booking Request Booking Transfers Tourism Privacy Terms Contact Luxival &copy; 2026 &middot; +358 50 351 8366"
     },
     {
       "path": "/ubuntu-google-cloud-vm",

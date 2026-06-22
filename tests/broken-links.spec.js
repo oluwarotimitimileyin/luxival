@@ -128,8 +128,8 @@ test.describe('Broken Links Audit', () => {
 
   test('External social links are reachable', async ({ request }) => {
     const externals = [
-      'https://instagram.com/luxival',
-      'https://linkedin.com/company/luxival',
+      'https://www.instagram.com/luxivalfi/',
+      'https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/',
     ];
 
     for (const url of externals) {

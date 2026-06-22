@@ -26,6 +26,7 @@ from posthog import Posthog
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 from dotenv import load_dotenv
 
 from models import ScanRequest, ScanTier, ScanResult
@@ -40,6 +41,7 @@ posthog_client: Optional[Posthog] = None
 SUMUP_WEBHOOK_SECRET = os.getenv("SUMUP_WEBHOOK_SECRET", "")
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
+MAX_REQUEST_BYTES = int(os.getenv("MAX_REQUEST_BYTES", "1048576"))
 
 
 # ---------------------------------------------------------------------------
@@ -68,12 +70,45 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://www.luxival.com,http://localhost:3000").split(",")
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "ALLOWED_HOSTS",
+        "*.luxival.com,luxival-audit-api.fly.dev,localhost,127.0.0.1,testserver",
+    ).split(",")
+    if host.strip()
+]
+if ALLOWED_HOSTS and ALLOWED_HOSTS != ["*"]:
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=ALLOWED_HOSTS)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type", "Authorization"],
 )
+
+
+@app.middleware("http")
+async def security_headers_and_size_limit(request: Request, call_next):
+    content_length = request.headers.get("content-length")
+    if content_length:
+        try:
+            request_size = int(content_length)
+        except ValueError:
+            return JSONResponse(status_code=400, content={"detail": "Invalid Content-Length"})
+        if request_size > MAX_REQUEST_BYTES:
+            return JSONResponse(status_code=413, content={"detail": "Request body too large"})
+
+    response = await call_next(request)
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault("Cache-Control", "no-store")
+    response.headers.setdefault(
+        "Permissions-Policy",
+        "camera=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+    )
+    return response
 
 # In-memory stores (replace with Redis for production scale)
 # { checkout_id: {"status": "paid"|"pending", "email": str, "created_at": str} }
