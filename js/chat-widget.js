@@ -1,6 +1,37 @@
 (function () {
   if (document.getElementById('chatWidget')) return;
 
+  function ensureChatStyles() {
+    if (document.getElementById('chatWidgetStyles')) return;
+    var style = document.createElement('style');
+    style.id = 'chatWidgetStyles';
+    style.textContent = [
+      '.chat-widget{position:fixed;right:1rem;bottom:1rem;z-index:10030;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#E8EBF2}',
+      '.chat-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.72rem 1rem;border:1px solid rgba(201,169,106,.42);border-radius:18px;background:#11131A;color:#C9A96A;box-shadow:0 16px 36px rgba(0,0,0,.42);font:inherit;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}',
+      '.chat-panel{position:absolute;right:0;bottom:calc(100% + .8rem);width:min(360px,calc(100vw - 2rem));max-height:min(640px,calc(100vh - 7rem));overflow:hidden;border:1px solid rgba(201,169,106,.32);border-radius:18px;background:#11131A;box-shadow:0 24px 70px rgba(0,0,0,.54)}',
+      '.chat-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1rem;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}',
+      '.chat-header strong{display:block;color:#C9A96A;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase}',
+      '.chat-header p{margin:.25rem 0 0;color:rgba(232,235,242,.68);font-size:.78rem;line-height:1.4}',
+      '.chat-close{border:0;background:transparent;color:#E8EBF2;font-size:1.3rem;line-height:1;cursor:pointer}',
+      '.chat-body{display:grid;grid-template-rows:1fr auto auto auto;gap:.75rem;padding:1rem;max-height:calc(min(640px,100vh - 7rem) - 78px)}',
+      '.chat-messages{display:flex;flex-direction:column;gap:.6rem;min-height:180px;max-height:300px;overflow:auto;padding-right:.2rem}',
+      '.chat-bubble{max-width:88%;border-radius:18px;padding:.68rem .78rem;font-size:.86rem;line-height:1.45;white-space:pre-wrap}',
+      '.chat-bubble.assistant{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#E8EBF2}',
+      '.chat-bubble.user{align-self:flex-end;background:#C9A96A;color:#0A0B0F}',
+      '.chat-chip-row{display:flex;gap:.45rem;flex-wrap:wrap}',
+      '.chat-chip{border:1px solid rgba(201,169,106,.28);border-radius:18px;background:rgba(201,169,106,.08);color:#C9A96A;padding:.42rem .58rem;font:inherit;font-size:.72rem;cursor:pointer}',
+      '.chat-composer{display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:end}',
+      '.chat-composer textarea{min-height:44px;max-height:96px;resize:vertical;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:#0A0B0F;color:#E8EBF2;padding:.7rem .8rem;font:inherit;font-size:.85rem}',
+      '.chat-composer textarea:focus{outline:none;border-color:#C9A96A}',
+      '.chat-button{min-height:44px;border:0;border-radius:18px;background:#C9A96A;color:#0A0B0F;padding:.65rem .85rem;font:inherit;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}',
+      '.chat-status{min-height:1rem;color:rgba(232,235,242,.58);font-size:.74rem}',
+      '@media(max-width:768px){.chat-widget{right:.8rem;bottom:.8rem}.chat-panel{width:calc(100vw - 1.6rem);max-height:calc(100vh - 6rem)}.chat-toggle{min-height:48px}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
+  ensureChatStyles();
+
   const widgetMarkup = `
     <div class="chat-widget" id="chatWidget">
       <button class="chat-toggle" id="chatToggle" aria-label="Open Luxival chat">

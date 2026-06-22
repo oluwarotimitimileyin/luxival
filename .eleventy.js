@@ -15,6 +15,14 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectChatWidget(html) {
+    if (html.includes("/js/chat-widget.js")) return html;
+    if (/<\/body>/i.test(html)) {
+      return html.replace(/<\/body>/i, '  <script src="/js/chat-widget.js?v=20260622-1" defer></script>\n</body>');
+    }
+    return html;
+  }
+
   function injectSoftUiStyles(html) {
     if (html.includes("/css/soft-ui.css")) return html;
     if (/<\/head>/i.test(html)) {
@@ -25,7 +33,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
-    return injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content)));
+    return injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content))));
   });
 
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
