@@ -26,7 +26,6 @@ from posthog import Posthog
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-from starlette.middleware.trustedhost import TrustedHostMiddleware
 from dotenv import load_dotenv
 
 from models import ScanRequest, ScanTier, ScanResult
@@ -70,16 +69,6 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://www.luxival.com,http://localhost:3000").split(",")
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv(
-        "ALLOWED_HOSTS",
-        "*.luxival.com,luxival-audit-api.fly.dev,localhost,127.0.0.1,testserver",
-    ).split(",")
-    if host.strip()
-]
-if ALLOWED_HOSTS and ALLOWED_HOSTS != ["*"]:
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=ALLOWED_HOSTS)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
