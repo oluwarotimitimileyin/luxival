@@ -451,7 +451,6 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({
       reply: fallbackReply(typeof lastUserMessage === 'string' ? lastUserMessage : ''),
       degraded: true,
-      _debug: error.message,
     });
   }
 };
