@@ -109,18 +109,18 @@ const PROVIDERS = {
 
 const MODELS = {
   [PROVIDERS.ANTHROPIC]: {
-    fast: 'claude-haiku-4-5-20251001',
-    strong: 'claude-sonnet-4-20250514',
+    fast: 'claude-3-5-haiku-20241022',
+    strong: 'claude-3-5-sonnet-20241022',
     key: () => ANTHROPIC_API_KEY,
   },
   [PROVIDERS.OPENAI]: {
     fast: 'gpt-4o-mini',
-    strong: 'gpt-4o',
+    strong: 'gpt-4o-2024-11-20',
     key: () => OPENAI_API_KEY,
   },
   [PROVIDERS.GEMINI]: {
-    fast: 'gemini-2.0-flash',
-    strong: 'gemini-2.5-pro',
+    fast: 'gemini-2.0-flash-001',
+    strong: 'gemini-2.5-flash-preview-04-17',
     key: () => GEMINI_API_KEY,
   },
   [PROVIDERS.MOONSHOT]: {
