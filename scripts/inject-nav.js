@@ -124,12 +124,22 @@ function injectConsentScript(html) {
   return html + '\n<script src="/js/consent-manager.js?v=20260622-2" defer></script>\n';
 }
 
-function injectSoftUiStyles(html) {
-  if (html.includes('/css/soft-ui.css')) return html;
-  if (/<\/head>/i.test(html)) {
-    return html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+const FAVICON_LINKS = `<link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">`;
+
+function injectHeadAssets(html) {
+  let result = html;
+  const hasFavicon = /<link[^>]*href=["']\/favicon\.ico["'][^>]*>/.test(html);
+  if (!hasFavicon) {
+    result = result.replace(/<\/head>/i, FAVICON_LINKS + '\n</head>');
   }
-  return html;
+  if (!html.includes('/css/soft-ui.css')) {
+    result = result.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+  }
+  return result;
 }
 
 function injectChatWidget(html) {
@@ -151,9 +161,10 @@ const files = getHtmlFiles(SITE_DIR);
 for (const file of files) {
   const original = fs.readFileSync(file, 'utf8');
   let result = removeUngatedSpeedInsights(original);
-  result = injectSoftUiStyles(result);
+  result = injectHeadAssets(result);
+  const beforeConsent = result;
   result = injectConsentScript(result);
-  if (result !== original) consentInjected++;
+  if (result !== beforeConsent) consentInjected++;
   const beforeChat = result;
   result = injectChatWidget(result);
   if (result !== beforeChat) chatInjected++;
