@@ -162,7 +162,11 @@
     messages.push({ role: role, content: content });
   }
 
-  function showLeadForm(lead) {
+  function leadInputValue(lead, key) {
+    return String((lead && lead[key]) || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  function showLeadForm(lead, introMessage) {
     var existing = document.getElementById('chatLeadForm');
     if (existing) existing.remove();
 
@@ -170,11 +174,11 @@
     form.id = 'chatLeadForm';
     form.className = 'chat-bubble assistant lead-form';
     form.innerHTML = [
-      '<p style="margin:0 0 8px;font-size:14px;opacity:0.9">Share your details and we will follow up.</p>',
-      '<input type="text" id="leadName" placeholder="Your name" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:6px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<input type="email" id="leadEmail" placeholder="Your email" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:6px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<input type="tel" id="leadPhone" placeholder="Phone / WhatsApp (optional)" style="width:100%;margin-bottom:8px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:6px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<button type="button" id="leadSubmit" style="width:100%;padding:8px;background:var(--gold,#C9A96A);color:#0A0B0F;border:none;border-radius:6px;font-weight:600;font-size:13px;cursor:pointer">Send details</button>',
+      '<p style="margin:0 0 8px;font-size:14px;opacity:0.9">' + (introMessage || 'Share your details and we will follow up.') + '</p>',
+      '<input type="text" id="leadName" placeholder="Your name" value="' + leadInputValue(lead, 'name') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<input type="email" id="leadEmail" placeholder="Your email" value="' + leadInputValue(lead, 'email') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<input type="tel" id="leadPhone" placeholder="Phone / WhatsApp (optional)" value="' + leadInputValue(lead, 'phone') + '" style="width:100%;margin-bottom:8px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<button type="button" id="leadSubmit" style="width:100%;padding:8px;background:var(--gold,#C9A96A);color:#0A0B0F;border:none;border-radius:14px;font-weight:600;font-size:13px;cursor:pointer">Send details</button>',
       '<p id="leadFeedback" style="margin:6px 0 0;font-size:12px;opacity:0;transition:opacity 0.3s">Thanks! We will be in touch.</p>',
     ].join('');
     messagesEl.appendChild(form);
@@ -194,17 +198,31 @@
       }
 
       feedback.style.opacity = '0';
-      document.getElementById('leadSubmit').disabled = true;
-      document.getElementById('leadSubmit').textContent = 'Sending...';
+      var submitButton = document.getElementById('leadSubmit');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
 
-      var ok = await submitLead({ ...lead, name: name, email: email, phone: phone });
+      var result = await submitLead(Object.assign({}, lead, { name: name, email: email, phone: phone }));
 
-      feedback.textContent = ok
+      if (result.ok && window.LuxivalSupabase) {
+        window.LuxivalSupabase.submitChatLead({
+          name: name,
+          email: email,
+          phone: phone || null,
+          service_interest: lead.service || 'Chat inquiry',
+          message: lead.message || '',
+          source: 'chat-widget',
+          status: 'new',
+        }).catch(function() {});
+      }
+
+      feedback.textContent = result.ok
         ? 'Thanks! We will be in touch soon.'
         : 'Could not send. Please email us directly at support@luxival.com.';
       feedback.style.opacity = '1';
-      feedback.style.color = ok ? 'var(--gold, #C9A96A)' : '#ff6b6b';
-      document.getElementById('leadSubmit').textContent = 'Sent ';
+      feedback.style.color = result.ok ? 'var(--gold, #C9A96A)' : '#ff6b6b';
+      submitButton.textContent = result.ok ? 'Sent' : 'Try again';
+      submitButton.disabled = result.ok;
     });
   }
 
@@ -222,16 +240,39 @@
           source: 'chat-widget',
         }),
       });
-      return response.ok;
+      var data = await response.json().catch(function () { return {}; });
+      return {
+        ok: response.ok,
+        status: response.status,
+        error: response.ok ? null : (data.error || 'Email notification failed'),
+      };
     } catch (e) {
-      return false;
+      return { ok: false, status: 0, error: e && e.message ? e.message : 'Network error' };
     }
   }
 
-  function handleLead(lead) {
+  async function handleLead(lead) {
     if (lead.name && lead.email) {
-      submitLead(lead);
-      var msg = 'Your details have been shared with our team. We will follow up shortly — or you can reach us directly at support@luxival.com or WhatsApp +358 50 351 8366.';
+      var result = await submitLead(lead);
+      if (!result.ok) {
+        var failMsg = 'I could not send the booking automatically. Please check the details below or email support@luxival.com directly.';
+        addMessage('assistant', failMsg);
+        saveMessage('assistant', failMsg);
+        showLeadForm(lead, 'Please confirm your details and try sending again.');
+        return;
+      }
+      if (window.LuxivalSupabase) {
+        window.LuxivalSupabase.submitChatLead({
+          name: lead.name || '',
+          email: lead.email || '',
+          phone: lead.phone || null,
+          service_interest: lead.service || 'Chat inquiry',
+          message: lead.message || '',
+          source: 'chat-widget',
+          status: 'new',
+        }).catch(function() {});
+      }
+      var msg = 'Your details have been shared with our team. We will follow up shortly, or you can reach us directly at support@luxival.com or WhatsApp +358 50 351 8366.';
       addMessage('assistant', msg);
       saveMessage('assistant', msg);
       return;
@@ -274,7 +315,7 @@
       showStatus('', false);
 
       if (data.lead && typeof data.lead === 'object') {
-        handleLead(data.lead);
+        await handleLead(data.lead);
       }
     } catch (error) {
       console.error('Chat request failed:', error);

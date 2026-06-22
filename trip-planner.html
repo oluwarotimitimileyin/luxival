@@ -603,18 +603,20 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
     bookBtn.textContent = 'Sending…';
     setStatus('Sending your booking request…', '');
 
+    var bookingPayload = {
+      type: pickup.toLowerCase().includes('airport') ? 'Airport transfer booking' : 'Private ride booking',
+      name: name,
+      email: email,
+      phone: bookingForm.phone.value.trim(),
+      preferredDate: bookingForm.date.value,
+      message: message,
+      source: 'trip-planner',
+    };
+
     fetch('/api/lead-notification', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        type: pickup.toLowerCase().includes('airport') ? 'Airport transfer booking' : 'Private ride booking',
-        name: name,
-        email: email,
-        phone: bookingForm.phone.value.trim(),
-        preferredDate: bookingForm.date.value,
-        message: message,
-        source: 'trip-planner',
-      })
+      body: JSON.stringify(bookingPayload),
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
@@ -633,6 +635,18 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
       bookBtn.disabled = false;
       bookBtn.textContent = 'Send Booking Request';
     });
+
+    if (window.LuxivalSupabase) {
+      window.LuxivalSupabase.submitContactInquiry({
+        name: name,
+        email: email,
+        phone: bookingForm.phone.value.trim() || null,
+        service_interest: pickup.toLowerCase().includes('airport') ? 'Airport transfer booking' : 'Private ride booking',
+        message: message,
+        source: 'trip-planner',
+        status: 'new',
+      }).catch(function() {});
+    }
   });
 
 })();

@@ -1195,10 +1195,21 @@ document.getElementById('measurement-form').addEventListener('submit', function(
   payBtn.title = `Order: ${name} | ${emailV} | Chest:${m.chest} Waist:${m.waist} Hips:${m.hips}`;
 
   // Store in sessionStorage so order details survive the SumUp redirect
-  // EDITABLE: You can also send this to an email webhook (e.g. Formspree) here
   sessionStorage.setItem('luxival_order', JSON.stringify({
     name, email:emailV, measurements:m, size:result.sizeName, timestamp: new Date().toISOString()
   }));
+
+  // Save to Supabase for tracking
+  if (window.LuxivalSupabase) {
+    window.LuxivalSupabase.submitContactInquiry({
+      name: name,
+      email: emailV,
+      service_interest: 'Custom sewing pattern',
+      message: 'Measurements: ' + JSON.stringify(m) + '\nSize: ' + result.sizeName,
+      source: 'pattern-page',
+      status: 'new',
+    }).catch(function() {});
+  }
 
   // Switch screens
   document.getElementById('form-screen').style.display   = 'none';

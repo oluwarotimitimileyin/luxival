@@ -1,41 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const contactForm = document.getElementById('contactForm');
   const rideRequestForm = document.getElementById('rideRequestForm');
-  const newsletterForm = document.getElementById('newsletterForm');
 
   const showStatus = (element, message, isError = false) => {
     if (!element) return;
     element.textContent = message;
     element.style.color = isError ? '#f77' : '#9d7dff';
   };
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const status = document.getElementById('contactStatus');
-      showStatus(status, 'Sending inquiry…');
-
-      const payload = {
-        name: document.getElementById('contactName').value.trim(),
-        email: document.getElementById('contactEmail').value.trim(),
-        phone: document.getElementById('contactPhone').value.trim(),
-        company: document.getElementById('contactCompany').value.trim(),
-        service_interest: document.getElementById('contactService').value,
-        message: document.getElementById('contactMessage').value.trim(),
-        source: 'contact page',
-        status: 'new',
-      };
-
-      const { error } = await window.LuxivalSupabase.submitContactInquiry(payload);
-      if (error) {
-        showStatus(status, 'Unable to send inquiry. Please try again later.', true);
-        console.error('Contact inquiry error:', error);
-      } else {
-        contactForm.reset();
-        showStatus(status, 'Inquiry sent. We will reply shortly.');
-      }
-    });
-  }
 
   const rideEstimateDistance = document.getElementById('rideEstimateDistance');
   const rideEstimatePrice = document.getElementById('rideEstimatePrice');
@@ -169,33 +139,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const status = document.getElementById('newsletterStatus');
-      showStatus(status, 'Saving subscription…');
-
-      const payload = {
-        email: document.getElementById('newsletterEmail').value.trim(),
-        name: document.getElementById('newsletterName').value.trim() || null,
-        source: 'website footer',
-        consent: true,
-        status: 'subscribed',
-      };
-
-      const { error } = await window.LuxivalSupabase.subscribeNewsletter(payload);
-      if (error) {
-        if (error.code === '23505') {
-          newsletterForm.reset();
-          showStatus(status, 'You are already subscribed.');
-          return;
-        }
-        showStatus(status, 'Unable to subscribe. Please try again later.', true);
-        console.error('Newsletter subscription error:', error);
-      } else {
-        newsletterForm.reset();
-        showStatus(status, 'Thank you! You are subscribed.');
-      }
-    });
-  }
 });
