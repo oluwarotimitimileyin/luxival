@@ -1,13 +1,14 @@
 // api/chat.js
 // Vercel serverless function for Luxival website chat.
 // Multi-model router: routes each query to the best AI model
-// across Anthropic, OpenAI, Google Gemini, and Moonshot/Kimi.
+// across Anthropic, OpenAI, Google Gemini, Moonshot/Kimi, and DeepSeek.
 // Grounded in real service data with lead capture.
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const MOONSHOT_API_KEY = process.env.MOONSHOT_API_KEY;
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
 const SERVICES_CATALOG = `
 ## SERVICES CATALOG
@@ -105,6 +106,7 @@ const PROVIDERS = {
   OPENAI: 'openai',
   GEMINI: 'gemini',
   MOONSHOT: 'moonshot',
+  DEEPSEEK: 'deepseek',
 };
 
 const MODELS = {
@@ -128,6 +130,11 @@ const MODELS = {
     strong: 'moonshot-v1-32k',
     key: () => MOONSHOT_API_KEY,
   },
+  [PROVIDERS.DEEPSEEK]: {
+    fast: 'deepseek-chat',
+    strong: 'deepseek-reasoner',
+    key: () => DEEPSEEK_API_KEY,
+  },
 };
 
 function isAvailable(provider) {
@@ -141,41 +148,57 @@ const TASK_ROUTES = {
     { provider: PROVIDERS.GEMINI, tier: 'fast' },
     { provider: PROVIDERS.ANTHROPIC, tier: 'fast' },
     { provider: PROVIDERS.OPENAI, tier: 'fast' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.FAQ]: [
     { provider: PROVIDERS.ANTHROPIC, tier: 'fast' },
     { provider: PROVIDERS.OPENAI, tier: 'fast' },
     { provider: PROVIDERS.GEMINI, tier: 'fast' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.SERVICE_RECOMMEND]: [
     { provider: PROVIDERS.ANTHROPIC, tier: 'strong' },
     { provider: PROVIDERS.OPENAI, tier: 'strong' },
     { provider: PROVIDERS.GEMINI, tier: 'strong' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.TECHNICAL]: [
     { provider: PROVIDERS.ANTHROPIC, tier: 'strong' },
     { provider: PROVIDERS.OPENAI, tier: 'strong' },
     { provider: PROVIDERS.GEMINI, tier: 'strong' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.BOOKING]: [
     { provider: PROVIDERS.OPENAI, tier: 'strong' },
     { provider: PROVIDERS.ANTHROPIC, tier: 'strong' },
     { provider: PROVIDERS.GEMINI, tier: 'strong' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.TOURISM]: [
     { provider: PROVIDERS.GEMINI, tier: 'strong' },
     { provider: PROVIDERS.ANTHROPIC, tier: 'strong' },
     { provider: PROVIDERS.OPENAI, tier: 'strong' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.PRICING]: [
     { provider: PROVIDERS.ANTHROPIC, tier: 'fast' },
     { provider: PROVIDERS.OPENAI, tier: 'fast' },
     { provider: PROVIDERS.GEMINI, tier: 'fast' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
   [TASKS.GENERAL]: [
     { provider: PROVIDERS.ANTHROPIC, tier: 'fast' },
     { provider: PROVIDERS.OPENAI, tier: 'fast' },
     { provider: PROVIDERS.GEMINI, tier: 'fast' },
+    { provider: PROVIDERS.DEEPSEEK, tier: 'fast' },
+    { provider: PROVIDERS.MOONSHOT, tier: 'fast' },
   ],
 };
 
@@ -320,11 +343,40 @@ async function askMoonshot(messages, tier) {
   return text.trim();
 }
 
+async function askDeepSeek(messages, tier) {
+  const model = MODELS[PROVIDERS.DEEPSEEK][tier || 'fast'];
+  const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: 450,
+      messages: [
+        { role: 'system', content: LUXIVAL_SYSTEM_PROMPT },
+        ...buildProviderMessages(messages),
+      ],
+    }),
+  });
+
+  if (!response.ok) throw new Error(`DeepSeek ${response.status}`);
+
+  const data = await response.json();
+  const text = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+
+  if (!text || typeof text !== 'string') throw new Error('No reply from DeepSeek');
+
+  return text.trim();
+}
+
 const PROVIDER_CALLS = {
   [PROVIDERS.ANTHROPIC]: askAnthropic,
   [PROVIDERS.OPENAI]: askOpenAI,
   [PROVIDERS.GEMINI]: askGemini,
   [PROVIDERS.MOONSHOT]: askMoonshot,
+  [PROVIDERS.DEEPSEEK]: askDeepSeek,
 };
 
 // ---- ROUTER ----
