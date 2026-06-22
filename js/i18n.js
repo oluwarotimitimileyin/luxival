@@ -1087,8 +1087,13 @@
     setLang(getPreferredLang());
   });
 
-  var GT_CONSENT_KEY = 'luxival-gt-consent';
   var GT_EXCLUDED_PAGES = ['privacy', 'terms', 'contact', 'booking'];
+
+  function hasConsent(category) {
+    if (category === 'necessary') return true;
+    if (!window.luxivalConsent) return false;
+    return window.luxivalConsent.hasConsent(category);
+  }
 
   function isGtAllowed() {
     var page = (document.body.dataset.page || '').toLowerCase();
@@ -1113,27 +1118,12 @@
 
   function initGtConsent() {
     if (!isGtAllowed()) return;
-    if (localStorage.getItem(GT_CONSENT_KEY) === 'true') {
-      loadGoogleTranslate();
-      return;
-    }
-    var banner = document.createElement('div');
-    banner.id = 'gt-consent';
-    banner.innerHTML = '<span>Enable automatic translation for this page?</span><button id="gt-accept">Enable</button><button id="gt-dismiss">No thanks</button>';
-    var bannerStyle = document.createElement('style');
-    bannerStyle.textContent = '#gt-consent{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:#11131A;border:1px solid rgba(201,169,106,.3);border-radius:4px;padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem;z-index:300;font-size:.8rem;color:#E8EBF2;box-shadow:0 8px 32px rgba(0,0,0,.4)}#gt-consent button{padding:.4rem .8rem;border-radius:2px;border:none;cursor:pointer;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;font-family:inherit}#gt-accept{background:#C9A96A;color:#0A0B0F}#gt-dismiss{background:transparent;color:#a5adbf;border:1px solid rgba(255,255,255,.1)}';
-    document.head.appendChild(bannerStyle);
-    document.body.appendChild(banner);
-    document.getElementById('gt-accept').addEventListener('click', function() {
-      localStorage.setItem(GT_CONSENT_KEY, 'true');
-      banner.remove();
-      loadGoogleTranslate();
-    });
-    document.getElementById('gt-dismiss').addEventListener('click', function() {
-      localStorage.setItem(GT_CONSENT_KEY, 'false');
-      banner.remove();
-    });
+    if (hasConsent('functional')) loadGoogleTranslate();
   }
+
+  document.addEventListener('luxival:consent-changed', function(event) {
+    if (event.detail && event.detail.categories && event.detail.categories.functional) initGtConsent();
+  });
 
   document.addEventListener('DOMContentLoaded', function() {
     var el = document.createElement('div');

@@ -1,4 +1,32 @@
 module.exports = function (eleventyConfig) {
+  function removeUngatedSpeedInsights(html) {
+    return html
+      .replace(/\s*<!-- Vercel Speed Insights -->\s*/gi, "\n")
+      .replace(/\s*<script[^>]*>\s*window\.si\s*=\s*window\.si[\s\S]*?<\/script>\s*/gi, "\n")
+      .replace(/\s*<script[^>]+src=["']\/_vercel\/speed-insights\/script\.js["'][^>]*><\/script>\s*/gi, "\n");
+  }
+
+  function injectConsentScript(html) {
+    if (html.includes("/js/consent-manager.js")) return html;
+    if (/<\/body>/i.test(html)) {
+      return html.replace(/<\/body>/i, '  <script src="/js/consent-manager.js?v=20260622-2" defer></script>\n</body>');
+    }
+    return html;
+  }
+
+  function injectSoftUiStyles(html) {
+    if (html.includes("/css/soft-ui.css")) return html;
+    if (/<\/head>/i.test(html)) {
+      return html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+    }
+    return html;
+  }
+
+  eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html")) return content;
+    return injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content)));
+  });
+
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
   eleventyConfig.addPassthroughCopy({ css: "css" });
   eleventyConfig.addPassthroughCopy({ js: "js" });

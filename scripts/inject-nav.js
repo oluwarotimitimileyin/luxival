@@ -108,34 +108,67 @@ function injectFunnelScript(html) {
   return html + '\n<script src="/js/funnel-ctas.js?v=20260616-1" defer></script>\n';
 }
 
+function removeUngatedSpeedInsights(html) {
+  return html
+    .replace(/\s*<!-- Vercel Speed Insights -->\s*/gi, '\n')
+    .replace(/\s*<script[^>]*>\s*window\.si\s*=\s*window\.si[\s\S]*?<\/script>\s*/gi, '\n')
+    .replace(/\s*<script[^>]+src=["']\/_vercel\/speed-insights\/script\.js["'][^>]*><\/script>\s*/gi, '\n');
+}
+
+function injectConsentScript(html) {
+  if (html.includes('/js/consent-manager.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/consent-manager.js?v=20260622-2" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/consent-manager.js?v=20260622-2" defer></script>\n';
+}
+
+function injectSoftUiStyles(html) {
+  if (html.includes('/css/soft-ui.css')) return html;
+  if (/<\/head>/i.test(html)) {
+    return html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+  }
+  return html;
+}
+
 let updated = 0;
 let skipped = 0;
 let spaInjected = 0;
+let consentInjected = 0;
 
 const files = getHtmlFiles(SITE_DIR);
 
 for (const file of files) {
   const original = fs.readFileSync(file, 'utf8');
-  let result;
+  let result = removeUngatedSpeedInsights(original);
+  result = injectSoftUiStyles(result);
+  result = injectConsentScript(result);
+  if (result !== original) consentInjected++;
 
+  let navChanged = false;
   if (isSpaDistFile(file)) {
-    result = injectSpaNav(original);
-    if (result !== original) spaInjected++;
-    else { skipped++; continue; }
-  } else if (/<nav[\s>]/.test(original)) {
+    const beforeNav = result;
+    result = injectSpaNav(result);
+    navChanged = result !== beforeNav;
+    if (navChanged) spaInjected++;
+  } else if (/<nav[\s>]/.test(result)) {
     const prefix = getPrefix(file);
-    result = injectMainNav(original, prefix);
-    if (result !== original) updated++;
-    else { skipped++; continue; }
-  } else {
-    skipped++;
-    continue;
+    const beforeNav = result;
+    result = injectMainNav(result, prefix);
+    navChanged = result !== beforeNav;
+    if (navChanged) updated++;
   }
 
-  result = injectSearchScript(result);
-  result = injectFunnelScript(result);
+  if (navChanged) {
+    result = injectSearchScript(result);
+    result = injectFunnelScript(result);
+  } else if (result === original) {
+    skipped++;
+  }
 
-  fs.writeFileSync(file, result, 'utf8');
+  if (result !== original) {
+    fs.writeFileSync(file, result, 'utf8');
+  }
 }
 
-console.log(`inject-nav: ${updated} pages updated, ${spaInjected} SPA pages injected, ${skipped} skipped`);
+console.log(`inject-nav: ${updated} pages updated, ${spaInjected} SPA pages injected, ${consentInjected} consent scripts updated, ${skipped} skipped`);

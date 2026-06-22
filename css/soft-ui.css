@@ -1,0 +1,52 @@
+:where(
+  .btn,
+  .btn-outline,
+  .button,
+  .button-primary,
+  .button-secondary,
+  .button-outline,
+  .site-search-button,
+  .site-search-input,
+  .site-search-result,
+  .service-path,
+  .assistant-options a,
+  .assistant-options button,
+  .socials a,
+  .socials-row a,
+  .social-video-card,
+  .hover-card,
+  .card,
+  .feature-card,
+  .cross-card,
+  .project-card,
+  .contact-card,
+  .calculator-card,
+  .dashboard-card,
+  .cms-card,
+  .auth-card,
+  .section-card,
+  .destination-card,
+  .destination-media-card,
+  .hero-form,
+  .hero-search-panel,
+  input,
+  select,
+  textarea
+) {
+  border-radius: 18px !important;
+}
+
+:where(.btn, .btn-outline, .button, .button-primary, .button-secondary, .button-outline) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:where(.socials a, .socials-row a) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(201, 169, 106, 0.18);
+  background: rgba(255, 255, 255, 0.025);
+}
