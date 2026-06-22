@@ -182,6 +182,28 @@
 - Build should include a small JS client file that reads the public values.
 - Protect server-side endpoints with Vercel function routes.
 
+### chat_sessions
+- `id` UUID primary key (generated client-side, stored in localStorage)
+- `page_origin` text — first page the chat was opened on
+- `user_agent` text — browser user agent for analytics
+- `message_count` integer default 0 — total messages in session
+- `lead_captured` boolean default false — whether a lead was captured
+- `created_at` timestamp with timezone default now
+- `updated_at` timestamp with timezone default now
+
+### chat_messages
+- `id` bigint primary key (generated always as identity)
+- `session_id` UUID foreign key to `chat_sessions(id)` with cascade delete
+- `role` text — `user` or `assistant`
+- `content` text — message body
+- `metadata` jsonb nullable — future use (e.g., model used, latency)
+- `created_at` timestamp with timezone default now
+
+### RLS Policies
+- `chat_sessions` + `chat_messages`: anon INSERT and SELECT allowed (security through UUID obscurity)
+- `chat_sessions` + `chat_messages`: authenticated SELECT for admin dashboard
+- Index on `chat_messages(session_id, created_at)` for fast history loading
+
 ## 7. Next steps
 - Create Supabase tables and storage buckets in the Supabase dashboard.
 - Add RLS policies for anonymous inserts and private storage access.

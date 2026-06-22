@@ -111,7 +111,8 @@ function injectFunnelScript(html) {
 function removeUngatedSpeedInsights(html) {
   return html
     .replace(/\s*<!-- Vercel Speed Insights -->\s*/gi, '\n')
-    .replace(/\s*<script[^>]*>\s*window\.si\s*=\s*window\.si[\s\S]*?<\/script>\s*/gi, '\n')
+    .replace(/\s*<script>\s*window\.si\s*=\s*window\.si\s*\|\|\s*function\s*\(\)\s*\{\s*\(window\.siq\s*=\s*window\.siq\s*\|\|\s*\[\]\)\.push\(arguments\);?\s*\};?\s*<\/script>\s*/gi, '\n')
+    .replace(/\s*<script>\s*window\.si\s*=\s*window\.si\s*\|\|\s*function\s*\(\)\s*\{\s*\(window\.siq\s*=\s*window\.siq\s*\|\|\s*\[\]\)\.push\(arguments\)\s*\};?\s*<\/script>\s*/gi, '\n')
     .replace(/\s*<script[^>]+src=["']\/_vercel\/speed-insights\/script\.js["'][^>]*><\/script>\s*/gi, '\n');
 }
 
@@ -131,10 +132,19 @@ function injectSoftUiStyles(html) {
   return html;
 }
 
+function injectChatWidget(html) {
+  if (html.includes('/js/chat-widget.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/chat-widget.js?v=20260623-1" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/chat-widget.js?v=20260622-1" defer></script>\n';
+}
+
 let updated = 0;
 let skipped = 0;
 let spaInjected = 0;
 let consentInjected = 0;
+let chatInjected = 0;
 
 const files = getHtmlFiles(SITE_DIR);
 
@@ -144,6 +154,9 @@ for (const file of files) {
   result = injectSoftUiStyles(result);
   result = injectConsentScript(result);
   if (result !== original) consentInjected++;
+  const beforeChat = result;
+  result = injectChatWidget(result);
+  if (result !== beforeChat) chatInjected++;
 
   let navChanged = false;
   if (isSpaDistFile(file)) {
@@ -171,4 +184,4 @@ for (const file of files) {
   }
 }
 
-console.log(`inject-nav: ${updated} pages updated, ${spaInjected} SPA pages injected, ${consentInjected} consent scripts updated, ${skipped} skipped`);
+console.log(`inject-nav: ${updated} pages updated, ${spaInjected} SPA pages injected, ${consentInjected} consent scripts, ${chatInjected} chat widgets, ${skipped} skipped`);

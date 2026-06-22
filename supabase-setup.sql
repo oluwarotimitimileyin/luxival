@@ -326,6 +326,60 @@ create policy "auth_read_ride_uploads" on storage.objects
   using (bucket_id = 'ride-uploads');
 
 -- ============================================================
+-- CHAT PERSISTENCE
+-- ============================================================
+
+create table if not exists chat_sessions (
+  id            uuid primary key default gen_random_uuid(),
+  page_origin   text,
+  user_agent    text,
+  message_count integer default 0,
+  lead_captured boolean default false,
+  created_at    timestamptz default now(),
+  updated_at    timestamptz default now()
+);
+
+create table if not exists chat_messages (
+  id           bigint generated always as identity primary key,
+  session_id   uuid not null references chat_sessions(id) on delete cascade,
+  role         text not null check (role in ('user', 'assistant')),
+  content      text not null,
+  metadata     jsonb,
+  created_at   timestamptz default now()
+);
+
+create index if not exists idx_chat_messages_session_time
+  on chat_messages (session_id, created_at);
+
+alter table chat_sessions enable row level security;
+alter table chat_messages enable row level security;
+
+drop policy if exists "anon_insert_chat_sessions" on chat_sessions;
+create policy "anon_insert_chat_sessions" on chat_sessions
+  for insert to anon with check (true);
+
+drop policy if exists "anon_select_chat_sessions" on chat_sessions;
+create policy "anon_select_chat_sessions" on chat_sessions
+  for select to anon using (true);
+
+drop policy if exists "anon_insert_chat_messages" on chat_messages;
+create policy "anon_insert_chat_messages" on chat_messages
+  for insert to anon with check (true);
+
+drop policy if exists "anon_select_chat_messages" on chat_messages;
+create policy "anon_select_chat_messages" on chat_messages
+  for select to anon using (true);
+
+-- Admin (authenticated) access
+drop policy if exists "auth_select_chat_sessions" on chat_sessions;
+create policy "auth_select_chat_sessions" on chat_sessions
+  for select to authenticated using (true);
+
+drop policy if exists "auth_select_chat_messages" on chat_messages;
+create policy "auth_select_chat_messages" on chat_messages
+  for select to authenticated using (true);
+
+-- ============================================================
 -- INDEXES (performance)
 -- ============================================================
 create index if not exists idx_inquiries_email  on contact_inquiries (email);
