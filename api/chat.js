@@ -10,6 +10,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const MOONSHOT_API_KEY = process.env.MOONSHOT_API_KEY;
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const TRANSLATE_API = process.env.TRANSLATE_API || 'https://luxival-audit-api.fly.dev/translate';
 
 const SERVICES_CATALOG = `
 ## SERVICES CATALOG
@@ -479,6 +480,26 @@ function parseLeadBlock(reply) {
   }
 }
 
+// ---- TRANSLATION HELPER ----
+
+async function translateText(text, targetLang) {
+  if (!targetLang || targetLang === 'en' || targetLang === 'English') return text;
+  const langCode = { finnish: 'fi', swedish: 'sv', german: 'de', french: 'fr', italian: 'it', russian: 'ru', norwegian: 'no', danish: 'da', japanese: 'ja', chinese: 'zh', spanish: 'es', portuguese: 'pt', dutch: 'nl' }[targetLang.toLowerCase()] || targetLang.slice(0, 2);
+  if (langCode === 'en') return text;
+  try {
+    const resp = await fetch(TRANSLATE_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, source: 'auto', target: langCode }),
+    });
+    if (!resp.ok) return text;
+    const data = await resp.json();
+    return data.translated_text || text;
+  } catch {
+    return text;
+  }
+}
+
 // ---- FALLBACK REPLIES ----
 
 function fallbackReply(lastUserMessage) {
@@ -529,7 +550,8 @@ module.exports = async function handler(req, res) {
     const hasAnyKey = ANTHROPIC_API_KEY || OPENAI_API_KEY || GEMINI_API_KEY || MOONSHOT_API_KEY;
 
     if (!hasAnyKey) {
-      return res.status(200).json({ reply: fallbackReply(userText) });
+      const reply = await translateText(fallbackReply(userText), language);
+      return res.status(200).json({ reply });
     }
 
     const task = classifyTask(userText);
@@ -550,8 +572,10 @@ module.exports = async function handler(req, res) {
         : '';
 
     console.error('[chat] Error:', error);
+    const fallback = fallbackReply(typeof lastUserMessage === 'string' ? lastUserMessage : '');
+    const translated = await translateText(fallback, req.body?.language || 'en').catch(() => fallback);
     return res.status(200).json({
-      reply: fallbackReply(typeof lastUserMessage === 'string' ? lastUserMessage : ''),
+      reply: translated,
       degraded: true,
     });
   }

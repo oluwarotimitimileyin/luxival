@@ -34,3 +34,9 @@ setup.sh
 part
 supabase/.temp/
 opencode.json
+
+# Built dist assets (contain baked-in API keys)
+apps/auraframe/dist/
+apps/dist/
+portfolio/auraframe/frontend/dist/
+hello-fly/

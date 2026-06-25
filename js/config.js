@@ -5,5 +5,6 @@ window.LuxivalConfig = {
     SUPABASE_PUBLISHABLE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp2d2J3Ym5zZmhzYXVlcWRkcXphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMDU3ODksImV4cCI6MjA5MTg4MTc4OX0.ekBJhAoQL-gGIkT2wcaDwDAVZBjCU6KnyrMqafarBRM',
     ADMIN_ALLOWED_EMAIL: 'rotimikun@gmail.com',
     SITE_URL: 'https://www.luxival.com',
-    WHATSAPP_URL: 'https://wa.me/358503518366'
+    WHATSAPP_URL: 'https://wa.me/358503518366',
+    translateApi: 'https://luxival-audit-api.fly.dev/translate'
 };

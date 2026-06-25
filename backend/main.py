@@ -17,6 +17,7 @@ import base64
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Dict, Any, Optional, List
+from pydantic import BaseModel
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, BackgroundTasks, Header
@@ -32,6 +33,7 @@ from models import ScanRequest, ScanTier, ScanResult
 from scanner import run_free_scan, run_premium_scan
 from pdf_generator import generate_free_pdf, generate_premium_pdf
 from location_suggestions import suggest_locations
+from translator import translate_text, detect_language, batch_translate, SUPPORTED_LANGUAGES
 from risk_model import (
     RiskModelEngine, RiskModel, RiskExposureCreate,
     RegulatoryReportGenerator, run_risk_model
@@ -509,3 +511,55 @@ async def generate_regulatory_report(
         }, [])
 
     return {"report_type": report_type, "period": period, "report": report, "generated_at": _now()}
+
+
+# ---------------------------------------------------------------------------
+# Translation Endpoints (powered by deep-translator / Google Translate free API)
+# ---------------------------------------------------------------------------
+
+class TranslateRequest(BaseModel):
+    text: str
+    source: str = "auto"
+    target: str = "en"
+
+
+class BatchTranslateRequest(BaseModel):
+    texts: list[str]
+    source: str = "auto"
+    target: str = "en"
+
+
+@app.get("/translate/languages")
+async def list_languages():
+    """Return all supported language codes and names."""
+    return {"languages": SUPPORTED_LANGUAGES}
+
+
+@app.post("/translate")
+@limiter.limit("60/minute")
+async def translate(request: Request, body: TranslateRequest):
+    """Translate text from source language to target language."""
+    result = translate_text(body.text, body.source, body.target)
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["error"])
+    return result
+
+
+@app.post("/translate/detect")
+@limiter.limit("60/minute")
+async def detect(request: Request, body: TranslateRequest):
+    """Detect the language of a given text."""
+    result = detect_language(body.text)
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["error"])
+    return result
+
+
+@app.post("/translate/batch")
+@limiter.limit("30/minute")
+async def translate_batch(request: Request, body: BatchTranslateRequest):
+    """Translate multiple texts at once."""
+    result = batch_translate(body.texts, body.source, body.target)
+    if not result["success"]:
+        raise HTTPException(status_code=400, detail=result["error"])
+    return result

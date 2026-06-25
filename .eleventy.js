@@ -23,6 +23,14 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectPageTranslate(html) {
+    if (html.includes("/js/page-translate.js")) return html;
+    if (/<\/body>/i.test(html)) {
+      return html.replace(/<\/body>/i, '  <script src="/js/page-translate.js?v=20260625-1" defer></script>\n</body>');
+    }
+    return html;
+  }
+
   function injectSoftUiStyles(html) {
     if (html.includes("/css/soft-ui.css")) return html;
     if (/<\/head>/i.test(html)) {
@@ -33,7 +41,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
-    return injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content))));
+    return injectPageTranslate(injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content)))));
   });
 
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
