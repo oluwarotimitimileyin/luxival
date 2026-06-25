@@ -173,14 +173,6 @@ function injectSpaNav(html) {
   return html.replace(/<div id="root">/, SPA_NAV + '\n  <div id="root">');
 }
 
-function injectSearchScript(html) {
-  if (html.includes('/js/site-search.js')) return html;
-  if (/<\/body>/i.test(html)) {
-    return html.replace(/<\/body>/i, '  <script src="/js/site-search.js?v=20260609-2" defer></script>\n</body>');
-  }
-  return html + '\n<script src="/js/site-search.js?v=20260609-2" defer></script>\n';
-}
-
 function injectFunnelScript(html) {
   if (html.includes('/js/funnel-ctas.js')) return html;
   if (/<\/body>/i.test(html)) {
@@ -284,7 +276,6 @@ for (const file of files) {
   }
 
   if (navChanged) {
-    result = injectSearchScript(result);
     result = injectFunnelScript(result);
   } else if (result === original) {
     skipped++;

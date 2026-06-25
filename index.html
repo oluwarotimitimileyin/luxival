@@ -80,31 +80,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s,color .2s}
 .nav-links a:hover{opacity:1;color:var(--gold)}.nav-burger{display:none}
 
-/* --- Site search --- */
-.nav-search-item{position:relative;display:flex;align-items:center}
-.site-search{position:relative;min-width:240px}
-.site-search-controls{display:flex;gap:.45rem;align-items:center}
-.site-search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,106,.25);color:var(--text);padding:.56rem .8rem;border-radius:2px;font-size:.74rem;letter-spacing:.8px;text-transform:none}
-.site-search-input::placeholder{opacity:.7;color:rgba(232,235,242,.7)}
-.site-search-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,106,.15)}
-.site-search-button{background:var(--gold);border:1px solid var(--gold);color:var(--bg);padding:.56rem .72rem;border-radius:2px;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;line-height:1}
-.site-search-dropdown{position:absolute;top:calc(100% + .45rem);left:0;right:0;z-index:320;background:rgba(10,11,15,.96);border:1px solid rgba(201,169,106,.2);border-radius:2px;box-shadow:0 18px 35px rgba(0,0,0,.45);padding:.4rem;max-height:340px;overflow-y:auto}
-.site-search-result{display:block;padding:.65rem .6rem;border-radius:2px;border:1px solid transparent;transition:border-color .2s,background .2s}
-.site-search-result:hover,.site-search-result.active{background:rgba(201,169,106,.08);border-color:rgba(201,169,106,.2)}
-.site-search-result-title{display:block;color:var(--text);font-size:.76rem;letter-spacing:.7px;text-transform:uppercase;opacity:.95}
-.site-search-result-meta{display:block;color:var(--gold);font-size:.67rem;letter-spacing:1.1px;opacity:.9;margin-top:.2rem}
-.site-search-empty{padding:.6rem;color:rgba(232,235,242,.72);font-size:.73rem;letter-spacing:.6px}
-
-@media (max-width: 1200px){
-  .site-search{min-width:200px}
-}
-
 @media (max-width: 768px){
-  .nav-search-item{width:100%}
-  .site-search{width:100%;min-width:0}
-  .site-search-controls{display:grid;grid-template-columns:1fr auto}
-  .site-search-input{font-size:.78rem;padding:.66rem .75rem}
-  .site-search-dropdown{position:static;max-height:260px;margin-top:.45rem}
   .hero-actions{display:grid;grid-template-columns:1fr}
   .service-paths{grid-template-columns:1fr}
   .hero-search-row{grid-template-columns:1fr}
@@ -677,28 +653,9 @@ window.addEventListener('load',function(){
   });
 })();
 (function(){
-  var heroInput=document.getElementById('heroSearchInput');
-  var heroButton=document.getElementById('heroSearchButton');
-  var navInput=document.getElementById('siteSearchInput');
-  var navButton=document.getElementById('siteSearchButton');
-  function runHeroSearch(term){
-    var value=(term || (heroInput && heroInput.value) || '').trim();
-    if(!value || !navInput)return;
-    navInput.value=value;
-    navInput.focus();
-    navInput.dispatchEvent(new Event('input',{bubbles:true}));
-    if(navButton)navButton.click();
-  }
-  if(heroButton)heroButton.addEventListener('click',function(){runHeroSearch();});
-  if(heroInput)heroInput.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runHeroSearch();}});
-  document.querySelectorAll('[data-search-term]').forEach(function(button){
-    button.addEventListener('click',function(){runHeroSearch(button.getAttribute('data-search-term'));});
-  });
-
   var launch=document.getElementById('assistantLaunch');
   var panel=document.getElementById('assistantPanel');
   var close=document.getElementById('assistantClose');
-  var focusSearch=document.getElementById('assistantSearchFocus');
   function setPanel(open){
     if(!panel)return;
     panel.hidden=!open;
@@ -706,17 +663,11 @@ window.addEventListener('load',function(){
   }
   if(launch)launch.addEventListener('click',function(){setPanel(!(panel && panel.classList.contains('open')));});
   if(close)close.addEventListener('click',function(){setPanel(false);});
-  if(focusSearch)focusSearch.addEventListener('click',function(){
-    setPanel(false);
-    if(heroInput){heroInput.focus();return;}
-    if(navInput)navInput.focus();
-  });
   document.addEventListener('keydown',function(e){if(e.key==='Escape')setPanel(false);});
 })();
 </script>
 <script>window.si = window.si || function(){(window.siq = window.siq || []).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script src="/js/i18n.js?v=20260603-1" defer></script>
-<script src="/js/site-search.js?v=20260609-2" defer></script>
 </body>
 </html>
