@@ -11,3 +11,6 @@ slowapi==0.1.9
 aiofiles==23.2.1
 posthog>=3.0.0
 deep-translator==1.11.4
+langdetect==1.0.9
+asyncpg==0.29.0
+sqlalchemy[asyncio]==2.0.30

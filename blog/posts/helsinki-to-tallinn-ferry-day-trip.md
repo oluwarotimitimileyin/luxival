@@ -38,5 +38,5 @@ permalink: "blog/helsinki-to-tallinn-ferry-day-trip/index.html"
  <h2>Arrange Your Tallinn Transfer</h2>
  <p>Whether you need a driver waiting at Tallinn Port or a full day itinerary with private guide, we coordinate everything from the Helsinki side.</p>
 
- <p style="margin top:2rem"><a href="../transfers.html" class="btn">Book a Private Tallinn Transfer →</a></p>
+ <p style="margin-top:2rem"><a href="../transfers.html" class="btn">Book a Private Tallinn Transfer →</a></p>
 </div>

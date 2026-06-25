@@ -13,8 +13,8 @@ permalink: "blog/why-businesses-need-visibility-strategy-automation/index.html"
 <h1>Why Most Businesses Don't Just Need a Website, They Need Visibility, Strategy, and Automation</h1>
 
 <div class="post body">
- <figure style="margin bottom:2rem">
- <img src="/assets/images/blog/visibility strategy automation.png" alt="Luxival infographic about visibility, strategy, automation, SEO, AI integration, and website performance" loading="eager" style="width:100%;border radius:2px;border:1px solid rgba(201,169,106,.18)">
+ <figure style="margin-bottom:2rem">
+ <img src="/assets/images/blog/visibility-strategy-automation.png" alt="Luxival infographic about visibility, strategy, automation, SEO, AI integration, and website performance" loading="eager" style="width:100%;border-radius:2px;border:1px solid rgba(201,169,106,.18)">
  </figure>
 
  <p>"I have a business idea, but I don't know where to start."</p>
@@ -98,5 +98,5 @@ permalink: "blog/why-businesses-need-visibility-strategy-automation/index.html"
  <h2>Keywords Naturally Covered in This Article</h2>
  <p>Website developer, business website, SEO website, AI website integration, website automation, WordPress website, professional website development, website visibility on Google, responsive website, website optimization, AI business solutions, website performance testing, web design for small businesses, scalable website solutions, and cloud based website management.</p>
 
- <p style="margin top:2rem"><a href="/contact" class="btn">Build Your Digital Strategy →</a></p>
+ <p style="margin-top:2rem"><a href="/contact" class="btn">Build Your Digital Strategy →</a></p>
 </div>

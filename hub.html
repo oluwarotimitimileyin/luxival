@@ -145,9 +145,33 @@ footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
 <script>
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
-<script defer src="/_vercel/speed-insights/script.js"></script> </head>
+<script defer src="/_vercel/speed-insights/script.js"></script> <link rel="stylesheet" href="/css/neon.css">
+</head>
 <body>
-<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <!-- HERO -->
 <section class="hero container"> <div class="live-badge reveal"><div class="live-dot"></div>Curated weekly by Luxival</div> <h1 class="reveal d1">Start Here.<br>Choose your fastest path.</h1> <p class="hero-sub reveal d2">Use this hub to route straight into your goal: travel transport, digital growth services, or website audit and QA.</p> <p class="last-updated reveal d3" id="lastUpdated">Loading latest update time…</p>
 </section> <section class="container" style="padding-top:0"> <div class="decision-grid"> <article class="decision-card reveal d1"> <span class="eyebrow" style="margin-bottom:.5rem">Travel</span> <h3>Airport transfers, private rides, and Finland planning</h3> <p>Request a ride quote or plan your Finland trip with direct inquiry forms and response workflows.</p> <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a href="/trip-planner" class="btn" style="padding:.55rem 1rem">Plan a Ride →</a><a href="/tourism" class="btn" style="padding:.55rem 1rem;background:transparent;border:1px solid #C9A96A;color:#C9A96A">Travel →</a></div> </article> <article class="decision-card reveal d2"> <span class="eyebrow" style="margin-bottom:.5rem">Digital</span> <h3>Web design, SEO, QA, and automation projects</h3> <p>Submit your project scope through consultation and audit forms on the digital services flow.</p> <a href="/digital#consultation" class="btn" style="padding:.55rem 1rem">Go to Digital →</a> </article> <article class="decision-card reveal d3"> <span class="eyebrow" style="margin-bottom:.5rem">Audit</span> <h3>Run a free scan or order premium audit</h3> <p>Start with instant website scan results, then continue to premium deep dive analysis if needed.</p> <a href="/audit" class="btn" style="padding:.55rem 1rem">Go to Audit →</a> </article> </div>

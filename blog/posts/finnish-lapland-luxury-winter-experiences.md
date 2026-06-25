@@ -38,5 +38,5 @@ permalink: "blog/finnish-lapland-luxury-winter-experiences/index.html"
  <h2>Build Your Private Lapland Experience</h2>
  <p>Tell us what you want from Finnish Lapland and we'll build the itinerary that delivers it.</p>
 
- <p style="margin top:2rem"><a href="/booking" class="btn">Book a Private Lapland Experience →</a></p>
+ <p style="margin-top:2rem"><a href="/booking" class="btn">Book a Private Lapland Experience →</a></p>
 </div>

@@ -36,5 +36,5 @@ permalink: "blog/helsinki-airport-transfer-questions-answered/index.html"
  <h2>Book Before You Land</h2>
  <p>The easiest part of your Helsinki trip should be arriving. Book your private airport transfer in advance, travel in comfort, and start your visit the right way.</p>
 
- <p style="margin top:2rem"><a href="/services/airport transfer.html" class="btn">Book Your Helsinki Transfer →</a></p>
+ <p style="margin-top:2rem"><a href="/services/airport-transfer.html" class="btn">Book Your Helsinki Transfer →</a></p>
 </div>

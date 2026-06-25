@@ -346,12 +346,36 @@ img{max-width:100%;height:auto;display:block;aspect-ratio:auto}
 <script>
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
+<link rel="stylesheet" href="/css/neon.css">
 </head>
 <body data-page="home"> <div id="animated-bg"> <div class="bg-orb"></div> <div class="bg-orb"></div> <div class="bg-orb"></div>
 </div> <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div> <!-- NAV -->
-<nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/" class="active">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li class="nav-search-item"> <div class="site-search" id="siteSearch" role="search"> <label class="sr-only" for="siteSearchInput">Search the website</label> <div class="site-search-controls"> <input id="siteSearchInput" class="site-search-input" type="search" autocomplete="off" placeholder="Search services, pages, or keywords" data-i18n-placeholder="search.placeholder" aria-autocomplete="list" aria-controls="siteSearchResults" aria-expanded="false" aria-label="Website search"> <button type="button" class="site-search-button" id="siteSearchButton" aria-label="Search site">Search</button> </div> <div id="siteSearchResults" class="site-search-dropdown" role="listbox" hidden></div> </div> </li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <main id="main">
 <!-- HERO -->
 <section class="hero container"> <div class="hero-left"> <span class="eyebrow reveal" data-i18n="hero.eyebrow">Premium operations · Uusimaa, Finland</span> <div class="location-pill reveal d1">Serving Helsinki · Vantaa · Espoo · Beyond</div> <h1 data-i18n="hero.title" class="reveal d1">Premium Travel, Digital &amp; QA Services in Uusimaa</h1> <p data-i18n="hero.subtitle" class="subhead reveal d2">Airport transfers, Finland travel planning, conversion focused websites, SEO, automation, and QA audits for people and brands that expect detail.</p> <div class="hero-actions reveal d3"> <a href="/booking" class="btn">Book Travel</a> <a href="/digital" class="btn-outline">Grow My Business</a> <a href="/audit" class="btn-outline">Request QA / Audit</a> <a href="/hub" class="btn-outline">Start Here</a> </div> <div class="service-paths reveal d3" aria-label="Choose a Luxival service path"> <a class="service-path" href="/helsinki-airport-pickup"><strong>Travel</strong><span>Airport pickup, private rides, Uusimaa and Finland planning.</span></a> <a class="service-path" href="/digital"><strong>Digital</strong><span>Web design, SEO, automation, and lead generation systems.</span></a> <a class="service-path" href="/qa"><strong>QA &amp; Audit</strong><span>Website audits, software testing, reports, and quality checks.</span></a> <a class="service-path" href="/hub"><strong>Start here</strong><span>Need direction? Use our discovery hub to choose the fastest next step.</span></a> </div> <div class="hero-search-panel reveal d3" role="search"> <label for="heroSearchInput">Find what you need</label> <div class="hero-search-row"> <input id="heroSearchInput" type="search" placeholder="Search airport pickup, SEO, Lapland, audit..." aria-label="Search Luxival services"> <button class="btn btn-sm" id="heroSearchButton" type="button">Search</button> </div> <div class="hero-search-tags" aria-label="Suggested searches"> <button type="button" data-search-term="airport pickup">Airport pickup</button> <button type="button" data-search-term="web design">Web design</button> <button type="button" data-search-term="QA audit">QA audit</button> <button type="button" data-search-term="Finland travel">Finland travel</button> </div> </div> <button class="assistant-launch reveal d3" id="assistantLaunch" type="button"><span>?</span> Ask Luxival assistant</button> <!-- Social proof directly under CTA --> <div class="hero-proof reveal d3"> <div class="hero-proof-item"><span class="hero-proof-num">500+</span><span class="hero-proof-label" data-i18n="proof.transfers">Transfers completed</span></div> <div class="hero-proof-item"><span class="hero-proof-num">9/10</span><span class="hero-proof-label" data-i18n="proof.satisfaction">Client satisfaction</span></div> <div class="hero-proof-item"><span class="hero-proof-num">100+</span><span class="hero-proof-label" data-i18n="proof.audits">Website audits</span></div> </div> <!-- Quick booking / inquiry form --> <div class="hero-form reveal"> <span class="hero-form-title" data-i18n="form.title">Quick Enquiry, no obligation</span> <div class="hero-form-row"> <label class="sr-only" for="hfName">Your name</label> <input type="text" id="hfName" placeholder="Your name" data-i18n-placeholder="form.name" autocomplete="name"> <label class="sr-only" for="hfEmail">Email address</label> <input type="email" id="hfEmail" placeholder="Email address" data-i18n-placeholder="form.email" autocomplete="email"> </div> <div class="hero-form-row"> <label class="sr-only" for="hfService">Service needed</label> <select id="hfService"> <option value="" disabled selected data-i18n="form.service">I need…</option> <option value="airport-transfer" data-i18n="form.serviceAirport">Airport transfer</option> <option value="private-ride" data-i18n="form.serviceRide">Private ride / city tour</option> <option value="web-design" data-i18n="form.serviceWeb">Web design / SEO</option> <option value="qa-testing" data-i18n="form.serviceQa">QA software testing</option> <option value="other" data-i18n="form.serviceOther">Something else</option> </select> <label class="sr-only" for="hfDate">Date or project start</label> <input type="text" id="hfDate" placeholder="Date / project start" data-i18n-placeholder="form.date" autocomplete="off"> </div> <div class="hero-form-row single"> <button class="btn btn-sm" id="hfSubmit" type="button" data-i18n="form.submit">Send Quick Enquiry →</button> </div> <p id="hfStatus" style="font-size:.82rem;margin-top:.5rem;opacity:.7"></p> </div> </div>

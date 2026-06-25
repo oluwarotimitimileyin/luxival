@@ -36,5 +36,5 @@ permalink: "blog/web-design-finland-small-business-questions/index.html"
  <h2>Let's Build Something That Works</h2>
  <p>At Luxival, we design and build websites for Finnish businesses that want results, not just a digital business card. If your current site isn't bringing in enquiries, we'll tell you exactly why and fix it.</p>
 
- <p style="margin top:2rem"><a href="/pattern" class="btn">Talk About Your Website →</a></p>
+ <p style="margin-top:2rem"><a href="/pattern" class="btn">Talk About Your Website →</a></p>
 </div>

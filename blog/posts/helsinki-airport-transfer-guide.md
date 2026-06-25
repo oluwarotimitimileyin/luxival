@@ -36,5 +36,5 @@ permalink: "blog/helsinki-airport-transfer-guide/index.html"
 
  <p>Booking takes two minutes. You tell us your flight number, pickup time, and destination. We handle everything else.</p>
 
- <p style="margin top:2rem"><a href="/services/airport transfer.html" class="btn">Book Your Airport Transfer →</a></p>
+ <p style="margin-top:2rem"><a href="/services/airport-transfer.html" class="btn">Book Your Airport Transfer →</a></p>
 </div>

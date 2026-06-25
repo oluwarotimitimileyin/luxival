@@ -36,5 +36,5 @@ permalink: "blog/website-audit-what-it-is-why-you-need-it/index.html"
  <h2>Run Your Free Audit Now</h2>
  <p>Luxival's free audit tool checks 12 critical areas of your website in under a minute. No login required. If you want the full premium report, 7 in depth analysis flows, downloadable PDF, and specific recommendations, that's available too.</p>
 
- <p style="margin top:2rem"><a href="/audit" class="btn">Audit Your Website Free →</a></p>
+ <p style="margin-top:2rem"><a href="/audit" class="btn">Audit Your Website Free →</a></p>
 </div>

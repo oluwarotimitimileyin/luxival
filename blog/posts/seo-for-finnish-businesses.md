@@ -35,5 +35,5 @@ permalink: "blog/seo-for-finnish-businesses/index.html"
  <h2>Getting Help</h2>
  <p>SEO for a local Finnish business doesn't require a large budget, it requires the right approach. At Luxival, we offer SEO audits and ongoing digital strategy for small and medium businesses in Finland. If you'd like to understand where you currently stand and what would make the biggest difference, we'd be happy to take a look.</p>
 
- <p style="margin top:2rem"><a href="/pattern" class="btn">Request an SEO Audit →</a></p>
+ <p style="margin-top:2rem"><a href="/pattern" class="btn">Request an SEO Audit →</a></p>
 </div>

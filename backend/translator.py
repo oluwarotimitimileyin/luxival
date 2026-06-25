@@ -1,9 +1,12 @@
 """
 Luxival Translation Service
 Powered by deep-translator (Google Translate free API — no key needed).
+Language detection via langdetect.
 """
-from typing import Optional
 from deep_translator import GoogleTranslator
+from langdetect import detect as langdetect_detect, DetectorFactory, LangDetectException
+
+DetectorFactory.seed = 0
 
 SUPPORTED_LANGUAGES = {
     "en": "English",
@@ -44,11 +47,10 @@ def translate_text(text: str, source: str = "auto", target: str = "en") -> dict:
     try:
         translator = GoogleTranslator(source=source, target=target)
         translated = translator.translate(text)
-        detected = source if source != "auto" else translator._detect(text)
         return {
             "success": True,
             "translated_text": translated,
-            "source_language": detected,
+            "source_language": source,
             "target_language": target,
             "character_count": len(text),
         }
@@ -61,14 +63,13 @@ def translate_text(text: str, source: str = "auto", target: str = "en") -> dict:
 
 def detect_language(text: str) -> dict:
     try:
-        translator = GoogleTranslator(source="auto", target="en")
-        detected = translator._detect(text)
+        detected = langdetect_detect(text)
         return {
             "success": True,
             "detected_language": detected,
             "text": text,
         }
-    except Exception as e:
+    except LangDetectException as e:
         return {
             "success": False,
             "error": str(e),

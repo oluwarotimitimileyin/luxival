@@ -5,7 +5,7 @@ date: 2026-05-15
 tags: ["blog"]
 isPost: true
 ogImage: "https://images.unsplash.com/photo-1601865428572-38bd8c7a1897?w=1200&q=80"
-permalink: /blog/finnish sauna experience tourists guide/
+permalink: /blog/finnish-sauna-experience-tourists-guide/
 description: "Everything tourists ask about the Finnish sauna experience, what to expect, where to go, how to do it properly, and how to book a private luxury sauna in Helsinki."
 ---
 

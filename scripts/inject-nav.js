@@ -4,10 +4,9 @@ const path = require('path');
 const SITE_DIR = path.join(__dirname, '..', '_site');
 
 const CANONICAL_NAV_LINKS = `
-    <li><a href="/services">Services</a></li>
-    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/services" class="neon-btn">Services</a></li>
     <li class="nav-lang">
-      <label class="lang-trigger" aria-label="Change language">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
         <select id="lang-select" aria-label="Select language">
           <option value="en">EN</option>
@@ -29,12 +28,20 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 #mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,4vw,4rem);padding:max(1.1rem,calc(env(safe-area-inset-top) + .85rem)) 5% 1rem;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 #mainNav .nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;white-space:nowrap}
 #site-nav{display:flex;align-items:center;gap:clamp(1rem,3vw,3.2rem);list-style:none;margin:0 0 0 auto;padding:0}
-#site-nav a,.lang-trigger{min-height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;line-height:1;color:#C9A96A;text-decoration:none;opacity:.72}
-#site-nav a:hover,#site-nav a.active,.lang-trigger:hover{opacity:1;color:#C9A96A}
+#site-nav a{min-height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;line-height:1;color:#C9A96A;text-decoration:none}
 #mainNav .nav-burger{display:none!important}
 .nav-lang{display:inline-flex;align-items:center;position:relative}
-.lang-trigger{gap:.42rem;background:rgba(255,255,255,.035);border:1px solid rgba(201,169,106,.22);border-radius:999px;padding:.45rem .66rem;transition:opacity .2s,border-color .2s,box-shadow .2s}
-.lang-trigger:hover{border-color:rgba(201,169,106,.46);box-shadow:0 0 22px rgba(201,169,106,.12)}
+
+/* ---- Neon Button ---- */
+.neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.6rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:none;border-radius:14px;background:rgba(201,169,106,.06)!important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:all .4s ease;cursor:pointer;min-height:40px;line-height:1;white-space:nowrap;box-shadow:0 0 0 1px rgba(201,169,106,.25),inset 0 1px 0 rgba(255,255,255,.04)}
+.neon-btn::before{content:'';position:absolute;inset:-2.5px;border-radius:16px;background:conic-gradient(from var(--neon-angle,0deg),transparent 0deg,rgba(201,169,106,.05) 50deg,rgba(201,169,106,.35) 100deg,#C9A96A 140deg,rgba(255,255,255,.6) 170deg,#C9A96A 200deg,rgba(201,169,106,.35) 240deg,rgba(201,169,106,.05) 290deg,transparent 360deg);z-index:-2;animation:neonSpin 2.5s linear infinite;opacity:.65;transition:opacity .3s}
+.neon-btn:hover::before{opacity:1}
+.neon-btn::after{content:'';position:absolute;inset:2.5px;border-radius:12px;background:rgba(10,11,15,.93);z-index:-1;animation:neonPulse 3s ease-in-out infinite}
+.neon-btn:hover{transform:translateY(-1px);box-shadow:0 0 0 1.5px rgba(201,169,106,.5),0 0 20px rgba(201,169,106,.2),0 0 40px rgba(201,169,106,.1),inset 0 1px 0 rgba(255,255,255,.06)}
+@keyframes neonSpin{to{--neon-angle:360deg;transform:rotate(360deg)}}
+@keyframes neonPulse{0%,100%{box-shadow:inset 0 0 6px rgba(201,169,106,.03)}50%{box-shadow:inset 0 0 14px rgba(201,169,106,.07)}}
+
+.lang-trigger{gap:.42rem;padding:.45rem .9rem;background:rgba(201,169,106,.06)!important}
 .lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
 .lang-trigger select{appearance:none;background:transparent;border:0;color:#C9A96A;font:inherit;font-size:.72rem;letter-spacing:1px;outline:0;cursor:pointer;padding:0 .1rem}
 .lang-trigger option{background:#11131A;color:#E8EBF2}
@@ -51,8 +58,7 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 .svc-icon::before{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0 58%,color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),var(--card-accent,#C9A96A),color-mix(in srgb,var(--card-accent,#C9A96A) 45%,white),color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),transparent 86%);animation:neonSpin 3.8s linear infinite}
 .svc-icon::after{content:'';position:absolute;inset:2px;border-radius:12px;background:linear-gradient(145deg,#1a1c28,#0c0d14)}
 .svc-icon svg{position:relative;z-index:1;width:27px;height:27px;fill:none;stroke:color-mix(in srgb,var(--card-accent,#C9A96A) 44%,white);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px var(--card-glow,rgba(201,169,106,.24)))}
-@keyframes neonSpin{to{transform:rotate(360deg)}}
-@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.8rem}#site-nav a{font-size:.68rem;letter-spacing:1px;min-height:34px}.lang-trigger{min-height:34px;padding:.42rem .5rem}.lang-trigger select{width:2.35rem;font-size:.68rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.lang-trigger select{width:2.35rem;font-size:.68rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
 </style>`;
 
 const CANONICAL_FOOTER = `<footer class="luxival-footer">
@@ -93,7 +99,7 @@ const CANONICAL_FOOTER = `<footer class="luxival-footer">
 function buildNav(prefix) {
   const links = CANONICAL_NAV_LINKS;
   return `<nav id="mainNav">
-  <a href="/" class="nav-brand">LUXIVAL</a>
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">${links}
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -102,10 +108,10 @@ function buildNav(prefix) {
 
 const SPA_NAV = `<div id="luxival-site-nav">
   <nav style="position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 5%;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-    <a href="/" style="font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;">LUXIVAL</a>
-    <div style="display:flex;gap:1.5rem;align-items:center;">
-      <a href="/portfolio" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;opacity:.6;text-decoration:none;">Portfolio</a>
-      <a href="/services" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Services</a>
+    <a href="/" class="neon-btn" style="font-size:1rem;font-weight:600;letter-spacing:3px;padding:.4rem 1rem">LUXIVAL</a>
+    <div style="display:flex;gap:.8rem;align-items:center;">
+      <a href="/services" class="neon-btn" style="font-size:.72rem;padding:.4rem .9rem">Services</a>
+      <a href="/portfolio" class="neon-btn" style="font-size:.72rem;padding:.4rem .9rem">Portfolio</a>
     </div>
   </nav>
 </div>`;
@@ -211,8 +217,15 @@ function injectHeadAssets(html) {
   if (!hasFavicon) {
     result = result.replace(/<\/head>/i, FAVICON_LINKS + '\n</head>');
   }
+  let headLinks = '';
   if (!html.includes('/css/soft-ui.css')) {
-    result = result.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+    headLinks += '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n';
+  }
+  if (!html.includes('/css/neon.css')) {
+    headLinks += '<link rel="stylesheet" href="/css/neon.css">\n';
+  }
+  if (headLinks) {
+    result = result.replace(/<\/head>/i, headLinks + '</head>');
   }
   result = result.replace(/<style id=["']luxival-shared-chrome["'][\s\S]*?<\/style>\s*/i, '');
   result = result.replace(/<\/head>/i, CANONICAL_CHROME_CSS + '\n</head>');

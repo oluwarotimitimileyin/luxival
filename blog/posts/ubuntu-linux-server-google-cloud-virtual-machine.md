@@ -7,32 +7,32 @@ tags: ["blog"]
 isPost: true
 category: "Cloud Computing / Linux / Web Infrastructure"
 keywords:
-, "Ubuntu Linux server on Google Cloud"
-, "Linux server"
-, "Ubuntu server"
-, "Google Cloud virtual machine"
-, "cloud server"
-, "virtual machine"
-, "what is Linux"
-, "cloud computing for beginners"
-, "how to create a Linux server"
-, "SSH into Ubuntu server"
-, "Docker on Ubuntu server"
-, "game server hosting on Ubuntu"
-, "cloud gaming server"
-, "server security best practices"
+- "Ubuntu Linux server on Google Cloud"
+- "Linux server"
+- "Ubuntu server"
+- "Google Cloud virtual machine"
+- "cloud server"
+- "virtual machine"
+- "what is Linux"
+- "cloud computing for beginners"
+- "how to create a Linux server"
+- "SSH into Ubuntu server"
+- "Docker on Ubuntu server"
+- "game server hosting on Ubuntu"
+- "cloud gaming server"
+- "server security best practices"
 postTags:
-, "Linux"
-, "Ubuntu"
-, "Google Cloud"
-, "Virtual Machine"
-, "Cloud Server"
-, "Cloud Computing"
-, "Docker"
-, "Web Development"
-, "Server Security"
-, "AI Automation"
-, "QA Testing"
+- "Linux"
+- "Ubuntu"
+- "Google Cloud"
+- "Virtual Machine"
+- "Cloud Server"
+- "Cloud Computing"
+- "Docker"
+- "Web Development"
+- "Server Security"
+- "AI Automation"
+- "QA Testing"
 ogImage: "/blog/images/ubuntu-cloud-server-illustration.jpeg"
 ogImageAlt: "Illustration of an Ubuntu Linux cloud server running on Google Cloud with a laptop, cloud infrastructure, code terminal, and global remote access."
 permalink: "blog/ubuntu-linux-server-google-cloud-virtual-machine/index.html"
@@ -43,8 +43,8 @@ permalink: "blog/ubuntu-linux-server-google-cloud-virtual-machine/index.html"
 
 <div class="post body">
  <figure style="margin:1.5rem 0 2rem 0;">
- <img src="/blog/images/ubuntu cloud server illustration.jpeg" alt="Illustration of an Ubuntu Linux cloud server running on Google Cloud with connected devices" loading="eager" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
- <figcaption style="margin top:.65rem;font size:.95rem;opacity:.82;">Building a Linux machine in the cloud means you can work from anywhere with internet access.</figcaption>
+ <img src="/blog/images/ubuntu-cloud-server-illustration.jpeg" alt="Illustration of an Ubuntu Linux cloud server running on Google Cloud with connected devices" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
+ <figcaption style="margin-top:.65rem;font-size:.95rem;opacity:.82;">Building a Linux machine in the cloud means you can work from anywhere with internet access.</figcaption>
  </figure>
 
  <p>There was a problem I needed to solve. My physical computer had limited space, and I wanted to keep learning, testing, building, and experimenting with different systems without overloading my local machine.</p>
@@ -77,8 +77,8 @@ permalink: "blog/ubuntu-linux-server-google-cloud-virtual-machine/index.html"
 
  <h2>What Is a Virtual Machine?</h2>
  <figure style="margin:1.25rem 0 1.75rem 0;">
- <img src="/blog/images/ubuntu cloud engineer workflow.jpeg" alt="Cloud engineer configuring an Ubuntu virtual machine workflow from a laptop" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
- <figcaption style="margin top:.65rem;font size:.95rem;opacity:.82;">A virtual machine gives you isolated compute power, memory, storage, and network settings.</figcaption>
+ <img src="/blog/images/ubuntu-cloud-engineer-workflow.jpeg" alt="Cloud engineer configuring an Ubuntu virtual machine workflow from a laptop" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
+ <figcaption style="margin-top:.65rem;font-size:.95rem;opacity:.82;">A virtual machine gives you isolated compute power, memory, storage, and network settings.</figcaption>
  </figure>
 
  <p>A virtual machine (VM) is a computer created inside another larger physical computer. Cloud providers like Google run huge data centers and split their hardware into many isolated virtual computers for users.</p>
@@ -140,8 +140,8 @@ permalink: "blog/ubuntu-linux-server-google-cloud-virtual-machine/index.html"
 
  <h2>Virtualization vs Containerization</h2>
  <figure style="margin:1.25rem 0 1.75rem 0;">
- <img src="/blog/images/cloud remote work ai.jpeg" alt="Remote cloud operations and AI workflow monitoring from a laptop" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
- <figcaption style="margin top:.65rem;font size:.95rem;opacity:.82;">Docker on Ubuntu is a common path for repeatable deployments and app testing.</figcaption>
+ <img src="/blog/images/cloud-remote-work-ai.jpeg" alt="Remote cloud operations and AI workflow monitoring from a laptop" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
+ <figcaption style="margin-top:.65rem;font-size:.95rem;opacity:.82;">Docker on Ubuntu is a common path for repeatable deployments and app testing.</figcaption>
  </figure>
 
  <p>Virtualization and containerization are connected but different:</p>
@@ -197,12 +197,12 @@ permalink: "blog/ubuntu-linux-server-google-cloud-virtual-machine/index.html"
  <h2>Related Services at Luxival</h2>
  <p>If you are building modern digital systems, these pages may help:</p>
  <ul>
- <li><a href="/services/web design">Website Development Services</a></li>
- <li><a href="/services/ai agents">AI Automation Services</a></li>
- <li><a href="/services/software testing">Quality Assurance Testing</a></li>
+ <li><a href="/services/web-design">Website Development Services</a></li>
+ <li><a href="/services/ai-agents">AI Automation Services</a></li>
+ <li><a href="/services/software-testing">Quality Assurance Testing</a></li>
  <li><a href="/platform">Cloud and Digital Infrastructure Platform</a></li>
  <li><a href="/audit">SEO and Technical Optimization Audit</a></li>
  </ul>
 
- <p style="margin top:2rem"><a href="/contact" class="btn">Need Help With Cloud, QA, or Automation? Contact Luxival -></a></p>
+ <p style="margin-top:2rem"><a href="/contact" class="btn">Need Help With Cloud, QA, or Automation? Contact Luxival -></a></p>
 </div>

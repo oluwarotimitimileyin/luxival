@@ -179,11 +179,35 @@ footer{background:#060608;padding:5rem 0 2rem}
 
 </style>
 <!-- Vercel Speed Insights -->
+<link rel="stylesheet" href="/css/neon.css">
 </head>
 <body data-page-key="tourism" data-page="tourism">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
-<div id="prog"></div> <nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+<div id="prog"></div> <nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <main id="main">
 <!-- HERO -->
 <section class="hero container"> <div class="hero-left"> <span class="eyebrow reveal" data-content-key="hero_eyebrow" data-i18n="tourism.eyebrow">Tourism & Transport · Helsinki</span> <h1 data-i18n="tourism.title" class="reveal d1" data-content-key="hero_title">Premium airport<br>transfer & Finland<br>travel experience.</h1> <p data-i18n="tourism.subtitle" class="subhead reveal d2" data-content-key="hero_subtitle">Seamless Helsinki Vantaa pickups, private rides, hotel sourcing, and seasonal tour planning, wrapped in one luxury finish travel experience.</p> <div class="hero-actions reveal d3"> <a href="#pricing" class="btn" data-i18n="cta.estimateFare">Estimate your fare</a> <a href="#seasons" class="btn btn-outline">Explore Finland</a> </div> </div> <div class="reveal d2"> <div class="img-frame hero-img"> <picture> <source type="image/avif" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.avif 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.avif 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.avif 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.avif 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.avif 1920w" sizes="(max-width: 768px) 100vw, 45vw"> <source type="image/webp" srcset="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-480.webp 480w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp 768w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1024.webp 1024w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1440.webp 1440w, /assets/images/optimized/northern-lights-lapland/northern-lights-lapland-1920.webp 1920w" sizes="(max-width: 768px) 100vw, 45vw"> <img src="/assets/images/optimized/northern-lights-lapland/northern-lights-lapland-768.webp" alt="Northern lights over Lapland" width="1600" height="900" decoding="async" fetchpriority="high"> </picture> </div> <div class="hki-clock" id="hkiClock">Helsinki 00:00:00</div> </div>

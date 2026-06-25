@@ -21,7 +21,7 @@ permalink: "blog/how-i-built-an-automated-lead-generation-system-for-web-design-
 <p>This project became more than just a script. It became a real business workflow for Luxival.</p>
 
 <figure style="margin:1.6rem 0 2rem 0;">
- <img src="/blog/images/lead generation/lead generation 01.png" alt="Luxival automated lead generation workflow displayed across business automation screens" loading="eager" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-01.png" alt="Luxival automated lead generation workflow displayed across business automation screens" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Building practical automation for real outreach: from raw data to actionable business leads.</figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ The goal was to create a practical automation workflow that can:
 The result is a repeatable workflow that helps identify companies that may need web design, SEO, automation, or visibility support.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 02.png" alt="Lead generation architecture showing sourcing, filtering, and scoring workflow" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-02.png" alt="Lead generation architecture showing sourcing, filtering, and scoring workflow" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Every step has one purpose: reduce manual effort and surface outreach opportunities faster.</figcaption>
 </figure>
 
@@ -89,7 +89,7 @@ This system was built with simple, reliable tools:
 The goal was never to make this complex. The goal was to make it useful and repeatable.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 03.png" alt="Practical automation stack for Linux, Python, SQLite, and reporting workflows" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-03.png" alt="Practical automation stack for Linux, Python, SQLite, and reporting workflows" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Simple infrastructure can still produce a dependable lead engine when each tool has a clear role.</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ The workflow then enriches each lead with publicly available data:
 The system is designed around ethical lead generation using public business information only.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 04.png" alt="Lead enrichment process combining business records, contact discovery, and visibility signals" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-04.png" alt="Lead enrichment process combining business records, contact discovery, and visibility signals" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Public data, transparent logic, and clear sourcing keep the workflow practical and professional.</figcaption>
 </figure>
 
@@ -150,7 +150,7 @@ SQLite allows the workflow to:
 This turns a script into a lightweight lead system.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 05.png" alt="SQLite backed lead storage and deduplication workflow for automation reports" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-05.png" alt="SQLite backed lead storage and deduplication workflow for automation reports" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Persistence matters: storage and deduplication are what turn recurring automation into an operational system.</figcaption>
 </figure>
 
@@ -167,7 +167,7 @@ The final step sends the CSV report directly to my inbox. With cron scheduling, 
 Typical schedules include once every morning, once every evening, or twice per weekday depending on outreach cadence.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 06.png" alt="Automated reporting workflow delivering structured lead files and alerts" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-06.png" alt="Automated reporting workflow delivering structured lead files and alerts" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>When reporting is automated, lead research becomes a background system instead of a daily bottleneck.</figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ Digital Start Oy, Tampere, Example Avenue 10, N/A
 The strongest leads are usually businesses that are newly registered, have no visible website, include a public phone number, and show limited online presence.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 07.png" alt="Structured output example showing qualified leads prepared for outreach follow up" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-07.png" alt="Structured output example showing qualified leads prepared for outreach follow up" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>The output is only useful when it is clean enough to act on immediately.</figcaption>
 </figure>
 
@@ -207,7 +207,7 @@ With this workflow, I can:
 For Luxival, this is exactly the type of practical digital system I want to build for small businesses.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 08.png" alt="Business growth system connecting qualified leads, outreach, and digital services delivery" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-08.png" alt="Business growth system connecting qualified leads, outreach, and digital services delivery" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Good automation does not replace relationships. It creates space for better client conversations.</figcaption>
 </figure>
 
@@ -249,7 +249,7 @@ Luxival helps small businesses improve digital presence and operations. This pro
 Many businesses need more than a website. They need a connected system that helps them attract customers and manage operations efficiently.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 09.png" alt="Luxival digital operations concept linking websites, automation, and business systems" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-09.png" alt="Luxival digital operations concept linking websites, automation, and business systems" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>For small businesses, digital presence works best when websites, workflows, and follow up systems support each other.</figcaption>
 </figure>
 
@@ -278,7 +278,7 @@ A lead status flow such as New, Contacted, Interested, Follow up Needed, Convert
 The same workflow can extend to other Nordic markets using local public registry data sources.
 
 <figure style="margin:1.25rem 0 1.9rem 0;">
- <img src="/blog/images/lead generation/lead generation 10.png" alt="Future roadmap for Luxival automation systems including scoring, CRM, and regional expansion" loading="lazy" decoding="async" style="width:100%;height:auto;border radius:14px;display:block;" />
+ <img src="/blog/images/lead-generation/lead-generation-10.png" alt="Future roadmap for Luxival automation systems including scoring, CRM, and regional expansion" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:14px;display:block;" />
  <figcaption>Next phase: scoring, personalization, and CRM connected execution for faster conversion cycles.</figcaption>
 </figure>
 
@@ -292,4 +292,4 @@ For Luxival, this is the direction forward: practical web design, quality assura
 
 A website is important. A smart digital workflow can create even more value.
 
-<p style="margin top:2rem"><a href="/contact" class="btn">Discuss a Lead Generation Workflow for Your Business</a></p>
+<p style="margin-top:2rem"><a href="/contact" class="btn">Discuss a Lead Generation Workflow for Your Business</a></p>

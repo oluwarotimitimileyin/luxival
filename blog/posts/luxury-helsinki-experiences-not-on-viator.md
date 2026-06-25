@@ -5,7 +5,7 @@ date: 2026-05-15
 tags: ["blog"]
 isPost: true
 ogImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-permalink: /blog/luxury helsinki experiences not on viator/
+permalink: /blog/luxury-helsinki-experiences-not-on-viator/
 description: "The luxury Helsinki experiences that don't appear on Viator or GetYourGuide, hidden gems, local operators, and bespoke arrangements that tourists rarely find."
 ---
 

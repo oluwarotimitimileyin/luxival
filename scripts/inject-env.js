@@ -11,7 +11,7 @@ function walkDir(dir, callback) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walkDir(full, callback);
-    else if (entry.isFile() && entry.name.endsWith('.html')) callback(full);
+    else if (entry.isFile() && (entry.name.endsWith('.html') || entry.name.endsWith('.js'))) callback(full);
   }
 }
 

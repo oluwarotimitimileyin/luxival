@@ -37,5 +37,5 @@ permalink: "blog/summer-finland-lakeland-guide/index.html"
 
  <p>At Luxival, we offer private transfers from Helsinki Airport to destinations across Finland. Start your summer trip the right way, arrive, get in the car, and let the Lakeland come to you.</p>
 
- <p style="margin top:2rem"><a href="/tourism" class="btn">Plan Your Finland Summer Trip →</a></p>
+ <p style="margin-top:2rem"><a href="/tourism" class="btn">Plan Your Finland Summer Trip →</a></p>
 </div>

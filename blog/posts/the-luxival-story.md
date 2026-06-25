@@ -33,5 +33,5 @@ permalink: "blog/the-luxival-story/index.html"
 
  <p>That's what we're building. And we're building it from Helsinki.</p>
 
- <p style="margin top:2rem"><a href="/about" class="btn">Learn More About Luxival →</a></p>
+ <p style="margin-top:2rem"><a href="/about" class="btn">Learn More About Luxival →</a></p>
 </div>

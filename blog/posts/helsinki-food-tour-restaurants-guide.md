@@ -38,5 +38,5 @@ permalink: "blog/helsinki-food-tour-restaurants-guide/index.html"
  <h2>Plan Your Helsinki Food Experience</h2>
  <p>Whether you want a half day tasting tour or a full day private culinary journey through the city, we can build it around you.</p>
 
- <p style="margin top:2rem"><a href="/tourism" class="btn">Explore Helsinki Tourism Experiences →</a></p>
+ <p style="margin-top:2rem"><a href="/tourism" class="btn">Explore Helsinki Tourism Experiences →</a></p>
 </div>

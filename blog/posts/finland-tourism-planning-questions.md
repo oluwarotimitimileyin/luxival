@@ -36,5 +36,5 @@ permalink: "blog/finland-tourism-planning-questions/index.html"
  <h2>Plan Your Finland Trip With Us</h2>
  <p>The Luxival Finland Tourism Planner creates a personalised itinerary based on your dates, interests, and travel style, with a downloadable PDF you can take on the road.</p>
 
- <p style="margin top:2rem"><a href="/tourism planning.html" class="btn">Build Your Finland Itinerary →</a></p>
+ <p style="margin-top:2rem"><a href="/tourism-planning.html" class="btn">Build Your Finland Itinerary →</a></p>
 </div>

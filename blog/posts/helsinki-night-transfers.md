@@ -32,5 +32,5 @@ permalink: "blog/helsinki-night-transfers/index.html"
  <h2>Luxival Night Transfers</h2>
  <p>We run private night transfers across Helsinki and the metropolitan area, including late night airport runs for early morning departures. Pre book your ride so the end of your evening is as smooth as the rest of it.</p>
 
- <p style="margin top:2rem"><a href="/services/private rides.html" class="btn">Book a Private Night Transfer →</a></p>
+ <p style="margin-top:2rem"><a href="/services/private-rides.html" class="btn">Book a Private Night Transfer →</a></p>
 </div>

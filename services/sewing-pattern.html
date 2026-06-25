@@ -20,7 +20,30 @@
 </head>
 <body>
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
-<nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <section class="hero" style="padding-top:9rem;padding-bottom:5rem"> <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center"> <div> <div class="breadcrumb reveal"><a href="/pattern">Design Services</a><span>/</span><span style="opacity:.7">Sewing Patterns</span></div> <span class="eyebrow reveal">Pattern & Tailoring Tool</span> <h1 class="reveal d1">Custom Sewing Patterns<br>from Your Measurements</h1> <p class="reveal d2" style="font-size:1.1rem">Enter your body measurements and get a precise, made to measure sewing pattern. Built for tailors, dressmakers, and fashion designers who need accuracy without the guesswork.</p> <div class="hero-actions reveal d3"><a href="#pattern-tool" class="btn">Generate a pattern</a><a href="/booking" class="btn btn-outline">Talk to an expert</a></div> </div> <div class="reveal d2" style="position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;max-height:600px"> <picture> <source type="image/avif" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.avif 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.avif 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.avif 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.avif 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 45vw"> <source type="image/webp" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.webp 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.webp 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.webp 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.webp 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 45vw"> <img src="/assets/images/optimized/pattern-hero/pattern-hero-768.webp" alt="Bespoke blue suit, Luxival sewing pattern sample" width="1600" height="893" decoding="async" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"> </picture> <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(10,11,15,0.85))"> <p style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:1;margin:0">Pattern Sample, Bespoke Blazer</p> </div> </div> </div> <style>@media(max-width:768px){.hero .container[style*="grid"]{grid-template-columns:1fr !important;gap:2rem !important}}</style>
 </section>
 <div class="gold-line container"></div> <section class="container reveal" style="padding-bottom:2rem"> <span class="eyebrow">See it in action</span> <h2 class="reveal d1" style="margin-bottom:1.5rem">Pattern Demo</h2> <div style="position:relative;border-radius:4px;overflow:hidden;background:#000;max-width:400px;aspect-ratio:9/16"> <iframe src="https://www.youtube.com/embed/lMt_aUfCcW8?si=QyQf57dyFhY6zgt-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0;border:none"></iframe> </div>

@@ -38,5 +38,5 @@ permalink: "blog/rovaniemi-santa-claus-village-transfer/index.html"
  <h2>Book Your Rovaniemi Transfer</h2>
  <p>Private transfers from Rovaniemi Airport to Santa Claus Village and across Finnish Lapland, confirmed in advance, no guesswork on arrival.</p>
 
- <p style="margin top:2rem"><a href="../transfers.html" class="btn">Book a Private Lapland Transfer →</a></p>
+ <p style="margin-top:2rem"><a href="../transfers.html" class="btn">Book a Private Lapland Transfer →</a></p>
 </div>

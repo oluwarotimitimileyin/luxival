@@ -36,5 +36,5 @@ permalink: "blog/ai-agents-business-automation-questions/index.html"
  <h2>Let's Automate Something</h2>
  <p>At Luxival, we design and build AI agent workflows for small and medium businesses, starting with the task that wastes your team the most time right now. Let's identify it together.</p>
 
- <p style="margin top:2rem"><a href="/services/ai agents" class="btn">Explore AI Agent Services →</a></p>
+ <p style="margin-top:2rem"><a href="/services/ai-agents" class="btn">Explore AI Agent Services →</a></p>
 </div>

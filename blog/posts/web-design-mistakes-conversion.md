@@ -35,5 +35,5 @@ permalink: "blog/web-design-mistakes-conversion/index.html"
  <h2>Ready to Fix These?</h2>
  <p>Most of these issues take a few days to address properly but they have lasting impact on your business. At Luxival, we do focused web design improvements for businesses that want better results from the traffic they already have, not just a prettier site.</p>
 
- <p style="margin top:2rem"><a href="/pattern" class="btn">Let's Improve Your Website →</a></p>
+ <p style="margin-top:2rem"><a href="/pattern" class="btn">Let's Improve Your Website →</a></p>
 </div>

@@ -36,5 +36,5 @@ permalink: "blog/software-testing-qa-business-questions/index.html"
  <h2>Don't Launch Without Testing</h2>
  <p>At Luxival, we provide professional QA testing for websites, web applications, and digital platforms. We find the problems before your customers do, and we give you a clear report of exactly what needs fixing.</p>
 
- <p style="margin top:2rem"><a href="/services/software testing.html" class="btn">Get Your Site Tested →</a></p>
+ <p style="margin-top:2rem"><a href="/services/software-testing.html" class="btn">Get Your Site Tested →</a></p>
 </div>

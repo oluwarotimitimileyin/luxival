@@ -32,5 +32,5 @@ permalink: "blog/private-chauffeur-helsinki-business/index.html"
  <h2>Luxival Business Transfers</h2>
  <p>At Luxival, we specialise in private pickups for business travellers and professionals visiting Helsinki. Every journey is quiet, punctual, and handled by someone who understands that your time is the priority. We cover airport pickups, hotel to office transfers, and multi stop corporate days.</p>
 
- <p style="margin top:2rem"><a href="/services/private pickup.html" class="btn">Book a Private Pickup →</a></p>
+ <p style="margin-top:2rem"><a href="/services/private-pickup.html" class="btn">Book a Private Pickup →</a></p>
 </div>

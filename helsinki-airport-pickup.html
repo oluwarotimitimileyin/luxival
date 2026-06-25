@@ -86,9 +86,33 @@ footer{background:#060608;border-top:1px solid rgba(255,255,255,.05);padding:3re
   ]
 }
 </script>
+<link rel="stylesheet" href="/css/neon.css">
 </head>
 <body data-page="helsinki-airport-pickup">
-<nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <main> <section class="hero container"> <div> <span class="eyebrow">Helsinki Airport Pickup · Uusimaa</span> <h1>Private Helsinki Airport Pickup</h1> <p style="font-size:1.15rem;max-width:560px">Arrive in Finland with a calm, direct transfer from Helsinki Vantaa Airport. Luxival handles flight aware pickup, luggage help, and private rides to Helsinki, Vantaa, Espoo, Porvoo, and the wider Uusimaa region.</p> <div class="hero-actions"> <a href="/booking" class="btn">Book Airport Pickup</a> <a href="https://wa.me/358503518366" class="btn-outline" rel="noopener">Ask on WhatsApp</a> </div> <div class="trust-row"> <div class="trust"><strong>HEL</strong><span>Airport pickup</span></div> <div class="trust"><strong>24/7</strong><span>Advance requests</span></div> <div class="trust"><strong>Uusimaa</strong><span>Local service area</span></div> </div> </div> <div class="hero-media"> <picture> <source type="image/avif" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.avif 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.avif 1440w" sizes="(max-width: 768px) 100vw, 45vw"> <source type="image/webp" srcset="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp 768w, /assets/images/optimized/helsinki-cathedral/helsinki-cathedral-1440.webp 1440w" sizes="(max-width: 768px) 100vw, 45vw"> <img src="/assets/images/optimized/helsinki-cathedral/helsinki-cathedral-768.webp" alt="Private Helsinki airport pickup and transfer service" width="1280" height="1425" decoding="async" fetchpriority="high"> </picture> </div> </section> <section class="band"> <div class="container grid-3"> <div class="card"><h3>Flight aware pickup</h3><p>Share your flight number and pickup time. We plan around arrival details so you are not left guessing after landing.</p></div> <div class="card"><h3>Direct private transfer</h3><p>Go straight from Helsinki Airport to your hotel, home, meeting, cruise terminal, or next destination in Uusimaa.</p></div> <div class="card"><h3>Premium handoff</h3><p>Ideal for international guests, founders, executives, family arrivals, and visitors who want a reliable first impression.</p></div> </div> </section> <section class="container grid-2"> <div> <span class="eyebrow">Popular airport routes</span> <h2>From Helsinki Vantaa Airport to where you need to be</h2> <p>Luxival is based in Vantaa, close to Helsinki Airport. That makes airport pickup a natural first service for visitors arriving in Uusimaa.</p> </div> <div class="card"> <div class="route-list"> <div class="route"><span>Helsinki Airport to Helsinki city centre</span><span>Private transfer</span></div> <div class="route"><span>Helsinki Airport to Vantaa</span><span>Local pickup</span></div> <div class="route"><span>Helsinki Airport to Espoo</span><span>Business or hotel</span></div> <div class="route"><span>Helsinki Airport to Porvoo</span><span>Day trip or stay</span></div> <div class="route"><span>Helsinki Airport to cruise terminal</span><span>Luggage assist</span></div> </div> </div> </section> <section class="container" id="ride-planner"> <span class="eyebrow">Route preview</span> <h2>Preview your airport pickup route</h2> <p style="max-width:640px">Start with Helsinki Airport and add your hotel, home, harbour, office, or Uusimaa destination. We will confirm final timing after booking.</p> <div class="address-selector-block"> <span class="address-selector-title">Map based address selector</span> <iframe
         src="https://storage.googleapis.com/maps-solutions-xlnocbixmo/address-selection/903b/address-selection.html"
         class="address-selector-frame"

@@ -73,8 +73,32 @@ footer p{font-size:.78rem;opacity:.3;margin-top:.8rem}
 <script>
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
-<script defer src="/_vercel/speed-insights/script.js"></script> </head>
-<body> <nav> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul>
+<script defer src="/_vercel/speed-insights/script.js"></script> <link rel="stylesheet" href="/css/neon.css">
+</head>
+<body> <nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <section class="confirm-hero"> <div class="container"> <div class="checkmark">✓</div> <span class="eyebrow">Request Received</span> <h1>Your audit request<br>is in the queue</h1> <p>We will analyse your website and send a clear, actionable report to your inbox within <strong style="color:var(--gold)">48 hours</strong>.</p> <a href="/" class="btn">Back to Home</a> </div>
 </section> <div class="container"> <div class="gold-line"></div> <h2 style="text-align:center;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.5rem">What's in your audit?</h2> <p style="text-align:center;opacity:.55;margin-bottom:3rem">A complete picture of how your site performs, and exactly what to fix.</p> <div class="steps"> <div class="step"> <div class="step-num">01</div> <h3>Technical Scan</h3> <p>Core Web Vitals, broken links, crawl errors, HTTPS, and mobile performance.</p> </div> <div class="step"> <div class="step-num">02</div> <h3>SEO & Content</h3> <p>On page SEO, title/meta quality, keyword gaps, and backlink profile snapshot.</p> </div> <div class="step"> <div class="step-num">03</div> <h3>UX & Conversion</h3> <p>Funnel analysis, CTA placement, form friction, and mobile UX score.</p> </div> </div> <div class="gold-line"></div> <!-- Cross-sell: Transfers --> <div class="crosssell"> <span class="eyebrow">Planning a trip to Helsinki?</span> <h2>Premium chauffeur service<br>from airport to city</h2> <p>While your audit is being prepared, if you or your team ever visit Helsinki, we offer white glove airport transfers and private rides. Transparent pricing, live GPS tracking, always on time.</p> <div class="feature-grid"> <div class="feature-item"> <h4>✈ Airport Transfers</h4> <p>Helsinki–Vantaa to any city centre address, 24/7</p> </div> <div class="feature-item"> <h4>🚗 Private Rides</h4> <p>Business meetings, hotels, events across Helsinki</p> </div> <div class="feature-item"> <h4>🛳 Cruise Pickups</h4> <p>West Harbour and Katajanokka terminal pickups</p> </div> </div> <a href="/transfers" class="btn">See Transfer Pricing →</a> <p style="font-size:.75rem;opacity:.4;margin-top:1rem">Instant quote · Confirmed within 2 hours</p> </div>
 </div> <!-- FOOTER -->

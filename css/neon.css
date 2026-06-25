@@ -1,0 +1,147 @@
+/* ---- Neon Button ---- */
+/* Apple-style capsule with rotating neon border glow */
+.neon-btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem 1.6rem;
+  font-size: .78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #C9A96A !important;
+  text-decoration: none;
+  border: none;
+  border-radius: 14px;
+  background: rgba(201, 169, 106, .06) !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: all .4s ease;
+  cursor: pointer;
+  min-height: 40px;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow:
+    0 0 0 1px rgba(201, 169, 106, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+/* Rotating neon light border */
+.neon-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2.5px;
+  border-radius: 16px;
+  background: conic-gradient(
+    from var(--neon-angle, 0deg),
+    transparent 0deg,
+    rgba(201, 169, 106, .05) 50deg,
+    rgba(201, 169, 106, .35) 100deg,
+    #C9A96A 140deg,
+    rgba(255, 255, 255, .6) 170deg,
+    #C9A96A 200deg,
+    rgba(201, 169, 106, .35) 240deg,
+    rgba(201, 169, 106, .05) 290deg,
+    transparent 360deg
+  );
+  z-index: -2;
+  animation: neonSpin 2.5s linear infinite;
+  opacity: .65;
+  transition: opacity .3s;
+}
+
+.neon-btn:hover::before {
+  opacity: 1;
+}
+
+/* Inner background mask */
+.neon-btn::after {
+  content: '';
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 12px;
+  background: rgba(10, 11, 15, .93);
+  z-index: -1;
+  transition: background .3s, box-shadow .3s;
+}
+
+/* Neon glow on hover */
+.neon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1.5px rgba(201, 169, 106, .5),
+    0 0 20px rgba(201, 169, 106, .2),
+    0 0 40px rgba(201, 169, 106, .1),
+    inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+/* Subtle inner glow pulse always */
+.neon-btn::after {
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonSpin {
+  to {
+    --neon-angle: 360deg;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: inset 0 0 6px rgba(201, 169, 106, .03); }
+  50% { box-shadow: inset 0 0 14px rgba(201, 169, 106, .07); }
+}
+
+/* ---- Language Trigger (extends neon-btn) ---- */
+.lang-trigger {
+  gap: .42rem;
+  padding: .45rem .9rem;
+  background: rgba(201, 169, 106, .06) !important;
+}
+
+.lang-trigger svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  flex: 0 0 auto;
+}
+
+.lang-trigger select {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #C9A96A;
+  font: inherit;
+  font-size: .72rem;
+  letter-spacing: 1px;
+  outline: 0;
+  cursor: pointer;
+  padding: 0 .1rem;
+}
+
+.lang-trigger option {
+  background: #11131A;
+  color: #E8EBF2;
+}
+
+@media (max-width: 820px) {
+  .neon-btn {
+    padding: .4rem .85rem;
+    font-size: .7rem;
+    min-height: 34px;
+    border-radius: 12px;
+  }
+  .neon-btn::before { border-radius: 14px; }
+  .neon-btn::after { border-radius: 10px; }
+  .lang-trigger {
+    gap: .3rem;
+    padding: .38rem .6rem;
+  }
+  .lang-trigger select {
+    width: 2.35rem;
+    font-size: .68rem;
+  }
+}

@@ -143,11 +143,35 @@ footer{background:#060608;padding:5rem 0 2rem}
 	@media(max-width:820px){.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:5rem 0}nav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}.nav-brand{font-size:1rem;letter-spacing:2px}.nav-links{display:flex;flex-direction:row;position:static;inset:auto;background:transparent;border:0;border-radius:0;padding:0;gap:.8rem;z-index:auto;margin-left:auto}.nav-links a{font-size:.68rem;letter-spacing:1px;min-height:34px}.nav-burger{display:none!important}.lang-trigger{min-height:34px;padding:.45rem .55rem}.lang-trigger span{display:none}.lang-menu{right:0}}
 </style>
 <!-- Vercel Speed Insights -->
+<link rel="stylesheet" href="/css/neon.css">
 </head>
 <body data-page-key="services">
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
-<div id="prog"></div> <nav id="mainNav"> <a href="/" class="nav-brand">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a data-i18n="nav.home" href="/">Home</a></li> <li><a data-i18n="nav.services" href="/services">Services</a></li> <li><a data-i18n="nav.blog" href="/blog">Blog</a></li> <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li> </ul> <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+<div id="prog"></div> <nav id="mainNav">
+  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
+    <li class="nav-lang">
+      <label class="lang-trigger neon-btn" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <main id="main">
 <!-- HERO -->
 <section class="container hero"> <span class="eyebrow reveal" data-content-key="hero_eyebrow">All Services · Luxival</span> <h1 class="reveal d1" data-content-key="hero_title">One Luxival hub<br>for digital, technical, and travel work.</h1> <p class="lead reveal d2" data-content-key="hero_subtitle">Digital systems, mechanical and electrical support, embedded systems, installation and repair, and premium Finland tourism services, organized from your sketch into one clear service catalog.</p> <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap"> <a href="/booking" class="btn">Book a consultation</a> <a href="#digital-services" class="btn btn-outline">Explore digital services</a> </div>

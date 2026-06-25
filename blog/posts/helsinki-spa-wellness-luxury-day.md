@@ -38,5 +38,5 @@ permalink: "blog/helsinki-spa-wellness-luxury-day/index.html"
  <h2>Plan Your Helsinki Wellness Experience</h2>
  <p>Private sauna bookings, spa day itineraries, and Finnish wellness experiences designed around you.</p>
 
- <p style="margin top:2rem"><a href="/tourism" class="btn">Explore Helsinki Tourism Experiences →</a></p>
+ <p style="margin-top:2rem"><a href="/tourism" class="btn">Explore Helsinki Tourism Experiences →</a></p>
 </div>

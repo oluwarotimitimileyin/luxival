@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var API_KEY = 'AIzaSyANbQ4Shsjzt6DOl7pw9xmv6ZyAHNtSCas';
+  var API_KEY = 'YOUR_GOOGLE_MAPS_PUBLIC_KEY';
   var loadedCallbacks = {};
   var pendingCallbacks = [];
   var loading = false;

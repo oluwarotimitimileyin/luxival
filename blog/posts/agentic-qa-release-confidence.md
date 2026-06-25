@@ -36,5 +36,5 @@ permalink: "blog/agentic-qa-release-confidence/index.html"
  <h2>How We Implement This at Luxival</h2>
  <p>We build agentic QA workflows that integrate with your existing development pipeline. The result is a release process where agents handle the data collection, your team handles the decision, and nothing falls through the cracks. Whether you're releasing weekly or multiple times a day, the framework scales with you.</p>
 
- <p style="margin top:2rem"><a href="/services" class="btn">Learn About Agentic QA →</a></p>
+ <p style="margin-top:2rem"><a href="/services" class="btn">Learn About Agentic QA →</a></p>
 </div>

@@ -35,5 +35,5 @@ permalink: "blog/website-losing-customers-how-to-fix/index.html"
  <h2>Where to Start</h2>
  <p>A short audit of your existing website will usually reveal all five of these issues within 20 minutes. At Luxival, we offer website audits and redesign services for small and medium businesses, practical improvements that directly increase enquiries and bookings, not just a visual refresh.</p>
 
- <p style="margin top:2rem"><a href="/pattern" class="btn">Get a Free Website Audit →</a></p>
+ <p style="margin-top:2rem"><a href="/pattern" class="btn">Get a Free Website Audit →</a></p>
 </div>

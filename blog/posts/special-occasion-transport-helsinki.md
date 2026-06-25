@@ -5,7 +5,7 @@ date: 2026-05-15
 tags: ["blog"]
 isPost: true
 ogImage: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=1200&q=80"
-permalink: /blog/special occasion transport helsinki/
+permalink: /blog/special-occasion-transport-helsinki/
 description: "Everything you need to know about booking luxury transport for weddings, anniversaries, corporate VIP events, and special occasions in Helsinki and across Finland."
 ---
 
