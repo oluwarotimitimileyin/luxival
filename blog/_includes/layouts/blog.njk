@@ -71,6 +71,14 @@
     .post-cta-actions a{display:inline-block;padding:.55rem .9rem;border-radius:4px;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase}
     .post-cta-actions a.primary{background:var(--gold);color:var(--bg)}
     .post-cta-actions a.secondary{border:1px solid var(--gold);color:var(--gold)}
+    .service-links{margin:2rem 0;padding:1.2rem;border:1px solid rgba(201,169,106,.18);border-radius:8px;background:rgba(255,255,255,.025)}
+    .service-links h3{margin:0 0 .4rem;font-size:1.05rem;color:var(--text)}
+    .service-links p{margin:0 0 1rem;font-size:.9rem;opacity:.68}
+    .service-link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.75rem}
+    .service-link-card{display:block;border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:.9rem;background:rgba(10,11,15,.45);transition:border-color .2s,transform .2s}
+    .service-link-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+    .service-link-card strong{display:block;color:var(--text);font-size:.92rem;margin-bottom:.25rem}
+    .service-link-card span{display:block;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold)}
     footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
     .footer-copy{font-size:.75rem;opacity:.3;letter-spacing:1px}
@@ -156,6 +164,78 @@
         {{ content | safe }}
         {% if isPost %}
         {% set slug = page.url | lower %}
+        {% if 'airport' in slug or 'transfer' in slug or 'pickup' in slug or 'night-transfers' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Continue from this guide into the service pages built around the same travel need.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/airport-transfer"><strong>Airport transfer</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/private-pickup"><strong>Private pickup</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'chauffeur' in slug or 'special-occasion' in slug or 'private-city-tour' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Use these service pages to move from reading into booking or route planning.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/private-rides"><strong>Private rides</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/city-to-city"><strong>City-to-city transfers</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'finland' in slug or 'lapland' in slug or 'helsinki' in slug or 'sauna' in slug or 'ferry' in slug or 'lakeland' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Plan the practical side of the trip with Luxival travel and transport services.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/hotel-sourcing"><strong>Hotel sourcing</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/private-rides"><strong>Private rides</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'web-design' in slug or 'website' in slug or 'seo' in slug or 'visibility' in slug or 'lead-generation' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Turn the ideas in this article into a stronger customer-facing website.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/web-design"><strong>Web design</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/ai-agents"><strong>AI agents</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'agentic' in slug or 'ai-agents' in slug or 'automation' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Explore the implementation services connected to agentic workflow strategy.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/ai-agents"><strong>AI agents</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/software-testing"><strong>Software testing</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'qa' in slug or 'testing' in slug or 'istqb' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Use the QA service page when you are ready to scope test coverage or release support.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/software-testing"><strong>Software testing</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/ai-agents"><strong>AI-assisted workflows</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'tiktok' in slug or 'ugc' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Connect campaign learning with a service page focused on content and sales activation.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/tiktok-agency"><strong>TikTok agency</strong><span>View service</span></a>
+            <a class="service-link-card" href="/services/web-design"><strong>Web design</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% elif 'sewing-pattern' in slug %}
+        <aside class="service-links">
+          <h3>Related Luxival services</h3>
+          <p>Continue into the service page for custom sewing pattern support.</p>
+          <div class="service-link-grid">
+            <a class="service-link-card" href="/services/sewing-pattern"><strong>Sewing pattern</strong><span>View service</span></a>
+          </div>
+        </aside>
+        {% endif %}
         {% if 'helsinki' in slug or 'lapland' in slug or 'tourism' in slug or 'transfer' in slug or 'ferry' in slug or 'sauna' in slug %}
         <aside class="post-cta">
           <h3>Planning Finland travel?</h3>
