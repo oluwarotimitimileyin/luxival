@@ -13,7 +13,7 @@ function escapeHtml(value) {
 
 function normalizeLead(raw) {
   const lead = raw && typeof raw === 'object' ? raw : {};
-  return {
+  const normalized = {
     type: String(lead.type || 'Website inquiry').slice(0, 120),
     name: String(lead.name || '').slice(0, 160),
     email: String(lead.email || '').slice(0, 200),
@@ -24,6 +24,16 @@ function normalizeLead(raw) {
     message: String(lead.message || '').slice(0, 5000),
     source: String(lead.source || 'website').slice(0, 160),
   };
+  // Extract conversation transcript if present
+  if (Array.isArray(lead.conversation)) {
+    normalized.conversation = lead.conversation.slice(-50).map(function (m) {
+      return {
+        role: m.role === 'assistant' ? 'Assistant' : 'User',
+        content: String(m.content || '').slice(0, 2000),
+      };
+    });
+  }
+  return normalized;
 }
 
 function parseRecipients(value) {
@@ -53,14 +63,23 @@ function buildEmail(lead) {
     ['Source', lead.source],
   ];
 
-  const text = [
+  const textParts = [
     subject,
     '',
     ...rows.map(([label, value]) => `${label}: ${value || '-'}`),
     '',
     'Details:',
     lead.message || '-',
-  ].join('\n');
+  ];
+
+  if (lead.conversation && lead.conversation.length > 0) {
+    textParts.push('', '--- Conversation Transcript ---', '');
+    lead.conversation.forEach(function (m) {
+      textParts.push(`${m.role}: ${m.content}`);
+    });
+  }
+
+  const text = textParts.join('\n');
 
   const htmlRows = rows.map(([label, value]) => `
     <tr>
@@ -69,6 +88,25 @@ function buildEmail(lead) {
     </tr>
   `).join('');
 
+  let conversationHtml = '';
+  if (lead.conversation && lead.conversation.length > 0) {
+    const msgRows = lead.conversation.map(function (m) {
+      const isUser = m.role === 'User';
+      const bg = isUser ? '#f0efe6' : '#f7f7f7';
+      const align = isUser ? 'right' : 'left';
+      return `<tr>
+        <td style="padding:10px 14px;background:${bg};border-bottom:1px solid #e0e0e0;text-align:${align}">
+          <strong style="font-size:12px;color:#888;display:block;margin-bottom:2px">${escapeHtml(m.role)}</strong>
+          <span style="font-size:14px;color:#111">${escapeHtml(m.content)}</span>
+        </td>
+      </tr>`;
+    }).join('');
+    conversationHtml = `
+      <h2 style="font-size:16px;margin:22px 0 8px">Conversation Transcript</h2>
+      <table style="border-collapse:collapse;width:100%;max-width:680px;border:1px solid #eee">${msgRows}</table>
+    `;
+  }
+
   const html = `
     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5;color:#111">
       <h1 style="font-size:22px;margin:0 0 12px">New Luxival website request</h1>
@@ -76,6 +114,7 @@ function buildEmail(lead) {
       <table style="border-collapse:collapse;width:100%;max-width:680px;border:1px solid #eee">${htmlRows}</table>
       <h2 style="font-size:16px;margin:22px 0 8px">Details</h2>
       <pre style="white-space:pre-wrap;background:#f7f7f7;border:1px solid #eee;padding:12px;border-radius:6px">${escapeHtml(lead.message || '-')}</pre>
+      ${conversationHtml}
     </div>
   `;
 

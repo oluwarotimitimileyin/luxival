@@ -22,16 +22,11 @@
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
 <nav id="mainNav">
   <a href="/" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a href="/transfers">Transfers</a></li>
-    <li><a href="/tourism">Travel</a></li>
-    <li><a href="/pattern" class="active">Design</a></li>
-    <li><a href="/portfolio">Portfolio</a></li>
-    <li><a href="/platform">Platform</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/audit">Free Audit</a></li>
-    <li><a href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.services" href="/services">Services</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -141,8 +136,45 @@
     </div>
   </div>
 </div>
-<footer class="container"><div class="footer-inner"><span class="footer-copy">Luxival © 2026 · TikTok Agency · Helsinki</span><div class="footer-links"><a href="/">Home</a><a href="/tourism">Travel</a><a href="/pattern">Pattern</a><a href="/portfolio">Portfolio</a><a href="/platform">Platform</a><a href="/qa">QA</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-      <a href="/user-data-deletion">Data Deletion</a></div></div></footer>
+  <!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>LUXIVAL</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a>
+          <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Projects</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/user-data-deletion">Data Deletion</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
+  </div>
+</footer>
 <script>(function(){const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';document.getElementById('mainNav').style.background=window.scrollY>60?'rgba(10,11,15,.96)':'rgba(10,11,15,.7)';},{passive:true});const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));})();</script>
 <script>(function(){var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');if(!b||!l)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',String(o));});document.addEventListener('click',function(e){if(!b.contains(e.target)&&!l.contains(e.target)){l.classList.remove('open');b.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();</script>
 </body></html>

@@ -53,16 +53,11 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
 <nav id="mainNav">
   <a href="/" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a href="/tourism" class="active">Travel</a></li>
-    <li><a href="/pattern">Pattern</a></li>
-    <li><a href="/portfolio">Portfolio</a></li>
-    <li><a href="/qa">QA</a></li>
-    <li><a href="/platform">Platform</a></li>
-    <li><a href="/platform">Platform</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book a consultation</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.services" href="/services">Services</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -139,13 +134,41 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
   </div>
 </div>
 
+  <!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="reveal"><h3>Luxival</h3><p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p><p>support@luxival.com</p><p>+358 50 351 8366</p></div>
-      <div class="reveal d1"><h3>Navigate</h3><div class="foot-links"><a href="/">Home</a><a href="/tourism">Travel</a><a href="/pattern">Pattern</a><a href="/portfolio">Portfolio</a><a href="/platform">Platform</a><a href="/about">About</a><a href="/qa">QA</a></div></div>
-      <div class="reveal d2"><h3>Legal</h3><div class="foot-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>
-      <a href="/user-data-deletion">Data Deletion</a><a href="/contact">Contact</a></div></div>
+      <div class="reveal">
+        <h3>LUXIVAL</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a>
+          <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Projects</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/user-data-deletion">Data Deletion</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
     </div>
     <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>

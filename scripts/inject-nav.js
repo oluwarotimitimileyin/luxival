@@ -4,24 +4,91 @@ const path = require('path');
 const SITE_DIR = path.join(__dirname, '..', '_site');
 
 const CANONICAL_NAV_LINKS = `
-    <li><a href="/">Home</a></li>
-    <li><a href="/tourism">Travel</a></li>
-    <li><a href="/digital">Digital Services</a></li>
-    <li><a href="/audit">Website Audit</a></li>
+    <li><a href="/services">Services</a></li>
     <li><a href="/portfolio">Portfolio</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/contact">Contact</a></li>
-    <li class="nav-search-item">
-      <div class="site-search" id="siteSearch" role="search">
-        <label for="siteSearchInput" class="sr-only">Search</label>
-        <div class="site-search-controls">
-          <input id="siteSearchInput" class="site-search-input" type="search" autocomplete="off" placeholder="Search services, pages, or keywords" data-i18n-placeholder="search.placeholder" aria-autocomplete="list" aria-controls="siteSearchResults" aria-expanded="false" aria-label="Website search">
-          <button type="button" class="site-search-button" id="siteSearchButton" aria-label="Search site">Search</button>
-        </div>
-        <div id="siteSearchResults" class="site-search-dropdown" role="listbox" hidden></div>
+    <li class="nav-lang">
+      <label class="lang-trigger" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+        <select id="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+          <option value="sv">SV</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+          <option value="ru">RU</option>
+          <option value="no">NO</option>
+          <option value="da">DA</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+        </select>
+      </label>
+    </li>`;
+
+const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,4vw,4rem);padding:max(1.1rem,calc(env(safe-area-inset-top) + .85rem)) 5% 1rem;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+#mainNav .nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;white-space:nowrap}
+#site-nav{display:flex;align-items:center;gap:clamp(1rem,3vw,3.2rem);list-style:none;margin:0 0 0 auto;padding:0}
+#site-nav a,.lang-trigger{min-height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;line-height:1;color:#C9A96A;text-decoration:none;opacity:.72}
+#site-nav a:hover,#site-nav a.active,.lang-trigger:hover{opacity:1;color:#C9A96A}
+#mainNav .nav-burger{display:none!important}
+.nav-lang{display:inline-flex;align-items:center;position:relative}
+.lang-trigger{gap:.42rem;background:rgba(255,255,255,.035);border:1px solid rgba(201,169,106,.22);border-radius:999px;padding:.45rem .66rem;transition:opacity .2s,border-color .2s,box-shadow .2s}
+.lang-trigger:hover{border-color:rgba(201,169,106,.46);box-shadow:0 0 22px rgba(201,169,106,.12)}
+.lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
+.lang-trigger select{appearance:none;background:transparent;border:0;color:#C9A96A;font:inherit;font-size:.72rem;letter-spacing:1px;outline:0;cursor:pointer;padding:0 .1rem}
+.lang-trigger option{background:#11131A;color:#E8EBF2}
+.luxival-footer{background:#060608;color:#E8EBF2;padding:4.5rem 5% 2rem;border-top:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.luxival-footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
+.luxival-footer h3{margin:0 0 .8rem;color:#C9A96A;font-size:1.05rem;font-weight:400;letter-spacing:1px}
+.luxival-footer p{margin:.35rem 0;color:rgba(232,235,242,.62);font-size:.9rem;line-height:1.8}
+.luxival-footer a{color:#C9A96A;text-decoration:none;opacity:.58;font-size:.75rem;letter-spacing:1.6px;text-transform:uppercase}
+.luxival-footer a:hover{opacity:1}
+.luxival-footer-links{display:flex;flex-direction:column;gap:.7rem}
+.luxival-footer-social{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.luxival-footer-copy{max-width:1400px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center;color:rgba(232,235,242,.36);font-size:.78rem;letter-spacing:1px}
+.svc-icon{width:54px;height:54px;border-radius:14px;margin-bottom:1.2rem;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 44px rgba(0,0,0,.38);overflow:hidden}
+.svc-icon::before{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0 58%,color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),var(--card-accent,#C9A96A),color-mix(in srgb,var(--card-accent,#C9A96A) 45%,white),color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),transparent 86%);animation:neonSpin 3.8s linear infinite}
+.svc-icon::after{content:'';position:absolute;inset:2px;border-radius:12px;background:linear-gradient(145deg,#1a1c28,#0c0d14)}
+.svc-icon svg{position:relative;z-index:1;width:27px;height:27px;fill:none;stroke:color-mix(in srgb,var(--card-accent,#C9A96A) 44%,white);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px var(--card-glow,rgba(201,169,106,.24)))}
+@keyframes neonSpin{to{transform:rotate(360deg)}}
+@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.8rem}#site-nav a{font-size:.68rem;letter-spacing:1px;min-height:34px}.lang-trigger{min-height:34px;padding:.42rem .5rem}.lang-trigger select{width:2.35rem;font-size:.68rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+</style>`;
+
+const CANONICAL_FOOTER = `<footer class="luxival-footer">
+  <div class="luxival-footer-inner">
+    <div>
+      <h3>Luxival</h3>
+      <p>Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+      <p>support@luxival.com<br>+358 50 351 8366</p>
+      <div class="luxival-footer-social">
+        <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/+358503518366" target="_blank" rel="noopener">WhatsApp</a>
       </div>
-    </li>
-    <li><a href="/hub" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Start Here</a></li>`;
+    </div>
+    <div>
+      <h3>Navigate</h3>
+      <div class="luxival-footer-links">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/tourism">Tourism</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div>
+      <h3>Legal</h3>
+      <div class="luxival-footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/user-data-deletion">Data Deletion</a>
+      </div>
+    </div>
+  </div>
+  <div class="luxival-footer-copy">Luxival © 2026 · Digital, technical, tourism, and transport services</div>
+</footer>`;
 
 function buildNav(prefix) {
   const links = CANONICAL_NAV_LINKS;
@@ -38,10 +105,7 @@ const SPA_NAV = `<div id="luxival-site-nav">
     <a href="/" style="font-size:1rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;">LUXIVAL</a>
     <div style="display:flex;gap:1.5rem;align-items:center;">
       <a href="/portfolio" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A;opacity:.6;text-decoration:none;">Portfolio</a>
-      <a href="/digital" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Digital</a>
-      <a href="/blog" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Blog</a>
-      <a href="/audit" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Audit</a>
-      <a href="/contact" style="display:inline-block;background:#C9A96A;color:#0A0B0F;padding:.4rem 1.2rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;font-weight:500;">Get Started</a>
+      <a href="/services" style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#E8EBF2;opacity:.6;text-decoration:none;">Services</a>
     </div>
   </nav>
 </div>`;
@@ -85,6 +149,17 @@ function injectMainNav(html, prefix) {
     return html.replace(plainNavRegex, canonical);
   }
   return html;
+}
+
+function injectCanonicalFooter(html) {
+  const footerRegex = /<footer\b[^>]*>[\s\S]*?<\/footer>/i;
+  if (footerRegex.test(html)) {
+    return html.replace(footerRegex, CANONICAL_FOOTER);
+  }
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, CANONICAL_FOOTER + '\n</body>');
+  }
+  return html + '\n' + CANONICAL_FOOTER + '\n';
 }
 
 function injectSpaNav(html) {
@@ -139,7 +214,17 @@ function injectHeadAssets(html) {
   if (!html.includes('/css/soft-ui.css')) {
     result = result.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
   }
+  result = result.replace(/<style id=["']luxival-shared-chrome["'][\s\S]*?<\/style>\s*/i, '');
+  result = result.replace(/<\/head>/i, CANONICAL_CHROME_CSS + '\n</head>');
   return result;
+}
+
+function injectI18nScript(html) {
+  if (html.includes('/js/i18n.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/i18n.js?v=20260625-1" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/i18n.js?v=20260625-1" defer></script>\n';
 }
 
 function injectChatWidget(html) {
@@ -162,6 +247,8 @@ for (const file of files) {
   const original = fs.readFileSync(file, 'utf8');
   let result = removeUngatedSpeedInsights(original);
   result = injectHeadAssets(result);
+  result = injectCanonicalFooter(result);
+  result = injectI18nScript(result);
   const beforeConsent = result;
   result = injectConsentScript(result);
   if (result !== beforeConsent) consentInjected++;

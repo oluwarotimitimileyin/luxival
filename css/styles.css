@@ -9,6 +9,8 @@
   --border: rgba(255,255,255,0.08);
   --radius: 24px;
   --shadow: 0 32px 90px rgba(0,0,0,0.25);
+  --icon-accent: #a855f7;
+  --icon-glow: rgba(168,85,247,0.34);
 }
 
 * {
@@ -1093,6 +1095,85 @@ footer.site-footer {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+/* Glass Icon with Neon Ring Effect */
+.glass-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 18px 44px rgba(0,0,0,.38);
+  overflow: hidden;
+}
+
+.glass-icon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent 0 58%, color-mix(in srgb, var(--icon-accent) 12%, transparent), var(--icon-accent), color-mix(in srgb, var(--icon-accent) 45%, white), color-mix(in srgb, var(--icon-accent) 12%, transparent), transparent 86%);
+  animation: neonSpin 3.8s linear infinite;
+  filter: blur(.2px);
+}
+
+.glass-icon::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1a1c28, #0c0d14);
+}
+
+.glass-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: color-mix(in srgb, var(--icon-accent) 44%, white);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px var(--icon-glow));
+}
+
+.glass-icon.neon-enhanced {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 24px var(--icon-glow), 0 18px 44px rgba(0,0,0,.42);
+}
+
+.glass-icon.small {
+  width: 42px;
+  height: 42px;
+}
+
+.glass-icon.small svg {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes neonSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Card icon wrapper for consistent spacing */
+.card-icon {
+  margin-bottom: 1rem;
+}
+
+/* Enhanced button hover effects matching neon colors */
+.btn-glow {
+  transition: box-shadow .3s, transform .2s;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 14px 34px var(--icon-glow);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 860px) {

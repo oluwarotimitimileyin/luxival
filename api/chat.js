@@ -48,7 +48,9 @@ const SERVICES_CATALOG = `
 1. **Custom Sewing Patterns** — Measurement support and custom pattern creation. /services/sewing-pattern
 `;
 
-const LUXIVAL_SYSTEM_PROMPT = `You are Luxival Assistant, the on-site sales AI for Luxival (luxival.com), a premium multi-service company based in Helsinki, Finland.
+function getSystemPrompt(language) {
+  const lang = (language && language.trim()) || 'English';
+  return `You are Luxival Assistant, the on-site sales AI for Luxival (luxival.com), a premium multi-service company based in Helsinki, Finland.
 
 ${SERVICES_CATALOG}
 
@@ -63,7 +65,7 @@ Service IDs: web-design, web-development, seo-analysis, seo-competitor, offline-
 Only include fields the visitor has actually shared. Never invent contact details.
 
 ## RULES
-- Speak clear, concise English. Keep replies practical, under 140 words unless asked.
+- Respond in ${lang}. Speak clear, concise ${lang}. Keep replies practical, under 140 words unless asked.
 - Recommend the most relevant service based on what the visitor describes. Ask 1-2 qualifying questions if needed.
 - Do not invent prices. Refer only to: EUR 225 airport transfer, EUR 499 website audit, EUR 800 AI agent infrastructure.
 - For other pricing, say it depends on scope and offer to connect with the team.
@@ -71,6 +73,7 @@ Only include fields the visitor has actually shared. Never invent contact detail
 - For booking or urgent contact: /contact or WhatsApp +358 50 351 8366.
 - Adapt to page context: tourism page → emphasize transport. Services page → emphasize digital. QA page → emphasize audits.
 - Be warm, professional, helpful. You are the first impression of Luxival.`;
+}
 
 // ---- TASK CLASSIFIER ----
 
@@ -139,7 +142,7 @@ const MODELS = {
   },
   [PROVIDERS.GROQ]: {
     fast: 'llama-3.3-70b-versatile',
-    strong: 'mixtral-8x7b-32768',
+    strong: 'llama-3.3-70b-versatile',
     key: () => GROQ_API_KEY,
   },
 };
@@ -223,7 +226,7 @@ function buildProviderMessages(messages) {
   return messages.map((m) => ({ role: m.role, content: m.content }));
 }
 
-async function askAnthropic(messages, tier) {
+async function askAnthropic(messages, tier, language) {
   const model = MODELS[PROVIDERS.ANTHROPIC][tier || 'fast'];
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -235,7 +238,7 @@ async function askAnthropic(messages, tier) {
     body: JSON.stringify({
       model,
       max_tokens: 450,
-      system: LUXIVAL_SYSTEM_PROMPT,
+      system: getSystemPrompt(language),
       messages: buildProviderMessages(messages),
     }),
   });
@@ -250,7 +253,7 @@ async function askAnthropic(messages, tier) {
   return text.trim();
 }
 
-async function askOpenAI(messages, tier) {
+async function askOpenAI(messages, tier, language) {
   const model = MODELS[PROVIDERS.OPENAI][tier || 'fast'];
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -262,7 +265,7 @@ async function askOpenAI(messages, tier) {
       model,
       max_tokens: 450,
       messages: [
-        { role: 'system', content: LUXIVAL_SYSTEM_PROMPT },
+        { role: 'system', content: getSystemPrompt(language) },
         ...buildProviderMessages(messages),
       ],
     }),
@@ -278,14 +281,15 @@ async function askOpenAI(messages, tier) {
   return text.trim();
 }
 
-async function askGemini(messages, tier) {
+async function askGemini(messages, tier, language) {
   const model = MODELS[PROVIDERS.GEMINI][tier || 'fast'];
 
   const geminiContents = [];
   const systemParts = [];
+  const sysPrompt = getSystemPrompt(language);
 
-  if (LUXIVAL_SYSTEM_PROMPT) {
-    systemParts.push({ text: LUXIVAL_SYSTEM_PROMPT });
+  if (sysPrompt) {
+    systemParts.push({ text: sysPrompt });
   }
 
   for (const msg of messages) {
@@ -330,7 +334,7 @@ async function askGemini(messages, tier) {
   return text.trim();
 }
 
-async function askMoonshot(messages, tier) {
+async function askMoonshot(messages, tier, language) {
   const model = MODELS[PROVIDERS.MOONSHOT][tier || 'fast'];
   const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
     method: 'POST',
@@ -342,7 +346,7 @@ async function askMoonshot(messages, tier) {
       model,
       max_tokens: 450,
       messages: [
-        { role: 'system', content: LUXIVAL_SYSTEM_PROMPT },
+        { role: 'system', content: getSystemPrompt(language) },
         ...buildProviderMessages(messages),
       ],
     }),
@@ -358,7 +362,7 @@ async function askMoonshot(messages, tier) {
   return text.trim();
 }
 
-async function askDeepSeek(messages, tier) {
+async function askDeepSeek(messages, tier, language) {
   const model = MODELS[PROVIDERS.DEEPSEEK][tier || 'fast'];
   const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
     method: 'POST',
@@ -370,7 +374,7 @@ async function askDeepSeek(messages, tier) {
       model,
       max_tokens: 450,
       messages: [
-        { role: 'system', content: LUXIVAL_SYSTEM_PROMPT },
+        { role: 'system', content: getSystemPrompt(language) },
         ...buildProviderMessages(messages),
       ],
     }),
@@ -386,7 +390,7 @@ async function askDeepSeek(messages, tier) {
   return text.trim();
 }
 
-async function askGroq(messages, tier) {
+async function askGroq(messages, tier, language) {
   const model = MODELS[PROVIDERS.GROQ][tier || 'fast'];
   const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
@@ -398,7 +402,7 @@ async function askGroq(messages, tier) {
       model,
       max_tokens: 450,
       messages: [
-        { role: 'system', content: LUXIVAL_SYSTEM_PROMPT },
+        { role: 'system', content: getSystemPrompt(language) },
         ...buildProviderMessages(messages),
       ],
     }),
@@ -415,17 +419,17 @@ async function askGroq(messages, tier) {
 }
 
 const PROVIDER_CALLS = {
-  [PROVIDERS.ANTHROPIC]: askAnthropic,
-  [PROVIDERS.OPENAI]: askOpenAI,
-  [PROVIDERS.GEMINI]: askGemini,
-  [PROVIDERS.MOONSHOT]: askMoonshot,
-  [PROVIDERS.DEEPSEEK]: askDeepSeek,
-  [PROVIDERS.GROQ]: askGroq,
+  [PROVIDERS.ANTHROPIC]: (messages, tier, language) => askAnthropic(messages, tier, language),
+  [PROVIDERS.OPENAI]: (messages, tier, language) => askOpenAI(messages, tier, language),
+  [PROVIDERS.GEMINI]: (messages, tier, language) => askGemini(messages, tier, language),
+  [PROVIDERS.MOONSHOT]: (messages, tier, language) => askMoonshot(messages, tier, language),
+  [PROVIDERS.DEEPSEEK]: (messages, tier, language) => askDeepSeek(messages, tier, language),
+  [PROVIDERS.GROQ]: (messages, tier, language) => askGroq(messages, tier, language),
 };
 
 // ---- ROUTER ----
 
-async function askModel(messages, task) {
+async function askModel(messages, task, language) {
   const route = TASK_ROUTES[task] || TASK_ROUTES[TASKS.GENERAL];
   const errors = [];
 
@@ -437,7 +441,7 @@ async function askModel(messages, task) {
 
     try {
       const call = PROVIDER_CALLS[choice.provider];
-      return await call(messages, choice.tier);
+      return await call(messages, choice.tier, language);
     } catch (err) {
       errors.push(`${choice.provider}: ${err.message}`);
       console.error(`[chat] ${choice.provider} failed:`, err.message);
@@ -513,6 +517,7 @@ module.exports = async function handler(req, res) {
   try {
     const messages = normalizeMessages(req.body && req.body.messages);
     const sessionId = req.body && req.body.session_id ? req.body.session_id.slice(0, 64) : null;
+    const language = req.body && req.body.language ? req.body.language.trim().slice(0, 30) : 'en';
 
     if (!messages.length) {
       return res.status(400).json({ error: 'No chat messages provided' });
@@ -528,13 +533,14 @@ module.exports = async function handler(req, res) {
     }
 
     const task = classifyTask(userText);
-    const rawReply = await askModel(messages, task);
+    const rawReply = await askModel(messages, task, language);
     const { reply, lead } = parseLeadBlock(rawReply);
 
     return res.status(200).json({
       reply,
       lead: lead || undefined,
       model: task,
+      language: language,
       session_id: sessionId,
     });
   } catch (error) {

@@ -16,7 +16,7 @@ import asyncio
 import base64
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, BackgroundTasks, Header
@@ -32,6 +32,11 @@ from models import ScanRequest, ScanTier, ScanResult
 from scanner import run_free_scan, run_premium_scan
 from pdf_generator import generate_free_pdf, generate_premium_pdf
 from location_suggestions import suggest_locations
+from risk_model import (
+    RiskModelEngine, RiskModel, RiskExposureCreate,
+    RegulatoryReportGenerator, run_risk_model
+)
+from risk_report_generator import generate_risk_report
 
 load_dotenv()
 
@@ -40,7 +45,9 @@ posthog_client: Optional[Posthog] = None
 SUMUP_WEBHOOK_SECRET = os.getenv("SUMUP_WEBHOOK_SECRET", "")
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
+DATABASE_URL = os.getenv("DATABASE_URL", "")
 MAX_REQUEST_BYTES = int(os.getenv("MAX_REQUEST_BYTES", "1048576"))
+_risk_engine: Optional[RiskModelEngine] = None
 
 
 # ---------------------------------------------------------------------------
@@ -49,13 +56,16 @@ MAX_REQUEST_BYTES = int(os.getenv("MAX_REQUEST_BYTES", "1048576"))
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global posthog_client
+    global posthog_client, _risk_engine
     posthog_client = Posthog(
         project_api_key=os.getenv("POSTHOG_PROJECT_TOKEN", ""),
         host=os.getenv("POSTHOG_HOST", "https://eu.i.posthog.com"),
         enable_exception_autocapture=True,
     )
     atexit.register(posthog_client.shutdown)
+    if DATABASE_URL:
+        _risk_engine = RiskModelEngine()
+        await _risk_engine.init_db(DATABASE_URL)
     yield
     posthog_client.shutdown()
 
@@ -369,3 +379,133 @@ async def scan_premium(request: Request, body: ScanRequest,
         "tier": "premium",
         "created_at": _now(),
     }
+
+
+# ---------------------------------------------------------------------------
+# Risk Model Routes
+# ---------------------------------------------------------------------------
+
+class RiskExposuresRequest(BaseModel):
+    entity_ids: List[str] = []
+    exposures: List[float] = []
+    sectors: Optional[List[str]] = None
+    geographies: Optional[List[str]] = None
+
+
+@app.post("/risk/model/run")
+@limiter.limit("10/hour")
+async def run_risk_model_endpoint(request: Request, body: RiskExposuresRequest):
+    """Run credit risk model on provided exposures and generate regulatory report."""
+    if not _risk_engine:
+        raise HTTPException(status_code=503, detail="Risk engine not initialized")
+
+    model = RiskModel(
+        model_name="credit_portfolio",
+        model_type="credit",
+        description="Credit risk assessment with Basel III methodology"
+    )
+    model_id = await _risk_engine.save_risk_model(model)
+
+    exposure_creates = []
+    for i, entity_id in enumerate(body.entity_ids):
+        exposure = RiskExposureCreate(
+            risk_model_id=model_id,
+            entity_type="counterparty",
+            entity_id=entity_id,
+            exposure_amount=body.exposures[i] if i < len(body.exposures) else 100000,
+            sector=body.sectors[i] if body.sectors and i < len(body.sectors) else None,
+            geography=body.geographies[i] if body.geographies and i < len(body.geographies) else None
+        )
+        exposure_creates.append(exposure)
+
+    ratings = await _risk_engine.fetch_credit_ratings(body.entity_ids)
+    portfolio = await _risk_engine.calculate_portfolio_risk(exposure_creates, ratings)
+
+    generator = RegulatoryReportGenerator(_risk_engine)
+    exposures_table = [
+        {
+            "entity_id": e.entity_id,
+            "entity_type": e.entity_type,
+            "exposure": e.exposure_amount,
+            "rating": ratings.get(e.entity_id, CreditRating(entity_id=e.entity_id, rating_current="BBB")).rating_current,
+            "pd": 0.007,
+            "lgd": 0.45,
+            "expected_loss": e.exposure_amount * 0.007 * 0.45,
+            "category": "low"
+        }
+        for e in exposure_creates
+    ]
+
+    report = generator.generate_basel_iii_report(portfolio, exposures_table)
+
+    pdf_bytes = generate_risk_report(
+        report_type="basel_iii",
+        report_id=f"RM-{datetime.now().strftime('%Y-%m-%d')}-{uuid.uuid4().hex[:4].upper()}",
+        reporting_period=datetime.now().strftime("%Y-Q") + str((datetime.now().month - 1) // 3 + 1),
+        total_exposures=portfolio["total_exposure"],
+        capital_adequacy_ratio=portfolio["capital_adequacy_ratio"],
+        total_capital=portfolio["total_capital_requirement"],
+        risk_breakdown=portfolio["risk_breakdown"],
+        var_metrics={
+            "var_95": portfolio["aggregate_var_95"],
+            "var_99": portfolio["aggregate_var_99"],
+            "es_975": portfolio["aggregate_var_99"] * 1.1
+        },
+        exposures_table=exposures_table,
+        regulatory_refs=["Basel III", "CRD IV", "CRR II"]
+    )
+    pdf_b64 = base64.b64encode(pdf_bytes).decode()
+
+    return {
+        "model_id": model_id,
+        "portfolio_metrics": portfolio,
+        "report": report,
+        "pdf_base64": pdf_b64,
+        "created_at": _now(),
+    }
+
+
+@app.get("/risk/market-data")
+@limiter.limit("30/minute")
+async def get_market_data(request: Request, symbols: str = ""):
+    """Fetch live market data for given symbols (comma-separated)."""
+    if not _risk_engine:
+        raise HTTPException(status_code=503, detail="Risk engine not initialized")
+
+    symbol_list = [s.strip().upper() for s in symbols.split(",") if s.strip()]
+    if not symbol_list:
+        symbol_list = ["SPX", "EURUSD=X", "CL=F"]  # Default symbols
+
+    data = await _risk_engine.fetch_live_market_data(symbol_list)
+    return {"symbols": [d.model_dump() for d in data], "fetched_at": _now()}
+
+
+@app.post("/risk/report/generate")
+@limiter.limit("5/hour")
+async def generate_regulatory_report(
+    request: Request,
+    report_type: str = "basel_iii",
+    period: str = "current"
+):
+    """Generate regulatory report (basel_iii, mifid_ii, gdpr)."""
+    if not _risk_engine:
+        raise HTTPException(status_code=503, detail="Risk engine not initialized")
+
+    generator = RegulatoryReportGenerator(_risk_engine)
+
+    if report_type == "mifid_ii":
+        report = generator.generate_mifid_ii_report([], {})
+    elif report_type == "gdpr":
+        report = generator.generate_gdpr_compliance_report([])
+    else:
+        report = generator.generate_basel_iii_report({
+            "total_exposure": 0,
+            "total_capital_requirement": 0,
+            "capital_adequacy_ratio": 0,
+            "risk_breakdown": {"low": 0, "medium": 0, "high": 0, "critical": 0},
+            "aggregate_var_95": 0,
+            "aggregate_var_99": 0,
+            "total_expected_loss": 0
+        }, [])
+
+    return {"report_type": report_type, "period": period, "report": report, "generated_at": _now()}

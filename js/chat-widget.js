@@ -1,6 +1,12 @@
 (function () {
   if (document.getElementById('chatWidget')) return;
 
+  function i18n(key, fallback) {
+    return window.luxivalI18n && typeof window.luxivalI18n.t === 'function'
+      ? window.luxivalI18n.t(key, fallback || key)
+      : (fallback || key);
+  }
+
   function ensureChatStyles() {
     if (document.getElementById('chatWidgetStyles')) return;
     var style = document.createElement('style');
@@ -32,31 +38,38 @@
 
   ensureChatStyles();
 
-  const widgetMarkup = `
-    <div class="chat-widget" id="chatWidget">
-      <button class="chat-toggle" id="chatToggle" aria-label="Open Luxival chat">
-        <span>Talk to Luxival</span>
-      </button>
-      <div class="chat-panel" id="chatPanel" hidden>
-        <div class="chat-header">
-          <div>
-            <strong>Luxival assistant</strong>
-            <p>Ask anything about services, pricing flow, or booking.</p>
-          </div>
-          <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
-        </div>
-        <div class="chat-body">
-          <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
-          <div class="chat-chip-row" id="chatChipRow"></div>
-          <form id="chatComposer" class="chat-composer">
-            <textarea id="chatInput" rows="2" placeholder="Type your question..." maxlength="1200"></textarea>
-            <button type="submit" class="chat-button">Send</button>
-          </form>
-          <div class="chat-status" id="chatStatus"></div>
-        </div>
-      </div>
-    </div>
-  `;
+  const widgetMarkup = (function() {
+    var toggleLabel = i18n('chat.toggleLabel', 'Talk to Luxival');
+    var headerTitle = i18n('chat.headerTitle', 'Luxival assistant');
+    var headerDesc = i18n('chat.headerDesc', 'Ask anything about services, pricing, or booking.');
+    var placeholder = i18n('chat.placeholder', 'Type your question...');
+    var sendLabel = i18n('chat.sendButton', 'Send');
+    return [
+      '<div class="chat-widget" id="chatWidget">',
+      '<button class="chat-toggle" id="chatToggle" aria-label="' + toggleLabel + '">',
+      '<span>' + toggleLabel + '</span>',
+      '</button>',
+      '<div class="chat-panel" id="chatPanel" hidden>',
+      '<div class="chat-header">',
+      '<div>',
+      '<strong>' + headerTitle + '</strong>',
+      '<p>' + headerDesc + '</p>',
+      '</div>',
+      '<button class="chat-close" id="chatClose" aria-label="Close chat">×</button>',
+      '</div>',
+      '<div class="chat-body">',
+      '<div class="chat-messages" id="chatMessages" aria-live="polite"></div>',
+      '<div class="chat-chip-row" id="chatChipRow"></div>',
+      '<form id="chatComposer" class="chat-composer">',
+      '<textarea id="chatInput" rows="2" placeholder="' + placeholder + '" maxlength="1200"></textarea>',
+      '<button type="submit" class="chat-button">' + sendLabel + '</button>',
+      '</form>',
+      '<div class="chat-status" id="chatStatus"></div>',
+      '</div>',
+      '</div>',
+      '</div>'
+    ].join('');
+  })();
 
   document.body.insertAdjacentHTML('beforeend', widgetMarkup);
 
@@ -170,16 +183,24 @@
     var existing = document.getElementById('chatLeadForm');
     if (existing) existing.remove();
 
+    var leadIntro = i18n('chat.leadIntro', 'Share your details and we will follow up.');
+    var nameLabel = i18n('chat.leadName', 'Your name');
+    var emailLabel = i18n('chat.leadEmail', 'Your email');
+    var phoneLabel = i18n('chat.leadPhone', 'Phone / WhatsApp (optional)');
+    var submitLabel = i18n('chat.leadSubmit', 'Send details');
+    var thanksText = i18n('chat.leadThanks', 'Thanks! We will be in touch soon.');
+    var validateText = 'Please enter your name and email.';
+
     var form = document.createElement('div');
     form.id = 'chatLeadForm';
     form.className = 'chat-bubble assistant lead-form';
     form.innerHTML = [
-      '<p style="margin:0 0 8px;font-size:14px;opacity:0.9">' + (introMessage || 'Share your details and we will follow up.') + '</p>',
-      '<input type="text" id="leadName" placeholder="Your name" value="' + leadInputValue(lead, 'name') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<input type="email" id="leadEmail" placeholder="Your email" value="' + leadInputValue(lead, 'email') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<input type="tel" id="leadPhone" placeholder="Phone / WhatsApp (optional)" value="' + leadInputValue(lead, 'phone') + '" style="width:100%;margin-bottom:8px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
-      '<button type="button" id="leadSubmit" style="width:100%;padding:8px;background:var(--gold,#C9A96A);color:#0A0B0F;border:none;border-radius:14px;font-weight:600;font-size:13px;cursor:pointer">Send details</button>',
-      '<p id="leadFeedback" style="margin:6px 0 0;font-size:12px;opacity:0;transition:opacity 0.3s">Thanks! We will be in touch.</p>',
+      '<p style="margin:0 0 8px;font-size:14px;opacity:0.9">' + (introMessage || leadIntro) + '</p>',
+      '<input type="text" id="leadName" placeholder="' + nameLabel + '" value="' + leadInputValue(lead, 'name') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<input type="email" id="leadEmail" placeholder="' + emailLabel + '" value="' + leadInputValue(lead, 'email') + '" required style="width:100%;margin-bottom:6px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<input type="tel" id="leadPhone" placeholder="' + phoneLabel + '" value="' + leadInputValue(lead, 'phone') + '" style="width:100%;margin-bottom:8px;padding:8px 10px;border:1px solid rgba(201,169,106,0.3);border-radius:14px;background:rgba(255,255,255,0.05);color:inherit;font:inherit;font-size:13px;box-sizing:border-box">',
+      '<button type="button" id="leadSubmit" style="width:100%;padding:8px;background:var(--gold,#C9A96A);color:#0A0B0F;border:none;border-radius:14px;font-weight:600;font-size:13px;cursor:pointer">' + submitLabel + '</button>',
+      '<p id="leadFeedback" style="margin:6px 0 0;font-size:12px;opacity:0;transition:opacity 0.3s">' + thanksText + '</p>',
     ].join('');
     messagesEl.appendChild(form);
     messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -191,7 +212,7 @@
       var feedback = document.getElementById('leadFeedback');
 
       if (!name || !email) {
-        feedback.textContent = 'Please enter your name and email.';
+        feedback.textContent = validateText;
         feedback.style.opacity = '1';
         feedback.style.color = '#ff6b6b';
         return;
@@ -202,7 +223,7 @@
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
-      var result = await submitLead(Object.assign({}, lead, { name: name, email: email, phone: phone }));
+      var result = await submitLead(Object.assign({}, lead, { name: name, email: email, phone: phone }, { conversation: messages }));
 
       if (result.ok && window.LuxivalSupabase) {
         window.LuxivalSupabase.submitChatLead({
@@ -217,7 +238,7 @@
       }
 
       feedback.textContent = result.ok
-        ? 'Thanks! We will be in touch soon.'
+        ? thanksText
         : 'Could not send. Please email us directly at support@luxival.com.';
       feedback.style.opacity = '1';
       feedback.style.color = result.ok ? 'var(--gold, #C9A96A)' : '#ff6b6b';
@@ -228,17 +249,24 @@
 
   async function submitLead(lead) {
     try {
+      var conversation = lead.conversation || messages;
+      var body = {
+        type: 'Chat lead',
+        name: lead.name || '',
+        email: lead.email || '',
+        phone: lead.phone || '',
+        message: 'Service: ' + (lead.service || 'Unknown') + '\nIntent: ' + (lead.intent || 'Inquiry') + '\n' + (lead.message || ''),
+        source: 'chat-widget',
+      };
+      if (Array.isArray(conversation) && conversation.length > 0) {
+        body.conversation = conversation.map(function (m) {
+          return { role: m.role, content: m.content };
+        });
+      }
       var response = await fetch('/api/lead-notification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'Chat lead',
-          name: lead.name || '',
-          email: lead.email || '',
-          phone: lead.phone || '',
-          message: 'Service: ' + (lead.service || 'Unknown') + '\nIntent: ' + (lead.intent || 'Inquiry') + '\n' + (lead.message || ''),
-          source: 'chat-widget',
-        }),
+        body: JSON.stringify(body),
       });
       var data = await response.json().catch(function () { return {}; });
       return {
@@ -286,9 +314,10 @@
     isSending = true;
     addMessage('user', text);
     saveMessage('user', text);
-    showStatus('Luxival assistant is typing...', false);
+    showStatus(i18n('chat.statusTyping', 'Luxival assistant is typing...'), false);
 
     try {
+      var chatLang = window.luxivalI18n && typeof window.luxivalI18n.getLang === 'function' ? window.luxivalI18n.getLang() : 'en';
       var response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -296,6 +325,7 @@
           messages: messages,
           page: window.location.pathname,
           session_id: getSessionId(),
+          language: chatLang,
         }),
       });
 
@@ -407,7 +437,7 @@
     setupChips();
     var history = await loadHistory();
     if (history.length === 0) {
-      addMessage('assistant', 'Hi, I am Luxival assistant. What do you need help with today?');
+      addMessage('assistant', i18n('chat.greeting', 'Hi, I am Luxival assistant. What do you need help with today?'));
     } else {
       history.forEach(function (msg) {
         addMessage(msg.role, msg.content);

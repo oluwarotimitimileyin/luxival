@@ -63,6 +63,22 @@ uvicorn main:app --reload --port 8080
 - **Task routing**: Classifies user message into greeting/faq/service_recommend/technical/booking/tourism/pricing/general, then tries the preferred model chain with automatic fallback.
 - System prompt includes full service catalog and lead capture instructions (outputs `[LEAD:{...}]` blocks).
 - Zero API keys configured → falls back to rule-based replies.
+- **Multi-language**: Accepts `language` field in POST body. Injects "Respond in {language}" into system prompt. Supported: en, fi, sv, de, fr, it, ru, no, da, ja, zh.
+
+### Chat Widget (`js/chat-widget.js`)
+- Self-contained inline chat widget injected on all pages.
+- Automatically detects user language via `window.luxivalI18n.getLang()` and passes it to `/api/chat`.
+- Sends full conversation transcript (`conversation` array) to `/api/lead-notification` when a lead is captured.
+- All UI text (greeting, placeholder, lead form labels, status messages) uses `window.luxivalI18n.t(key)` for localization.
+
+### Lead Notification (`api/lead-notification.js`)
+- Accepts optional `conversation` array in POST body. When present, renders a full "Conversation Transcript" HTML table in the email sent to `rotimikun@gmail.com`.
+- Transcript shows up to 50 most recent messages, labeled User/Assistant with alternating backgrounds.
+
+### i18n (`js/i18n.js`)
+- **11 supported languages**: en, fi, sv, de, fr, it, ru, no, da, ja, zh.
+- New `window.luxivalI18n.t(key, fallback)` function for programmatic translation lookups (used by chat widget).
+- 13 chat-specific i18n keys added to every language bundle (chat.toggleLabel, chat.headerTitle, chat.headerDesc, chat.placeholder, chat.sendButton, chat.statusTyping, chat.greeting, chat.leadIntro, chat.leadName, chat.leadEmail, chat.leadPhone, chat.leadSubmit, chat.leadThanks).
 
 ### Supabase Schema
 Key tables: `contact_inquiries`, `ride_requests`, `newsletter_subscribers`.

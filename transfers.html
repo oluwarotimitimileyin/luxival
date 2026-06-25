@@ -112,16 +112,11 @@ footer a:hover{opacity:1}
 <body data-page="transfers">
 <nav id="mainNav">
   <a href="/" class="nav-brand">LUXIVAL</a>
-  <ul class="nav-links">
-    <li><a data-i18n="nav.transfers" href="/transfers" class="active">Transfers</a></li>
-    <li><a data-i18n="nav.tourism" href="/tourism">Travel</a></li>
-    <li><a data-i18n="nav.pattern" href="/pattern">Pattern</a></li>
-    <li><a data-i18n="nav.portfolio" href="/portfolio">Portfolio</a></li>
-    <li><a data-i18n="nav.platform" href="/platform">Platform</a></li>
+  <ul class="nav-links" id="site-nav">
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.services" href="/services">Services</a></li>
     <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
-    <li><a data-i18n="nav.about" href="/about">About</a></li>
-    <li><a data-i18n="nav.audit" href="/audit">Free Audit</a></li>
-    <li><a data-i18n="nav.booking" href="/booking" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Book Now</a></li>
+    <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -315,43 +310,43 @@ footer a:hover{opacity:1}
 </div>
 
 </main>
+  <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:3rem;padding:4rem 0 2rem">
-      <div>
-        <h3 style="color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:1rem">LUXIVAL</h3>
-        <p style="opacity:.5;font-size:.88rem;line-height:1.8;margin-bottom:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
-        <p style="opacity:.6;font-size:.88rem">support@luxival.com</p>
-        <p style="opacity:.6;font-size:.88rem">+358 50 351 8366</p>
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>LUXIVAL</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a>
+          <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a>
+        </div>
       </div>
-      <div>
-        <h4 data-i18n="footer.services" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Services</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a data-i18n="nav.transfers" href="/transfers" style="opacity:.6;font-size:.9rem">Transfers</a></li>
-          <li><a data-i18n="nav.tourism" href="/tourism" style="opacity:.6;font-size:.9rem">Travel & Tourism</a></li>
-          <li><a data-i18n="nav.pattern" href="/pattern" style="opacity:.6;font-size:.9rem">Pattern</a></li>
-          <li><a data-i18n="nav.audit" href="/audit" style="opacity:.6;font-size:.9rem">Free Website Audit</a></li>
-        </ul>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Projects</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
       </div>
-      <div>
-        <h4 data-i18n="footer.company" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Company</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a data-i18n="nav.about" href="/about" style="opacity:.6;font-size:.9rem">About</a></li>
-          <li><a data-i18n="nav.portfolio" href="/portfolio" style="opacity:.6;font-size:.9rem">Portfolio</a></li>
-          <li><a data-i18n="nav.blog" href="/blog" style="opacity:.6;font-size:.9rem">Blog</a></li>
-          <li><a data-i18n="nav.contact" href="/contact" style="opacity:.6;font-size:.9rem">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-i18n="footer.legal" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;margin-bottom:1rem">Legal</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem">
-          <li><a data-i18n="footer.privacy" href="/privacy" style="opacity:.6;font-size:.9rem">Privacy Policy</a></li>
-          <li><a data-i18n="footer.terms" href="/terms" style="opacity:.6;font-size:.9rem">Terms of Service</a></li>
-          <li><a href="/user-data-deletion" style="opacity:.6;font-size:.9rem">Data Deletion</a></li>
-        </ul>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/user-data-deletion">Data Deletion</a>
+          <a href="/contact">Contact</a>
+        </div>
       </div>
     </div>
-    <p data-i18n="footer.copyright" style="opacity:.35;font-size:.78rem;border-top:1px solid rgba(255,255,255,.06);padding-top:2rem">© 2026 Luxival · Premium Chauffeur & Digital Services · Helsinki, Finland</p>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 

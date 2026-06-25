@@ -21,6 +21,7 @@ tests/results.json
 *credentials*.json
 *tokens.json
 *secrets*
+.keys.json
 
 luxival-autopost/
 luxival-dashboard/

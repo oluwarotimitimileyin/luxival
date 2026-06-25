@@ -81,12 +81,10 @@ footer{background:#060608;border-top:1px solid rgba(255,255,255,.05);padding:3re
 <nav id="mainNav">
   <a href="/" class="nav-brand">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/tourism" class="active">Travel</a></li>
-    <li><a href="/helsinki-airport-pickup">Airport Pickup</a></li>
-    <li><a href="/transfers">Transfers</a></li>
-    <li><a href="/digital">Digital</a></li>
-    <li><a href="/booking" class="btn" style="padding:.55rem 1rem;font-size:.7rem;opacity:1">Start Planning</a></li>
+    <li><a data-i18n="nav.home" href="/">Home</a></li>
+    <li><a data-i18n="nav.services" href="/services">Services</a></li>
+    <li><a data-i18n="nav.blog" href="/blog">Blog</a></li>
+    <li><a data-i18n="nav.project" href="/portfolio" class="btn" style="padding:.5rem 1.4rem;font-size:.72rem">Get Started</a></li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -175,10 +173,43 @@ footer{background:#060608;border-top:1px solid rgba(255,255,255,.05);padding:3re
   </section>
 </main>
 
+  <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p>Luxival · Uusimaa, Finland · support@luxival.com · +358 50 351 8366</p>
-    <p><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a><a href="/user-data-deletion">Data Deletion</a><a href="/contact">Contact</a></p>
+    <div class="footer-grid">
+      <div class="reveal">
+        <h3>LUXIVAL</h3>
+        <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p>
+        <p>support@luxival.com</p>
+        <p>+358 50 351 8366</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a>
+          <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a>
+          <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <h3>Navigate</h3>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Projects</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Legal</h3>
+        <div class="foot-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/user-data-deletion">Data Deletion</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Luxival © 2026 · Premium digital & transport experiences</div>
   </div>
 </footer>
 
