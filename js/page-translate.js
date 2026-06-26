@@ -1,14 +1,8 @@
 (function () {
   const TRANSLATE_API = window.LuxivalConfig?.translateApi || 'https://luxival-audit-api.fly.dev/translate';
-  const LANG_NAMES = {
-    en: 'English', fi: 'Suomi', sv: 'Svenska', de: 'Deutsch', fr: 'Français',
-    it: 'Italiano', ru: 'Русский', no: 'Norsk', da: 'Dansk', ja: '日本語',
-    zh: '中文', es: 'Español', pt: 'Português', nl: 'Nederlands',
-  };
   const FALLBACK_LANG = 'en';
 
   let currentLang = localStorage.getItem('luxival_page_lang') || FALLBACK_LANG;
-  let translateCache = {};
 
   function getPageLang() {
     const html = document.documentElement;
@@ -16,54 +10,6 @@
   }
 
   const pageLang = getPageLang();
-
-  function createSwitcher() {
-    const wrapper = document.createElement('div');
-    wrapper.id = 'luxival-lang-switcher';
-    wrapper.setAttribute('role', 'navigation');
-    wrapper.setAttribute('aria-label', 'Language selector');
-    wrapper.innerHTML = `
-      <style>
-        #luxival-lang-switcher {
-          position: fixed; bottom: 80px; right: 20px; z-index: 9999;
-          font-family: inherit;
-        }
-        #luxival-lang-switcher select {
-          appearance: none; -webkit-appearance: none;
-          background: rgba(8,9,16,.85); backdrop-filter: blur(12px);
-          border: 1px solid rgba(201,169,106,.3);
-          color: #e8e0d0; padding: 8px 32px 8px 14px;
-          border-radius: 8px; font-size: .78rem; cursor: pointer;
-          outline: none; transition: border-color .2s;
-          min-width: 140px;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a96a'/%3E%3C/svg%3E");
-          background-repeat: no-repeat; background-position: right 10px center;
-        }
-        #luxival-lang-switcher select:hover { border-color: rgba(201,169,106,.6); }
-        #luxival-lang-switcher select option {
-          background: #080910; color: #e8e0d0;
-        }
-        #luxival-lang-switcher .lang-label {
-          position: absolute; top: -22px; left: 0; font-size: .65rem;
-          letter-spacing: 1px; text-transform: uppercase; opacity: .4;
-        }
-      </style>
-      <select id="luxival-lang-select" aria-label="Select language">
-        ${Object.entries(LANG_NAMES).map(([code, name]) =>
-          `<option value="${code}" ${code === currentLang ? 'selected' : ''}>${name}</option>`
-        ).join('')}
-      </select>
-    `;
-    document.body.appendChild(wrapper);
-
-    const select = document.getElementById('luxival-lang-select');
-    select.addEventListener('change', function () {
-      const lang = this.value;
-      currentLang = lang;
-      localStorage.setItem('luxival_page_lang', lang);
-      translatePage(lang);
-    });
-  }
 
   function getTextNodes(node) {
     const nodes = [];
@@ -90,7 +36,7 @@
 
     elements.forEach(el => {
       const text = el.textContent.trim();
-      if (text.length > 2 && !/^[\d\s%$€£¥+\-.,;:!?()]+$/.test(text) && !el.closest('#luxival-lang-switcher')) {
+      if (text.length > 2 && !/^[\d\s%$€£¥+\-.,;:!?()]+$/.test(text)) {
         textMap.set(el, text);
       }
     });
@@ -144,20 +90,10 @@
     document.documentElement.lang = targetLang;
     currentLang = targetLang;
     localStorage.setItem('luxival_page_lang', targetLang);
-    document.getElementById('luxival-lang-select').value = targetLang;
+
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      createSwitcher();
-      if (currentLang !== pageLang && currentLang !== FALLBACK_LANG) {
-        setTimeout(() => translatePage(currentLang), 500);
-      }
-    });
-  } else {
-    createSwitcher();
-    if (currentLang !== pageLang && currentLang !== FALLBACK_LANG) {
-      setTimeout(() => translatePage(currentLang), 500);
-    }
+  if (currentLang !== pageLang && currentLang !== FALLBACK_LANG) {
+    setTimeout(() => translatePage(currentLang), 500);
   }
 })();
