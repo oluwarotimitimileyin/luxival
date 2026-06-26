@@ -444,4 +444,32 @@
       });
     }
   })();
+
+  // ---- DYNAMIC LANGUAGE SWITCH ----
+  document.addEventListener('luxival:language-changed', function () {
+    var toggleEl = document.querySelector('#chatToggle span');
+    if (toggleEl) toggleEl.textContent = i18n('chat.toggleLabel', 'Talk to Luxival');
+
+    var headerTitle = document.querySelector('.chat-header strong');
+    if (headerTitle) headerTitle.textContent = i18n('chat.headerTitle', 'Luxival assistant');
+
+    var headerDesc = document.querySelector('.chat-header p');
+    if (headerDesc) headerDesc.textContent = i18n('chat.headerDesc', 'Ask anything about services, pricing, or booking.');
+
+    var inputEl = document.getElementById('chatInput');
+    if (inputEl) inputEl.placeholder = i18n('chat.placeholder', 'Type your question...');
+
+    var sendBtn = document.querySelector('.chat-button');
+    if (sendBtn) sendBtn.textContent = i18n('chat.sendButton', 'Send');
+
+    var greetingMsg = i18n('chat.greeting', 'Hi, I am Luxival assistant. What do you need help with today?');
+    if (messages.length === 1 && messages[0].role === 'assistant') {
+      messages[0].content = greetingMsg;
+      var firstBubble = messagesEl.querySelector('.chat-bubble.assistant');
+      if (firstBubble) firstBubble.textContent = greetingMsg;
+    }
+
+    chipRow.innerHTML = '';
+    setupChips();
+  });
 })();

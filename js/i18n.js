@@ -1982,6 +1982,7 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = 'ltr';
     loadTranslations(lang);
+    document.dispatchEvent(new CustomEvent('luxival:language-changed', { detail: { lang: lang } }));
   }
 
   function loadTranslations(lang) {

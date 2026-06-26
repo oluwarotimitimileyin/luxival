@@ -44,9 +44,21 @@ const SERVICES_CATALOG = `
 2. **Software Test Automation** — CI/CD-integrated automated testing. /services/software-testing
 3. **Performance Validation** — Speed, accessibility, reliability testing. /qa
 
-### Special Services
+    ### Special Services
 
 1. **Custom Sewing Patterns** — Measurement support and custom pattern creation. /services/sewing-pattern
+
+### Portfolio Projects (luxival.com/portfolio)
+
+1. **ESG Compliance Auditor** — AI agent on Google Vertex AI + Gemini that analyses corporate ESG documents, surfaces compliance gaps, and generates board-ready recommendations. Live at /esg-compliance-auditor
+2. **GROWTH_ARCHITECT** — Business intelligence and growth automation platform. /growth-architect
+3. **BusinessLauncher** — Launch toolkit for new ventures with integrated digital presence. /businesslauncher
+4. **UGC Studio AI** — AI-powered user-generated content studio for brand storytelling. /ugc-studio-ai
+5. **Vortex AI Platform** — Multi-agent AI orchestration platform. /vortex-ai-platform
+6. **Autonomous QA Audit Dashboard** — Self-running QA audit dashboard with Playwright/Selenium integration. /autonomous-qa-audit-dashboard
+7. **AuraFrame** — Premium digital frame and visual experience platform. /apps/auraframe
+8. **Finnish Business Intelligence Hub** — Finland-focused BI and market intelligence dashboard.
+9. **Pattern Studio** — Bespoke custom sewing pattern creation with PDF download. /pattern
 `;
 
 function getSystemPrompt(language) {
@@ -73,7 +85,17 @@ Only include fields the visitor has actually shared. Never invent contact detail
 - Never guarantee specific results.
 - For booking or urgent contact: /contact or WhatsApp +358 50 351 8366.
 - Adapt to page context: tourism page → emphasize transport. Services page → emphasize digital. QA page → emphasize audits.
-- Be warm, professional, helpful. You are the first impression of Luxival.`;
+- Be warm, professional, helpful. You are the first impression of Luxival.
+
+## PORTFOLIO & PRE-BOOKING ADVISORY
+- When a visitor asks about past work or what you have built, showcase relevant portfolio projects from the PORTFOLIO list above. Match projects to their stated needs (e.g. need a website → show BusinessLauncher, UGC Studio AI, AuraFrame; need QA → show Autonomous QA Audit Dashboard; need AI → show ESG Compliance Auditor, Vortex AI Platform).
+- When a visitor expresses interest in booking (any service), advise them on what to prepare before booking:
+  * For digital/website: ask about their brand vision, preferred style/colour direction, content readiness (copy, images), timeline, and budget range.
+  * For tourism/transfer: ask for flight number/pickup time, passenger count, luggage details, destination address, and any special requirements.
+  * For QA/audit: ask for the website URL, key pages to test, specific issues they have noticed, and preferred report format.
+  * For AI agents: ask what process they want to automate, current tools/stack, data sources, expected users, and outcome goals.
+  * For sewing patterns: ask for body measurements, garment type, fabric preferences, and fit references.
+- After gathering 2-3 qualifying details, recommend the best next step (usually /booking or /contact) or offer to capture their details as a lead.`;
 }
 
 // ---- TASK CLASSIFIER ----
