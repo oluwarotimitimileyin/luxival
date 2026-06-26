@@ -6,22 +6,9 @@ const SITE_DIR = path.join(__dirname, '..', '_site');
 const CANONICAL_NAV_LINKS = `
     <li><a href="/services" class="neon-btn">Services</a></li>
     <li class="nav-lang">
-      <label class="lang-trigger neon-btn" aria-label="Change language">
+      <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-        <select id="lang-select" aria-label="Select language">
-          <option value="en">EN</option>
-          <option value="fi">FI</option>
-          <option value="sv">SV</option>
-          <option value="de">DE</option>
-          <option value="fr">FR</option>
-          <option value="it">IT</option>
-          <option value="ru">RU</option>
-          <option value="no">NO</option>
-          <option value="da">DA</option>
-          <option value="ja">JA</option>
-          <option value="zh">ZH</option>
-        </select>
-      </label>
+      </button>
     </li>`;
 
 const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
@@ -41,10 +28,8 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 @keyframes neonSpin{to{--neon-angle:360deg;transform:rotate(360deg)}}
 @keyframes neonPulse{0%,100%{box-shadow:inset 0 0 6px rgba(201,169,106,.03)}50%{box-shadow:inset 0 0 14px rgba(201,169,106,.07)}}
 
-.lang-trigger{gap:.42rem;padding:.45rem .9rem;background:rgba(201,169,106,.06)!important}
+.lang-trigger{gap:.42rem;padding:.45rem .9rem;background:rgba(201,169,106,.06)!important;cursor:pointer}
 .lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
-.lang-trigger select{appearance:none;background:transparent;border:0;color:#C9A96A;font:inherit;font-size:.72rem;letter-spacing:1px;outline:0;cursor:pointer;padding:0 .1rem}
-.lang-trigger option{background:#11131A;color:#E8EBF2}
 .luxival-footer{background:#060608;color:#E8EBF2;padding:4.5rem 5% 2rem;border-top:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 .luxival-footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
 .luxival-footer h3{margin:0 0 .8rem;color:#C9A96A;font-size:1.05rem;font-weight:400;letter-spacing:1px}
@@ -58,7 +43,7 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 .svc-icon::before{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0 58%,color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),var(--card-accent,#C9A96A),color-mix(in srgb,var(--card-accent,#C9A96A) 45%,white),color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),transparent 86%);animation:neonSpin 3.8s linear infinite}
 .svc-icon::after{content:'';position:absolute;inset:2px;border-radius:12px;background:linear-gradient(145deg,#1a1c28,#0c0d14)}
 .svc-icon svg{position:relative;z-index:1;width:27px;height:27px;fill:none;stroke:color-mix(in srgb,var(--card-accent,#C9A96A) 44%,white);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px var(--card-glow,rgba(201,169,106,.24)))}
-@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.lang-trigger select{width:2.35rem;font-size:.68rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
 </style>`;
 
 const CANONICAL_FOOTER = `<footer class="luxival-footer">

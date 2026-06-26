@@ -49,7 +49,7 @@ Expect to pay:
 
 Group bus tours run €25–€60 per person and include commentary but no flexibility on timing or routing.
 
-At **Luxival**, our private city tours are bespoke, we build the route around what you actually want to see, not a fixed script.
+At **Luxival**, our private city tours are custom, we build the route around what you actually want to see, not a fixed script.
 
 ---
 

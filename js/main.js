@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
         tab.classList.add('active');
         const target = tab.dataset.target;
         if (target === 'digital') {
-          showcaseText.textContent = 'Luxival delivers interactive digital experiences with depth, motion, and motion-driven storytelling that feels engineered and crafted.';
+          showcaseText.textContent = 'Luxival builds practical digital pages, content systems, and support tools that make the next step easier for customers.';
         } else {
-          showcaseText.textContent = 'Our tourism section blends Finnish destination narratives, boutique hospitality cues and a premium travel feel for Helsinki and beyond.';
+          showcaseText.textContent = 'Our tourism section helps visitors plan Helsinki arrivals, private rides, winter routes, and useful local experiences.';
         }
       });
     });

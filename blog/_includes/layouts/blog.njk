@@ -36,10 +36,8 @@
     .neon-btn:hover{transform:translateY(-1px);box-shadow:0 0 0 1.5px rgba(201,169,106,.5),0 0 20px rgba(201,169,106,.2),0 0 40px rgba(201,169,106,.1),inset 0 1px 0 rgba(255,255,255,.06)}
     @keyframes neonSpin{to{--neon-angle:360deg;transform:rotate(360deg)}}
     @keyframes neonPulse{0%,100%{box-shadow:inset 0 0 6px rgba(201,169,106,.03)}50%{box-shadow:inset 0 0 14px rgba(201,169,106,.07)}}
-    .lang-trigger{gap:.42rem;padding:.45rem .8rem}
-    .lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
-    .lang-trigger select{appearance:none;background:transparent;border:0;color:#C9A96A;font:inherit;font-size:.72rem;letter-spacing:1px;outline:0;cursor:pointer;padding:0 .1rem}
-    .lang-trigger option{background:#11131A;color:#E8EBF2}
+.lang-trigger{gap:.42rem;padding:.45rem .8rem;cursor:pointer}
+.lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
     main{padding:8rem 0 5rem}
     h1,h2,h3{font-weight:300;letter-spacing:.4px}
     h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.1;margin-bottom:1.5rem}
@@ -131,22 +129,9 @@
     <ul class="nav-links" id="site-nav">
       <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
       <li class="nav-lang">
-        <label class="lang-trigger neon-btn" aria-label="Change language">
+        <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-          <select id="lang-select" aria-label="Select language">
-            <option value="en">EN</option>
-            <option value="fi">FI</option>
-            <option value="sv">SV</option>
-            <option value="de">DE</option>
-            <option value="fr">FR</option>
-            <option value="it">IT</option>
-            <option value="ru">RU</option>
-            <option value="no">NO</option>
-            <option value="da">DA</option>
-            <option value="ja">JA</option>
-            <option value="zh">ZH</option>
-          </select>
-        </label>
+        </button>
       </li>
     </ul>
     <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -203,7 +188,7 @@
         {% elif 'agentic' in slug or 'ai-agents' in slug or 'automation' in slug %}
         <aside class="service-links">
           <h3>Related Luxival services</h3>
-          <p>Explore the implementation services connected to agentic workflow strategy.</p>
+          <p>Explore the implementation services connected to practical automation and workflow support.</p>
           <div class="service-link-grid">
             <a class="service-link-card" href="/services/ai-agents"><strong>AI agents</strong><span>View service</span></a>
             <a class="service-link-card" href="/services/software-testing"><strong>Software testing</strong><span>View service</span></a>
@@ -239,7 +224,7 @@
         {% if 'helsinki' in slug or 'lapland' in slug or 'tourism' in slug or 'transfer' in slug or 'ferry' in slug or 'sauna' in slug %}
         <aside class="post-cta">
           <h3>Planning Finland travel?</h3>
-          <p>Get a tailored transfer or trip planning response from the Luxival travel team.</p>
+          <p>Get a practical transfer or trip planning response from the Luxival travel team.</p>
           <div class="post-cta-actions">
             <a class="primary" href="/tourism#rideRequestForm">Plan my Finland trip</a>
             <a class="secondary" href="/tourism#rideRequestForm">Request a ride quote</a>
@@ -248,10 +233,10 @@
         {% elif 'seo' in slug or 'audit' in slug or 'qa' in slug or 'website' in slug or 'testing' in slug %}
         <aside class="post-cta">
           <h3>Need a website quality report?</h3>
-          <p>Run a free scan now and escalate to premium audit when you need deeper diagnostics.</p>
+          <p>Run a free scan now and request a deeper audit when you need more detail.</p>
           <div class="post-cta-actions">
             <a class="primary" href="/audit">Run free scan</a>
-            <a class="secondary" href="/audit">Order premium audit</a>
+            <a class="secondary" href="/audit">Request deeper audit</a>
           </div>
         </aside>
         {% else %}

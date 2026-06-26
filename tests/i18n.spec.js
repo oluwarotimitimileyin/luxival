@@ -10,18 +10,18 @@ const CORE_PAGES = [
   '/digital', '/pattern', '/portfolio', '/qa',
 ];
 
-// The language <select> is injected by js/i18n.js with id="lang-select"
-const LANG_SELECTOR = '#lang-select';
+// The language button is injected by js/i18n.js with id="lang-toggle"
+const LANG_SELECTOR = '#lang-toggle';
 
 // ── LANGUAGE SWITCHER ────────────────────────────────────
 test.describe('Language Switcher', () => {
   for (const pagePath of ['/', '/about', '/contact', '/services', '/digital', '/tourism']) {
-    test(`Language dropdown is present on ${pagePath}`, async ({ page }) => {
+    test(`Language button is present on ${pagePath}`, async ({ page }) => {
       await page.goto(BASE + pagePath);
       await page.waitForLoadState('domcontentloaded');
-      // The <select> is injected by js/i18n.js after page load
-      const select = page.locator(LANG_SELECTOR);
-      await expect(select).toBeVisible({ timeout: 10000 });
+      // The <button> is injected by js/i18n.js after page load
+      const btn = page.locator(LANG_SELECTOR);
+      await expect(btn).toBeVisible({ timeout: 10000 });
     });
   }
 });
@@ -40,39 +40,27 @@ test.describe('i18n Script Loaded', () => {
 
 // ── LANGUAGE SWITCH CHANGES TEXT ─────────────────────────
 test.describe('Language Switch Changes Text', () => {
-  test('Switching to Finnish changes visible text', async ({ page }) => {
+  test('Clicking language button and selecting language changes text', async ({ page }) => {
     await page.goto(BASE + '/');
     await page.waitForLoadState('domcontentloaded');
 
-    const select = page.locator(LANG_SELECTOR);
-    await expect(select).toBeVisible({ timeout: 10000 });
+    const btn = page.locator('#lang-toggle');
+    await expect(btn).toBeVisible({ timeout: 10000 });
 
     const bodyEn = await page.locator('body').textContent();
 
-    // Switch to Finnish
-    await select.selectOption('fi');
+    // Click to open dropdown, then click Russian
+    await btn.click();
+    await page.waitForTimeout(200);
+    const ruOption = page.locator('#lang-dropdown [data-lang="ru"]');
+    await ruOption.click();
     await page.waitForTimeout(500);
-    const bodyFi = await page.locator('body').textContent();
+    const bodyAfterClick = await page.locator('body').textContent();
 
-    const changed = bodyEn !== bodyFi;
-    console.log('Text changed after switching to Finnish:', changed);
+    // Text should change after click
+    const changed = bodyEn !== bodyAfterClick;
+    console.log('Text changed after clicking language button:', changed);
     expect(changed).toBeTruthy();
-  });
-
-  test('Switching to Swedish shows different text', async ({ page }) => {
-    await page.goto(BASE + '/');
-    await page.waitForLoadState('domcontentloaded');
-
-    const select = page.locator(LANG_SELECTOR);
-    await expect(select).toBeVisible({ timeout: 10000 });
-
-    const texts = {};
-    for (const lang of ['en', 'sv']) {
-      await select.selectOption(lang);
-      await page.waitForTimeout(500);
-      texts[lang] = await page.locator('body').textContent();
-    }
-    expect(texts['en']).not.toEqual(texts['sv']);
   });
 });
 

@@ -53,7 +53,7 @@ async function generateBlogPost(place) {
     : 'Highly rated';
   const summary = place.editorialSummary?.text || '';
 
-  const userPrompt = `You are a travel writer for Luxival, a premium Helsinki-based services company.
+  const userPrompt = `You are a travel writer for Luxival, a Helsinki-based services company.
 
 Write a short, engaging blog post about "${name}" in Helsinki.
 
@@ -66,7 +66,7 @@ Requirements:
 - The title must NOT contain dashes. Use commas or colons instead.
 - Write a 2-sentence excerpt that acts as a teaser.
 - Write 3-4 paragraphs (body content): why visitors love it, what to expect, one practical tip.
-- Tone: premium but approachable. No corporate jargon.
+- Tone: direct, useful, and calm. No corporate jargon or inflated travel language.
 
 Respond ONLY with this JSON structure and nothing else:
 {

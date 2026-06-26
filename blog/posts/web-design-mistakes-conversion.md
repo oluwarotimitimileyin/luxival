@@ -18,7 +18,7 @@ permalink: "blog/web-design-mistakes-conversion/index.html"
  <p>Here are five that come up in almost every website audit we run.</p>
 
  <h2>1. Using Pop Ups for Your Main Form</h2>
- <p>Pop up forms interrupt the experience and are dismissed by most visitors before they've read a single field. If your booking or enquiry form is hidden behind a pop up trigger, you are actively making it harder to convert. Embed the form directly on the page where it's relevant. Visible, frictionless, always there.</p>
+ <p>Pop up forms interrupt the experience and are dismissed by most visitors before they've read a single field. If your booking or enquiry form is hidden behind a pop up trigger, you are actively making it harder to convert. Embed the form directly on the page where it's relevant. Visible, simple, always there.</p>
 
  <h2>2. Mixing Two Completely Different Services Without Separation</h2>
  <p>If your business offers two distinct services, say, luxury transport and web design, and you present them on the same homepage without clear pathways for each audience, you'll confuse both types of visitor. A confused visitor doesn't book. Create distinct entry points: one path for each audience, each with its own language, visuals, and call to action.</p>

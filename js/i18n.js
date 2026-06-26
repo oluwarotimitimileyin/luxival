@@ -20,9 +20,9 @@
       "nav.blog": "Blogi",
       "search.placeholder": "Hae palveluita, sivuja tai avainsanoja",
       "search.noResults": "Aiheeseen liittyvia sivuja ei loytynyt.",
-      "hero.title": "Premium-matkailu-, digitaali- ja QA-palvelut Uudellamaalla",
+      "hero.title": "Matkailu-, digitaali- ja QA-palvelut Uudellamaalla",
       "hero.subtitle": "Lentokenttakuljetukset, Suomen matkasuunnittelu, verkkosivut, SEO, automaatio ja QA-auditoinnit asiakkaille, jotka odottavat tarkkuutta.",
-      "hero.eyebrow": "Premium-toiminnot · Uusimaa, Suomi",
+      "hero.eyebrow": "Kaytannon palvelut · Uusimaa, Suomi",
       "hero.bookConsultation": "Varaa konsultaatio",
       "cta.book": "Varaa nyt",
       "cta.quote": "Pyyda tarjous",
@@ -68,7 +68,7 @@
       "tracking.desc": "Asiakkaat saavat reaaliaikaisen GPS-seurannan, ETA-paivitykset ja kuljettajatiedot — laskeutumisesta ovelle yhtenä saumattomana kokonaisuutena.",
 
       "digital.p1": "Luxivalin digitaalinen yksikko tuottaa konversiokeskeista verkkokehitysta, SEO-palveluita, QA-ohjelmistotestausta ja UGC-hahmokokemuksia.",
-      "digital.p2": "Yhdistamme premium-visuaalisen taidon hakukonestrategiaan, jotta brandisi nakyy, konvertoi ja tuntuu luksuskategorialta.",
+      "digital.p2": "Yhdistamme selkean visuaalisen taidon hakukonestrategiaan, jotta brandisi nakyy, konvertoi ja tuntuu luksuskategorialta.",
       "digital.p3": "Helsingista globaaliin — jos silla on digitaalinen lasnäolo, me suunnittelemme sen.",
 
       "stat.transfers": "Kuljetuksia suoritettu",
@@ -88,7 +88,7 @@
       "founder.tag": "Perustaja ja johtaja",
       "founder.eyebrow": "Tietoa Luxivalista",
       "founder.heading": "Rakennettu tarkkuudelle.<br>Huippuosaamisen ajamana.",
-      "founder.quote": "\"Rakensin Luxivalin kuroa umpeen kuilun premium-lentokenttäkuljetusten ja maailmanluokan digitaalipalveluiden valilla — koska jokainen kohtaamispiste ansaitsee saman intohimoisen huomion yksityiskohtiin.\"",
+      "founder.quote": "\"Rakensin Luxivalin kuroa umpeen kuilun yksityisten lentokenttakuljetusten ja kaytannollisten digitaalipalveluiden valilla — koska jokainen kohtaamispiste ansaitsee saman intohimoisen huomion yksityiskohtiin.\"",
       "founder.bio": "Helsinki, Suomi — Luxival yhdistaa yli 5 vuoden digitaalisen asiantuntemuksen ja syvan tuntemuksen Helsinki-Vantaan lentoasemakäytävästa — palvellen kansainvalisia matkustajia, yrityksiaä ja brandeja, jotka eivat tingi laadusta.",
 
       "form.title": "Pikakysely — ei sitoumusta",
@@ -116,11 +116,11 @@
       "proof.satisfaction": "Asiakastyytyvaisyys",
       "proof.audits": "Verkkosivuauditointeja",
 
-      "meta.home.title": "Luxival | Premium-matkailu-, digitaali- ja QA-palvelut Uudellamaalla",
+      "meta.home.title": "Luxival | Matkailu-, digitaali- ja QA-palvelut Uudellamaalla",
       "meta.home.desc": "Luxival tarjoaa lentokenttakuljetuksia, Suomen matkasuunnittelua, verkkosivusuunnittelua, SEO:ta, automaatiota ja QA-auditointeja Uudeltamaalta.",
 
       "tourism.eyebrow": "Matkailu ja kuljetus · Helsinki",
-      "tourism.title": "Premium-lentokenttäkuljetus ja Suomi-matkakokemus.",
+      "tourism.title": "Yksityinen lentokenttakuljetus ja Suomi-matkakokemus.",
       "tourism.subtitle": "Saumattomat Helsinki-Vantaan noudot, yksityiset kyydit, majoitushaku ja kausiluonteinen kiertuesuunnittelu — kaikki yhdessa luksuskokemuksessa.",
       "tourism.seasons": "Matkusta kalenterin mukaan",
       "tourism.winter": "Talvi",
@@ -140,11 +140,11 @@
       "tourism.accommodation": "Majoitushaku",
       "tourism.fareEstimate": "Arvioi hintasi",
       "tourism.bookDetails": "Lahetä varaustietosi",
-      "tourism.bookCta": "Varaa premium-kuljetuksesi.",
+      "tourism.bookCta": "Varaa yksityinen kuljetuksesi.",
       "tourism.bookSubtitle": "Asematasolta ovelle — jokainen metri ennalta selvitetty, jokainen yksityiskohta orkestroitu.",
       "tourism.faq": "Usein kysytyt kysymykset",
 
-      "transfers.eyebrow": "Premium-kuljetukset · Helsinki",
+      "transfers.eyebrow": "Yksityiset kuljetukset · Helsinki",
       "transfers.title": "Helsingin hienoin kuljettajapalvelu",
       "transfers.subtitle": "Lentokenttänoudot, yksityiset kaupunkikyydit ja eksklusiiviset risteilykuljetukset — GPS-seurannalla laskeutumisesta ovellesi.",
       "transfers.choose": "Valitse kuljetuksesi",
@@ -162,7 +162,7 @@
       "digital.webDesign": "Verkkosuunnittelu ja kehitys",
       "digital.seo": "SEO-strategia",
       "digital.qaTesting": "QA-ohjelmistotestaus",
-      "digital.agenticWorkflows": "Agenttiset työnkulut",
+      "digital.agenticWorkflows": "Tyonkulkujen tuki",
       "digital.websiteAudit": "Verkkosivuauditointi",
       "digital.platformSaas": "Alusta ja SaaS",
       "digital.howItWorks": "Kuinka se toimii",
@@ -189,7 +189,7 @@
       "contact.sendInquiry": "Lahetä kysely",
       "contact.inquiryDesc": "Kuljetusvaraus, projektikuvaus tai yleinen kysymys — palaamme asiaan yhden arkipäivän kuluessa.",
       "contact.newsletter": "Uutiskirje",
-      "contact.newsletterDesc": "Päivityksiä premium-lanseerauksista, SEO-strategiasta ja kuljetustarjouksista.",
+      "contact.newsletterDesc": "Päivityksiä palvelupaivityksista, SEO-strategiasta ja kuljetustarjouksista.",
       "contact.serviceInterest": "Palvelukiinnostus"
     },
     sv: {
@@ -209,9 +209,9 @@
       "nav.blog": "Blogg",
       "search.placeholder": "Sok efter tjanster, sidor eller nyckelord",
       "search.noResults": "Inga relaterade sidor hittades.",
-      "hero.title": "Premiumresor, digitala tjanster och QA i Nyland",
+      "hero.title": "Resor, digitala tjanster och QA i Nyland",
       "hero.subtitle": "Flygplatstransfer, Finland-reseplanering, webbplatser, SEO, automation och QA-granskningar for kunder som forvantar sig precision.",
-      "hero.eyebrow": "Premiumdrift · Nyland, Finland",
+      "hero.eyebrow": "Praktisk drift · Nyland, Finland",
       "hero.bookConsultation": "Boka konsultation",
       "cta.book": "Boka nu",
       "cta.quote": "Begär offert",
@@ -232,7 +232,7 @@
       "cta.getInTouch": "Kontakta oss",
       "cta.viewServices": "Se tjanster",
       "cta.subscribe": "Prenumerera",
-      "footer.copyright": "Luxival © 2026 · Premium digitala upplevelser och transportupplevelser",
+      "footer.copyright": "Luxival © 2026 · Digitala tjanster och privat transport",
       "footer.privacy": "Integritetspolicy",
       "footer.terms": "Anvandarvillkor",
       "footer.contactTitle": "Kontakta Luxival",
@@ -257,7 +257,7 @@
       "tracking.desc": "Kunder far GPS-sparning i realtid, ETA-uppdateringar och chaufforsinformation — fran landning till dorren i ett somlost flode.",
 
       "digital.p1": "Luxivals digitala enhet levererar konverteringsfokuserad webbutveckling, SEO-tjanster, QA-programvarutestning och UGC-upplevelser.",
-      "digital.p2": "Vi kombinerar premium visuellt hantverk med sokforst-strategi sa att ditt varumarke rankas, konverterar och kanns som lyxkategorin det tillhor.",
+      "digital.p2": "Vi kombinerar tydligt visuellt hantverk med sokforst-strategi sa att ditt varumarke rankas, konverterar och kanns som lyxkategorin det tillhor.",
       "digital.p3": "Fran Helsingfors till global rackvidd — om det har en digital narvaro, arkitekterar vi den.",
 
       "stat.transfers": "Genomforda transferer",
@@ -277,7 +277,7 @@
       "founder.tag": "Grundare och direktor",
       "founder.eyebrow": "Om Luxival",
       "founder.heading": "Byggt pa precision.<br>Drivet av excellens.",
-      "founder.quote": "\"Jag byggde Luxival for att overbrygga klyftan mellan premiumflygtransfer och digitala tjanster i varldsklass — for att varje kontaktpunkt fortjanar samma besatta uppmärksamhet pa detaljer.\"",
+      "founder.quote": "\"Jag byggde Luxival for att overbrygga klyftan mellan privata flygtransfer och digitala tjanster i praktiska — for att varje kontaktpunkt fortjanar samma besatta uppmärksamhet pa detaljer.\"",
       "founder.bio": "Baserat i Helsingfors, Finland — Luxival kombinerar 5+ ars digital expertis med djup kunskap om Helsingfors-Vanda flygplatskorridoren — for internationella resenarer, foretag och varumärken som vagrar kompromissa.",
 
       "form.title": "Snabbforfragan — ingen forpliktelse",
@@ -305,11 +305,11 @@
       "proof.satisfaction": "Kundnojdhet",
       "proof.audits": "Webbgranskningar",
 
-      "meta.home.title": "Luxival | Helsingfors premiumchauffors- och webbdesignbyra",
-      "meta.home.desc": "Luxival — Helsingfors premiumtransfertjanst och webbdesignbyra. Flygplatstransferer, SEO, QA-programvarutestning och agentstyrda arbetsfloden.",
+      "meta.home.title": "Luxival | Helsingfors privat transfer- och webbdesignbyra",
+      "meta.home.desc": "Luxival — Helsingfors privat transfertjanst och webbdesignbyra. Flygplatstransferer, SEO, QA-programvarutestning och arbetsflodesstod.",
 
       "tourism.eyebrow": "Resor och transport · Helsingfors",
-      "tourism.title": "Premiumflygplatstransfer och Finlandsresupplevelse.",
+      "tourism.title": "Privat flygplatstransfer och Finlandsresupplevelse.",
       "tourism.subtitle": "Somlosa Helsingfors-Vanda upphämtningar, privata resor, boendesokning och sasongsbunden turplanering — allt i en lyxupplevelse.",
       "tourism.seasons": "Res genom kalendern",
       "tourism.winter": "Vinter",
@@ -329,11 +329,11 @@
       "tourism.accommodation": "Boendesokning",
       "tourism.fareEstimate": "Berakna ditt pris",
       "tourism.bookDetails": "Skicka dina bokningsuppgifter",
-      "tourism.bookCta": "Boka din premiumtransfer.",
+      "tourism.bookCta": "Boka din privat transfer.",
       "tourism.bookSubtitle": "Fran landningsbanan till dorren — varje meter forberedd, varje detalj orkestrerad.",
       "tourism.faq": "Vanliga fragor",
 
-      "transfers.eyebrow": "Premiumtransfer · Helsingfors",
+      "transfers.eyebrow": "Privat transfer · Helsingfors",
       "transfers.title": "Helsingfors finaste chaufforsservice",
       "transfers.subtitle": "Flygplatsupphämtningar, privata stadsresor och exklusiva kryssningstransferer — med GPS-sparning fran landning till din dorr.",
       "transfers.choose": "Valj din transfer",
@@ -351,7 +351,7 @@
       "digital.webDesign": "Webbdesign och utveckling",
       "digital.seo": "SEO-strategi",
       "digital.qaTesting": "QA-programvarutestning",
-      "digital.agenticWorkflows": "Agentiska arbetsfloden",
+      "digital.agenticWorkflows": "Arbetsflodesstod",
       "digital.websiteAudit": "Webbplatsgranskning",
       "digital.platformSaas": "Plattform och SaaS",
       "digital.howItWorks": "Hur det fungerar",
@@ -363,7 +363,7 @@
 
       "about.eyebrow": "Om Luxival · Helsingfors, Finland",
       "about.title": "Byggt pa precision. Drivet av excellens.",
-      "about.subtitle": "Luxival ar ett multidisciplinart premiumvarumärke som forenar lyxtransporter, webbutveckling, QA-programvarutestning och agentisk arbetsflödesdesign.",
+      "about.subtitle": "Luxival ar ett multidisciplinart servicevarumärke som forenar privat transport, webbutveckling, QA-programvarutestning och arbetsflodesstod.",
       "about.career": "Karriarhistorik",
       "about.careerSubtitle": "Erfarenhet som talar for sig sjalv",
       "about.skills": "Fardigheter och verktyg",
@@ -378,7 +378,7 @@
       "contact.sendInquiry": "Skicka forfragan",
       "contact.inquiryDesc": "Transferbokning, projektunderlag eller allmän fraga — vi aterkommer inom en arbetsdag.",
       "contact.newsletter": "Nyhetsbrev",
-      "contact.newsletterDesc": "Uppdateringar om premiumlanseringar, SEO-strategi och transfererbjudanden.",
+      "contact.newsletterDesc": "Uppdateringar om serviceuppdateringar, SEO-strategi och transfererbjudanden.",
       "contact.serviceInterest": "Tjänsteintresse"
     },
     de: {
@@ -398,9 +398,9 @@
       "nav.blog": "Blog",
       "search.placeholder": "Suche nach Services, Seiten oder Stichwortern",
       "search.noResults": "Keine passenden Seiten gefunden.",
-      "hero.title": "Premium-Reisen, Digitalservices und QA in Uusimaa",
+      "hero.title": "Reisen, Digitalservices und QA in Uusimaa",
       "hero.subtitle": "Flughafentransfers, Finnland-Reiseplanung, Websites, SEO, Automatisierung und QA-Audits fur Menschen und Marken mit Anspruch auf Details.",
-      "hero.eyebrow": "Premium-Betrieb · Uusimaa, Finnland",
+      "hero.eyebrow": "Praktischer Service · Uusimaa, Finnland",
       "hero.bookConsultation": "Beratung buchen",
       "cta.book": "Jetzt buchen",
       "cta.quote": "Angebot anfragen",
@@ -421,7 +421,7 @@
       "cta.getInTouch": "Kontakt aufnehmen",
       "cta.viewServices": "Services ansehen",
       "cta.subscribe": "Abonnieren",
-      "footer.copyright": "Luxival © 2026 · Premium-Erlebnisse fur Digitales und Transport",
+      "footer.copyright": "Luxival © 2026 · Digitale Dienste und private Transfers",
       "footer.privacy": "Datenschutzrichtlinie",
       "footer.terms": "Nutzungsbedingungen",
       "footer.contactTitle": "Luxival kontaktieren",
@@ -446,7 +446,7 @@
       "tracking.desc": "Kunden erhalten Echtzeit-GPS-Tracking, ETA-Updates und Fahrerdaten — von der Landung bis zur Haustur in einem nahtlosen Ablauf.",
 
       "digital.p1": "Luxivals digitale Abteilung liefert konversionsstarke Webentwicklung, SEO-Services, QA-Softwaretests und UGC-Erlebnisse.",
-      "digital.p2": "Wir verbinden Premium-Visuelles mit Suchmaschinen-Strategie, damit Ihre Marke rankt, konvertiert und sich wie die Luxuskategorie anfühlt.",
+      "digital.p2": "Wir verbinden klares Design mit Suchmaschinen-Strategie, damit Ihre Marke rankt, konvertiert und sich wie die Luxuskategorie anfühlt.",
       "digital.p3": "Von Helsinki bis weltweit — wenn es eine digitale Prasenz hat, gestalten wir sie.",
 
       "stat.transfers": "Durchgefuhrte Transfers",
@@ -466,7 +466,7 @@
       "founder.tag": "Grunder und Direktor",
       "founder.eyebrow": "Uber Luxival",
       "founder.heading": "Auf Prazision gebaut.<br>Von Exzellenz angetrieben.",
-      "founder.quote": "\"Ich habe Luxival gegründet, um die Lücke zwischen Premium-Flughafentransport und erstklassigen digitalen Diensten zu schliessen — denn jeder Berührungspunkt verdient die gleiche obsessive Aufmerksamkeit fur Details.\"",
+      "founder.quote": "\"Ich habe Luxival gegründet, weil mir Arbeit wichtig ist, bei der die kleinen Details zählen, vom Flughafentransfer bis zum Website Formular, Audit oder Testbericht.\"",
       "founder.bio": "Mit Sitz in Helsinki, Finnland — Luxival vereint uber 5 Jahre digitale Expertise mit tiefem Wissen uber den Helsinki-Vantaa-Flughafenkorridor — fur internationale Reisende, Unternehmen und Marken, die keine Kompromisse eingehen.",
 
       "form.title": "Schnellanfrage — unverbindlich",
@@ -494,11 +494,11 @@
       "proof.satisfaction": "Kundenzufriedenheit",
       "proof.audits": "Website-Audits",
 
-      "meta.home.title": "Luxival | Helsinkis Premium-Chauffeur- und Webdesign-Agentur",
-      "meta.home.desc": "Luxival — Helsinkis Premium-Chauffeurservice und Webdesign-Agentur. Flughafentransfers, SEO, QA-Softwaretests und agentische Workflow-Strategie.",
+      "meta.home.title": "Luxival | Helsinkis Private-Transfer- und Webdesign-Agentur",
+      "meta.home.desc": "Luxival — Helsinkis private Transferdienste und Webdesign-Agentur. Flughafentransfers, SEO, QA-Softwaretests und Workflow-Unterstuetzung.",
 
       "tourism.eyebrow": "Reisen und Transport · Helsinki",
-      "tourism.title": "Premium-Flughafentransfer und Finnland-Reiseerlebnis.",
+      "tourism.title": "Privater Flughafentransfer und Finnland-Reiseerlebnis.",
       "tourism.subtitle": "Nahtlose Helsinki-Vantaa-Abholungen, Privatfahrten, Unterkunftssuche und saisonale Tourenplanung — alles in einem Luxuserlebnis.",
       "tourism.seasons": "Reisen Sie durch den Kalender",
       "tourism.winter": "Winter",
@@ -518,11 +518,11 @@
       "tourism.accommodation": "Unterkunftssuche",
       "tourism.fareEstimate": "Preis berechnen",
       "tourism.bookDetails": "Buchungsdetails senden",
-      "tourism.bookCta": "Buchen Sie Ihren Premium-Transfer.",
+      "tourism.bookCta": "Buchen Sie Ihren privaten Transfer.",
       "tourism.bookSubtitle": "Vom Rollfeld bis zur Haustur — jeder Meter vorbereitet, jedes Detail orchestriert.",
       "tourism.faq": "Haufig gestellte Fragen",
 
-      "transfers.eyebrow": "Premium-Transfers · Helsinki",
+      "transfers.eyebrow": "privaten Transfers · Helsinki",
       "transfers.title": "Helsinkis feinster Chauffeurservice",
       "transfers.subtitle": "Flughafenabholungen, private Stadtfahrten und exklusive Kreuzfahrttransfers — mit GPS-Tracking von der Landung bis zu Ihrer Tur.",
       "transfers.choose": "Wahlen Sie Ihren Transfer",
@@ -535,12 +535,12 @@
 
       "digital.eyebrow": "Digitale Dienste · Helsinki",
       "digital.title": "Webdesign und digitale Dienste, die konvertieren",
-      "digital.subtitle": "ISTQB-zertifizierte Qualitat, agentische Workflow-Strategie, SEO-first — von Helsinki weltweit. Wir machen Ihre Website profitabel.",
+      "digital.subtitle": "ISTQB-zertifizierte Qualitat, Workflow-Unterstuetzung, SEO-first — von Helsinki weltweit. Wir machen Ihre Website profitabel.",
       "digital.whatWeBuild": "Was wir bauen",
       "digital.webDesign": "Webdesign und Entwicklung",
       "digital.seo": "SEO-Strategie",
       "digital.qaTesting": "QA-Softwaretest",
-      "digital.agenticWorkflows": "Agentische Workflows",
+      "digital.agenticWorkflows": "Workflow-Unterstuetzung",
       "digital.websiteAudit": "Website-Audit",
       "digital.platformSaas": "Plattform und SaaS",
       "digital.howItWorks": "So funktioniert es",
@@ -552,7 +552,7 @@
 
       "about.eyebrow": "Uber Luxival · Helsinki, Finnland",
       "about.title": "Auf Prazision gebaut. Von Exzellenz angetrieben.",
-      "about.subtitle": "Luxival ist eine multidisziplinare Premium-Marke, die Luxustransport, Webentwicklung, QA-Softwaretests und agentisches Workflow-Design vereint.",
+      "about.subtitle": "Luxival ist eine multidisziplinare Servicemarke, die private Transfers, Webentwicklung, QA-Softwaretests und Workflow-Unterstuetzung vereint.",
       "about.career": "Karriereverlauf",
       "about.careerSubtitle": "Erfahrung, die fur sich spricht",
       "about.skills": "Fahigkeiten und Tools",
@@ -567,7 +567,7 @@
       "contact.sendInquiry": "Anfrage senden",
       "contact.inquiryDesc": "Transferbuchung, Projektbriefing oder allgemeine Frage — wir melden uns innerhalb eines Werktags.",
       "contact.newsletter": "Newsletter",
-      "contact.newsletterDesc": "Updates zu Premium-Launches, SEO-Strategie und Transferangeboten.",
+      "contact.newsletterDesc": "Updates zu Service-Updates, SEO-Strategie und Transferangeboten.",
       "contact.serviceInterest": "Serviceinteresse"
     },
     fr: {
@@ -587,9 +587,9 @@
       "nav.blog": "Blog",
       "search.placeholder": "Recherchez des services, pages ou mots-cles",
       "search.noResults": "Aucune page associee trouvee.",
-      "hero.title": "Voyage premium, digital et QA en Uusimaa",
+      "hero.title": "Voyage, digital et QA en Uusimaa",
       "hero.subtitle": "Transferts aeroport, organisation de voyages en Finlande, sites web, SEO, automatisation et audits QA pour les clients qui attendent le detail.",
-      "hero.eyebrow": "Operations premium · Uusimaa, Finlande",
+      "hero.eyebrow": "Services pratiques · Uusimaa, Finlande",
       "hero.bookConsultation": "Reserver une consultation",
       "cta.book": "Reserver",
       "cta.quote": "Demander un devis",
@@ -610,12 +610,12 @@
       "cta.getInTouch": "Nous contacter",
       "cta.viewServices": "Voir les services",
       "cta.subscribe": "S'abonner",
-      "footer.copyright": "Luxival © 2026 · Experiences premium digitales et de transport",
+      "footer.copyright": "Luxival © 2026 · Services digitaux et transport prive",
       "footer.privacy": "Politique de confidentialite",
       "footer.terms": "Conditions d'utilisation",
       "footer.contactTitle": "Contacter Luxival",
       "footer.connectTitle": "Suivez-nous",
-      "footer.tagline": "Voyage de luxe · Developpement web · Services SEO · Tests QA",
+      "footer.tagline": "Voyage prive · Developpement web · Services SEO · Tests QA",
 
       "section.travel": "Voyage et transport",
       "section.tracking": "Suivez votre trajet en temps reel",
@@ -628,14 +628,14 @@
       "card.jet.title": "Jet prive",
       "card.jet.desc": "Arrivee cinematographique — vol prive avec accueil sur le tarmac et traitement prioritaire depuis Helsinki-Vantaa.",
       "card.luggage.title": "Bagages",
-      "card.luggage.desc": "Service de bagages premium — de la soute a votre suite, gere avec precision et soin.",
+      "card.luggage.desc": "Service de bagages — de la soute a votre suite, gere avec precision et soin.",
       "card.arrival.title": "Arrivee",
       "card.arrival.desc": "Service chauffeur avec suivi GPS, mises a jour ETA et details du chauffeur de l'atterrissage a votre porte.",
 
       "tracking.desc": "Les clients recoivent un suivi GPS en temps reel, des mises a jour ETA et les details du chauffeur — de l'atterrissage a votre porte en un flux continu.",
 
       "digital.p1": "La division digitale de Luxival fournit du developpement web axe conversion, des services SEO, des tests logiciels QA et des experiences UGC.",
-      "digital.p2": "Nous combinons un visuel premium avec une strategie search-first pour que votre marque se classe, convertisse et ressemble a la categorie luxe qu'elle merite.",
+      "digital.p2": "Nous combinons un design clair avec une strategie search-first pour que votre marque soit plus facile a trouver, comprendre et contacter.",
       "digital.p3": "D'Helsinki au monde entier — si cela a une presence digitale, nous l'architecturons.",
 
       "stat.transfers": "Transferts effectues",
@@ -655,7 +655,7 @@
       "founder.tag": "Fondateur et directeur",
       "founder.eyebrow": "A propos de Luxival",
       "founder.heading": "Bati sur la precision.<br>Anime par l'excellence.",
-      "founder.quote": "\"J'ai cree Luxival pour combler le fosse entre le transport aeroportuaire premium et les services digitaux de classe mondiale — car chaque point de contact merite la meme attention obsessionnelle aux details.\"",
+      "founder.quote": "\"J'ai cree Luxival pour combler le fosse entre le transport aeroportuaire prive et les services digitaux de pratiques — car chaque point de contact merite la meme attention serieuse aux details.\"",
       "founder.bio": "Base a Helsinki, Finlande — Luxival combine plus de 5 ans d'expertise digitale avec une connaissance approfondie du corridor de l'aeroport Helsinki-Vantaa — au service des voyageurs internationaux, des entreprises et des marques qui refusent les compromis.",
 
       "form.title": "Demande rapide — sans engagement",
@@ -683,12 +683,12 @@
       "proof.satisfaction": "Satisfaction client",
       "proof.audits": "Audits de sites web",
 
-      "meta.home.title": "Luxival | Agence premium de chauffeur et design web a Helsinki",
-      "meta.home.desc": "Luxival — service de chauffeur premium et agence de design web a Helsinki. Transferts aeroport, SEO, tests logiciels QA et strategie de workflows agentiques.",
+      "meta.home.title": "Luxival | Agence de transport prive et design web a Helsinki",
+      "meta.home.desc": "Luxival — service de transport prive et agence de design web a Helsinki. Transferts aeroport, SEO, tests logiciels QA et support de workflows.",
 
       "tourism.eyebrow": "Voyage et transport · Helsinki",
-      "tourism.title": "Transfert aeroportuaire premium et experience de voyage en Finlande.",
-      "tourism.subtitle": "Prises en charge Helsinki-Vantaa sans couture, trajets prives, recherche d'hebergement et planification saisonniere — le tout dans une experience de luxe.",
+      "tourism.title": "Transfert aeroportuaire prive et experience de voyage en Finlande.",
+      "tourism.subtitle": "Prises en charge Helsinki-Vantaa sans couture, trajets prives, recherche d'hebergement et planification saisonniere — le tout dans une experience claire.",
       "tourism.seasons": "Voyagez au fil du calendrier",
       "tourism.winter": "Hiver",
       "tourism.spring": "Printemps",
@@ -707,11 +707,11 @@
       "tourism.accommodation": "Recherche d'hebergement",
       "tourism.fareEstimate": "Estimez votre tarif",
       "tourism.bookDetails": "Envoyez vos details de reservation",
-      "tourism.bookCta": "Reservez votre transfert premium.",
+      "tourism.bookCta": "Reservez votre transfert prive.",
       "tourism.bookSubtitle": "Du tarmac a votre porte — chaque metre anticipe, chaque detail orchestre.",
       "tourism.faq": "Questions frequentes",
 
-      "transfers.eyebrow": "Transferts premium · Helsinki",
+      "transfers.eyebrow": "Transferts prives · Helsinki",
       "transfers.title": "Le plus fin service de chauffeur d'Helsinki",
       "transfers.subtitle": "Prises en charge aeroport, trajets prives en ville et transferts de croisiere exclusifs — avec suivi GPS de l'atterrissage a votre porte.",
       "transfers.choose": "Choisissez votre transfert",
@@ -729,7 +729,7 @@
       "digital.webDesign": "Design web et developpement",
       "digital.seo": "Strategie SEO",
       "digital.qaTesting": "Tests logiciels QA",
-      "digital.agenticWorkflows": "Workflows agentiques",
+      "digital.agenticWorkflows": "Support de workflows",
       "digital.websiteAudit": "Audit de site web",
       "digital.platformSaas": "Plateforme et SaaS",
       "digital.howItWorks": "Comment ca marche",
@@ -741,7 +741,7 @@
 
       "about.eyebrow": "A propos de Luxival · Helsinki, Finlande",
       "about.title": "Bati sur la precision. Anime par l'excellence.",
-      "about.subtitle": "Luxival est une marque premium multidisciplinaire unissant transport de luxe, developpement web, tests logiciels QA et design de workflows agentiques.",
+      "about.subtitle": "Luxival est une marque de services multidisciplinaire unissant transport prive, developpement web, tests logiciels QA et support de workflows.",
       "about.career": "Parcours professionnel",
       "about.careerSubtitle": "Une experience qui parle d'elle-meme",
       "about.skills": "Competences et outils",
@@ -756,7 +756,7 @@
       "contact.sendInquiry": "Envoyer une demande",
       "contact.inquiryDesc": "Reservation de transfert, brief de projet ou question generale — nous vous recontactons sous un jour ouvrable.",
       "contact.newsletter": "Newsletter",
-      "contact.newsletterDesc": "Mises a jour sur les lancements premium, la strategie SEO et les offres de transfert.",
+      "contact.newsletterDesc": "Mises a jour sur les mises a jour de service, la strategie SEO et les offres de transfert.",
       "contact.serviceInterest": "Service souhaite"
     },
     it: {
@@ -776,9 +776,9 @@
       "nav.blog": "Blog",
       "search.placeholder": "Cerca servizi, pagine o parole chiave",
       "search.noResults": "Nessuna pagina correlata trovata.",
-      "hero.title": "Viaggi premium, digitale e QA in Uusimaa",
+      "hero.title": "Viaggi, digitale e QA in Uusimaa",
       "hero.subtitle": "Transfer aeroportuali, pianificazione viaggi in Finlandia, siti web, SEO, automazione e audit QA per clienti che pretendono attenzione ai dettagli.",
-      "hero.eyebrow": "Operazioni premium · Uusimaa, Finlandia",
+      "hero.eyebrow": "Servizi pratici · Uusimaa, Finlandia",
       "hero.bookConsultation": "Prenota una consulenza",
       "cta.book": "Prenota ora",
       "cta.quote": "Richiedi un preventivo",
@@ -799,7 +799,7 @@
       "cta.getInTouch": "Contattaci",
       "cta.viewServices": "Vedi servizi",
       "cta.subscribe": "Iscriviti",
-      "footer.copyright": "Luxival © 2026 · Esperienze premium digitali e di trasporto",
+      "footer.copyright": "Luxival © 2026 · Servizi digitali e trasporti privati",
       "footer.privacy": "Informativa sulla privacy",
       "footer.terms": "Termini di servizio",
       "footer.contactTitle": "Contatta Luxival",
@@ -817,14 +817,14 @@
       "card.jet.title": "Jet privato",
       "card.jet.desc": "Arrivo cinematografico — volo charter privato con accoglienza in pista e priorità di sdoganamento da Helsinki-Vantaa.",
       "card.luggage.title": "Bagagli",
-      "card.luggage.desc": "Servizio bagagli premium — dalla stiva dell'aereo alla porta della tua suite, gestito con precisione e cura.",
+      "card.luggage.desc": "Servizio bagagli — dalla stiva dell'aereo alla porta della tua suite, gestito con precisione e cura.",
       "card.arrival.title": "Arrivo",
       "card.arrival.desc": "Servizio chauffeur con tracciamento GPS, aggiornamenti ETA e dettagli dell'autista dall'atterraggio alla tua porta.",
 
       "tracking.desc": "I clienti ricevono tracciamento GPS in tempo reale, aggiornamenti ETA e dettagli dell'autista — dall'atterraggio alla porta in un flusso continuo.",
 
       "digital.p1": "La divisione digitale di Luxival offre sviluppo web orientato alla conversione, servizi SEO, test software QA ed esperienze UGC.",
-      "digital.p2": "Combiniamo un visual premium con una strategia search-first affinche il tuo brand si posizioni, converta e trasmetta il lusso che merita.",
+      "digital.p2": "Combiniamo un design chiaro con una strategia search-first affinche il tuo brand si posizioni, converta e trasmetta il lusso che merita.",
       "digital.p3": "Da Helsinki al mondo — se ha una presenza digitale, noi la progettiamo.",
 
       "stat.transfers": "Transfer completati",
@@ -844,7 +844,7 @@
       "founder.tag": "Fondatore e direttore",
       "founder.eyebrow": "Chi e Luxival",
       "founder.heading": "Costruito sulla precisione.<br>Guidato dall'eccellenza.",
-      "founder.quote": "\"Ho creato Luxival per colmare il divario tra i transfer aeroportuali premium e i servizi digitali di livello mondiale — perche ogni punto di contatto merita la stessa ossessiva attenzione ai dettagli.\"",
+      "founder.quote": "\"Ho creato Luxival per colmare il divario tra i transfer aeroportuali privati e i servizi digitali di pratici — perche ogni punto di contatto merita la stessa seria attenzione ai dettagli.\"",
       "founder.bio": "Con sede a Helsinki, Finlandia — Luxival combina oltre 5 anni di competenza digitale con una profonda conoscenza del corridoio aeroportuale Helsinki-Vantaa — al servizio di viaggiatori internazionali, aziende e brand che non accettano compromessi.",
 
       "form.title": "Richiesta rapida — senza impegno",
@@ -872,11 +872,11 @@
       "proof.satisfaction": "Soddisfazione clienti",
       "proof.audits": "Audit di siti web",
 
-      "meta.home.title": "Luxival | Agenzia premium di chauffeur e web design a Helsinki",
-      "meta.home.desc": "Luxival — servizio chauffeur premium e agenzia di web design a Helsinki. Transfer aeroportuali, SEO, test software QA e strategia di workflow agentici.",
+      "meta.home.title": "Luxival | Agenzia di transfer privati e web design a Helsinki",
+      "meta.home.desc": "Luxival — servizio di transfer privato e agenzia di web design a Helsinki. Transfer aeroportuali, SEO, test software QA e supporto ai workflow.",
 
       "tourism.eyebrow": "Viaggi e trasporti · Helsinki",
-      "tourism.title": "Transfer aeroportuale premium ed esperienza di viaggio in Finlandia.",
+      "tourism.title": "Transfer aeroportuale privato ed esperienza di viaggio in Finlandia.",
       "tourism.subtitle": "Ritiri Helsinki-Vantaa senza intoppi, viaggi privati, ricerca alloggi e pianificazione stagionale — tutto in un'esperienza di lusso.",
       "tourism.seasons": "Viaggia attraverso il calendario",
       "tourism.winter": "Inverno",
@@ -896,11 +896,11 @@
       "tourism.accommodation": "Ricerca alloggi",
       "tourism.fareEstimate": "Stima il tuo prezzo",
       "tourism.bookDetails": "Invia i dettagli della prenotazione",
-      "tourism.bookCta": "Prenota il tuo transfer premium.",
+      "tourism.bookCta": "Prenota il tuo transfer privato.",
       "tourism.bookSubtitle": "Dalla pista alla porta — ogni metro preparato, ogni dettaglio orchestrato.",
       "tourism.faq": "Domande frequenti",
 
-      "transfers.eyebrow": "Transfer premium · Helsinki",
+      "transfers.eyebrow": "Transfer privati · Helsinki",
       "transfers.title": "Il piu raffinato servizio chauffeur di Helsinki",
       "transfers.subtitle": "Ritiri aeroportuali, viaggi privati in citta e transfer crociera esclusivi — con tracciamento GPS dall'atterraggio alla tua porta.",
       "transfers.choose": "Scegli il tuo transfer",
@@ -913,12 +913,12 @@
 
       "digital.eyebrow": "Servizi digitali · Helsinki",
       "digital.title": "Web design e servizi digitali che convertono",
-      "digital.subtitle": "Qualita certificata ISTQB, strategia di workflow agentici, SEO-first — da Helsinki al mondo. Rendiamo il tuo sito redditizio.",
+      "digital.subtitle": "Qualita certificata ISTQB, supporto ai workflow, SEO-first — da Helsinki al mondo. Rendiamo il tuo sito redditizio.",
       "digital.whatWeBuild": "Cosa costruiamo",
       "digital.webDesign": "Web design e sviluppo",
       "digital.seo": "Strategia SEO",
       "digital.qaTesting": "Test software QA",
-      "digital.agenticWorkflows": "Workflow agentici",
+      "digital.agenticWorkflows": "Supporto workflow",
       "digital.websiteAudit": "Audit del sito web",
       "digital.platformSaas": "Piattaforma e SaaS",
       "digital.howItWorks": "Come funziona",
@@ -930,7 +930,7 @@
 
       "about.eyebrow": "Chi e Luxival · Helsinki, Finlandia",
       "about.title": "Costruito sulla precisione. Guidato dall'eccellenza.",
-      "about.subtitle": "Luxival e un brand premium multidisciplinare che unisce trasporto di lusso, sviluppo web, test software QA e design di workflow agentici.",
+      "about.subtitle": "Luxival e un brand di servizi multidisciplinare che unisce trasporto privato, sviluppo web, test software QA e supporto ai workflow.",
       "about.career": "Percorso professionale",
       "about.careerSubtitle": "Un'esperienza che parla da se",
       "about.skills": "Competenze e strumenti",
@@ -945,7 +945,7 @@
       "contact.sendInquiry": "Invia richiesta",
       "contact.inquiryDesc": "Prenotazione transfer, brief di progetto o domanda generale — ti ricontattiamo entro un giorno lavorativo.",
       "contact.newsletter": "Newsletter",
-      "contact.newsletterDesc": "Aggiornamenti su lanci premium, strategia SEO e offerte transfer.",
+      "contact.newsletterDesc": "Aggiornamenti su aggiornamenti di servizio, strategia SEO e offerte transfer.",
       "contact.serviceInterest": "Servizio di interesse"
     },
     ru: {
@@ -1013,7 +1013,7 @@
       "tracking.desc": "Клиенты получают GPS-отслеживание в реальном времени, обновления ETA и данные водителя — от посадки до двери в едином бесшовном потоке.",
 
       "digital.p1": "Цифровое подразделение Luxival предоставляет веб-разработку, ориентированную на конверсию, SEO-услуги, QA-тестирование ПО и UGC-опыт.",
-      "digital.p2": "Мы сочетаем премиальный визуал с поисковой стратегией, чтобы ваш бренд ранжировался, конвертировал и воспринимался как премиум-категория.",
+      "digital.p2": "Мы сочетаем ясный дизайн с поисковой стратегией, чтобы ваш бренд было проще найти, понять и связаться с вами.",
       "digital.p3": "От Хельсинки до всего мира — если у него есть цифровое присутствие, мы его проектируем.",
 
       "stat.transfers": "Выполнено трансферов",
@@ -1033,7 +1033,7 @@
       "founder.tag": "Основатель и директор",
       "founder.eyebrow": "О Luxival",
       "founder.heading": "Построено на точности.<br>Ведомо совершенством.",
-      "founder.quote": "\"Я создал Luxival, чтобы преодолеть разрыв между премиальными аэропорт-трансферами и цифровыми услугами мирового класса — потому что каждая точка соприкосновения заслуживает такого же внимания к деталям.\"",
+      "founder.quote": "\"Я создал Luxival, чтобы соединить частные аэропорт-трансферы и практичные цифровые услуги — потому что каждая точка контакта должна быть понятной и хорошо подготовленной.\"",
       "founder.bio": "Базируясь в Хельсинки, Финляндия — Luxival объединяет более 5 лет цифрового опыта с глубоким знанием коридора аэропорта Хельсинки-Вантаа — обслуживая международных путешественников, компании и бренды, которые не идут на компромиссы.",
 
       "form.title": "Быстрый запрос — без обязательств",
@@ -1061,12 +1061,12 @@
       "proof.satisfaction": "Удовлетворенность клиентов",
       "proof.audits": "Аудитов сайтов",
 
-      "meta.home.title": "Luxival | Премиальный сервис такси и веб-дизайн в Хельсинки",
-      "meta.home.desc": "Luxival — премиальный сервис такси и агентство веб-дизайна в Хельсинки. Трансферы из аэропорта, SEO, QA-тестирование ПО и стратегия агентных рабочих процессов.",
+      "meta.home.title": "Luxival | Частный транспорт и веб-дизайн в Хельсинки",
+      "meta.home.desc": "Luxival — частный транспорт и веб-дизайн в Хельсинки. Трансферы из аэропорта, SEO, QA-тестирование ПО и поддержка рабочих процессов.",
 
       "tourism.eyebrow": "Путешествия и транспорт · Хельсинки",
-      "tourism.title": "Премиальный трансфер из аэропорта и опыт путешествия по Финляндии.",
-      "tourism.subtitle": "Бесшовные встречи в Хельсинки-Вантаа, частные поездки, поиск жилья и сезонное планирование — всё в одном люксовом опыте.",
+      "tourism.title": "Частный трансфер из аэропорта и планирование поездок по Финляндии.",
+      "tourism.subtitle": "Встречи в Хельсинки-Вантаа, частные поездки, поиск жилья и сезонное планирование в одном понятном сервисе.",
       "tourism.seasons": "Путешествуйте по календарю",
       "tourism.winter": "Зима",
       "tourism.spring": "Весна",
@@ -1079,19 +1079,19 @@
       "tourism.pickup": "Частная встреча в аэропорту",
       "tourism.cityToCity": "Из города в город",
       "tourism.planning": "Планирование туризма",
-      "tourism.destinations": "Курируемые направления и впечатления",
+      "tourism.destinations": "Полезные направления и впечатления",
       "tourism.map": "Отмеченные места на карте",
       "tourism.events": "Мероприятия в Хельсинки",
       "tourism.accommodation": "Поиск жилья",
       "tourism.fareEstimate": "Рассчитать стоимость",
       "tourism.bookDetails": "Отправить данные бронирования",
-      "tourism.bookCta": "Забронируйте ваш премиальный трансфер.",
-      "tourism.bookSubtitle": "От взлетной полосы до двери — каждый метр подготовлен, каждая деталь orchestriрована.",
+      "tourism.bookCta": "Забронируйте частный трансфер.",
+      "tourism.bookSubtitle": "От аэропорта до двери — маршрут, время и детали заранее подготовлены.",
       "tourism.faq": "Часто задаваемые вопросы",
 
-      "transfers.eyebrow": "Премиум-трансферы · Хельсинки",
+      "transfers.eyebrow": "Частные трансферы · Хельсинки",
       "transfers.title": "Лучший сервис такси в Хельсинки",
-      "transfers.subtitle": "Встречи в аэропорту, частные поездки по городу и эксклюзивные круизные трансферы — с GPS-отслеживанием от посадки до двери.",
+      "transfers.subtitle": "Встречи в аэропорту, частные поездки по городу и круизные трансферы с понятными обновлениями по маршруту.",
       "transfers.choose": "Выберите ваш трансфер",
       "transfers.airport": "Трансфер из аэропорта",
       "transfers.privatePickup": "Частная встреча",
@@ -1102,12 +1102,12 @@
 
       "digital.eyebrow": "Цифровые услуги · Хельсинки",
       "digital.title": "Веб-дизайн и цифровые услуги, которые конвертируют",
-      "digital.subtitle": "Качество ISTQB-сертифицировано, стратегия агентных рабочих процессов, SEO-first — от Хельсинки по всему миру. Делаем ваш сайт прибыльным.",
+      "digital.subtitle": "ISTQB-информированный QA, SEO, веб-дизайн и поддержка рабочих процессов для компаний, которым нужен понятный следующий шаг.",
       "digital.whatWeBuild": "Что мы создаем",
       "digital.webDesign": "Веб-дизайн и разработка",
       "digital.seo": "SEO-стратегия",
       "digital.qaTesting": "QA-тестирование ПО",
-      "digital.agenticWorkflows": "Агентные рабочие процессы",
+      "digital.agenticWorkflows": "Поддержка рабочих процессов",
       "digital.websiteAudit": "Аудит веб-сайта",
       "digital.platformSaas": "Платформа и SaaS",
       "digital.howItWorks": "Как это работает",
@@ -1118,8 +1118,8 @@
       "digital.freeAudit": "Получить бесплатный аудит сайта",
 
       "about.eyebrow": "О Luxival · Хельсинки, Финляндия",
-      "about.title": "Построено на точности. Ведомо совершенством.",
-      "about.subtitle": "Luxival — мультидисциплинарный премиум-бренд, объединяющий люксовый транспорт, веб-разработку, QA-тестирование ПО и дизайн агентных рабочих процессов.",
+      "about.title": "Практично, внимательно, с высоким стандартом.",
+      "about.subtitle": "Luxival объединяет частный транспорт, веб-разработку, QA-тестирование ПО и поддержку рабочих процессов.",
       "about.career": "Карьерный путь",
       "about.careerSubtitle": "Опыт, говорящий сам за себя",
       "about.skills": "Навыки и инструменты",
@@ -1134,7 +1134,7 @@
       "contact.sendInquiry": "Отправить запрос",
       "contact.inquiryDesc": "Бронирование трансфера, бриф проекта или общий вопрос — мы свяжемся в течение рабочего дня.",
       "contact.newsletter": "Новостная рассылка",
-      "contact.newsletterDesc": "Обновления о премиальных запусках, SEO-стратегии и предложениях трансферов.",
+      "contact.newsletterDesc": "Обновления о новых услугах, SEO-стратегии и предложениях трансферов.",
       "contact.serviceInterest": "Интересующая услуга",
 
       "chat.toggleLabel": "Общаться с Luxival",
@@ -1168,9 +1168,9 @@
       "nav.blog": "Blogg",
       "search.placeholder": "Sok etter tjenester, sider eller nokkelord",
       "search.noResults": "Ingen relaterte sider funnet.",
-      "hero.title": "Premium reiser, digitale tjenester og QA i Uusimaa",
+      "hero.title": "Reiser, digitale tjenester og QA i Uusimaa",
       "hero.subtitle": "Flyplasstransport, Finland-reiseplanlegging, nettsteder, SEO, automatisering og QA-revisjoner for kunder som forventer presisjon.",
-      "hero.eyebrow": "Premium drift · Uusimaa, Finland",
+      "hero.eyebrow": "Praktisk drift · Uusimaa, Finland",
       "hero.bookConsultation": "Bestill konsultasjon",
       "cta.book": "Bestill na",
       "cta.quote": "Be om tilbud",
@@ -1191,7 +1191,7 @@
       "cta.getInTouch": "Ta kontakt",
       "cta.viewServices": "Se tjenester",
       "cta.subscribe": "Abonner",
-      "footer.copyright": "Luxival © 2026 · Premium digitale opplevelser og transportopplevelser",
+      "footer.copyright": "Luxival © 2026 · Digitale tjenester og privat transport",
       "footer.privacy": "Personvernerklaering",
       "footer.terms": "Bruksvilkar",
       "footer.contactTitle": "Kontakt Luxival",
@@ -1216,7 +1216,7 @@
       "tracking.desc": "Kunder far sanntids GPS-sporing, ETA-oppdateringer og sjafordata — fra landing til dor i en sornlos flyt.",
 
       "digital.p1": "Luxivals digitale avdeling leverer konverteringsfokusert nettutvikling, SEO-tjenester, QA-programvareteting og UGC-opplevelser.",
-      "digital.p2": "Vi kombinerer premium visuelt handverk med soke-forst-strategi slik at merkevaren din rangerer, konverterer og foles som luksuskategorien den fortjener.",
+      "digital.p2": "Vi kombinerer klart visuelt handverk med soke-forst-strategi slik at merkevaren din rangerer, konverterer og foles som luksuskategorien den fortjener.",
       "digital.p3": "Fra Helsinki til verden — om det har en digital tilstedevarelse, arkitekterer vi det.",
 
       "stat.transfers": "Gjennomforte transporter",
@@ -1236,7 +1236,7 @@
       "founder.tag": "Grunnlegger og direktor",
       "founder.eyebrow": "Om Luxival",
       "founder.heading": "Bygget pa presisjon.<br>Drevet av fortreffelighet.",
-      "founder.quote": "\"Jeg bygde Luxival for a bygge bro mellom premium flyplasstransport og digitale tjenester i verdensklasse — fordi hvert beroringspunkt fortjener den samme oppmerksomheten pa detaljer.\"",
+      "founder.quote": "\"Jeg bygde Luxival for a bygge bro mellom privat flyplasstransport og digitale tjenester i praktiske — fordi hvert beroringspunkt fortjener den samme oppmerksomheten pa detaljer.\"",
       "founder.bio": "Basert i Helsinki, Finland — Luxival kombinerer over 5 ars digital ekspertise med dyp kjennskap til Helsinki-Vanda flyplasskorridoren — for internasjonale reisende, bedrifter og merkevarer som nekter a ga pa kompromiss.",
 
       "form.title": "Hurtigforesporsel — ingen forpliktelse",
@@ -1264,11 +1264,11 @@
       "proof.satisfaction": "Kundetilfredshet",
       "proof.audits": "Nettstedsrevisjoner",
 
-      "meta.home.title": "Luxival | Helsinkis premium sjafor- og webdesignbyra",
-      "meta.home.desc": "Luxival — Helsinkis premium sjafortjeneste og webdesignbyra. Flyplasstransport, SEO, QA-programvareteting og agentisk arbeidsflytstrategi.",
+      "meta.home.title": "Luxival | Helsinkis privat transport- og webdesignbyra",
+      "meta.home.desc": "Luxival — Helsinkis privat transporttjeneste og webdesignbyra. Flyplasstransport, SEO, QA-programvareteting og arbeidsflytstotte.",
 
       "tourism.eyebrow": "Reise og transport · Helsinki",
-      "tourism.title": "Premium flyplasstransport og Finland-reiseopplevelse.",
+      "tourism.title": "Privat flyplasstransport og Finland-reiseopplevelse.",
       "tourism.subtitle": "Sornlose Helsinki-Vanda-hentinger, private turer, overnattingssok og sesongbasert reiseplanlegging — alt i en luksusopplevelse.",
       "tourism.seasons": "Reis gjennom kalenderen",
       "tourism.winter": "Vinter",
@@ -1288,11 +1288,11 @@
       "tourism.accommodation": "Overnattingssok",
       "tourism.fareEstimate": "Beregn din pris",
       "tourism.bookDetails": "Send bestillingsdetaljene dine",
-      "tourism.bookCta": "Bestill din premiumtransport.",
+      "tourism.bookCta": "Bestill din privat transport.",
       "tourism.bookSubtitle": "Fra rullebanen til din dor — hver meter forberedt, hver detalj orkestrert.",
       "tourism.faq": "Ofte stilte sporsmal",
 
-      "transfers.eyebrow": "Premium transport · Helsinki",
+      "transfers.eyebrow": "Privat transport · Helsinki",
       "transfers.title": "Helsinkis fineste sjafortjeneste",
       "transfers.subtitle": "Flyplasshentinger, private byturer og eksklusive cruiseoverforinger — med GPS-sporing fra landing til din dor.",
       "transfers.choose": "Velg din transport",
@@ -1305,12 +1305,12 @@
 
       "digital.eyebrow": "Digitale tjenester · Helsinki",
       "digital.title": "Webdesign og digitale tjenester som konverterer",
-      "digital.subtitle": "ISTQB-sertifisert kvalitet, agentisk arbeidsflytstrategi, SEO-forst — fra Helsinki til verden. Vi gjor nettstedet ditt lønnsomt.",
+      "digital.subtitle": "ISTQB-sertifisert kvalitet, arbeidsflytstotte, SEO-forst — fra Helsinki til verden. Vi gjor nettstedet ditt lønnsomt.",
       "digital.whatWeBuild": "Hva vi bygger",
       "digital.webDesign": "Webdesign og utvikling",
       "digital.seo": "SEO-strategi",
       "digital.qaTesting": "QA-programvareteting",
-      "digital.agenticWorkflows": "Agentiske arbeidsflyter",
+      "digital.agenticWorkflows": "Arbeidsflytstotte",
       "digital.websiteAudit": "Nettstedsrevisjon",
       "digital.platformSaas": "Plattform og SaaS",
       "digital.howItWorks": "Slik fungerer det",
@@ -1322,7 +1322,7 @@
 
       "about.eyebrow": "Om Luxival · Helsinki, Finland",
       "about.title": "Bygget pa presisjon. Drevet av fortreffelighet.",
-      "about.subtitle": "Luxival er et tverrfaglig premiummerke som forener luksustransport, nettutvikling, QA-programvareteting og design av agentiske arbeidsflyter.",
+      "about.subtitle": "Luxival er et tverrfaglig servicemerke som forener privat transport, nettutvikling, QA-programvareteting og arbeidsflytstotte.",
       "about.career": "Karrierehistorikk",
       "about.careerSubtitle": "Erfaring som taler for seg selv",
       "about.skills": "Ferdigheter og verktoy",
@@ -1337,7 +1337,7 @@
       "contact.sendInquiry": "Send foresporsel",
       "contact.inquiryDesc": "Transportbestilling, prosjektsammendrag eller generelt sporsmal — vi vender tilbake innen en virkedag.",
       "contact.newsletter": "Nyhetsbrev",
-      "contact.newsletterDesc": "Oppdateringer om premiumlanseringer, SEO-strategi og transporttilbud.",
+      "contact.newsletterDesc": "Oppdateringer om serviceoppdateringer, SEO-strategi og transporttilbud.",
       "contact.serviceInterest": "Tjenesteinteresse",
 
       "chat.toggleLabel": "Snakk med Luxival",
@@ -1371,9 +1371,9 @@
       "nav.blog": "Blog",
       "search.placeholder": "Sog efter tjenester, sider eller nogleord",
       "search.noResults": "Ingen relaterede sider fundet.",
-      "hero.title": "Premium rejser, digitale tjenester og QA i Uusimaa",
+      "hero.title": "Rejser, digitale tjenester og QA i Uusimaa",
       "hero.subtitle": "Lufthavnstransport, Finland-rejseplanlaegning, hjemmesider, SEO, automatisering og QA-revisioner for kunder, der forventer praecision.",
-      "hero.eyebrow": "Premium drift · Uusimaa, Finland",
+      "hero.eyebrow": "Praktisk drift · Uusimaa, Finland",
       "hero.bookConsultation": "Bestil konsultation",
       "cta.book": "Bestil nu",
       "cta.quote": "Anmod om tilbud",
@@ -1394,7 +1394,7 @@
       "cta.getInTouch": "Kontakt os",
       "cta.viewServices": "Se tjenester",
       "cta.subscribe": "Abonner",
-      "footer.copyright": "Luxival © 2026 · Premium digitale oplevelser og transportoplevelser",
+      "footer.copyright": "Luxival © 2026 · Digitale tjenester og privat transport",
       "footer.privacy": "Privatlivspolitik",
       "footer.terms": "Betingelser",
       "footer.contactTitle": "Kontakt Luxival",
@@ -1419,7 +1419,7 @@
       "tracking.desc": "Kunder far realtids GPS-sporing, ETA-opdateringer og chaufforoplysninger — fra landing til dor i en sornlos strom.",
 
       "digital.p1": "Luxivals digitale afdeling leverer konverteringsfokuseret webudvikling, SEO-tjenester, QA-softwaretestning og UGC-oplevelser.",
-      "digital.p2": "Vi kombinerer premium visuelt handvaerk med sog-forst-strategi, sa dit brand rangerer, konverterer og foles som den luksuskategori, det fortjener.",
+      "digital.p2": "Vi kombinerer klart visuelt handvaerk med sog-forst-strategi, sa dit brand rangerer, konverterer og foles som den luksuskategori, det fortjener.",
       "digital.p3": "Fra Helsinki til verden — hvis det har en digital tilstedevarelse, arkitekterer vi det.",
 
       "stat.transfers": "Udforte transfers",
@@ -1439,7 +1439,7 @@
       "founder.tag": "Grundlaegger og direktor",
       "founder.eyebrow": "Om Luxival",
       "founder.heading": "Bygget pa praecision.<br>Drevet af ekspertise.",
-      "founder.quote": "\"Jeg byggede Luxival for at bygge bro mellem premium lufthavnstransport og digitale tjenester i verdensklasse — fordi hvert beroringspunkt fortjener den samme omhyggelige opmaerksomhed pa detaljer.\"",
+      "founder.quote": "\"Jeg byggede Luxival for at bygge bro mellem privat lufthavnstransport og digitale tjenester i praktiske — fordi hvert beroringspunkt fortjener den samme omhyggelige opmaerksomhed pa detaljer.\"",
       "founder.bio": "Baseret i Helsinki, Finland — Luxival kombinerer over 5 ars digital ekspertise med dvb viden om Helsinki-Vantaa lufthavnskorridoren — for internationale rejsende, virksomheder og brands, der ikke gar pa kompromis.",
 
       "form.title": "Hurtigforesporgsel — ingen forpligtelse",
@@ -1467,11 +1467,11 @@
       "proof.satisfaction": "Kundetilfredshed",
       "proof.audits": "Hjemmesiderevisioner",
 
-      "meta.home.title": "Luxival | Helsinkis premium chauffor- og webdesignbureau",
-      "meta.home.desc": "Luxival — Helsinkis premium chaufforservice og webdesignbureau. Lufthavnstransfer, SEO, QA-softwaretestning og agentisk arbejdsflowsstrategi.",
+      "meta.home.title": "Luxival | Helsinkis privat transport- og webdesignbureau",
+      "meta.home.desc": "Luxival — Helsinkis privat transportservice og webdesignbureau. Lufthavnstransfer, SEO, QA-softwaretestning og arbejdsflowstotte.",
 
       "tourism.eyebrow": "Rejse og transport · Helsinki",
-      "tourism.title": "Premium lufthavnstransfer og Finland-rejseoplevelse.",
+      "tourism.title": "Privat lufthavnstransfer og Finland-rejseoplevelse.",
       "tourism.subtitle": "Sornlose Helsinki-Vantaa-afhentninger, private ture, overnatningssogning og sasonbestemt rejseplanlaegning — alt i en luksusoplevelse.",
       "tourism.seasons": "Rejs gennem kalenderen",
       "tourism.winter": "Vinter",
@@ -1491,11 +1491,11 @@
       "tourism.accommodation": "Overnatningssogning",
       "tourism.fareEstimate": "Beregn din pris",
       "tourism.bookDetails": "Send dine bookingdetaljer",
-      "tourism.bookCta": "Bestil din premiumtransfer.",
+      "tourism.bookCta": "Bestil din privat transfer.",
       "tourism.bookSubtitle": "Fra landingsbanen til din dor — hver meter forberedt, hver detalje orkestreret.",
       "tourism.faq": "Ofte stillede sporgsmal",
 
-      "transfers.eyebrow": "Premium transfer · Helsinki",
+      "transfers.eyebrow": "Privat transfer · Helsinki",
       "transfers.title": "Helsinkis fineste chaufforservice",
       "transfers.subtitle": "Lufthavnsafhentninger, private byture og eksklusive krydstogttransfers — med GPS-sporing fra landing til din dor.",
       "transfers.choose": "Vaelg din transfer",
@@ -1508,12 +1508,12 @@
 
       "digital.eyebrow": "Digitale tjenester · Helsinki",
       "digital.title": "Webdesign og digitale tjenester, der konverterer",
-      "digital.subtitle": "ISTQB-certificeret kvalitet, agentisk arbejdsflowsstrategi, SEO-forst — fra Helsinki til verden. Vi gor din hjemmeside rentabel.",
+      "digital.subtitle": "ISTQB-certificeret kvalitet, arbejdsflowstotte, SEO-forst — fra Helsinki til verden. Vi gor din hjemmeside rentabel.",
       "digital.whatWeBuild": "Hvad vi bygger",
       "digital.webDesign": "Webdesign og udvikling",
       "digital.seo": "SEO-strategi",
       "digital.qaTesting": "QA-softwaretest",
-      "digital.agenticWorkflows": "Agentiske arbejdsflow",
+      "digital.agenticWorkflows": "Arbejdsflowstotte",
       "digital.websiteAudit": "Hjemmesiderevision",
       "digital.platformSaas": "Platform og SaaS",
       "digital.howItWorks": "Sadana fungerer det",
@@ -1525,7 +1525,7 @@
 
       "about.eyebrow": "Om Luxival · Helsinki, Finland",
       "about.title": "Bygget pa praecision. Drevet af ekspertise.",
-      "about.subtitle": "Luxival er et tvarfagligt premiumbrand, der forener luksustransport, webudvikling, QA-softwaretest og design af agentiske arbejdsflow.",
+      "about.subtitle": "Luxival er et tvarfagligt servicebrand, der forener privat transport, webudvikling, QA-softwaretest og arbejdsflowstotte.",
       "about.career": "Karrierehistorik",
       "about.careerSubtitle": "Erfaring, der taler for sig selv",
       "about.skills": "Faerdigheder og vaerktajer",
@@ -1540,7 +1540,7 @@
       "contact.sendInquiry": "Send foresporgsel",
       "contact.inquiryDesc": "Transferbooking, projektsammendrag eller generelt sporgsmal — vi vender tilbage inden for en arbejdsdag.",
       "contact.newsletter": "Nyhedsbrev",
-      "contact.newsletterDesc": "Opdateringer om premiumlanceringer, SEO-strategi og transfertilbud.",
+      "contact.newsletterDesc": "Opdateringer om serviceopdateringer, SEO-strategi og transfertilbud.",
       "contact.serviceInterest": "Tjenesteinteresse",
 
       "chat.toggleLabel": "Tal med Luxival",
@@ -1671,7 +1671,7 @@
       "proof.audits": "ウェブサイト監査",
 
       "meta.home.title": "Luxival | ヘルシンキのプレミアムチャファー＆ウェブデザインエージェンシー",
-      "meta.home.desc": "Luxival — ヘルシンキのプレミアムチャファーサービス＆ウェブデザインエージェンシー。空港送迎、SEO、QAソフトウェアテスト、エージェンティックワークフロー戦略。",
+      "meta.home.desc": "Luxival — ヘルシンキのプレミアムチャファーサービス＆ウェブデザインエージェンシー。空港送迎、SEO、QAソフトウェアテスト、ワークフロー支援戦略。",
 
       "tourism.eyebrow": "旅行と交通 · ヘルシンキ",
       "tourism.title": "プレミアム空港送迎とフィンランド旅行体験。",
@@ -1711,12 +1711,12 @@
 
       "digital.eyebrow": "デジタルサービス · ヘルシンキ",
       "digital.title": "コンバージョンを生み出すウェブデザインとデジタルサービス",
-      "digital.subtitle": "ISTQB認定品質、エージェンティックワークフロー戦略、SEOファースト — ヘルシンキから世界へ。あなたのサイトを収益化します。",
+      "digital.subtitle": "ISTQB認定品質、ワークフロー支援戦略、SEOファースト — ヘルシンキから世界へ。あなたのサイトを収益化します。",
       "digital.whatWeBuild": "私たちが構築するもの",
       "digital.webDesign": "ウェブデザインと開発",
       "digital.seo": "SEO戦略",
       "digital.qaTesting": "QAソフトウェアテスト",
-      "digital.agenticWorkflows": "エージェンティックワークフロー",
+      "digital.agenticWorkflows": "ワークフロー支援",
       "digital.websiteAudit": "ウェブサイト監査",
       "digital.platformSaas": "プラットフォームとSaaS",
       "digital.howItWorks": "仕組み",
@@ -1728,7 +1728,7 @@
 
       "about.eyebrow": "Luxivalについて · ヘルシンキ、フィンランド",
       "about.title": "精密さに基づいて構築。卓越性に driven。",
-      "about.subtitle": "Luxivalは、ラグジュアリー交通、ウェブ開発、QAソフトウェアテスト、エージェンティックワークフローデザインを統合したマルチディシプリナリープレミアムブランドです。",
+      "about.subtitle": "Luxivalは、ラグジュアリー交通、ウェブ開発、QAソフトウェアテスト、ワークフロー支援デザインを統合したマルチディシプリナリープレミアムブランドです。",
       "about.career": "キャリア歴",
       "about.careerSubtitle": "経験が物語る",
       "about.skills": "スキルとツール",
@@ -1777,7 +1777,7 @@
       "nav.blog": "博客",
       "search.placeholder": "搜索服务、页面或关键词",
       "search.noResults": "未找到相关页面。",
-      "hero.title": "新地区的 premium 旅行、数字服务和 QA",
+      "hero.title": "新地区的 旅行、数字服务和 QA",
       "hero.subtitle": "机场接送、芬兰旅行规划、网站、SEO、自动化和 QA 审计，专为追求精准的客户打造。",
       "hero.eyebrow": "尊享运营 · 新地区，芬兰",
       "hero.bookConsultation": "预约咨询",
@@ -1874,7 +1874,7 @@
       "proof.audits": "网站审计",
 
       "meta.home.title": "Luxival | 赫尔辛基尊享 chauffeur 和网页设计机构",
-      "meta.home.desc": "Luxival — 赫尔辛基尊享 chauffeur 服务和网页设计机构。机场接送、SEO、QA 软件测试和代理工作流策略。",
+      "meta.home.desc": "Luxival — 赫尔辛基尊享 chauffeur 服务和网页设计机构。机场接送、SEO、QA 软件测试和工作流支持策略。",
 
       "tourism.eyebrow": "旅行与交通 · 赫尔辛基",
       "tourism.title": "尊享机场接送和芬兰旅行体验。",
@@ -1914,12 +1914,12 @@
 
       "digital.eyebrow": "数字服务 · 赫尔辛基",
       "digital.title": "能够提升转化率的网页设计和数字服务",
-      "digital.subtitle": "ISTQB 认证质量、代理工作流策略、SEO 优先 — 从赫尔辛基走向全球。让您的网站盈利。",
+      "digital.subtitle": "ISTQB 认证质量、工作流支持策略、SEO 优先 — 从赫尔辛基走向全球。让您的网站盈利。",
       "digital.whatWeBuild": "我们构建什么",
       "digital.webDesign": "网页设计与开发",
       "digital.seo": "SEO 策略",
       "digital.qaTesting": "QA 软件测试",
-      "digital.agenticWorkflows": "代理工作流",
+      "digital.agenticWorkflows": "工作流支持",
       "digital.websiteAudit": "网站审计",
       "digital.platformSaas": "平台和 SaaS",
       "digital.howItWorks": "工作原理",
@@ -1931,7 +1931,7 @@
 
       "about.eyebrow": "关于 Luxival · 赫尔辛基，芬兰",
       "about.title": "以精准为基础。以卓越为驱动。",
-      "about.subtitle": "Luxival 是一个多学科高端品牌，融合了奢华交通、网站开发、QA 软件测试和代理工作流设计。",
+      "about.subtitle": "Luxival 是一个多学科高端品牌，融合了奢华交通、网站开发、QA 软件测试和工作流支持设计。",
       "about.career": "职业经历",
       "about.careerSubtitle": "用实力说话的经验",
       "about.skills": "技能和工具",
@@ -2078,44 +2078,46 @@
   }
 
   function createLanguageSwitcher() {
-    var existingSelect = document.getElementById('lang-select');
-    if (existingSelect) {
-      existingSelect.value = getPreferredLang();
-      if (!existingSelect.dataset.luxivalLangBound) {
-        existingSelect.dataset.luxivalLangBound = 'true';
-        existingSelect.addEventListener('change', function() {
-          setLang(this.value);
+    var toggle = document.getElementById('lang-toggle');
+    if (toggle && !toggle.dataset.luxivalBound) {
+      toggle.dataset.luxivalBound = 'true';
+      
+      var dropdown = document.createElement('div');
+      dropdown.id = 'lang-dropdown';
+      dropdown.style.cssText = 'position:absolute;top:100%;right:0;margin-top:.4rem;background:rgba(17,19,26,.95);border:1px solid rgba(201,169,106,.25);border-radius:6px;padding:.4rem 0;min-width:120px;display:none;z-index:100;';
+      
+      var langNames = {en:'English',fi:'Suomi',sv:'Svenska',de:'Deutsch',fr:'Français',it:'Italiano',ru:'Русский',no:'Norsk',da:'Dansk',ja:'日本語',zh:'中文'};
+      dropdown.innerHTML = SUPPORTED_LANGS.map(function(l) {
+        return '<button data-lang="' + l + '" style="display:block;width:100%;text-align:left;padding:.5rem .8rem;background:none;border:none;color:#E8EBF2;font-size:.78rem;cursor:pointer;transition:background .2s">' + (langNames[l] || l) + '</button>';
+      }).join('');
+      
+      var navLang = toggle.closest('.nav-lang');
+      if (navLang) navLang.style.position = 'relative';
+      navLang.appendChild(dropdown);
+      
+      dropdown.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-lang]');
+        if (btn) {
+          setLang(btn.getAttribute('data-lang'));
           closeMobileNav();
-        });
-      }
-      return;
+          dropdown.style.display = 'none';
+        }
+      });
+      
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isVisible = dropdown.style.display === 'block';
+        dropdown.style.display = isVisible ? 'none' : 'block';
+      });
+      
+      document.addEventListener('click', function() {
+        if (dropdown.style.display === 'block') dropdown.style.display = 'none';
+      });
     }
-    var switcher = document.createElement('div');
-    switcher.className = 'lang-switcher';
-    switcher.innerHTML = '<select id="lang-select" aria-label="Select language">' +
-      SUPPORTED_LANGS.map(function(l) {
-        var names = {en:'English',fi:'Suomi',sv:'Svenska',de:'Deutsch',fr:'Francais',it:'Italiano',ru:'Русский',no:'Norsk',da:'Dansk',ja:'日本語',zh:'中文'};
-        return '<option value="' + l + '">' + (names[l] || l) + '</option>';
-      }).join('') + '</select>';
-
-    var nav = document.querySelector('nav');
-    if (nav) {
-      switcher.style.cssText = 'margin-left:auto;margin-right:1rem;';
-      var burger = nav.querySelector('.nav-burger');
-      if (burger) nav.insertBefore(switcher, burger);
-      else nav.appendChild(switcher);
-    }
-
-    var select = switcher.querySelector('select');
-    select.value = getPreferredLang();
-    select.addEventListener('change', function() {
-      setLang(this.value);
-      closeMobileNav();
-    });
   }
 
   var style = document.createElement('style');
-  style.textContent = '#lang-select{background:rgba(255,255,255,.05);border:1px solid rgba(201,169,106,.2);color:#C9A96A;padding:.4rem .6rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;cursor:pointer;font-family:inherit}#lang-select:focus{outline:none;border-color:#C9A96A}#lang-select option{background:#11131A;color:#E8EBF2}@media(max-width:768px){.lang-switcher{margin-left:auto!important;margin-right:.5rem!important}#lang-select{max-width:6.8rem}}';
+  style.textContent = '#lang-toggle{background:rgba(255,255,255,.05);border:1px solid rgba(201,169,106,.2);color:#C9A96A;padding:.4rem .6rem;border-radius:2px;font-size:.72rem;letter-spacing:1px;cursor:pointer;font-family:inherit}#lang-toggle:focus{outline:none;border-color:#C9A96A}#lang-dropdown button:hover{background:rgba(201,169,106,.1)}@media(max-width:768px){.nav-lang #lang-dropdown{position:fixed;top:auto;bottom:100%;right:0;margin-bottom:.4rem}}';
   document.head.appendChild(style);
 
   document.addEventListener('DOMContentLoaded', function() {

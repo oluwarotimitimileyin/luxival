@@ -36,7 +36,7 @@ permalink: "blog/finland-winter-trip-guide/index.html"
  </ul>
 
  <h2>Helsinki as a Winter Base</h2>
- <p>Don't underestimate Helsinki in winter. The city runs on cosy, Finns have a concept called <em>kotoilu</em>, which is the art of making home feel warm and inviting. You'll feel it in every café, restaurant, and public space. The museums are excellent, the food scene is world class, and day trips to Tallinn by ferry are easy even in January.</p>
+ <p>Don't underestimate Helsinki in winter. The city runs on cosy, Finns have a concept called <em>kotoilu</em>, which is the art of making home feel warm and inviting. You'll feel it in every café, restaurant, and public space. The museums are excellent, the food scene is well regarded, and day trips to Tallinn by ferry are easy even in January.</p>
 
  <p>If you're planning to explore beyond the city centre, or if your itinerary includes airport arrivals and multiple locations, a Luxival private transfer makes winter travel in Finland smoother from start to finish.</p>
 

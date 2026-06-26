@@ -46,8 +46,8 @@
         url: "/blog/finland-winter-trip-guide/"
       },
       {
-        title: "Finnish Lapland Luxury Winter Experiences",
-        description: "What premium Lapland planning includes, from private guides to aurora cabins.",
+        title: "Finnish Lapland Winter Trip Planning",
+        description: "What private Lapland planning includes, from private guides to aurora cabins.",
         url: "/blog/finnish-lapland-luxury-winter-experiences/"
       }
     ],
@@ -92,8 +92,8 @@
         url: "/blog/ai-agents-business-automation-questions/"
       },
       {
-        title: "Agentic Workflow Design: A Practical Beginner's Guide",
-        description: "How agentic workflows combine business process, context, and autonomous action.",
+        title: "AI Workflow Design: A Practical Beginner's Guide",
+        description: "How useful automation connects business process, context, and human review.",
         url: "/blog/agentic-workflow-beginners-guide/"
       },
       {
@@ -114,7 +114,7 @@
         url: "/blog/what-is-istqb-certification/"
       },
       {
-        title: "How Agentic QA Transforms Software Release Confidence",
+        title: "How QA Automation Improves Release Decisions",
         description: "How automation agents gather signals while humans keep control of release decisions.",
         url: "/blog/agentic-qa-release-confidence/"
       }
@@ -139,7 +139,7 @@
     sewingPattern: [
       {
         title: "Custom Suit Measurements and Sewing Patterns",
-        description: "How precise measurement and pattern work create better bespoke clothing outcomes.",
+        description: "How precise measurement and pattern work create better custom clothing outcomes.",
         url: "/blog/sewing-pattern-custom-suit-measurements/"
       },
       {
@@ -160,7 +160,7 @@
         url: "/blog/website-audit-what-it-is-why-you-need-it/"
       },
       {
-        title: "Agentic Workflow Design: A Practical Beginner's Guide",
+        title: "AI Workflow Design: A Practical Beginner's Guide",
         description: "A practical framework for turning repeated project steps into clear workflows.",
         url: "/blog/agentic-workflow-beginners-guide/"
       }
@@ -207,7 +207,7 @@
     "/services/ai-agents": {
       eyebrow: "Automation strategy",
       heading: "Understand AI agents before you build",
-      intro: "Use these articles to connect agentic workflow ideas with real business automation, content systems, and lead operations.",
+      intro: "Use these articles to connect automation ideas with real business workflows, content systems, and lead operations.",
       posts: posts.aiAgents
     },
     "/services/software-testing": {
@@ -225,7 +225,7 @@
     "/services/sewing-pattern": {
       eyebrow: "Pattern precision",
       heading: "Guides for custom sewing pattern work",
-      intro: "These articles support bespoke garment planning, measurement quality, and the business side of making craft easier to buy.",
+      intro: "These articles support custom garment planning, measurement quality, and the business side of making craft easier to buy.",
       posts: posts.sewingPattern
     },
     "/services/mechanical-design": {

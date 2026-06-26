@@ -6,7 +6,7 @@ tags: ["blog"]
 isPost: true
 ogImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 permalink: /blog/luxury-helsinki-experiences-not-on-viator/
-description: "The luxury Helsinki experiences that don't appear on Viator or GetYourGuide, hidden gems, local operators, and bespoke arrangements that tourists rarely find."
+description: "The luxury Helsinki experiences that don't appear on Viator or GetYourGuide, hidden gems, local operators, and custom arrangements that tourists rarely find."
 ---
 
 # Luxury Helsinki Experiences Not on Viator (Local Insider Guide)

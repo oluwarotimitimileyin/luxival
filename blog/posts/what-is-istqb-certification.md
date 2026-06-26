@@ -28,8 +28,8 @@ permalink: "blog/what-is-istqb-certification/index.html"
  <h2>How It Affects Your Software Project</h2>
  <p>A well structured QA process reduces the number of defects that reach production, shortens release cycles, and reduces the cost of fixing bugs (which grows exponentially the later they're caught). An ISTQB certified tester brings a systematic approach: coverage analysis, risk prioritisation, defect lifecycle management. This is not just testing, it's quality engineering.</p>
 
- <h2>ISTQB and Agentic Workflows</h2>
- <p>Modern testing increasingly integrates automated agents that collect test results, scan logs, and surface regression patterns. ISTQB's newer modules recognise this shift. A certified tester understands how to design and oversee these automated workflows while maintaining human accountability over release decisions.</p>
+ <h2>ISTQB and AI Supported Testing</h2>
+ <p>Modern testing increasingly uses automation to collect test results, scan logs, and surface regression patterns. ISTQB's newer modules recognise this shift. A certified tester understands how to design and oversee these workflows while keeping human accountability over release decisions.</p>
 
  <h2>Luxival and QA Services</h2>
  <p>At Luxival, our QA work is led by an ISTQB certified software tester. We offer independent QA audits, test strategy reviews, and ongoing quality support for development teams. If your software is growing faster than your quality process, we can help.</p>

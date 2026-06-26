@@ -19,10 +19,14 @@ test.describe('Chat Widget Language Switch', () => {
     await expect(toggle).toContainText('Talk to Luxival');
 
     // Switch language to Russian (has full chat translations)
-    const langSelect = page.locator('#lang-select');
-    await expect(langSelect).toBeVisible();
-    await langSelect.selectOption('ru');
-    await page.waitForTimeout(500);
+    // Click to open dropdown, then click Russian
+    const langBtn = page.locator('#lang-toggle');
+    await expect(langBtn).toBeVisible();
+    await langBtn.click();
+    await page.waitForTimeout(200);
+    const ruOption = page.locator('#lang-dropdown [data-lang="ru"]');
+    await ruOption.click();
+    await page.waitForTimeout(300);
 
     // Toggle button should now show Russian
     await expect(toggle).toContainText('Общаться с Luxival');
