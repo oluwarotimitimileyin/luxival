@@ -88,7 +88,9 @@ test.describe('Chat Widget Reply', () => {
     await page.waitForTimeout(10000);
 
     // Reply should mention audits, QA, or related terms
-    const lastBubble = page.locator('.chat-messages .chat-bubble.assistant').last();
+    // Use last non-lead-form assistant bubble (lead forms append after reply)
+    const assistantBubbles = page.locator('.chat-messages .chat-bubble.assistant:not(.lead-form)');
+    const lastBubble = assistantBubbles.last();
     const replyText = await lastBubble.textContent();
     expect(replyText.toLowerCase()).toMatch(/audit|qa|test|website|report/);
   });
@@ -112,7 +114,9 @@ test.describe('Chat Widget Portfolio Knowledge', () => {
     await page.waitForTimeout(10000);
 
     // Reply should mention at least one project name
-    const lastBubble = page.locator('.chat-messages .chat-bubble.assistant').last();
+    // Use last non-lead-form assistant bubble (lead forms append after reply)
+    const assistantBubbles = page.locator('.chat-messages .chat-bubble.assistant:not(.lead-form)');
+    const lastBubble = assistantBubbles.last();
     const replyText = await lastBubble.textContent();
     expect(replyText.toLowerCase()).toMatch(/esg|businesslauncher|vortex|ugc|aura|qa dashboard|growth/);
   });
