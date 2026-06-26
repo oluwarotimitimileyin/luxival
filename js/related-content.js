@@ -168,23 +168,83 @@
   };
 
   const relatedByService = {
-    "/services/airport-transfer": posts.airportTransfer,
-    "/services/private-pickup": posts.airportTransfer,
-    "/services/private-rides": posts.privateRides,
-    "/services/city-to-city": posts.cityTravel,
-    "/services/hotel-sourcing": posts.finlandTravel,
-    "/services/web-design": posts.webDesign,
-    "/services/ai-agents": posts.aiAgents,
-    "/services/software-testing": posts.softwareTesting,
-    "/services/tiktok-agency": posts.tiktokAgency,
-    "/services/sewing-pattern": posts.sewingPattern,
-    "/services/mechanical-design": posts.projectDesign,
-    "/services/electrical-design": posts.projectDesign
+    "/services/airport-transfer": {
+      eyebrow: "Airport planning",
+      heading: "Read before your Helsinki airport transfer",
+      intro: "These guides answer the arrival questions travellers usually have before booking a private pickup from Helsinki Vantaa Airport.",
+      posts: posts.airportTransfer
+    },
+    "/services/private-pickup": {
+      eyebrow: "Arrival support",
+      heading: "Guides for a smoother private pickup",
+      intro: "Use these articles to plan what happens after landing, from flight tracking to late-night arrivals and luggage-friendly transfers.",
+      posts: posts.airportTransfer
+    },
+    "/services/private-rides": {
+      eyebrow: "Private journey ideas",
+      heading: "Plan a better private ride in Helsinki",
+      intro: "These articles show how private rides work for business travel, special occasions, and custom Helsinki city experiences.",
+      posts: posts.privateRides
+    },
+    "/services/city-to-city": {
+      eyebrow: "Route planning",
+      heading: "Ideas for longer private routes in Finland",
+      intro: "Explore guides for travellers comparing Finnish cities, seasonal routes, and cross-border day trips before choosing a transfer.",
+      posts: posts.cityTravel
+    },
+    "/services/hotel-sourcing": {
+      eyebrow: "Stay planning",
+      heading: "Travel guides for choosing the right stay",
+      intro: "These Finland travel articles help you match hotel sourcing with season, destination, itinerary style, and guest expectations.",
+      posts: posts.finlandTravel
+    },
+    "/services/web-design": {
+      eyebrow: "Website strategy",
+      heading: "Read before rebuilding your website",
+      intro: "These guides focus on conversion, SEO, and practical website decisions for Finnish small businesses that need better leads.",
+      posts: posts.webDesign
+    },
+    "/services/ai-agents": {
+      eyebrow: "Automation strategy",
+      heading: "Understand AI agents before you build",
+      intro: "Use these articles to connect agentic workflow ideas with real business automation, content systems, and lead operations.",
+      posts: posts.aiAgents
+    },
+    "/services/software-testing": {
+      eyebrow: "QA planning",
+      heading: "Guides for stronger release confidence",
+      intro: "These articles explain test coverage, QA structure, and agent-assisted testing for teams that need fewer release surprises.",
+      posts: posts.softwareTesting
+    },
+    "/services/tiktok-agency": {
+      eyebrow: "TikTok growth",
+      heading: "Read before planning TikTok campaigns",
+      intro: "These guides connect live selling, UGC content, AI-assisted production, and lead generation into one campaign strategy.",
+      posts: posts.tiktokAgency
+    },
+    "/services/sewing-pattern": {
+      eyebrow: "Pattern precision",
+      heading: "Guides for custom sewing pattern work",
+      intro: "These articles support bespoke garment planning, measurement quality, and the business side of making craft easier to buy.",
+      posts: posts.sewingPattern
+    },
+    "/services/mechanical-design": {
+      eyebrow: "Engineering workflow",
+      heading: "Read before scoping mechanical design work",
+      intro: "These guides help technical buyers think about project clarity, documentation, diagnostics, and repeatable engineering workflows.",
+      posts: posts.projectDesign
+    },
+    "/services/electrical-design": {
+      eyebrow: "System planning",
+      heading: "Read before scoping electrical design work",
+      intro: "These guides support clear requirements, safer documentation habits, and structured planning for technical design projects.",
+      posts: posts.projectDesign
+    }
   };
 
   const path = window.location.pathname.replace(/\/$/, "");
   const related = relatedByService[path];
-  if (!related || document.querySelector("[data-related-content]")) return;
+  if (!related || !related.posts || document.querySelector("[data-related-content]")) return;
 
   const style = document.createElement("style");
   style.textContent = `
@@ -206,12 +266,12 @@
   section.innerHTML = `
     <div class="container">
       <div class="related-head">
-        <span class="eyebrow">Related reading</span>
-        <h2>Useful guides for this service</h2>
-        <p>Explore practical articles connected to this offer, with internal links that help visitors move between Luxival services and deeper guidance.</p>
+        <span class="eyebrow">${related.eyebrow}</span>
+        <h2>${related.heading}</h2>
+        <p>${related.intro}</p>
       </div>
       <div class="related-grid">
-        ${related.map((post) => `
+        ${related.posts.map((post) => `
           <a class="related-card" href="${post.url}">
             <h3>${post.title}</h3>
             <p>${post.description}</p>
