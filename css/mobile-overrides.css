@@ -445,6 +445,26 @@ iframe {
   }
 }
 
+/* --- Ensure safe padding at all sizes --- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+  .hero-form,
+  .hero-search-panel,
+  .card-body,
+  .proj-body {
+    padding: 1rem !important;
+  }
+}
+
+/* --- Prevent horizontal overflow on all page content --- */
+#main,
+main {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .scroll-hint,

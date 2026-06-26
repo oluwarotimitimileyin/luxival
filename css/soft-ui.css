@@ -47,7 +47,7 @@
   select,
   textarea
 ) {
-  border-radius: 18px !important;
+  border-radius: 6px;
 }
 
 :where(
