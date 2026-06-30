@@ -1,0 +1,109 @@
+# Luxival
+
+> Premium Helsinki-based company offering private airport transfers, Finland travel planning, website design, SEO, software QA, AI agent infrastructure, UGC/TikTok content systems, and custom sewing patterns.
+
+Primary website: https://www.luxival.com/
+Canonical sitemap: https://www.luxival.com/sitemap.xml
+Machine-readable service catalog: https://www.luxival.com/assets/data/ai-catalog.json
+Booking page: https://www.luxival.com/booking
+Contact page: https://www.luxival.com/contact
+
+Luxival allows search engines and AI assistants to crawl public pages for discovery, summarization, buyer matching, and service comparison. Public pages are static HTML and do not require login.
+
+## Services
+
+### Helsinki Airport Transfer
+
+URL: https://www.luxival.com/helsinki-airport-pickup
+Category: Private transport
+Area served: Helsinki, Vantaa, Espoo, Uusimaa, Finland
+Price signal: Starting fare from EUR 225 for Helsinki-Vantaa airport transfer to central Helsinki.
+Buyer fit: Travellers, business guests, families, premium airport pickup, city-to-city transfer.
+
+### Tourism and Trip Planning
+
+URL: https://www.luxival.com/tourism-planning
+Category: Finland travel planning
+Area served: Finland, Helsinki, Uusimaa, Lapland
+Buyer fit: Visitors who need itineraries, private pickup, accommodation help, winter travel, design district routes, Lapland planning.
+
+### Website Design and Development
+
+URL: https://www.luxival.com/digital
+Category: Digital service
+Area served: Finland and remote international clients
+Buyer fit: Businesses needing premium website design, conversion structure, SEO-ready pages, and launch support.
+
+### Software Testing and QA
+
+URL: https://www.luxival.com/qa
+Category: QA service
+Area served: Finland and remote international clients
+Prices: QA Audit EUR 499; Automation Framework EUR 1800; Ongoing QA Partner EUR 850 per month.
+Buyer fit: Software teams needing Playwright, Selenium, Appium, API testing, CI/CD integration, and ISTQB-certified QA.
+
+### AI Agent Infrastructure
+
+URL: https://www.luxival.com/services
+Category: AI automation service
+Area served: Finland and remote international clients
+Prices: Agent Blueprint EUR 800; Multi-Agent System EUR 2200.
+Buyer fit: Businesses needing autonomous workflows, orchestration, content engines, lead handling, and multi-agent systems.
+
+### TikTok Agency and UGC
+
+URL: https://www.luxival.com/services
+Category: Social content service
+Buyer fit: Brands needing character-led UGC, short-form content systems, and TikTok growth support.
+
+### Custom Sewing Patterns
+
+URL: https://www.luxival.com/pattern
+Category: Pattern and measurement service
+Buyer fit: Fashion, tailoring, custom garment pattern, and measurement support.
+
+### Transfers
+
+URL: https://www.luxival.com/transfers
+Category: Private transport
+Area served: Helsinki, Vantaa, Espoo, Uusimaa, Finland
+Buyer fit: Airport transfers, private rides, city tours, and cruise pickups with clear pricing and route planning.
+
+### Tourism
+
+URL: https://www.luxival.com/tourism
+Category: Finland travel
+Area served: Helsinki, Finland
+Buyer fit: Visitors looking for premium Helsinki airport transfers, private rides, and seasonal Finland travel experiences.
+
+## Tools and Resources
+
+### Trip Planner
+
+URL: https://www.luxival.com/trip-planner
+Category: Interactive tool
+Buyer fit: Visitors who want to preview routes, estimate fares, and book transfers directly.
+
+### Luxival Hub
+
+URL: https://www.luxival.com/hub
+Category: Service directory
+Buyer fit: Visitors looking for the right Luxival service across rides, planning, web, QA, SEO, and AI.
+
+### User Data Deletion
+
+URL: https://www.luxival.com/user-data-deletion
+Category: Privacy and compliance
+Buyer fit: Users requesting deletion of personal data submitted through contact, booking, newsletter, or creator forms.
+
+## Brand Facts
+
+Name: Luxival
+Location: Helsinki, Finland
+Primary region: Uusimaa, Finland
+Languages supported on site: English with hreflang alternates for Finnish, Swedish, German, French, and Italian on key pages.
+Logo: https://www.luxival.com/assets/images/brand/luxival-logo-512.png
+
+## Suggested Agent Summary
+
+Luxival is a Helsinki-based premium service company combining private Finland travel and airport transfers with digital services: web design, SEO, software QA, AI agent infrastructure, and content systems. Buyers can book consultations, transport, and trip planning directly through the website.

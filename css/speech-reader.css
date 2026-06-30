@@ -1,0 +1,73 @@
+.speech-btn-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin: .6rem 0 1rem;
+}
+
+.speech-btn,
+.speech-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(201, 169, 106, .08);
+  border: 1px solid rgba(201, 169, 106, .22);
+  color: #C9A96A;
+  border-radius: 999px;
+  padding: .45rem .85rem;
+  font-family: inherit;
+  font-size: .72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+
+.speech-btn:hover,
+.speech-stop:hover {
+  background: rgba(201, 169, 106, .14);
+  border-color: rgba(201, 169, 106, .4);
+}
+
+.speech-btn.playing,
+.speech-btn.paused {
+  background: rgba(201, 169, 106, .15);
+  border-color: rgba(201, 169, 106, .45);
+  box-shadow: 0 0 12px rgba(201, 169, 106, .12);
+}
+
+.speech-icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+}
+
+.speech-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.speech-stop {
+  padding: .45rem .55rem;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, background .2s, border-color .2s;
+}
+
+.speech-btn.playing ~ .speech-stop,
+.speech-btn.paused ~ .speech-stop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.speech-label {
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .speech-btn {
+    padding: .4rem .7rem;
+    font-size: .68rem;
+  }
+}

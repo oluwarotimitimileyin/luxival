@@ -234,6 +234,12 @@ let chatInjected = 0;
 const files = getHtmlFiles(SITE_DIR);
 
 for (const file of files) {
+  const rel = path.relative(SITE_DIR, file);
+  if (rel.includes(path.sep + 'amp' + path.sep) || rel.startsWith('amp' + path.sep)) {
+    skipped++;
+    continue;
+  }
+
   const original = fs.readFileSync(file, 'utf8');
   let result = removeUngatedSpeedInsights(original);
   result = injectHeadAssets(result);

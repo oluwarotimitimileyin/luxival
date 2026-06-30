@@ -2126,55 +2126,6 @@
     setLang(getPreferredLang());
   });
 
-  var GT_EXCLUDED_PAGES = ['privacy', 'terms', 'contact', 'booking'];
-
-  function hasConsent(category) {
-    if (category === 'necessary') return true;
-    if (!window.luxivalConsent) return false;
-    return window.luxivalConsent.hasConsent(category);
-  }
-
-  function isGtAllowed() {
-    var page = (document.body.dataset.page || '').toLowerCase();
-    return GT_EXCLUDED_PAGES.indexOf(page) === -1;
-  }
-
-  function loadGoogleTranslate() {
-    if (document.getElementById('gt-script')) return;
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: SUPPORTED_LANGS.join(','),
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'gt-element');
-    };
-    var s = document.createElement('script');
-    s.id = 'gt-script';
-    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.body.appendChild(s);
-  }
-
-  function initGtConsent() {
-    if (!isGtAllowed()) return;
-    if (hasConsent('functional')) loadGoogleTranslate();
-  }
-
-  document.addEventListener('luxival:consent-changed', function(event) {
-    if (event.detail && event.detail.categories && event.detail.categories.functional) initGtConsent();
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var el = document.createElement('div');
-    el.id = 'gt-element';
-    el.style.cssText = 'display:none';
-    document.body.appendChild(el);
-    var page = (document.body.dataset.page || '').toLowerCase();
-    if (page === 'blog' || document.querySelector('.post-body')) {
-      initGtConsent();
-    }
-  });
-
   function t(key, fallback) {
     var lang = getPreferredLang();
     if (lang === DEFAULT_LANG) return fallback || key;
@@ -2183,5 +2134,5 @@
     return fallback || key;
   }
 
-  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang, t: t, closeMobileNav: closeMobileNav, enableGoogleTranslate: initGtConsent };
+  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang, t: t, closeMobileNav: closeMobileNav };
 })();

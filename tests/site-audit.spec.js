@@ -341,3 +341,101 @@ test.describe('No Critical 404s', () => {
     });
   }
 });
+
+// ── AMP PAGES ─────────────────────────────────────────────
+test.describe('AMP Pages', () => {
+  const ampPages = [
+    { url: '/amp/', canonical: 'https://www.luxival.com/' },
+    { url: '/amp/about', canonical: 'https://www.luxival.com/about' },
+    { url: '/amp/contact', canonical: 'https://www.luxival.com/contact' },
+    { url: '/amp/helsinki-airport-pickup', canonical: 'https://www.luxival.com/helsinki-airport-pickup' },
+    { url: '/amp/services', canonical: 'https://www.luxival.com/services' },
+    { url: '/amp/transfers', canonical: 'https://www.luxival.com/transfers' },
+  ];
+
+  for (const p of ampPages) {
+    test(`${p.url} returns 200`, async ({ page }) => {
+      const res = await page.goto(BASE + p.url);
+      expect(res.status()).toBe(200);
+    });
+
+    test(`${p.url} has ⚡ or amp attribute on html`, async ({ page }) => {
+      await page.goto(BASE + p.url);
+      const hasAmp = await page.evaluate(() => {
+        const html = document.documentElement;
+        return html.hasAttribute('amp') || html.hasAttribute('⚡');
+      });
+      expect(hasAmp).toBeTruthy();
+    });
+
+    test(`${p.url} loads AMP runtime script`, async ({ page }) => {
+      await page.goto(BASE + p.url);
+      const hasRuntime = await page.evaluate(() => {
+        const scripts = document.querySelectorAll('script[src*="cdn.ampproject.org/v0.js"]');
+        return scripts.length > 0;
+      });
+      expect(hasRuntime).toBeTruthy();
+    });
+
+    test(`${p.url} has correct canonical link`, async ({ page }) => {
+      await page.goto(BASE + p.url);
+      const canonical = await page.getAttribute('link[rel="canonical"]', 'href');
+      expect(canonical).toBe(p.canonical);
+    });
+
+    test(`${p.url} had AMP boilerplate in source`, async ({ page }) => {
+      const res = await page.goto(BASE + p.url);
+      const html = await res.text();
+      expect(html).toContain('amp-boilerplate');
+    });
+
+    test(`${p.url} has viewport meta with minimum-scale=1`, async ({ page }) => {
+      await page.goto(BASE + p.url);
+      const vp = await page.getAttribute('meta[name="viewport"]', 'content');
+      expect(vp).toContain('minimum-scale=1');
+    });
+  }
+
+  // Check that canonical pages link back to AMP versions
+  test('canonical pages have amphtml link back', async ({ page }) => {
+    const canonicals = [
+      { url: '/', ampUrl: 'https://www.luxival.com/amp/' },
+      { url: '/about', ampUrl: 'https://www.luxival.com/amp/about' },
+      { url: '/contact', ampUrl: 'https://www.luxival.com/amp/contact' },
+      { url: '/helsinki-airport-pickup', ampUrl: 'https://www.luxival.com/amp/helsinki-airport-pickup' },
+      { url: '/services', ampUrl: 'https://www.luxival.com/amp/services' },
+      { url: '/transfers', ampUrl: 'https://www.luxival.com/amp/transfers' },
+    ];
+    for (const c of canonicals) {
+      await page.goto(BASE + c.url);
+      const ampLink = await page.getAttribute('link[rel="amphtml"]', 'href');
+      expect(ampLink, `${c.url} missing amphtml link`).toBe(c.ampUrl);
+    }
+  });
+
+  // Google Discover eligibility checks
+  test('blog posts have Discover-ready meta tags', async ({ page }) => {
+    await page.goto(BASE + '/blog/helsinki-airport-transfer-guide');
+    const robots = await page.getAttribute('meta[name="robots"]', 'content');
+    expect(robots).toBe('max-image-preview:large');
+    const jsonld = await page.textContent('script[type="application/ld+json"]');
+    const schema = JSON.parse(jsonld);
+    expect(schema['@type']).toBe('BlogPosting');
+    expect(schema.datePublished).toBeDefined();
+    expect(schema.dateModified).toBeDefined();
+    expect(schema.author['@type']).toBe('Person');
+    expect(schema.author.name).toBeDefined();
+  });
+
+  test('blog posts have BreadcrumbList schema', async ({ page }) => {
+    await page.goto(BASE + '/blog/helsinki-airport-transfer-guide');
+    const scripts = await page.$$eval('script[type="application/ld+json"]', els =>
+      els.map(el => JSON.parse(el.textContent))
+    );
+    const breadcrumb = scripts.find(s => s['@type'] === 'BreadcrumbList');
+    expect(breadcrumb).toBeDefined();
+    expect(breadcrumb.itemListElement).toHaveLength(3);
+    expect(breadcrumb.itemListElement[0].name).toBe('Home');
+    expect(breadcrumb.itemListElement[1].name).toBe('Blog');
+  });
+});

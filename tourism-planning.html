@@ -109,22 +109,9 @@ footer{background:#060608;padding:5rem 0 2rem}
   <ul class="nav-links" id="site-nav">
     <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
     <li class="nav-lang">
-      <label class="lang-trigger neon-btn" aria-label="Change language">
+            <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-        <select id="lang-select" aria-label="Select language">
-          <option value="en">EN</option>
-          <option value="fi">FI</option>
-          <option value="sv">SV</option>
-          <option value="de">DE</option>
-          <option value="fr">FR</option>
-          <option value="it">IT</option>
-          <option value="ru">RU</option>
-          <option value="no">NO</option>
-          <option value="da">DA</option>
-          <option value="ja">JA</option>
-          <option value="zh">ZH</option>
-        </select>
-      </label>
+      </button>
     </li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -157,32 +144,32 @@ function openSumUp(){
 const premiumItinerary=[
   {day:1,title:'Helsinki Arrival & First Impressions',stops:[
     {time:'13:00',title:'Helsinki-Vantaa Airport Arrival',desc:'Your Luxival private transfer meets you at arrivals. Champagne welcome, wifi in car, direct to hotel.',tip:'Request meet-and-greet service for luggage assistance.',hours:'24/7',booking:'Book via luxival.com/transfers',tag:'Transport'},
-    {time:'15:30',title:'Hotel Check-In & Senate Square',desc:'Settle in, then walk to Senate Square — the neoclassical heart of Helsinki, framed by the white cathedral.',tip:'Best photo angle: stand on the cathedral steps at 4 PM for golden light on the square.',hours:'Senate Square open always',booking:'Free entry',tag:'City'},
-    {time:'17:00',title:'Hakaniemi Market Hall',desc:'The red-brick indoor market is Helsinki\'s culinary soul. Sample smoked salmon, reindeer, Karelian pies, and local cheeses.',tip:'Upstairs floor has the best textile and craft vendors — often overlooked by tourists.',hours:'Mon–Fri 8–18, Sat 8–16',booking:'Free entry',tag:'Food'},
+    {time:'15:30',title:'Hotel Check-In & Senate Square',desc:'Settle in, then walk to Senate Square - the neoclassical heart of Helsinki, framed by the white cathedral.',tip:'Best photo angle: stand on the cathedral steps at 4 PM for golden light on the square.',hours:'Senate Square open always',booking:'Free entry',tag:'City'},
+    {time:'17:00',title:'Hakaniemi Market Hall',desc:'The red-brick indoor market is Helsinki\'s culinary soul. Sample smoked salmon, reindeer, Karelian pies, and local cheeses.',tip:'Upstairs floor has the best textile and craft vendors - often overlooked by tourists.',hours:'Mon–Fri 8–18, Sat 8–16',booking:'Free entry',tag:'Food'},
     {time:'19:30',title:'Dinner at Savotta Restaurant',desc:'Classic Finnish dining in a rustic setting near Senate Square. Wild game, cloudberry desserts, and Finnish craft beer.',tip:'Book the window table overlooking Senate Square for the best atmosphere.',hours:'Daily 11–22',booking:'savotta.fi · +358 9 742 2160',tag:'Dining'},
   ]},
   {day:2,title:'Culture, Art & Architecture',stops:[
-    {time:'09:30',title:'Oodi Central Library',desc:'Helsinki\'s architectural marvel — 3 floors of design, technology, recording studios, 3D printers, and rooftop views.',tip:'Top floor terrace has the best panoramic view of Töölönlahti bay. Go before 10 AM to avoid crowds.',hours:'Mon–Fri 8–22, Sat–Sun 10–20',booking:'Free entry',tag:'Architecture'},
-    {time:'11:00',title:'Ateneum National Art Museum',desc:'Finland\'s premier art collection — Akseli Gallen-Kallela\'s Kalevala works, Edelfelt portraits, and rotating international shows.',tip:'The Kalevala gallery on floor 2 is unmissable — these are Finland\'s cultural soul.',hours:'Tue/Fri 10–18, Wed–Thu 10–20, Sat–Sun 10–17',booking:'€18 adults · ateneum.fi',tag:'Culture'},
-    {time:'14:00',title:'Temppeliaukio Rock Church',desc:'Carved directly into a granite outcrop — the copper dome, raw rock walls, and natural acoustics create an extraordinary space.',tip:'Check event listings — live organ and choir concerts happen regularly in this acoustic gem.',hours:'Mon–Sat 10–17:45, Sun 11:45–17:45',booking:'€5 entry · temppeliaukiokirkko.fi',tag:'Architecture'},
-    {time:'18:00',title:'Löyly Sauna & Waterfront Dining',desc:'The iconic waterfront sauna complex on Hernesaari — Finnish sauna, cold Baltic plunge, panoramic terrace, and Nordic restaurant.',tip:'Book the outdoor terrace table with the sea view. Sunset hits around 21:00 in summer.',hours:'Mon–Thu 16–22, Fri–Sun 13–22',booking:'loylyhelsinki.fi · pre-booking required',tag:'Wellness'},
+    {time:'09:30',title:'Oodi Central Library',desc:'Helsinki\'s architectural marvel - 3 floors of design, technology, recording studios, 3D printers, and rooftop views.',tip:'Top floor terrace has the best panoramic view of Töölönlahti bay. Go before 10 AM to avoid crowds.',hours:'Mon–Fri 8–22, Sat–Sun 10–20',booking:'Free entry',tag:'Architecture'},
+    {time:'11:00',title:'Ateneum National Art Museum',desc:'Finland\'s premier art collection - Akseli Gallen-Kallela\'s Kalevala works, Edelfelt portraits, and rotating international shows.',tip:'The Kalevala gallery on floor 2 is unmissable - these are Finland\'s cultural soul.',hours:'Tue/Fri 10–18, Wed–Thu 10–20, Sat–Sun 10–17',booking:'€18 adults · ateneum.fi',tag:'Culture'},
+    {time:'14:00',title:'Temppeliaukio Rock Church',desc:'Carved directly into a granite outcrop - the copper dome, raw rock walls, and natural acoustics create an extraordinary space.',tip:'Check event listings - live organ and choir concerts happen regularly in this acoustic gem.',hours:'Mon–Sat 10–17:45, Sun 11:45–17:45',booking:'€5 entry · temppeliaukiokirkko.fi',tag:'Architecture'},
+    {time:'18:00',title:'Löyly Sauna & Waterfront Dining',desc:'The iconic waterfront sauna complex on Hernesaari - Finnish sauna, cold Baltic plunge, panoramic terrace, and Nordic restaurant.',tip:'Book the outdoor terrace table with the sea view. Sunset hits around 21:00 in summer.',hours:'Mon–Thu 16–22, Fri–Sun 13–22',booking:'loylyhelsinki.fi · pre-booking required',tag:'Wellness'},
   ]},
   {day:3,title:'Island Life & Nordic Nature',stops:[
-    {time:'08:00',title:'Sunrise at Lauttasaari Coastline',desc:'The rocky western shoreline of Lauttasaari island catches the Baltic sunrise perfectly — sea-smoothed granite, birch trees, silence.',tip:'Bring a flask of coffee. The stretch south of Vattuniemi is the least-visited section.',hours:'Always accessible',booking:'Free · Tram 20 to Lauttasaari',tag:'Nature'},
-    {time:'10:30',title:'Suomenlinna Island Fortress',desc:'A UNESCO World Heritage sea fortress spread across 6 islands — 18th-century fortifications, museums, breweries, and cafe terraces.',tip:'Walk to the south side of Suomenlinna 6 for the empty lighthouse meadows that most tourists miss.',hours:'Ferries every 15–40 min from Market Square',booking:'Ferry €3.50 (HSL ticket) · suomenlinna.fi',tag:'History'},
-    {time:'14:30',title:'Seurasaari Open-Air Museum',desc:'A forested island connected by footbridge with 80+ relocated historic buildings — farmhouses, a nobleman\'s manor, a church from 1685.',tip:'June–August only — the midsummer bonfire here is one of Finland\'s most atmospheric events.',hours:'June–Aug: Tue–Sun 11–17',booking:'€12 adults · seurasaari.fi',tag:'Culture'},
-    {time:'17:00',title:'Cafe Regatta & Sunset Waterfront',desc:'Helsinki\'s most charming cafe — a tiny wooden cottage beside the sea, selling cinnamon rolls and hot drinks through a window.',tip:'The firepit on the rocks is for public use. Collect a log and sit with locals watching the evening sea.',hours:'Mon–Sun 09–20 (seasonal)',booking:'No booking needed',tag:'Food'},
+    {time:'08:00',title:'Sunrise at Lauttasaari Coastline',desc:'The rocky western shoreline of Lauttasaari island catches the Baltic sunrise perfectly - sea-smoothed granite, birch trees, silence.',tip:'Bring a flask of coffee. The stretch south of Vattuniemi is the least-visited section.',hours:'Always accessible',booking:'Free · Tram 20 to Lauttasaari',tag:'Nature'},
+    {time:'10:30',title:'Suomenlinna Island Fortress',desc:'A UNESCO World Heritage sea fortress spread across 6 islands - 18th-century fortifications, museums, breweries, and cafe terraces.',tip:'Walk to the south side of Suomenlinna 6 for the empty lighthouse meadows that most tourists miss.',hours:'Ferries every 15–40 min from Market Square',booking:'Ferry €3.50 (HSL ticket) · suomenlinna.fi',tag:'History'},
+    {time:'14:30',title:'Seurasaari Open-Air Museum',desc:'A forested island connected by footbridge with 80+ relocated historic buildings - farmhouses, a nobleman\'s manor, a church from 1685.',tip:'June–August only - the midsummer bonfire here is one of Finland\'s most atmospheric events.',hours:'June–Aug: Tue–Sun 11–17',booking:'€12 adults · seurasaari.fi',tag:'Culture'},
+    {time:'17:00',title:'Cafe Regatta & Sunset Waterfront',desc:'Helsinki\'s most charming cafe - a tiny wooden cottage beside the sea, selling cinnamon rolls and hot drinks through a window.',tip:'The firepit on the rocks is for public use. Collect a log and sit with locals watching the evening sea.',hours:'Mon–Sun 09–20 (seasonal)',booking:'No booking needed',tag:'Food'},
   ]},
   {day:4,title:'Food, Markets & Local Life',stops:[
-    {time:'09:00',title:'Hietalahti Flea Market',desc:'Helsinki\'s most authentic flea market — hundreds of vendors selling vintage clothing, Soviet-era curiosities, and Finnish design.',tip:'Arrive by 9 AM for the best finds before dealers buy up the good pieces. Haggling is acceptable.',hours:'Sat–Sun 08–16 (Apr–Oct)',booking:'Free entry',tag:'Shopping'},
-    {time:'11:30',title:'Kauppahalli — Old Market Hall',desc:'The 1889 red-brick market hall beside the harbour — artisan food stalls, Finnish delicacies, and some of the best salmon soup in the city.',tip:'Stall 14 (Meritori) serves the definitive Helsinki salmon soup — locals queue for it on weekdays.',hours:'Mon–Sat 08–18',booking:'Free entry · stalls vary',tag:'Food'},
-    {time:'14:00',title:'Kallio Neighbourhood Walk',desc:'Helsinki\'s most characterful district — art nouveau facades, independent coffee shops, vinyl record shops, and a working-class soul.',tip:'Cafe Pit Stop on Fleminginkatu has the best cortado in the city. The backstreet murals are excellent.',hours:'Neighbourhood always open',booking:'Free',tag:'City'},
-    {time:'19:00',title:'Dinner at Olo Restaurant',desc:'One of Finland\'s most awarded restaurants — a refined tasting menu showcasing hyperlocal Finnish ingredients in a converted warehouse.',tip:'Order the wine pairing — their sommelier sources bottles from small Nordic producers unavailable elsewhere.',hours:'Tue–Sat from 17:00',booking:'olo-ravintola.fi · advance booking essential',tag:'Dining'},
+    {time:'09:00',title:'Hietalahti Flea Market',desc:'Helsinki\'s most authentic flea market - hundreds of vendors selling vintage clothing, Soviet-era curiosities, and Finnish design.',tip:'Arrive by 9 AM for the best finds before dealers buy up the good pieces. Haggling is acceptable.',hours:'Sat–Sun 08–16 (Apr–Oct)',booking:'Free entry',tag:'Shopping'},
+    {time:'11:30',title:'Kauppahalli - Old Market Hall',desc:'The 1889 red-brick market hall beside the harbour - artisan food stalls, Finnish delicacies, and some of the best salmon soup in the city.',tip:'Stall 14 (Meritori) serves the definitive Helsinki salmon soup - locals queue for it on weekdays.',hours:'Mon–Sat 08–18',booking:'Free entry · stalls vary',tag:'Food'},
+    {time:'14:00',title:'Kallio Neighbourhood Walk',desc:'Helsinki\'s most characterful district - art nouveau facades, independent coffee shops, vinyl record shops, and a working-class soul.',tip:'Cafe Pit Stop on Fleminginkatu has the best cortado in the city. The backstreet murals are excellent.',hours:'Neighbourhood always open',booking:'Free',tag:'City'},
+    {time:'19:00',title:'Dinner at Olo Restaurant',desc:'One of Finland\'s most awarded restaurants - a refined tasting menu showcasing hyperlocal Finnish ingredients in a converted warehouse.',tip:'Order the wine pairing - their sommelier sources bottles from small Nordic producers unavailable elsewhere.',hours:'Tue–Sat from 17:00',booking:'olo-ravintola.fi · advance booking essential',tag:'Dining'},
   ]},
   {day:5,title:'Hidden Gems & Departure',stops:[
-    {time:'09:00',title:'Kiasma & Kamppi Morning',desc:'Start the final morning at Kiasma contemporary art museum, then walk to Kamppi Chapel of Silence for a moment of stillness.',tip:'Kiasma\'s ground floor cafe has great coffee. The chapel is only 15 seats — visit on the hour when it clears.',hours:'Kiasma: Tue 10–17, Wed–Fri 10–20, Sat–Sun 10–17',booking:'Kiasma €17 · chapel free',tag:'Culture'},
-    {time:'11:30',title:'Design District Final Shopping',desc:'The stretch of Uudenmaankatu has Helsinki\'s best design boutiques — Marimekko ceramics, Iittala glass, Artek furniture, and Aalto designs.',tip:'The Marimekko outlet on Pohjoisesplanadi has last-season pieces at 40% off. Cash is preferred at smaller studios.',hours:'Most shops Mon–Sat 10–18',booking:'Marimekko.com, iittala.com for online backup',tag:'Shopping'},
-    {time:'13:00',title:'Final Lunch at Story Restaurant',desc:'A hidden gem in a 1920s bank vault near the cathedral — Nordic sharing plates, excellent Finnish wine list, atmospheric setting.',tip:'The vault room in the basement requires a reservation but is unforgettable for a farewell lunch.',hours:'Mon–Sat 11:30–22',booking:'storyhelsinki.fi · +358 9 6128 5800',tag:'Dining'},
+    {time:'09:00',title:'Kiasma & Kamppi Morning',desc:'Start the final morning at Kiasma contemporary art museum, then walk to Kamppi Chapel of Silence for a moment of stillness.',tip:'Kiasma\'s ground floor cafe has great coffee. The chapel is only 15 seats - visit on the hour when it clears.',hours:'Kiasma: Tue 10–17, Wed–Fri 10–20, Sat–Sun 10–17',booking:'Kiasma €17 · chapel free',tag:'Culture'},
+    {time:'11:30',title:'Design District Final Shopping',desc:'The stretch of Uudenmaankatu has Helsinki\'s best design boutiques - Marimekko ceramics, Iittala glass, Artek furniture, and Aalto designs.',tip:'The Marimekko outlet on Pohjoisesplanadi has last-season pieces at 40% off. Cash is preferred at smaller studios.',hours:'Most shops Mon–Sat 10–18',booking:'Marimekko.com, iittala.com for online backup',tag:'Shopping'},
+    {time:'13:00',title:'Final Lunch at Story Restaurant',desc:'A hidden gem in a 1920s bank vault near the cathedral - Nordic sharing plates, excellent Finnish wine list, atmospheric setting.',tip:'The vault room in the basement requires a reservation but is unforgettable for a farewell lunch.',hours:'Mon–Sat 11:30–22',booking:'storyhelsinki.fi · +358 9 6128 5800',tag:'Dining'},
     {time:'15:30',title:'Luxival Transfer to Airport',desc:'Your private Luxival chauffeur collects you from the hotel. Refreshments, newspapers, and wifi en route to HEL.',tip:'Allow 45 min from city centre to airport. Your driver will track your flight for real-time adjustment.',hours:'On demand · pre-booked',booking:'luxival.com/transfers · +358 50 351 8366',tag:'Transport'},
   ]},
 ];
@@ -457,27 +444,27 @@ document.querySelector('[data-pref="all"]').classList.add('selected');
 /* Itinerary data bank */
 const activities={
   city:[
-    {time:'09:00',title:'Helsinki Market Square',desc:'Start the morning at the historic harbour market — fresh pastries, local produce, and sea views.',tag:'City'},
+    {time:'09:00',title:'Helsinki Market Square',desc:'Start the morning at the historic harbour market - fresh pastries, local produce, and sea views.',tag:'City'},
     {time:'11:00',title:'Helsinki Design District',desc:'Explore galleries, boutique studios, and concept stores in the heart of the creative quarter.',tag:'City'},
     {time:'14:00',title:'Esplanadi Park & Café Esplanad',desc:'Stroll the iconic boulevard, relax in the park, and enjoy Finnish coffee culture.',tag:'City'},
-    {time:'16:00',title:'Helsinki Cathedral & Senate Square',desc:'The neoclassical centrepiece of Helsinki — visit the cathedral and take in the grand architecture.',tag:'City'},
+    {time:'16:00',title:'Helsinki Cathedral & Senate Square',desc:'The neoclassical centrepiece of Helsinki - visit the cathedral and take in the grand architecture.',tag:'City'},
     {time:'19:00',title:'Helsinki Jazz Club Evening',desc:'Unwind at an intimate jazz venue in the city centre with local musicians.',tag:'Nightlife'},
-    {time:'10:00',title:'Kamppi Chapel of Silence',desc:'A unique modern chapel in the city centre — a quiet, contemplative architectural experience.',tag:'City'},
+    {time:'10:00',title:'Kamppi Chapel of Silence',desc:'A unique modern chapel in the city centre - a quiet, contemplative architectural experience.',tag:'City'},
   ],
   nature:[
     {time:'08:00',title:'Nuuksio National Park',desc:'Hike through ancient forests and past pristine lakes, 35 km from the city. Pack a picnic.',tag:'Nature'},
-    {time:'10:00',title:'Seurasaari Island Walk',desc:'A forested island connected by footbridge — wildlife, trails, and an open-air museum.',tag:'Nature'},
+    {time:'10:00',title:'Seurasaari Island Walk',desc:'A forested island connected by footbridge - wildlife, trails, and an open-air museum.',tag:'Nature'},
     {time:'14:00',title:'Helsinki Archipelago Ferry',desc:'Take a short ferry to one of the island fortresses or coastal nature reserves.',tag:'Nature'},
     {time:'07:00',title:'Sunrise at Lauttasaari Shore',desc:'Walk the rocky coastline at sunrise for a quiet, stunning view across the Baltic Sea.',tag:'Nature'},
-    {time:'15:00',title:'Viikki Nature Reserve',desc:'Birdwatching trails and wetlands in Helsinki — rare migratory species visible seasonally.',tag:'Nature'},
+    {time:'15:00',title:'Viikki Nature Reserve',desc:'Birdwatching trails and wetlands in Helsinki - rare migratory species visible seasonally.',tag:'Nature'},
   ],
   culture:[
-    {time:'10:00',title:'Ateneum Art Museum',desc:'Finland\'s national gallery — Finnish and international art from the 19th century to the present.',tag:'Culture'},
+    {time:'10:00',title:'Ateneum Art Museum',desc:'Finland\'s national gallery - Finnish and international art from the 19th century to the present.',tag:'Culture'},
     {time:'12:00',title:'Kiasma Museum of Contemporary Art',desc:'Bold contemporary works in a striking Holl-designed building beside Töölönlahti Bay.',tag:'Culture'},
-    {time:'14:00',title:'Temppeliaukio Rock Church',desc:'The famous church carved directly into bedrock — extraordinary architecture and acoustics.',tag:'Culture'},
+    {time:'14:00',title:'Temppeliaukio Rock Church',desc:'The famous church carved directly into bedrock - extraordinary architecture and acoustics.',tag:'Culture'},
     {time:'11:00',title:'Finnish National Museum',desc:'The full story of Finland from prehistoric times through to the modern era.',tag:'Culture'},
     {time:'16:00',title:'Sauna & Wellness at Löyly',desc:'Experience authentic Finnish sauna culture at the waterfront Löyly with Baltic sea swimming.',tag:'Culture'},
-    {time:'18:00',title:'Dining at a Finnish Kitchen',desc:'Traditional Finnish cuisine — reindeer, wild mushrooms, and Nordic pastries.',tag:'Dining'},
+    {time:'18:00',title:'Dining at a Finnish Kitchen',desc:'Traditional Finnish cuisine - reindeer, wild mushrooms, and Nordic pastries.',tag:'Dining'},
   ]
 };
 

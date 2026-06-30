@@ -82,5 +82,11 @@
   {"loc":"https://www.luxival.com/tourism-planning","lastmod":"2026-06-15","changefreq":"monthly","priority":"0.7"},
   {"loc":"https://www.luxival.com/transfers","lastmod":"2026-06-15","changefreq":"monthly","priority":"0.9"},
   {"loc":"https://www.luxival.com/ubuntu-google-cloud-vm","lastmod":"2026-06-15","changefreq":"monthly","priority":"0.7"},
-  {"loc":"https://www.luxival.com/user-data-deletion","lastmod":"2026-06-15","changefreq":"yearly","priority":"0.3"}
+  {"loc":"https://www.luxival.com/user-data-deletion","lastmod":"2026-06-15","changefreq":"yearly","priority":"0.3"},
+  {"loc":"https://www.luxival.com/amp/","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/amp/about","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/amp/contact","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/amp/helsinki-airport-pickup","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/amp/services","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/amp/transfers","lastmod":"2026-06-30","changefreq":"weekly","priority":"0.9"}
 ]

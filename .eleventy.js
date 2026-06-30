@@ -39,9 +39,21 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectSpeechReader(html) {
+    if (html.includes("/js/speech-reader.js")) return html;
+    if (/<\/head>/i.test(html)) {
+      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/speech-reader.css?v=20260630-1">\n</head>');
+    }
+    if (/<\/body>/i.test(html)) {
+      html = html.replace(/<\/body>/i, '  <script src="/js/speech-reader.js?v=20260630-1" defer></script>\n</body>');
+    }
+    return html;
+  }
+
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
-    return injectPageTranslate(injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content)))));
+    if (outputPath.includes("/amp/")) return content;
+    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content))))));
   });
 
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
@@ -74,6 +86,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "blog/images": "blog/images" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "llms.txt": "llms.txt" });
+  eleventyConfig.addPassthroughCopy({ "llms-full.txt": "llms-full.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
@@ -105,6 +118,12 @@ module.exports = function (eleventyConfig) {
       layouts: "blog/_includes/layouts",
       output: "_site"
     },
-    templateFormats: ["html", "md", "njk"]
+    templateFormats: ["html", "md", "njk"],
+    ignore: [
+      ".kilo/**",
+      ".agents/**",
+      ".claude/**",
+      ".git/**"
+    ]
   };
 };
