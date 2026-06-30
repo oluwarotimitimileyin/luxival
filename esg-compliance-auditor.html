@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi library/oodi library 1440.webp">
 <link rel="canonical" href="https://www.luxival.com/portfolio?project=esg-compliance-auditor">
 <style>
-:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--green:#4CAF73;--red:#E05555;--r:2px}
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--green:#4CAF73;--red:#E05555;--r:10px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
@@ -40,7 +40,7 @@ a{color:var(--gold);text-decoration:none}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,11,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.07)}
 .nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
-.neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.5rem 1.4rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:1px solid rgba(201,169,106,.3);border-radius:2px;background:rgba(201,169,106,.04)!important;transition:border-color .4s,box-shadow .4s,transform .3s;min-height:38px;line-height:1;white-space:nowrap}.neon-btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0deg,rgba(201,169,106,.15) 60deg,#C9A96A 120deg,rgba(201,169,106,.15) 180deg,transparent 240deg,transparent 360deg);z-index:-2;animation:neonSpin 3s linear infinite;opacity:0;transition:opacity .4s}.neon-btn:hover::before{opacity:1}.neon-btn::after{content:"";position:absolute;inset:1px;border-radius:inherit;background:#0A0B0F;z-index:-1}.neon-btn:hover{border-color:rgba(201,169,106,.6);box-shadow:0 0 15px rgba(201,169,106,.15),0 0 30px rgba(201,169,106,.08);transform:translateY(-1px)}@keyframes neonSpin{to{transform:rotate(360deg)}}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.5rem 1.4rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:1px solid rgba(201,169,106,.3);border-radius:10px;background:rgba(201,169,106,.04)!important;transition:border-color .4s,box-shadow .4s,transform .3s;min-height:38px;line-height:1;white-space:nowrap}.neon-btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0deg,rgba(201,169,106,.15) 60deg,#C9A96A 120deg,rgba(201,169,106,.15) 180deg,transparent 240deg,transparent 360deg);z-index:-2;animation:neonSpin 3s linear infinite;opacity:0;transition:opacity .4s}.neon-btn:hover::before{opacity:1}.neon-btn::after{content:"";position:absolute;inset:1px;border-radius:inherit;background:#0A0B0F;z-index:-1}.neon-btn:hover{border-color:rgba(201,169,106,.6);box-shadow:0 0 15px rgba(201,169,106,.15),0 0 30px rgba(201,169,106,.08);transform:translateY(-1px)}@keyframes neonSpin{to{transform:rotate(360deg)}}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s;color:var(--text)}
 .nav-links a:hover{opacity:1;color:var(--gold)}
 
@@ -48,23 +48,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero{min-height:72vh;display:flex;align-items:center;padding-top:7rem;background:linear-gradient(135deg,rgba(201,169,106,.05) 0%,transparent 60%)}
 .hero-inner{max-width:720px}
 .hero-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
-.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:2px;padding:.45rem .9rem;font-size:.73rem;letter-spacing:1px;text-transform:uppercase;opacity:.7}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.45rem .9rem;font-size:.73rem;letter-spacing:1px;text-transform:uppercase;opacity:.7}
 
 /* FEATURES GRID */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-.feature-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem;display:flex;flex-direction:column}
+.feature-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:2rem;display:flex;flex-direction:column}
 .feature-icon{font-size:2.2rem;margin-bottom:1rem;opacity:.8}
 .feature-card h3{color:var(--gold);font-size:1.1rem;margin-bottom:.6rem;font-weight:400}
 .feature-card p{font-size:.88rem;opacity:.7;margin:0}
 
 /* USE CASES */
 .use-cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.use-case{background:var(--card);border-left:3px solid var(--gold);padding:1.8rem;border-radius:2px}
+.use-case{background:var(--card);border-left:3px solid var(--gold);padding:1.8rem;border-radius:10px}
 .use-case h3{font-size:1rem;color:var(--text);font-weight:500;margin-bottom:.6rem}
 .use-case p{font-size:.85rem;opacity:.65;margin:0;line-height:1.5}
 
 /* LIVE AGENT IFRAME */
-.demo-wrapper{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:2rem 0}
+.demo-wrapper{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:2rem 0}
 .demo-chrome{background:var(--card2);border-bottom:1px solid var(--border);padding:1rem;display:flex;gap:.6rem;align-items:center}
 .demo-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1)}
 .demo-dot:nth-child(1){background:#E05555}
@@ -76,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .agent-loading a{color:var(--gold);text-decoration:underline}
 
 /* PRICING BOX */
-.pricing-box{background:linear-gradient(135deg,rgba(201,169,106,.07),transparent);border:1px solid var(--border);border-radius:4px;padding:3rem;text-align:center;max-width:600px;margin:0 auto}
+.pricing-box{background:linear-gradient(135deg,rgba(201,169,106,.07),transparent);border:1px solid var(--border);border-radius:10px;padding:3rem;text-align:center;max-width:600px;margin:0 auto}
 .pricing-box h2{margin-bottom:.8rem;font-size:2rem}
 .pricing-tag{font-size:3rem;font-weight:200;color:var(--gold);display:block;margin:1.5rem 0;letter-spacing:-1px}
 .pricing-sub{font-size:.8rem;opacity:.5;display:block;margin-bottom:2rem}
@@ -134,7 +134,7 @@ footer a:hover{opacity:1}
 </section> <div class="gold-line container"></div> <!-- CTA BAND -->
 <section class="cta-band"> <h2>Need a clearer ESG review process?</h2> <p>Tell us what you need to review, what framework matters, and how the report will be used.</p> <div> <a href="/contact" class="btn">Schedule Consultation →</a> <a href="/portfolio" class="btn-outline" style="margin-left:1rem">View More Projects</a> </div>
 </section> <!-- CROSS-SELL -->
-<section class="container" style="padding:3rem 0"> <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem"> <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem"> <span class="eyebrow">Website Audits</span> <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Free SEO Audit Tool</h3> <p>Check your website's SEO fundamentals, PageSpeed, accessibility, and security with a short practical report.</p> <a href="/audit" class="btn" style="margin-top:1rem;display:inline-block">Run Free Audit →</a> </div> <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:2rem"> <span class="eyebrow">Digital Services</span> <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Web Design & Practical Automation</h3> <p>Custom web development, SEO optimisation, and workflow support for teams that need clearer systems.</p> <a href="/digital" class="btn" style="margin-top:1rem;display:inline-block">Learn More →</a> </div> </div>
+<section class="container" style="padding:3rem 0"> <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem"> <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:2rem"> <span class="eyebrow">Website Audits</span> <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Free SEO Audit Tool</h3> <p>Check your website's SEO fundamentals, PageSpeed, accessibility, and security with a short practical report.</p> <a href="/audit" class="btn" style="margin-top:1rem;display:inline-block">Run Free Audit →</a> </div> <div style="background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:2rem"> <span class="eyebrow">Digital Services</span> <h3 style="color:var(--text);font-size:1.3rem;margin-bottom:.8rem">Web Design & Practical Automation</h3> <p>Custom web development, SEO optimisation, and workflow support for teams that need clearer systems.</p> <a href="/digital" class="btn" style="margin-top:1rem;display:inline-block">Learn More →</a> </div> </div>
 </section> <!-- FOOTER -->
 <footer> <div class="container"> <div class="footer-grid"> <div class="reveal"> <h3>LUXIVAL</h3> <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p> <p>support@luxival.com</p> <p>+358 50 351 8366</p> <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap"> <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a> <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a> <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a> </div> </div> <div class="reveal d1"> <h3>Navigate</h3> <div class="foot-links"> <a href="/">Home</a> <a href="/services">Services</a> <a href="/portfolio">Projects</a> <a href="/blog">Blog</a> <a href="/about">About</a> <a href="/contact">Contact</a> </div> </div> <div class="reveal d2"> <h3>Legal</h3> <div class="foot-links"> <a href="/privacy">Privacy Policy</a> <a href="/terms">Terms of Service</a> <a href="/user-data-deletion">Data Deletion</a> <a href="/contact">Contact</a> </div> </div> </div> <div class="copyright">Luxival © 2026 · Digital services and private transport</div> </div>
 </footer> <!-- MOBILE STICKY -->

@@ -26,7 +26,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.luxival.com/platform">
 <link rel="stylesheet" href="/css/mobile-overrides.css?v=20260530-4">
 <style>
-:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:2px}
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,0.2);--r:10px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
@@ -62,7 +62,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero{padding:9rem 0 5rem;text-align:center}
 .hero p.lead{font-size:1.2rem;max-width:600px;margin:0 auto 3rem;opacity:.75}
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:.4rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.4rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
 .hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 
@@ -79,14 +79,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .app-frame{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;position:relative;min-height:520px;display:flex;flex-direction:column}
 .app-frame-bar{background:rgba(201,169,106,.06);border-bottom:1px solid var(--border);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.6rem}
 .frame-dot{width:10px;height:10px;border-radius:50%;background:rgba(201,169,106,.25)}
-.frame-url{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:.3rem 1rem;font-size:.72rem;opacity:.5;letter-spacing:.5px}
+.frame-url{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.3rem 1rem;font-size:.72rem;opacity:.5;letter-spacing:.5px}
 .app-frame iframe{flex:1;width:100%;border:none;min-height:460px}
 .app-frame-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:3rem;text-align:center}
 .placeholder-icon{width:72px;height:72px;border-radius:50%;background:rgba(201,169,106,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
 .placeholder-icon::before{content:'📊'}
 .app-frame-placeholder h3{color:var(--gold);font-size:1.2rem}
 .app-frame-placeholder p{font-size:.9rem;opacity:.55;max-width:300px;margin:0}
-.coming-tag{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;background:rgba(201,169,106,.1);border:1px solid rgba(201,169,106,.2);color:var(--gold);padding:.35rem .9rem;border-radius:20px}
+.coming-tag{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;background:rgba(201,169,106,.1);border:1px solid rgba(201,169,106,.2);color:var(--gold);padding:.35rem .9rem;border-radius:10px}
 
 /* Vault Ledger branding */
 .project-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem}
@@ -95,13 +95,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .project-name{font-size:1.1rem;font-weight:500;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
 .project-type{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;opacity:.4}
 .tech-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.8rem 0}
-.tech-pill{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:.3rem .8rem;border-radius:20px;opacity:.7}
+.tech-pill{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:.3rem .8rem;border-radius:10px;opacity:.7}
 .app-launch-bar{display:flex;gap:1rem;align-items:center;margin-top:2rem;flex-wrap:wrap}
 .app-frame-offline{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;text-align:center;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(201,169,106,.02) 8px,rgba(201,169,106,.02) 16px)}
 .app-frame-offline .offline-icon{font-size:2rem;opacity:.4}
 .app-frame-offline h3{color:var(--gold);font-size:1rem;margin:0}
 .app-frame-offline p{font-size:.82rem;opacity:.45;max-width:280px;margin:0}
-.app-frame-offline code{font-size:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.25rem .65rem;border-radius:4px;letter-spacing:.5px;color:var(--gold);display:block;margin-top:.5rem}
+.app-frame-offline code{font-size:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.25rem .65rem;border-radius:10px;letter-spacing:.5px;color:var(--gold);display:block;margin-top:.5rem}
 .section-divider{display:flex;align-items:center;gap:2rem;padding:2rem 0;margin:2rem 0}
 .section-divider span{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;opacity:.3;white-space:nowrap}
 .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
@@ -122,7 +122,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .perk-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
 .perk-text h3{font-size:.95rem;color:var(--text);margin-bottom:.2rem}
 .perk-text p{font-size:.85rem;opacity:.55;margin:0}
-.tiktok-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,0,80,.12),rgba(0,242,234,.12));border:1px solid rgba(255,0,80,.25);border-radius:20px;padding:.4rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:2rem}
+.tiktok-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,0,80,.12),rgba(0,242,234,.12));border:1px solid rgba(255,0,80,.25);border-radius:10px;padding:.4rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:2rem}
 .stats-row{display:flex;gap:2.5rem;margin:2rem 0;flex-wrap:wrap}
 .stat-item .num{font-size:2rem;font-weight:300;color:var(--gold);display:block}
 .stat-item .lbl{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;opacity:.45}

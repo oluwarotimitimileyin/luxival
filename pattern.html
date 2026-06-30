@@ -30,7 +30,7 @@
 :root{
   --bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;
   --card:#11131A;--card2:#13161E;
-  --border:rgba(201,169,106,0.2);--r:2px;
+  --border:rgba(201,169,106,0.2);--r:10px;
   --gold-soft:rgba(201,169,106,0.08);
   --gold-mid:rgba(201,169,106,0.15);
 }
@@ -90,7 +90,7 @@ nav{
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:.6rem;
-  border:1px solid var(--border);border-radius:20px;
+  border:1px solid var(--border);border-radius:10px;
   padding:.4rem 1rem;font-size:.7rem;letter-spacing:2px;
   text-transform:uppercase;color:var(--gold);margin-bottom:2rem;width:fit-content;
 }
@@ -109,7 +109,7 @@ nav{
 /* Model image panel */
 .hero-visual{position:relative}
 .model-img{
-  width:100%;border-radius:4px;
+  width:100%;border-radius:10px;
   border:1px solid var(--border);
   object-fit:cover;
 }
@@ -155,7 +155,7 @@ nav{
 .del-card p{font-size:.85rem;opacity:.6;margin:0;line-height:1.5}
 
 /* ── MEASUREMENT FORM ── */
-.form-section{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:3.5rem}
+.form-section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:3.5rem}
 .form-intro{max-width:600px;margin-bottom:3rem}
 .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
 .field{display:flex;flex-direction:column;gap:.4rem}
@@ -201,7 +201,7 @@ nav{
 #preview-screen{display:none}
 .preview-screen{
   background:var(--card);border:1px solid var(--border);
-  border-radius:4px;padding:3rem;
+  border-radius:10px;padding:3rem;
 }
 .preview-header{
   display:flex;justify-content:space-between;align-items:flex-start;
@@ -363,7 +363,7 @@ footer{
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav> <main id="main">
 <!-- ══ HERO ══ -->
-<section class="hero"> <div class="container"> <div class="hero-layout"> <div class="hero-text"> <div class="hero-badge"> <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block"></span> Custom Pattern · PDF Delivery </div> <span class="eyebrow">Luxival Pattern Studio</span> <h1 data-i18n="hero.title">Classic Navy<br><span>Three Piece</span><br>Suit Pattern</h1> <p data-i18n="hero.subtitle" class="lead"> Enter your measurements. The page calculates the pattern pieces from your body details. Pay once and receive a printable PDF your tailor can use to cut and construct your suit. </p> <div class="hero-price"> <span class="amount">€29</span> <div> <div class="desc">One time · Yours forever</div> <div style="font-size:.7rem;opacity:.45;margin-top:1px">Calculated from your measurements</div> </div> </div> <div class="hero-actions"> <a href="#measure" class="btn">Start My Pattern →</a> <a href="#how-it-works" class="btn btn-outline">How It Works</a> </div> </div> <div class="hero-visual"> <!-- EDITABLE: Replace src with your real hosted image URL --> <picture> <source type="image/avif" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.avif 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.avif 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.avif 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.avif 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.avif 1920w" sizes="(max-width:900px) 100vw, 45vw"> <source type="image/webp" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.webp 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.webp 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.webp 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.webp 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.webp 1920w" sizes="(max-width:900px) 100vw, 45vw"> <img src="/assets/images/optimized/pattern-hero/pattern-hero-768.webp" alt="Classic navy three piece suit, front, side, back, and three quarter views" class="model-img" width="1600" height="893" decoding="async" fetchpriority="high" onerror="this.style.display='none';document.getElementById('model-placeholder').style.display='flex'"> </picture> <div id="model-placeholder" style="display:none;width:100%;aspect-ratio:16/9;background:var(--card);border:1px solid var(--border);border-radius:4px;align-items:center;justify-content:center;flex-direction:column;gap:1rem"> <div style="font-size:2rem;opacity:.3">🧥</div> <p style="font-size:.75rem;opacity:.4;letter-spacing:2px;text-transform:uppercase;margin:0">Replace with your model photo</p> <p style="font-size:.65rem;opacity:.3;margin:0">Edit src on line ~330 of this file</p> </div> <div class="model-caption"> <span>Front</span> <span>Left profile</span> <span>Back</span> <span>Three quarter</span> </div> </div> </div> </div>
+<section class="hero"> <div class="container"> <div class="hero-layout"> <div class="hero-text"> <div class="hero-badge"> <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block"></span> Custom Pattern · PDF Delivery </div> <span class="eyebrow">Luxival Pattern Studio</span> <h1 data-i18n="hero.title">Classic Navy<br><span>Three Piece</span><br>Suit Pattern</h1> <p data-i18n="hero.subtitle" class="lead"> Enter your measurements. The page calculates the pattern pieces from your body details. Pay once and receive a printable PDF your tailor can use to cut and construct your suit. </p> <div class="hero-price"> <span class="amount">€29</span> <div> <div class="desc">One time · Yours forever</div> <div style="font-size:.7rem;opacity:.45;margin-top:1px">Calculated from your measurements</div> </div> </div> <div class="hero-actions"> <a href="#measure" class="btn">Start My Pattern →</a> <a href="#how-it-works" class="btn btn-outline">How It Works</a> </div> </div> <div class="hero-visual"> <!-- EDITABLE: Replace src with your real hosted image URL --> <picture> <source type="image/avif" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.avif 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.avif 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.avif 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.avif 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.avif 1920w" sizes="(max-width:900px) 100vw, 45vw"> <source type="image/webp" srcset="/assets/images/optimized/pattern-hero/pattern-hero-480.webp 480w, /assets/images/optimized/pattern-hero/pattern-hero-768.webp 768w, /assets/images/optimized/pattern-hero/pattern-hero-1024.webp 1024w, /assets/images/optimized/pattern-hero/pattern-hero-1440.webp 1440w, /assets/images/optimized/pattern-hero/pattern-hero-1920.webp 1920w" sizes="(max-width:900px) 100vw, 45vw"> <img src="/assets/images/optimized/pattern-hero/pattern-hero-768.webp" alt="Classic navy three piece suit, front, side, back, and three quarter views" class="model-img" width="1600" height="893" decoding="async" fetchpriority="high" onerror="this.style.display='none';document.getElementById('model-placeholder').style.display='flex'"> </picture> <div id="model-placeholder" style="display:none;width:100%;aspect-ratio:16/9;background:var(--card);border:1px solid var(--border);border-radius:10px;align-items:center;justify-content:center;flex-direction:column;gap:1rem"> <div style="font-size:2rem;opacity:.3">🧥</div> <p style="font-size:.75rem;opacity:.4;letter-spacing:2px;text-transform:uppercase;margin:0">Replace with your model photo</p> <p style="font-size:.65rem;opacity:.3;margin:0">Edit src on line ~330 of this file</p> </div> <div class="model-caption"> <span>Front</span> <span>Left profile</span> <span>Back</span> <span>Three quarter</span> </div> </div> </div> </div>
 </section> <div class="container"><div class="gold-line"></div></div> <!-- ══ VIDEO SHOWCASE ══ -->
 <section id="showcase"> <div class="container"> <div class="video-section-grid"> <div> <span class="eyebrow">See It In Detail</span> <h2 style="margin-bottom:1rem">Watch the suit<br>come together</h2> <p>See how the three piece suit fits, moves, and drapes. Every seam, pocket, and lapel is documented in the pattern you will receive.</p> <p>The pattern includes full step by step construction instructions, written for beginners. No tailoring experience required to follow along.</p> <ul style="list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.7rem"> <li style="font-size:.85rem;display:flex;align-items:center;gap:.7rem;opacity:.75"> <span style="color:var(--gold);font-size:.7rem">✦</span> 32 fully dimensioned pattern pieces </li> <li style="font-size:.85rem;display:flex;align-items:center;gap:.7rem;opacity:.75"> <span style="color:var(--gold);font-size:.7rem">✦</span> 64 sequential construction steps </li> <li style="font-size:.85rem;display:flex;align-items:center;gap:.7rem;opacity:.75"> <span style="color:var(--gold);font-size:.7rem">✦</span> 5 sizes EU 38–52 grading included </li> <li style="font-size:.85rem;display:flex;align-items:center;gap:.7rem;opacity:.75"> <span style="color:var(--gold);font-size:.7rem">✦</span> Printable 1:1 scale, no rescaling needed </li> </ul> </div> <div> <!-- EDITABLE: Replace VIDEO_ID with your actual Google Drive video file ID --> <!-- Your Google Drive link: https://drive.google.com/file/d/152rWRp1b2dhd0m3D-sO9v-qDWtIXEqmX/view --> <!-- To embed: change /view to /preview in the src below --> <div class="video-wrap"> <iframe
             src="https://drive.google.com/file/d/152rWRp1b2dhd0m3D-sO9v-qDWtIXEqmX/preview"

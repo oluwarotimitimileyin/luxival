@@ -17,7 +17,7 @@
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://www.luxival.com/growth-architect-backend">
 <style>
-:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,.18);--green:#4CAF73;--red:#E05555;--r:2px}
+:root{--bg:#0A0B0F;--text:#E8EBF2;--gold:#C9A96A;--card:#11131A;--card2:#13161E;--border:rgba(201,169,106,.18);--green:#4CAF73;--red:#E05555;--r:10px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
@@ -38,26 +38,26 @@ a{color:var(--gold);text-decoration:none}
 .btn-outline:hover{background:rgba(201,169,106,.1)}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,11,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.07)}
 .nav-brand{font-size:1.1rem;font-weight:600;letter-spacing:3px;color:var(--gold)}
-.neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.5rem 1.4rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:1px solid rgba(201,169,106,.3);border-radius:2px;background:rgba(201,169,106,.04)!important;transition:border-color .4s,box-shadow .4s,transform .3s;min-height:38px;line-height:1;white-space:nowrap}.neon-btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0deg,rgba(201,169,106,.15) 60deg,#C9A96A 120deg,rgba(201,169,106,.15) 180deg,transparent 240deg,transparent 360deg);z-index:-2;animation:neonSpin 3s linear infinite;opacity:0;transition:opacity .4s}.neon-btn:hover::before{opacity:1}.neon-btn::after{content:"";position:absolute;inset:1px;border-radius:inherit;background:#0A0B0F;z-index:-1}.neon-btn:hover{border-color:rgba(201,169,106,.6);box-shadow:0 0 15px rgba(201,169,106,.15),0 0 30px rgba(201,169,106,.08);transform:translateY(-1px)}@keyframes neonSpin{to{transform:rotate(360deg)}}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.5rem 1.4rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:1px solid rgba(201,169,106,.3);border-radius:10px;background:rgba(201,169,106,.04)!important;transition:border-color .4s,box-shadow .4s,transform .3s;min-height:38px;line-height:1;white-space:nowrap}.neon-btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0deg,rgba(201,169,106,.15) 60deg,#C9A96A 120deg,rgba(201,169,106,.15) 180deg,transparent 240deg,transparent 360deg);z-index:-2;animation:neonSpin 3s linear infinite;opacity:0;transition:opacity .4s}.neon-btn:hover::before{opacity:1}.neon-btn::after{content:"";position:absolute;inset:1px;border-radius:inherit;background:#0A0B0F;z-index:-1}.neon-btn:hover{border-color:rgba(201,169,106,.6);box-shadow:0 0 15px rgba(201,169,106,.15),0 0 30px rgba(201,169,106,.08);transform:translateY(-1px)}@keyframes neonSpin{to{transform:rotate(360deg)}}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;transition:opacity .2s;color:var(--text)}
 .nav-links a:hover{opacity:1;color:var(--gold)}
 .hero{min-height:70vh;display:flex;align-items:center;padding-top:7rem;background:linear-gradient(135deg,rgba(201,169,106,.05) 0%,transparent 60%)}
 .hero-inner{max-width:760px}
 .status-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:2.2rem}
-.status-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:1.15rem 1.2rem;min-height:108px}
+.status-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:1.15rem 1.2rem;min-height:108px}
 .status-card .label{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-bottom:.55rem}
 .status-card .value{font-size:1rem;color:var(--text);margin-bottom:.35rem}
 .status-card .meta{font-size:.82rem;opacity:.62}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
-.panel{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:1.5rem}
+.panel{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:1.5rem}
 .panel strong{display:block;margin-bottom:.45rem;color:var(--gold);font-weight:500;letter-spacing:.4px}
 .pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.pill{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(201,169,106,.2);color:var(--gold);padding:.25rem .55rem;border-radius:20px;opacity:.76}
+.pill{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(201,169,106,.2);color:var(--gold);padding:.25rem .55rem;border-radius:10px;opacity:.76}
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
-.flow-step{background:var(--card);border-left:3px solid var(--gold);padding:1.4rem;border-radius:2px}
+.flow-step{background:var(--card);border-left:3px solid var(--gold);padding:1.4rem;border-radius:10px}
 .flow-step span{display:block;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-bottom:.55rem}
 .flow-step p{font-size:.86rem;opacity:.68;margin:0;line-height:1.55}
-.demo-wrapper{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:1rem 0 0}
+.demo-wrapper{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1rem 0 0}
 .demo-chrome{background:var(--card2);border-bottom:1px solid var(--border);padding:1rem;display:flex;gap:.6rem;align-items:center}
 .demo-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1)}
 .demo-dot:nth-child(1){background:#E05555}.demo-dot:nth-child(2){background:#E0A855}.demo-dot:nth-child(3){background:#4CAF73}
