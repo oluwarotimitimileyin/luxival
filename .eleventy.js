@@ -31,6 +31,14 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectDiscoverMeta(html) {
+    if (html.includes("max-image-preview")) return html;
+    if (/<\/head>/i.test(html)) {
+      html = html.replace(/<\/head>/i, '<meta name="robots" content="max-image-preview:large">\n</head>');
+    }
+    return html;
+  }
+
   function injectSoftUiStyles(html) {
     if (html.includes("/css/soft-ui.css")) return html;
     if (/<\/head>/i.test(html)) {
@@ -61,7 +69,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(removeUngatedSpeedInsights(content)))))));
+    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))));
   });
 
   eleventyConfig.addPassthroughCopy({ i18n: "i18n" });
