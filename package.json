@@ -2,7 +2,7 @@
   "name": "luxival-site",
   "private": true,
   "scripts": {
-    "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && eleventy && node scripts/inject-nav.js && node scripts/inject-env.js",
+    "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && eleventy && node scripts/inject-nav.js && node scripts/inject-env.js && node scripts/minify-assets.js",
     "dev": "node scripts/generate-search-index.js && eleventy --serve",
     "clean": "rm -rf _site",
     "images:optimize": "node scripts/optimize-images.js",
@@ -28,9 +28,12 @@
     "@11ty/eleventy": "^2.0.1",
     "@playwright/test": "^1.60.0",
     "autoprefixer": "^10.5.0",
+    "clean-css-cli": "^5.6.3",
+    "html-minifier-terser": "^7.2.0",
     "postcss": "^8.5.15",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "terser": "^5.48.0"
   },
   "packageManager": "npm@11.9.0"
 }

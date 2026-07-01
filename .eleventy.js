@@ -34,7 +34,15 @@ module.exports = function (eleventyConfig) {
   function injectSoftUiStyles(html) {
     if (html.includes("/css/soft-ui.css")) return html;
     if (/<\/head>/i.test(html)) {
-      return html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1">\n</head>');
+      return html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/soft-ui.css?v=20260622-1" media="print" onload="this.media=\'all\'">\n</head>');
+    }
+    return html;
+  }
+
+  function injectMobileOverrides(html) {
+    if (html.includes("/css/mobile-overrides.css")) return html;
+    if (/<\/head>/i.test(html)) {
+      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/mobile-overrides.css?v=20260701-1" media="(max-width: 820px)">\n</head>');
     }
     return html;
   }
@@ -42,7 +50,7 @@ module.exports = function (eleventyConfig) {
   function injectSpeechReader(html) {
     if (html.includes("/js/speech-reader.js")) return html;
     if (/<\/head>/i.test(html)) {
-      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/speech-reader.css?v=20260630-1">\n</head>');
+      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/speech-reader.css?v=20260630-1" media="print" onload="this.media=\'all\'">\n</head>');
     }
     if (/<\/body>/i.test(html)) {
       html = html.replace(/<\/body>/i, '  <script src="/js/speech-reader.js?v=20260630-1" defer></script>\n</body>');
@@ -53,9 +61,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectSoftUiStyles(removeUngatedSpeedInsights(content))))));
+    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(removeUngatedSpeedInsights(content)))))));
   });
 
+  eleventyConfig.addPassthroughCopy({ i18n: "i18n" });
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
   eleventyConfig.addPassthroughCopy({ css: "css" });
   eleventyConfig.addPassthroughCopy({ js: "js" });

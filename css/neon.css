@@ -109,19 +109,6 @@
   flex: 0 0 auto;
 }
 
-.lang-trigger select {
-  appearance: none;
-  background: transparent;
-  border: 0;
-  color: #C9A96A;
-  font: inherit;
-  font-size: .72rem;
-  letter-spacing: 1px;
-  outline: 0;
-  cursor: pointer;
-  padding: 0 .1rem;
-}
-
 .lang-trigger option {
   background: #11131A;
   color: #E8EBF2;
@@ -139,9 +126,5 @@
   .lang-trigger {
     gap: .3rem;
     padding: .38rem .6rem;
-  }
-  .lang-trigger select {
-    width: 2.35rem;
-    font-size: .68rem;
   }
 }

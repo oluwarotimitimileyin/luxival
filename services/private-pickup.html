@@ -25,7 +25,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 #cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
-.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;width:100%}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;width:100%}
 section{padding:7rem 0}.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
 h1,h2,h3{font-weight:300;letter-spacing:.5px}h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
 p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}a{color:var(--gold);text-decoration:none;cursor:none}
@@ -54,6 +56,7 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
 <body>
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
 <nav id="mainNav">
+  <div class="nav-inner">
   <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
     <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
@@ -64,6 +67,7 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
     </li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
 </nav> <section class="container hero"> <span class="eyebrow reveal">Transport · Arrivals Service</span> <h1 class="reveal d1">Private airport<br>pickup.</h1> <p class="lead reveal d2">We are waiting when you land. Your name on the board, your bags handled, your driver ready. No hunting for taxis. No app puzzles. A direct, private ride to wherever you are going.</p> <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap"> <a href="/tourism#book-ride" class="btn">Book this service</a> <a href="/tourism#pricing" class="btn btn-outline">Estimate fare</a> </div>
 </section> <div class="gold-line container"></div> <section class="container"> <div class="grid-2"> <div> <span class="eyebrow reveal">The experience</span> <h2 class="reveal d1" style="text-align:left">The first impression of Finland</h2> <p class="reveal d2">Your arrival experience sets the tone for the entire trip. We believe it should be smooth, quiet, and exactly as agreed. No last minute changes, no hidden charges, no stress at baggage claim.</p> <p class="reveal d2">Your driver holds a name sign in arrivals, assists with luggage, and walks you directly to the vehicle. The route is pre confirmed and there is no upselling, just the journey you paid for.</p> <p class="reveal d3">For groups, families, and business travellers with tight connections, this is the most reliable option in Helsinki.</p> </div> <div class="img-placeholder reveal d1">IMAGE · Private Pickup Arrivals<br><span style="opacity:.5;font-size:.55rem;margin-top:.5rem;display:block">Driver waiting at Helsinki Vantaa HEL arrivals</span></div> </div>
 </section> <div class="gold-line container"></div> <section class="container"> <span class="eyebrow reveal">Service details</span> <h2 class="reveal d1" style="text-align:left">What's included</h2> <div class="grid-3"> <div class="spec-card reveal d1"><span class="spec-label">Meet & greet</span><h3>Name board in arrivals</h3><p>Your driver waits in the arrivals hall with your name. No waiting outside or searching the car park.</p></div> <div class="spec-card reveal d2"><span class="spec-label">Flight monitoring</span><h3>Real time tracking</h3><p>We track your flight and adjust the pickup time automatically if you land early or late.</p></div> <div class="spec-card reveal d3"><span class="spec-label">Luggage assistance</span><h3>Hands on help</h3><p>Driver assists with all standard luggage. Notify us of large, heavy, or sporting equipment in advance.</p></div> <div class="spec-card reveal d1"><span class="spec-label">Direct route</span><h3>No detours</h3><p>Your destination is confirmed before pickup. The route is direct, no unnecessary stops or diversions.</p></div> <div class="spec-card reveal d2"><span class="spec-label">Smoke free</span><h3>Clean vehicle</h3><p>Every vehicle is maintained, smoke free, and climate controlled. Quiet ride requested and planned for.</p></div> <div class="spec-card reveal d3"><span class="spec-label">Timing</span><h3>Any hour</h3><p>Early morning arrivals, overnight flights, and public holidays are all available. No time is off limits.</p></div> </div>

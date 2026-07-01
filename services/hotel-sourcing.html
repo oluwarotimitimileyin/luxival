@@ -25,7 +25,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 #cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,106,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,106,.3));z-index:9997;width:0}
-.container{max-width:1400px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;width:100%}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;width:100%}
 section{padding:7rem 0}.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:4rem 0}
 h1,h2,h3{font-weight:300;letter-spacing:.5px}h1{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:2.5rem}h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--gold)}
 p{opacity:.8;margin-bottom:1rem;font-size:1.05rem}a{color:var(--gold);text-decoration:none;cursor:none}
@@ -52,6 +54,7 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
 <body>
 <div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div>
 <nav id="mainNav">
+  <div class="nav-inner">
   <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">
     <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
@@ -62,6 +65,7 @@ footer{background:#060608;padding:5rem 0 2rem}.footer-grid{display:grid;grid-tem
     </li>
   </ul>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
 </nav> <section class="container hero"> <span class="eyebrow reveal">Accommodation · Helsinki & Finland</span> <h1 class="reveal d1">Hotel & house<br>sourcing.</h1> <p class="lead reveal d2">We find the right place to stay, boutique hotels, designer apartments, private villas, or lakeside cottages. Curated for your style, budget, and travel dates.</p> <div class="reveal d3" style="display:flex;gap:1rem;flex-wrap:wrap"> <a href="/booking" class="btn">Request sourcing</a> <a href="/tourism#accommodation" class="btn btn-outline">Search accommodation</a> </div>
 </section> <div class="gold-line container"></div> <section class="container"> <div class="grid-2"> <div> <span class="eyebrow reveal">The service</span> <h2 class="reveal d1" style="text-align:left">We do the searching for you</h2> <p class="reveal d2">Finding the right hotel is time consuming. Sorting by reviews, checking locations, and comparing prices across platforms adds up. We handle that work and return a shortlist matched to your preferences.</p> <p class="reveal d2">We look at Helsinki neighbourhoods, walkability, quiet areas, waterfront access, design destinations, and transport needs so the stay fits the trip.</p> <p class="reveal d3">For private houses and cottages, we can also look beyond the usual hotel search path when your trip needs something more specific.</p> </div> <div class="img-placeholder reveal d1">IMAGE · Hotel Helsinki<br><span style="opacity:.5;font-size:.55rem;margin-top:.5rem;display:block">Boutique stays and private homes</span></div> </div>
 </section> <div class="gold-line container"></div> <section class="container"> <span class="eyebrow reveal">What we source</span> <h2 class="reveal d1" style="text-align:left">Accommodation types</h2> <div class="grid-3"> <div class="spec-card reveal d1"><span class="spec-label">City hotels</span><h3>Helsinki boutique</h3><p>Design forward hotels near the market square, design district, and Töölö, walkable and well located.</p></div> <div class="spec-card reveal d2"><span class="spec-label">Apartments</span><h3>Serviced stays</h3><p>Short term apartments for longer visits, families, or guests who prefer a home away from home setup.</p></div> <div class="spec-card reveal d3"><span class="spec-label">Lakeside</span><h3>Cottages & villas</h3><p>Finnish summer cottage experiences, sauna, lake access, and total privacy within driving distance.</p></div> <div class="spec-card reveal d1"><span class="spec-label">Lapland</span><h3>Northern retreats</h3><p>Aurora cabins, glass igloos, and winter lodges in Rovaniemi and surrounding Lapland regions.</p></div> <div class="spec-card reveal d2"><span class="spec-label">Archipelago</span><h3>Island stays</h3><p>Coastal island accommodation accessible by ferry or private boat, rare, quiet, and memorable.</p></div> <div class="spec-card reveal d3"><span class="spec-label">Corporate</span><h3>Business travel</h3><p>Well located, reliable hotels near Helsinki business districts and conference venues.</p></div> </div>

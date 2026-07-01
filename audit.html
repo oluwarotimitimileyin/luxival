@@ -169,7 +169,7 @@ footer a:hover{opacity:1}
 }
 </style>
 <!-- Vercel Speed Insights -->
-<link rel="stylesheet" href="/css/neon.css">
+<link rel="stylesheet" href="/css/neon.css" media="print" onload="this.media='all'">
 </head>
 <body> <nav id="mainNav"> <a href="/" class="nav-brand neon-btn">LUXIVAL</a> <ul class="nav-links" id="site-nav"> <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li> <li class="nav-lang"> <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg></button> <input type="url" id="auditUrl" placeholder="https://yourwebsite.com" required> <label class="sr-only" for="auditEmail">Email address</label> <input type="email" id="auditEmail" placeholder="your@email.com" required> </div> <button class="btn btn-full" id="startScan" onclick="startFreeScan()">Run Free Audit →</button> <div id="scanMsg"></div> <div class="progress-wrap" id="progressWrap"> <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div> <div class="progress-steps"> <span class="pstep" id="ps1">Fetching page</span> <span class="pstep" id="ps2">SEO checks</span> <span class="pstep" id="ps3">PageSpeed</span> <span class="pstep" id="ps4">Accessibility</span> <span class="pstep" id="ps5">Compiling report</span> </div> </div> </div>
 </section> <!-- RESULTS -->

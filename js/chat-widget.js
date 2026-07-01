@@ -31,7 +31,7 @@
       '.chat-composer textarea:focus{outline:none;border-color:#C9A96A}',
       '.chat-button{min-height:44px;border:0;border-radius:18px;background:#C9A96A;color:#0A0B0F;padding:.65rem .85rem;font:inherit;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}',
       '.chat-status{min-height:1rem;color:rgba(232,235,242,.58);font-size:.74rem}',
-      '@media(max-width:768px){.chat-widget{right:.8rem;bottom:.8rem}.chat-panel{width:calc(100vw - 1.6rem);max-height:calc(100vh - 6rem)}.chat-toggle{min-height:48px}}'
+      '@media(max-width:768px){.chat-widget{right:.8rem;bottom:calc(4.5rem + env(safe-area-inset-bottom,0px))}.chat-panel{width:calc(100vw - 1.6rem);max-height:calc(100vh - 6rem)}.chat-toggle{min-height:48px}}'
     ].join('');
     document.head.appendChild(style);
   }

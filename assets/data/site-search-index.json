@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T22:48:51.016Z",
+  "generatedAt": "2026-07-01T14:56:29.428Z",
   "total": 77,
   "documents": [
     {
@@ -1271,8 +1271,8 @@
     },
     {
       "path": "/portfolio",
-      "title": "Portfolio | Luxival, Case Studies & Projects",
-      "description": "Luxival portfolio: web design, QA automation, airport transfer systems, SEO, 3D UX, and AI agent infrastructure projects from Helsinki.",
+      "title": "Work & Portfolio | Web Design, QA, 3D, AI | Luxival",
+      "description": "Explore Luxival portfolio projects: web design, QA automation, 3D configurators, AI agent platforms, and business launch tools built from Helsinki.",
       "section": "Portfolio",
       "headings": [
         "Selected Luxival work and experiments.",
@@ -1290,24 +1290,24 @@
       ],
       "keywords": [
         "portfolio",
-        "luxival",
-        "case",
-        "studies",
-        "projects",
+        "work",
         "web",
         "design",
+        "luxival",
+        "explore",
+        "projects",
         "automation",
-        "airport",
-        "transfer",
-        "systems",
-        "seo",
-        "and",
+        "configurators",
         "agent",
-        "infrastructure",
+        "platforms",
+        "and",
+        "business",
+        "launch",
+        "tools",
+        "built",
         "from",
         "helsinki",
         "selected",
-        "work",
         "experiments",
         "pattern",
         "studio",
@@ -1320,11 +1320,11 @@
         "ugc",
         "vortex",
         "platform",
-        "vault",
-        "ledger",
         "digital",
+        "seo",
         "qa",
-        "audit"
+        "audit",
+        "web design"
       ],
       "body": "LUXIVAL Services Portfolio · Helsinki Selected Luxival work and experiments. Examples across web design, QA automation, SEO, transport tools, content systems, and practical AI workflow projects. Book a consultation View services All Web Design AI & Digital Pattern Studio Sewing Pattern Custom PDF Download Luxival Pattern Studio Custom navy three piece suit pattern based on body measurements, with a printable tailor ready PDF. View project → ESG · Document Review ESG Compliance Gemini React ESG Compliance Auditor ESG reporting and compliance audit tool built with Google Vertex AI to review corporate documents and surface possible regulatory gaps. View project → Growth Review SEO Performance Automation Review Tool GROWTH_ARCHITECT Growth audit tool that reviews bottlenecks, prioritizes technical fixes, and turns findings into practical SEO and conversion actions. View project → Backend ops → Launch Planning Startup Planning Website Launch BusinessLauncher A business launch tool that turns an idea into a clearer go to market plan with a simple presentation layer. View project → Content Planning UGC Video Workflow AI UGC Studio AI A content planning tool for UGC concepts, characters, scripts, and video workflow notes. View project → Conversation Platform Chat Dashboard Voice Platform Vortex AI Platform A conversational platform with embeddable chat, dashboard controls, and assistant configuration tools. View project → Finance Platform Accounting Dashboard Luxival Vault Ledger Helps businesses calculate accounting, track updates, and manage Luxival project features. View project → React · Content Platform React Vite Content Media UX AuraFrame A content platform with post feeds, story flows, and reusable components for media focused pages. View project → Data · Finland Next.j"
     },

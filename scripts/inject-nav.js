@@ -4,19 +4,15 @@ const path = require('path');
 const SITE_DIR = path.join(__dirname, '..', '_site');
 
 const CANONICAL_NAV_LINKS = `
-    <li><a href="/services" class="neon-btn">Services</a></li>
-    <li class="nav-lang">
-      <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-      </button>
-    </li>`;
+    <li><a href="/services" class="neon-btn">Services</a></li>`;
 
 const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
-#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,4vw,4rem);padding:max(1.1rem,calc(env(safe-area-inset-top) + .85rem)) 5% 1rem;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+#mainNav .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,4vw,4rem);padding:max(1.1rem,calc(env(safe-area-inset-top) + .85rem)) 2rem 1rem;width:100%}
 #mainNav .nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;white-space:nowrap}
 #site-nav{display:flex;align-items:center;gap:clamp(1rem,3vw,3.2rem);list-style:none;margin:0 0 0 auto;padding:0}
 #site-nav a{min-height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;line-height:1;color:#C9A96A;text-decoration:none}
-#mainNav .nav-burger{display:none!important}
+.nav-burger{display:none}
 .nav-lang{display:inline-flex;align-items:center;position:relative}
 
 /* ---- Neon Button ---- */
@@ -31,19 +27,19 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 .lang-trigger{gap:.42rem;padding:.45rem .9rem;background:rgba(201,169,106,.06)!important;cursor:pointer}
 .lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
 .luxival-footer{background:#060608;color:#E8EBF2;padding:4.5rem 5% 2rem;border-top:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-.luxival-footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
+.luxival-footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
 .luxival-footer h3{margin:0 0 .8rem;color:#C9A96A;font-size:1.05rem;font-weight:400;letter-spacing:1px}
 .luxival-footer p{margin:.35rem 0;color:rgba(232,235,242,.62);font-size:.9rem;line-height:1.8}
 .luxival-footer a{color:#C9A96A;text-decoration:none;opacity:.58;font-size:.75rem;letter-spacing:1.6px;text-transform:uppercase}
 .luxival-footer a:hover{opacity:1}
 .luxival-footer-links{display:flex;flex-direction:column;gap:.7rem}
 .luxival-footer-social{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
-.luxival-footer-copy{max-width:1400px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center;color:rgba(232,235,242,.36);font-size:.78rem;letter-spacing:1px}
+.luxival-footer-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center;color:rgba(232,235,242,.36);font-size:.78rem;letter-spacing:1px}
 .svc-icon{width:54px;height:54px;border-radius:14px;margin-bottom:1.2rem;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 44px rgba(0,0,0,.38);overflow:hidden}
 .svc-icon::before{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0 58%,color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),var(--card-accent,#C9A96A),color-mix(in srgb,var(--card-accent,#C9A96A) 45%,white),color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),transparent 86%);animation:neonSpin 3.8s linear infinite}
 .svc-icon::after{content:'';position:absolute;inset:2px;border-radius:12px;background:linear-gradient(145deg,#1a1c28,#0c0d14)}
 .svc-icon svg{position:relative;z-index:1;width:27px;height:27px;fill:none;stroke:color-mix(in srgb,var(--card-accent,#C9A96A) 44%,white);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px var(--card-glow,rgba(201,169,106,.24)))}
-@media(max-width:820px){#mainNav{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+@media(max-width:820px){#mainNav .nav-inner{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1.25rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
 </style>`;
 
 const CANONICAL_FOOTER = `<footer class="luxival-footer">
@@ -84,15 +80,22 @@ const CANONICAL_FOOTER = `<footer class="luxival-footer">
 function buildNav(prefix) {
   const links = CANONICAL_NAV_LINKS;
   return `<nav id="mainNav">
+  <div class="nav-inner">
   <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
   <ul class="nav-links" id="site-nav">${links}
   </ul>
+  <div class="nav-lang">
+    <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
+    </button>
+  </div>
   <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
 </nav>`;
 }
 
 const SPA_NAV = `<div id="luxival-site-nav">
-  <nav style="position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 5%;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <nav style="position:sticky;top:0;z-index:9999;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;"><div class="nav-inner" style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 2rem;width:100%">
     <a href="/" class="neon-btn" style="font-size:1rem;font-weight:600;letter-spacing:3px;padding:.4rem 1rem">LUXIVAL</a>
     <div style="display:flex;gap:.8rem;align-items:center;">
       <a href="/services" class="neon-btn" style="font-size:.72rem;padding:.4rem .9rem">Services</a>
