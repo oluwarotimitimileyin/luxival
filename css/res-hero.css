@@ -1,0 +1,10 @@
+/* Custom hero patterns not covered by mobile-overrides.css */
+@media (max-width: 768px) {
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .hero-layout .hero-visual {
+    order: -1 !important;
+  }
+}

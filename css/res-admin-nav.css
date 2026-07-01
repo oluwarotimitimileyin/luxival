@@ -1,0 +1,7 @@
+/* Admin mobile nav: CSS-only toggle via :focus-within */
+@media (max-width: 768px) {
+  .site-header:focus-within .site-nav,
+  .site-header:focus-within .site-nav.open {
+    display: flex !important;
+  }
+}
