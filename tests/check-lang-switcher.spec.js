@@ -3,8 +3,8 @@ const { test, expect } = require('@playwright/test');
 test('only one language selector exists on the live site', async ({ page }) => {
   await page.goto('https://luxival.com', { waitUntil: 'networkidle' });
 
-  // Should have exactly one #lang-toggle button
-  await expect(page.locator('#lang-toggle')).toHaveCount(1);
+  // Should have exactly one #nv-lang-toggle button
+  await expect(page.locator('#nv-lang-toggle')).toHaveCount(1);
 
   // Should have zero old <select id="lang-select">
   await expect(page.locator('select#lang-select')).toHaveCount(0);

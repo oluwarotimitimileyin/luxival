@@ -4,7 +4,6 @@ const path = require("path");
 
 const KEY = "6292d286853d4847b71d0f2b76c30dbc";
 const HOST = "www.luxival.com";
-const ENDPOINT = "https://api.indexnow.org/IndexNow";
 
 function extractUrls(xml) {
   const urls = [];
@@ -16,7 +15,7 @@ function extractUrls(xml) {
   return urls;
 }
 
-async function submit(urls) {
+async function submitToIndexNow(urls) {
   const body = JSON.stringify({
     host: HOST,
     key: KEY,
@@ -24,27 +23,37 @@ async function submit(urls) {
     urlList: urls,
   });
 
-  const res = await fetch(ENDPOINT, {
+  const res = await fetch("https://api.indexnow.org/IndexNow", {
     method: "POST",
     headers: { "Content-Type": "application/json; charset=utf-8" },
     body,
   });
-
-  console.log(`IndexNow response: ${res.status} ${res.statusText}`);
-  if (res.status === 200 || res.status === 202) {
-    console.log(`Submitted ${urls.length} URLs to Bing, Yandex, Seznam & Naver via IndexNow`);
-  } else {
-    const text = await res.text();
-    console.error("Error:", text);
-    process.exit(1);
-  }
+  return res;
 }
 
 async function main() {
   const xml = fs.readFileSync(path.join(__dirname, "..", "sitemap.xml"), "utf8");
-  const urls = extractUrls(xml);
-  console.log(`Found ${urls.length} URLs in sitemap.xml`);
-  await submit(urls);
+  let urls = extractUrls(xml);
+  
+  // Filter out AMP pages (they're duplicates for SEO)
+  urls = urls.filter(u => !u.includes('/amp/'));
+  
+  console.log(`Found ${urls.length} URLs in sitemap.xml (filtered)`);
+  
+  const res = await submitToIndexNow(urls);
+  console.log(`IndexNow response: ${res.status} ${res.statusText}`);
+  
+  if (res.status === 200 || res.status === 202) {
+    console.log(`✓ Submitted ${urls.length} URLs to Bing, Yandex, Seznam & Naver via IndexNow`);
+  } else {
+    const text = await res.text();
+    console.error("IndexNow error:", text);
+    console.log("\n📌 Next steps to verify site ownership:");
+    console.log(`  1. Confirm key file exists: https://${HOST}/${KEY}.txt`);
+    console.log(`  2. Register at https://www.bing.com/webmasters`);
+    console.log(`  3. Add and verify https://${HOST}`);
+    console.log(`  4. After verification, re-run: npm run indexnow`);
+  }
 }
 
 main().catch((err) => {

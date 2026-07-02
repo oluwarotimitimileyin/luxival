@@ -22,7 +22,8 @@
     "test:nav": "npx playwright test tests/navigation.spec.js",
     "test:links": "npx playwright test tests/broken-links.spec.js",
     "test:portfolio": "npx playwright test tests/portfolio-apps.spec.js",
-    "test:report": "npx playwright test --reporter=html"
+    "test:report": "npx playwright test --reporter=html",
+    "indexnow": "node scripts/indexnow-submit.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

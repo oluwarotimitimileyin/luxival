@@ -107,20 +107,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <body>
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
-<div id="prog"></div> <nav id="mainNav">
-  <div class="nav-inner">
-  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
-  <ul class="nav-links" id="site-nav">
-    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
-    <li class="nav-lang">
-            <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-      </button>
-    </li>
-  </ul>
-  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav> <!-- HERO -->
+<div id="prog"></div> <nav id="mainNav"></nav> <!-- HERO -->
 <section class="container hero"> <span class="eyebrow reveal">Tourism Planning · Finland</span> <h1 class="reveal d1">Plan your Finland<br>journey.</h1> <p class="lead reveal d2">Enter your travel dates and preferences, we'll generate a personalised day by day itinerary with city highlights, nature spots, and cultural venues.</p>
 </section> <div class="gold-line container"></div> <!-- PLANNER -->
 <section class="container"> <div class="planner-grid"> <!-- Form --> <div class="planner-card reveal"> <h3 style="color:var(--text);margin-bottom:1.5rem">Your travel details</h3> <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem"> <div> <label for="arrivalDate">Arrival date</label> <input id="arrivalDate" type="date" required> </div> <div> <label for="departureDate">Departure date</label> <input id="departureDate" type="date" required> </div> </div> <label for="baseCity">Base city</label> <select id="baseCity"> <option value="helsinki">Helsinki</option> <option value="espoo">Espoo</option> <option value="tampere">Tampere</option> <option value="rovaniemi">Rovaniemi (Lapland)</option> <option value="turku">Turku</option> </select> <label>Travel preferences</label> <div class="pref-grid" id="prefGrid"> <div class="pref-item" data-pref="city"> <input type="checkbox" id="prefCity" value="city"> <label for="prefCity">City</label> </div> <div class="pref-item" data-pref="nature"> <input type="checkbox" id="prefNature" value="nature"> <label for="prefNature">Nature</label> </div> <div class="pref-item" data-pref="culture"> <input type="checkbox" id="prefCulture" value="culture"> <label for="prefCulture">Culture</label> </div> <div class="pref-item" data-pref="all"> <input type="checkbox" id="prefAll" value="all" checked> <label for="prefAll">All highlights</label> </div> </div> <label for="groupSize">Group size</label> <select id="groupSize"> <option value="solo">Solo traveller</option> <option value="couple" selected>Couple</option> <option value="small">Small group (3–5)</option> <option value="family">Family with children</option> <option value="large">Large group (6+)</option> </select> <label for="pace">Travel pace</label> <select id="pace"> <option value="relaxed">Relaxed, 2–3 activities per day</option> <option value="moderate" selected>Moderate, 3–4 activities per day</option> <option value="active">Active, 5+ activities per day</option> </select> <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem"> <div> <label for="travellerName">Your name</label> <input id="travellerName" type="text" placeholder="Anna Korhonen" required> </div> <div> <label for="travellerEmail">Email address</label> <input id="travellerEmail" type="email" placeholder="anna@email.com" required> </div> </div> <button class="btn" style="width:100%;margin-top:.5rem" onclick="generateItinerary()">Generate itinerary</button> <p id="plannerStatus" style="font-size:.85rem;margin-top:.8rem;min-height:1rem;color:var(--gold)"></p> </div> <!-- Info panel --> <div> <div class="info-card reveal d1" style="margin-bottom:1.5rem"> <h3>How it works</h3> <p>Enter your dates and tick your interests. We build a day by day itinerary based on your preferences, travel pace, and the season you're visiting.</p> <p>Each day includes morning, afternoon, and evening suggestions with transport notes and image guides.</p> <p style="margin:0">Need a private driver for your itinerary? <a href="/tourism#book-ride" style="opacity:1">Book a ride</a> after generating your plan.</p> </div> <div class="info-card reveal d2"> <h3>What's included</h3> <p>Places to visit · Suggested schedule · City highlights · Nature excursions · Cultural venues · Dining recommendations · Transport tips</p> </div> </div> </div>
@@ -514,5 +501,6 @@ function shuffled(arr){
   });
 })();
 </script>
+<script src="/js/navbar.js" defer></script>
 </body>
 </html>

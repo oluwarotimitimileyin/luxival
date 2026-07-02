@@ -20,3 +20,7 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.luxival.com/sitemap.xml
+
+# IndexNow - notify Bing, Yandex, Naver, Seznam
+# Key file: https://www.luxival.com/6292d286853d4847b71d0f2b76c30dbc.txt
+# Submit new/updated URLs via: npm run indexnow

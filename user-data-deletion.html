@@ -63,18 +63,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
 <link rel="stylesheet" href="/css/neon.css" media="print" onload="this.media='all'">
 </head>
 <body>
-<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav">
-  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
-  <ul class="nav-links" id="site-nav">
-    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
-    <li class="nav-lang">
-            <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-      </button>
-    </li>
-  </ul>
-  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav> <section class="hero container"> <span class="eyebrow">Privacy</span> <h1>User Data Deletion</h1> <p class="policy-meta">Applies to luxival.com and Luxival connected apps</p> <p style="opacity:.65;max-width:680px">Use this page to request deletion of personal data you submitted through Luxival contact, newsletter, booking, and creator forms. We process matching records by email address immediately where deletion is allowed.</p>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav"></nav> <section class="hero container"> <span class="eyebrow">Privacy</span> <h1>User Data Deletion</h1> <p class="policy-meta">Applies to luxival.com and Luxival connected apps</p> <p style="opacity:.65;max-width:680px">Use this page to request deletion of personal data you submitted through Luxival contact, newsletter, booking, and creator forms. We process matching records by email address immediately where deletion is allowed.</p>
 </section> <div class="gold-line container"></div> <section class="deletion-body container"> <div id="confirmationBox" class="confirmation"> <h2 style="margin-top:0">Deletion callback received</h2> <p>Your app data deletion request was received. Confirmation code: <strong id="confirmationCode"></strong></p> </div> <div class="section-card"> <h2>Request deletion</h2> <p>Enter the same email address you used with Luxival. Contact enquiries, newsletter subscriptions, and creator applications are deleted. Ride requests are anonymized so personal identifiers are removed while limited service records can be retained for legal and accounting obligations.</p> <form id="deletionForm"> <label for="deleteEmail">Email address</label> <input id="deleteEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required> <label for="confirmEmail">Confirm email address</label> <input id="confirmEmail" name="confirmEmail" type="email" placeholder="you@example.com" autocomplete="email" required> <label for="deleteReason">Optional note</label> <textarea id="deleteReason" name="reason" rows="4" placeholder="Anything you want us to know"></textarea> <button class="btn" type="submit">Delete my data</button> <p id="deletionStatus" class="form-status"></p> </form> </div> <div class="section-card"> <h2>Manual request</h2> <p>You can also email <a href="mailto:support@luxival.com">support@luxival.com</a> with the subject "Data deletion request". We may ask for extra information only when needed to verify ownership of the email address or comply with Finnish legal obligations.</p> </div>
 </section> <!-- FOOTER -->
 <footer> <div class="container"> <div class="footer-grid"> <div class="reveal"> <h3>LUXIVAL</h3> <p style="opacity:.5;font-size:.88rem;line-height:2;margin-top:.5rem">Varikkokaarre 7A<br>01700 Vantaa, Finland</p> <p>support@luxival.com</p> <p>+358 50 351 8366</p> <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap"> <a href="https://www.instagram.com/luxivalfi/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">Instagram</a> <a href="https://www.linkedin.com/in/olakunleshopeju/recent-activity/all/" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">LinkedIn</a> <a href="https://wa.me/+358503518366" target="_blank" rel="noopener" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.4;transition:opacity .2s">WhatsApp</a> </div> </div> <div class="reveal d1"> <h3>Navigate</h3> <div class="foot-links"> <a href="/">Home</a> <a href="/services">Services</a> <a href="/portfolio">Projects</a> <a href="/blog">Blog</a> <a href="/about">About</a> <a href="/contact">Contact</a> </div> </div> <div class="reveal d2"> <h3>Legal</h3> <div class="foot-links"> <a href="/privacy">Privacy Policy</a> <a href="/terms">Terms of Service</a> <a href="/user-data-deletion">Data Deletion</a> <a href="/contact">Contact</a> </div> </div> </div> <div class="copyright">Luxival © 2026 · Digital services and private transport</div> </div>
@@ -155,5 +144,6 @@ window.addEventListener('scroll',()=>{
   });
 })();
 </script>
+<script src="/js/navbar.js" defer></script>
 </body>
 </html>

@@ -3,17 +3,9 @@ const path = require('path');
 
 const SITE_DIR = path.join(__dirname, '..', '_site');
 
-const CANONICAL_NAV_LINKS = `
-    <li><a href="/services" class="neon-btn">Services</a></li>`;
-
 const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 #mainNav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,11,15,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-#mainNav .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,4vw,4rem);padding:max(1.1rem,calc(env(safe-area-inset-top) + .85rem)) 2rem 1rem;width:100%}
 #mainNav .nav-brand{font-size:1.2rem;font-weight:600;letter-spacing:3px;color:#C9A96A;text-decoration:none;white-space:nowrap}
-#site-nav{display:flex;align-items:center;gap:clamp(1rem,3vw,3.2rem);list-style:none;margin:0 0 0 auto;padding:0}
-#site-nav a{min-height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;line-height:1;color:#C9A96A;text-decoration:none}
-.nav-burger{display:none}
-.nav-lang{display:inline-flex;align-items:center;position:relative}
 
 /* ---- Neon Button ---- */
 .neon-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.6rem;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#C9A96A!important;text-decoration:none;border:none;border-radius:14px;background:rgba(201,169,106,.06)!important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:all .4s ease;cursor:pointer;min-height:40px;line-height:1;white-space:nowrap;box-shadow:0 0 0 1px rgba(201,169,106,.25),inset 0 1px 0 rgba(255,255,255,.04)}
@@ -24,8 +16,6 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 @keyframes neonSpin{to{--neon-angle:360deg;transform:rotate(360deg)}}
 @keyframes neonPulse{0%,100%{box-shadow:inset 0 0 6px rgba(201,169,106,.03)}50%{box-shadow:inset 0 0 14px rgba(201,169,106,.07)}}
 
-.lang-trigger{gap:.42rem;padding:.45rem .9rem;background:rgba(201,169,106,.06)!important;cursor:pointer}
-.lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}
 .luxival-footer{background:#060608;color:#E8EBF2;padding:4.5rem 5% 2rem;border-top:1px solid rgba(201,169,106,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 .luxival-footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
 .luxival-footer h3{margin:0 0 .8rem;color:#C9A96A;font-size:1.05rem;font-weight:400;letter-spacing:1px}
@@ -78,20 +68,7 @@ const CANONICAL_FOOTER = `<footer class="luxival-footer">
 </footer>`;
 
 function buildNav(prefix) {
-  const links = CANONICAL_NAV_LINKS;
-  return `<nav id="mainNav">
-  <div class="nav-inner">
-  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
-  <ul class="nav-links" id="site-nav">${links}
-  </ul>
-  <div class="nav-lang">
-    <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-    </button>
-  </div>
-  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav>`;
+  return '<nav id="mainNav"></nav>';
 }
 
 const SPA_NAV = `<div id="luxival-site-nav">
@@ -220,6 +197,14 @@ function injectI18nScript(html) {
   return html + '\n<script src="/js/i18n.js?v=20260625-1" defer></script>\n';
 }
 
+function injectNavbarScript(html) {
+  if (html.includes('/js/navbar.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/navbar.js" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/navbar.js" defer></script>\n';
+}
+
 function injectChatWidget(html) {
   if (html.includes('/js/chat-widget.js')) return html;
   if (/<\/body>/i.test(html)) {
@@ -248,6 +233,7 @@ for (const file of files) {
   result = injectHeadAssets(result);
   result = injectCanonicalFooter(result);
   result = injectI18nScript(result);
+  result = injectNavbarScript(result);
   const beforeConsent = result;
   result = injectConsentScript(result);
   if (result !== beforeConsent) consentInjected++;

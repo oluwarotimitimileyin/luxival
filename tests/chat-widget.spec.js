@@ -20,11 +20,11 @@ test.describe('Chat Widget Language Switch', () => {
 
     // Switch language to Russian (has full chat translations)
     // Click to open dropdown, then click Russian
-    const langBtn = page.locator('#lang-toggle');
+    const langBtn = page.locator('#nv-lang-toggle');
     await expect(langBtn).toBeVisible();
     await langBtn.click();
     await page.waitForTimeout(200);
-    const ruOption = page.locator('#lang-dropdown [data-lang="ru"]');
+    const ruOption = page.locator('#nv-lang-dropdown [data-lang="ru"]');
     await ruOption.click();
     await page.waitForTimeout(300);
 

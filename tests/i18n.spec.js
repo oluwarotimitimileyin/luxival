@@ -10,8 +10,8 @@ const CORE_PAGES = [
   '/digital', '/pattern', '/portfolio', '/qa',
 ];
 
-// The language button is injected by js/i18n.js with id="lang-toggle"
-const LANG_SELECTOR = '#lang-toggle';
+// The language button is injected by js/navbar.js with id="nv-lang-toggle"
+const LANG_SELECTOR = '#nv-lang-toggle';
 
 // ── LANGUAGE SWITCHER ────────────────────────────────────
 test.describe('Language Switcher', () => {
@@ -44,7 +44,7 @@ test.describe('Language Switch Changes Text', () => {
     await page.goto(BASE + '/');
     await page.waitForLoadState('domcontentloaded');
 
-    const btn = page.locator('#lang-toggle');
+    const btn = page.locator('#nv-lang-toggle');
     await expect(btn).toBeVisible({ timeout: 10000 });
 
     const bodyEn = await page.locator('body').textContent();
@@ -52,7 +52,7 @@ test.describe('Language Switch Changes Text', () => {
     // Click to open dropdown, then click Russian
     await btn.click();
     await page.waitForTimeout(200);
-    const ruOption = page.locator('#lang-dropdown [data-lang="ru"]');
+    const ruOption = page.locator('#nv-lang-dropdown [data-lang="ru"]');
     await ruOption.click();
     await page.waitForTimeout(500);
     const bodyAfterClick = await page.locator('body').textContent();

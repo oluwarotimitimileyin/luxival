@@ -80,86 +80,7 @@
     }
   }
 
-  function closeMobileNav() {
-    var burger = document.querySelector('.nav-burger');
-    var links = document.querySelector('.nav-links');
-    if (!burger || !links) return;
-    links.classList.remove('open');
-    links.style.display = '';
-    burger.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('nav-open');
-  }
-
-  function enhanceMobileNav() {
-    var burger = document.querySelector('.nav-burger');
-    var links = document.querySelector('.nav-links');
-    if (!burger || !links) return;
-
-    burger.addEventListener('click', function() {
-      var isOpen = links.classList.toggle('open');
-      burger.classList.toggle('open', isOpen);
-      document.body.classList.toggle('nav-open', isOpen);
-      burger.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    links.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', closeMobileNav);
-    });
-
-    document.addEventListener('click', function(event) {
-      if (!links.classList.contains('open')) return;
-      if (burger.contains(event.target) || links.contains(event.target)) return;
-      closeMobileNav();
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') closeMobileNav();
-    });
-  }
-
-  function createLanguageSwitcher() {
-    var toggle = document.getElementById('lang-toggle');
-    if (toggle && !toggle.dataset.luxivalBound) {
-      toggle.dataset.luxivalBound = 'true';
-
-      var dropdown = document.createElement('div');
-      dropdown.id = 'lang-dropdown';
-      dropdown.style.cssText = 'position:absolute;top:100%;right:0;margin-top:.4rem;background:rgba(17,19,26,.95);border:1px solid rgba(201,169,106,.25);border-radius:6px;padding:.4rem 0;min-width:120px;display:none;z-index:100;';
-
-      var langNames = {en:'English',fi:'Suomi',sv:'Svenska',de:'Deutsch',fr:'Français',it:'Italiano',ru:'Русский',no:'Norsk',da:'Dansk',ja:'日本語',zh:'中文'};
-      dropdown.innerHTML = SUPPORTED_LANGS.map(function(l) {
-        return '<button data-lang="' + l + '" style="display:block;width:100%;text-align:left;padding:.5rem .8rem;background:none;border:none;color:#E8EBF2;font-size:.78rem;cursor:pointer;transition:background .2s">' + (langNames[l] || l) + '</button>';
-      }).join('');
-
-      var navLang = toggle.closest('.nav-lang');
-      if (navLang) navLang.style.position = 'relative';
-      navLang.appendChild(dropdown);
-
-      dropdown.addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-lang]');
-        if (btn) {
-          setLang(btn.getAttribute('data-lang'));
-          closeMobileNav();
-          dropdown.style.display = 'none';
-        }
-      });
-
-      toggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var isVisible = dropdown.style.display === 'block';
-        dropdown.style.display = isVisible ? 'none' : 'block';
-      });
-
-      document.addEventListener('click', function() {
-        if (dropdown.style.display === 'block') dropdown.style.display = 'none';
-      });
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
-    createLanguageSwitcher();
-    enhanceMobileNav();
     setLang(getPreferredLang());
   });
 
@@ -171,5 +92,5 @@
     return fallback || key;
   }
 
-  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang, t: t, closeMobileNav: closeMobileNav };
+  window.luxivalI18n = { setLang: setLang, getLang: getPreferredLang, t: t };
 })();

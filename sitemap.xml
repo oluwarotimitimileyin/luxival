@@ -499,6 +499,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.luxival.com/resources/helsinki-airport-transfer</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.luxival.com/directory-listing</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.luxival.com/user-data-deletion</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>yearly</changefreq>

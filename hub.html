@@ -149,18 +149,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.04)}
 <script defer src="/_vercel/speed-insights/script.js"></script> <link rel="stylesheet" href="/css/neon.css" media="print" onload="this.media='all'">
 </head>
 <body>
-<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav">
-  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
-  <ul class="nav-links" id="site-nav">
-    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
-    <li class="nav-lang">
-            <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-      </button>
-    </li>
-  </ul>
-  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav> <!-- HERO -->
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="prog"></div> <nav id="mainNav"></nav> <!-- HERO -->
 <section class="hero container"> <div class="live-badge reveal"><div class="live-dot"></div>Updated by Luxival</div> <h1 class="reveal d1">Start here and choose the right path.</h1> <p class="hero-sub reveal d2">Use this hub to find the right Luxival service: travel transport, Finland planning, website work, SEO, or QA audit.</p> <p class="last-updated reveal d3" id="lastUpdated">Loading latest update time...</p>
 </section> <section class="container" style="padding-top:0"> <div class="decision-grid"> <article class="decision-card reveal d1"> <span class="eyebrow" style="margin-bottom:.5rem">Travel</span> <h3>Airport transfers, private rides, and Finland planning</h3> <p>Request a ride quote or plan your Finland trip with the details collected in one place.</p> <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a href="/trip-planner" class="btn" style="padding:.55rem 1rem">Plan a Ride →</a><a href="/tourism" class="btn" style="padding:.55rem 1rem;background:transparent;border:1px solid #C9A96A;color:#C9A96A">Travel →</a></div> </article> <article class="decision-card reveal d2"> <span class="eyebrow" style="margin-bottom:.5rem">Digital</span> <h3>Web design, SEO, QA, and automation projects</h3> <p>Send a website, SEO, QA, or automation brief and we will reply with the practical next step.</p> <a href="/digital#consultation" class="btn" style="padding:.55rem 1rem">Go to Digital →</a> </article> <article class="decision-card reveal d3"> <span class="eyebrow" style="margin-bottom:.5rem">Audit</span> <h3>Run a free scan or request deeper review</h3> <p>Start with a quick website scan, then decide if a deeper paid review makes sense.</p> <a href="/audit" class="btn" style="padding:.55rem 1rem">Go to Audit →</a> </article> </div>
 </section> <div class="gold-line container"></div> <!-- MAIN HUB CONTENT -->
@@ -216,5 +205,6 @@ document.querySelectorAll('.btn').forEach(btn=>{
   });
 })();
 </script>
+<script src="/js/navbar.js" defer></script>
 </body>
 </html>

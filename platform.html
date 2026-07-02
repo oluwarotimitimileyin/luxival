@@ -170,20 +170,7 @@ footer{background:#060608;padding:5rem 0 2rem}
 <body> <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <div id="prog"></div> <!-- NAV -->
-<nav id="mainNav">
-  <div class="nav-inner">
-  <a href="/" class="nav-brand neon-btn">LUXIVAL</a>
-  <ul class="nav-links" id="site-nav">
-    <li><a href="/services" class="neon-btn" data-i18n="nav.services">Services</a></li>
-    <li class="nav-lang">
-            <button class="lang-trigger neon-btn" aria-label="Change language" id="lang-toggle">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>
-      </button>
-    </li>
-  </ul>
-  <button class="nav-burger" aria-label="Menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav> <!-- HERO -->
+<nav id="mainNav"></nav> <!-- HERO -->
 <section class="hero container"> <div class="reveal"> <div class="hero-badge"><span></span>Luxival Platform · Software Projects</div> </div> <h1 data-i18n="hero.title" class="reveal d1">Two Luxival tools.<br>Built for practical work.</h1> <p data-i18n="hero.subtitle" class="lead reveal d2">Vault Ledger helps with expense and invoice management. The TikTok Live Agency page gives creators a clear way to apply.</p> <div class="hero-actions reveal d3"> <a href="#vault-ledger" class="btn">Explore Vault Ledger</a> <a href="#tiktok-agency" class="btn btn-tiktok">Join TikTok Agency</a> </div>
 </section> <div class="gold-line container"></div> <!-- ===== VAULT LEDGER — AI EXPENSE & INVOICE APP ===== -->
 <section class="container" id="vault-ledger"> <span class="eyebrow reveal">Software Project</span> <div class="app-grid"> <!-- Left: project description + features --> <div> <div class="project-header reveal"> <div class="project-icon">🔐</div> <div class="project-meta"> <span class="project-name">Vault Ledger</span> <span class="project-type">AI Expense & Invoice Manager</span> </div> </div> <h2 class="reveal d1" style="text-align:left">Your finances.<br>Precision managed.</h2> <p class="reveal d2">Vault Ledger is a full stack AI financial tool, upload receipts or invoices and Gemini OCR extracts every line automatically. Categorise expenses, generate branded PDF invoices, sync with Google Drive, and collect payments via Stripe, all from one dashboard.</p> <div class="tech-strip reveal d2"> <span class="tech-pill">React 18</span> <span class="tech-pill">TypeScript</span> <span class="tech-pill">Gemini AI</span> <span class="tech-pill">Vite</span> <span class="tech-pill">Firebase</span> <span class="tech-pill">Google Drive API</span> <span class="tech-pill">jsPDF</span> </div> <div class="app-features reveal d3"> <div class="feat" data-tilt> <div class="feat-icon">🧾</div> <h3>Gemini OCR</h3> <p>Upload photo or PDF, AI extracts vendor, date, VAT, and amount with no manual input.</p> </div> <div class="feat" data-tilt> <div class="feat-icon">📂</div> <h3>Expense Ledger</h3> <p>Filter by date, category, or status. Sort and export a PDF report in one click.</p> </div> <div class="feat" data-tilt> <div class="feat-icon">📄</div> <h3>Invoice Generator</h3> <p>Select verified expenses, set a tax rate, and generate a branded client invoice instantly.</p> </div> <div class="feat" data-tilt> <div class="feat-icon">☁️</div> <h3>Google Drive Sync</h3> <p>Connect your Drive to pull receipts directly from the cloud into the expense pipeline.</p> </div> <div class="feat" data-tilt> <div class="feat-icon">📊</div> <h3>Financial Statements</h3> <p>Generate a master PDF statement covering all revenue, expenses, and VAT for any period.</p> </div> </div> <div class="app-launch-bar reveal d4"> <a href="https://vault-ledger-758355253283.europe-west2.run.app" target="_blank" rel="noopener" class="btn">Open Vault Ledger ↗</a> </div> </div> <!-- Right: live app embed --> <div class="reveal d2"> <div class="app-frame" id="vault-ledger-app"> <div class="app-frame-bar"> <div class="frame-dot"></div> <div class="frame-dot"></div> <div class="frame-dot"></div> <div class="frame-url">ais dev · europe west2.run.app</div> </div> <iframe
@@ -364,5 +351,6 @@ agencyForm.addEventListener('submit',async e=>{
 })();
 </script>
 <script src="/js/i18n.js?v=20260603-1" defer></script>
+<script src="/js/navbar.js" defer></script>
 </body>
 </html>
