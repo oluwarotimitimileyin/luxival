@@ -287,12 +287,15 @@ iframe {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
     padding: .5rem;
     margin-left: auto !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
   }
 
   .nav-burger span {
@@ -396,6 +399,10 @@ iframe {
 
   section {
     padding: 2.75rem 0 !important;
+  }
+
+  body > section:first-of-type {
+    padding-top: 4rem !important;
   }
 
   .container {
@@ -566,6 +573,10 @@ iframe {
 
   section {
     padding: 2.25rem 0 !important;
+  }
+
+  body > section:first-of-type {
+    padding-top: 4rem !important;
   }
 
   h2 {
