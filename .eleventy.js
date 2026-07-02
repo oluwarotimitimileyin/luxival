@@ -105,6 +105,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "llms.txt": "llms.txt" });
   eleventyConfig.addPassthroughCopy({ "llms-full.txt": "llms-full.txt" });
   eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
+  eleventyConfig.addPassthroughCopy({ "6292d286853d4847b71d0f2b76c30dbc.txt": "6292d286853d4847b71d0f2b76c30dbc.txt" });
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "favicon-16x16.png": "favicon-16x16.png" });
