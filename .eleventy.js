@@ -23,10 +23,11 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
-  function injectPageTranslate(html) {
-    if (html.includes("/js/page-translate.js")) return html;
-    if (/<\/body>/i.test(html)) {
-      return html.replace(/<\/body>/i, '  <script src="/js/page-translate.js?v=20260625-1" defer></script>\n</body>');
+  function injectI18nScript(html) {
+    if (!html.includes("/js/navbar.js")) return html;
+    if (html.includes("/js/i18n.js")) return html;
+    if (/<script[^>]+src=["']\/js\/navbar\.js["'][^>]*><\/script>/i.test(html)) {
+      return html.replace(/<script([^>]+)src=["']\/js\/navbar\.js["']([^>]*)><\/script>/i, '<script src="/js/i18n.js?v=20260603-1" defer></script>\n<script$1src="/js/navbar.js"$2></script>');
     }
     return html;
   }
@@ -69,7 +70,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return injectSpeechReader(injectPageTranslate(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))));
+    return injectI18nScript(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))));
   });
 
   eleventyConfig.addPassthroughCopy({ i18n: "i18n" });

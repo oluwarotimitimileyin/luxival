@@ -4,7 +4,6 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 img,
@@ -13,6 +12,12 @@ svg,
 canvas,
 iframe {
   max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  min-width: 0;
 }
 
 .arch-container {
@@ -84,6 +89,17 @@ iframe {
 
   .container {
     padding: 0 4% !important;
+  }
+
+  .nv-inner {
+    padding-inline: clamp(1rem, 4vw, 1.25rem) !important;
+  }
+
+  .nv-dropdown {
+    left: clamp(0.75rem, 4vw, 1rem) !important;
+    right: clamp(0.75rem, 4vw, 1rem) !important;
+    max-height: calc(100dvh - 5rem) !important;
+    overflow-y: auto !important;
   }
 
   .eyebrow {
@@ -236,7 +252,8 @@ iframe {
   .hero-actions .btn,
   .cta-actions .btn,
   .svc-cta .btn,
-  .hero-form .btn-sm {
+  .hero-form .btn-sm,
+  .btn-outline {
     width: 100% !important;
     text-align: center !important;
   }
@@ -367,6 +384,36 @@ iframe {
   }
   .hero-actions .btn,
   .hero-actions .btn-outline {
+    min-width: 0 !important;
+  }
+
+  .hero-search-panel,
+  .hero-form,
+  .service-path,
+  .social-video-card,
+  .review-card,
+  .card,
+  .proj,
+  .book-card,
+  .form-card,
+  .info-block,
+  .newsletter-card {
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .hero-search-row,
+  .hero-form-row {
+    width: 100% !important;
+  }
+
+  .hero-search-row > *,
+  .hero-form-row > *,
+  .footer-grid > *,
+  .social-video-grid > *,
+  .reviews-grid > *,
+  .client-section > *,
+  .client-marquee > * {
     min-width: 0 !important;
   }
 
@@ -621,7 +668,22 @@ main,
 .container,
 section {
   max-width: 100%;
-  overflow-x: hidden;
+}
+
+.client-section,
+.client-marquee,
+.card-media,
+.proj-thumb,
+.svc-media,
+.port-header {
+  overflow: hidden;
+}
+
+.footer-legal,
+.footer-links,
+.socials,
+.foot-links {
+  overflow-wrap: anywhere;
 }
 
 /* --- Elastic overscroll prevention on mobile --- */
