@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T22:34:40.556Z",
+  "generatedAt": "2026-07-03T03:53:48.409Z",
   "total": 77,
   "documents": [
     {
@@ -416,15 +416,18 @@
       "description": "Book a website audit consultation or request a website build from Luxival Digital in Helsinki. Share your business details, preferred time, and goals.",
       "section": "Digital Services",
       "headings": [
-        "Free Audit Results",
-        "Go deeper with the 7 flow website report",
-        "Full 7 Flow Analysis",
-        "Private Transport",
-        "Need the Website Fixed?",
-        "LUXIVAL",
-        "Navigate",
-        "Legal",
-        "${flow.title}"
+        "Book a Website Audit or Start a Website Build",
+        "Four steps. Clear next action.",
+        "Choose your goal",
+        "Share business details",
+        "Pick a time",
+        "Get follow up",
+        "What do you need help with?",
+        "After submission",
+        "Instant scanner still available",
+        "Your request has been received.",
+        "Run an Automated Scan",
+        "Free Audit Results"
       ],
       "keywords": [
         "audit",
@@ -446,22 +449,17 @@
         "time",
         "and",
         "goals",
-        "free",
-        "results",
-        "deeper",
-        "with",
-        "the",
-        "flow",
-        "report",
-        "full",
-        "analysis",
-        "private",
-        "transport",
-        "need",
-        "transfer",
+        "start",
+        "four",
+        "steps",
+        "clear",
+        "next",
+        "action",
+        "choose",
+        "goal",
         "seo"
       ],
-      "body": "LUXIVAL Services Email address Run Free Audit → Fetching page SEO checks PageSpeed Accessibility Compiling report Audit complete Pending SEO Fundamentals Score / 10 Free Audit Results ⬇ Download Free PDF Report Report emailed to your inbox Paid audit Go deeper with the 7 flow website report The free scan covers SEO basics. The paid report adds more checks around performance, mobile UX, accessibility, security headers, social tags, and structured data detection. 01 SEO Deep Dive Heading hierarchy, keyword signals, robots meta, and sitemap detection 02 Performance Analysis Core Web Vitals and PageSpeed data where available 03 Mobile Friendliness Viewport setup, tap target checks, and mobile PageSpeed score 04 Accessibility Checks ARIA roles, form labels, language attribute, and image alt coverage 05 Security Check HTTPS, mixed content warnings, and X Frame Options detection 06 Social Media Tags Open Graph and Twitter Card checks for cleaner previews 07 Schema & Structured Data JSON LD detection and schema type identification + Priority Action List Main fixes sorted so you can see what to handle first €9.90 One time · PDF report · Delivered to your email Pay €9.90 & Get Full Report → Secure payment via SumUp. After payment, click below to generate your paid report. Payment complete? Generate your 7 flow report: Generate Paid Report → Premium Full 7 Flow Analysis ⬇ Download Premium PDF Report Premium report for your inbox Helsinki transfers Private Transport Airport pickups, city transfers, and private rides across Helsinki and Finland. View Transfers → Done for you Need the Website Fixed? We can audit, rebuild, improve SEO structure, add forms, and check the site properly before launch. Digital Services → LUXIVAL Varikkokaarre 7A 01700 Vantaa, Finland support@luxival.com +"
+      "body": "Website Audit & Website Build · Helsinki Book a Website Audit or Start a Website Build Tell us about your business, your website goals, and a good time to speak. Luxival will review your request and follow up with the right next step. Website audit booking Business website intake Preferred time collected SEO + UX + lead path review Start Free Audit Booking → I Need a Website Built → How it works Four steps. Clear next action. Choose your goal Pick website audit booking or website build intake, depending on what you need right now. Share business details Tell us your business type, current website, goals, services, audience, and timeline. Pick a time Choose a preferred call date and time so we can follow up with context already in hand. Get follow up Your request is saved, and Luxival can contact you with the right audit or website build next step. Client intake What do you need help with? Choose the path that matches your need. The form saves your request so Luxival can follow up with the right questions, timing, and next step. Book website audit Review my current website and book a time to talk. Build my website I need a new website or a rebuild for my business. Main audit goal Find why my website is not converting Improve SEO and Google visibility Improve speed, mobile UX, and trust Prepare for a redesign Possible improvement budget Under 500 EUR 500-1500 EUR 1500-5000 EUR 5000+ EUR Submit audit booking request → Website type New business website Redesign existing website Landing page Booking or lead generation website E commerce or payments website Website budget range Under 1000 EUR 1000-2500 EUR 2500-5000 EUR 5000+ EUR Submit website build request → After submission Your request is saved with your selected time, contact details, and business context. Instant scanne"
     },
     {
       "path": "/autonomous-qa-audit-dashboard",

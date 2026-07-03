@@ -186,17 +186,6 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
   var bookingForm = document.getElementById('bookingForm');
   var bookBtn = document.getElementById('bookBtn');
 
-  // ─── Mobile nav toggle ───
-  var burger = document.querySelector('.nav-burger');
-  var navLinks = document.getElementById('site-nav');
-  if (burger && navLinks) {
-    burger.addEventListener('click', function() {
-      var expanded = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('open');
-    });
-  }
-
   // ─── URL params ───
   function qs(name) {
     return new URLSearchParams(window.location.search).get(name) || '';
@@ -499,6 +488,11 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
       source: 'trip-planner',
     };
 
+    if (window.LuxivalSupabase) {
+      var tpPayload={name:name,email:email,phone:bookingForm.phone.value.trim()||null,service_interest:pickup.toLowerCase().includes('airport')?'Airport transfer booking':'Private ride booking',message:message,source:'trip-planner',status:'new'};
+      window.LuxivalSupabase.submitContactInquiry(tpPayload).catch(function(){});
+    }
+
     fetch('/api/lead-notification', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -521,12 +515,6 @@ nav{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
       bookBtn.disabled = false;
       bookBtn.textContent = 'Send Booking Request';
     });
-
-    if (window.LuxivalSupabase) {
-      var tpPayload={name:name,email:email,phone:bookingForm.phone.value.trim()||null,service_interest:pickup.toLowerCase().includes('airport')?'Airport transfer booking':'Private ride booking',message:message,source:'trip-planner',status:'new'};
-      window.LuxivalSupabase.submitContactInquiry(tpPayload).catch(function(){});
-      window.LuxivalSupabase.notifyLead({...tpPayload,type:'Trip planner booking'});
-    }
   });
 
 })();

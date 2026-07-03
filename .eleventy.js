@@ -32,6 +32,22 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function versionNavbarJs(html) {
+    if (!html.includes("/js/navbar.js")) return html;
+    return html.replace(
+      /src=["']\/js\/navbar\.js["']/gi,
+      'src="/js/navbar.js?v=20260703-1"'
+    );
+  }
+
+  function injectPageTranslate(html) {
+    if (html.includes("/js/page-translate.js")) return html;
+    if (/<\/body>/i.test(html)) {
+      return html.replace(/<\/body>/i, '  <script src="/js/page-translate.js?v=20260625-1" defer></script>\n</body>');
+    }
+    return html;
+  }
+
   function injectDiscoverMeta(html) {
     if (html.includes("max-image-preview")) return html;
     if (/<\/head>/i.test(html)) {
@@ -51,7 +67,7 @@ module.exports = function (eleventyConfig) {
   function injectMobileOverrides(html) {
     if (html.includes("/css/mobile-overrides.css")) return html;
     if (/<\/head>/i.test(html)) {
-      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/mobile-overrides.css?v=20260701-1" media="(max-width: 820px)">\n</head>');
+      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/css/mobile-overrides.css?v=20260703-1" media="(max-width: 820px)">\n</head>');
     }
     return html;
   }
@@ -70,7 +86,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return injectI18nScript(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))));
+    return versionNavbarJs(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))))));
   });
 
   eleventyConfig.addPassthroughCopy({ i18n: "i18n" });

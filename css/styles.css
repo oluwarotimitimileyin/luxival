@@ -1293,3 +1293,23 @@ footer.site-footer > * {
     font-size: clamp(2rem, 8vw, 3rem);
   }
 }
+
+/* Address row with map button */
+.addr-row{display:flex;gap:.5rem;align-items:center}
+.addr-row input{flex:1}
+.map-btn{background:var(--surface-strong);border:1px solid var(--border);border-radius:12px;padding:.5rem .6rem;cursor:pointer;font-size:1.2rem;line-height:1;transition:background .2s,border-color .2s;flex-shrink:0}
+.map-btn:hover{background:var(--accent);border-color:var(--accent-strong)}
+.map-btn:focus-visible{outline:2px solid var(--accent-strong);outline-offset:2px}
+
+/* Address modal */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem}
+.modal-content{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);max-width:660px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+.modal-header h3{margin:0;font-size:1.1rem;font-weight:600}
+.modal-close{background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;padding:.25rem;line-height:1;border-radius:8px;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.modal-body{padding:1.5rem}
+.modal-actions{display:flex;gap:.75rem;margin-top:.75rem}
+.modal-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s}
+.modal-input:focus{border-color:var(--accent-strong)}
+@media(max-width:600px){.modal-content{max-width:100%}.modal-actions{flex-direction:column}}

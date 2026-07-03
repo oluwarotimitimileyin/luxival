@@ -485,21 +485,6 @@ function shuffled(arr){
 
 </script>
 <script>
-(function(){
-  var b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
-  if(!b||!l)return;
-  b.addEventListener('click',function(){
-    var o=l.classList.toggle('open');
-    b.classList.toggle('open',o);
-    b.setAttribute('aria-expanded',String(o));
-  });
-  document.addEventListener('click',function(e){
-    if(!b.contains(e.target)&&!l.contains(e.target)){
-      l.classList.remove('open');b.classList.remove('open');
-      b.setAttribute('aria-expanded','false');
-    }
-  });
-})();
 </script>
 <script src="/js/navbar.js" defer></script>
 </body>

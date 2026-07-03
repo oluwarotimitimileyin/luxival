@@ -103,9 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const estimatedPriceValue = Number(rideEstimatePrice?.textContent.replace(',', '.') || 0) || 0;
       const pickupValue = document.getElementById('ridePickup').value.trim();
       const destinationValue = document.getElementById('rideDestination').value.trim();
+      const rideDateValue = document.getElementById('rideDate').value || null;
       const rideTimeValue = document.getElementById('rideTime').value;
       const airportSurcharge = isAirportRoute(pickupValue, destinationValue);
       const busyHour = isBusyHour(rideTimeValue);
+      // Combine date+time into a full ISO timestamp (DB ride_time column is timestamptz)
+      const rideDateTime = rideDateValue && rideTimeValue ? `${rideDateValue}T${rideTimeValue}:00+03:00` : null;
 
       const payload = {
         customer_name: document.getElementById('rideName').value.trim(),
@@ -113,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: document.getElementById('ridePhone').value.trim(),
         pickup_location: pickupValue,
         destination: destinationValue,
-        preferred_date: document.getElementById('rideDate').value || null,
-        ride_time: rideTimeValue || null,
+        preferred_date: rideDateValue,
+        ride_time: rideDateTime,
         service_type: document.getElementById('rideServiceType').value,
         estimated_distance_km: estimatedDistance,
         estimated_price: estimatedPriceValue,
