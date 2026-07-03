@@ -653,6 +653,31 @@ body {
 }
 
 @media (max-width: 375px) {
+  .container {
+    padding: 0 0.8rem !important;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 7.8vw, 2.2rem) !important;
+  }
+
+  .btn,
+  .btn-outline {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .sticky-cta {
+    gap: 0.5rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+
+  .sticky-cta a {
+    padding: 0.72rem 0.65rem !important;
+    font-size: 0.72rem !important;
+  }
+
   .stats-grid {
     gap: 1rem !important;
   }
@@ -704,6 +729,159 @@ body {
   .footer-grid {
     gap: 1.5rem !important;
   }
+}
+
+/* ============================================
+   Ultra-small screens (320px-359px)
+   ============================================ */
+@media (max-width: 359px) {
+  .container {
+    padding: 0 0.6rem !important;
+  }
+
+  .nv-inner {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .nv-dropdown {
+    left: 0.25rem !important;
+    right: 0.25rem !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 0.5rem) !important;
+  }
+
+  h1 {
+    font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.2rem, 5.5vw, 1.5rem) !important;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-outline {
+    font-size: 0.65rem !important;
+    padding: 0.65rem 0.8rem !important;
+    min-height: 36px !important;
+  }
+
+  .service-path {
+    padding: 0.5rem 0.6rem !important;
+  }
+  .service-path strong {
+    font-size: 0.68rem !important;
+  }
+  .service-path span {
+    font-size: 0.65rem !important;
+  }
+
+  .location-pill {
+    font-size: 0.58rem !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  .hero-proof-num {
+    font-size: 0.9rem !important;
+  }
+  .hero-proof-label {
+    font-size: 0.5rem !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .stat-num {
+    font-size: clamp(1.2rem, 6vw, 1.6rem) !important;
+  }
+
+  .card-body {
+    padding: 0.75rem !important;
+  }
+
+  .sticky-cta {
+    gap: 0.35rem !important;
+    padding: 0.5rem 0.6rem !important;
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .sticky-cta a {
+    font-size: 0.62rem !important;
+    padding: 0.55rem 0.5rem !important;
+    min-height: 36px !important;
+  }
+
+  .social-video-card {
+    padding: 0.65rem !important;
+  }
+  .social-video-card strong {
+    font-size: 0.68rem !important;
+  }
+  .social-video-card > span {
+    font-size: 0.7rem !important;
+  }
+
+  .client-logo {
+    padding: 0.5rem 0.8rem !important;
+  }
+  .client-logo .logo-name {
+    font-size: 0.72rem !important;
+  }
+  .client-logo .logo-tag {
+    font-size: 0.55rem !important;
+  }
+}
+
+/* ============================================
+   Tablet landscape & small desktop (820px-1024px)
+   ============================================ */
+@media (min-width: 821px) and (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem) !important;
+  }
+
+  .section-dark {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .founder-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ============================================
+   Large screens (1920px+)
+   ============================================ */
+@media (min-width: 1920px) {
+  .container,
+  .nv-inner,
+  .section {
+    max-width: 1440px !important;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 3.5vw, 4.5rem) !important;
+  }
+}
+
+/* ============================================
+   Prevent nav overlap — add scroll margin to all sections
+   ============================================ */
+section[id],
+div[id] {
+  scroll-margin-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

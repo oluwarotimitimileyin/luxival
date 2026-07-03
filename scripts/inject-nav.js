@@ -29,7 +29,9 @@ const CANONICAL_CHROME_CSS = `<style id="luxival-shared-chrome">
 .svc-icon::before{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0 58%,color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),var(--card-accent,#C9A96A),color-mix(in srgb,var(--card-accent,#C9A96A) 45%,white),color-mix(in srgb,var(--card-accent,#C9A96A) 12%,transparent),transparent 86%);animation:neonSpin 3.8s linear infinite}
 .svc-icon::after{content:'';position:absolute;inset:2px;border-radius:12px;background:linear-gradient(145deg,#1a1c28,#0c0d14)}
 .svc-icon svg{position:relative;z-index:1;width:27px;height:27px;fill:none;stroke:color-mix(in srgb,var(--card-accent,#C9A96A) 44%,white);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px var(--card-glow,rgba(201,169,106,.24)))}
-@media(max-width:820px){#mainNav .nav-inner{gap:.8rem;padding:max(1rem,calc(env(safe-area-inset-top) + .75rem)) 1.25rem .9rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}#site-nav{gap:.6rem}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+@media(max-width:820px){#mainNav .nv-inner{gap:.8rem;padding:max(.8rem,env(safe-area-inset-top,0px)) clamp(1rem,3vw,1.25rem) .8rem}#mainNav .nav-brand{font-size:1rem;letter-spacing:2px}.neon-btn{padding:.4rem .85rem;font-size:.7rem;min-height:34px;border-radius:12px}.neon-btn::before{border-radius:14px}.neon-btn::after{border-radius:10px}.lang-trigger{gap:.3rem;padding:.38rem .6rem}.luxival-footer-inner{grid-template-columns:1fr;gap:2rem}.luxival-footer{padding:3.5rem 1.25rem 1.5rem}}
+@media(max-width:480px){#mainNav .nv-inner{padding:max(.6rem,env(safe-area-inset-top,0px)) .75rem .6rem}#mainNav .nav-brand{font-size:.85rem;letter-spacing:1.5px}.nv-right{gap:.25rem}.neon-btn{padding:.35rem .65rem;font-size:.65rem;min-height:30px}}
+@media(max-width:360px){#mainNav .nv-dropdown{left:.25rem;right:.25rem}}
 </style>`;
 
 const CANONICAL_FOOTER = `<footer class="luxival-footer">
@@ -200,9 +202,17 @@ function injectI18nScript(html) {
 function injectNavbarScript(html) {
   if (html.includes('/js/navbar.js')) return html;
   if (/<\/body>/i.test(html)) {
-    return html.replace(/<\/body>/i, '  <script src="/js/navbar.js" defer></script>\n</body>');
+    return html.replace(/<\/body>/i, '  <script src="/js/navbar.js?v=20260703-1" defer></script>\n</body>');
   }
-  return html + '\n<script src="/js/navbar.js" defer></script>\n';
+  return html + '\n<script src="/js/navbar.js?v=20260703-1" defer></script>\n';
+}
+
+function injectNavConfigScript(html) {
+  if (html.includes('/js/nav-config.js')) return html;
+  if (/<\/body>/i.test(html)) {
+    return html.replace(/<\/body>/i, '  <script src="/js/nav-config.js?v=20260703-1" defer></script>\n</body>');
+  }
+  return html + '\n<script src="/js/nav-config.js?v=20260703-1" defer></script>\n';
 }
 
 function injectChatWidget(html) {
@@ -233,6 +243,7 @@ for (const file of files) {
   result = injectHeadAssets(result);
   result = injectCanonicalFooter(result);
   result = injectI18nScript(result);
+  result = injectNavConfigScript(result);
   result = injectNavbarScript(result);
   const beforeConsent = result;
   result = injectConsentScript(result);

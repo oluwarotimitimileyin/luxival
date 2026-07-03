@@ -32,6 +32,14 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectNavConfig(html) {
+    if (html.includes("/js/nav-config.js")) return html;
+    if (/<\/head>/i.test(html)) {
+      return html.replace(/<\/head>/i, '<script src="/js/nav-config.js?v=20260703-1" defer></script>\n</head>');
+    }
+    return html;
+  }
+
   function versionNavbarJs(html) {
     if (!html.includes("/js/navbar.js")) return html;
     return html.replace(
@@ -86,7 +94,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return versionNavbarJs(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))))));
+    return versionNavbarJs(injectNavConfig(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content)))))))))));
   });
 
   eleventyConfig.addPassthroughCopy({ i18n: "i18n" });
