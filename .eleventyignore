@@ -47,7 +47,11 @@ tests/results.json
 .agents/**
 .claude/**
 .kilo/**
+.opencode/**
 mobile-audit/**
 apps/**
 luxival-autopost/**
 luxival-dashboard/**
+sales-assets/**
+backlink-strategy.md
+vault-ledger/**
