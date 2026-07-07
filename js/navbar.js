@@ -90,6 +90,68 @@
   var menuToggle = document.getElementById('nv-menu-toggle');
   var menuDropdown = document.getElementById('nv-menu-dropdown');
 
+  /* ---------- enforce single language selector ---------- */
+  function pruneLegacyLanguageSelectors() {
+    var legacySelectors = [
+      '#lang-toggle',
+      '#lang-select',
+      '.lang-select',
+      '.lang-selector',
+      '.language-selector',
+      '.language-switcher',
+      '.lang-switcher',
+      '.lang-menu',
+      '.goog-te-gadget',
+      '.goog-te-combo',
+      '#gt-element',
+      '#google_translate_element',
+      '.floating-language',
+      '.floating-lang',
+      '.mobile-lang',
+      '.footer-lang',
+      '.hero-lang'
+    ];
+
+    document.querySelectorAll(legacySelectors.join(',')).forEach(function (el) {
+      if (!el) return;
+      if (el.id === 'nv-lang-toggle' || el.id === 'nv-lang-dropdown') return;
+      if (el.closest && el.closest('.nv-lang')) return;
+
+      var removableContainer = el.closest && el.closest('.nav-lang, .lang-wrap, .language-wrap, .lang-select-wrap, .language-select-wrap, .mobile-lang, .footer-lang, .hero-lang, .floating-language, .floating-lang');
+      if (removableContainer && removableContainer !== document.body && removableContainer !== document.documentElement) {
+        removableContainer.remove();
+      } else {
+        el.remove();
+      }
+    });
+
+    var toggles = document.querySelectorAll('#nv-lang-toggle');
+    if (toggles.length > 1) {
+      toggles.forEach(function (btn, idx) {
+        if (idx === 0) return;
+        var wrap = btn.closest('.nv-lang') || btn;
+        wrap.remove();
+      });
+    }
+
+    var dropdowns = document.querySelectorAll('#nv-lang-dropdown');
+    if (dropdowns.length > 1) {
+      dropdowns.forEach(function (dd, idx) {
+        if (idx === 0) return;
+        dd.remove();
+      });
+    }
+
+    if (menuDropdown) {
+      menuDropdown.querySelectorAll('[data-lang], #lang-toggle, #lang-select, .lang-select, .lang-selector, .language-selector, .language-switcher, .lang-switcher').forEach(function (el) {
+        el.remove();
+      });
+    }
+  }
+
+  pruneLegacyLanguageSelectors();
+  window.addEventListener('load', pruneLegacyLanguageSelectors);
+
   function closeAll() {
     langDropdown && closeDropdown(langDropdown, langToggle);
     menuDropdown && closeDropdown(menuDropdown, menuToggle);
