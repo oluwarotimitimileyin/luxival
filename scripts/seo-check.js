@@ -22,11 +22,11 @@ const REQUIRED_ROOT_FILES = [
 ];
 
 const REQUIRED_HEAD_PATTERNS = [
-  { name: 'favicon.ico', pattern: /<link\s+[^>]*rel=["']icon["'][^>]*href=["']\/favicon\.ico["'][^>]*>/i },
-  { name: 'favicon-32x32', pattern: /<link\s+[^>]*sizes=["']32x32["'][^>]*href=["']\/favicon-32x32\.png["'][^>]*>/i },
-  { name: 'favicon-48x48', pattern: /<link\s+[^>]*sizes=["']48x48["'][^>]*href=["']\/favicon-48x48\.png["'][^>]*>/i },
-  { name: 'apple-touch-icon', pattern: /<link\s+[^>]*rel=["']apple-touch-icon["'][^>]*href=["']\/apple-touch-icon\.png["'][^>]*>/i },
-  { name: 'site.webmanifest', pattern: /<link\s+[^>]*rel=["']manifest["'][^>]*href=["']\/site\.webmanifest["'][^>]*>/i },
+  { name: 'favicon.ico', pattern: /<link\s+[^>]*(?:rel=["']icon["'][^>]*href=["']\/favicon\.ico["']|href=["']\/favicon\.ico["'][^>]*rel=["']icon["'])[^>]*>/i },
+  { name: 'favicon-32x32', pattern: /<link\s+[^>]*(?:sizes=["']32x32["'][^>]*href=["']\/favicon-32x32\.png["']|href=["']\/favicon-32x32\.png["'][^>]*sizes=["']32x32["'])[^>]*>/i },
+  { name: 'favicon-48x48', pattern: /<link\s+[^>]*(?:sizes=["']48x48["'][^>]*href=["']\/favicon-48x48\.png["']|href=["']\/favicon-48x48\.png["'][^>]*sizes=["']48x48["'])[^>]*>/i },
+  { name: 'apple-touch-icon', pattern: /<link\s+[^>]*(?:rel=["']apple-touch-icon["'][^>]*href=["']\/apple-touch-icon\.png["']|href=["']\/apple-touch-icon\.png["'][^>]*rel=["']apple-touch-icon["'])[^>]*>/i },
+  { name: 'site.webmanifest', pattern: /<link\s+[^>]*(?:rel=["']manifest["'][^>]*href=["']\/site\.webmanifest["']|href=["']\/site\.webmanifest["'][^>]*rel=["']manifest["'])[^>]*>/i },
 ];
 
 const SEO_OPPORTUNITY_PATHS = [
@@ -54,6 +54,16 @@ function htmlPathForUrl(url) {
   const urlPath = pathFromUrl(url);
   if (urlPath === '/') return path.join(SITE_DIR, 'index.html');
   return path.join(SITE_DIR, urlPath.slice(1), 'index.html');
+}
+
+function expectedCanonicalForUrl(url) {
+  const parsed = new URL(url);
+  if (parsed.pathname === '/amp/' || parsed.pathname.startsWith('/amp/')) {
+    const normalizedPath = parsed.pathname.replace(/^\/amp/, '') || '/';
+    return `${parsed.origin}${normalizedPath}`;
+  }
+
+  return url;
 }
 
 function extract(html, regex) {
@@ -126,7 +136,7 @@ function main() {
 
     assert(title.length >= 10, `${url} is missing a useful <title>.`, failures);
     assert(description.length >= 40, `${url} is missing a useful meta description.`, failures);
-    assert(canonical === url, `${url} canonical mismatch: "${canonical || 'missing'}".`, failures);
+    assert(canonical === expectedCanonicalForUrl(url), `${url} canonical mismatch: "${canonical || 'missing'}".`, failures);
     assert(!/<link\s+rel=["']icon["']\s+href=["']data:image\/svg\+xml/i.test(html), `${url} still uses inline SVG favicon.`, failures);
 
     for (const required of REQUIRED_HEAD_PATTERNS) {

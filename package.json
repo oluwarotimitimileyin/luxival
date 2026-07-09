@@ -5,6 +5,8 @@
     "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && eleventy && node scripts/inject-nav.js && node scripts/inject-env.js && node scripts/minify-assets.js",
     "dev": "node scripts/generate-search-index.js && eleventy --serve",
     "clean": "rm -rf _site",
+    "deploy:frontend": "bash scripts/deploy-luxival.sh",
+    "deploy:full": "bash scripts/deploy-luxival.sh --backend",
     "images:optimize": "node scripts/optimize-images.js",
     "sitemap": "node scripts/generate-sitemap.js",
     "seo:lastmod": "node scripts/update-sitemap-lastmod.js",
