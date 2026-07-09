@@ -31,6 +31,12 @@
       '.chat-composer textarea:focus{outline:none;border-color:#C9A96A}',
       '.chat-button{min-height:44px;border:0;border-radius:18px;background:#C9A96A;color:#0A0B0F;padding:.65rem .85rem;font:inherit;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}',
       '.chat-status{min-height:1rem;color:rgba(232,235,242,.58);font-size:.74rem}',
+      '.chat-links{align-self:flex-start;max-width:92%;border:1px solid rgba(201,169,106,.28);border-radius:16px;background:rgba(201,169,106,.06);padding:.6rem .72rem}',
+      '.chat-links .chat-links-label{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#C9A96A;margin-bottom:.4rem}',
+      '.chat-links a.chat-link{display:block;font-size:.82rem;line-height:1.4;color:#E8EBF2;text-decoration:none;padding:.2rem 0}',
+      '.chat-links a.chat-link:hover{text-decoration:underline}',
+      '.chat-links a.chat-link.primary{color:#C9A96A;font-weight:600}',
+      '.chat-links .chat-links-cta{display:inline-block;margin-top:.4rem;padding:.4rem .66rem;border-radius:14px;background:#C9A96A;color:#0A0B0F;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;text-decoration:none}',
       '@media(max-width:768px){.chat-widget{right:.8rem;bottom:calc(4.5rem + env(safe-area-inset-bottom,0px))}.chat-panel{width:calc(100vw - 1.6rem);max-height:calc(100vh - 6rem)}.chat-toggle{min-height:48px}}'
     ].join('');
     document.head.appendChild(style);
@@ -173,6 +179,46 @@
   function addMessage(role, content) {
     renderBubble(role, content);
     messages.push({ role: role, content: content });
+  }
+
+  function escapeAttr(value) {
+    return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  function renderLinks(links) {
+    if (!links || !links.primaryPage) return;
+    if (document.getElementById('chatLinks_' + links.intent)) return;
+
+    var parts = ['<div class="chat-links" id="chatLinks_' + escapeAttr(links.intent) + '">'];
+    parts.push('<span class="chat-links-label">Recommended next step</span>');
+    parts.push('<a class="chat-link primary" href="' + escapeAttr(links.primaryPage) + '">' + escapeAttr(links.primaryLabel) + '</a>');
+
+    if (Array.isArray(links.relatedPages)) {
+      links.relatedPages.forEach(function (p) {
+        if (!p || !p.href) return;
+        parts.push('<a class="chat-link" href="' + escapeAttr(p.href) + '">' + escapeAttr(p.label || p.href) + '</a>');
+      });
+    }
+
+    if (Array.isArray(links.relatedBlogs)) {
+      links.relatedBlogs.forEach(function (b) {
+        if (!b || !b.href) return;
+        parts.push('<a class="chat-link" href="' + escapeAttr(b.href) + '">Read: ' + escapeAttr(b.label || b.href) + '</a>');
+      });
+    }
+
+    if (links.cta) {
+      parts.push('<a class="chat-links-cta" href="' + escapeAttr(links.primaryPage) + '">' + escapeAttr(links.cta) + '</a>');
+    }
+
+    parts.push('</div>');
+
+    var wrap = document.createElement('div');
+    wrap.innerHTML = parts.join('');
+    // Only allow anchor links to leave the chat bubble; attach the block in the message stream
+    var block = wrap.firstChild;
+    messagesEl.appendChild(block);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   function leadInputValue(lead, key) {
@@ -343,6 +389,10 @@
       addMessage('assistant', reply);
       saveMessage('assistant', reply);
       showStatus('', false);
+
+      if (data.links && typeof data.links === 'object') {
+        renderLinks(data.links);
+      }
 
       if (data.lead && typeof data.lead === 'object') {
         await handleLead(data.lead);

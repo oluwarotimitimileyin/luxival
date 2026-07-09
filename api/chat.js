@@ -4,6 +4,8 @@
 // across Anthropic, OpenAI, Google Gemini, Moonshot/Kimi, DeepSeek, and Groq.
 // Grounded in real service data with lead capture.
 
+const { getLinkRecommendations } = require('./luxival-link-map');
+
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -769,9 +771,11 @@ module.exports = async function handler(req, res) {
     const hasAnyKey = ANTHROPIC_API_KEY || OPENAI_API_KEY || GEMINI_API_KEY || MOONSHOT_API_KEY;
     const pagePath = req.body && req.body.page ? req.body.page : '';
 
+    const links = getLinkRecommendations(userText, pagePath);
+
     if (!hasAnyKey) {
       const reply = await translateText(fallbackReply(userText, pagePath), language);
-      return res.status(200).json({ reply });
+      return res.status(200).json({ reply, links });
     }
 
     const task = classifyTask(userText);
@@ -781,6 +785,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({
       reply,
       lead: lead || undefined,
+      links,
       model: task,
       language: language,
       session_id: sessionId,
@@ -795,8 +800,10 @@ module.exports = async function handler(req, res) {
     console.error('[chat] Error:', error);
     const fallback = fallbackReply(typeof lastUserMessage === 'string' ? lastUserMessage : '', pagePath);
     const translated = await translateText(fallback, req.body?.language || 'en').catch(() => fallback);
+    const fallbackLinks = getLinkRecommendations(typeof lastUserMessage === 'string' ? lastUserMessage : '', pagePath);
     return res.status(200).json({
       reply: translated,
+      links: fallbackLinks,
       degraded: true,
     });
   }
