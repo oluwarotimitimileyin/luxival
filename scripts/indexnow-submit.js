@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const KEY = "6292d286853d4847b71d0f2b76c30dbc";
+const KEY = "d9d37bb8494f42f8bb761f971c9232c6";
 const HOST = "www.luxival.com";
 
 function extractUrls(xml) {
