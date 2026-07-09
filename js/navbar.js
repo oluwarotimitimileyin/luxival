@@ -221,4 +221,199 @@
   if (menuDropdown) {
     menuDropdown.addEventListener('keydown', function (e) { trapTab(menuDropdown, menuToggle, e); });
   }
+
+  /* ---------- contextual internal links ---------- */
+  function injectInternalLinks() {
+    var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    if (currentPath.indexOf('/services/') === 0) return;
+    if (document.querySelector('[data-internal-links]')) return;
+
+    var linkSets = {
+      '/': {
+        heading: 'Explore More on Luxival',
+        intro: 'Jump directly to core pages and keep browsing through related services and guides.',
+        links: [
+          { href: '/web-design-helsinki', label: 'Web Design in Helsinki' },
+          { href: '/seo-services-finland', label: 'SEO Services in Finland' },
+          { href: '/website-audit-service', label: 'Website Audit Service' },
+          { href: '/helsinki-airport-transfer', label: 'Helsinki Airport Transfer' },
+          { href: '/private-city-to-city-transfer-finland', label: 'Private City-to-City Transfer Finland' },
+          { href: '/tourism', label: 'Finland Tourism Planning' },
+          { href: '/contact', label: 'Contact Luxival' }
+        ]
+      },
+      '/services': {
+        heading: 'Popular Service Paths',
+        intro: 'Compare service categories and continue to the exact offer you need.',
+        links: [
+          { href: '/web-design-helsinki', label: 'Web Design in Helsinki' },
+          { href: '/seo-services-finland', label: 'SEO Services in Finland' },
+          { href: '/qa-testing-services-helsinki', label: 'QA Testing Services in Helsinki' },
+          { href: '/ai-automation-small-businesses', label: 'AI Automation for Small Businesses' },
+          { href: '/chatbot-development-businesses', label: 'Chatbot Development for Businesses' },
+          { href: '/contact', label: 'Start a Project' }
+        ]
+      },
+      '/tourism': {
+        heading: 'Plan Your Finland Trip',
+        intro: 'Continue with practical travel pages for airports, city experiences, and winter routes.',
+        links: [
+          { href: '/finland-travel-planning', label: 'Finland Travel Planning' },
+          { href: '/helsinki-airport-transfer', label: 'Helsinki Airport Transfer' },
+          { href: '/private-city-to-city-transfer-finland', label: 'Private City-to-City Transfer Finland' },
+          { href: '/luxury-lapland', label: 'Luxury Lapland Experiences' },
+          { href: '/helsinki-design-district', label: 'Helsinki Design District Guide' },
+          { href: '/tourism-planning', label: 'Trip Planning Service' },
+          { href: '/contact', label: 'Request a Custom Itinerary' }
+        ]
+      },
+      '/digital': {
+        heading: 'Grow Your Digital Presence',
+        intro: 'Move from strategy into implementation with service and proof pages.',
+        links: [
+          { href: '/web-design-helsinki', label: 'Web Design in Helsinki' },
+          { href: '/seo-services-finland', label: 'SEO Services in Finland' },
+          { href: '/qa-testing-services-helsinki', label: 'QA Testing Services in Helsinki' },
+          { href: '/website-audit-service', label: 'Website Audit Service' },
+          { href: '/ai-automation-small-businesses', label: 'AI Automation for Small Businesses' },
+          { href: '/chatbot-development-businesses', label: 'Chatbot Development for Businesses' },
+          { href: '/contact', label: 'Book a Discovery Call' }
+        ]
+      },
+      '/transfers': {
+        heading: 'Transfer Planning Shortcuts',
+        intro: 'Browse route-specific pages before booking your private ride.',
+        links: [
+          { href: '/helsinki-airport-transfer', label: 'Helsinki Airport Transfer' },
+          { href: '/private-city-to-city-transfer-finland', label: 'Private City-to-City Transfer Finland' },
+          { href: '/services/airport-transfer', label: 'Airport Transfer Details' },
+          { href: '/services/city-to-city', label: 'City-to-City Service Details' },
+          { href: '/finland-travel-planning', label: 'Finland Travel Planning' },
+          { href: '/contact', label: 'Ask for a Custom Route' }
+        ]
+      },
+      '/qa': {
+        heading: 'Website Audit Journey',
+        intro: 'Move from diagnostics to implementation with these related pages.',
+        links: [
+          { href: '/audit', label: 'Audit Scanner' },
+          { href: '/autonomous-qa-audit-dashboard', label: 'QA Dashboard' },
+          { href: '/services/software-testing', label: 'Software Testing Service' },
+          { href: '/growth-architect-backend', label: 'Backend Growth Architect' },
+          { href: '/platform', label: 'Platform Overview' },
+          { href: '/contact', label: 'Request a QA Plan' }
+        ]
+      }
+    };
+
+    var fallback = {
+      heading: 'Continue Exploring',
+      intro: 'Keep navigating through service, tourism, and planning pages.',
+      links: [
+        { href: '/services', label: 'Services' },
+        { href: '/tourism', label: 'Tourism' },
+        { href: '/digital', label: 'Digital' },
+        { href: '/portfolio', label: 'Portfolio' },
+        { href: '/blog', label: 'Blog' },
+        { href: '/contact', label: 'Contact' }
+      ]
+    };
+
+    var config = linkSets[currentPath] || fallback;
+    if (!config.links || !config.links.length) return;
+
+    if (!document.getElementById('nv-internal-links-style')) {
+      var style = document.createElement('style');
+      style.id = 'nv-internal-links-style';
+      style.textContent =
+        '.nv-internal-links{padding:3.2rem 0;border-top:1px solid rgba(201,169,106,.1);border-bottom:1px solid rgba(201,169,106,.1);background:rgba(201,169,106,.02)}' +
+        '.nv-internal-links .container{max-width:1280px;margin:0 auto;padding:0 2rem}' +
+        '.nv-internal-links h2{font-size:clamp(1.3rem,2.2vw,1.9rem);margin:0 0 .6rem;color:var(--text,#E8EBF2)}' +
+        '.nv-internal-links p{margin:0 0 1.2rem;opacity:.72;max-width:780px}' +
+        '.nv-internal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}' +
+        '.nv-internal-grid a{display:flex;align-items:center;min-height:52px;padding:.72rem .9rem;border:1px solid rgba(255,255,255,.09);border-radius:6px;background:rgba(17,19,26,.7);color:var(--text,#E8EBF2);text-decoration:none;transition:border-color .2s,transform .2s,background .2s}' +
+        '.nv-internal-grid a:hover{border-color:rgba(201,169,106,.38);transform:translateY(-1px);background:rgba(201,169,106,.08)}' +
+        '@media(max-width:900px){.nv-internal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}' +
+        '@media(max-width:640px){.nv-internal-links{padding:2.4rem 0}.nv-internal-links .container{padding:0 1rem}.nv-internal-grid{grid-template-columns:1fr}}';
+      document.head.appendChild(style);
+    }
+
+    var section = document.createElement('section');
+    section.className = 'nv-internal-links';
+    section.setAttribute('data-internal-links', '');
+    section.innerHTML =
+      '<div class="container">' +
+        '<h2>' + config.heading + '</h2>' +
+        '<p>' + config.intro + '</p>' +
+        '<div class="nv-internal-grid">' +
+          config.links.map(function (item) {
+            return '<a href="' + item.href + '">' + item.label + '</a>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var footer = document.querySelector('footer');
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(section, footer);
+      return;
+    }
+
+    var main = document.querySelector('main');
+    if (main && main.parentNode) {
+      main.parentNode.insertBefore(section, main.nextSibling);
+    }
+  }
+
+  function applyMobileLitePerformance() {
+    var isNarrow = window.matchMedia && window.matchMedia('(max-width: 820px)').matches;
+    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var saveData = !!(conn && conn.saveData);
+    var slowType = !!(conn && conn.effectiveType && /2g|slow-2g/i.test(conn.effectiveType));
+    if (!isNarrow && !saveData && !slowType) return;
+
+    if (!document.getElementById('nv-mobile-lite-style')) {
+      var lite = document.createElement('style');
+      lite.id = 'nv-mobile-lite-style';
+      lite.textContent =
+        'html,body{overflow-x:hidden !important}' +
+        '.reveal,[data-tilt],.card,.hover-card,.svc,.proj,.social-video-card{transition:none !important;animation:none !important;transform:none !important}' +
+        '.btn,a,button,input,select,textarea{min-height:44px}' +
+        'p,li,a,button,input,select,textarea{font-size:16px}';
+      document.head.appendChild(lite);
+    }
+
+    var imgs = document.querySelectorAll('img');
+    imgs.forEach(function (img, idx) {
+      if (!img.hasAttribute('loading') && idx > 0) img.setAttribute('loading', 'lazy');
+      if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+      if (!img.hasAttribute('fetchpriority') && idx > 0) img.setAttribute('fetchpriority', 'low');
+    });
+
+    document.querySelectorAll('iframe').forEach(function (frame) {
+      if (!frame.hasAttribute('loading')) frame.setAttribute('loading', 'lazy');
+    });
+
+    document.querySelectorAll('video').forEach(function (video) {
+      video.pause();
+      video.removeAttribute('autoplay');
+      video.removeAttribute('loop');
+      video.setAttribute('preload', 'none');
+      var poster = video.getAttribute('poster') || video.getAttribute('data-mobile-poster');
+      if (poster) {
+        var image = document.createElement('img');
+        image.src = poster;
+        image.alt = video.getAttribute('aria-label') || video.getAttribute('title') || 'Video preview image';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.style.width = '100%';
+        image.style.height = 'auto';
+        image.style.display = 'block';
+        video.parentNode && video.parentNode.insertBefore(image, video);
+        video.style.display = 'none';
+      }
+    });
+  }
+
+  injectInternalLinks();
+  applyMobileLitePerformance();
 })();
