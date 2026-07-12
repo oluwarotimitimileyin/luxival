@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-09T17:54:21.371Z",
-  "total": 85,
+  "generatedAt": "2026-07-12T12:39:39.486Z",
+  "total": 83,
   "documents": [
     {
       "path": "/",
@@ -1343,21 +1343,6 @@
       "body": "Lapland Winter · Northern Lights Finland Lapland Winter Travel Planning Build a Finland winter trip around northern lights, glass igloos, private lodges, snowy landscapes, and smooth arrival logistics from Helsinki or Uusimaa to Lapland. Plan My Lapland Trip Ask on WhatsApp Aurora Northern lights planning Winter Lodges and igloos Finland Arrival support Northern lights focus Plan around aurora friendly locations, flexible evenings, darker skies, and realistic backup experiences when weather changes. Winter stays Shortlist glass igloos, design cabins, boutique lodges, private villas, and stays that fit your comfort level. Arrival to Lapland flow Connect Helsinki airport pickup, hotel nights, domestic flights or trains, transfers, and seasonal activities into one trip plan. Sample trip modules A private Lapland trip should feel calm, not complicated Luxival helps you turn a broad idea like “winter Finland” into a clear plan: where to stay, how to arrive, what to do, and how to avoid rushed logistics. Arrival Helsinki airport pickup, overnight stay, or direct onward travel to Lapland. Stay Glass igloo, aurora cabin, boutique lodge, or private winter villa shortlist. Aurora Northern lights evenings with weather aware backup ideas and flexible pacing. Winter Snow landscapes, sauna, local dining, reindeer or husky style seasonal activities where suitable. Return Route back through Helsinki, Uusimaa, or another Finland destination. Who it is for Designed for visitors who want Finland handled properly Couples Romantic winter stays, northern lights, dining, spa, sauna, and quiet private moments. Families Practical pacing, warm transfers, child friendly logistics, and enough space between activities. Business guests Business arrivals, comfortable accommodation, downtime planning,"
     },
     {
-      "path": "/mobile-preview/mobile-view",
-      "title": "Luxival Mobile Preview",
-      "description": "",
-      "section": "Website",
-      "headings": [],
-      "keywords": [
-        "mobile preview",
-        "mobile view",
-        "luxival",
-        "mobile",
-        "preview"
-      ],
-      "body": "390px mobile preview Open site"
-    },
-    {
       "path": "/pattern",
       "title": "Pattern Studio | Luxival",
       "description": "Luxival Pattern Studio: custom sewing patterns for suits. Enter your measurements and receive printable PDF patterns made for your body.",
@@ -1546,20 +1531,6 @@
         "seo"
       ],
       "body": "LUXIVAL Services Portfolio landing AuraFrame A media rich React content platform featuring dynamic post feeds, story flows, profile management, and a clean component architecture built for scalable content experiences. Request a demo Build something like this What it proves Component based content feed architecture, media asset handling, interactive story flows, and a performant Vite/React build pipeline ready for rapid feature addition. React Vite Content Platform Media UX Canonical route This page is the SEO landing route. The live application is available at the product path above. Back to portfolio Build something like this Request a similar build Project type Content platform Social feed product Media dashboard Send project request Luxival © 2026 · Portfolio"
-    },
-    {
-      "path": "/portfolio/auraframe/frontend/dist/",
-      "title": "AuraFrame",
-      "description": "",
-      "section": "Portfolio",
-      "headings": [],
-      "keywords": [
-        "portfolio",
-        "auraframe",
-        "frontend",
-        "dist"
-      ],
-      "body": ""
     },
     {
       "path": "/portfolio/autonomous-qa-audit-dashboard/",
