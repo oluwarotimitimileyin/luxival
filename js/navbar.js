@@ -14,7 +14,7 @@
     s.id = 'nv-styles';
     s.textContent =
       '.nv-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;width:100%}' +
-      '.nav-brand{white-space:nowrap;min-width:0}' +
+      '.nav-brand{white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}' +
       '.nv-right{display:flex;align-items:center;gap:clamp(.4rem,1.5vw,1rem);min-width:0}' +
       '.nv-lang,.nv-menu{position:relative;display:flex;align-items:center}' +
       '.nv-lang .lang-trigger{display:flex;align-items:center;justify-content:center;gap:.42rem;padding:.45rem .7rem;background:rgba(201,169,106,.06)!important;border:1px solid rgba(201,169,106,.22);color:var(--gold);border-radius:999px;cursor:pointer;font-family:inherit;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;transition:border-color .3s,box-shadow .3s;min-height:44px;min-width:44px}' +

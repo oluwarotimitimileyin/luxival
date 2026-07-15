@@ -4,6 +4,7 @@
 html,
 body {
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 img,
@@ -74,7 +75,7 @@ iframe {
 }
 
 /* Tablet and down */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .arch-container {
     padding: 1rem !important;
   }
@@ -182,7 +183,10 @@ iframe {
   .stats-grid,
   .proof-grid,
   .footer-grid,
-  .founder-grid {
+  .founder-grid,
+  .hover-cards,
+  .reviews-grid,
+  .portfolio-lead-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
   }
@@ -222,6 +226,9 @@ iframe {
   }
 
   .hero-proof {
+    gap: 1.2rem !important;
+    justify-content: space-between !important;
+  }
     gap: 1.2rem !important;
     justify-content: space-between !important;
   }
@@ -593,11 +600,16 @@ section {
 }
 
 .footer-legal,
-.footer-links,
-.socials,
-.foot-links {
-  overflow-wrap: anywhere;
-}
+  .footer-links,
+  .socials,
+  .foot-links,
+  .nav-brand,
+  .logo-name,
+  h1, h2, h3, h4,
+  p, .lead, .subhead, .eyebrow,
+  .review-text, .proj-body p, .card-body p, .svc p {
+    overflow-wrap: anywhere;
+  }
 
 /* --- Elastic overscroll prevention on mobile --- */
 body {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -594,7 +594,7 @@ function runAccessibilityChecks(doc, checks) {
 
   // Viewport
   const viewport = doc.querySelector('meta[name="viewport"]');
-  checks.push({pass:!!viewport, title: viewport ? 'Viewport Meta ✓' : 'Missing Viewport Meta', detail: viewport ? 'Page is configured for mobile devices.' : 'Add <meta name="viewport" content="width=device-width,initial-scale=1"> for mobile optimisation.'});
+  checks.push({pass:!!viewport, title: viewport ? 'Viewport Meta ✓' : 'Missing Viewport Meta', detail: viewport ? 'Page is configured for mobile devices.' : 'Add <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover"> for mobile optimisation.'});
 }
 
 async function fetchPageSpeed(url) {
@@ -911,7 +911,7 @@ async function runPremiumScan() {
   // Flow 3: Mobile Friendliness
   const mobileChecks = [];
   const viewport = doc.querySelector('meta[name="viewport"]');
-  mobileChecks.push({pass:!!viewport, title:viewport?'Viewport Meta ✓':'Missing Viewport Meta', detail:viewport?viewport.getAttribute('content'):'Add <meta name="viewport" content="width=device-width,initial-scale=1">'});
+  mobileChecks.push({pass:!!viewport, title:viewport?'Viewport Meta ✓':'Missing Viewport Meta', detail:viewport?viewport.getAttribute('content'):'Add <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">'});
   const touchIcons = doc.querySelectorAll('link[rel*="apple-touch"], link[rel*="icon"]');
   mobileChecks.push({pass:touchIcons.length>0, title:touchIcons.length>0?`Touch Icons ✓ (${touchIcons.length})`:'Missing Touch Icons', detail:touchIcons.length>0?'Mobile home screen icons configured.':'Add apple-touch-icon for iOS home screen.'});
   if (auditData.pageSpeedMobile !== null) {
