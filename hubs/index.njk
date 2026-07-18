@@ -1,0 +1,40 @@
+---
+permalink: hubs/index.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Service Hubs | Luxival</title>
+  <meta name="description" content="Browse eight Luxival service hubs for transport, travel, websites, SEO, quality assurance, AI automation, social video, and technical design.">
+  <link rel="canonical" href="https://www.luxival.com/hubs">
+  <link rel="stylesheet" href="/css/silo-hubs.css?v=20260718-1">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hub-header"><a href="/" class="hub-brand">LUXIVAL</a><nav aria-label="Primary"><a href="/services">Services</a><a href="/about">About</a><a href="/contact">Contact</a></nav></header>
+  <main id="main">
+    <section class="hub-hero hub-shell">
+      <p class="hub-kicker">Eight focused service ecosystems</p>
+      <h1>Choose the work you need, then go as deep as useful.</h1>
+      <p class="hub-lead">Each hub connects a core service with its specialist pages, guides, examples, process, and next action. No mixed-service maze.</p>
+    </section>
+    <section class="hub-shell hub-section" aria-labelledby="all-hubs">
+      <div class="hub-section-head"><p>01</p><h2 id="all-hubs">All service hubs</h2></div>
+      <div class="hub-index-grid">
+      {%- for hub in silos %}
+        <article class="hub-index-card">
+          <span>0{{ loop.index }}</span>
+          <h2><a href="/hubs/{{ hub.slug }}/">{{ hub.name }}</a></h2>
+          <p>{{ hub.description }}</p>
+          <a class="hub-text-link" href="/hubs/{{ hub.slug }}/">Explore this hub <span aria-hidden="true">→</span></a>
+        </article>
+      {%- endfor %}
+      </div>
+    </section>
+  </main>
+  <footer class="hub-footer hub-shell"><p>Luxival · Helsinki and Uusimaa, Finland</p><a href="/contact">Start a conversation</a></footer>
+</body>
+</html>

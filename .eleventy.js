@@ -1,4 +1,35 @@
+const contentSilos = require("./_data/silos.json");
+
 module.exports = function (eleventyConfig) {
+  const siloByPath = new Map();
+  contentSilos.forEach((silo) => {
+    siloByPath.set(`hub-services/${silo.slug}`, silo);
+    [...silo.services, ...silo.guides].forEach((item) => {
+      const key = item.href.replace(/^\//, "").replace(/\/$/, "") || "index";
+      siloByPath.set(key, silo);
+    });
+  });
+
+  function injectSiloNavigation(html, outputPath) {
+    if (!outputPath || outputPath.includes("/hubs/") || html.includes("data-silo-navigation")) return html;
+    const normalized = outputPath
+      .replace(/^.*_site\//, "")
+      .replace(/\/index\.html$/, "")
+      .replace(/\.html$/, "") || "index";
+    const silo = siloByPath.get(normalized);
+    if (!silo) return html;
+
+    const links = silo.services
+      .filter((item) => item.href.replace(/^\//, "").replace(/\/$/, "") !== normalized)
+      .slice(0, 5)
+      .map((item) => `<a href="${item.href}">${item.label}</a>`)
+      .join("");
+    const block = `<aside class="silo-context" data-silo-navigation aria-label="${silo.name} hub navigation"><div><p>Inside the ${silo.name} hub</p><h2>Continue with related ${silo.name.toLowerCase()} pages</h2><nav><a class="silo-context-primary" href="/hubs/${silo.slug}/">View the complete hub</a>${links}</nav></div></aside>`;
+    const style = html.includes("/css/silo-context.css") ? "" : '<link rel="stylesheet" href="/css/silo-context.css?v=20260718-1">\n';
+    html = html.replace(/<\/head>/i, `${style}</head>`);
+    if (/<footer[\s>]/i.test(html)) return html.replace(/<footer/i, `${block}<footer`);
+    return html.replace(/<\/body>/i, `${block}</body>`);
+  }
   function removeUngatedSpeedInsights(html) {
     return html
       .replace(/\s*<!-- Vercel Speed Insights -->\s*/gi, "\n")
@@ -95,6 +126,11 @@ module.exports = function (eleventyConfig) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
     return versionNavbarJs(injectNavConfig(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content)))))))))));
+  });
+
+  eleventyConfig.addTransform("content-silo-navigation", function(content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html") || outputPath.includes("/amp/")) return content;
+    return injectSiloNavigation(content, outputPath);
   });
 
   eleventyConfig.addPassthroughCopy({ i18n: "i18n" });

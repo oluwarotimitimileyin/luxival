@@ -1,0 +1,8 @@
+---
+pagination:
+  data: consolidated
+  size: 1
+  alias: item
+permalink: "{{ item.permalink }}"
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ item.title }}</title><meta name="description" content="{{ item.description }}"><link rel="canonical" href="{{ item.canonical }}"><link rel="stylesheet" href="/css/silo-hubs.css?v=20260718-3"></head><body><header class="hub-header"><a href="/" class="hub-brand">LUXIVAL</a><nav><a href="{{ item.parentHref }}">{{ item.parentLabel }}</a><a href="/contact">Contact</a></nav></header><main><section class="hub-hero hub-shell"><p class="hub-kicker">Consolidated specialist page</p><h1>{{ item.h1 }}</h1><p class="hub-lead">{{ item.description }}</p></section>{% for section in item.sections %}<section class="hub-shell hub-section qa-copy"><div class="hub-section-head"><p>0{{ loop.index }}</p><h2>{{ section.heading }}</h2></div><p>{{ section.body }}</p></section>{% endfor %}<section class="hub-shell hub-next"><p class="hub-kicker">Next step</p><h2>Start with the current situation.</h2><p>Share the existing website, workflow, route, or material and the outcome you need.</p><a class="hub-button" href="/contact">Request a quote</a></section></main></body></html>

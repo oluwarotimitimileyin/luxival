@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "airport-transfers",
+    "name": "Airport Transfers",
+    "eyebrow": "Private transport in Finland",
+    "title": "Helsinki Airport Transfers and Private Rides",
+    "description": "Plan airport pickups, private rides, and longer transfers with clear route guidance and direct booking support.",
+    "audience": "Travellers, families, business visitors, and groups who want a pre-arranged private ride in Finland.",
+    "outcome": "A confirmed route, pickup plan, fare expectation, and one point of contact.",
+    "cta": {"href": "/booking", "label": "Book a transfer"},
+    "services": [
+      {"href": "/transfers", "label": "Transfer services", "summary": "Compare airport, private, and city-to-city transport."},
+      {"href": "/helsinki-airport-transfer", "label": "Helsinki airport transfer", "summary": "Pickup guidance and private transfer options from HEL."},
+      {"href": "/helsinki-airport-pickup", "label": "Airport pickup", "summary": "Arrival coordination, meeting points, and luggage planning."},
+      {"href": "/private-city-to-city-transfer-finland", "label": "City-to-city transfers", "summary": "Private long-distance routes across Finland."},
+      {"href": "/services/private-rides", "label": "Private rides", "summary": "Flexible private transport for local and custom journeys."},
+      {"href": "/services/city-to-city", "label": "Route details", "summary": "How custom intercity bookings are planned."}
+    ],
+    "guides": [
+      {"href": "/resources/helsinki-airport-transfer", "label": "Airport transfer resource hub"},
+      {"href": "/blog/helsinki-airport-transfer-guide", "label": "Helsinki airport transfer guide"},
+      {"href": "/blog/helsinki-airport-transfer-questions-answered", "label": "Airport transfer questions"},
+      {"href": "/blog/helsinki-night-transfers", "label": "Night transfer planning"},
+      {"href": "/blog/private-chauffeur-helsinki-business", "label": "Business chauffeur guide"}
+    ]
+  },
+  {
+    "slug": "finland-travel",
+    "name": "Finland Travel",
+    "eyebrow": "Trip planning and local guidance",
+    "title": "Finland Travel Planning and Private Experiences",
+    "description": "Build a practical Finland itinerary around seasons, destinations, accommodation, and private local experiences.",
+    "audience": "International visitors who want a clearer Helsinki, Lapland, winter, or multi-stop Finland plan.",
+    "outcome": "A realistic itinerary with the right sequence, timing, local options, and transport connections.",
+    "cta": {"href": "/tourism-planning", "label": "Plan a Finland trip"},
+    "services": [
+      {"href": "/tourism", "label": "Tourism services", "summary": "Explore private transport and Finland visitor support."},
+      {"href": "/finland-travel-planning", "label": "Finland travel planning", "summary": "Custom itineraries built around your dates and priorities."},
+      {"href": "/finland-winter-travel", "label": "Winter travel", "summary": "Plan weather, daylight, clothing, routes, and seasonal activities."},
+      {"href": "/luxury-lapland", "label": "Luxury Lapland", "summary": "Premium northern stays and winter experience planning."},
+      {"href": "/helsinki-design-district", "label": "Helsinki Design District", "summary": "A focused Helsinki culture and shopping route."},
+      {"href": "/services/hotel-sourcing", "label": "Hotel sourcing", "summary": "Shortlist accommodation that fits the route and group."}
+    ],
+    "guides": [
+      {"href": "/blog/finland-tourism-planning-questions", "label": "Finland planning questions"},
+      {"href": "/blog/finland-winter-trip-guide", "label": "Finland winter trip guide"},
+      {"href": "/blog/finnish-lapland-luxury-winter-experiences", "label": "Lapland winter experiences"},
+      {"href": "/blog/top-5-hidden-gems-helsinki", "label": "Hidden gems in Helsinki"},
+      {"href": "/blog/summer-finland-lakeland-guide", "label": "Summer Lakeland guide"}
+    ]
+  },
+  {
+    "slug": "web-design",
+    "name": "Web Design",
+    "eyebrow": "Websites built for real business use",
+    "title": "Web Design and Conversion-Focused Website Development",
+    "description": "Plan, design, and build a clearer business website with responsive layouts, useful content structure, and measurable conversion paths.",
+    "audience": "Small businesses and service companies that need a new website or a credible redesign.",
+    "outcome": "A responsive, maintainable website that explains the offer and makes enquiries easier.",
+    "cta": {"href": "/contact", "label": "Discuss a website"},
+    "services": [
+      {"href": "/digital", "label": "Digital services", "summary": "See how website, SEO, QA, and automation work together."},
+      {"href": "/services/web-design", "label": "Web design service", "summary": "Scope, deliverables, pricing approach, and launch support."},
+      {"href": "/web-design-helsinki", "label": "Web design Helsinki", "summary": "Local web design for Helsinki-area businesses."},
+      {"href": "/web-design-uusimaa", "label": "Web design Uusimaa", "summary": "Regional website support across Uusimaa."},
+      {"href": "/web-design-belgium", "label": "Web design Belgium", "summary": "Multilingual website support for Belgian businesses."},
+      {"href": "/portfolio", "label": "Web portfolio", "summary": "Review selected digital work and product builds."}
+    ],
+    "guides": [
+      {"href": "/blog/web-design-finland-small-business-questions", "label": "Web design questions from Finnish businesses"},
+      {"href": "/blog/web-design-mistakes-conversion", "label": "Web design conversion mistakes"},
+      {"href": "/blog/website-losing-customers-how-to-fix", "label": "Why websites lose customers"}
+    ]
+  },
+  {
+    "slug": "seo", "name": "SEO", "eyebrow": "Search performance for service businesses", "title": "Technical, On-Page, and Local SEO Services", "description": "Improve organic discovery through technical fixes, search-intent mapping, on-page optimization, and local search signals.", "audience": "Businesses whose services are difficult to find through non-branded searches.", "outcome": "A prioritized SEO roadmap and implementation plan tied to qualified search demand.", "cta": {"href": "/contact", "label": "Request an SEO review"},
+    "services": [{"href": "/seo-services-finland", "label": "SEO services Finland", "summary": "Technical, local, on-page, and content SEO support."}],
+    "guides": [{"href": "/blog/seo-for-finnish-businesses", "label": "SEO for Finnish businesses"}]
+  },
+  {
+    "slug": "content-structure", "name": "Content Structure", "eyebrow": "Clear information architecture", "title": "Website Content Structure and Service-Page Architecture", "description": "Organize services, supporting content, and navigation so customers and search engines can understand the site without confusion.", "audience": "Businesses with overlapping pages, unclear navigation, or content that does not support a defined customer journey.", "outcome": "A page inventory, content hierarchy, internal-link map, and practical publishing structure.", "cta": {"href": "/contact", "label": "Review my content structure"},
+    "services": [{"href": "/hub", "label": "Service discovery", "summary": "A working example of routing different audiences into clear service paths."}],
+    "guides": [{"href": "/directory-listing", "label": "Structured business profile example"}]
+  },
+  {
+    "slug": "business-visibility", "name": "Business Visibility", "eyebrow": "Sustainable digital discovery", "title": "Business Visibility Strategy and Lead Pathways", "description": "Connect positioning, directories, useful content, outreach, and conversion paths into one measurable visibility system.", "audience": "Businesses that depend too heavily on referrals or disconnected marketing activity.", "outcome": "A visibility plan showing where to appear, what to publish, and how interest becomes an enquiry.", "cta": {"href": "/contact", "label": "Plan business visibility"},
+    "services": [{"href": "/growth-architect", "label": "Growth Architect", "summary": "A research and growth-system implementation example."}, {"href": "/businesslauncher", "label": "Business Launcher", "summary": "Structured business launch and visibility planning."}],
+    "guides": [{"href": "/blog/how-i-built-an-automated-lead-generation-system-for-web-design-clients", "label": "Automated lead generation case study"}, {"href": "/blog/why-businesses-need-visibility-strategy-automation", "label": "Visibility, strategy, and automation"}]
+  },
+  {
+    "slug": "qa-audits",
+    "name": "QA & Audits",
+    "eyebrow": "Software and website quality",
+    "title": "QA Testing, Website Audits, and Release Confidence",
+    "description": "Find usability, accessibility, performance, SEO, and software defects before they become expensive customer problems.",
+    "audience": "Product teams and business owners who need actionable evidence about website or software quality.",
+    "outcome": "A prioritized defect and risk report with reproducible findings and practical next steps.",
+    "cta": {"href": "/audit", "label": "Start an audit"},
+    "services": [
+      {"href": "/qa", "label": "QA services", "summary": "Testing capability, methods, and engagement options."},
+      {"href": "/audit", "label": "Website audit", "summary": "Run a free scan or request a deeper reviewed report."},
+      {"href": "/website-audit-service", "label": "Audit service details", "summary": "What is checked, delivered, and prioritized."},
+      {"href": "/qa-testing-services-helsinki", "label": "QA testing Helsinki", "summary": "Local manual and automated testing support."},
+      {"href": "/services/software-testing", "label": "Software testing", "summary": "Functional, regression, API, and browser testing."},
+      {"href": "/autonomous-qa-audit-dashboard", "label": "QA audit dashboard", "summary": "A working example of automated audit reporting."}
+    ],
+    "guides": [
+      {"href": "/blog/software-testing-qa-business-questions", "label": "Software testing questions"},
+      {"href": "/blog/website-audit-what-it-is-why-you-need-it", "label": "What a website audit checks"},
+      {"href": "/blog/what-is-istqb-certification", "label": "What ISTQB certification means"},
+      {"href": "/blog/agentic-qa-release-confidence", "label": "Agentic QA and release confidence"}
+    ]
+  },
+  {
+    "slug": "ai-automation", "name": "AI Automation", "eyebrow": "Practical automation for small teams", "title": "AI Automation for Repetitive Business Work", "description": "Automate defined operational tasks with controlled inputs, outputs, integrations, and human approval points.", "audience": "Small teams spending significant time on repeatable information, reporting, or lead-handling work.", "outcome": "A documented automation with measurable time savings and clear operational ownership.", "cta": {"href": "/contact", "label": "Map an automation"},
+    "services": [{"href": "/ai-automation-small-businesses", "label": "AI automation for small businesses", "summary": "Identify and implement a practical first automation."}],
+    "guides": [{"href": "/blog/ai-agents-business-automation-questions", "label": "Business automation questions"}]
+  },
+  {
+    "slug": "chatbot-development", "name": "Chatbot Development", "eyebrow": "Grounded customer conversations", "title": "Business Chatbot Design and Development", "description": "Build a chatbot around approved business knowledge, useful conversation paths, lead capture, and clear escalation to a person.", "audience": "Businesses with repeated pre-sales or support questions that can be answered from a maintained knowledge source.", "outcome": "A branded chatbot with scoped knowledge, tested responses, analytics, and human handoff.", "cta": {"href": "/contact", "label": "Plan a chatbot"},
+    "services": [{"href": "/chatbot-development-businesses", "label": "Business chatbot development", "summary": "Scope, knowledge design, implementation, and testing."}, {"href": "/vortex-ai-platform", "label": "Vortex AI platform", "summary": "An AI interface and product implementation example."}],
+    "guides": []
+  },
+  {
+    "slug": "agentic-workflows", "name": "Agentic Workflows", "eyebrow": "Multi-step AI systems", "title": "Agentic Workflow Design and Implementation", "description": "Design multi-step AI workflows with tools, state, guardrails, evaluation, and human control where decisions matter.", "audience": "Teams whose process requires several connected decisions or tools rather than one prompt or chatbot response.", "outcome": "A reviewable agent workflow with defined states, failure handling, evaluation, and operating documentation.", "cta": {"href": "/contact", "label": "Design an agent workflow"},
+    "services": [{"href": "/services/ai-agents", "label": "AI agent infrastructure", "summary": "Agent tools, orchestration, guardrails, and integrations."}, {"href": "/platform", "label": "Luxival platform", "summary": "Practical platform and workflow capabilities."}],
+    "guides": [{"href": "/blog/agentic-workflow-beginners-guide", "label": "Beginner's guide to agentic workflows"}, {"href": "/blog/agentic-workflow-playbooks", "label": "Agentic workflow playbooks"}]
+  },
+  {
+    "slug": "tiktok-agency", "name": "TikTok Agency", "eyebrow": "Short-form strategy and production", "title": "TikTok Strategy, Production, and Campaign Support", "description": "Build a repeatable TikTok presence around audience research, content formats, production, publishing, and learning from performance.", "audience": "Brands that need a practical TikTok operating system rather than occasional disconnected posts.", "outcome": "A channel strategy, repeatable formats, production cadence, and measurable campaign plan.", "cta": {"href": "/contact", "label": "Plan TikTok content"},
+    "services": [{"href": "/services/tiktok-agency", "label": "TikTok agency service", "summary": "Strategy, production, publishing, and campaign support."}],
+    "guides": [{"href": "/blog/tiktok-agency-live-selling-ugc", "label": "TikTok agency guide"}]
+  },
+  {
+    "slug": "live-selling", "name": "Live Selling", "eyebrow": "Real-time social commerce", "title": "Live Selling Strategy and Production Support", "description": "Plan product selection, run-of-show, hosting, moderation, offers, and follow-up for structured live shopping sessions.", "audience": "Product brands ready to test interactive selling through live social broadcasts.", "outcome": "A rehearsed live-selling format with clear roles, offers, technical checks, and performance measures.", "cta": {"href": "/contact", "label": "Plan a live session"},
+    "services": [], "guides": []
+  },
+  {
+    "slug": "ugc-video-production", "name": "UGC Video Production", "eyebrow": "Creator-style campaign assets", "title": "UGC Video Production for Brand Campaigns", "description": "Develop useful creator-style video concepts, scripts, variations, and campaign assets for organic and paid distribution.", "audience": "Brands that need authentic product demonstrations, testimonials, and social ad variations.", "outcome": "A structured batch of UGC-style assets with hooks, scripts, formats, and usage plan.", "cta": {"href": "/contact", "label": "Plan UGC production"},
+    "services": [{"href": "/ugc-studio-ai", "label": "UGC Studio AI", "summary": "An AI-assisted UGC production workflow."}, {"href": "/portfolio/ugc-studio-ai", "label": "UGC Studio product", "summary": "Explore the interactive UGC creation product."}],
+    "guides": [{"href": "/blog/ugc-ai-video-creation-brand-campaigns", "label": "AI UGC video creation"}]
+  },
+  {
+    "slug": "engineering-design", "name": "Engineering Design", "eyebrow": "Technical documentation and design support", "title": "Electrical and Mechanical Engineering Design Support", "description": "Translate technical requirements into structured concepts, calculations, drawings, documentation, and reviewable design packages.", "audience": "Clients requiring focused electrical or mechanical design assistance with clearly defined deliverables.", "outcome": "A reviewed technical package prepared for the agreed engineering or implementation stage.", "cta": {"href": "/contact", "label": "Discuss an engineering brief"},
+    "services": [{"href": "/pattern", "label": "Technical design services", "summary": "Browse specialist technical design support."}, {"href": "/services/electrical-design", "label": "Electrical design", "summary": "Electrical documentation and design assistance."}, {"href": "/services/mechanical-design", "label": "Mechanical design", "summary": "Mechanical concepts and technical documentation."}, {"href": "/ubuntu-google-cloud-vm", "label": "Cloud infrastructure project", "summary": "A technical implementation example."}],
+    "guides": [{"href": "/blog/ubuntu-linux-server-google-cloud-virtual-machine", "label": "Ubuntu cloud server guide"}]
+  },
+  {
+    "slug": "sewing-patterns", "name": "Sewing Pattern Services", "eyebrow": "Measurement-led garment development", "title": "Custom Sewing Pattern Design Services", "description": "Turn garment ideas and body measurements into reviewable custom sewing patterns prepared for sampling and refinement.", "audience": "Designers, makers, and clients who need custom-fit or concept-specific garment patterns.", "outcome": "A documented pattern package with measurements, review points, and clear preparation for sampling.", "cta": {"href": "/contact", "label": "Discuss a pattern"},
+    "services": [{"href": "/services/sewing-pattern", "label": "Sewing pattern design", "summary": "Measurement-led custom garment pattern development."}],
+    "guides": [{"href": "/blog/sewing-pattern-custom-suit-measurements", "label": "Custom suit measurement guide"}]
+  }
+]

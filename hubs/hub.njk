@@ -1,0 +1,68 @@
+---
+pagination:
+  data: silos
+  size: 1
+  alias: hub
+permalink: "hubs/{{ hub.slug }}/index.html"
+eleventyComputed:
+  title: "{{ hub.name }} Hub | Luxival"
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>{{ hub.name }} Hub | Luxival</title>
+  <meta name="description" content="{{ hub.description }}">
+  {% if hub.slug == "sewing-patterns" or hub.slug == "engineering-design" or hub.slug == "tiktok-agency" or hub.slug == "live-selling" or hub.slug == "ugc-video-production" or hub.slug == "agentic-workflows" %}<meta name="robots" content="noindex, follow">{% endif %}
+  <link rel="canonical" href="https://www.luxival.com/hubs/{{ hub.slug }}/">
+  <link rel="stylesheet" href="/css/silo-hubs.css?v=20260718-1">
+  <link rel="stylesheet" href="/css/qa-flagship.css?v=20260718-1">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"{{ hub.name }} Hub","url":"https://www.luxival.com/hubs/{{ hub.slug }}/","description":"{{ hub.description }}","mainEntity":{"@type":"ItemList","numberOfItems":{{ hub.services | length }}}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hub-header"><a href="/" class="hub-brand">LUXIVAL</a><nav aria-label="Primary"><a href="/hubs">All hubs</a><a href="/services">Services</a><a href="/contact">Contact</a></nav></header>
+  <main id="main">
+    <section class="hub-hero hub-shell">
+      <nav class="hub-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/hubs">Service hubs</a><span>/</span><span aria-current="page">{{ hub.name }}</span></nav>
+      <p class="hub-kicker">{{ hub.eyebrow }}</p>
+      <h1>{{ hub.title }}</h1>
+      <p class="hub-lead">{{ hub.description }}</p>
+      <a class="hub-button" href="{{ hub.cta.href }}">{{ hub.cta.label }}</a>
+    </section>
+
+    <section class="hub-shell hub-section hub-brief" aria-labelledby="fit-heading">
+      <div class="hub-section-head"><p>01</p><h2 id="fit-heading">Is this hub for you?</h2></div>
+      <div class="hub-brief-grid"><div><h3>Best fit</h3><p>{{ hub.audience }}</p></div><div><h3>Practical outcome</h3><p>{{ hub.outcome }}</p></div></div>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="services-heading">
+      <div class="hub-section-head"><p>02</p><h2 id="services-heading">Services and specialist pages</h2></div>
+      <div class="hub-service-grid">
+        <article><span>00</span><h3><a href="/hub-services/{{ hub.slug }}/">{{ hub.name }} service overview</a></h3><p>Review scope, deliverables, engagement stages, and the information needed to begin.</p><a class="hub-text-link" href="/hub-services/{{ hub.slug }}/">View core service <span aria-hidden="true">→</span></a></article>
+      {%- for item in hub.services %}
+        <article><span>0{{ loop.index }}</span><h3><a href="{{ item.href }}">{{ item.label }}</a></h3><p>{{ item.summary }}</p><a class="hub-text-link" href="{{ item.href }}">View page <span aria-hidden="true">→</span></a></article>
+      {%- endfor %}
+      </div>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="process-heading">
+      <div class="hub-section-head"><p>03</p><h2 id="process-heading">How the work moves</h2></div>
+      <ol class="hub-process"><li><strong>Define</strong><span>Clarify the goal, constraints, current state, and useful evidence.</span></li><li><strong>Scope</strong><span>Agree deliverables, responsibilities, timing, and decision points.</span></li><li><strong>Deliver</strong><span>Complete the work in reviewable stages with direct communication.</span></li><li><strong>Handover</strong><span>Provide the agreed output, next steps, and practical documentation.</span></li></ol>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="guides-heading">
+      <div class="hub-section-head"><p>04</p><h2 id="guides-heading">Guides and working knowledge</h2></div>
+      <ul class="hub-guide-list"><li><a href="/hub-services/{{ hub.slug }}/#questions"><span>{{ hub.name }} scope and common questions</span><span aria-hidden="true">↗</span></a></li>{% for guide in hub.guides %}<li><a href="{{ guide.href }}"><span>{{ guide.label }}</span><span aria-hidden="true">↗</span></a></li>{% endfor %}</ul>
+    </section>
+
+    <section class="hub-shell hub-next" aria-labelledby="next-heading"><p class="hub-kicker">Next step</p><h2 id="next-heading">Start with the exact outcome you need.</h2><p>Send the context you already have. We will identify the right service page and a sensible first step.</p><a class="hub-button" href="{{ hub.cta.href }}">{{ hub.cta.label }}</a></section>
+
+    {% if hub.slug != "qa-audits" %}<aside class="hub-shell hub-qa-ref"><p class="hub-kicker">Release quality</p><p>Need independent checks before launch? Explore <a href="/qa-audits/">QA automation services in Finland</a>, including Cypress, Playwright, manual testing, and website audits.</p></aside>{% endif %}
+
+    <nav class="hub-shell hub-sibling-nav" aria-label="Other service hubs"><p>Other hubs</p><div>{% for sibling in silos %}{% if sibling.slug != hub.slug %}<a href="/hubs/{{ sibling.slug }}/">{{ sibling.name }}</a>{% endif %}{% endfor %}</div></nav>
+  </main>
+  <footer class="hub-footer hub-shell"><p>Luxival · Helsinki and Uusimaa, Finland</p><a href="/hubs">View all service hubs</a></footer>
+</body>
+</html>

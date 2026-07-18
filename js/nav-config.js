@@ -4,6 +4,7 @@
   window.luxivalNavConfig = {
     brand: { href: '/', label: 'LUXIVAL' },
     items: [
+      { href: '/hubs', key: 'nav.hubs', label: 'Service Hubs' },
       { href: '/services', key: 'nav.services', label: 'Services' },
       { href: '/digital', key: 'nav.digital', label: 'Digital Services' },
       { href: '/audit', key: 'nav.audit', label: 'Website Audit' },
