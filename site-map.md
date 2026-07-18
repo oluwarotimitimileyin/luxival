@@ -5,6 +5,31 @@
 **Inputs:** discovery-report.md, project-backlog.md
 **Status:** Complete — awaiting owner sign-off before Task 03 begins
 
+> **2026-07-18 architecture update:** The flat service catalog is now organized into eight crawlable content silos under `/hubs/`. Existing URLs remain in place and each supporting page belongs to one primary hub. See `_data/silos.json` for the canonical hub membership used by Eleventy.
+
+## Content hub architecture
+
+```
+/hubs/
+├── airport-transfers/       Transport services + airport and chauffeur guides
+├── finland-travel/          Trip planning services + destination/season guides
+├── web-design/              Website services + conversion and redesign guides
+├── seo/                     Technical, local, and on-page SEO
+├── content-structure/       Information architecture and service-page structure
+├── business-visibility/     Visibility strategy and lead pathways
+├── qa-audits/               QA/audit services + testing knowledge base
+├── ai-automation/           Controlled business automation
+├── chatbot-development/     Grounded sales and support chatbots
+├── agentic-workflows/       Multi-step AI workflow systems
+├── tiktok-agency/           TikTok strategy and production
+├── live-selling/            Live commerce planning and delivery
+├── ugc-video-production/    Creator-style campaign assets
+├── engineering-design/      Electrical and mechanical design support
+└── sewing-patterns/         Custom garment pattern services
+```
+
+Each silo consists of a hub page, specialist service pages, supporting learning content, a shared process, and contextual navigation back to the hub. A supporting URL has one primary silo even where another discipline contributes to the work.
+
 ---
 
 ## 1. Site Structure Overview

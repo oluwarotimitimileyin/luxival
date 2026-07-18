@@ -1,0 +1,16 @@
+---
+pagination:
+  data: qaLocales
+  size: 1
+  alias: locale
+permalink: "{{ locale.code }}/qa-audits/index.html"
+---
+<!doctype html><html lang="{{ locale.code }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{{ locale.title }}</title><meta name="description" content="{{ locale.description }}"><link rel="canonical" href="https://www.luxival.com/{{ locale.code }}/qa-audits/">
+<link rel="alternate" hreflang="x-default" href="https://www.luxival.com/qa-audits/"><link rel="alternate" hreflang="en" href="https://www.luxival.com/qa-audits/">{% for alt in qaLocales %}<link rel="alternate" hreflang="{{ alt.code }}" href="https://www.luxival.com/{{ alt.code }}/qa-audits/">{% endfor %}
+<link rel="stylesheet" href="/css/silo-hubs.css?v=20260718-3"><link rel="stylesheet" href="/css/qa-flagship.css?v=20260718-1"><style>@media(max-width:600px){html,body{max-width:100%;overflow-x:hidden}.hub-hero h1,.hub-section h2,.hub-header a{overflow-wrap:anywhere;word-break:normal}.hub-header nav{min-width:0}}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"{{ locale.h1 }}","url":"https://www.luxival.com/{{ locale.code }}/qa-audits/","description":"{{ locale.description }}","areaServed":{"@type":"Country","name":"Finland"},"provider":{"@type":"LocalBusiness","name":"Luxival","url":"https://www.luxival.com/"}}</script></head><body>
+<a class="skip-link" href="#main">{{ locale.cta }}</a><header class="hub-header"><a href="/" class="hub-brand">LUXIVAL</a><nav><a href="/{{ locale.code }}/qa-audits/" aria-current="page">QA</a><a href="#request-quote">{{ locale.cta }}</a></nav></header><main id="main">
+<section class="hub-hero hub-shell"><p class="hub-kicker">Cypress · Playwright · Manual QA</p><h1>{{ locale.h1 }}</h1><p class="hub-lead">{{ locale.lead }}</p><a class="hub-button" href="#request-quote">{{ locale.cta }}</a></section>
+<section class="hub-shell hub-section qa-copy"><div class="hub-section-head"><p>01</p><h2>{{ locale.section1 }}</h2></div>{% for paragraph in locale.body1 %}<p>{{ paragraph }}</p>{% endfor %}</section>
+<section class="hub-shell hub-section"><div class="hub-section-head"><p>02</p><h2>{{ locale.section2 }}</h2></div><div class="hub-service-grid">{% for item in locale.items %}<article><span>0{{ loop.index }}</span><h3>{{ item[0] }}</h3><p>{{ item[1] }}</p></article>{% endfor %}</div></section>
+<section class="hub-shell hub-section qa-copy"><div class="hub-section-head"><p>03</p><h2>{{ locale.section3 }}</h2></div>{% for paragraph in locale.body3 %}<p>{{ paragraph }}</p>{% endfor %}</section>
+<section class="hub-shell hub-next" id="request-quote"><p class="hub-kicker">QA</p><h2>{{ locale.quote }}</h2><a class="hub-button" href="/contact?lang={{ locale.code }}">{{ locale.cta }}</a></section></main><footer class="hub-footer hub-shell"><p>Luxival · Finland</p><a href="/qa-audits/">English</a></footer></body></html>
