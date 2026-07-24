@@ -1,0 +1,136 @@
+---
+pagination:
+  data: qaCityPages
+  size: 1
+  alias: qaPage
+permalink: "{{ qaPage.permalink }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="{{ qaPage.lang }}" data-lock-lang="{{ qaPage.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>{{ qaPage.title }}</title>
+  <meta name="description" content="{{ qaPage.description }}">
+  <meta property="og:title" content="{{ qaPage.ogTitle }}">
+  <meta property="og:description" content="{{ qaPage.description }}">
+  <meta property="og:image" content="https://www.luxival.com/assets/images/optimized/oodi-library/oodi-library-1440.webp">
+  <meta property="og:url" content="{{ qaPage.url }}">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="{{ qaPage.url }}">
+  {% for alternate in qaPage.alternates %}<link rel="alternate" hreflang="{{ alternate.lang }}" href="{{ alternate.url }}">
+  {% endfor %}<link rel="alternate" hreflang="x-default" href="{{ qaPage.xDefault }}">
+  <link rel="stylesheet" href="/css/silo-hubs.css?v=20260718-3">
+  <link rel="stylesheet" href="/css/qa-local-pages.css?v=20260724-1">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Service",
+        "name":{{ qaPage.h1 | dump | safe }},
+        "serviceType":"Software testing",
+        "url":{{ qaPage.url | dump | safe }},
+        "description":{{ qaPage.description | dump | safe }},
+        "areaServed":{"@type":{{ qaPage.areaType | dump | safe }},"name":{{ qaPage.area | dump | safe }}},
+        "provider":{"@type":"LocalBusiness","name":"Luxival","url":"https://www.luxival.com/","address":{"@type":"PostalAddress","addressLocality":"Vantaa","addressRegion":"Uusimaa","addressCountry":"FI"}}
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {% for faq in qaPage.faqs %}{"@type":"Question","name":{{ faq.question | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ faq.answer | dump | safe }}}}{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ]
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":{{ qaPage.breadcrumbHome | dump | safe }},"item":"https://www.luxival.com/"},
+          {"@type":"ListItem","position":2,"name":{{ qaPage.breadcrumbQa | dump | safe }},"item":{% if qaPage.lang == "fi" %}"https://www.luxival.com/fi/qa/"{% else %}"https://www.luxival.com/qa"{% endif %}},
+          {"@type":"ListItem","position":3,"name":{{ qaPage.breadcrumbCurrent | dump | safe }},"item":{{ qaPage.url | dump | safe }}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">{% if qaPage.lang == "fi" %}Siirry sisältöön{% else %}Skip to content{% endif %}</a>
+  <header class="hub-header">
+    <a href="/" class="hub-brand">LUXIVAL</a>
+    <nav aria-label="{% if qaPage.lang == "fi" %}Päänavigaatio{% else %}Primary{% endif %}">
+      <a href="{% if qaPage.lang == "fi" %}/fi/qa/{% else %}/qa{% endif %}" aria-current="page">{{ qaPage.breadcrumbQa }}</a>
+      <a href="/qa-audits/">{% if qaPage.lang == "fi" %}QA-auditoinnit{% else %}QA audits{% endif %}</a>
+      <a href="/contact">{{ qaPage.contactLabel }}</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hub-hero hub-shell qa-local-hero">
+      <nav class="hub-breadcrumb" aria-label="{% if qaPage.lang == "fi" %}Murupolku{% else %}Breadcrumb{% endif %}">
+        <a href="/">{{ qaPage.breadcrumbHome }}</a><span>/</span>
+        <a href="{% if qaPage.lang == "fi" %}/fi/qa/{% else %}/qa{% endif %}">{{ qaPage.breadcrumbQa }}</a><span>/</span>
+        <span aria-current="page">{{ qaPage.breadcrumbCurrent }}</span>
+      </nav>
+      <p class="hub-kicker">{{ qaPage.kicker }}</p>
+      <h1>{{ qaPage.h1 }}</h1>
+      <p class="hub-lead">{{ qaPage.lead }}</p>
+      <a class="hub-button" href="#request-qa">{{ qaPage.ctaLabel }}</a>
+    </section>
+
+    <figure class="hub-shell qa-local-image">
+      <picture>
+        <source type="image/avif" srcset="/assets/images/optimized/oodi-library/oodi-library-768.avif 768w, /assets/images/optimized/oodi-library/oodi-library-1440.avif 1440w" sizes="(max-width: 1180px) calc(100vw - 40px), 1180px">
+        <img src="/assets/images/optimized/oodi-library/oodi-library-1440.webp" srcset="/assets/images/optimized/oodi-library/oodi-library-768.webp 768w, /assets/images/optimized/oodi-library/oodi-library-1440.webp 1440w" sizes="(max-width: 1180px) calc(100vw - 40px), 1180px" width="1440" height="960" alt="{{ qaPage.heroAlt }}" style="object-position:{{ qaPage.imagePosition }}">
+      </picture>
+    </figure>
+
+    <section class="hub-shell hub-section qa-copy" aria-labelledby="intro-heading">
+      <h2 id="intro-heading">{{ qaPage.introHeading }}</h2>
+      {% for paragraph in qaPage.intro %}<p>{{ paragraph }}</p>{% endfor %}
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="deliverables-heading">
+      <h2 id="deliverables-heading" class="qa-local-heading">{{ qaPage.deliverablesHeading }}</h2>
+      <div class="qa-local-deliverables">
+        {% for item in qaPage.deliverables %}<article><h3>{{ item.title }}</h3><p>{{ item.text }}</p></article>{% endfor %}
+      </div>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="process-heading">
+      <h2 id="process-heading" class="qa-local-heading">{{ qaPage.processHeading }}</h2>
+      <ol class="hub-process">
+        {% for item in qaPage.process %}<li><strong>{{ item.title }}</strong><span>{{ item.text }}</span></li>{% endfor %}
+      </ol>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="qa-local-heading">{{ qaPage.faqHeading }}</h2>
+      <div class="qa-local-faq">
+        {% for faq in qaPage.faqs %}<details><summary>{{ faq.question }}</summary><p>{{ faq.answer }}</p></details>{% endfor %}
+      </div>
+    </section>
+
+    <section class="hub-shell hub-section" aria-labelledby="areas-heading">
+      <h2 id="areas-heading" class="qa-local-heading">{{ qaPage.relatedHeading }}</h2>
+      <p class="qa-local-area-intro">{{ qaPage.relatedIntro }}</p>
+      <nav class="qa-local-areas" aria-label="{{ qaPage.serviceAreasLabel }}">
+        <a href="/qa/helsinki/">Helsinki</a>
+        <a href="/qa/espoo/">Espoo</a>
+        <a href="/qa/vantaa/">Vantaa</a>
+        <a href="/fi/qa/">Uusimaa</a>
+      </nav>
+    </section>
+
+    <section class="hub-shell hub-next" id="request-qa" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">{{ qaPage.ctaHeading }}</h2>
+      <p>{{ qaPage.ctaText }}</p>
+      <a class="hub-button" href="/contact">{{ qaPage.ctaLabel }}</a>
+    </section>
+  </main>
+  <footer class="hub-footer hub-shell qa-local-footer">
+    <p>{{ qaPage.footerText }}</p>
+    <p><strong>{{ qaPage.serviceAreasLabel }}:</strong> <a href="/qa/helsinki/">Helsinki</a> <span>·</span> <a href="/qa/espoo/">Espoo</a> <span>·</span> <a href="/qa/vantaa/">Vantaa</a> <span>·</span> Uusimaa</p>
+  </footer>
+</body>
+</html>

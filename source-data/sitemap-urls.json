@@ -114,5 +114,10 @@
   {"loc":"https://www.luxival.com/no/qa-audits/","lastmod":"2026-07-18","changefreq":"monthly","priority":"0.8"},
   {"loc":"https://www.luxival.com/da/qa-audits/","lastmod":"2026-07-18","changefreq":"monthly","priority":"0.8"},
   {"loc":"https://www.luxival.com/ja/qa-audits/","lastmod":"2026-07-18","changefreq":"monthly","priority":"0.8"},
-  {"loc":"https://www.luxival.com/zh/qa-audits/","lastmod":"2026-07-18","changefreq":"monthly","priority":"0.8"}
+  {"loc":"https://www.luxival.com/zh/qa-audits/","lastmod":"2026-07-18","changefreq":"monthly","priority":"0.8"},
+  {"loc":"https://www.luxival.com/qa/helsinki/","lastmod":"2026-07-24","changefreq":"monthly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/qa/espoo/","lastmod":"2026-07-24","changefreq":"monthly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/qa/vantaa/","lastmod":"2026-07-24","changefreq":"monthly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/fi/qa/","lastmod":"2026-07-24","changefreq":"monthly","priority":"0.9"},
+  {"loc":"https://www.luxival.com/fi/qa/helsinki/","lastmod":"2026-07-24","changefreq":"monthly","priority":"0.9"}
 ]

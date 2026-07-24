@@ -33,12 +33,9 @@ async function submitToIndexNow(urls) {
 
 async function main() {
   const xml = fs.readFileSync(path.join(__dirname, "..", "sitemap.xml"), "utf8");
-  let urls = extractUrls(xml);
+  const urls = extractUrls(xml);
   
-  // Filter out AMP pages (they're duplicates for SEO)
-  urls = urls.filter(u => !u.includes('/amp/'));
-  
-  console.log(`Found ${urls.length} URLs in sitemap.xml (filtered)`);
+  console.log(`Found ${urls.length} URLs in sitemap.xml`);
   
   const res = await submitToIndexNow(urls);
   console.log(`IndexNow response: ${res.status} ${res.statusText}`);
