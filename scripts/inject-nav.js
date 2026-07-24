@@ -183,6 +183,9 @@ function injectHeadAssets(html) {
   if (!html.includes('/css/neon.css')) {
     headLinks += '<link rel="stylesheet" href="/css/neon.css">\n';
   }
+  if (!html.includes('/css/layout-system.css')) {
+    headLinks += '<link rel="stylesheet" href="/css/layout-system.css?v=20260724-1">\n';
+  }
   if (headLinks) {
     result = result.replace(/<\/head>/i, headLinks + '</head>');
   }
@@ -202,9 +205,9 @@ function injectI18nScript(html) {
 function injectNavbarScript(html) {
   if (html.includes('/js/navbar.js')) return html;
   if (/<\/body>/i.test(html)) {
-    return html.replace(/<\/body>/i, '  <script src="/js/navbar.js?v=20260703-1" defer></script>\n</body>');
+    return html.replace(/<\/body>/i, '  <script src="/js/navbar.js?v=20260724-2" defer></script>\n</body>');
   }
-  return html + '\n<script src="/js/navbar.js?v=20260703-1" defer></script>\n';
+  return html + '\n<script src="/js/navbar.js?v=20260724-2" defer></script>\n';
 }
 
 function injectNavConfigScript(html) {

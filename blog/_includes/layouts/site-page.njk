@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ lang or 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ title }} | Luxival</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/layout-system.css">
+</head>
+<body data-page-key="{{ pageKey or 'page' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav id="mainNav" aria-label="Primary navigation"></nav>
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  <script src="/js/i18n.js" defer></script>
+  <script src="/js/nav-config.js" defer></script>
+  <script src="/js/navbar.js?v=20260724-2" defer></script>
+</body>
+</html>

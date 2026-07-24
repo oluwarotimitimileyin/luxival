@@ -17,9 +17,11 @@
       '.nav-brand{white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}' +
       '.nv-right{display:flex;align-items:center;gap:clamp(.4rem,1.5vw,1rem);min-width:0}' +
       '.nv-lang,.nv-menu{position:relative;display:flex;align-items:center}' +
-      '.nv-lang .lang-trigger{display:flex;align-items:center;justify-content:center;gap:.42rem;padding:.45rem .7rem;background:rgba(201,169,106,.06)!important;border:1px solid rgba(201,169,106,.22);color:var(--gold);border-radius:999px;cursor:pointer;font-family:inherit;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;transition:border-color .3s,box-shadow .3s;min-height:44px;min-width:44px}' +
+      '.nv-lang .lang-trigger{display:flex;align-items:center;justify-content:center;gap:.42rem;padding:.45rem .75rem;background:rgba(201,169,106,.08)!important;border:1px solid rgba(201,169,106,.34);color:var(--gold);border-radius:999px;cursor:pointer;font-family:inherit;font-size:.72rem;letter-spacing:1.1px;text-transform:uppercase;transition:border-color .3s,box-shadow .3s;min-height:44px;min-width:44px;white-space:nowrap}' +
       '.nv-lang .lang-trigger:hover{border-color:rgba(201,169,106,.46);box-shadow:0 0 22px rgba(201,169,106,.12)}' +
       '.nv-lang .lang-trigger svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 auto}' +
+      '.nv-lang-label{display:inline-flex;align-items:center;gap:.35rem}' +
+      '.nv-lang-label strong{font-size:.68rem;font-weight:600;letter-spacing:1.3px}' +
       '.nv-dropdown{position:absolute;top:100%;right:0;margin-top:.4rem;min-width:130px;max-width:calc(100vw - 2rem);max-height:calc(100dvh - 5rem);overflow-y:auto;background:rgba(17,19,26,.97);border:1px solid rgba(201,169,106,.2);border-radius:8px;padding:.35rem 0;z-index:300;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease;box-shadow:0 18px 50px rgba(0,0,0,.4);-webkit-overflow-scrolling:touch}' +
       '.nv-dropdown.open{opacity:1;visibility:visible;transform:translateY(0)}' +
       '.nv-dropdown-item{display:flex;align-items:center;width:100%;min-height:44px;text-align:left;padding:.55rem .9rem;background:none;border:none;color:#E8EBF2;font-size:.78rem;cursor:pointer;transition:background .18s,color .18s;font-family:inherit;letter-spacing:.3px;text-decoration:none;white-space:nowrap}' +
@@ -33,7 +35,7 @@
       '.menu-trigger.open span:nth-child(2){opacity:0}' +
       '.menu-trigger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}' +
       '@media(max-width:820px){.nv-inner{padding:1rem clamp(1rem,4vw,1.25rem)}.nav-brand{font-size:1rem;letter-spacing:2px}.nv-right{gap:.35rem}.nv-dropdown{position:fixed;top:calc(env(safe-area-inset-top,0px) + 62px);left:1rem;right:1rem;width:auto;margin-top:0;max-height:calc(100dvh - 5rem);overflow-y:auto}.menu-dropdown,.nv-lang .nv-dropdown{min-width:0}}' +
-      '@media(max-width:480px){.nv-inner{padding:.9rem .75rem}.nv-dropdown{left:.5rem;right:.5rem}.menu-trigger span{width:18px}}' +
+      '@media(max-width:480px){.nv-inner{padding:.9rem .75rem}.nv-dropdown{left:.5rem;right:.5rem}.menu-trigger span{width:18px}.nv-lang-word{display:none}.nv-lang .lang-trigger{padding:.4rem .62rem}}' +
       '@media(prefers-reduced-motion:reduce){.nv-dropdown{transition:none!important}.menu-trigger span{transition:none!important}}';
     document.head.appendChild(s);
   }
@@ -70,6 +72,7 @@
         '<div class="nv-lang">' +
           '<button id="nv-lang-toggle" class="lang-trigger" aria-label="Change language" aria-expanded="false" aria-controls="nv-lang-dropdown">' +
             '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21"/><path d="M12 3c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9"/></svg>' +
+            '<span class="nv-lang-label"><span class="nv-lang-word">Language</span><strong id="nv-current-lang">' + currentLang.toUpperCase() + '</strong></span>' +
           '</button>' +
           '<div id="nv-lang-dropdown" class="nv-dropdown" role="menu" aria-label="Select language">' + langOptions + '</div>' +
         '</div>' +
@@ -86,6 +89,7 @@
 
   /* ---------- state ---------- */
   var langToggle = document.getElementById('nv-lang-toggle');
+  var currentLangLabel = document.getElementById('nv-current-lang');
   var langDropdown = document.getElementById('nv-lang-dropdown');
   var menuToggle = document.getElementById('nv-menu-toggle');
   var menuDropdown = document.getElementById('nv-menu-dropdown');
@@ -137,6 +141,7 @@
         try { localStorage.setItem('luxival-lang', lang); } catch (err) {}
         document.documentElement.lang = lang;
       }
+      if (currentLangLabel) currentLangLabel.textContent = lang.toUpperCase();
       closeDropdown(langDropdown, langToggle);
       closeDropdown(menuDropdown, menuToggle);
     });
@@ -181,6 +186,7 @@
   document.addEventListener('luxival:language-changed', function () {
     var newLang = i18n.getLang && i18n.getLang();
     if (!newLang) return;
+    if (currentLangLabel) currentLangLabel.textContent = newLang.toUpperCase();
 
     /* update active state in lang dropdown */
     if (langDropdown) {

@@ -16,6 +16,13 @@
   }
 
   function setLang(lang) {
+    var locked = document.documentElement.dataset.lockLang;
+    if (locked) {
+      document.documentElement.lang = locked;
+      document.documentElement.dir = 'ltr';
+      document.dispatchEvent(new CustomEvent('luxival:language-changed', { detail: { lang: locked } }));
+      return;
+    }
     if (SUPPORTED_LANGS.indexOf(lang) === -1) return;
     localStorage.setItem('luxival-lang', lang);
     document.documentElement.lang = lang;

@@ -75,7 +75,7 @@ module.exports = function (eleventyConfig) {
     if (!html.includes("/js/navbar.js")) return html;
     return html.replace(
       /src=["']\/js\/navbar\.js["']/gi,
-      'src="/js/navbar.js?v=20260703-1"'
+      'src="/js/navbar.js?v=20260724-2"'
     );
   }
 
@@ -111,6 +111,17 @@ module.exports = function (eleventyConfig) {
     return html;
   }
 
+  function injectUnifiedLayout(html) {
+    if (html.includes("/css/layout-system.css")) return html;
+    if (/<\/head>/i.test(html)) {
+      return html.replace(
+        /<\/head>/i,
+        '<link rel="stylesheet" href="/css/layout-system.css?v=20260724-1">\n</head>'
+      );
+    }
+    return html;
+  }
+
   function injectSpeechReader(html) {
     if (html.includes("/js/speech-reader.js")) return html;
     if (/<\/head>/i.test(html)) {
@@ -125,7 +136,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("consent-manager", function(content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (outputPath.includes("/amp/")) return content;
-    return versionNavbarJs(injectNavConfig(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content)))))))))));
+    return injectUnifiedLayout(versionNavbarJs(injectNavConfig(injectI18nScript(injectPageTranslate(injectSpeechReader(injectChatWidget(injectConsentScript(injectMobileOverrides(injectSoftUiStyles(injectDiscoverMeta(removeUngatedSpeedInsights(content))))))))))));
   });
 
   eleventyConfig.addTransform("content-silo-navigation", function(content, outputPath) {
